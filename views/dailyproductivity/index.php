@@ -61,7 +61,7 @@ $this->title = 'Produtividade Diária';
              'filter' => ArrayHelper::map(Modality::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
              'contentOptions'=>['style'=>'width: 10%;text-align:left'],
             ],              
-            'manager',
+            //'manager',
             'valor',
             // 'commission_percent',
             // 'companys_revenue',

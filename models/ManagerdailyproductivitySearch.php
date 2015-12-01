@@ -14,7 +14,7 @@ class ManagerdailyproductivitySearch extends Managerdailyproductivity
     {
         return [
             [['id', 'product_id', 'modality_id', 'location_id', 'person_id', 'daily_productivity_status_id', 'seller_id', 'operator_id'], 'integer'],
-            [['manager', 'buyer_document', 'buyer_name', 'date', 'created', 'updated'], 'safe'],
+            [['buyer_document', 'buyer_name', 'date', 'created', 'updated'], 'safe'],
             [['valor', 'commission_percent', 'companys_revenue'], 'number'],
         ];
     }
@@ -58,8 +58,7 @@ class ManagerdailyproductivitySearch extends Managerdailyproductivity
             'updated' => $this->updated,
         ]);
 
-        $query->andFilterWhere(['like', 'manager', $this->manager])
-            ->andFilterWhere(['like', 'buyer_document', $this->buyer_document])
+        $query->andFilterWhere(['like', 'buyer_document', $this->buyer_document])
             ->andFilterWhere(['like', 'buyer_name', $this->buyer_name]);
 
         return $dataProvider;

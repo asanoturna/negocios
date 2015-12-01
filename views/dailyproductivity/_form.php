@@ -92,16 +92,6 @@ use yii\widgets\MaskedInput;
         </div></div>
 
         <div class="row"><div class="col-sm-6">
-        <?php echo $form->field($model, 'manager')->dropDownList([
-                'MAPFRE SEGUROS' => 'MAPFRE SEGUROS',
-                'MAFRE' => 'MAFRE',
-                'SICOOB CONSORCIO' => 'SICOOB CONSORCIO',
-                'MINASEG' => 'MINASEG',
-                'CIELO' => 'CIELO',
-        ],['prompt'=>'-- Selecione --']); ?>
-        </div></div>
-
-        <div class="row"><div class="col-sm-6">
         <?= $form->field($model, 'seller_id')->dropDownList(ArrayHelper::map(User::find()->where(['role_id' => 2])->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])  ?>
         </div></div>
 

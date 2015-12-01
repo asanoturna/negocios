@@ -16,11 +16,11 @@ class Dailyproductivity extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['person_id', 'location_id', 'product_id', 'modality_id', 'manager', 'valor', 'commission_percent', 'companys_revenue', 'daily_productivity_status_id', 'buyer_document', 'buyer_name', 'seller_id', 'operator_id', 'user_id','date', 'created', 'updated'], 'required', 'message' => 'Campo Obrigatório'],
+            [['person_id', 'location_id', 'product_id', 'modality_id', 'valor', 'commission_percent', 'companys_revenue', 'daily_productivity_status_id', 'buyer_document', 'buyer_name', 'seller_id', 'operator_id', 'user_id','date', 'created', 'updated'], 'required', 'message' => 'Campo Obrigatório'],
             [['person_id', 'location_id', 'product_id', 'modality_id', 'daily_productivity_status_id', 'seller_id', 'operator_id', 'user_id'], 'integer'],
             [['valor', 'commission_percent', 'companys_revenue'], 'number'],
             [['date', 'created', 'updated'], 'safe'],
-            [['manager', 'buyer_name'], 'string', 'max' => 100],
+            [['buyer_name'], 'string', 'max' => 100],
             [['buyer_document'], 'string', 'max' => 18]
         ];
     }
@@ -33,15 +33,15 @@ class Dailyproductivity extends \yii\db\ActiveRecord
             'product_id' => 'Produto',
             'modality_id' => 'Modalidade',
             'person_id' => 'Pessoa',
-            'manager' => 'Administradora',
+            //'manager' => 'Administradora',
             'valor' => 'Valor',
             'commission_percent' => 'Comissão (%)',
             'companys_revenue' => 'Receita da Cooperativa',
             'daily_productivity_status_id' => 'Situação',
-            'buyer_document' => 'CPF/CNPJ',
-            'buyer_name' => 'Comprador',
-            'seller_id' => 'Vendendor',
-            'operator_id' => 'Operador',
+            'buyer_document' => 'CPF/CNPJ Cliente',
+            'buyer_name' => 'Nome Cliente',
+            'seller_id' => 'Indicador',
+            'operator_id' => 'Angariador',
             'user_id' => 'Usuário',
             'date' => 'Data',
             'created' => 'Criado',

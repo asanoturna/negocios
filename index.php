@@ -1,3 +1,3 @@
 <?php
-header("location: /produtividade/web/");
+header("location: /negocios/web/");
 ?>
