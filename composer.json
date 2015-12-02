@@ -6,8 +6,8 @@
     "type": "project",
     "license": "BSD-3-Clause",
     "support": {
-        "issues": "https://github.com/gugoan/produtividade/issues",
-        "source": "https://github.com/gugoan/produtividade"
+        "issues": "https://github.com/gugoan/negocios/issues",
+        "source": "https://github.com/gugoan/negocios"
     },
     "minimum-stability": "stable",
     "require": {

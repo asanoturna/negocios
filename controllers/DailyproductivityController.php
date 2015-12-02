@@ -47,6 +47,20 @@ class DailyproductivityController extends Controller
         ]);
     }
 
+    public function actionListm($id)
+    {
+        $rows = \app\models\Modality::find()->where(['product_id' => $id])->all();
+        echo "<option>--</option>";
+        if(count($rows)>0){
+            foreach($rows as $row){
+                echo "<option value='$row->id'>$row->name</option>";
+            }
+        }
+        else {
+            echo "<option>Nenhum modalidade </option>";
+        }
+    }    
+
     public function actionPerformance()
     {
         $searchModel = new DailyproductivitySearch();

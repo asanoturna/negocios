@@ -43,8 +43,7 @@ $this->title = 'Produtividade Diária';
             'location.shortname',          
             'product.name',
             'modality.name',
-            'person.name',
-            'manager',            
+            'person.name',           
             [ 
                 'label' => 'Vendedor',
                 'format' => 'raw',

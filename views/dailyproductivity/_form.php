@@ -9,6 +9,7 @@ use app\models\Modality;
 use app\models\Person;
 use app\models\User;
 use yii\widgets\MaskedInput;
+use yii\helpers\Url;
 
 ?>
 
@@ -84,11 +85,22 @@ use yii\widgets\MaskedInput;
       <div class="col-md-6"><!-- RIGHT -->
 
         <div class="row"><div class="col-sm-6">
-        <?= $form->field($model, 'product_id')->dropDownList(ArrayHelper::map(Product::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'-- Selecione --'])  ?>
+        <?= $form->field($model, 'product_id')->dropDownList(ArrayHelper::map(Product::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'),
+            [
+            'prompt' => '-- Selecione --',
+                    'onchange'=>'
+                        $.get( "'.Url::toRoute('/dailyproductivity/listm').'", { id: $(this).val() } )
+                            .done(function( data ) {
+                                $( "#'.Html::getInputId($model, 'modality_id').'" ).html( data );
+                            }
+                        );
+                    '
+            ])  ?>
         </div></div>
 
         <div class="row"><div class="col-sm-6">
-        <?= $form->field($model, 'modality_id')->dropDownList(ArrayHelper::map(Modality::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'-- Selecione --'])  ?>    
+        <?php // $form->field($model, 'modality_id')->dropDownList(ArrayHelper::map(Modality::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'-- Selecione --'])  ?>    
+        <?= $form->field($model, 'modality_id')->dropDownList(['prompt'=>'Selecione um produto']) ;?>
         </div></div>
 
         <div class="row"><div class="col-sm-6">

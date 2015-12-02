@@ -17,7 +17,7 @@ class Dailyproductivity extends \yii\db\ActiveRecord
     {
         return [
             [['person_id', 'location_id', 'product_id', 'modality_id', 'valor', 'commission_percent', 'companys_revenue', 'daily_productivity_status_id', 'buyer_document', 'buyer_name', 'seller_id', 'operator_id', 'user_id','date', 'created', 'updated'], 'required', 'message' => 'Campo Obrigatório'],
-            [['person_id', 'location_id', 'product_id', 'modality_id', 'daily_productivity_status_id', 'seller_id', 'operator_id', 'user_id'], 'integer'],
+            [['person_id', 'location_id', 'product_id', 'modality_id', 'daily_productivity_status_id', 'seller_id', 'operator_id', 'user_id'], 'integer', 'message' => 'Preencha corretamente'],
             [['valor', 'commission_percent', 'companys_revenue'], 'number'],
             [['date', 'created', 'updated'], 'safe'],
             [['buyer_name'], 'string', 'max' => 100],
