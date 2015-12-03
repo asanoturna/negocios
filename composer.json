@@ -18,7 +18,8 @@
         "amnah/yii2-user": "^4.0",
         "trntv/yii2-datetime-widget": "*",
         "miloschuman/yii2-highcharts-widget": "dev-master",
-        "kartik-v/yii2-money": "*"
+        "kartik-v/yii2-money": "*",
+        "kartik-v/yii2-slider": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

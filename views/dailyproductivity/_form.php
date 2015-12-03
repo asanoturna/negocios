@@ -58,7 +58,20 @@ use yii\helpers\Url;
             ?>
             </div>
             <div class="col-sm-3">
-            <?= $form->field($model, 'commission_percent')->textInput(['maxlength' => true]) ?>
+            <?php //echo $form->field($model, 'commission_percent')->textInput(['maxlength' => true])
+            //http://demos.krajee.com/slider
+            use kartik\slider\Slider;
+            echo $form->field($model, 'commission_percent')->widget(Slider::classname(), [
+            'name'=>'commission_percent',
+            'value'=>7,
+            'sliderColor'=>Slider::TYPE_GREY,
+            'handleColor'=>Slider::TYPE_SUCCESS,
+            'pluginOptions'=>[
+                'handle'=>'triangle',
+                'tooltip'=>'always'
+            ]
+        ]);
+            ?>
             </div>
         </div>
 
