@@ -61,6 +61,11 @@ class DailyproductivityController extends Controller
         }
     }    
 
+    public function actionPercent($id)
+    {
+        echo 2;
+    } 
+
     public function actionPerformance()
     {
         $searchModel = new DailyproductivitySearch();

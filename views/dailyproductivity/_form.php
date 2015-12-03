@@ -88,19 +88,22 @@ use yii\helpers\Url;
         <?= $form->field($model, 'product_id')->dropDownList(ArrayHelper::map(Product::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'),
             [
             'prompt' => '-- Selecione --',
-                    'onchange'=>'
-                        $.get( "'.Url::toRoute('/dailyproductivity/listm').'", { id: $(this).val() } )
-                            .done(function( data ) {
-                                $( "#'.Html::getInputId($model, 'modality_id').'" ).html( data );
-                            }
-                        );
-                    '
+            'onchange'=>'
+                $.get( "'.Url::toRoute('/dailyproductivity/listm').'", { id: $(this).val() } )
+                    .done(function( data ) {
+                        $( "#'.Html::getInputId($model, 'modality_id').'" ).html( data );
+                    }
+                );
+            '
             ])  ?>
         </div></div>
 
         <div class="row"><div class="col-sm-6">
         <?php // $form->field($model, 'modality_id')->dropDownList(ArrayHelper::map(Modality::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'-- Selecione --'])  ?>    
-        <?= $form->field($model, 'modality_id')->dropDownList(['prompt'=>'Selecione um produto']) ;?>
+        <?= $form->field($model, 'modality_id')->dropDownList(
+            [
+            'prompt'=>'Selecione um produto',
+            ]) ;?>
         </div></div>
 
         <div class="row"><div class="col-sm-6">
