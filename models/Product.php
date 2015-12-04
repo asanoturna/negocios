@@ -15,10 +15,10 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'desc'], 'required'],
-            [['is_active'], 'integer'],
+            [['name', 'description', 'label'], 'required'],
+            [['is_active','parent_id'], 'integer'],
             [['name'], 'string', 'max' => 50],
-            [['desc'], 'string', 'max' => 100]
+            [['description'], 'string', 'max' => 100]
         ];
     }
 
@@ -26,9 +26,26 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'parent_id' => 'Sub-Produto',
+            'label' => 'Título da Categoria',
             'name' => 'Produto',
-            'desc' => 'Descrição',
+            'description' => 'Descrição',
             'is_active' => 'Ativo',
         ];
     }
+    public static function getHierarchy() {
+        $options = [];
+         
+        $parents = self::find()->where(['parent_id' => null])->all();
+        foreach($parents as $id => $p) {
+            $children = self::find()->where("parent_id=:parent_id", [":parent_id"=>$p->id])->all();
+            $child_options = [];
+            foreach($children as $child) {
+                $child_options[$child->id] = $child->name;
+            }
+            $options[$p->name] = $child_options;
+        }
+        return $options;
+    }    
+         
 }

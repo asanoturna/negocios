@@ -51,16 +51,7 @@ $this->title = 'Produtividade Diária';
                     },
              'filter' => ArrayHelper::map(Product::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
              'contentOptions'=>['style'=>'width: 10%;text-align:left'],
-            ],              
-            [
-             'attribute' => 'modality_id',
-             'enableSorting' => true,
-             'value' => function ($model) {                      
-                    return $model->modality->name;
-                    },
-             'filter' => ArrayHelper::map(Modality::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
-             'contentOptions'=>['style'=>'width: 10%;text-align:left'],
-            ],              
+            ],                           
             //'manager',
             'value',
             // 'commission_percent',

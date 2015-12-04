@@ -31,15 +31,14 @@ $this->title = 'Produtividade Diária';
             'buyer_name',
             'location.shortname',          
             'product.name',
-            'modality.name',
             'person.name',           
             [ 
-                'label' => 'Vendedor',
+                'label' => 'Indicador',
                 'format' => 'raw',
                 'value' => $model->seller->username,
             ],             
             [ 
-                'label' => 'Operador',
+                'label' => 'Angariador',
                 'format' => 'raw',
                 'value' => $model->operator->username,
             ],     

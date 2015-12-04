@@ -16,9 +16,9 @@ class Dailyproductivity extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['person_id', 'location_id', 'product_id', 'modality_id', 'valor', 'commission_percent', 'companys_revenue', 'daily_productivity_status_id', 'buyer_document', 'buyer_name', 'seller_id', 'operator_id', 'user_id','date', 'created', 'updated'], 'required', 'message' => 'Campo Obrigatório'],
-            [['person_id', 'location_id', 'product_id', 'modality_id', 'daily_productivity_status_id', 'seller_id', 'operator_id', 'user_id'], 'integer', 'message' => 'Preencha corretamente'],
-            [['valor', 'commission_percent', 'companys_revenue'], 'number'],
+            [['person_id', 'location_id', 'product_id', 'value', 'commission_percent', 'companys_revenue', 'daily_productivity_status_id', 'buyer_document', 'buyer_name', 'seller_id', 'operator_id', 'user_id','date', 'created', 'updated'], 'required', 'message' => 'Campo Obrigatório'],
+            [['person_id', 'location_id', 'product_id', 'daily_productivity_status_id', 'seller_id', 'operator_id', 'user_id'], 'integer', 'message' => 'Preencha corretamente'],
+            [['value', 'commission_percent', 'companys_revenue'], 'number'],
             [['date', 'created', 'updated'], 'safe'],
             [['buyer_name'], 'string', 'max' => 100],
             [['buyer_document'], 'string', 'max' => 18]
@@ -31,10 +31,9 @@ class Dailyproductivity extends \yii\db\ActiveRecord
             'id' => 'ID',
             'location_id' => 'PA',
             'product_id' => 'Produto',
-            'modality_id' => 'Modalidade',
             'person_id' => 'Pessoa',
             //'manager' => 'Administradora',
-            'valor' => 'Valor',
+            'value' => 'Valor',
             'commission_percent' => 'Comissão (%)',
             'companys_revenue' => 'Receita da Cooperativa',
             'daily_productivity_status_id' => 'Situação',
@@ -52,11 +51,6 @@ class Dailyproductivity extends \yii\db\ActiveRecord
     public function getDailyProductivityStatus()
     {
         return $this->hasOne(Dailyproductivitystatus::className(), ['id' => 'daily_productivity_status_id']);
-    }
-
-    public function getModality()
-    {
-        return $this->hasOne(Modality::className(), ['id' => 'modality_id']);
     }
 
     public function getProduct()

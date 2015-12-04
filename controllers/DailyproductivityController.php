@@ -91,8 +91,11 @@ class DailyproductivityController extends Controller
         $model->daily_productivity_status_id = 1;
         $model->user_id = Yii::$app->user->id;
         $model->created = date('Y-m-d');
+        $model->updated = date('Y-m-d');
 
         $model->companys_revenue = 666;
+        //$model->product_id = 9;
+        
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

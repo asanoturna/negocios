@@ -12,7 +12,7 @@ class DailyproductivitySearch extends Dailyproductivity
     public function rules()
     {
         return [
-            [['id', 'location_id', 'product_id', 'modality_id', 'daily_productivity_status_id', 'seller_id', 'operator_id'], 'integer'],
+            [['id', 'location_id', 'product_id', 'daily_productivity_status_id', 'seller_id', 'operator_id'], 'integer'],
             [['buyer_document', 'buyer_name', 'date', 'created', 'updated'], 'safe'],
             [['value', 'commission_percent', 'companys_revenue'], 'number'],
         ];
@@ -44,7 +44,6 @@ class DailyproductivitySearch extends Dailyproductivity
             'id' => $this->id,
             'product_id' => $this->product_id,
             'location_id' => $this->location_id,
-            'modality_id' => $this->modality_id,
             'value' => $this->value,
             'commission_percent' => $this->commission_percent,
             'companys_revenue' => $this->companys_revenue,
