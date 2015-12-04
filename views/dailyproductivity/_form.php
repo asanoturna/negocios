@@ -43,7 +43,7 @@ use yii\helpers\Url;
             <div class="col-sm-3">
             <?php //echo $form->field($model, 'valor')->textInput(['maxlength' => true]) 
             use kartik\money\MaskMoney;
-            echo $form->field($model, 'valor')->widget(MaskMoney::classname(), [
+            echo $form->field($model, 'value')->widget(MaskMoney::classname(), [
                 'pluginOptions' => [
                     //'prefix' => 'R$ ',
                     //'suffix' => ' c',
@@ -76,7 +76,7 @@ use yii\helpers\Url;
         </div>
 
         <div class="row"><div class="col-sm-6">
-        <?= $form->field($model, 'companys_revenue', ['inputOptions' => ['value' => 5, 'class' => 'form-control']])->textInput(['readonly' => true]) ?>
+        <?php //echo $form->field($model, 'companys_revenue', ['inputOptions' => ['value' => 5, 'class' => 'form-control']])->textInput(['readonly' => true]) ?>
         </div></div>
 
         <div class="row">

@@ -10,17 +10,6 @@ $this->title = 'Produtividade Diária';
     <h1><?= Html::encode($this->title) ?></h1>
     <hr/>
 
-    <p>
-        <?= Html::a('Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Excluir', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -35,7 +24,7 @@ $this->title = 'Produtividade Diária';
                 'format' => 'raw',
                 'value' => date("d/m/Y",  strtotime($model->date))
             ],            
-            'valor',
+            'value',
             'commission_percent',
             'companys_revenue',
             'buyer_document',

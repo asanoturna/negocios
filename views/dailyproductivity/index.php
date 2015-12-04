@@ -62,7 +62,7 @@ $this->title = 'Produtividade Diária';
              'contentOptions'=>['style'=>'width: 10%;text-align:left'],
             ],              
             //'manager',
-            'valor',
+            'value',
             // 'commission_percent',
             // 'companys_revenue',
             // 'daily_productivity_status_id',
