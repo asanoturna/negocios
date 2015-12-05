@@ -21,7 +21,17 @@
                     [
                         'label'   => '<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Gerenciar',
                         'url'     => ['/managerdailyproductivity/index'],
-                    ],                                                
+                        'visible' => Yii::$app->user->can("productmanager"),
+                    ], 
+                    // [
+                    //     'label' => 'Dropdown',
+                    //     'items' => [
+                    //          ['label' => 'Level 1 - Dropdown A', 'url' => '#'],
+                    //          '<li class="divider"></li>',
+                    //          '<li class="dropdown-header">Dropdown Header</li>',
+                    //          ['label' => 'Level 1 - Dropdown B', 'url' => '#'],
+                    //     ],
+                    // ],                                                                   
                 ],
             'options' => ['class' =>'nav-pills'],
             ]);

@@ -30,6 +30,14 @@ class DailyproductivitySearch extends Dailyproductivity
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'created' => SORT_DESC, 
+                ]
+            ],
+            'pagination' => [
+                'pageSize' => 50,
+            ],
         ]);
 
         $this->load($params);

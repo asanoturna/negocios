@@ -15,12 +15,12 @@ class Managerdailyproductivity extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['product_id', 'location_id', 'person_id', 'valor', 'commission_percent', 'companys_revenue', 'daily_productivity_status_id', 'buyer_document', 'buyer_name', 'seller_id', 'operator_id', 'date', 'created', 'updated'], 'required'],
+            [['product_id', 'location_id', 'person_id', 'value', 'commission_percent', 'companys_revenue', 'daily_productivity_status_id', 'buyer_document', 'buyer_name', 'seller_id', 'operator_id', 'date', 'created', 'updated'], 'required'],
             [['product_id', 'location_id', 'person_id', 'daily_productivity_status_id', 'seller_id', 'operator_id'], 'integer'],
-            [['valor', 'commission_percent', 'companys_revenue'], 'number'],
+            [['value', 'commission_percent', 'companys_revenue'], 'number'],
             [['date', 'created', 'updated'], 'safe'],
             [['buyer_name'], 'string', 'max' => 100],
-            [['buyer_document'], 'string', 'max' => 14]
+            [['buyer_document'], 'string', 'max' => 18]
         ];
     }
 
@@ -30,7 +30,7 @@ class Managerdailyproductivity extends \yii\db\ActiveRecord
             'id' => 'ID',
             'location_id' => 'PA',
             'product_id' => 'Produto',
-            'valor' => 'Valor',
+            'value' => 'Valor',
             'commission_percent' => 'Comissão (%)',
             'companys_revenue' => 'Receita da Cooperativa',
             'daily_productivity_status_id' => 'Situação',

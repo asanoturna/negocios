@@ -7,6 +7,7 @@ use app\models\Location;
 use app\models\Product;
 use app\models\Modality;
 use app\models\User;
+use app\models\Dailyproductivitystatus;
 
 $this->title = 'Gestão Produtividade Diária';
 ?>
@@ -49,7 +50,16 @@ $this->title = 'Gestão Produtividade Diária';
             'value',
             'commission_percent',
             'companys_revenue',
-            'daily_productivity_status_id',
+            [
+             'attribute' => 'daily_productivity_status_id',
+             'format' => 'raw',
+             'enableSorting' => true,
+             'value' => function ($model) {                      
+                    return $model->daily_productivity_status_id === 1 ? "<span class=\"label label-warning\">".$model->dailyProductivityStatus->name."</span>" : "<span class=\"label label-success\">".$model->dailyProductivityStatus->name."</span>";
+                    },
+             'filter' => ArrayHelper::map(Dailyproductivitystatus::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+             'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+            ],             
             // 'buyer_document',
             // 'buyer_name',
             [
@@ -59,7 +69,8 @@ $this->title = 'Gestão Produtividade Diária';
                 'value' => function ($model) {                      
                     return $model->seller ? $model->seller->username : '<span class="text-danger"><em>Nenhum</em></span>';
                 },
-                'contentOptions'=>['style'=>'width: 8%;text-align:left'],
+                'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
+                'contentOptions'=>['style'=>'width: 7%;text-align:left'],
             ],             
             [
                 'attribute' => 'operator_id',
@@ -68,7 +79,8 @@ $this->title = 'Gestão Produtividade Diária';
                 'value' => function ($model) {                      
                     return $model->operator ? $model->operator->username : '<span class="text-danger"><em>Nenhum</em></span>';
                 },
-                'contentOptions'=>['style'=>'width: 8%;text-align:left'],
+                'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
+                'contentOptions'=>['style'=>'width: 7%;text-align:left'],
             ],            
 
             ['class' => 'yii\grid\ActionColumn'],

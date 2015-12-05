@@ -23,11 +23,11 @@ $this->title = 'Produtividade Diária';
         'filterModel' => $searchModel,
         'tableOptions' => ['class'=>'table table-striped table-hover'],        
         'columns' => [
-            [
-             'attribute' => 'id',
-             'enableSorting' => true,
-             'contentOptions'=>['style'=>'width: 5%;text-align:left'],
-            ],
+            // [
+            //  'attribute' => 'id',
+            //  'enableSorting' => true,
+            //  'contentOptions'=>['style'=>'width: 5%;text-align:left'],
+            // ],
             [
              'attribute' => 'date',
              'enableSorting' => true,
