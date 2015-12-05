@@ -8,15 +8,24 @@ use app\models\ManagerdailyproductivitySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use yii\base\Security;
 
-/**
- * ManagerdailyproductivityController implements the CRUD actions for Managerdailyproductivity model.
- */
 class ManagerdailyproductivityController extends Controller
 {
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::classname(),
+                'only'  => ['index','create','view'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['productmanager']
+                    ],
+                ]
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -26,10 +35,6 @@ class ManagerdailyproductivityController extends Controller
         ];
     }
 
-    /**
-     * Lists all Managerdailyproductivity models.
-     * @return mixed
-     */
     public function actionIndex()
     {
         $searchModel = new ManagerdailyproductivitySearch();
@@ -41,11 +46,6 @@ class ManagerdailyproductivityController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single Managerdailyproductivity model.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionView($id)
     {
         return $this->render('view', [
@@ -53,11 +53,6 @@ class ManagerdailyproductivityController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new Managerdailyproductivity model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate()
     {
         $model = new Managerdailyproductivity();
@@ -71,12 +66,6 @@ class ManagerdailyproductivityController extends Controller
         }
     }
 
-    /**
-     * Updates an existing Managerdailyproductivity model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
@@ -90,12 +79,6 @@ class ManagerdailyproductivityController extends Controller
         }
     }
 
-    /**
-     * Deletes an existing Managerdailyproductivity model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
@@ -103,13 +86,6 @@ class ManagerdailyproductivityController extends Controller
         return $this->redirect(['index']);
     }
 
-    /**
-     * Finds the Managerdailyproductivity model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Managerdailyproductivity the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     protected function findModel($id)
     {
         if (($model = Managerdailyproductivity::findOne($id)) !== null) {

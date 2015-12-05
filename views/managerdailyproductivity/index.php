@@ -13,7 +13,7 @@ $this->title = 'Gestão Produtividade Diária';
 <div class="managerdailyproductivity-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php  echo $this->render('//dailyproductivity/_menu'); ?>
     <hr/>
     
     <?= GridView::widget([
@@ -21,11 +21,6 @@ $this->title = 'Gestão Produtividade Diária';
         'filterModel' => $searchModel,
         'tableOptions' => ['class'=>'table table-striped table-hover'],  
         'columns' => [
-            [
-             'attribute' => 'id',
-             'enableSorting' => true,
-             'contentOptions'=>['style'=>'width: 5%;text-align:left'],
-            ],
             [
              'attribute' => 'date',
              'enableSorting' => true,
@@ -39,7 +34,7 @@ $this->title = 'Gestão Produtividade Diária';
                     return $model->location->shortname;
                     },
              'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
-             'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+             'contentOptions'=>['style'=>'width: 7%;text-align:center'],
             ],            
             [
              'attribute' => 'product_id',
@@ -48,21 +43,13 @@ $this->title = 'Gestão Produtividade Diária';
                     return $model->product->name;
                     },
              'filter' => ArrayHelper::map(Product::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
-             'contentOptions'=>['style'=>'width: 10%;text-align:left'],
+             'contentOptions'=>['style'=>'width: 25%;text-align:left'],
             ],              
-            [
-             'attribute' => 'modality_id',
-             'enableSorting' => true,
-             'value' => function ($model) {                      
-                    return $model->modality->name;
-                    },
-             'filter' => ArrayHelper::map(Modality::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
-             'contentOptions'=>['style'=>'width: 10%;text-align:left'],
-            ],              
-            'valor',
-            // 'commission_percent',
-            // 'companys_revenue',
-            // 'daily_productivity_status_id',
+            
+            'value',
+            'commission_percent',
+            'companys_revenue',
+            'daily_productivity_status_id',
             // 'buyer_document',
             // 'buyer_name',
             [

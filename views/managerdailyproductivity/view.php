@@ -3,48 +3,61 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Managerdailyproductivity */
-
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Managerdailyproductivities', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Gestão Produtividade Diária';
 ?>
 <div class="managerdailyproductivity-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <hr/>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Excluir', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Confirmar exclusão?',
                 'method' => 'post',
             ],
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
+<?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'product_id',
-            'modality_id',
-            'location_id',
-            'person_id',
-            'manager',
-            'valor',
-            'commission_percent',
+            //'id',  
             'companys_revenue',
-            'daily_productivity_status_id',
-            'buyer_document',
-            'buyer_name',
-            'seller_id',
-            'operator_id',
-            'date',
-            'created',
-            'updated',
+            [ 
+                'label' => 'Situação',
+                'format' => 'raw',
+                'value' => $model->dailyProductivityStatus->name,
+            ],                  
+            [ 
+                'label' => 'Data',
+                'format' => 'raw',
+                'value' => date("d/m/Y",  strtotime($model->date))
+            ],           
+            'location.fullname',  
+            'product.name',                          
+            'value',
+            'commission_percent',
+            'person.name', 
+            'buyer_document',             
+            'buyer_name',                     
+            [ 
+                'label' => 'Indicador',
+                'format' => 'raw',
+                'value' => $model->seller->username,
+            ],             
+            [ 
+                'label' => 'Angariador',
+                'format' => 'raw',
+                'value' => $model->operator->username,
+            ],     
+            [ 
+                'label' => 'Usuário',
+                'format' => 'raw',
+                'value' => $model->user->username,
+            ],                        
         ],
     ]) ?>
 

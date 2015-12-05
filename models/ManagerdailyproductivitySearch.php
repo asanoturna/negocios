@@ -13,9 +13,9 @@ class ManagerdailyproductivitySearch extends Managerdailyproductivity
     public function rules()
     {
         return [
-            [['id', 'product_id', 'modality_id', 'location_id', 'person_id', 'daily_productivity_status_id', 'seller_id', 'operator_id'], 'integer'],
+            [['id', 'product_id', 'location_id', 'person_id', 'daily_productivity_status_id', 'seller_id', 'operator_id'], 'integer'],
             [['buyer_document', 'buyer_name', 'date', 'created', 'updated'], 'safe'],
-            [['valor', 'commission_percent', 'companys_revenue'], 'number'],
+            [['value', 'commission_percent', 'companys_revenue'], 'number'],
         ];
     }
 
@@ -44,10 +44,9 @@ class ManagerdailyproductivitySearch extends Managerdailyproductivity
         $query->andFilterWhere([
             'id' => $this->id,
             'product_id' => $this->product_id,
-            'modality_id' => $this->modality_id,
             'location_id' => $this->location_id,
             'person_id' => $this->person_id,
-            'valor' => $this->valor,
+            'value' => $this->value,
             'commission_percent' => $this->commission_percent,
             'companys_revenue' => $this->companys_revenue,
             'daily_productivity_status_id' => $this->daily_productivity_status_id,

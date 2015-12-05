@@ -3,9 +3,6 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Managerdailyproductivity */
-/* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="managerdailyproductivity-form">
@@ -14,15 +11,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'product_id')->textInput() ?>
 
-    <?= $form->field($model, 'modality_id')->textInput() ?>
-
     <?= $form->field($model, 'location_id')->textInput() ?>
 
     <?= $form->field($model, 'person_id')->textInput() ?>
 
-    <?= $form->field($model, 'manager')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'valor')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'value')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'commission_percent')->textInput(['maxlength' => true]) ?>
 

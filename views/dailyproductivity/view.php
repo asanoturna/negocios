@@ -8,12 +8,14 @@ $this->title = 'Produtividade Diária';
 <div class="dailyproductivity-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <?php  echo $this->render('_menu'); ?>
     <hr/>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',  
+            //'id',  
+            'companys_revenue',
             [ 
                 'label' => 'Situação',
                 'format' => 'raw',
@@ -23,15 +25,14 @@ $this->title = 'Produtividade Diária';
                 'label' => 'Data',
                 'format' => 'raw',
                 'value' => date("d/m/Y",  strtotime($model->date))
-            ],            
+            ],           
+            'location.fullname',  
+            'product.name',                          
             'value',
             'commission_percent',
-            'companys_revenue',
-            'buyer_document',
-            'buyer_name',
-            'location.shortname',          
-            'product.name',
-            'person.name',           
+            'person.name', 
+            'buyer_document',             
+            'buyer_name',                     
             [ 
                 'label' => 'Indicador',
                 'format' => 'raw',

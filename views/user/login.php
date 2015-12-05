@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
+$this->title = Yii::$app->params['appname'] . ' > Autenticação';
 ?>
 <div class="user-default-login">
 	<div class="container">

@@ -15,8 +15,8 @@ class Managerdailyproductivity extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['product_id', 'modality_id', 'location_id', 'person_id', 'valor', 'commission_percent', 'companys_revenue', 'daily_productivity_status_id', 'buyer_document', 'buyer_name', 'seller_id', 'operator_id', 'date', 'created', 'updated'], 'required'],
-            [['product_id', 'modality_id', 'location_id', 'person_id', 'daily_productivity_status_id', 'seller_id', 'operator_id'], 'integer'],
+            [['product_id', 'location_id', 'person_id', 'valor', 'commission_percent', 'companys_revenue', 'daily_productivity_status_id', 'buyer_document', 'buyer_name', 'seller_id', 'operator_id', 'date', 'created', 'updated'], 'required'],
+            [['product_id', 'location_id', 'person_id', 'daily_productivity_status_id', 'seller_id', 'operator_id'], 'integer'],
             [['valor', 'commission_percent', 'companys_revenue'], 'number'],
             [['date', 'created', 'updated'], 'safe'],
             [['buyer_name'], 'string', 'max' => 100],
@@ -30,8 +30,6 @@ class Managerdailyproductivity extends \yii\db\ActiveRecord
             'id' => 'ID',
             'location_id' => 'PA',
             'product_id' => 'Produto',
-            'modality_id' => 'Modalidade',
-            //'manager' => 'Administradora',
             'valor' => 'Valor',
             'commission_percent' => 'Comissão (%)',
             'companys_revenue' => 'Receita da Cooperativa',
@@ -49,11 +47,6 @@ class Managerdailyproductivity extends \yii\db\ActiveRecord
     public function getDailyProductivityStatus()
     {
         return $this->hasOne(Dailyproductivitystatus::className(), ['id' => 'daily_productivity_status_id']);
-    }
-
-    public function getModality()
-    {
-        return $this->hasOne(Modality::className(), ['id' => 'modality_id']);
     }
 
     public function getProduct()
