@@ -9,11 +9,14 @@ use app\models\Dailyproductivity;
 
 class DailyproductivitySearch extends Dailyproductivity
 {
+    public $start_date;
+    public $end_date;
+
     public function rules()
     {
         return [
             [['id', 'location_id', 'product_id', 'daily_productivity_status_id', 'seller_id', 'operator_id'], 'integer'],
-            [['buyer_document', 'buyer_name', 'date', 'created', 'updated'], 'safe'],
+            [['start_date', 'end_date', 'buyer_document', 'buyer_name', 'date', 'created', 'updated'], 'safe'],
             [['value', 'commission_percent', 'companys_revenue'], 'number'],
         ];
     }
@@ -62,6 +65,8 @@ class DailyproductivitySearch extends Dailyproductivity
             'created' => $this->created,
             'updated' => $this->updated,
         ]);
+
+        $query->andFilterWhere(['between', 'date', $this->start_date, $this->end_date]);        
 
         $query->andFilterWhere(['like', 'buyer_document', $this->buyer_document])
             ->andFilterWhere(['like', 'buyer_name', $this->buyer_name]);

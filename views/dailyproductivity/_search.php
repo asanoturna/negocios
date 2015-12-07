@@ -2,10 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\date\DatePicker;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\DailyproductivitySearch */
-/* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="dailyproductivity-search">
@@ -15,35 +13,34 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
-
-    <?= $form->field($model, 'product_id') ?>
-
-    <?= $form->field($model, 'modality_id') ?>
-
-    <?= $form->field($model, 'manager') ?>
-
-    <?= $form->field($model, 'valor') ?>
+    <div class="row">
+        <div class="col-md-4">
+            <?php
+                echo '<label class="control-label">Período</label>';
+                echo DatePicker::widget([
+                    'model' => $model,
+                    'attribute' => 'start_date',
+                    'attribute2' => 'end_date',
+                    'language' => 'pt',
+                    'type' => DatePicker::TYPE_RANGE,
+                    'separator' => 'até',
+                    'options' => [
+                        'placeholder' => '',
+                    ],
+                    'pluginOptions' => [
+                        'autoclose'=>true,
+                        'todayHighlight' => true,
+                        'format' => 'yyyy-mm-dd',
+                    ]
+                ]);
+            ?>
+        </div>
+    </div>
 
     <?php // echo $form->field($model, 'commission_percent') ?>
 
-    <?php // echo $form->field($model, 'companys_revenue') ?>
-
-    <?php // echo $form->field($model, 'daily_productivity_status_id') ?>
-
-    <?php // echo $form->field($model, 'buyer_document') ?>
-
-    <?php // echo $form->field($model, 'buyer_name') ?>
-
-    <?php // echo $form->field($model, 'seller_id') ?>
-
-    <?php // echo $form->field($model, 'operator_id') ?>
-
-    <?php // echo $form->field($model, 'date') ?>
-
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton('Filtrar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

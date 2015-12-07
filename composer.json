@@ -19,7 +19,9 @@
         "trntv/yii2-datetime-widget": "*",
         "miloschuman/yii2-highcharts-widget": "dev-master",
         "kartik-v/yii2-money": "*",
-        "kartik-v/yii2-slider": "*"
+        "kartik-v/yii2-slider": "*",
+        "kartik-v/yii2-widget-datepicker": "@dev",
+        "kartik-v/yii2-field-range": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
