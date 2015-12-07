@@ -34,12 +34,10 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'encodeLabels' => false,
         'items' => [
-            //['label' => 'Inserir', 'url' => ['/dailyproductivity/create']],
-            //['label' => 'Listar', 'url' => ['/dailyproductivity']],
             ['label' => '<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Início', 'url' => ['/site/index']],
             Yii::$app->user->isGuest ?
                 ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Entrar', 'url' => ['/user/login']] :
-                ['label' => '<span class="glyphicon glyphicon-user" aria-hidden="true"></span> '. Yii::$app->user->displayName,
+                ['label' => '<img src="images/users/'.Yii::$app->user->identity->profile->avatar.'" class="profile-image img-avatar" > '. Yii::$app->user->displayName,
                 'items' => 
                     [
                         ['label' => '<i class="fa fa-briefcase"></i> Alterar Senha', 'url' => ['/user/account']],

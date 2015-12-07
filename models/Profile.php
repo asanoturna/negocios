@@ -12,7 +12,7 @@ class Profile extends BaseProfile {
             // [['user_id'], 'required'],
             // [['user_id'], 'integer'],
             // [['create_time', 'update_time'], 'safe'],
-            [['full_name'], 'string', 'max' => 255],
+            [['full_name', 'avatar'], 'string', 'max' => 255],
         ];
     }
 
@@ -24,6 +24,7 @@ class Profile extends BaseProfile {
             'create_time' => 'Criação',
             'update_time' => 'Alteração',
             'full_name'   => 'Nome Completo',
+            'avatar'      => 'Imagem',
         ];
     }
 }

@@ -14,12 +14,16 @@ $this->title = 'Produtividade Diária';
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            //'id',  
-            'companys_revenue',
+            [ 
+                'label' => 'Receita da Cooperativa',
+                'format' => 'raw',
+                'value' => "<strong>R$ ".$model->companys_revenue."</strong>"
+            ],            
             [ 
                 'label' => 'Situação',
                 'format' => 'raw',
-                'value' => $model->dailyProductivityStatus->name,
+                //'value' => $model->dailyProductivityStatus->name,
+                'value' => $model->daily_productivity_status_id === 1 ? "<span class=\"label label-warning\">".$model->dailyProductivityStatus->name."</span>" : "<span class=\"label label-success\">".$model->dailyProductivityStatus->name."</span>",
             ],                  
             [ 
                 'label' => 'Data',

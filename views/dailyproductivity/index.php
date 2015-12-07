@@ -21,7 +21,7 @@ $this->title = 'Produtividade Diária';
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'tableOptions' => ['class'=>'table table-striped table-hover'],        
+        'tableOptions' => ['class'=>'table table-striped table-hover '],        
         'columns' => [
             // [
             //  'attribute' => 'id',
@@ -49,10 +49,9 @@ $this->title = 'Produtividade Diária';
              'value' => function ($model) {                      
                     return $model->product->name;
                     },
-             'filter' => ArrayHelper::map(Product::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+             'filter' => Product::getHierarchy(),
              'contentOptions'=>['style'=>'width: 10%;text-align:left'],
-            ],                           
-            //'manager',
+            ],
             'value',
             // 'commission_percent',
             // 'companys_revenue',
@@ -77,8 +76,7 @@ $this->title = 'Produtividade Diária';
                 },
                 'contentOptions'=>['style'=>'width: 8%;text-align:left'],
             ],            
-
-            ['class' => 'yii\grid\ActionColumn'],
+            //['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 

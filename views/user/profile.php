@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$this->title = 'Perfil';
+$this->title = 'Informações do Usuário';
 ?>
 <div class="user-default-profile">
 
@@ -29,10 +29,17 @@ $this->title = 'Perfil';
     ]); ?>
 
     <div class="col-sm-4 col-md-2">
-        <img src="images/no-avatar-full2.png" alt="" class="img-rounded img-responsive" />
-    </div>
-    <?= $form->field($profile, 'full_name')->textInput(['readonly' => true]) ?>
 
+        <img src="images/users/<?php echo Yii::$app->user->identity->profile->avatar;?>" alt="" class="img-rounded img-responsive" />
+    </div>
+    <?php // echo $form->field($profile, 'full_name')->textInput(['readonly' => true]) ?>
+    <address>
+      <strong>Nome: </strong><?php echo Yii::$app->user->identity->profile->full_name;?><br>
+      <strong>Usuário: </strong><a href="mailto:#"><?php echo Yii::$app->user->displayName;?></a><br>
+      <strong>E-mail: </strong><br>
+      <strong>Ramal: </strong><br>
+      <strong>Setor/Departamento: </strong><br>
+    </address>
 
     <!--     
     <div class="form-group">

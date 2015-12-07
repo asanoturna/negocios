@@ -31,4 +31,5 @@ phpunit.phar
 
 # attachments and assets
 /web/attachment/*
+/web/images/users/*
 /web/assets/*

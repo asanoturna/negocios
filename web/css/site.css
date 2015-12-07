@@ -91,3 +91,8 @@ a.desc:after {
     padding: 10px 20px;
     margin: 0 0 15px 0;
 }
+.img-avatar {
+  border-radius: 50%;
+    max-width: 22px;
+    max-height: 22px;  
+}
