@@ -29,7 +29,8 @@ $this->title = Yii::$app->params['appname'] . ' > Autenticação';
 		            <?= Html::a('Esqueceu sua senha' . "?", ["/user/forgot"], array('class' => 'text-center new-account')) ?>
 
 			<?php ActiveForm::end(); ?>
-
+		</br>
+		<p class="text-muted">(Senha inicial de todos os usuários: <b>123456</b>)</p>
 		</div>
 		</div>
 		</div>

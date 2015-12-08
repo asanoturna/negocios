@@ -11,14 +11,14 @@ use yii\widgets\ActiveForm;
 
 class UserController extends BaseUserController{
 
-    public function init(){
-        parent::init();
-        Yii::$app->i18n->translations['user'] = [
-            'class' => 'yii\i18n\PhpMessageSource',
-            'basePath' => '@app/messages',
-            //'forceTranslation' => true,
-        ];
-    }
+    // public function init(){
+    //     parent::init();
+    //     Yii::$app->i18n->translations['user'] = [
+    //         'class' => 'yii\i18n\PhpMessageSource',
+    //         'basePath' => '@app/messages',
+    //         //'forceTranslation' => true,
+    //     ];
+    // }
 
     public function actionAuth(){
         return "wrong!";
