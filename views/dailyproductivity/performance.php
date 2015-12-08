@@ -19,15 +19,15 @@ $this->title = 'Produtividade Diária';
     <hr/>
     <?php
     $dataProvider = new SqlDataProvider([
-        'sql' => "SELECT full_name, SUM(companys_revenue) as total
-				FROM `daily_productivity`
-				INNER JOIN `profile`
-				ON daily_productivity.id = `profile`.user_id
-				GROUP BY seller_id
-				ORDER BY total desc",
+        'sql' => "SELECT seller_id as Vendedor, SUM(companys_revenue) as total
+                FROM daily_productivity
+                LEFT JOIN profile
+                ON daily_productivity.id = profile.user_id
+                GROUP BY seller_id
+                ORDER BY total desc",
         'totalCount' => 200,
         'sort' =>false,
-        'key'  => 'full_name',
+        'key'  => 'Vendedor',
         'pagination' => [
             'pageSize' => 200,
         ],
@@ -35,15 +35,15 @@ $this->title = 'Produtividade Diária';
     ?>
     <?= GridView::widget([
 	    'dataProvider' => $dataProvider,
-	    'emptyText'    => '</br><p class="text-danger">Nenhum arquivo anexado!</p>',
+	    'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
 	    'summary'      =>  '',
 	    'showHeader'   => false,        
         'columns' => [           
             [
-                'attribute' => 'full_name',
+                'attribute' => 'Vendedor',
                 'format' => 'raw',
                 'value' => function ($data) {                      
-                    return $data["full_name"];
+                    return $data["Vendedor"];
                 },
                 'contentOptions'=>['style'=>'width: 8%;text-align:left'],
             ],  

@@ -51,7 +51,7 @@ $this->title = 'Produtividade Diária';
                     return $model->product->name;
                     },
              'filter' => Product::getHierarchy(),
-             'contentOptions'=>['style'=>'width: 10%;text-align:left'],
+             'contentOptions'=>['style'=>'width: 20%;text-align:left'],
             ],
             'value',
             // 'commission_percent',

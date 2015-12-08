@@ -8,6 +8,7 @@ $this->title = 'Gestão Produtividade Diária';
 <div class="managerdailyproductivity-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <?php  echo $this->render('//dailyproductivity/_menu'); ?>
     <hr/>
 
     <p>

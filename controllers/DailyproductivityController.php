@@ -19,7 +19,7 @@ class DailyproductivityController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::classname(),
-                'only'  => ['index','create','view'],
+                'only'  => ['index','create','view','performance'],
                 'rules' => [
                     [
                         'allow' => true,
