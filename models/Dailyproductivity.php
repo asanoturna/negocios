@@ -24,10 +24,18 @@ class Dailyproductivity extends \yii\db\ActiveRecord
             [['buyer_document'], 'string', 'max' => 18],
             //[['commission_percent'],'number','min'=>10,'max'=>100],
             ['commission_percent', 'number','min'=>30,'max'=>40, 'when' => function($model) {
-                return $model->product_id == 14;
+                return $this->product_id == 14;
             }],
         ];
     }
+    // public function checkValues($attribute)
+    // {
+    //     $persona = $this->NUM_PERSONAS;
+    //     $agua = $this->AGUA_CONSUMO%2 == 0 ? $this->AGUA_CONSUMO : $this->AGUA_CONSUMO - 1;
+    //     if ($persona != $agua/2) {
+    //         $this->addError($attribute, 'Error message');
+    //     }
+    // }
 
     public function attributeLabels()
     {

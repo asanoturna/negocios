@@ -16,13 +16,13 @@ use yii\helpers\Url;
 <div class="dailyproductivity-form">
 
     <?php $form = ActiveForm::begin([
+        'id' => 'dailyproductivity-form',
         'options' => ['class' => 'form-horizontal'],
         'fieldConfig' => [
             'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-7\">{error}</div>",
             'labelOptions' => ['class' => 'col-lg-2 control-label'],
         ],
     ]); ?>
-
 
         <?php echo $form->field($model, 'date')->widget('trntv\yii\datetime\DateTimeWidget',
             [
@@ -49,20 +49,21 @@ use yii\helpers\Url;
         )->dropDownList(app\models\Product::getHierarchy(), ['prompt' => 'Selecione', 'class'=>'form-control required']);
         ?>
 
-        <?php //echo $form->field($model, 'valor')->textInput(['maxlength' => true]) 
-        use kartik\money\MaskMoney;
-        echo $form->field($model, 'value')->widget(MaskMoney::classname(), [
-            'pluginOptions' => [
-                //'prefix' => 'R$ ',
-                //'suffix' => ' c',
-                'affixesStay' => true,
-                'thousands' => '.',
-                'decimal' => ',',
-                'precision' => 2, 
-                'allowZero' => false,
-                'allowNegative' => false,
-            ],
-        ]); 
+        <?php echo $form->field($model, 'value')->textInput(['maxlength' => true]) 
+        // use kartik\money\MaskMoney;
+        // echo $form->field($model, 'value')->widget(MaskMoney::classname(), [
+        //     'id' => 'vvv',
+        //     'pluginOptions' => [
+        //         //'prefix' => 'R$ ',
+        //         //'suffix' => ' c',
+        //         'affixesStay' => true,
+        //         'thousands' => '.',
+        //         'decimal' => ',',
+        //         'precision' => 2, 
+        //         'allowZero' => false,
+        //         'allowNegative' => false,
+        //     ],
+        // ]); 
         ?>
 
         <?php //echo $form->field($model, 'commission_percent')->textInput(['maxlength' => true])
@@ -76,15 +77,34 @@ use yii\helpers\Url;
             'pluginOptions'=>[
                 'handle'=>'round',
                 'tooltip'=>'always',
-                'min'=>10,
-                'max'=>10,
+                'min'=>15,
+                'max'=>49,
                 'step'=>1,
             ]
         ]);
         ?>
 
-        <?php //echo $form->field($model, 'companys_revenue', ['inputOptions' => ['value' => 5, 'class' => 'form-control']])->textInput(['readonly' => true]) ?>
+        <?php // echo $form->field($model, 'companys_revenue', ['inputOptions' => ['value' => 5, 'class' => 'form-control']])->textInput(['readonly' => true]) ?>
+        <?php echo $form->field($model, 'companys_revenue', ['inputOptions' => ['class' => 'form-control']])->textInput(['readonly' => true]) ?>
 
+<?php
+//$personaId = Html::getInputId($model, 'NUM_PERSONAS');
+$value = Html::getInputId($model, 'value');
+$companys_revenue = Html::getInputId($model, 'companys_revenue');
+?>
+<?php
+$js = <<<JS
+$("#dailyproductivity-form #{$value}").on("keyup", function (e) {
+    var value = $(this).val();
+    $("#dailyproductivity-form #{$companys_revenue}").val(value*2)
+});
+$("#dailyproductivity-form #{$companys_revenue}").on("keyup", function (e) {
+    var companys_revenue = $(this).val()%2 == 0 ? $(this).val() : $(this).val() - 1;
+    $("#dailyproductivity-form #{$value}").val(companys_revenue/2)
+});
+JS;
+$this->registerJs($js);
+?>
         <hr/>
 
         <?= $form->field($model, 'person_id')->dropDownList(ArrayHelper::map(Person::find()->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>''])  ?>    
