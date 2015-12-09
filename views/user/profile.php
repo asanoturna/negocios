@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\bootstrap\Modal;
 
 $this->title = 'Informações do Usuário';
 ?>
@@ -29,8 +30,15 @@ $this->title = 'Informações do Usuário';
     ]); ?>
 
     <div class="col-sm-4 col-md-2">
-
-        <img src="images/users/<?php echo Yii::$app->user->identity->profile->avatar;?>" alt="" class="img-rounded img-responsive" />
+        <img src="images/users/<?php echo Yii::$app->user->identity->profile->avatar;?>" alt="" class="img-rounded img-responsive img-thumbnail" />
+    <?php 
+    Modal::begin([
+        'header' => '<h2>Alterar Imagem</h2>',
+        'toggleButton' => ['label' => 'Alterar', 'class' => 'btn btn-success btn-sm btn-block'],
+    ]);
+    echo "<small>Para alterar sua imagem envie o arquivo para ".Yii::$app->params['supportDep']."</small>";
+    Modal::end();
+    ?> 
     </div>
     <?php // echo $form->field($profile, 'full_name')->textInput(['readonly' => true]) ?>
     <address>
