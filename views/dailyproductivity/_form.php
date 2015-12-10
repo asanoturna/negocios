@@ -65,6 +65,29 @@ use yii\helpers\Url;
         ]); 
         ?>
 
+<?php
+$productId = Html::getInputId($model, 'product_id');
+$comissionId = Html::getInputId($model, 'commission_percent');
+$js = <<<JS
+$('#{$productId}').on('change', function () {
+    var id = $(this).val();
+
+    if (id == 14) {
+        var min = 30;
+        var max = 40;
+    }else {
+        var min = 0;
+        var max = 100;
+    }
+
+    $("#{$comissionId}").data('slider').options.min = min;
+    $("#{$comissionId}").data('slider').options.max = max;
+    $("#{$comissionId}").slider('setValue', min);
+});
+JS;
+$this->registerJs($js);
+?>
+
         <?php //echo $form->field($model, 'commission_percent')->textInput(['maxlength' => true])
         //http://demos.krajee.com/slider
             use kartik\slider\Slider;
@@ -76,8 +99,8 @@ use yii\helpers\Url;
             'pluginOptions'=>[
                 'handle'=>'round',
                 'tooltip'=>'always',
-                'min'=>10,
-                'max'=>10,
+                // 'min'=>0,
+                // 'max'=>100,
                 'step'=>1,
             ]
         ]);

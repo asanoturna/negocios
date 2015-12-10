@@ -16,17 +16,27 @@ class Dailyproductivity extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['person_id', 'location_id', 'product_id', 'value', 'commission_percent', 'companys_revenue', 'daily_productivity_status_id', 'buyer_document', 'buyer_name', 'seller_id', 'operator_id', 'user_id','date', 'created', 'updated'], 'required', 'message' => 'Campo Obrigatório'],
+            [['person_id', 'location_id', 'product_id', 'value', 'companys_revenue', 'commission_percent','daily_productivity_status_id', 'buyer_document', 'buyer_name', 'seller_id', 'operator_id', 'user_id','date', 'created', 'updated'], 'required', 'message' => 'Campo Obrigatório'],
             [['person_id', 'location_id', 'product_id', 'daily_productivity_status_id', 'seller_id', 'operator_id', 'user_id'], 'integer', 'message' => 'Preencha corretamente'],
-            [['value', 'companys_revenue'], 'number'],
+            [['value'], 'number'],
             [['date', 'created', 'updated'], 'safe'],
             [['buyer_name'], 'string', 'max' => 100],
             [['buyer_document'], 'string', 'max' => 18],
             //[['commission_percent'],'number','min'=>10,'max'=>100],
-            ['commission_percent', 'number','min'=>30,'max'=>40, 'when' => function($model) {
-                return $this->product_id == 14;
-            }],
+            ['commission_percent', 'number','min'=>0,'max'=>100],// the general values
+            ['commission_percent', 'validateCom'],
         ];
+    }
+    public function validateCom($attribute)
+    {
+        if ($this->product_id == 14) {
+            $min = 30;
+            $max = 40;
+
+            if ($this->attribute < $min || $this->attribute > $max) {
+                $this->addError($attribute, 'error message');
+            }
+        }
     }
     // public function checkValues($attribute)
     // {
@@ -44,7 +54,6 @@ class Dailyproductivity extends \yii\db\ActiveRecord
             'location_id' => 'PA',
             'product_id' => 'Produto',
             'person_id' => 'Pessoa',
-            //'manager' => 'Administradora',
             'value' => 'Valor',
             'commission_percent' => 'Comissão (%)',
             'companys_revenue' => 'Receita da Cooperativa',
