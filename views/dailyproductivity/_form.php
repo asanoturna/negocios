@@ -73,8 +73,11 @@ $('#{$productId}').on('change', function () {
     var id = $(this).val();
 
     if (id == 14) {
-        var min = 30;
-        var max = 40;
+        var min = 10;
+        var max = 20;
+    }else if (id == 15){
+        var min = 21;
+        var max = 30;
     }else {
         var min = 0;
         var max = 100;
