@@ -16,10 +16,10 @@ class Dailyproductivity extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['person_id', 'location_id', 'product_id', 'value', 'companys_revenue', 'commission_percent','daily_productivity_status_id', 'buyer_document', 'buyer_name', 'seller_id', 'operator_id', 'user_id','date', 'created', 'updated'], 'required', 'message' => 'Campo Obrigatório'],
+            [['person_id', 'location_id', 'product_id', 'value', 'commission_percent','daily_productivity_status_id', 'buyer_document', 'buyer_name', 'seller_id', 'operator_id', 'user_id','date', 'created', 'updated'], 'required', 'message' => 'Campo Obrigatório'],
             [['person_id', 'location_id', 'product_id', 'daily_productivity_status_id', 'seller_id', 'operator_id', 'user_id'], 'integer', 'message' => 'Preencha corretamente'],
             [['value'], 'number'],
-            [['date', 'created', 'updated'], 'safe'],
+            [['date', 'companys_revenue','created', 'updated'], 'safe'],
             [['buyer_name'], 'string', 'max' => 100],
             [['buyer_document'], 'string', 'max' => 18],
             //[['commission_percent'],'number','min'=>10,'max'=>100],
