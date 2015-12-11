@@ -7,6 +7,19 @@ use Yii;
 
 class Dailyproductivity extends \yii\db\ActiveRecord
 {
+    public function beforeSave($insert)
+    {
+        if ($this->isNewRecord)
+        {
+            $companys_revenue = ($this->value*$this->commission_percent)/100;
+            $this->companys_revenue = abs($companys_revenue);
+
+        }
+            $companys_revenue = ($this->value*$this->commission_percent)/100;
+            $this->companys_revenue = abs($companys_revenue);
+ 
+        return parent::beforeSave($insert);
+    }    
 
     public static function tableName()
     {
@@ -30,8 +43,8 @@ class Dailyproductivity extends \yii\db\ActiveRecord
     public function validateCom($attribute)
     {
         if ($this->product_id == 14) {
-            $min = 30;
-            $max = 40;
+            $min = 10;
+            $max = 20;
 
             if ($this->attribute < $min || $this->attribute > $max) {
                 $this->addError($attribute, 'error message');

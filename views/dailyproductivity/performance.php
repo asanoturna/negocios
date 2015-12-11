@@ -19,44 +19,61 @@ $this->title = 'Produtividade Diária';
     <hr/>
     <?php
     $dataProvider = new SqlDataProvider([
-        'sql' => "SELECT seller_id as Vendedor, SUM(companys_revenue) as total
+        'sql' => "SELECT avatar, full_name as seller, sum(companys_revenue) as total
                 FROM daily_productivity
-                LEFT JOIN profile
-                ON daily_productivity.id = profile.user_id
+                INNER JOIN `profile` ON daily_productivity.seller_id = `profile`.user_id
                 GROUP BY seller_id
-                ORDER BY total desc",
-        'totalCount' => 200,
+                ORDER BY sum(companys_revenue) DESC",
+        'totalCount' => 300,
         'sort' =>false,
-        'key'  => 'Vendedor',
+        'key'  => 'seller',
         'pagination' => [
-            'pageSize' => 200,
+            'pageSize' => 300,
         ],
     ]);
     ?>
-    <?= GridView::widget([
-	    'dataProvider' => $dataProvider,
-	    'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
-	    'summary'      =>  '',
-	    'showHeader'   => false,        
-        'columns' => [           
-            [
-                'attribute' => 'Vendedor',
-                'format' => 'raw',
-                'value' => function ($data) {                      
-                    return $data["Vendedor"];
-                },
-                'contentOptions'=>['style'=>'width: 8%;text-align:left'],
-            ],  
-            [
-                'attribute' => 'total',
-                'format' => 'raw',
-                'value' => function ($data) {                      
-                    return $data["total"];
-                },
-                'contentOptions'=>['style'=>'width: 8%;text-align:left'],
-            ],                        
+<?= GridView::widget([
+          'dataProvider' => $dataProvider,
+          'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
+          'summary'      =>  '',
+          'showHeader'   => false,        
+          'tableOptions' => ['class'=>'table table-striped table-hover '],
+          'columns' => [   
+                // [
+                //     'attribute' => 'avatar',
+                //     'format' => 'image',
+                //     'value' => function ($data) {                      
+                //         return Yii::$app->request->BaseUrl.'/images/users/'.$data["avatar"];
+                //     },
+                //     'contentOptions'=>['style'=>'width: 20%;text-align:center'],
+                // ],   
+                [
+                    'attribute' => 'avatar',
+                    'format' => 'html',
+                    'value' => function ($data) {
+                        return Html::img(Yii::$app->request->BaseUrl.'/images/users/'.$data["avatar"],
+                            ['width' => '50px', 'class' => 'img-rounded img-responsive']);
+                    },
+                    'contentOptions'=>['style'=>'width: 10%;text-align:center'],                    
+                ],                                 
+                [
+                    'attribute' => 'seller',
+                    'format' => 'raw',
+                    'value' => function ($data) {                      
+                        return $data["seller"];
+                    },
+                    'contentOptions'=>['style'=>'width: 60%;text-align:left;vertical-align: middle;'],
+                ],  
+                [
+                    'attribute' => 'total',
+                    'format' => 'raw',
+                    'value' => function ($data) {                      
+                        return "<b>R$ ".$data["total"]."</b>";
+                    },
+                    'contentOptions'=>['style'=>'width: 20%;text-align:left;vertical-align: middle;font-size: 16px'],
+                ],                        
 
-        ],
-    ]); ?>
+            ],
+        ]); ?>
     
 </div>

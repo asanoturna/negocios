@@ -93,10 +93,10 @@ class DailyproductivityController extends Controller
         $model->created = date('Y-m-d');
         $model->updated = date('Y-m-d');
 
-        $value = (float)Yii::$app->request->post('value');
-        $commission_percent = Yii::$app->request->post('commission_percent');
-        $companys_revenue = $value*2;
-        $model->companys_revenue = $companys_revenue;
+        // $value = (float)Yii::$app->request->post('value');
+        // $commission_percent = Yii::$app->request->post('commission_percent');
+        // $companys_revenue = $value*2;
+        // $model->companys_revenue = abs($companys_revenue);
 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
