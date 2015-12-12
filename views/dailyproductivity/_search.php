@@ -9,6 +9,9 @@ use kartik\date\DatePicker;
 <div class="dailyproductivity-search">
 
     <?php $form = ActiveForm::begin([
+        'options' => [
+                    'class' => 'form-inline',
+                    ],
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
@@ -16,7 +19,7 @@ use kartik\date\DatePicker;
     <div class="row">
         <div class="col-md-4">
             <?php
-                echo '<label class="control-label">Período</label>';
+                //echo '<label class="control-label">Período</label>';
                 echo DatePicker::widget([
                     'model' => $model,
                     'attribute' => 'start_date',
@@ -35,12 +38,9 @@ use kartik\date\DatePicker;
                 ]);
             ?>
         </div>
-    </div>
-
-    <?php // echo $form->field($model, 'commission_percent') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Filtrar', ['class' => 'btn btn-success']) ?>
+        <div class="form-group">
+            <?= Html::submitButton('Filtrar', ['class' => 'btn btn-success']) ?>
+        </div>
     </div>
 
     <?php ActiveForm::end(); ?>

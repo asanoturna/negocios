@@ -25,7 +25,7 @@ $this->title = Yii::$app->params['appname'];
     </div>
     <div class="col-sm-9">
       <div class="panel panel-default">
-      <div class="panel-heading"><b>Top 5 Produtividade Diária</b></div>
+      <div class="panel-heading"><b>Top 3 Produtividade Diária</b></div>
       <div class="panel-body">
         <?php
         $dataProvider = new SqlDataProvider([
@@ -34,11 +34,11 @@ $this->title = Yii::$app->params['appname'];
                     INNER JOIN `profile` ON daily_productivity.seller_id = `profile`.user_id
                     GROUP BY seller_id
                     ORDER BY sum(companys_revenue) DESC",
-            'totalCount' => 5,
+            'totalCount' => 3,
             'sort' =>false,
             'key'  => 'seller',
             'pagination' => [
-                'pageSize' => 5,
+                'pageSize' => 3,
             ],
         ]);
         ?>
@@ -49,6 +49,19 @@ $this->title = Yii::$app->params['appname'];
           'showHeader'   => false,        
           'tableOptions' => ['class'=>'table table-striped table-hover '],
           'columns' => [   
+                [
+                'class' => 'yii\grid\SerialColumn',
+                'content' => function($model, $key, $index, $column) {
+                    if ($index == 1) {
+                       return Html::img(Yii::$app->request->BaseUrl.'/images/medal-gold-icon.png');
+                    }elseif ($index == 2) {
+                       return Html::img(Yii::$app->request->BaseUrl.'/images/medal-silver-icon.png'); 
+                    }elseif ($index == 3) {
+                       return Html::img(Yii::$app->request->BaseUrl.'/images/medal-bronze-icon.png'); 
+                    }else {
+                       return Html::img(Yii::$app->request->BaseUrl.'/images/badge-silver-icon.png'); 
+                    }
+                }],
                 // [
                 //     'attribute' => 'avatar',
                 //     'format' => 'image',
@@ -56,7 +69,16 @@ $this->title = Yii::$app->params['appname'];
                 //         return Yii::$app->request->BaseUrl.'/images/users/'.$data["avatar"];
                 //     },
                 //     'contentOptions'=>['style'=>'width: 20%;text-align:center'],
-                // ],   
+                // ],  
+                [
+                    'attribute' => 'avatar',
+                    'format' => 'html',
+                    'value' => function ($data) {
+                        return Html::img(Yii::$app->request->BaseUrl.'/images/medal-gold-icon.png',
+                            ['width' => '48px', 'class' => 'img-rounded img-responsive']);
+                    },
+                    'contentOptions'=>['style'=>'width: 10%;text-align:center'],                    
+                ],                  
                 [
                     'attribute' => 'avatar',
                     'format' => 'html',

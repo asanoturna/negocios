@@ -17,12 +17,19 @@ $this->title = 'Produtividade Diária';
     <h1><?= Html::encode($this->title) ?></h1>
     <?php  echo $this->render('_menu'); ?>
     <hr/>
-    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+    <div class="panel panel-default">
+    <div class="panel-heading"><b>Pesquisar</b></div>
+      <div class="panel-body">
+        <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
+      </div>
+    </div>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'tableOptions' => ['class'=>'table table-striped table-hover '],        
+        'tableOptions' => ['class'=>'table table-striped table-bordered'],
+        'emptyText'    => '</br><p class="text-info">Nenhum registro encontrado!</p>',   
+        'summary' => "<p class=\"text-info pull-right\"><h5>Registros: {totalCount} </h5></p>",         
         'columns' => [
             // [
             //  'attribute' => 'id',

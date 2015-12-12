@@ -9,16 +9,14 @@ class Dailyproductivity extends \yii\db\ActiveRecord
 {
     public function beforeSave($insert)
     {
-        if ($this->isNewRecord)
-        {
-            $companys_revenue = ($this->value*$this->commission_percent)/100;
-            $this->companys_revenue = abs($companys_revenue);
-
+        if (parent::beforeSave($insert)) {
+        $companys_revenue = ($this->value*$this->commission_percent)/100;
+        $this->companys_revenue = abs($companys_revenue);
+        return true;
+        } else {
+        return false;
         }
-            $companys_revenue = ($this->value*$this->commission_percent)/100;
-            $this->companys_revenue = abs($companys_revenue);
- 
-        return parent::beforeSave($insert);
+
     }    
 
     public static function tableName()
