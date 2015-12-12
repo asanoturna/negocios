@@ -75,9 +75,45 @@ $('#{$productId}').on('change', function () {
 
     if (id == 14) {
         var min = 10;
-        var max = 20;
+        var max = 25;
     }else if (id == 15){
-        var min = 21;
+        var min = 10;
+        var max = 40;
+    }else if (id == 16){
+        var min = 30;
+        var max = 30;
+    }else if (id == 17){
+        var min = 20;
+        var max = 20;
+    }else if (id == 18){
+        var min = 20;
+        var max = 40;
+    }else if (id == 19){
+        var min = 40;
+        var max = 40;
+    }else if (id == 20){
+        var min = 35;
+        var max = 35;
+    }else if (id == 21){
+        var min = 35;
+        var max = 35;
+    }else if (id == 22){
+        var min = 40;
+        var max = 40;
+    }else if (id == 23){
+        var min = 40;
+        var max = 40;
+    }else if (id == 24){
+        var min = 40;
+        var max = 40;
+    }else if (id == 25){
+        var min = 35;
+        var max = 35;
+    }else if (id == 26){
+        var min = 35;
+        var max = 35;
+    }else if (id == 27){
+        var min = 30;
         var max = 30;
     }else {
         var min = 0;
