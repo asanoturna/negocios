@@ -50,16 +50,17 @@ $this->title = Yii::$app->params['appname'];
           'tableOptions' => ['class'=>'table table-striped table-hover '],
           'columns' => [   
                 [
-                'class' => 'yii\grid\SerialColumn',
-                'content' => function($model, $key, $index, $column) {
-                    if ($index == 1) {
+                'format' => 'raw',
+                'header' => 'Rank',
+                'value' => function($model, $key, $index, $column) {
+                    if ($index == 0) {
                        return Html::img(Yii::$app->request->BaseUrl.'/images/medal-gold-icon.png');
-                    }elseif ($index == 2) {
+                    }elseif ($index == 1) {
                        return Html::img(Yii::$app->request->BaseUrl.'/images/medal-silver-icon.png'); 
-                    }elseif ($index == 3) {
+                    }elseif ($index == 2) {
                        return Html::img(Yii::$app->request->BaseUrl.'/images/medal-bronze-icon.png'); 
                     }else {
-                       return Html::img(Yii::$app->request->BaseUrl.'/images/badge-silver-icon.png'); 
+                       return Html::img(Yii::$app->request->BaseUrl.'/images/no-medal-icon.png'); 
                     }
                 }],
                 // [
@@ -70,15 +71,15 @@ $this->title = Yii::$app->params['appname'];
                 //     },
                 //     'contentOptions'=>['style'=>'width: 20%;text-align:center'],
                 // ],  
-                [
-                    'attribute' => 'avatar',
-                    'format' => 'html',
-                    'value' => function ($data) {
-                        return Html::img(Yii::$app->request->BaseUrl.'/images/medal-gold-icon.png',
-                            ['width' => '48px', 'class' => 'img-rounded img-responsive']);
-                    },
-                    'contentOptions'=>['style'=>'width: 10%;text-align:center'],                    
-                ],                  
+                // [
+                //     'attribute' => 'avatar',
+                //     'format' => 'html',
+                //     'value' => function ($data) {
+                //         return Html::img(Yii::$app->request->BaseUrl.'/images/medal-gold-icon.png',
+                //             ['width' => '48px', 'class' => 'img-rounded img-responsive']);
+                //     },
+                //     'contentOptions'=>['style'=>'width: 10%;text-align:center'],                    
+                // ],                  
                 [
                     'attribute' => 'avatar',
                     'format' => 'html',
