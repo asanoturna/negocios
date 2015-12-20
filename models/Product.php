@@ -18,6 +18,7 @@ class Product extends \yii\db\ActiveRecord
             [['name', 'description', 'label'], 'required'],
             [['is_active','parent_id'], 'integer'],
             [['name'], 'string', 'max' => 50],
+            [['min_value', 'max_value'], 'number'],
             [['description'], 'string', 'max' => 100]
         ];
     }
