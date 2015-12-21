@@ -7,6 +7,7 @@ use app\models\Location;
 use app\models\Product;
 use app\models\Modality;
 use app\models\User;
+use app\models\Dailyproductivitystatus;
 
 
 $this->title = 'Produtividade Diária';
@@ -83,7 +84,17 @@ $this->title = 'Produtividade Diária';
                     return $model->operator ? $model->operator->username : '<span class="text-danger"><em>Nenhum</em></span>';
                 },
                 'contentOptions'=>['style'=>'width: 8%;text-align:left'],
-            ],            
+            ],  
+            [
+                'attribute' => 'daily_productivity_status_id',
+                'format' => 'raw',
+                'enableSorting' => true,
+                'value' => function ($model) {                      
+                        return $model->daily_productivity_status_id === 1 ? "<span class=\"label label-warning\">".$model->dailyProductivityStatus->name."</span>" : "<span class=\"label label-success\">".$model->dailyProductivityStatus->name."</span>";
+                        },
+                'filter' => ArrayHelper::map(Dailyproductivitystatus::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+                'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+            ],                         
             //['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

@@ -50,20 +50,20 @@ use yii\helpers\Url;
         )->dropDownList(app\models\Product::getHierarchy(), ['prompt' => 'Selecione', 'class'=>'form-control required']);
         ?>
 
-        <?php echo $form->field($model, 'value')->textInput(['maxlength' => true]) 
-        // use kartik\money\MaskMoney;
-        // echo $form->field($model, 'value')->widget(MaskMoney::classname(), [
-        //     'pluginOptions' => [
-        //         //'prefix' => 'R$ ',
-        //         //'suffix' => ' c',
-        //         'affixesStay' => true,
-        //         'thousands' => '.',
-        //         'decimal' => ',',
-        //         'precision' => 2, 
-        //         'allowZero' => false,
-        //         'allowNegative' => false,
-        //     ],
-        // ]); 
+        <?php // echo $form->field($model, 'value')->textInput(['maxlength' => true]) 
+        use kartik\money\MaskMoney;
+        echo $form->field($model, 'value')->widget(MaskMoney::classname(), [
+            'pluginOptions' => [
+                //'prefix' => 'R$ ',
+                //'suffix' => ' c',
+                'affixesStay' => true,
+                'thousands' => '.',
+                'decimal' => ',',
+                'precision' => 2, 
+                'allowZero' => false,
+                'allowNegative' => false,
+            ],
+        ]); 
         ?>
 
 <?php

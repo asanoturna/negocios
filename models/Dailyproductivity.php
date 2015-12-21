@@ -35,20 +35,20 @@ class Dailyproductivity extends \yii\db\ActiveRecord
             [['buyer_document'], 'string', 'max' => 18],
             //[['commission_percent'],'number','min'=>10,'max'=>100],
             ['commission_percent', 'number','min'=>0,'max'=>100],// the general values
-            ['commission_percent', 'validateCom'],
+            //['commission_percent', 'validateCom'],
         ];
     }
-    public function validateCom($attribute)
-    {
-        if ($this->product_id == 14) {
-            $min = 10;
-            $max = 20;
+    // public function validateCom($attribute)
+    // {
+    //     if ($this->product_id == 14) {
+    //         $min = 10;
+    //         $max = 25;
 
-            if ($this->attribute < $min || $this->attribute > $max) {
-                $this->addError($attribute, 'error message');
-            }
-        }
-    }
+    //         if ($this->attribute < $min || $this->attribute > $max) {
+    //             $this->addError($attribute, 'error message');
+    //         }
+    //     }
+    // }
     // public function checkValues($attribute)
     // {
     //     $persona = $this->NUM_PERSONAS;
