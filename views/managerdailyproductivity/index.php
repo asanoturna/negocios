@@ -109,6 +109,7 @@ $this->title = 'Gestão Produtividade Diária';
             ],            
             [
                 'class' => 'yii\grid\ActionColumn',
+                'template' => '{update} {delete}',
                 'contentOptions'=>['style'=>'width: 8%;text-align:right'],
             ],
         ],

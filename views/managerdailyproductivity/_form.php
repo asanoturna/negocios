@@ -7,6 +7,7 @@ use app\models\Location;
 use app\models\Product;
 use app\models\Modality;
 use app\models\Person;
+use app\models\Dailyproductivitystatus;
 use app\models\User;
 use yii\widgets\MaskedInput;
 use yii\helpers\Url;
@@ -18,12 +19,19 @@ use yii\helpers\Url;
     <?php $form = ActiveForm::begin([
         'options' => ['class' => 'form-horizontal'],
         'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-7\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-2 control-label'],
+            'template' => "{label}\n<div class=\"col-lg-5\">{input}</div>\n<div class=\"col-lg-7\">{error}</div>",
+            'labelOptions' => ['class' => 'col-lg-4 control-label'],
         ],
     ]); ?>
 
+    <div class="row">
+    
+    <?= $form->field($model, 'daily_productivity_status_id')->dropDownList(ArrayHelper::map(Dailyproductivitystatus::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?>    
+    <hr/>
+    </div>
 
+    <div class="row">
+    <div class="col-md-6">
         <?php echo $form->field($model, 'date')->widget('trntv\yii\datetime\DateTimeWidget',
             [
                 'phpDatetimeFormat' => 'yyyy-MM-dd',
@@ -65,29 +73,12 @@ use yii\helpers\Url;
         ]); 
         ?>
 
-        <?php echo $form->field($model, 'commission_percent')->textInput(['maxlength' => true])
-        //http://demos.krajee.com/slider
-        //     use kartik\slider\Slider;
-        //     echo $form->field($model, 'commission_percent')->widget(Slider::classname(), [
-        //     'name'=>'commission_percent',
-        //     'value'=>7,
-        //     'sliderColor'=>Slider::TYPE_GREY,
-        //     'handleColor'=>Slider::TYPE_SUCCESS,
-        //     'pluginOptions'=>[
-        //         'handle'=>'round',
-        //         'tooltip'=>'always',
-        //         'min'=>10,
-        //         'max'=>50,
-        //         'step'=>1,
-        //     ]
-        // ]);
-        ?>
-        <hr/>
+        <?php echo $form->field($model, 'commission_percent')->textInput(['maxlength' => true])?>
 
-        <?php echo $form->field($model, 'companys_revenue', ['inputOptions' => ['value' => 5, 'class' => 'form-control']]) ?>
+        <?php echo $form->field($model, 'companys_revenue', ['inputOptions' => ['class' => 'form-control']]) ?>
 
-        <hr/>
-
+    </div>
+    <div class="col-md-6">
         <?= $form->field($model, 'person_id')->dropDownList(ArrayHelper::map(Person::find()->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>''])  ?>    
 
         <?= $form->field($model, 'buyer_document')->widget(\yii\widgets\MaskedInput::classname(), [
@@ -101,6 +92,10 @@ use yii\helpers\Url;
         <?= $form->field($model, 'operator_id')->dropDownList(ArrayHelper::map(User::find()->where(['role_id' => 2])->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])  ?>
 
         <?= $form->field($model, 'user_id')->dropDownList(ArrayHelper::map(User::find()->where(['role_id' => 2])->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])  ?>
+
+    </div>
+
+    </div>
 
     <div class="form-group">
         <div class="col-lg-offset-2 col-lg-10">

@@ -19,38 +19,43 @@ use yii\helpers\Url;
         'id' => 'dailyproductivityform',
         'options' => ['class' => 'form-horizontal'],
         'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-7\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-2 control-label'],
+            'template' => "{label}\n<div class=\"col-lg-4\">{input}</div>\n<div class=\"col-lg-4\">{error}</div>",
+            'labelOptions' => ['class' => 'col-lg-4 control-label'],
         ],
     ]); ?>
 
-
-        <?php echo $form->field($model, 'date')->widget('trntv\yii\datetime\DateTimeWidget',
-            [
-                'phpDatetimeFormat' => 'yyyy-MM-dd',
-                'clientOptions' => [
-                    'minDate' => new \yii\web\JsExpression('new Date("2015-01-01")'),
-                    'allowInputToggle' => true,
-                    'widgetPositioning' => [
-                       'horizontal' => 'auto',
-                       'vertical' => 'auto'
-                    ]
+<div class="row">
+    <div class="col-xs-6">
+    <!-- LINHA 2 / COLUNA 1 -->
+    <?php echo $form->field($model, 'date')->widget('trntv\yii\datetime\DateTimeWidget',
+        [
+            'phpDatetimeFormat' => 'yyyy-MM-dd',
+            'clientOptions' => [
+                'minDate' => new \yii\web\JsExpression('new Date("2015-01-01")'),
+                'allowInputToggle' => true,
+                'widgetPositioning' => [
+                   'horizontal' => 'auto',
+                   'vertical' => 'auto'
                 ]
             ]
-        ); ?>
-
-        <?= $form->field($model, 'location_id')->dropDownList(ArrayHelper::map(Location::find()->where(['is_active' => 1])->orderBy("shortname ASC")->all(), 'id', 'shortname'),['prompt'=>'--'])  ?>    
-
-        <?=
-        $form->field($model, 'product_id', [
-            'inputOptions' => [
-                'class' => 'selectpicker '
-            ]
         ]
-        )->dropDownList(app\models\Product::getHierarchy(), ['prompt' => 'Selecione', 'class'=>'form-control required']);
-        ?>
+    ); ?>
 
-        <?php // echo $form->field($model, 'value')->textInput(['maxlength' => true]) 
+    <?= $form->field($model, 'location_id')->dropDownList(ArrayHelper::map(Location::find()->where(['is_active' => 1])->orderBy("shortname ASC")->all(), 'id', 'shortname'),['prompt'=>'--'])  ?>    
+
+    <?=
+    $form->field($model, 'product_id', [
+        'inputOptions' => [
+            'class' => 'selectpicker '
+        ]
+    ]
+    )->dropDownList(app\models\Product::getHierarchy(), ['prompt' => 'Selecione', 'class'=>'form-control required']);
+    ?>
+
+    </div>
+    <div class="col-xs-6">
+  <!-- LINHA 1 / COLUNA 2 -->
+  <?php // echo $form->field($model, 'value')->textInput(['maxlength' => true]) 
         use kartik\money\MaskMoney;
         echo $form->field($model, 'value')->widget(MaskMoney::classname(), [
             'pluginOptions' => [
@@ -180,20 +185,37 @@ $this->registerJs($js);
         ?>
 
         <?php //echo $form->field($model, 'companys_revenue', ['inputOptions' => ['value' => 5, 'class' => 'form-control']])->textInput(['readonly' => true]) ?>
+</div>
+</div>
 
-        <hr/>
+<hr/>
 
-        <?= $form->field($model, 'person_id')->dropDownList(ArrayHelper::map(Person::find()->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>''])  ?>    
-
+<div class="row">
+    <div class="col-xs-6">
+    <!-- LINHA 2 / COLUNA 1 -->
+        
+        <?= $form->field($model, 'person_id')->radioList(
+(ArrayHelper::map(Person::find()->orderBy("name ASC")->all(), 'id', 'name'))
+            , ['itemOptions' => ['class' =>'radio-inline','labelOptions'=>array('style'=>'padding:4px;')]])->label('Pessoa');
+        ?>
         <?= $form->field($model, 'buyer_document')->widget(\yii\widgets\MaskedInput::classname(), [
             'mask' => ['999.999.999-99', '99.999.999/9999-99'],
         ]) ?>
 
         <?= $form->field($model, 'buyer_name')->textInput(['maxlength' => true]) ?>
 
-        <?= $form->field($model, 'seller_id')->dropDownList(ArrayHelper::map(User::find()->where(['role_id' => 2])->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])  ?>
+    </div>
+    <div class="col-xs-6">
+    <!-- LINHA 2 / COLUNA 2 -->
+    <?= $form->field($model, 'seller_id')->dropDownList(ArrayHelper::map(User::find()->where(['role_id' => 2])->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])  ?>
 
-        <?= $form->field($model, 'operator_id')->dropDownList(ArrayHelper::map(User::find()->where(['role_id' => 2])->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])  ?>
+    <?= $form->field($model, 'operator_id')->dropDownList(ArrayHelper::map(User::find()->where(['role_id' => 2])->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])  ?>
+    
+    </div>
+</div>
+
+
+
 
     <div class="form-group">
         <div class="col-lg-offset-2 col-lg-10">
