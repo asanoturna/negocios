@@ -33,6 +33,7 @@ $this->title = 'Produtividade Diária';
             'location.fullname',  
             'product.name',                          
             'value',
+            'quantity',
             'commission_percent',
             'person.name', 
             'buyer_document',             

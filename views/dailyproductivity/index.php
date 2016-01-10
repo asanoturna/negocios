@@ -61,7 +61,14 @@ $this->title = 'Produtividade Diária';
              'filter' => Product::getHierarchy(),
              'contentOptions'=>['style'=>'width: 20%;text-align:left'],
             ],
-            'value',
+            [
+             'attribute' => 'value',
+             'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],
+            [
+             'attribute' => 'quantity',
+             'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],
             // 'commission_percent',
             // 'companys_revenue',
             // 'daily_productivity_status_id',

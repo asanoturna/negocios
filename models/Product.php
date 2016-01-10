@@ -37,7 +37,7 @@ class Product extends \yii\db\ActiveRecord
     public static function getHierarchy() {
         $options = [];
          
-        $parents = self::find()->where(['parent_id' => null])->all();
+        $parents = self::find()->where(['parent_id' => null, 'is_active' => 1])->all();
         foreach($parents as $id => $p) {
             $children = self::find()->where("parent_id=:parent_id", [":parent_id"=>$p->id])->all();
             $child_options = [];

@@ -65,8 +65,9 @@ use yii\helpers\Url;
                 'thousands' => '.',
                 'decimal' => ',',
                 'precision' => 2, 
-                'allowZero' => false,
+                'allowZero' => true,
                 'allowNegative' => false,
+                'value' => 0.01
             ],
         ]); 
         ?>
@@ -74,6 +75,7 @@ use yii\helpers\Url;
 <?php
 $productId = Html::getInputId($model, 'product_id');
 $comissionId = Html::getInputId($model, 'commission_percent');
+$quantityId = Html::getInputId($model, 'quantity');
 $js = <<<JS
 $('#{$productId}').on('change', function () {
     var id = $(this).val();
@@ -138,12 +140,15 @@ $('#{$productId}').on('change', function () {
     }else if (id == 33){
         var min = 0;
         var max = 0;
+        quantity = 1;
     }else if (id == 34){
         var min = 0;
         var max = 0;
+        quantity = 1;
     }else if (id == 35){
         var min = 0;
         var max = 0;
+        quantity = 1;
     }else if (id == 36){
         var min = 0;
         var max = 0;
@@ -183,7 +188,7 @@ $this->registerJs($js);
             ]
         ]);
         ?>
-
+        <?php //echo $form->field($model, 'quantity', ['inputOptions' => ['class' => 'form-control']])->textInput(['readonly' => true]) ?>
         <?php //echo $form->field($model, 'companys_revenue', ['inputOptions' => ['value' => 5, 'class' => 'form-control']])->textInput(['readonly' => true]) ?>
 </div>
 </div>
@@ -213,9 +218,6 @@ $this->registerJs($js);
     
     </div>
 </div>
-
-
-
 
     <div class="form-group">
         <div class="col-lg-offset-2 col-lg-10">

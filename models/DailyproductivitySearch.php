@@ -17,7 +17,7 @@ class DailyproductivitySearch extends Dailyproductivity
         return [
             [['id', 'location_id', 'product_id', 'daily_productivity_status_id', 'seller_id', 'operator_id'], 'integer'],
             [['start_date', 'end_date', 'buyer_document', 'buyer_name', 'date', 'created', 'updated'], 'safe'],
-            [['value', 'commission_percent', 'companys_revenue'], 'number'],
+            [['value', 'quantity', 'commission_percent', 'companys_revenue'], 'number'],
         ];
     }
 
@@ -56,6 +56,7 @@ class DailyproductivitySearch extends Dailyproductivity
             'product_id' => $this->product_id,
             'location_id' => $this->location_id,
             'value' => $this->value,
+            'quantity' => $this->quantity,
             'commission_percent' => $this->commission_percent,
             'companys_revenue' => $this->companys_revenue,
             'daily_productivity_status_id' => $this->daily_productivity_status_id,
