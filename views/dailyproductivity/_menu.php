@@ -23,7 +23,7 @@
                         'items' => [
                              [
                                 'label' => 'Ranking por Usuário', 
-                                'url' => ['/dailyproductivity/performance'],
+                                'url' => ['/dailyproductivity/performance_user'],
                              ],
                              //'<li class="divider"></li>',
                              //'<li class="dropdown-header">Dropdown Header</li>',

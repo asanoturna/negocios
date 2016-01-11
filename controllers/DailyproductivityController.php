@@ -66,12 +66,12 @@ class DailyproductivityController extends Controller
         echo 2;
     } 
 
-    public function actionPerformance()
+    public function actionPerformance_user()
     {
         $searchModel = new DailyproductivitySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('performance', [
+        return $this->render('performance_user', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

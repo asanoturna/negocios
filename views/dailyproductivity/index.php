@@ -81,6 +81,7 @@ $this->title = 'Produtividade Diária';
                 'value' => function ($model) {                      
                     return $model->seller ? $model->seller->username : '<span class="text-danger"><em>Nenhum</em></span>';
                 },
+                'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
                 'contentOptions'=>['style'=>'width: 8%;text-align:left'],
             ],             
             [
@@ -90,6 +91,7 @@ $this->title = 'Produtividade Diária';
                 'value' => function ($model) {                      
                     return $model->operator ? $model->operator->username : '<span class="text-danger"><em>Nenhum</em></span>';
                 },
+                'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
                 'contentOptions'=>['style'=>'width: 8%;text-align:left'],
             ],  
             [
