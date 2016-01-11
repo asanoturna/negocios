@@ -75,7 +75,18 @@ class DailyproductivityController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
-    }    
+    }   
+
+    public function actionPerformance_location()
+    {
+        $searchModel = new DailyproductivitySearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('performance_location', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }      
 
     public function actionView($id)
     {
