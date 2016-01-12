@@ -14,9 +14,10 @@ class Dailyproductivity extends \yii\db\ActiveRecord
             $companys_revenue = $companys_revenue*0.75;
             $this->companys_revenue = abs($companys_revenue);
             if($this->product_id == 33 || $this->product_id == 34 || $this->product_id == 35){
-                $this->quantity = 1;
+                $this->companys_revenue = 60;
                 $this->value = 0;
             }
+            $this->quantity = 1;
             return true;
         } else {
             return false;

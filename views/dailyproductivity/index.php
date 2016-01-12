@@ -28,9 +28,18 @@ $this->title = 'Produtividade Diária';
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'tableOptions' => ['class'=>'table table-striped table-bordered'],
+        'tableOptions' => ['class'=>'table table-striped table-bordered table-hover'],
         'emptyText'    => '</br><p class="text-info">Nenhum registro encontrado!</p>',   
-        'summary' => "<p class=\"text-info pull-right\"><h5>Registros: {totalCount} </h5></p>",         
+        'summary' => "<p class=\"text-info pull-right\"><h5>Registros: {totalCount} </h5></p>",  
+        'rowOptions'   => function ($model, $index, $widget, $grid) {
+            return [
+                'id' => $model['id'], 
+                'onclick' => 'location.href="'
+                    . Yii::$app->urlManager->createUrl('dailyproductivity/view') 
+                    . '&id="+(this.id);',
+                'style' => "cursor: pointer",
+            ];
+        },       
         'columns' => [
             // [
             //  'attribute' => 'id',
