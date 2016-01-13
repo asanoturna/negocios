@@ -90,12 +90,27 @@ class DailyproductivityController extends Controller
 
     public function actionPerformance_overview()
     {
-        $searchModel = new DailyproductivitySearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $model = new Dailyproductivity();
+        
+        $command = Yii::$app->db->createCommand(
+        "SELECT t2.name AS p, SUM(t1.value) AS t
+        FROM daily_productivity AS t1
+        LEFT JOIN product AS t2 ON t1.product_id = t2.id 
+        GROUP BY p");
+        $overview = $command->queryAll();
+
+        $p = array();
+        $t = array();
+ 
+        for ($i = 0; $i < sizeof($overview); $i++) {
+           $p[] = $overview[$i]["p"];
+           $t[] = (int) $overview[$i]["t"];
+        }
 
         return $this->render('performance_overview', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'model' => $model,
+            'p' => $p,
+            't' => $t,
         ]);
     }      
 
