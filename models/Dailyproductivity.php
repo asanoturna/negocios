@@ -23,7 +23,10 @@ class Dailyproductivity extends \yii\db\ActiveRecord
             return false;
         }
 
-    }    
+    }
+
+    public $mounth;
+    public $year;    
 
     public static function tableName()
     {

@@ -91,26 +91,42 @@ class DailyproductivityController extends Controller
     public function actionPerformance_overview()
     {
         $model = new Dailyproductivity();
+
+        $thisyear  = date('Y');
+        $thismonth = date('m');
+        $lastmonth = date('m', strtotime('-1 months', strtotime(date('Y-m-d'))));    
+        $url = Yii::$app->getRequest()->getQueryParam('mounth');
+        $mounth = isset($url) ? $url : $thismonth;
+        $model->mounth = $mounth;
         
         $command = Yii::$app->db->createCommand(
-        "SELECT t2.name AS p, SUM(t1.value) AS t
-        FROM daily_productivity AS t1
-        LEFT JOIN product AS t2 ON t1.product_id = t2.id 
-        GROUP BY p");
+        "SELECT
+            t2. NAME AS p,
+            SUM(t1. VALUE) AS t,
+            SUM(t1.quantity) AS q
+        FROM
+            daily_productivity AS t1
+        LEFT JOIN product AS t2 ON t1.product_id = t2.id
+        WHERE MONTH(date) = $mounth 
+        GROUP BY
+            p");
         $overview = $command->queryAll();
 
         $p = array();
         $t = array();
+        $q = array();
  
         for ($i = 0; $i < sizeof($overview); $i++) {
            $p[] = $overview[$i]["p"];
            $t[] = (int) $overview[$i]["t"];
+           $q[] = (int) $overview[$i]["q"];
         }
 
         return $this->render('performance_overview', [
             'model' => $model,
             'p' => $p,
             't' => $t,
+            'q' => $q,
         ]);
     }      
 

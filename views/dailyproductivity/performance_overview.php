@@ -8,6 +8,8 @@ use app\models\Product;
 use app\models\Modality;
 use app\models\User;
 use yii\data\SqlDataProvider;
+use yii\helpers\Url;
+use yii\web\View;
 use miloschuman\highcharts\Highcharts;
 use miloschuman\highcharts\SeriesDataHelper;
 
@@ -23,100 +25,126 @@ $this->title = 'Produtividade Diária';
     <?php  echo $this->render('_menu'); ?>
     <hr/>
 
+<div class="row">	
+  <div class="col-xs-2 pull-right">	
+				<?php
+                $array = [
+                    ['id' => '01', 'name' => 'Janeiro'],
+                    ['id' => '02', 'name' => 'Fevereiro'],
+                    ['id' => '03', 'name' => 'Março'],
+                    ['id' => '04', 'name' => 'Abril'],
+                    ['id' => '05', 'name' => 'Maio'],
+                    ['id' => '06', 'name' => 'Junho'],
+                    ['id' => '07', 'name' => 'Julho'],
+                    ['id' => '08', 'name' => 'Agosto'],
+                    ['id' => '09', 'name' => 'Setembro'],
+                    ['id' => '10', 'name' => 'Outubro'],
+                    ['id' => '11', 'name' => 'Novembro'],
+                    ['id' => '12', 'name' => 'Dezembro'],
+                ];
+                //$result = ArrayHelper::map($array, 'id', 'name');
+                $this->registerJs('var submit = function (val){if (val > 0) {
+                    window.location.href = "' . Url::to(['/dailyproductivity/performance_overview']) . '&mounth=" + val;
+                }
+                }', View::POS_HEAD);
+               echo Html::activeDropDownList($model, 'mounth', ArrayHelper::map($array, 'id', 'name'),['onchange'=>'submit(this.value);','class'=>'form-control']);
+                ?>
+    </p>
+  </div>
+</div>
 <div class="row">
   <div class="col-md-6">
   	<div class="panel panel-default">
-	  <div class="panel-heading">Rentabilidade</div>
+	  <div class="panel-heading"><b>Produtos Mais Vendidos por Valor</b></div>
 	  <div class="panel-body">
-	    
-<?php
-echo Highcharts::widget([
-
-                    'options' => [
-                        'credits' => ['enabled' => false],
-                        'title' => [
-                            'text' => '',
-                        ],
-                        'colors'=> ['#177c83','#27cdd9'],
-                        'xAxis' => [
-                            //'categories' => ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Nov', 'Dez'],
-                            'categories' => $p,
-                        ],
-                        'yAxis' => [
-                            'min' => 0,
-                            'title' => '',
-                        ],                        
-                        'series' => [
-                            [
-                                'type' => 'column',
-                                'name' => 'Produtos',
-                                'data' => $t,
-                            ],
-                            // [
-                            //     'type' => 'spline',
-                            //     'name' => 'Evolução',
-                            //     'data' => $quantity,
-                            //     'marker' => [
-                            //         'lineWidth' => 2,
-                            //         'lineColor' => new JsExpression('Highcharts.getOptions().colors[7]'),
-                            //         'fillColor' => 'white',
-                            //     ],
-                            // ],                           
-                        ],
-                    ]
-                ]);
-?>
-
+		<?php
+		echo Highcharts::widget([
+		                    'options' => [
+		                        'credits' => ['enabled' => false],
+		                        'title' => [
+		                            'text' => '',
+		                        ],
+		                        'colors'=> ['#177c83','#27cdd9'],
+		                        'xAxis' => [
+		                            //'categories' => ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Nov', 'Dez'],
+		                            'categories' => $p,
+		                        ],
+		                        'yAxis' => [
+		                            'min' => 0,
+		                            'title' => '',
+		                        ],                        
+		                        'series' => [
+		                            [
+		                                'type' => 'column',
+		                                'name' => 'Produtos',
+		                                'data' => $t,
+		                            ],
+		                            // [
+		                            //     'type' => 'spline',
+		                            //     'name' => 'Evolução',
+		                            //     'data' => $quantity,
+		                            //     'marker' => [
+		                            //         'lineWidth' => 2,
+		                            //         'lineColor' => new JsExpression('Highcharts.getOptions().colors[7]'),
+		                            //         'fillColor' => 'white',
+		                            //     ],
+		                            // ],                           
+		                        ],
+		                    ]
+		                ]);
+		?>
 	  </div>
 	</div>
   </div>
+
   <div class="col-md-6">
   	<div class="panel panel-default">
-	  <div class="panel-heading">Volume</div>
+	  <div class="panel-heading"><b>Produtos Mais Vendidos por Volume</b></div>
 	  <div class="panel-body">
-	    
 		<?php
-		
 		echo Highcharts::widget([
-			'options' => [
-			    'plotOptions ' => 'pie',
-			    'credits' => ['enabled' => false],
-			    'chart'=> [
-			    'height'=> 300,
-			    ],
-			    'title' => ['text' => ''],
-			    'colors'=> ['#177c83','#27cdd9','#1fa4ae','#52d7e0','#7ee1e8','#a9ebf0'],
-			    'tooltip'=> ['pointFormat'=> 'Percentual: <b>{point.percentage:.1f}%</b>'],
-			    'plotOptions'=> [
-			        'pie'=> [
-			          'allowPointSelect'=> true,
-			          'cursor'=> 'pointer',
-			          'dataLabels'=> [
-			          'enabled'=> true,
-			          ],
-			        'showInLegend'=> [
-			          'enabled'=> true,
-			          ]
-			        ]
-			    ],
-			    'series'=> [[
-			        'type'=> 'pie',
-			        'name'=> 'Valor',
-			        'data'=> [
-			        //     ['Cadastro', $Cadastro[0]],
-			        //     ['Correcao', $Correcao[0]],
-			        //     ['Renovacao', $Renovacao[0]],
-			        //     ['Regularizacao', $Regularizacao[0]],
-			        'kkk',$t
-			        ]
-			    ]]
-			]
-			]);
-		var_dump($t);
+
+		            'options' => [
+		                'credits' => ['enabled' => false],
+		                'title' => [
+		                    'text' => '',
+		                ],
+		                'colors'=> ['#177c83','#27cdd9'],
+		                'xAxis' => [
+		                    //'categories' => ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Nov', 'Dez'],
+		                    'categories' => $p,
+		                ],
+		                'yAxis' => [
+		                    'min' => 0,
+		                    'title' => '',
+		                ],                        
+		                'series' => [
+		                    [
+		                        'type' => 'column',
+		                        'name' => 'Produtos',
+		                        'data' => $q,
+		                    ],
+		                    // [
+		                    //     'type' => 'spline',
+		                    //     'name' => 'Evolução',
+		                    //     'data' => $quantity,
+		                    //     'marker' => [
+		                    //         'lineWidth' => 2,
+		                    //         'lineColor' => new JsExpression('Highcharts.getOptions().colors[7]'),
+		                    //         'fillColor' => 'white',
+		                    //     ],
+		                    // ],                           
+		                ],
+		            ]
+		        ]);
 		?>	    
 	  </div>
 	</div>
   </div>
+
+  <?php
+  //var_dump($t);
+  ?>
 </div>
 
 </div>

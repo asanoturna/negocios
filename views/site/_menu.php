@@ -13,7 +13,7 @@
                     ],
                     [
                         'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Produtividade Diária',
-                        'url'     => ['/dailyproductivity/create'],
+                        'url'     => ['/dailyproductivity/performance_overview'],
 
                     ],                      
                     [
