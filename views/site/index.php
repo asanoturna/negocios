@@ -25,7 +25,7 @@ $this->title = Yii::$app->params['appname'];
     </div>
     <div class="col-sm-9">
       <div class="panel panel-primary">
-      <div class="panel-heading"><b>Top 3 Produtividade Diária - Geral</b></div>
+      <div class="panel-heading"><b>Top 3 Produtividade Diária - Todos os Produtos</b></div>
       <div class="panel-body">
         <?php
         $dataProviderValor = new SqlDataProvider([
@@ -197,8 +197,88 @@ $this->title = Yii::$app->params['appname'];
             ],
         ]); ?>
         </div>
-        
       </div>
+    </div>
+    <div class="panel panel-primary">
+          <div class="panel-heading"><b>Top 5 Visitas dos Gerentes</b></div>
+          <div class="panel-body">
+          <?php 
+use yii\web\JsExpression;
+use miloschuman\highcharts\Highcharts;
+echo Highcharts::widget([
+
+    'options' => [
+    'credits' => ['enabled' => false],
+        'title' => [
+            'text' => '',
+        ],
+        'xAxis' => [
+
+            'categories' => ['Leonardo', 'Veronica', 'Marina', 'Marco', 'Miguel'],
+        ],
+
+        'labels' => [
+            'items' => [
+                [
+                    'html' => 'Agências',
+                    'style' => [
+                        'left' => '50px',
+                        'top' => '18px',
+                        'colors'=> ['#00353D'],
+                    ],
+                ],
+            ],
+        ],
+        'colors'=> ['#00A295'],
+        'series' => [
+            [
+                'type' => 'column',
+                'name' => 'Quantidade de Visitas',
+                'data' => [2, 1, 1, 3, 4],
+            ],
+            // [
+            //     'type' => 'spline',
+            //     'name' => 'Media',
+            //     'data' => [2, 1.8, 1, 3, 4],
+            //     'marker' => [
+            //         'lineWidth' => 2,
+            //         'lineColor' => new JsExpression('Highcharts.getOptions().colors[3]'),
+            //         'fillColor' => 'white',
+            //     ],
+            // ],
+            [
+                'type' => 'pie',
+                'name' => 'Total de Visitas',
+                'colors'=> ['#4D7A80'],
+                'data' => [
+                    [
+                        'name' => 'PA 20',
+                        'y' => 13,
+                        'colors'=> ['#00A295'],
+                    ],
+                    [
+                        'name' => 'PA 07',
+                        'y' => 23,
+                        'colors'=> ['#EDEFA6'],
+                    ],
+                    [
+                        'name' => 'PA 04',
+                        'y' => 19,
+                        'colors'=> ['#9EC960'],
+                    ],
+                ],
+                'center' => [100, 80],
+                'size' => 100,
+                'showInLegend' => false,
+                'dataLabels' => [
+                    'enabled' => false,
+                ],
+            ],
+        ],
+    ]
+]);
+           ?>
+          </div>
     </div>
     </div>
 
