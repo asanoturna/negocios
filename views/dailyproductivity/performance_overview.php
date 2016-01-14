@@ -54,7 +54,7 @@ $this->title = 'Produtividade Diária';
 </div>
 <div class="row">
   <div class="col-md-6">
-  	<div class="panel panel-default">
+  	<div class="panel panel-primary">
 	  <div class="panel-heading"><b>Produtos Mais Vendidos por Valor</b></div>
 	  <div class="panel-body">
 		<?php
@@ -64,7 +64,7 @@ $this->title = 'Produtividade Diária';
 		                        'title' => [
 		                            'text' => '',
 		                        ],
-		                        'colors'=> ['#177c83','#27cdd9'],
+		                        'colors'=> ['#00A295','#27cdd9'],
 		                        'xAxis' => [
 		                            //'categories' => ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Nov', 'Dez'],
 		                            'categories' => $p,
@@ -98,7 +98,7 @@ $this->title = 'Produtividade Diária';
   </div>
 
   <div class="col-md-6">
-  	<div class="panel panel-default">
+  	<div class="panel panel-primary">
 	  <div class="panel-heading"><b>Produtos Mais Vendidos por Volume</b></div>
 	  <div class="panel-body">
 		<?php
@@ -109,7 +109,7 @@ $this->title = 'Produtividade Diária';
 		                'title' => [
 		                    'text' => '',
 		                ],
-		                'colors'=> ['#177c83','#27cdd9'],
+		                'colors'=> ['#00A295','#27cdd9'],
 		                'xAxis' => [
 		                    //'categories' => ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Nov', 'Dez'],
 		                    'categories' => $p,

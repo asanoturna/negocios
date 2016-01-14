@@ -8,6 +8,8 @@ use app\models\Product;
 use app\models\Modality;
 use app\models\User;
 use yii\data\SqlDataProvider;
+use yii\helpers\Url;
+use yii\web\View;
 
 $this->title = 'Produtividade Diária';
 
@@ -17,37 +19,26 @@ $this->title = 'Produtividade Diária';
     <h1><?= Html::encode($this->title) ?></h1>
     <?php  echo $this->render('_menu'); ?>
     <hr/>
-    <?php
-    $dataProviderValor = new SqlDataProvider([
-        'sql' => "SELECT shortname as sigla, fullname as local, sum(companys_revenue) as total
-                FROM daily_productivity
-                INNER JOIN location ON daily_productivity.location_id = location.id
-                GROUP BY location_id
-                ORDER BY sum(companys_revenue) DESC",
-        'totalCount' => 30,
-        'sort' =>false,
-        'key'  => 'local',
-        'pagination' => [
-            'pageSize' => 30,
-        ],
-    ]);
-    $dataProviderQtde = new SqlDataProvider([
-        'sql' => "SELECT shortname as sigla, fullname as local, sum(quantity) as total
-                FROM daily_productivity
-                INNER JOIN location ON daily_productivity.location_id = location.id
-                GROUP BY location_id
-                ORDER BY sum(quantity) DESC",
-        'totalCount' => 30,
-        'sort' =>false,
-        'key'  => 'local',
-        'pagination' => [
-            'pageSize' => 30,
-        ],
-    ]);
-    ?>
+    <div class="row">
+        <div class="col-md-3 pull-right">
+                    <?php 
+                    $this->registerJs('var submit = function (val){if (val > 0) {
+                        window.location.href = "' . Url::to(['/dailyproductivity/performance_location']) . '&product_id=" + val;
+                    }
+                    }', View::POS_HEAD);
+
+                    echo Html::activeDropDownList($model, 'product_id', ArrayHelper::map(Product::find()->where(['parent_id' => 9])
+                                ->orderBy("name ASC")
+                                ->all(), 'id', 'name'), ['onchange'=>'submit(this.value);','prompt'=>'Todos os produtos','class'=>'form-control']);
+                    ?>
+        </div>
+    </div>  
+    <p>   
     <div class="row">
         <div class="col-md-6">
-        <h3>Ranking de Vendas <small>Por Valor</small></h3>
+        <div class="panel panel-primary">
+          <div class="panel-heading"><b>Ranking de Vendas Por Valor</b></div>
+          <div class="panel-body">
         <?= GridView::widget([
           'dataProvider' => $dataProviderValor,
           'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
@@ -90,9 +81,13 @@ $this->title = 'Produtividade Diária';
 
             ],
         ]); ?>
+            </div>
+            </div>
         </div>
         <div class="col-md-6">
-        <h3>Ranking de Vendas <small>Por Quantidade</small></h3>
+        <div class="panel panel-primary">
+          <div class="panel-heading"><b>Ranking de Vendas Por Quantidade</b></div>
+          <div class="panel-body">
         <?= GridView::widget([
           'dataProvider' => $dataProviderQtde,
           'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
@@ -135,6 +130,8 @@ $this->title = 'Produtividade Diária';
 
             ],
         ]); ?>
+        </div>
+        </div>
         </div>
     </div>
 </div>

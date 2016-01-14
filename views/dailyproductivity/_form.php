@@ -80,87 +80,90 @@ $js = <<<JS
 $('#{$productId}').on('change', function () {
     var id = $(this).val();
 
-    if (id == 14) {
+    if (id == 14) { //Auto
         var min = 10;
         var max = 25;
-    }else if (id == 15){
+    }else if (id == 15){ //Residencial Comum
         var min = 10;
         var max = 40;
-    }else if (id == 16){
+    }else if (id == 16){ //Residencial Simplificado
         var min = 30;
         var max = 30;
-    }else if (id == 17){
+    }else if (id == 17){ //Empresarial Simplificado
         var min = 20;
         var max = 20;
-    }else if (id == 18){
+    }else if (id == 18){ //Empresarial Comum
         var min = 20;
         var max = 40;
-    }else if (id == 19){
+    }else if (id == 19){ //Vida Apolice 105
         var min = 40;
         var max = 40;
-    }else if (id == 20){
+    }else if (id == 20){ //Vida Mulher
         var min = 35;
         var max = 35;
-    }else if (id == 21){
+    }else if (id == 21){ //Viagem
         var min = 35;
         var max = 35;
-    }else if (id == 22){
+    }else if (id == 22){ //Passageiro 
         var min = 40;
         var max = 40;
-    }else if (id == 23){
+    }else if (id == 23){ //AP Não Nominado
         var min = 40;
         var max = 40;
-    }else if (id == 24){
+    }else if (id == 24){ //Estagiario 
         var min = 40;
         var max = 40;
-    }else if (id == 25){
+    }else if (id == 25){ //Vida Individual
         var min = 35;
         var max = 35;
-    }else if (id == 26){
+    }else if (id == 26){ //Vida Empresarial
         var min = 35;
         var max = 35;
-    }else if (id == 27){
+    }else if (id == 27){ //Vida Empresarial Uniforme
         var min = 30;
         var max = 30;
-    }else if (id == 28){
+    }else if (id == 28){ //Auto tabela B
         var min = 3.5;
         var max = 3.5;
-    }else if (id == 29){
+    }else if (id == 29){ //Auto tabela C
+        var min = 5.5;
+        var max = 5.5;
+    }else if (id == 30){ //Moto tabela B
         var min = 3.5;
         var max = 3.5;
-    }else if (id == 30){
+    }else if (id == 31){ //Moto tabela C
+        var min = 5.5;
+        var max = 5.5;
+    }else if (id == 32){ //Imovel tabela B
         var min = 3.5;
         var max = 3.5;
-    }else if (id == 31){
-        var min = 3.5;
-        var max = 3.5;
-    }else if (id == 32){
-        var min = 3.5;
-        var max = 3.5;
-    }else if (id == 33){
-        var min = 0;
-        var max = 0;
+    }else if (id == 33){ //Imovel tabela C
+        var min = 5.5;
+        var max = 5.5;
         quantity = 1;
-    }else if (id == 34){
-        var min = 0;
-        var max = 0;
+    }else if (id == 34){ //Servicos tabela B
+        var min = 3.5;
+        var max = 3.5;
         quantity = 1;
-    }else if (id == 35){
-        var min = 0;
-        var max = 0;
+    }else if (id == 35){ //Servicos tabela C
+        var min = 5.5;
+        var max = 5.5;
         quantity = 1;
-    }else if (id == 36){
-        var min = 0;
-        var max = 0;
-    }else if (id == 37){
+    }else if (id == 36){ //Equipamentos tabela B
+        var min = 3.5;
+        var max = 3.5;
+    }else if (id == 37){ //Equipamentos tabela C
+        var min = 5.5;
+        var max = 5.5;
+    }else if (id == 38){ //Cielo
         var min = 10;
         var max = 10;
-    }else if (id == 38){
+    }else if (id == 39){ //Redecard
         var min = 10;
         var max = 10;
-    }else {
-        var min = 0;
-        var max = 100;
+    }else if (id == 38){ //Sipag
+        var min = 10;
+        var max = 10;
     }
 
     $("#{$comissionId}").data('slider').options.min = min;
@@ -188,7 +191,8 @@ $this->registerJs($js);
             ]
         ]);
         ?>
-        <?php //echo $form->field($model, 'quantity', ['inputOptions' => ['class' => 'form-control']])->textInput(['readonly' => true]) ?>
+        
+        <?= $form->field($model, 'quantity')->textInput(['maxlength' => true]) ?>
         <?php //echo $form->field($model, 'companys_revenue', ['inputOptions' => ['value' => 5, 'class' => 'form-control']])->textInput(['readonly' => true]) ?>
 </div>
 </div>

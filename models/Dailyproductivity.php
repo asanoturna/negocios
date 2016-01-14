@@ -13,11 +13,21 @@ class Dailyproductivity extends \yii\db\ActiveRecord
             $companys_revenue = ($this->value*$this->commission_percent)/100;
             $companys_revenue = $companys_revenue*0.75;
             $this->companys_revenue = abs($companys_revenue);
-            if($this->product_id == 33 || $this->product_id == 34 || $this->product_id == 35){
+
+            if($this->product_id == 38){
+                //CIELO
+                $this->companys_revenue = 0;
+                $this->value = 0;
+            }elseif($this->product_id == 39){
+                //REDECARD
+                $this->companys_revenue = 17.08;
+                $this->value = 0;
+            }elseif($this->product_id == 40){
+                //SIPAG
                 $this->companys_revenue = 60;
                 $this->value = 0;
             }
-            $this->quantity = 1;
+            //$this->quantity = 1;
             return true;
         } else {
             return false;
@@ -37,12 +47,12 @@ class Dailyproductivity extends \yii\db\ActiveRecord
     {
         return [
             [['person_id', 'location_id', 'product_id', 'commission_percent','daily_productivity_status_id', 'buyer_document', 'buyer_name', 'seller_id', 'operator_id', 'user_id','date', 'created', 'updated'], 'required', 'message' => 'Campo Obrigatório'],
-            [['person_id', 'location_id', 'product_id', 'daily_productivity_status_id', 'seller_id', 'operator_id', 'user_id'], 'integer', 'message' => 'Preencha corretamente'],
+            [['quantity', 'person_id', 'location_id', 'product_id', 'daily_productivity_status_id', 'seller_id', 'operator_id', 'user_id'], 'integer', 'message' => 'Preencha corretamente'],
             [['value'], 'number'],
             [['value',], 'required', 'message' => 'Campo obrigatório!', 'when' => function ($model) {
-                    return $model->product_id <= 32;
+                    return $model->product_id <= 37;
                     }, 'whenClient' => "function(attribute, value) {
-                      return $('#dailyproductivity-product_id').val() <= 32;
+                      return $('#dailyproductivity-product_id').val() <= 37;
                   }"],
             [['date', 'companys_revenue','created', 'updated'], 'safe'],
             [['buyer_name'], 'string', 'max' => 100],

@@ -18,7 +18,7 @@ $this->title = 'Produtividade Diária';
     <h1><?= Html::encode($this->title) ?></h1>
     <?php  echo $this->render('_menu'); ?>
     <hr/>
-    <div class="panel panel-default">
+    <div class="panel panel-primary">
     <div class="panel-heading"><b>Pesquisar</b></div>
       <div class="panel-body">
         <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -50,6 +50,7 @@ $this->title = 'Produtividade Diária';
              'attribute' => 'date',
              'enableSorting' => true,
              'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
              'format' => ['date', 'php:d/m/Y'],
             ],            
             [
@@ -60,6 +61,7 @@ $this->title = 'Produtividade Diária';
                     },
              'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
              'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],            
             [
              'attribute' => 'product_id',
@@ -69,14 +71,17 @@ $this->title = 'Produtividade Diária';
                     },
              'filter' => Product::getHierarchy(),
              'contentOptions'=>['style'=>'width: 20%;text-align:left'],
+             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],
             [
              'attribute' => 'value',
              'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],
             [
              'attribute' => 'quantity',
              'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],
             // 'commission_percent',
             // 'companys_revenue',
@@ -92,6 +97,7 @@ $this->title = 'Produtividade Diária';
                 },
                 'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
                 'contentOptions'=>['style'=>'width: 8%;text-align:left'],
+                'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],             
             [
                 'attribute' => 'operator_id',
@@ -102,16 +108,18 @@ $this->title = 'Produtividade Diária';
                 },
                 'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
                 'contentOptions'=>['style'=>'width: 8%;text-align:left'],
+                'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],  
             [
                 'attribute' => 'daily_productivity_status_id',
                 'format' => 'raw',
                 'enableSorting' => true,
                 'value' => function ($model) {                      
-                        return $model->daily_productivity_status_id === 1 ? "<span class=\"label label-warning\">".$model->dailyProductivityStatus->name."</span>" : "<span class=\"label label-success\">".$model->dailyProductivityStatus->name."</span>";
+                        return $model->daily_productivity_status_id === 0 ? "<span class=\"label label-warning\">".$model->dailyProductivityStatus->name."</span>" : "<span class=\"label label-success\">".$model->dailyProductivityStatus->name."</span>";
                         },
                 'filter' => ArrayHelper::map(Dailyproductivitystatus::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
                 'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+                'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],                         
             //['class' => 'yii\grid\ActionColumn'],
         ],
