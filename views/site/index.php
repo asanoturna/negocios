@@ -16,7 +16,7 @@ $this->title = Yii::$app->params['appname'];
     <div class="row">
     
     <div class="col-sm-3">
-    <div class="panel panel-default">
+    <div class="panel panel-primary">
 	  <div class="panel-heading"><b>Módulos</b></div>
 	  <div class="panel-body">
 	    <?php  echo $this->render('_menu'); ?>
@@ -24,14 +24,15 @@ $this->title = Yii::$app->params['appname'];
 	</div>
     </div>
     <div class="col-sm-9">
-      <div class="panel panel-default">
-      <div class="panel-heading"><b>Top 3 Produtividade Diária</b></div>
+      <div class="panel panel-primary">
+      <div class="panel-heading"><b>Top 3 Produtividade Diária - Geral</b></div>
       <div class="panel-body">
         <?php
         $dataProviderValor = new SqlDataProvider([
             'sql' => "SELECT avatar, full_name as seller, sum(companys_revenue) as total
                     FROM daily_productivity
                     INNER JOIN `profile` ON daily_productivity.seller_id = `profile`.user_id
+                    WHERE daily_productivity_status_id = 99 
                     GROUP BY seller_id
                     ORDER BY sum(companys_revenue) DESC",
             'totalCount' => 3,
@@ -45,6 +46,7 @@ $this->title = Yii::$app->params['appname'];
             'sql' => "SELECT avatar, full_name as seller, sum(quantity) as total
                     FROM daily_productivity
                     INNER JOIN `profile` ON daily_productivity.seller_id = `profile`.user_id
+                    WHERE daily_productivity_status_id = 99 
                     GROUP BY seller_id
                     ORDER BY sum(quantity) DESC",
             'totalCount' => 3,
