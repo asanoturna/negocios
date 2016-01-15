@@ -76,6 +76,7 @@ use yii\helpers\Url;
 $productId = Html::getInputId($model, 'product_id');
 $comissionId = Html::getInputId($model, 'commission_percent');
 $quantityId = Html::getInputId($model, 'quantity');
+$quantityId = Html::getInputId($model, 'quantity');
 $js = <<<JS
 $('#{$productId}').on('change', function () {
     var id = $(this).val();
@@ -83,9 +84,13 @@ $('#{$productId}').on('change', function () {
     if (id == 14) { //Auto
         var min = 10;
         var max = 25;
+        $("#{$quantityId}").prop("disabled", true);
+        $("#{$quantityId}").prop("value", 1);
     }else if (id == 15){ //Residencial Comum
         var min = 10;
         var max = 40;
+        $("#{$quantityId}").prop("disabled", true);
+        $("#{$quantityId}").prop("value", 1);        
     }else if (id == 16){ //Residencial Simplificado
         var min = 30;
         var max = 30;
@@ -169,6 +174,8 @@ $('#{$productId}').on('change', function () {
     $("#{$comissionId}").data('slider').options.min = min;
     $("#{$comissionId}").data('slider').options.max = max;
     $("#{$comissionId}").slider('setValue', min);
+    
+
 });
 JS;
 $this->registerJs($js);
