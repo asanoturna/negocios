@@ -59,7 +59,7 @@ $this->title = Yii::$app->params['appname'];
         ?>
         <div class="col-md-6">
         <!-- ranking por valor -->
-        <h4>Ranking de Vendas por Valor</h4>
+        <h4>Ranking de Vendas por Receita</h4>
         <?= GridView::widget([
           'dataProvider' => $dataProviderValor,
           'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',

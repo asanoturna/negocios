@@ -161,7 +161,7 @@ $('#{$productId}').on('change', function () {
     }else if (id == 39){ //Redecard
         var min = 10;
         var max = 10;
-    }else if (id == 38){ //Sipag
+    }else if (id == 40){ //Sipag
         var min = 10;
         var max = 10;
     }
@@ -192,7 +192,7 @@ $this->registerJs($js);
         ]);
         ?>
         
-        <?= $form->field($model, 'quantity')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'quantity')->textInput(['value' => 1,'maxlength' => true]) ?>
         <?php //echo $form->field($model, 'companys_revenue', ['inputOptions' => ['value' => 5, 'class' => 'form-control']])->textInput(['readonly' => true]) ?>
 </div>
 </div>
