@@ -96,3 +96,8 @@ a.desc:after {
     max-width: 22px;
     max-height: 22px;  
 }
+.header {
+    color: #008080;
+    border-bottom: 1px solid;
+    margin-bottom: 20px;
+}

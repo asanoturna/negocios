@@ -21,13 +21,16 @@ $this->title = 'Produtividade Diária';
 ?>
 <div class="dailyproductivity-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php  echo $this->render('_menu'); ?>
-    <hr/>
+<div class="row">
+  <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
+  <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;"><?php  echo $this->render('_menu'); ?></span></div>
+</div>
+
+<hr/>
 
 <div class="row">	
   <div class="col-xs-2 pull-right">	
-				<?php
+			<?php
                 $array = [
                     ['id' => '01', 'name' => 'Janeiro'],
                     ['id' => '02', 'name' => 'Fevereiro'],
@@ -48,7 +51,7 @@ $this->title = 'Produtividade Diária';
                 }
                 }', View::POS_HEAD);
                echo Html::activeDropDownList($model, 'mounth', ArrayHelper::map($array, 'id', 'name'),['onchange'=>'submit(this.value);','class'=>'form-control']);
-                ?>
+            ?>
     </p>
   </div>
 </div>
