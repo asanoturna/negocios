@@ -26,8 +26,9 @@ AppAsset::register($this);
     NavBar::begin([
         'brandLabel' => '<span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> ' . Yii::$app->params['appname'],
         'brandUrl' => Yii::$app->homeUrl,
+        'innerContainerOptions' => ['class'=>'container-fluid'],
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'navbar-inverse navbar-static-top',
         ],
     ]);
     echo Nav::widget([
@@ -53,14 +54,14 @@ AppAsset::register($this);
     NavBar::end();
     ?>
 
-    <div class="container">
+    <div class="container-fluid">
         <?= $content ?>
     </div>
 </div>
 
 <div style="background-image: url('images/footer.jpg'); height: 29px;"></div>
 <footer class="footer">
-    <div class="container">
+    <div class="container-fluid">
         <p class="pull-center">&copy; <?= Yii::$app->params['company'] ?> <?= date('Y') ?> - <?= Yii::$app->params['appname']?> - <?php echo Html::a('Administração do sistema', ['/admin/administration']);?></p>
     </div>
 </footer>

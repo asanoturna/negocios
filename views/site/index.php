@@ -15,7 +15,7 @@ $this->title = Yii::$app->params['appname'];
 
     <div class="row">
     
-    <div class="col-sm-3">
+    <div class="col-sm-2">
     <div class="panel panel-primary">
 	  <div class="panel-heading"><b>Módulos</b></div>
 	  <div class="panel-body">
@@ -23,7 +23,7 @@ $this->title = Yii::$app->params['appname'];
 	  </div>
 	</div>
     </div>
-    <div class="col-sm-9">
+    <div class="col-sm-10">
       <div class="panel panel-primary">
       <div class="panel-heading"><b>Top 3 Produtividade Diária - Todos os Produtos</b></div>
       <div class="panel-body">
