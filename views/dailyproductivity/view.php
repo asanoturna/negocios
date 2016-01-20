@@ -7,9 +7,12 @@ $this->title = 'Produtividade Diária';
 ?>
 <div class="dailyproductivity-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php  echo $this->render('_menu'); ?>
-    <hr/>
+<div class="row">
+  <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
+  <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;"><?php  echo $this->render('_menu'); ?></span></div>
+</div>
+
+<hr/>
 
     <?php foreach (Yii::$app->session->getAllFlashes() as $key=>$message):?>
         <?php $alertClass = substr($key,strpos($key,'-')+1); ?>
@@ -22,6 +25,7 @@ $this->title = 'Produtividade Diária';
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
+            'id',
             [ 
                 'label' => 'Receita da Cooperativa',
                 'format' => 'raw',
