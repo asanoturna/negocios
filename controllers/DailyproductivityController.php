@@ -121,12 +121,12 @@ class DailyproductivityController extends Controller
         $dataProviderValor = new SqlDataProvider([
             'sql' => "SELECT shortname as sigla, fullname as local,
                 SUM(IF(daily_productivity.daily_productivity_status_id=1, companys_revenue, 0)) as unconfirmed,
-                SUM(IF(daily_productivity.daily_productivity_status_id=2, companys_revenue, 0)) as confirmed,
+                SUM(IF(daily_productivity.daily_productivity_status_id=2, companys_revenue, 0)) as confirmed
                     FROM daily_productivity
                     INNER JOIN location ON daily_productivity.location_id = location.id
                     WHERE product_id LIKE $product
                     GROUP BY location_id
-                    ORDER BY sum(companys_revenue) DESC",
+                    ORDER BY confirmed DESC",
             'totalCount' => 50,
             'sort' =>false,
             'key'  => 'local',
@@ -138,12 +138,12 @@ class DailyproductivityController extends Controller
         $dataProviderQtde = new SqlDataProvider([
             'sql' => "SELECT shortname as sigla, fullname as local,
                 SUM(IF(daily_productivity.daily_productivity_status_id=1, quantity, 0)) as unconfirmed,
-                SUM(IF(daily_productivity.daily_productivity_status_id=2, quantity, 0)) as confirmed,            
+                SUM(IF(daily_productivity.daily_productivity_status_id=2, quantity, 0)) as confirmed            
                     FROM daily_productivity
                     INNER JOIN location ON daily_productivity.location_id = location.id
                     WHERE product_id LIKE $product
                     GROUP BY location_id
-                    ORDER BY sum(quantity) DESC",
+                    ORDER BY confirmed DESC",
             'totalCount' => 30,
             'sort' =>false,
             'key'  => 'local',
@@ -178,7 +178,7 @@ class DailyproductivityController extends Controller
         FROM
             daily_productivity AS t1
         LEFT JOIN product AS t2 ON t1.product_id = t2.id
-        WHERE MONTH(date) = $mounth AND daily_productivity_status_id = 99
+        WHERE MONTH(date) = $mounth AND daily_productivity_status_id = 2
         GROUP BY
             p");
         $overview = $command->queryAll();

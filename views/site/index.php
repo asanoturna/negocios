@@ -32,7 +32,7 @@ $this->title = Yii::$app->params['appname'];
             'sql' => "SELECT avatar, full_name as seller, sum(companys_revenue) as total
                     FROM daily_productivity
                     INNER JOIN `profile` ON daily_productivity.seller_id = `profile`.user_id
-                    WHERE daily_productivity_status_id = 99 
+                    WHERE daily_productivity_status_id = 2 
                     GROUP BY seller_id
                     ORDER BY sum(companys_revenue) DESC",
             'totalCount' => 3,
@@ -46,7 +46,7 @@ $this->title = Yii::$app->params['appname'];
             'sql' => "SELECT avatar, full_name as seller, sum(quantity) as total
                     FROM daily_productivity
                     INNER JOIN `profile` ON daily_productivity.seller_id = `profile`.user_id
-                    WHERE daily_productivity_status_id = 99 
+                    WHERE daily_productivity_status_id = 2 
                     GROUP BY seller_id
                     ORDER BY sum(quantity) DESC",
             'totalCount' => 3,

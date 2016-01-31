@@ -45,7 +45,7 @@ $this->title = 'Produtividade Diária';
           'dataProvider' => $dataProviderValor,
           'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
           'summary'      =>  '',
-          'showHeader'   => false,        
+          'showHeader'   => true,        
           'tableOptions' => ['class'=>'table table-striped table-hover '],
           'columns' => [   
                 // [
@@ -58,6 +58,7 @@ $this->title = 'Produtividade Diária';
                 // ],   
                 [
                     'attribute' => 'sigla',
+                    'header' => '',
                     'format' => 'html',
                     'value' => function ($data) {                      
                         return $data["sigla"];
@@ -66,6 +67,7 @@ $this->title = 'Produtividade Diária';
                 ],                                 
                 [
                     'attribute' => 'local',
+                    'header' => '',
                     'format' => 'raw',
                     'value' => function ($data) {                      
                         return $data["local"];
@@ -74,19 +76,23 @@ $this->title = 'Produtividade Diária';
                 ],  
                 [
                     'attribute' => 'confirmed',
+                    'header' => 'Efetivado',
                     'format' => 'raw',
                     'value' => function ($data) {                      
-                        return "<b>R$ ".$data["confirmed"]."</b>";
+                        return "<b class=\"text-success\">R$ ".$data["confirmed"]."</b>";
                     },
-                    'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;font-size: 16px'],
+                    'headerOptions' => ['class' => 'text-success','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                    'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
                 ],    
                 [
                     'attribute' => 'unconfirmed',
+                    'header' => 'Pendente',
                     'format' => 'raw',
                     'value' => function ($data) {                      
-                        return "<b>R$ ".$data["unconfirmed"]."</b>";
+                        return "<b class=\"text-danger\">R$ ".$data["unconfirmed"]."</b>";
                     },
-                    'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;font-size: 16px'],
+                    'headerOptions' => ['class' => 'text-danger','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                    'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
                 ],                                     
 
             ],
@@ -102,7 +108,7 @@ $this->title = 'Produtividade Diária';
           'dataProvider' => $dataProviderQtde,
           'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
           'summary'      =>  '',
-          'showHeader'   => false,        
+          'showHeader'   => true,        
           'tableOptions' => ['class'=>'table table-striped table-hover '],
           'columns' => [   
                 // [
@@ -115,6 +121,7 @@ $this->title = 'Produtividade Diária';
                 // ],   
                 [
                     'attribute' => 'sigla',
+                    'header' => '',
                     'format' => 'html',
                     'value' => function ($data) {                      
                         return $data["sigla"];
@@ -123,6 +130,7 @@ $this->title = 'Produtividade Diária';
                 ],                                 
                 [
                     'attribute' => 'local',
+                    'header' => '',
                     'format' => 'raw',
                     'value' => function ($data) {                      
                         return $data["local"];
@@ -131,19 +139,23 @@ $this->title = 'Produtividade Diária';
                 ],  
                 [
                     'attribute' => 'confirmed',
+                    'header' => 'Efetivado',                    
                     'format' => 'raw',
                     'value' => function ($data) {                      
-                        return "<b>R$ ".$data["confirmed"]."</b>";
+                        return "<b class=\"text-success\">".$data["confirmed"]."</b>";
                     },
-                    'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;font-size: 16px'],
+                    'headerOptions' => ['class' => 'text-success','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                    'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
                 ],    
                 [
                     'attribute' => 'unconfirmed',
+                    'header' => 'Pendente',                    
                     'format' => 'raw',
                     'value' => function ($data) {                      
-                        return "<b>R$ ".$data["unconfirmed"]."</b>";
+                        return "<b class=\"text-danger\">".$data["unconfirmed"]."</b>";
                     },
-                    'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;font-size: 16px'],
+                    'headerOptions' => ['class' => 'text-danger','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                    'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
                 ],                       
 
             ],
