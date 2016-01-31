@@ -35,7 +35,7 @@ $this->title = 'Produtividade Diária';
                 'label' => 'Situação',
                 'format' => 'raw',
                 //'value' => $model->dailyProductivityStatus->name,
-                'value' => $model->daily_productivity_status_id === 0 ? "<span class=\"label label-warning\">".$model->dailyProductivityStatus->name."</span>" : "<span class=\"label label-success\">".$model->dailyProductivityStatus->name."</span>",
+                'value' => $model->daily_productivity_status_id === 1 ? "<span class=\"label label-warning\">".$model->dailyProductivityStatus->name."</span>" : "<span class=\"label label-success\">".$model->dailyProductivityStatus->name."</span>",
             ],                  
             [ 
                 'label' => 'Data',

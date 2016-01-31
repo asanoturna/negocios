@@ -9,7 +9,7 @@ $this->title = Yii::$app->params['appname'] . ' > Autenticação';
 	<div class="container">
 		<div class="row">
 		<div class="col-sm-6 col-md-4 col-md-offset-4">
-		<h1 class="text-center login-title">Autenticação</h1>
+		<h1 class="text-center login-title"><span class="glyphicon glyphicon-lock pull-left" aria-hidden="true"></span> Autenticação</h1>
 		<hr/>
 		<div class="account-wall">
 			<?php $form = ActiveForm::begin([

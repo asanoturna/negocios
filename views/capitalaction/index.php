@@ -3,16 +3,15 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
-/* @var $this yii\web\View */
-/* @var $searchModel app\models\CapitalactionSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
-
-$this->title = 'Capitalactions';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Ação Capital';
 ?>
 <div class="capitalaction-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+      <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
+      <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;"><?php  echo $this->render('_menu'); ?></span></div>
+    </div>
+    <hr/>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
@@ -22,9 +21,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'tableOptions' => ['class'=>'table table-striped table-bordered table-hover'],
+        'emptyText'    => '</br><p class="text-info">Nenhum registro encontrado!</p>',          
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
             'id',
             'name',
             'proposed',

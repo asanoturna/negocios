@@ -2,17 +2,15 @@
 
 use yii\helpers\Html;
 
-
-/* @var $this yii\web\View */
-/* @var $model app\models\Capitalaction */
-
-$this->title = 'Create Capitalaction';
-$this->params['breadcrumbs'][] = ['label' => 'Capitalactions', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Nova Ação Capital';
 ?>
 <div class="capitalaction-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+      <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
+      <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;"><?php  echo $this->render('_menu'); ?></span></div>
+    </div>
+    <hr/>
 
     <?= $this->render('_form', [
         'model' => $model,

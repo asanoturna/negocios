@@ -27,7 +27,7 @@
                         //'options' => ['class' => 'disabled'],
                     ],    
                     [
-                        'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Relatórios TCF', //grafico pizza
+                        'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Relatórios Olap/TCF', //grafico pizza
                         //'url'     => ['/dailyproductivity/create'],
                         'options' => ['class' => 'disabled'],
                     ],                                                                

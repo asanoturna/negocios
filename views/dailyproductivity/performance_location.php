@@ -70,16 +70,24 @@ $this->title = 'Produtividade Diária';
                     'value' => function ($data) {                      
                         return $data["local"];
                     },
-                    'contentOptions'=>['style'=>'width: 60%;text-align:left;vertical-align: middle;'],
+                    'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;'],
                 ],  
                 [
-                    'attribute' => 'total',
+                    'attribute' => 'confirmed',
                     'format' => 'raw',
                     'value' => function ($data) {                      
-                        return "<b>R$ ".$data["total"]."</b>";
+                        return "<b>R$ ".$data["confirmed"]."</b>";
                     },
                     'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;font-size: 16px'],
-                ],                        
+                ],    
+                [
+                    'attribute' => 'unconfirmed',
+                    'format' => 'raw',
+                    'value' => function ($data) {                      
+                        return "<b>R$ ".$data["unconfirmed"]."</b>";
+                    },
+                    'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;font-size: 16px'],
+                ],                                     
 
             ],
         ]); ?>
@@ -122,13 +130,21 @@ $this->title = 'Produtividade Diária';
                     'contentOptions'=>['style'=>'width: 60%;text-align:left;vertical-align: middle;'],
                 ],  
                 [
-                    'attribute' => 'total',
+                    'attribute' => 'confirmed',
                     'format' => 'raw',
                     'value' => function ($data) {                      
-                        return "<b>".$data["total"]."</b>";
+                        return "<b>R$ ".$data["confirmed"]."</b>";
                     },
                     'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;font-size: 16px'],
-                ],                        
+                ],    
+                [
+                    'attribute' => 'unconfirmed',
+                    'format' => 'raw',
+                    'value' => function ($data) {                      
+                        return "<b>R$ ".$data["unconfirmed"]."</b>";
+                    },
+                    'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;font-size: 16px'],
+                ],                       
 
             ],
         ]); ?>

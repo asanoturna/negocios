@@ -80,7 +80,7 @@ $this->title = 'Gestão Produtividade Diária';
                 'format' => 'raw',
                 'enableSorting' => true,
                 'value' => function ($model) {                      
-                        return $model->daily_productivity_status_id === 0 ? "<span class=\"label label-warning\">".$model->dailyProductivityStatus->name."</span>" : "<span class=\"label label-success\">".$model->dailyProductivityStatus->name."</span>";
+                        return $model->daily_productivity_status_id === 1 ? "<span class=\"label label-warning\">".$model->dailyProductivityStatus->name."</span>" : "<span class=\"label label-success\">".$model->dailyProductivityStatus->name."</span>";
                         },
                 'filter' => ArrayHelper::map(Dailyproductivitystatus::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
                 'contentOptions'=>['style'=>'width: 10%;text-align:center'],

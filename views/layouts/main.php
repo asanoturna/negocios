@@ -62,7 +62,7 @@ AppAsset::register($this);
 <div style="background-image: url('images/footer.jpg'); height: 29px;"></div>
 <footer class="footer">
     <div class="container-fluid">
-        <p class="pull-center">&copy; <?= Yii::$app->params['company'] ?> <?= date('Y') ?> - <?= Yii::$app->params['appname']?> - <?php echo Html::a('Administração do sistema', ['/admin/administration']);?></p>
+        <p class="pull-center">&copy; <?= Yii::$app->params['company'] ?> <?= date('Y') ?> - <?= Yii::$app->params['appname']?> - Administração do sistema</p>
     </div>
 </footer>
 

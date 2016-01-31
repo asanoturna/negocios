@@ -78,7 +78,7 @@ class DailyproductivityController extends Controller
             'sql' => "SELECT avatar, full_name as seller, sum(companys_revenue) as total
                     FROM daily_productivity
                     INNER JOIN `profile` ON daily_productivity.seller_id = `profile`.user_id
-                    WHERE daily_productivity_status_id = 99 AND product_id LIKE $product
+                    WHERE daily_productivity_status_id = 2 AND product_id LIKE $product
                     GROUP BY seller_id
                     ORDER BY sum(companys_revenue) DESC",
             'totalCount' => 300,
@@ -93,7 +93,7 @@ class DailyproductivityController extends Controller
             'sql' => "SELECT avatar, full_name as seller, sum(quantity) as total
                     FROM daily_productivity
                     INNER JOIN `profile` ON daily_productivity.seller_id = `profile`.user_id
-                    WHERE daily_productivity_status_id = 99 AND product_id LIKE $product
+                    WHERE daily_productivity_status_id = 2 AND product_id LIKE $product
                     GROUP BY seller_id
                     ORDER BY sum(quantity) DESC",
             'totalCount' => 300,
@@ -119,10 +119,12 @@ class DailyproductivityController extends Controller
         $product = isset($url) ? $url : '"%"';
 
         $dataProviderValor = new SqlDataProvider([
-            'sql' => "SELECT shortname as sigla, fullname as local, sum(companys_revenue) as total
+            'sql' => "SELECT shortname as sigla, fullname as local,
+                SUM(IF(daily_productivity.daily_productivity_status_id=1, companys_revenue, 0)) as unconfirmed,
+                SUM(IF(daily_productivity.daily_productivity_status_id=2, companys_revenue, 0)) as confirmed,
                     FROM daily_productivity
                     INNER JOIN location ON daily_productivity.location_id = location.id
-                    WHERE daily_productivity_status_id = 99 AND product_id LIKE $product
+                    WHERE product_id LIKE $product
                     GROUP BY location_id
                     ORDER BY sum(companys_revenue) DESC",
             'totalCount' => 50,
@@ -134,10 +136,12 @@ class DailyproductivityController extends Controller
         ]);
 
         $dataProviderQtde = new SqlDataProvider([
-            'sql' => "SELECT shortname as sigla, fullname as local, sum(quantity) as total
+            'sql' => "SELECT shortname as sigla, fullname as local,
+                SUM(IF(daily_productivity.daily_productivity_status_id=1, quantity, 0)) as unconfirmed,
+                SUM(IF(daily_productivity.daily_productivity_status_id=2, quantity, 0)) as confirmed,            
                     FROM daily_productivity
                     INNER JOIN location ON daily_productivity.location_id = location.id
-                    WHERE daily_productivity_status_id = 99 AND product_id LIKE $product
+                    WHERE product_id LIKE $product
                     GROUP BY location_id
                     ORDER BY sum(quantity) DESC",
             'totalCount' => 30,
@@ -208,7 +212,7 @@ class DailyproductivityController extends Controller
     {
         $model = new Dailyproductivity();
 
-        $model->daily_productivity_status_id = 0;
+        $model->daily_productivity_status_id = 1;
         $model->user_id = Yii::$app->user->id;
         $model->created = date('Y-m-d');
         $model->updated = date('Y-m-d');
