@@ -61,6 +61,7 @@ $config = [
             ],
             // set custom module properties here ...
         ],
+        'redactor' => 'yii\redactor\RedactorModule',
     ],    
     'params' => $params,
 ];

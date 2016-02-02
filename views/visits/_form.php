@@ -11,19 +11,19 @@ use yii\widgets\ActiveForm;
         'id' => 'visitsform',
         'options' => ['class' => 'form-horizontal'],
         'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-4\">{input}</div>\n<div class=\"col-lg-4\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-4 control-label'],
+            'template' => "{label}\n<div class=\"col-sm-5\">{input}</div>\n<div class=\"col-sm-3\">{error}</div>",
+            'labelOptions' => ['class' => 'col-sm-4 control-label'],
         ],
     ]); ?>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-5">
         <!-- LEFT SIDE -->
         <?= $form->field($model, 'date')->widget('trntv\yii\datetime\DateTimeWidget',
             [
                 'phpDatetimeFormat' => 'yyyy-MM-dd',
                 'clientOptions' => [
-                    'minDate' => new \yii\web\JsExpression('new Date("2015-01-01")'),
+                    'minDate' => new \yii\web\JsExpression('new Date("2016-01-01")'),
                     'allowInputToggle' => true,
                     'widgetPositioning' => [
                        'horizontal' => 'auto',
@@ -49,14 +49,22 @@ use yii\widgets\ActiveForm;
 
         <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
 
+        </div>
+
+        <div class="col-md-7">
+        <!-- RIGHT SITE -->
+
+        <?= $form->field($model, 'observation')->widget(\yii\redactor\widgets\Redactor::className(), [
+        'clientOptions' => [
+            'minHeight' => 150,
+            'lang' => 'pt_br',
+            'buttons'=> ['bold', 'italic', 'deleted','unorderedlist', 'orderedlist', 'link', 'alignment'],
+        ]
+    ])?>  
+
         <?= $form->field($model, 'value')->textInput(['maxlength' => true]) ?>
 
-        <?= $form->field($model, 'num_proposal')->textInput() ?>        
-
-        </div>
-        <div class="col-md-6">
-        <!-- RIGHT SITE -->
-        <?= $form->field($model, 'observation')->textarea(['rows' => 8]) ?>        
+        <?= $form->field($model, 'num_proposal')->textInput() ?>             
 
         <?= $form->field($model, 'attachment')->textInput(['maxlength' => true]) ?>
 
