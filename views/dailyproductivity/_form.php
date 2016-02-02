@@ -76,7 +76,6 @@ use yii\helpers\Url;
 $productId = Html::getInputId($model, 'product_id');
 $comissionId = Html::getInputId($model, 'commission_percent');
 $quantityId = Html::getInputId($model, 'quantity');
-$quantityId = Html::getInputId($model, 'quantity');
 $js = <<<JS
 $('#{$productId}').on('change', function () {
     var id = $(this).val();

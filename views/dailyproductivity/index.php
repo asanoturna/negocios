@@ -53,7 +53,7 @@ $this->title = 'Produtividade Diária';
              'attribute' => 'date',
              'enableSorting' => true,
              'contentOptions'=>['style'=>'width: 4%;text-align:center'],
-            'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
              'format' => ['date', 'php:d/m/Y'],
             ],            
             [
