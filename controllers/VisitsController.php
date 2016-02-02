@@ -9,9 +9,6 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-/**
- * VisitsController implements the CRUD actions for Visits model.
- */
 class VisitsController extends Controller
 {
     public function behaviors()
@@ -26,10 +23,6 @@ class VisitsController extends Controller
         ];
     }
 
-    /**
-     * Lists all Visits models.
-     * @return mixed
-     */
     public function actionIndex()
     {
         $searchModel = new VisitsSearch();
@@ -41,11 +34,6 @@ class VisitsController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single Visits model.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionView($id)
     {
         return $this->render('view', [
@@ -53,14 +41,15 @@ class VisitsController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new Visits model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate()
     {
         $model = new Visits();
+
+        $model->visits_status_id = 1;
+        $model->user_id = Yii::$app->user->id;
+        $model->ip = '127.0.0.1';
+        $model->created = date('Y-m-d');
+        $model->updated = date('Y-m-d');        
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -71,12 +60,6 @@ class VisitsController extends Controller
         }
     }
 
-    /**
-     * Updates an existing Visits model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
@@ -90,12 +73,6 @@ class VisitsController extends Controller
         }
     }
 
-    /**
-     * Deletes an existing Visits model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
@@ -103,13 +80,6 @@ class VisitsController extends Controller
         return $this->redirect(['index']);
     }
 
-    /**
-     * Finds the Visits model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Visits the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     protected function findModel($id)
     {
         if (($model = Visits::findOne($id)) !== null) {

@@ -15,7 +15,7 @@ class Visits extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['date', 'responsible', 'company_person', 'visits_finality_id', 'visits_status_id', 'person_id', 'location_id', 'user_id'], 'required'],
+            [['date', 'responsible', 'company_person', 'visits_finality_id', 'visits_status_id', 'person_id', 'location_id', 'user_id'], 'required', 'message' => 'Campo Obrigatório'],
             [['date', 'created', 'updated'], 'safe'],
             [['value'], 'number'],
             [['num_proposal', 'visits_finality_id', 'visits_status_id', 'person_id', 'location_id', 'user_id'], 'integer'],
@@ -38,11 +38,11 @@ class Visits extends \yii\db\ActiveRecord
             'phone' => 'Telefone',
             'value' => 'Valor',
             'num_proposal' => 'Nº Proposta',
-            'observation' => 'Observação',
+            'observation' => 'Parecer',
             'created' => 'Criado em',
             'updated' => 'Alterado em',
             'ip' => 'IP',
-            'attachment' => 'Anexo',
+            'attachment' => 'Anexo (Formulário Fe211)',
             'localization_map' => 'Localização No Mapa',
             'visits_finality_id' => 'Finalidade ',
             'visits_status_id' => 'Status',

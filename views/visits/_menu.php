@@ -10,17 +10,17 @@
                         'label' => '<span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Desempenho',
                         'items' => [
                             [
-                                'label' => 'Ranking por Usuário', 
+                                'label' => 'Relatório por Usuário', 
                                 'url' => ['/dailyproductivity/performance_user'],
                             ],
                              //'<li class="divider"></li>',
                              //'<li class="dropdown-header">Dropdown Header</li>',
                             [
-                                'label' => 'Ranking por Agência',
+                                'label' => 'Relatório por Agência',
                                 'url' => ['/dailyproductivity/performance_location'],
                             ],
                             [
-                                'label' => 'Visão Geral dos Produtos',
+                                'label' => 'Relatório por Finalidade',
                                 'url' => ['/dailyproductivity/performance_overview'],
                             ],                            
                         ],
