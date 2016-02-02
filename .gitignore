@@ -27,7 +27,7 @@ phpunit.phar
 /phpunit.xml
 
 # development support files
-/dev
+# /dev
 
 # attachments and assets
 /web/attachment/*
