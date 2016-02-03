@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use app\models\Location;
 
 ?>
 
@@ -33,7 +35,7 @@ use yii\widgets\ActiveForm;
             ]
         ) ?>
 
-        <?= $form->field($model, 'location_id')->textInput() ?>
+        <?= $form->field($model, 'location_id')->dropDownList(ArrayHelper::map(Location::find()->where(['is_active' => 1])->orderBy("shortname ASC")->all(), 'id', 'shortname'),['prompt'=>'--'])  ?>    
 
         <?= $form->field($model, 'visits_finality_id')->textInput() ?>
 
@@ -43,11 +45,11 @@ use yii\widgets\ActiveForm;
 
         <?= $form->field($model, 'responsible')->textInput(['maxlength' => true]) ?>
 
-        <?= $form->field($model, 'contact')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'contact')->textInput(['maxlength' => 50,'style'=>'width:100px']) ?>
 
-        <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'email')->textInput(['maxlength' => 100,'style'=>'width:100px']) ?>
 
-        <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'phone')->textInput(['maxlength' => 15,'style'=>'width:100px']) ?>
 
         </div>
 
@@ -62,9 +64,9 @@ use yii\widgets\ActiveForm;
         ]
     ])?>  
 
-        <?= $form->field($model, 'value')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'value')->textInput(['maxlength' => true,'style'=>'width:80px']) ?>
 
-        <?= $form->field($model, 'num_proposal')->textInput() ?>             
+        <?= $form->field($model, 'num_proposal')->textInput(['maxlength' => true,'style'=>'width:80px']) ?>             
 
         <?= $form->field($model, 'attachment')->textInput(['maxlength' => true]) ?>
 
