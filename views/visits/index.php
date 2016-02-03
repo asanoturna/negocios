@@ -31,7 +31,7 @@ $this->title = 'Visitas dos Gerentes';
             'attribute' => 'id',
             'contentOptions'=>['style'=>'width: 5%;text-align:center'],
             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
-            ],            
+            ],
             [
             'attribute' => 'user_id',
             'format' => 'raw',
@@ -42,7 +42,7 @@ $this->title = 'Visitas dos Gerentes';
             'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
             'contentOptions'=>['style'=>'width: 10%;text-align:left'],
             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
-            ], 
+            ],
             [
             'attribute' => 'location_id',
             'format' => 'raw',
@@ -94,8 +94,8 @@ $this->title = 'Visitas dos Gerentes';
             'enableSorting' => true,
             
             'value' => function ($model) {                      
-                    return $model->visitsStatus->name;
-                    },                 
+                  return '<span style="color:'.$model->visitsStatus->hexcolor.'">'.$model->visitsStatus->name.'</span>';
+                  },                                      
             'filter' => ArrayHelper::map(VisitsStatus::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
             'contentOptions'=>['style'=>'width: 10%;text-align:center'],
             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
