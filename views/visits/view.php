@@ -24,6 +24,11 @@ $this->title = "Detalhes da visita #" . $model->id;
         ]) ?>
     </p>
 
+    <div class="row">
+      <div class="col-md-6">.col-md-6</div>
+      <div class="col-md-6">.col-md-6</div>
+    </div>
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
