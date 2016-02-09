@@ -43,9 +43,9 @@ class Visitsstatus extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'hexcolor' => 'Hexcolor',
-            'about' => 'About',
+            'name' => 'Situação',
+            'hexcolor' => 'Cor',
+            'about' => 'Sobre a Situação',
         ];
     }
 

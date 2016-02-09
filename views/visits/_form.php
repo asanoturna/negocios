@@ -4,6 +4,9 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\Location;
+use app\models\Person;
+use app\models\User;
+use yii\widgets\MaskedInput;
 
 ?>
 
@@ -41,7 +44,10 @@ use app\models\Location;
 
         <?= $form->field($model, 'company_person')->textInput(['maxlength' => true]) ?>
 
-        <?= $form->field($model, 'person_id')->textInput() ?>
+        <?= $form->field($model, 'person_id')->radioList(
+        (ArrayHelper::map(Person::find()->orderBy("name ASC")->all(), 'id', 'name'))
+            , ['itemOptions' => ['class' =>'radio-inline','labelOptions'=>array('style'=>'padding:4px;')]])->label('Pessoa');
+        ?>
 
         <?= $form->field($model, 'responsible')->textInput(['maxlength' => true]) ?>
 

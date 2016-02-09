@@ -42,7 +42,7 @@ class Visits extends \yii\db\ActiveRecord
             'created' => 'Criado em',
             'updated' => 'Alterado em',
             'ip' => 'IP',
-            'attachment' => 'Anexo (Formulário Fe211)',
+            'attachment' => 'Anexo (FE211)',
             'localization_map' => 'Localização No Mapa',
             'visits_finality_id' => 'Finalidade ',
             'visits_status_id' => 'Status',

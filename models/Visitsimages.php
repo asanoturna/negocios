@@ -42,8 +42,8 @@ class Visitsimages extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'business_visits_id' => 'Business Visits ID',
+            'name' => 'Imagem',
+            'business_visits_id' => 'Nº da Visita',
         ];
     }
 

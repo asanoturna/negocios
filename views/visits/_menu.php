@@ -7,20 +7,20 @@
                 'encodeLabels' => false,
                 'items' => [ 
                     [
-                        'label' => '<span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Desempenho',
+                        'label' => '<span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Relatórios',
                         'items' => [
                             [
-                                'label' => 'Relatório por Usuário', 
+                                'label' => 'Por Usuário', 
                                 'url' => ['/dailyproductivity/performance_user'],
                             ],
                              //'<li class="divider"></li>',
                              //'<li class="dropdown-header">Dropdown Header</li>',
                             [
-                                'label' => 'Relatório por Agência',
+                                'label' => 'Por Agência',
                                 'url' => ['/dailyproductivity/performance_location'],
                             ],
                             [
-                                'label' => 'Relatório por Finalidade',
+                                'label' => 'Por Finalidade',
                                 'url' => ['/dailyproductivity/performance_overview'],
                             ],                            
                         ],
