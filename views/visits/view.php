@@ -73,7 +73,12 @@ $this->title = "Detalhes da visita #" . $model->id;
                     'person.name', 
                     'num_proposal',
                     'attachment',
-                    'visitsStatus.name',                    
+                    //'visitsStatus.name', 
+                    [ 
+                    'label' => 'Situação',
+                    'format' => 'raw',
+                    'value' => "<strong style=\"color:".$model->visitsStatus->hexcolor."\">" . $model->visitsStatus->name . "</strong>",
+                    ],                                         
                 ],
             ]) ?>
         </div>

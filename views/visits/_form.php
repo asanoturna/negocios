@@ -5,6 +5,8 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\Location;
 use app\models\Person;
+use app\models\Visitsfinality;
+use app\models\Visitsstatus;
 use app\models\User;
 use yii\widgets\MaskedInput;
 
@@ -40,7 +42,7 @@ use yii\widgets\MaskedInput;
 
         <?= $form->field($model, 'location_id')->dropDownList(ArrayHelper::map(Location::find()->where(['is_active' => 1])->orderBy("shortname ASC")->all(), 'id', 'shortname'),['prompt'=>'--'])  ?>    
 
-        <?= $form->field($model, 'visits_finality_id')->textInput() ?>
+        <?= $form->field($model, 'visits_finality_id')->dropDownList(ArrayHelper::map(Visitsfinality::find()->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?>    
 
         <?= $form->field($model, 'company_person')->textInput(['maxlength' => true]) ?>
 
@@ -74,7 +76,7 @@ use yii\widgets\MaskedInput;
 
         <?= $form->field($model, 'num_proposal')->textInput(['maxlength' => true,'style'=>'width:80px']) ?>             
 
-        <?= $form->field($model, 'attachment')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'attachment')->fileInput() ?>
 
         <?= $form->field($model, 'localization_map')->textInput(['maxlength' => true]) ?>
 
