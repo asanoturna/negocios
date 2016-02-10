@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6f79c66814a3ce6d13675c848f221798",
-    "content-hash": "a544307837ffd92d87bac9b6270b5f93",
+    "hash": "3fae6b465efbb4fd5894025e162fb68d",
+    "content-hash": "a9f187542a6dc1cdf37ddfa520c0d2b7",
     "packages": [
         {
             "name": "2amigos/yii2-google-maps-library",
@@ -1038,6 +1038,46 @@
             "time": "2015-09-28 15:02:46"
         },
         {
+            "name": "tugmaks/yii2-google-maps",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tugmaks/yii2-google-maps.git",
+                "reference": "91360c7373af7d8a46e11db6c83e5aa857263899"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tugmaks/yii2-google-maps/zipball/91360c7373af7d8a46e11db6c83e5aa857263899",
+                "reference": "91360c7373af7d8a46e11db6c83e5aa857263899",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "tugmaks\\GoogleMaps\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maxim Tugaev",
+                    "email": "tugmaks@yandex.ru"
+                }
+            ],
+            "description": "Google Maps Yii2 wrapper",
+            "keywords": [
+                "extension",
+                "yii2"
+            ],
+            "time": "2015-10-07 06:24:15"
+        },
+        {
             "name": "yiidoc/yii2-redactor",
             "version": "2.0.1",
             "source": {
@@ -1676,7 +1716,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "miloschuman/yii2-highcharts-widget": 20,
-        "kartik-v/yii2-widget-datepicker": 20
+        "kartik-v/yii2-widget-datepicker": 20,
+        "tugmaks/yii2-google-maps": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
