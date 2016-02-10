@@ -3,13 +3,24 @@
 $params = require(__DIR__ . '/params.php');
 
 $config = [
-    'id' => 'basic',
+    'id' => 'negocios',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     //'defaultRoute' => 'dailyproductivity/create',
     'language' => 'pt-BR',
     'sourceLanguage' => 'en-US',    
     'components' => [
+        'assetManager' => [
+            'bundles' => [
+                'dosamigos\google\maps\MapAsset' => [
+                    'options' => [
+                        'key' => 'AIzaSyDu0tafuRLYW1BW7OgMe7CuFIDAwCXS4A0',
+                        'language' => 'id',
+                        'version' => '3.1.18'
+                    ]
+                ]
+            ]
+        ],    
         'request' => [
             'cookieValidationKey' => 'pZimOwEEKa95a8BMJx-r8GftAYE0iqf_',
         ],

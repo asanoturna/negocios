@@ -11,18 +11,17 @@
                         'items' => [
                             [
                                 'label' => 'Por Usuário', 
-                                'url' => ['/dailyproductivity/performance_user'],
+                                'url' => ['/visits/report_user'],
                             ],
-                             //'<li class="divider"></li>',
-                             //'<li class="dropdown-header">Dropdown Header</li>',
+
                             [
                                 'label' => 'Por Agência',
-                                'url' => ['/dailyproductivity/performance_location'],
+                                'url' => ['/visits/report_location'],
                             ],
-                            [
-                                'label' => 'Por Finalidade',
-                                'url' => ['/dailyproductivity/performance_overview'],
-                            ],                            
+                            // [
+                            //     'label' => 'Por Finalidade',
+                            //     'url' => ['/visits/report_overview'],
+                            // ],                            
                         ],
                     ],   
                     [

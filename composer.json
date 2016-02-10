@@ -22,7 +22,9 @@
         "kartik-v/yii2-slider": "*",
         "kartik-v/yii2-widget-datepicker": "@dev",
         "kartik-v/yii2-field-range": "*",
-        "yiidoc/yii2-redactor": "*"
+        "yiidoc/yii2-redactor": "*",
+        "2amigos/yii2-google-maps-library": "*",
+        "tugmaks/yii2-google-maps": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

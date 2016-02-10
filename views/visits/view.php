@@ -17,8 +17,8 @@ $this->title = "Detalhes da visita #" . $model->id;
         <div class="col-md-6"></div>
         <div class="col-md-6">
             <p class="pull-right">
-                    <?= Html::a('<span class="glyphicon glyphicon-print" aria-hidden="true"></span> Imprimir', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
-                    <?= Html::a('<span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Enviar Fotos', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+                    <?= Html::a('<span class="glyphicon glyphicon-print" aria-hidden="true"></span> Imprimir', '#', ['onclick'=>"myFunction()",'class' => 'btn btn-success']) ?>
+                    <?= Html::a('<span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Enviar Fotos', ['/visitsimages/create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
                     <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
                     <?= Html::a('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Excluir', ['delete', 'id' => $model->id], [
                         'class' => 'btn btn-danger',
@@ -72,8 +72,11 @@ $this->title = "Detalhes da visita #" . $model->id;
                     'visitsFinality.name',
                     'person.name', 
                     'num_proposal',
-                    'attachment',
-                    //'visitsStatus.name', 
+                    [
+                   'attribute'=>'attachment',
+                   'format' => 'raw',
+                   'value' => $model->attachment == null ? "<span class=\"not-set\">(sem anexo)</span>" : '<span class="glyphicon glyphicon-paperclip"></span> '.Html::a('Visualizar Anexo', Yii::$app->request->baseUrl."/attachment/".$model->attachment, ['target' => '_blank']),
+                    ], 
                     [ 
                     'label' => 'Situação',
                     'format' => 'raw',
@@ -90,16 +93,7 @@ $this->title = "Detalhes da visita #" . $model->id;
         <div class="panel panel-primary">
           <div class="panel-heading"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <strong>Parecer do Gerente</strong></div>
           <div class="panel-body">
-            <?= DetailView::widget([
-                'model' => $model,
-                'attributes' => [
-                    [ 
-                    'attribute' => 'observation',
-                    //'label' => '',
-                    'format' => 'html',
-                    ],
-                ],
-            ]) ?>
+            <?php echo $model->observation;?>
           </div>
         </div>
     </div> 
@@ -138,12 +132,14 @@ $this->title = "Detalhes da visita #" . $model->id;
                     [ 
                         'attribute' => 'created',
                         'format' => 'raw',
-                        'value' => date("d/m/Y",  strtotime($model->created))
+                        'value' => Yii::$app->formatter->asDate($model->created, 'long'),
+                        //'value' => date("d/m/Y",  strtotime($model->created))
                     ],           
                     [ 
                         'attribute' => 'updated',
                         'format' => 'raw',
-                        'value' => date("d/m/Y",  strtotime($model->updated))
+                        'value' => Yii::$app->formatter->asDate($model->updated, 'long'),
+                        //'value' => date("d/m/Y",  strtotime($model->updated))
                     ],  
                     [ 
                         'attribute' => 'ip',
@@ -157,6 +153,9 @@ $this->title = "Detalhes da visita #" . $model->id;
         </div>
     </div>  
 
-
-
+<script>
+function myFunction() {
+    window.print();
+}
+</script>
 </div>
