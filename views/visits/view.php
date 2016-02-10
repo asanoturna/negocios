@@ -109,23 +109,28 @@ $this->title = "Detalhes da visita #" . $model->id;
 
     <div class="row container-fluid">
         <div class="panel panel-primary">
-          <div class="panel-heading"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> <strong>Mapa da Localização</strong></div>
+          <div class="panel-heading"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> <strong>Mapa da Localização</strong> (<?php echo $model->localization_map;?>)</div>
           <div class="panel-body">
-            <?php
-            use tugmaks\GoogleMaps\Map;
+                <?php
+            if($model->localization_map == ''){  
+                use tugmaks\GoogleMaps\Map;
 
-            echo Map::widget([
-                'apiKey'=> 'AIzaSyDu0tafuRLYW1BW7OgMe7CuFIDAwCXS4A0',
-                'zoom' => 16,
-                'center'=>'rua belo horizonte 761 centro, governador valadares',
-                'width' => 900,
-                'height' => 400,
-                'mapType' => Map::MAP_TYPE_ROADMAP,
-                'markers' => [
-                    ['position' => 'Hotel Master'],
-                ]
-            ]);
-            ?>
+                echo Map::widget([
+                    'apiKey'=> 'AIzaSyDu0tafuRLYW1BW7OgMe7CuFIDAwCXS4A0',
+                    'zoom' => 16,
+                    'center'=> $model->localization_map,
+                    'width' => 900,
+                    'height' => 400,
+                    'mapType' => Map::MAP_TYPE_ROADMAP,
+                    'markers' => [
+                        ['position' => 'Hotel Master'],
+                    ]
+                ]);
+            }elseif (condition) {
+                echo "Localização não informada";
+            }
+                
+                ?>
           </div>
         </div>
     </div>  
