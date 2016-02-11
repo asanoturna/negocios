@@ -68,7 +68,6 @@ class VisitsController extends Controller
         $model->ip = '127.0.0.1';
         $model->created = date('Y-m-d');
                
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
