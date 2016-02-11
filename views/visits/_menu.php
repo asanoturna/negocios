@@ -10,18 +10,17 @@
                         'label' => '<span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Relatórios',
                         'items' => [
                             [
+                                'label' => 'Geral',
+                                'url' => ['/visits/report_general'],
+                            ],                        
+                            [
                                 'label' => 'Por Usuário', 
                                 'url' => ['/visits/report_user'],
                             ],
-
                             [
                                 'label' => 'Por Agência',
                                 'url' => ['/visits/report_location'],
-                            ],
-                            // [
-                            //     'label' => 'Por Finalidade',
-                            //     'url' => ['/visits/report_overview'],
-                            // ],                            
+                            ],                          
                         ],
                     ],   
                     [

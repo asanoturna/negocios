@@ -8,6 +8,8 @@ use app\models\VisitsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\base\Security;
+use yii\data\SqlDataProvider;
 
 class VisitsController extends Controller
 {
@@ -34,13 +36,67 @@ class VisitsController extends Controller
         ]);
     }
 
+    public function actionReport_general()
+    {
+        $model = new Visits();
+
+        return $this->render('report_general', [
+            'model' => $model,    
+        ]);
+    }
+
     public function actionReport_user()
     {
         $model = new Visits();
 
+        $url = Yii::$app->getRequest()->getQueryParam('user_id');
+        $user_id = isset($url) ? $url : '"%"';
+
+        $commandstats = Yii::$app->db->createCommand(
+            "SELECT COUNT(v.id) as total_s, s.`name` as stats
+            FROM business_visits v
+            INNER JOIN visits_status s
+            ON v.visits_status_id = s.id
+            WHERE v.user_id LIKE $user_id
+            GROUP BY stats
+            ORDER BY total_s DESC"
+                );
+        $report_stats = $commandstats->queryAll();
+
+        $total_s = array();
+        $stats = array();
+ 
+        for ($i = 0; $i < sizeof($report_stats); $i++) {
+           $stats[] = $report_stats[$i]["stats"];
+           $total_s[] = (int) $report_stats[$i]["total_s"];
+        }
+
+        $commandfinality = Yii::$app->db->createCommand(
+            "SELECT COUNT(v.id) as total_f, f.`name` as finality
+            FROM business_visits v
+            INNER JOIN visits_finality f
+            ON v.visits_finality_id = f.id
+            WHERE v.user_id LIKE $user_id
+            GROUP BY finality
+            ORDER BY total_f DESC"
+                );
+        $report_finality = $commandfinality->queryAll();      
+
+        $total_f = array();
+        $finality = array();
+ 
+        for ($i = 0; $i < sizeof($report_finality); $i++) {
+           $finality[] = $report_finality[$i]["finality"];
+           $total_f[] = (int) $report_finality[$i]["total_f"];
+        }        
+
         return $this->render('report_user', [
-            'model' => $model,    
-        ]);
+            'model' => $model,  
+            'total_s' => $total_s,
+            'stats' => $stats,
+            'total_f' => $total_f,
+            'finality' => $finality,            
+        ]);        
     }
 
     public function actionReport_location()
