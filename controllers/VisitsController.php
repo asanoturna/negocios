@@ -8,6 +8,7 @@ use app\models\VisitsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 use yii\base\Security;
 use yii\data\SqlDataProvider;
 use yii\web\UploadedFile;
@@ -17,6 +18,16 @@ class VisitsController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::classname(),
+                'only'  => ['index','create','view','report_user','report_general','report_location'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@']
+                    ],
+                ]
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -147,7 +158,7 @@ class VisitsController extends Controller
     {
         $model = new Visits();
 
-        $model->visits_status_id = 1;
+        //$model->visits_status_id = 1;
         $model->user_id = Yii::$app->user->id;
         $model->ip = '127.0.0.1';
         $model->created = date('Y-m-d');

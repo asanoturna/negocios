@@ -56,9 +56,9 @@ use yii\widgets\MaskedInput;
 
         <?= $form->field($model, 'responsible')->textInput(['maxlength' => true]) ?>
 
-        <?= $form->field($model, 'contact')->textInput(['maxlength' => 50,'style'=>'width:100px']) ?>
+        <?= $form->field($model, 'contact')->textInput(['maxlength' => 50]) ?>
 
-        <?= $form->field($model, 'email')->textInput(['maxlength' => 100,'style'=>'width:100px']) ?>
+        <?= $form->field($model, 'email')->textInput(['maxlength' => 100]) ?>
 
         <?= $form->field($model, 'phone')->textInput(['maxlength' => 15,'style'=>'width:100px']) ?>
 
@@ -69,23 +69,26 @@ use yii\widgets\MaskedInput;
 
         <?= $form->field($model, 'observation')->widget(\yii\redactor\widgets\Redactor::className(), [
         'clientOptions' => [
-            'minHeight' => 150,
+            'minHeight' => 160,
             'lang' => 'pt_br',
             'buttons'=> ['bold', 'italic', 'deleted','unorderedlist', 'orderedlist', 'link', 'alignment'],
         ]
     ])?>  
 
+
         <?= $form->field($model, 'value')->textInput(['maxlength' => true,'style'=>'width:80px']) ?>
 
-        <?= $form->field($model, 'num_proposal')->textInput(['maxlength' => true,'style'=>'width:80px']) ?>             
-
+        <?= $form->field($model, 'num_proposal')->textInput(['maxlength' => true,'style'=>'width:80px']) ?>
+             
         <?= $form->field($model, 'file')->fileInput() ?>
 
         <?= $form->field($model, 'localization_map')->textInput(['maxlength' => true]) ?>
 
+        <?= $form->field($model, 'visits_status_id')->dropDownList(ArrayHelper::map(Visitsstatus::find()->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?> 
+
         </div>
     </div>    
-
+    <hr/>
     <div class="form-group">
         <div class="col-lg-offset-2 col-lg-10">
         <?= Html::submitButton($model->isNewRecord ? 'Gravar' : 'Gravar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
