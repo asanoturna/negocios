@@ -9,7 +9,7 @@ use yii\data\SqlDataProvider;
 use miloschuman\highcharts\Highcharts;
 use miloschuman\highcharts\SeriesDataHelper;
 
-$this->title = "Relatório por Usuário";
+$this->title = "Desempenho por Usuário";
 ?>
 <div class="visits-view">
 
@@ -30,13 +30,16 @@ $this->title = "Relatório por Usuário";
                             ->all(), 'id', 'username'), ['onchange'=>'submit(this.value);','prompt'=>'Usuário','class'=>'form-control']);
                 ?>
         </div>
+        <div class="col-md-1 pull-right"> 
+        <input class="form-control" type="text" placeholder=<?php echo date("Y");?> readonly>
+        </div>        
     </div>  
     </p>  
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
         <div class="panel panel-primary">
-          <div class="panel-heading"><b>Quantidade de Visitas por Situação</b></div>
-          <div class="panel-body">
+          <div class="panel-heading"><span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span><b>Quantidade de Visitas por Situação</b></div>
+          <div class="panel-body" style="height: 450px;">
 			<?php
 			echo Highcharts::widget([
                 'options' => [
@@ -44,7 +47,7 @@ $this->title = "Relatório por Usuário";
                     'title' => [
                         'text' => '',
                     ],
-                    'colors'=> ['#00A295','#27cdd9'],
+                    //'colors'=> ['#00A295','#27cdd9'],
                     'xAxis' => [
                         'categories' => $stats,
                     ],
@@ -55,8 +58,10 @@ $this->title = "Relatório por Usuário";
                     'series' => [
                         [
                             'type' => 'column',
-                            'name' => 'Produtos',
+                            'colorByPoint'=> true,
+                            'name' => 'Situação',
                             'data' => $total_s,
+                            'colors' => $color,
                         ],                         
                     ],
                 ]
@@ -65,10 +70,10 @@ $this->title = "Relatório por Usuário";
           </div>
         </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-5">
         <div class="panel panel-primary">
-          <div class="panel-heading"><b>Quantidade de Visitas por Finalidade</b></div>
-          <div class="panel-body">
+          <div class="panel-heading"><span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span><b>Quantidade de Visitas por Finalidade</b></div>
+          <div class="panel-body" style="height: 450px;">
 			<?php
 			echo Highcharts::widget([
                     'options' => [
@@ -86,8 +91,8 @@ $this->title = "Relatório por Usuário";
                         ],                        
                         'series' => [
                             [
-                                'type' => 'column',
-                                'name' => 'Produtos',
+                                'type' => 'bar',
+                                'name' => 'Finalidade',
                                 'data' => $total_f,
                             ],                          
                         ],
@@ -96,6 +101,69 @@ $this->title = "Relatório por Usuário";
 				?> 
             </div>
         </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-primary">
+              <div class="panel-heading"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> <strong>Aproveitamento</strong></div>
+              <div class="panel-body" style="height: 450px;">
+                <?php
+                $t = abs(round((int)$fulltotal));
+                $e = abs(round((int)$totaleffect));
+                $remnant = ($t - $e) >=0 ? ($t - $e) : 0;
+                echo Highcharts::widget([
+                'options' => [
+                    'credits' => ['enabled' => false],
+                    'chart'=> [
+                    'height'=> 200,
+                    ],
+                    'title' => [
+                        'text' => $e,
+                        'align' => 'center',
+                        'verticalAlign' => 'middle',
+                          'style' => [
+                              'fontSize'=> '12px',
+                              'color' => '#00A295',
+                          ] 
+                        ],
+                    'colors'=> ['#cccccc','#00A295'],
+                    'tooltip'=> ['pointFormat'=> 'Percentual: <b>{point.percentage:.1f}%</b>'],
+                    'plotOptions'=> [
+                        'pie'=> [
+                            'allowPointSelect'=> true,
+                            'cursor'=> 'pointer',
+                            'size'=> '100%',
+                            'innerSize'=> '60%',
+                            'dataLabels'=> [
+                                'enabled'=> true,
+                            ],
+                            'center'=> ['50%', '55%'],
+                        ]
+                    ],
+                    'series'=> [[
+                        'type'=> 'pie',
+                        'name'=> 'Valor',
+                        'data'=> [
+                            ['Restante',  $remnant],
+                            ['Efetivadas', $e],
+                        ]
+                    ]]
+                ]
+                ]);
+                ?>
+                <hr/>
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <span class="badge"><?php echo $fulltotal;?></span>
+                    Seu total de visitas
+                  </li>
+                  <li class="list-group-item">
+                    <span class="badge"><?php echo $total_images;?></span>
+                    Seu total de imagens
+                  </li>                  
+                </ul>                
+              </div>
+              </div>
+            </div>
         </div>
     </div>    
 

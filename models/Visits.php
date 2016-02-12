@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\web\UploadedFile;
 
 
 class Visits extends \yii\db\ActiveRecord
@@ -12,17 +13,21 @@ class Visits extends \yii\db\ActiveRecord
         return 'business_visits';
     }
 
+    public $file;
+    public $filename;    
+
     public function rules()
     {
         return [
             [['date', 'responsible', 'company_person', 'visits_finality_id', 'visits_status_id', 'person_id', 'location_id', 'user_id'], 'required', 'message' => 'Campo Obrigatório'],
-            [['date', 'created', 'updated'], 'safe'],
+            [['date', 'created', 'updated','attachment'], 'safe'],
             [['value'], 'number'],
             [['num_proposal', 'visits_finality_id', 'visits_status_id', 'person_id', 'location_id', 'user_id'], 'integer'],
             [['observation'], 'string'],
             [['responsible', 'company_person', 'contact', 'email', 'phone'], 'string', 'max' => 45],
             [['ip'], 'string', 'max' => 20],
-            [['attachment', 'localization_map'], 'string', 'max' => 100]
+            [['localization_map'], 'string', 'max' => 100],
+                        [['file'], 'file', 'extensions'=>'jpg, png, pdf', 'maxSize' => 1024 * 1024 * 2],
         ];
     }
 
@@ -51,6 +56,57 @@ class Visits extends \yii\db\ActiveRecord
             'user_id' => 'Gerente',
         ];
     }
+
+    public function getImageFile()
+    {
+        return isset($this->attachment) ? Yii::$app->params['uploadPath'] . "teste" ."/". $this->attachment : null;
+    }
+    public function getImageUrl()
+    {
+        // return a default image placeholder if your source attachment is not found
+        $attachment = isset($this->attachment) ? $this->attachment : 'default-attachment.png';
+        return Yii::$app->params['uploadUrl'] . $attachment;
+    }
+    public function uploadImage() {
+        // get the uploaded file instance. for multiple file uploads
+        // the following data will return an array (you may need to use
+        // getInstances method)
+        $file = UploadedFile::getInstance($this, 'file');
+ 
+        // if no image was uploaded abort the upload
+        if (empty($file)) {
+            return false;
+        }
+ 
+        // store the source file name
+        $this->filename = $file->name;
+        $ext = end((explode(".", $file->name)));
+ 
+        // generate a unique file name
+        $this->attachment = Yii::$app->security->generateRandomString().".{$ext}";
+ 
+        // the uploaded image instance
+        return $file;
+    }
+    public function deleteImage() {
+        $file = $this->getImageFile();
+ 
+        // check if file exists on server
+        if (empty($file) || !file_exists($file)) {
+            return false;
+        }
+ 
+        // check if uploaded file can be deleted on server
+        if (!unlink($file)) {
+            return false;
+        }
+ 
+        // if deletion successful, reset your file attributes
+        $this->attachment = null;
+        $this->filename = null;
+ 
+        return true;
+    }    
 
     public function getLocation()
     {

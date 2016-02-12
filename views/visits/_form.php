@@ -16,7 +16,10 @@ use yii\widgets\MaskedInput;
 
     <?php $form = ActiveForm::begin([
         'id' => 'visitsform',
-        'options' => ['class' => 'form-horizontal'],
+        'options' => [
+            'enctype'=>'multipart/form-data',
+            'class' => 'form-horizontal',
+            ],
         'fieldConfig' => [
             'template' => "{label}\n<div class=\"col-sm-5\">{input}</div>\n<div class=\"col-sm-3\">{error}</div>",
             'labelOptions' => ['class' => 'col-sm-4 control-label'],
@@ -76,7 +79,7 @@ use yii\widgets\MaskedInput;
 
         <?= $form->field($model, 'num_proposal')->textInput(['maxlength' => true,'style'=>'width:80px']) ?>             
 
-        <?= $form->field($model, 'attachment')->fileInput() ?>
+        <?= $form->field($model, 'file')->fileInput() ?>
 
         <?= $form->field($model, 'localization_map')->textInput(['maxlength' => true]) ?>
 
