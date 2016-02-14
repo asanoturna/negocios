@@ -3,23 +3,22 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Capitalaction */
-
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Capitalactions', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Ação Capital';
 ?>
 <div class="capitalaction-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+      <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
+      <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;"><?php  echo $this->render('_menu'); ?></span></div>
+    </div>
+    <hr/>
 
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+    <p class="pull-right">
+        <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Excluir', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Tem certeza que deseja excluir?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -38,8 +37,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'created',
             'updated',
             'ip',
-            'location_id',
-            'user_id',
+            'location.fullname',
+            [ 
+            'label' => 'Usuário',
+            'format' => 'raw',
+            'value' => $model->user->username,
+            ],  
         ],
     ]) ?>
 

@@ -3,14 +3,20 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Capitalaction */
-/* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="capitalaction-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+            'id' => 'capitalactionform',
+            'options' => [
+                'class' => 'form-horizontal',
+                ],
+            'fieldConfig' => [
+                'template' => "{label}\n<div class=\"col-sm-5\">{input}</div>\n<div class=\"col-sm-3\">{error}</div>",
+                'labelOptions' => ['class' => 'col-sm-4 control-label'],
+            ],
+            ]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
@@ -35,7 +41,9 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'user_id')->textInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <div class="col-lg-offset-2 col-lg-10">
+        <?= Html::submitButton($model->isNewRecord ? 'Gravar' : 'Gravar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-success']) ?>
+        </div>
     </div>
 
     <?php ActiveForm::end(); ?>

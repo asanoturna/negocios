@@ -100,13 +100,55 @@ $this->title = 'Visitas dos Gerentes';
             'contentOptions'=>['style'=>'width: 10%;text-align:center'],
             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],             
-         
             [
             'class' => 'yii\grid\ActionColumn',
             'header' => 'Ações',
             'contentOptions'=>['style'=>'width: 10%;text-align:right'],
             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
-            ],
+            'template' => '{has_map} {has_attach} {has_img} {view} {update} {delete}',
+                'buttons' => [
+                    'has_attach' => function ($url, $model) {
+                        return $model->localization_map <> '' ? Html::a('<span class="glyphicon glyphicon-map-marker" ></span>', $url, [
+                                    'title' => 'Possui Mapa',
+                        ]): Html::a('<span class="glyphicon glyphicon-ban-circle" ></span>', "#", [
+                                    'title' => 'Alteração não permitida!',
+                        ]);
+                    },                  
+                    'has_map' => function ($url, $model) {
+                        return $model->localization_map <> '' ? Html::a('<span class="glyphicon glyphicon-map-marker" ></span>', $url, [
+                                    'title' => 'Possui Mapa',
+                        ]): Html::a('<span class="glyphicon glyphicon-ban-circle" ></span>', "#", [
+                                    'title' => 'Alteração não permitida!',
+                        ]);
+                    },
+                    'has_img' => function ($url, $model) {
+                        return $model->localization_map <> '' ? Html::a('<span class="glyphicon glyphicon-map-marker" ></span>', $url, [
+                                    'title' => 'Possui Mapa',
+                        ]): Html::a('<span class="glyphicon glyphicon-ban-circle" ></span>', "#", [
+                                    'title' => 'Alteração não permitida!',
+                        ]);
+                    },                                   
+                    'view' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-eye-open" ></span>', $url, [
+                                    'title' => 'Visualizar',
+                        ]);
+                    },
+                    'update' => function ($url, $model) {
+                        return $model->user_id <> 98 ? Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
+                                    'title' => 'Alterar',
+                        ]): Html::a('<span class="glyphicon glyphicon-ban-circle" ></span>', "#", [
+                                    'title' => 'Alteração não permitida!',
+                        ]);
+                    },
+                    // 'delete' => function ($url, $model) {
+                    //         return $model->user_id <> 98 ?  Html::a('<span class="glyphicon glyphicon-upload" ></span>', $url, [
+                    //                     'title' => 'Anexar Arquivo',
+                    //                     //'class'=>'btn btn-primary btn-xs',                                
+                    //     ]) : '';
+                    // },
+                ],
+
+            ],            
         ],
     ]); ?>
 

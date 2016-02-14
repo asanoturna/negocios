@@ -16,7 +16,7 @@
                     ],
                     [
                         'label'   => '<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> Listar',
-                        'url'     => ['/capitalactio/index'],
+                        'url'     => ['/capitalaction/index'],
                     ],                                                                               
                 ],
             'options' => ['class' =>'nav-pills'],
