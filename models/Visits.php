@@ -27,7 +27,7 @@ class Visits extends \yii\db\ActiveRecord
             [['responsible', 'company_person', 'contact', 'email', 'phone'], 'string', 'max' => 45],
             [['ip'], 'string', 'max' => 20],
             [['localization_map'], 'string', 'max' => 100],
-                        [['file'], 'file', 'extensions'=>'jpg, png, pdf', 'maxSize' => 1024 * 1024 * 2],
+            [['file'], 'file', 'extensions'=>'doc, docx, xls, xlsx', 'maxSize' => 1024 * 1024 * 2],
         ];
     }
 
@@ -60,7 +60,7 @@ class Visits extends \yii\db\ActiveRecord
 
     public function getImageFile()
     {
-        return isset($this->attachment) ? Yii::$app->params['uploadPath'] . "teste" ."/". $this->attachment : null;
+        return isset($this->attachment) ? Yii::$app->params['uploadPath'] . $this->attachment : null;
     }
     public function getImageUrl()
     {

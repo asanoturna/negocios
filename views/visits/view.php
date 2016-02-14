@@ -19,7 +19,15 @@ $this->title = "Detalhes da visita #" . $model->id;
     <hr/>
 
     <div class="row">
-        <div class="col-md-6"></div>
+        <div class="col-md-6">    
+    <?php foreach (Yii::$app->session->getAllFlashes() as $key=>$message):?>
+        <?php $alertClass = substr($key,strpos($key,'-')+1); ?>
+        <div class="alert alert-dismissible alert-<?=$alertClass?>" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <p><?=$message?></p>
+        </div>
+    <?php endforeach ?>
+    </div>
         <div class="col-md-6">
             <p class="pull-right">
                     <?= Html::a('<span class="glyphicon glyphicon-print" aria-hidden="true"></span> Imprimir', '#', ['onclick'=>"myFunction()",'class' => 'btn btn-success']) ?>
@@ -80,7 +88,7 @@ $this->title = "Detalhes da visita #" . $model->id;
                     [
                    'attribute'=>'attachment',
                    'format' => 'raw',
-                   'value' => $model->attachment == null ? "<span class=\"not-set\">(sem anexo)</span>" : '<span class="glyphicon glyphicon-paperclip"></span> '.Html::a('Visualizar Anexo', Yii::$app->request->baseUrl."/attachment/".$model->attachment, ['target' => '_blank']),
+                   'value' => $model->attachment == null ? "<span class=\"not-set\">(sem anexo)</span>" : '<span class="glyphicon glyphicon-paperclip"></span> '.Html::a('Visualizar Anexo', Yii::$app->params['uploadPath'].$model->attachment, ['target' => '_blank']),
                     ], 
                     [ 
                     'label' => 'Situação',

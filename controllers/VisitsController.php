@@ -158,29 +158,24 @@ class VisitsController extends Controller
     {
         $model = new Visits();
 
-        //$model->visits_status_id = 1;
         $model->user_id = Yii::$app->user->id;
         $model->ip = '127.0.0.1';
         $model->created = date('Y-m-d');
                
         if ($model->load(Yii::$app->request->post())) {
-            // process uploaded image file instance
             $file = $model->uploadImage();
  
             if ($model->save()) {
-                // upload only if valid uploaded file instance found
+
                 if ($file !== false) {
-                    // Create the ID folder 
-                    $idfolder = 'teste';
-                    //$idfolder = str_pad($idfolder, 6, "0", STR_PAD_LEFT); // add 0000+ID
-                    if(!is_dir(Yii::$app->params['uploadUrl'] . $idfolder)){
-                    mkdir(Yii::$app->params['uploadUrl'] . $idfolder, 0777, true);
+                    if(!is_dir(Yii::$app->params['uploadUrl'])){
+                    mkdir(Yii::$app->params['uploadUrl'], 0777, true);
                     }
                     $path = $model->getImageFile();
                     $file->saveAs($path);
                 }
-                //Yii::$app->session->setFlash("Entry-success", Yii::t("app", "Entry successfully included"));
-                return $this->redirect(['index']);
+                Yii::$app->session->setFlash('visit-success', 'Registro de visita incluída com sucesso!');
+                return $this->redirect(['view', 'id' => $model->id]);
             } else {
                 // error in saving model
             }

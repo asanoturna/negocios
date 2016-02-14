@@ -24,7 +24,9 @@
         "kartik-v/yii2-field-range": "*",
         "yiidoc/yii2-redactor": "*",
         "2amigos/yii2-google-maps-library": "*",
-        "tugmaks/yii2-google-maps": "dev-master"
+        "tugmaks/yii2-google-maps": "dev-master",
+        "yiisoft/yii2-imagine": "^2.0",
+        "karpoff/yii2-crop-image-upload": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
