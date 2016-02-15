@@ -94,6 +94,13 @@ use yii\helpers\Url;
                     'controller' => 'visitsimages',
                     'template' => '{crop} {delete}',
                     'buttons' => [
+                            'crop' => function ($url) {
+                                return Html::a('<span class="glyphicon glyphicon-fullscreen"></span>', '#', [
+                                    'title' => 'Cortar Imagem',
+                                    'class' => 'btn btn-default btn-sm',
+                                    'aria-label' => 'Cortar Imagem',
+                                ]);
+                            },
                             'delete' => function ($url) {
                                 return Html::a('<span class="glyphicon glyphicon-trash"></span>', '#', [
                                     'title' => 'Excluir Imagem',
@@ -112,9 +119,6 @@ use yii\helpers\Url;
                                     ",
                                 ]);
                             },
-
-
-
                     ],
                 ],
             ],

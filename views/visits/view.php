@@ -147,32 +147,6 @@ $this->title = "Detalhes da visita #" . $model->id;
                        'format' => 'raw',
                         'contentOptions'=>['style'=>'width: 70%;text-align:left'],
                     ],
-                    [
-                    'class' => 'yii\grid\ActionColumn',
-                    'contentOptions'=>['style'=>'width: 10%;text-align:center'],
-                    'controller' => 'visitsimages',
-                    'template' => '{delete}',
-                    'buttons' => [
-                                'delete' => function ($url) {
-                                return Html::a('<span class="glyphicon glyphicon-trash"></span>', '#', [
-                                    'title' => 'Excluir Anexo',
-                                    'aria-label' => 'Excluir',
-                                    'onclick' => "
-                                        if (confirm('Comfirma exclusão do anexo?')) {
-                                            $.ajax('$url', {
-                                                type: 'POST'
-                                            }).done(function(data) {
-                                                $.pjax.reload({container: '#pjax-container'});
-                                            });
-                                        }
-                                        return false;
-                                    ",
-                                ]);
-                            },
-
-
-                    ],
-                ],
             ],
             ]); ?>
             <?php Pjax::end() ?>
