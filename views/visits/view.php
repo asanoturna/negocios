@@ -135,21 +135,40 @@ $this->title = "Detalhes da visita #" . $model->id;
                 ],
             ]);
             ?>
-            <?php Pjax::begin(['id' => 'pjax-container']) ?>
-            <?= GridView::widget([
-            'dataProvider' => $dataProvider,
-            'emptyText'    => '</br><p class="text-danger">Nenhum imagem anexada!</p>',
-            'summary'      =>  '',
-            'showHeader'   => false,
-            'columns' => [
-                    [
-                       'attribute'=>'img',
-                       'format' => 'raw',
-                        'contentOptions'=>['style'=>'width: 70%;text-align:left'],
-                    ],
-            ],
-            ]); ?>
-            <?php Pjax::end() ?>
+            <?php 
+            // echo GridView::widget([
+            // 'dataProvider' => $dataProvider,
+            // 'emptyText'    => '</br><p class="text-danger">Nenhum imagem anexada!</p>',
+            // 'summary'      =>  '',
+            // 'showHeader'   => false,
+            // 'columns' => [
+            //         [
+            //         'attribute'=>'img',
+            //         'format' => 'html',
+            //         'value' => function ($data) {
+            //             return Html::img(Yii::$app->params['imgPath'].$data["img"],
+            //                 ['width' => '50px', 'class' => 'img-rounded img-responsive']);
+            //         },                       
+            //         'contentOptions'=>['style'=>'width: 70%;text-align:left'],
+            //         ],
+            // ],
+            // ]); 
+            
+            echo "<div class=\"thumbnail\">";
+            echo "<div class=\"img-wrapper\">";
+                $prov = $models = $dataProvider->getModels();
+                if(!empty($prov))
+                    {
+                        foreach($prov as $row)
+                        {
+                            echo Html::img(Yii::$app->params['imgPath'].$row["img"],
+                                            ['width' => '50px', 'class' => 'img-thumbnail']);
+                        }   
+                    }
+            echo "</div>";                
+            echo "</div>";   
+              
+            ?>
           </div>
         </div>
     </div>

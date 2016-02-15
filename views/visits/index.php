@@ -36,7 +36,7 @@ $this->title = 'Visitas dos Gerentes';
         'columns' => [
             [
             'attribute' => 'id',
-            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],
             [
@@ -47,7 +47,7 @@ $this->title = 'Visitas dos Gerentes';
                          return Html::a($model->user->username, ['/visits/report_user', 'user_id' => $model->user_id]);
                      },            
             'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
-            'contentOptions'=>['style'=>'width: 10%;text-align:left'],
+            'contentOptions'=>['style'=>'width: 8%;text-align:left;text-transform: lowercase'],
             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],
             [
@@ -70,7 +70,7 @@ $this->title = 'Visitas dos Gerentes';
             ], 
             [
             'attribute' => 'company_person',
-            'contentOptions'=>['style'=>'width: 15%;text-align:center'],
+            'contentOptions'=>['style'=>'width: 18%;text-align:left'],
             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ], 
             [
@@ -135,7 +135,7 @@ $this->title = 'Visitas dos Gerentes';
                         ]);
                     },
                     'has_img' => function ($url, $model) {
-                        return $model->localization_map <> '' ? Html::a('<span class="glyphicon glyphicon-camera" ></span>', ['view', 'id' => $model->id,'#' => 'img'], [
+                        return $model->visitsImages <> null ? Html::a('<span class="glyphicon glyphicon-camera" ></span>', ['view', 'id' => $model->id,'#' => 'img'], [
                                     'title' => 'Possui imagem',
                                     'class' => 'btn btn-default btn-xs',
                         ]): Html::a('<span class="glyphicon glyphicon-ban-circle" ></span>', "#", [
