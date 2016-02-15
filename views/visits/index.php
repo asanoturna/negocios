@@ -19,6 +19,13 @@ $this->title = 'Visitas dos Gerentes';
       <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;"><?php  echo $this->render('_menu'); ?></span></div>
     </div>
     <hr/>
+    <?php foreach (Yii::$app->session->getAllFlashes() as $key=>$message):?>
+        <?php $alertClass = substr($key,strpos($key,'-')+1); ?>
+        <div class="alert alert-dismissible alert-<?=$alertClass?>" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <p><?=$message?></p>
+        </div>
+    <?php endforeach ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
@@ -51,7 +58,7 @@ $this->title = 'Visitas dos Gerentes';
                     return $model->location->shortname;
                     },  
             'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
-            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            'contentOptions'=>['style'=>'width: 3%;text-align:center'],
             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],             
             [
@@ -108,44 +115,64 @@ $this->title = 'Visitas dos Gerentes';
             'template' => '{has_map} {has_attach} {has_img} {view} {update} {delete}',
                 'buttons' => [
                     'has_attach' => function ($url, $model) {
-                        return $model->localization_map <> '' ? Html::a('<span class="glyphicon glyphicon-map-marker" ></span>', $url, [
-                                    'title' => 'Possui Mapa',
+                        return $model->attachment <> null ? Html::a('<span class="glyphicon glyphicon-paperclip" ></span>', ['view', 'id' => $model->id], [
+                                    'title' => 'Possui anexo',
+                                    'class' => 'btn btn-default btn-xs',
                         ]): Html::a('<span class="glyphicon glyphicon-ban-circle" ></span>', "#", [
-                                    'title' => 'Alteração não permitida!',
+                                    'title' => 'Não possui anexo!',
+                                    'class' => 'btn btn-default btn-xs',
+                                    'disabled' => true,
                         ]);
                     },                  
                     'has_map' => function ($url, $model) {
-                        return $model->localization_map <> '' ? Html::a('<span class="glyphicon glyphicon-map-marker" ></span>', $url, [
-                                    'title' => 'Possui Mapa',
+                        return $model->localization_map <> '' ? Html::a('<span class="glyphicon glyphicon-map-marker" ></span>', ['view', 'id' => $model->id,'#' => 'map'], [
+                                    'title' => 'Possui mapa',
+                                    'class' => 'btn btn-default btn-xs',
                         ]): Html::a('<span class="glyphicon glyphicon-ban-circle" ></span>', "#", [
-                                    'title' => 'Alteração não permitida!',
+                                    'title' => 'Não possui mapa!',
+                                    'class' => 'btn btn-default btn-xs',
+                                    'disabled' => true,
                         ]);
                     },
                     'has_img' => function ($url, $model) {
-                        return $model->localization_map <> '' ? Html::a('<span class="glyphicon glyphicon-map-marker" ></span>', $url, [
-                                    'title' => 'Possui Mapa',
+                        return $model->localization_map <> '' ? Html::a('<span class="glyphicon glyphicon-camera" ></span>', ['view', 'id' => $model->id,'#' => 'img'], [
+                                    'title' => 'Possui imagem',
+                                    'class' => 'btn btn-default btn-xs',
                         ]): Html::a('<span class="glyphicon glyphicon-ban-circle" ></span>', "#", [
-                                    'title' => 'Alteração não permitida!',
+                                    'title' => 'Não possui imagem!',
+                                    'class' => 'btn btn-default btn-xs',
+                                    'disabled' => true,
                         ]);
                     },                                   
                     'view' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-eye-open" ></span>', $url, [
                                     'title' => 'Visualizar',
+                                    'class' => 'btn btn-default btn-xs',
                         ]);
                     },
                     'update' => function ($url, $model) {
-                        return $model->user_id <> 98 ? Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
+                        return $model->user_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
                                     'title' => 'Alterar',
-                        ]): Html::a('<span class="glyphicon glyphicon-ban-circle" ></span>', "#", [
-                                    'title' => 'Alteração não permitida!',
+                                    'class' => 'btn btn-default btn-xs',
+                        ]): Html::a('<span class="glyphicon glyphicon-pencil" ></span>', "#", [
+                                    'title' => 'Registro pertence a outro usuário!',
+                                    'class' => 'btn btn-default btn-xs',
+                                    'disabled' => true,
                         ]);
                     },
-                    // 'delete' => function ($url, $model) {
-                    //         return $model->user_id <> 98 ?  Html::a('<span class="glyphicon glyphicon-upload" ></span>', $url, [
-                    //                     'title' => 'Anexar Arquivo',
-                    //                     //'class'=>'btn btn-primary btn-xs',                                
-                    //     ]) : '';
-                    // },
+                    'delete' => function ($url, $model) {
+                        return $model->user_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
+                                    'title' => 'Alterar',
+                                    'class' => 'btn btn-default btn-xs',
+                                    'data-confirm' => 'Tem certeza que deseja excluir?',
+                                    'data-method' => 'post',
+                                    'data-pjax' => '0',
+                        ]): Html::a('<span class="glyphicon glyphicon-trash" ></span>', "#", [
+                                    'title' => 'Registro pertence a outro usuário!',
+                                    'class' => 'btn btn-default btn-xs',
+                                    'disabled' => true,
+                        ]);
+                    },
                 ],
 
             ],            

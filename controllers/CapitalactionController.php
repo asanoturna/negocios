@@ -8,6 +8,8 @@ use app\models\CapitalactionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use yii\base\Security;
 
 
 class CapitalactionController extends Controller
@@ -15,6 +17,16 @@ class CapitalactionController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::classname(),
+                'only'  => ['index','create','view','update'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@']
+                    ],
+                ]
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

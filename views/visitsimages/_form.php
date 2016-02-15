@@ -13,12 +13,12 @@ use yii\helpers\Url;
 	$t = Yii::$app->getRequest()->getQueryParam('id');
 	$cod = $model->id;
 	$dataProvider = new SqlDataProvider([
-	    'sql' => "SELECT i.name as img
+	    'sql' => "SELECT i.id, i.name as img
 	    FROM visits_images i
 	    WHERE i.business_visits_id = $t",
 	    'totalCount' => 200,
 	    'sort' =>false,
-	    'key'  => 'img',
+	    'key'  => 'id',
 	    'pagination' => [
 	        'pageSize' => 200,
 	    ],
@@ -26,9 +26,14 @@ use yii\helpers\Url;
 ?>
 <div class="visitsimages-form">
 
+	<div class="row container-fluid">
+				<p class="pull-right">
+			<?= Html::a('<span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> Voltar para detalhes da visita', ['/visits/view', 'id' => $t], ['class' => 'btn btn-success']) ?>
+			</p>
+	</div>
 	<div class="row">
 	  <div class="col-md-6">
-	  	<div class="panel panel-default">
+	  	<div class="panel panel-primary">
 		  <div class="panel-heading"><strong>Enviar Imagem para Visita</strong></div>
 		  <div class="panel-body">
 		    <?php 
@@ -56,16 +61,15 @@ use yii\helpers\Url;
 		    <hr/>
 		    </p>
 			<ul>
-			  <li>Você ja adicionou <?php echo $dataProvider->count;?> </li>
-			  <li>Você pode adicionar até <strong><?php echo Yii::$app->params['imglimit'];?></strong> imagens em cada visita</li>
+			  <li>Você pode adicionar até <strong><?php echo Yii::$app->params['imglimit'];?></strong> imagens em cada visita (Você ja adicionou <?php echo $dataProvider->count;?>)</li>
 			  <li>As imagens enviadas serão otimizadas e redimencionadas para o sistema</li>
+			  <li>Se necessário use os botões ao lado para cortar e personalizar as imagens</li>
 			</ul>
-			Voltar p detalhes da visita
   			</div>
   		  </div>
 	</div>
 	  <div class="col-md-6">
-		<div class="panel panel-default">
+		<div class="panel panel-primary">
 		  <div class="panel-heading"><strong>Gerenciar Imagens Armazenadas</strong></div>
 		  <div class="panel-body">
             <?php Pjax::begin(['id' => 'pjax-container']) ?>
@@ -88,11 +92,12 @@ use yii\helpers\Url;
                     'class' => 'yii\grid\ActionColumn',
                     'contentOptions'=>['style'=>'width: 10%;text-align:center'],
                     'controller' => 'visitsimages',
-                    'template' => '{delete}',
+                    'template' => '{crop} {delete}',
                     'buttons' => [
-                                'delete' => function ($url) {
+                            'delete' => function ($url) {
                                 return Html::a('<span class="glyphicon glyphicon-trash"></span>', '#', [
-                                    'title' => 'Excluir Anexo',
+                                    'title' => 'Excluir Imagem',
+                                    'class' => 'btn btn-default btn-sm',
                                     'aria-label' => 'Excluir',
                                     'onclick' => "
                                         if (confirm('Tem certeza que deseja excluir?')) {
@@ -100,12 +105,14 @@ use yii\helpers\Url;
                                                 type: 'POST'
                                             }).done(function(data) {
                                                 $.pjax.reload({container: '#pjax-container'});
+                                                $.pjax.reload({container: '#visitsimagesform'});
                                             });
                                         }
                                         return false;
                                     ",
                                 ]);
                             },
+
 
 
                     ],

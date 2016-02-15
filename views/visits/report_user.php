@@ -38,7 +38,7 @@ $this->title = "Desempenho por Usuário";
     <div class="row">
         <div class="col-md-4">
         <div class="panel panel-primary">
-          <div class="panel-heading"><span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span><b>Quantidade de Visitas por Situação</b></div>
+          <div class="panel-heading"><b>Quantidade de Visitas por Situação</b></div>
           <div class="panel-body" style="height: 450px;">
 			<?php
 			echo Highcharts::widget([
@@ -72,7 +72,7 @@ $this->title = "Desempenho por Usuário";
         </div>
         <div class="col-md-5">
         <div class="panel panel-primary">
-          <div class="panel-heading"><span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span><b>Quantidade de Visitas por Finalidade</b></div>
+          <div class="panel-heading"><b>Quantidade de Visitas por Finalidade</b></div>
           <div class="panel-body" style="height: 450px;">
 			<?php
 			echo Highcharts::widget([
@@ -104,7 +104,7 @@ $this->title = "Desempenho por Usuário";
         </div>
         <div class="col-md-3">
             <div class="panel panel-primary">
-              <div class="panel-heading"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> <strong>Aproveitamento</strong></div>
+              <div class="panel-heading"><b>Aproveitamento</b></div>
               <div class="panel-body" style="height: 450px;">
                 <?php
                 $t = abs(round((int)$fulltotal));
@@ -134,7 +134,7 @@ $this->title = "Desempenho por Usuário";
                             'size'=> '100%',
                             'innerSize'=> '60%',
                             'dataLabels'=> [
-                                'enabled'=> true,
+                                'enabled'=> false,
                             ],
                             'center'=> ['50%', '55%'],
                         ]

@@ -12,6 +12,7 @@ use yii\filters\AccessControl;
 use yii\base\Security;
 use yii\data\SqlDataProvider;
 use yii\web\UploadedFile;
+use yii\base\ErrorException;
 
 class VisitsController extends Controller
 {
@@ -189,6 +190,11 @@ class VisitsController extends Controller
     {
         $model = $this->findModel($id);
         
+        if ($model->user_id != Yii::$app->user->id){
+            Yii::$app->session->setFlash('Visits-danger', 'Não é permitido alterar registros de outro usuário!');
+            return $this->redirect(['view', 'id' => $model->id]);
+        }        
+        
         $model->ip = '127.0.0.1';
         $model->updated = date('Y-m-d'); 
 
@@ -203,9 +209,19 @@ class VisitsController extends Controller
 
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        $model= $this->findModel($id);
+        if ($model->user_id != Yii::$app->user->id){
+            throw new ErrorException('Não é permitido alterar registros de outro usuário!');
+        }
+        try {
+             $model->delete();
+             Yii::$app->session->setFlash('Visits-success', 'Registro excluído com sucesso!');
+             return $this->redirect(['index']);
+        } catch(\yii\db\IntegrityException $e) {
+             //throw new \yii\web\ForbiddenHttpException('Could not delete this record.');
+             Yii::$app->session->setFlash('Visits-danger', 'Não foi possível excluir! É necessário excluir todas as imagens vinculadas a este registro.');
+             return $this->redirect(['index']);            
+        }
     }
 
     protected function findModel($id)
@@ -213,7 +229,7 @@ class VisitsController extends Controller
         if (($model = Visits::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            throw new NotFoundHttpException('A pagina solicitada não existe ou você não possui permissão para visualizar!');
         }
     }
 }
