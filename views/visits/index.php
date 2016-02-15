@@ -43,9 +43,9 @@ $this->title = 'Visitas dos Gerentes';
             'attribute' => 'user_id',
             'format' => 'raw',
             'enableSorting' => true,
-            'value' => function ($model) {                      
-                return $model->user ? $model->user->username : '<span class="text-danger"><em>Nenhum</em></span>';
-            },
+            'value' => function ($model) {
+                         return Html::a($model->user->username, ['/visits/report_user', 'user_id' => $model->user_id]);
+                     },            
             'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
             'contentOptions'=>['style'=>'width: 10%;text-align:left'],
             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],

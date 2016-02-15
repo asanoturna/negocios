@@ -90,10 +90,17 @@ use yii\helpers\Url;
                     ],
                     [
                     'class' => 'yii\grid\ActionColumn',
-                    'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+                    'contentOptions'=>['style'=>'width: 30%;text-align:center'],
                     'controller' => 'visitsimages',
-                    'template' => '{crop} {delete}',
+                    'template' => '{turn} {crop} {delete}',
                     'buttons' => [
+                            'turn' => function ($url) {
+                                return Html::a('<span class="glyphicon glyphicon-repeat"></span>', '#', [
+                                    'title' => 'Girar Imagem',
+                                    'class' => 'btn btn-default btn-sm',
+                                    'aria-label' => 'Girar Imagem',
+                                ]);
+                            },                    
                             'crop' => function ($url) {
                                 return Html::a('<span class="glyphicon glyphicon-fullscreen"></span>', '#', [
                                     'title' => 'Cortar Imagem',
