@@ -11,6 +11,11 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\base\Security;
 
+use yii\imagine\Image;
+use Imagine\Gd;
+use Imagine\Image\Box;
+use Imagine\Image\BoxInterface;
+
 
 class VisitsimagesController extends Controller
 {
@@ -68,6 +73,8 @@ class VisitsimagesController extends Controller
                     }
                     $path = $model->getImageFile();
                     $file->saveAs($path);
+                    Image::frame($path, 5, '#0d4549', 100)
+                    ->save($path, ['quality' => 60]);                    
                 }
                 Yii::$app->session->setFlash('img-success', 'Imagem enviada com sucesso');
                 return $this->redirect(['create', 'id' => $model->business_visits_id]);

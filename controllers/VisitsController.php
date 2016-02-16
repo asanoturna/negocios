@@ -14,6 +14,11 @@ use yii\data\SqlDataProvider;
 use yii\web\UploadedFile;
 use yii\base\ErrorException;
 
+use yii\imagine\Image;
+use Imagine\Gd;
+use Imagine\Image\Box;
+use Imagine\Image\BoxInterface;
+
 class VisitsController extends Controller
 {
     public function behaviors()
