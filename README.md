@@ -6,6 +6,9 @@ Solução de intranet para gerenciar e acompanhar a produtividade dos colaborado
 *Intranet solution to manage and track the productivity of employees in the company*
 
 
+incluir dados em LOCATION (endereço, ativo, etc)
+incluir modal com descricao status
+
 
 https://github.com/2amigos/yii2-google-maps-library
 https://github.com/Kolyunya/yii2-map-input-widget
