@@ -2,7 +2,7 @@
     "name": "Intranet - Apoio a Negócios",
     "description": "Tool set on the Internet to track and assist the productivity of employees in the company",
     "keywords": ["yii2", "framework", "intranet", "business"],
-    "homepage": "http://www.yiiframework.com/",
+    "homepage": "http://www.gustavoandrade.net.br",
     "type": "project",
     "license": "BSD-3-Clause",
     "support": {
@@ -23,11 +23,9 @@
         "kartik-v/yii2-widget-datepicker": "@dev",
         "kartik-v/yii2-field-range": "*",
         "yiidoc/yii2-redactor": "*",
-        "2amigos/yii2-google-maps-library": "*",
         "tugmaks/yii2-google-maps": "dev-master",
         "yiisoft/yii2-imagine": "^2.0",
-        "karpoff/yii2-crop-image-upload": "*",
-        "circulon/yii2-columnlistview": "*"
+        "karpoff/yii2-crop-image-upload": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

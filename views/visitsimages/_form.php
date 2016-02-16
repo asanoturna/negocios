@@ -82,11 +82,7 @@ use yii\helpers\Url;
                     [
                     'attribute'=>'img',
                     'format' => 'html',
-                    // 'value' => function ($data) {
-                    //     return Html::img(Yii::$app->params['imgPath'].$data["img"],
-                    //         ['width' => '50px', 'class' => 'img-rounded img-responsive']);
-                    // },   
-                   'value'=>function ($data) {
+                    'value'=>function ($data) {
                         return Html::a(Html::img(Yii::$app->params['imgPath'].$data["img"],
                              ['width' => '50px', 'class' => 'img-rounded img-responsive']), Yii::$app->params['imgPath'].$data["img"], ['target' => '_blank']);
                     },                                     

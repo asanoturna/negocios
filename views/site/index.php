@@ -9,6 +9,9 @@ use app\models\Modality;
 use app\models\User;
 use yii\data\SqlDataProvider;
 
+$thisyear  = date('Y');
+$thismonth = date('m');   
+
 $this->title = Yii::$app->params['appname'];
 ?>
 <div class="site-index">
@@ -32,7 +35,7 @@ $this->title = Yii::$app->params['appname'];
             'sql' => "SELECT avatar, full_name as seller, sum(companys_revenue) as total
                     FROM daily_productivity
                     INNER JOIN `profile` ON daily_productivity.seller_id = `profile`.user_id
-                    WHERE daily_productivity_status_id = 2 
+                    WHERE daily_productivity_status_id = 2 AND MONTH(date) = $thismonth AND YEAR(date) = $thisyear
                     GROUP BY seller_id
                     ORDER BY sum(companys_revenue) DESC",
             'totalCount' => 3,
@@ -46,7 +49,7 @@ $this->title = Yii::$app->params['appname'];
             'sql' => "SELECT avatar, full_name as seller, sum(quantity) as total
                     FROM daily_productivity
                     INNER JOIN `profile` ON daily_productivity.seller_id = `profile`.user_id
-                    WHERE daily_productivity_status_id = 2 
+                    WHERE daily_productivity_status_id = 2 AND MONTH(date) = $thismonth AND YEAR(date) = $thisyear
                     GROUP BY seller_id
                     ORDER BY sum(quantity) DESC",
             'totalCount' => 3,
@@ -80,24 +83,7 @@ $this->title = Yii::$app->params['appname'];
                     }else {
                        return Html::img(Yii::$app->request->BaseUrl.'/images/no-medal-icon.png'); 
                     }
-                }],
-                // [
-                //     'attribute' => 'avatar',
-                //     'format' => 'image',
-                //     'value' => function ($data) {                      
-                //         return Yii::$app->request->BaseUrl.'/images/users/'.$data["avatar"];
-                //     },
-                //     'contentOptions'=>['style'=>'width: 20%;text-align:center'],
-                // ],  
-                // [
-                //     'attribute' => 'avatar',
-                //     'format' => 'html',
-                //     'value' => function ($data) {
-                //         return Html::img(Yii::$app->request->BaseUrl.'/images/medal-gold-icon.png',
-                //             ['width' => '48px', 'class' => 'img-rounded img-responsive']);
-                //     },
-                //     'contentOptions'=>['style'=>'width: 10%;text-align:center'],                    
-                // ],                  
+                }],                  
                 [
                     'attribute' => 'avatar',
                     'format' => 'html',
@@ -150,24 +136,7 @@ $this->title = Yii::$app->params['appname'];
                     }else {
                        return Html::img(Yii::$app->request->BaseUrl.'/images/no-medal-icon.png'); 
                     }
-                }],
-                // [
-                //     'attribute' => 'avatar',
-                //     'format' => 'image',
-                //     'value' => function ($data) {                      
-                //         return Yii::$app->request->BaseUrl.'/images/users/'.$data["avatar"];
-                //     },
-                //     'contentOptions'=>['style'=>'width: 20%;text-align:center'],
-                // ],  
-                // [
-                //     'attribute' => 'avatar',
-                //     'format' => 'html',
-                //     'value' => function ($data) {
-                //         return Html::img(Yii::$app->request->BaseUrl.'/images/medal-gold-icon.png',
-                //             ['width' => '48px', 'class' => 'img-rounded img-responsive']);
-                //     },
-                //     'contentOptions'=>['style'=>'width: 10%;text-align:center'],                    
-                // ],                  
+                }],                 
                 [
                     'attribute' => 'avatar',
                     'format' => 'html',
@@ -200,84 +169,58 @@ $this->title = Yii::$app->params['appname'];
       </div>
     </div>
     <div class="panel panel-primary">
-          <div class="panel-heading"><b>Top 5 Visitas dos Gerentes</b></div>
+          <div class="panel-heading"><b>Top 10 Maiores Visitantes </b></div>
           <div class="panel-body">
           <?php 
-use yii\web\JsExpression;
-use miloschuman\highcharts\Highcharts;
-echo Highcharts::widget([
 
-    'options' => [
-    'credits' => ['enabled' => false],
-        'title' => [
-            'text' => '',
-        ],
-        'xAxis' => [
+            $commandtop10 = Yii::$app->db->createCommand(
+            "SELECT u.username as username, COUNT(b.id) as total
+                FROM business_visits b
+                INNER JOIN `user` u
+                ON b.user_id = u.id
+                WHERE b.visits_status_id = 3 AND MONTH(date) = $thismonth AND YEAR(date) = $thisyear
+                GROUP BY username
+                ORDER BY total DESC
+                LIMIT 10"
+                );
+            $report_top10 = $commandtop10->queryAll();
 
-            'categories' => ['Leonardo', 'Veronica', 'Marina', 'Marco', 'Miguel'],
-        ],
+            $total = array();
+            $username = array();
 
-        'labels' => [
-            'items' => [
-                [
-                    'html' => 'Agências',
-                    'style' => [
-                        'left' => '50px',
-                        'top' => '18px',
-                        'colors'=> ['#00353D'],
+            for ($i = 0; $i < sizeof($report_top10); $i++) {
+               $username[] = $report_top10[$i]["username"];
+               $total[] = (int) $report_top10[$i]["total"];
+            }            
+           
+            use yii\web\JsExpression;
+            use miloschuman\highcharts\Highcharts;
+            echo Highcharts::widget([
+                'options' => [
+                    'credits' => ['enabled' => false],
+                    'title' => [
+                        'text' => '',
                     ],
-                ],
-            ],
-        ],
-        'colors'=> ['#00A295'],
-        'series' => [
-            [
-                'type' => 'column',
-                'name' => 'Quantidade de Visitas',
-                'data' => [2, 1, 1, 3, 4],
-            ],
-            // [
-            //     'type' => 'spline',
-            //     'name' => 'Media',
-            //     'data' => [2, 1.8, 1, 3, 4],
-            //     'marker' => [
-            //         'lineWidth' => 2,
-            //         'lineColor' => new JsExpression('Highcharts.getOptions().colors[3]'),
-            //         'fillColor' => 'white',
-            //     ],
-            // ],
-            [
-                'type' => 'pie',
-                'name' => 'Total de Visitas',
-                'colors'=> ['#4D7A80'],
-                'data' => [
-                    [
-                        'name' => 'PA 20',
-                        'y' => 13,
-                        'colors'=> ['#00A295'],
+                    'colors'=> ['#00A295','#27cdd9'],
+                    'xAxis' => [
+                        'categories' => $username,
                     ],
-                    [
-                        'name' => 'PA 07',
-                        'y' => 23,
-                        'colors'=> ['#EDEFA6'],
+                    'yAxis' => [
+                        'min' => 0,
+                        'title' => '',
+                    ],                        
+                    'series' => [
+                        [
+                            'type' => 'column',
+                            //'colorByPoint'=> true,
+                            'name' => 'Visitas Efetivadas',
+                            'data' => $total,
+                            //'colors' => $color,
+                        ],                         
                     ],
-                    [
-                        'name' => 'PA 04',
-                        'y' => 19,
-                        'colors'=> ['#9EC960'],
-                    ],
-                ],
-                'center' => [100, 80],
-                'size' => 100,
-                'showInLegend' => false,
-                'dataLabels' => [
-                    'enabled' => false,
-                ],
-            ],
-        ],
-    ]
-]);
-           ?>
+                ]
+            ]);            
+            ?>
           </div>
     </div>
     </div>
