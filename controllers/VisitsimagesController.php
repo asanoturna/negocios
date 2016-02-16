@@ -73,6 +73,7 @@ class VisitsimagesController extends Controller
                     }
                     $path = $model->getImageFile();
                     $file->saveAs($path);
+                    // optimize image (path, border width, color, transp)
                     Image::frame($path, 5, '#0d4549', 100)
                     ->save($path, ['quality' => 60]);                    
                 }
