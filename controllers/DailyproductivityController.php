@@ -75,12 +75,14 @@ class DailyproductivityController extends Controller
         $product = isset($url) ? $url : '"%"';
 
         $dataProviderValor = new SqlDataProvider([
-            'sql' => "SELECT avatar, full_name as seller, sum(companys_revenue) as total
+            'sql' => "SELECT avatar, full_name as seller,
+                SUM(IF(daily_productivity.daily_productivity_status_id=1, companys_revenue, 0)) as unconfirmed,
+                SUM(IF(daily_productivity.daily_productivity_status_id=2, companys_revenue, 0)) as confirmed
                     FROM daily_productivity
                     INNER JOIN `profile` ON daily_productivity.seller_id = `profile`.user_id
-                    WHERE daily_productivity_status_id = 2 AND product_id LIKE $product
+                    WHERE product_id LIKE $product
                     GROUP BY seller_id
-                    ORDER BY sum(companys_revenue) DESC",
+                    ORDER BY confirmed DESC",
             'totalCount' => 300,
             'sort' =>false,
             'key'  => 'seller',
@@ -90,12 +92,14 @@ class DailyproductivityController extends Controller
         ]);
 
         $dataProviderQtde = new SqlDataProvider([
-            'sql' => "SELECT avatar, full_name as seller, sum(quantity) as total
+            'sql' => "SELECT avatar, full_name as seller,
+                SUM(IF(daily_productivity.daily_productivity_status_id=1, quantity, 0)) as unconfirmed,
+                SUM(IF(daily_productivity.daily_productivity_status_id=2, quantity, 0)) as confirmed
                     FROM daily_productivity
                     INNER JOIN `profile` ON daily_productivity.seller_id = `profile`.user_id
-                    WHERE daily_productivity_status_id = 2 AND product_id LIKE $product
+                    WHERE product_id LIKE $product
                     GROUP BY seller_id
-                    ORDER BY sum(quantity) DESC",
+                    ORDER BY confirmed DESC",
             'totalCount' => 300,
             'sort' =>false,
             'key'  => 'seller',
@@ -118,7 +122,7 @@ class DailyproductivityController extends Controller
         $url = Yii::$app->getRequest()->getQueryParam('product_id');
         $product = isset($url) ? $url : '"%"';
 
-        $dataProviderValor = new SqlDataProvider([
+       $dataProviderValor = new SqlDataProvider([
             'sql' => "SELECT shortname as sigla, fullname as local,
                 SUM(IF(daily_productivity.daily_productivity_status_id=1, companys_revenue, 0)) as unconfirmed,
                 SUM(IF(daily_productivity.daily_productivity_status_id=2, companys_revenue, 0)) as confirmed
@@ -134,7 +138,7 @@ class DailyproductivityController extends Controller
                 'pageSize' => 50,
             ],
         ]);
-
+        
         $dataProviderQtde = new SqlDataProvider([
             'sql' => "SELECT shortname as sigla, fullname as local,
                 SUM(IF(daily_productivity.daily_productivity_status_id=1, quantity, 0)) as unconfirmed,
@@ -216,6 +220,7 @@ class DailyproductivityController extends Controller
         $model->user_id = Yii::$app->user->id;
         $model->created = date('Y-m-d');
         $model->updated = date('Y-m-d');
+        $model->quantity = 1;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash("dailyproductivity-success", "Registro gravado com sucesso. Aguarde o Gestor de Produtos efetiva-lo!");

@@ -14,19 +14,190 @@ class Dailyproductivity extends \yii\db\ActiveRecord
             $companys_revenue = $companys_revenue*0.75;
             $this->companys_revenue = abs($companys_revenue);
 
-            if($this->product_id == 38){
+            if($this->product_id == 201){
                 //CIELO
                 $this->companys_revenue = 0;
                 $this->value = 0;
-            }elseif($this->product_id == 39){
+            }elseif($this->product_id == 202){
                 //REDECARD
                 $this->companys_revenue = 17.08;
                 $this->value = 0;
-            }elseif($this->product_id == 40){
+            }elseif($this->product_id == 203){
                 //SIPAG
                 $this->companys_revenue = 60;
                 $this->value = 0;
-            }
+            }elseif($this->product_id == 501){
+                //SEGURO PPR
+                $this->companys_revenue = 0.64;
+                $this->value = 0; 
+            }elseif($this->product_id == 502){
+                //SMS ILIMITADO
+                $this->companys_revenue = 0.30;
+                $this->value = 0;
+            }elseif($this->product_id == 301){
+                //CABAL VALE
+                $this->companys_revenue = 35.00;
+                $this->value = 0;   
+            }elseif($this->product_id == 801){
+                //SEPLAg
+                switch($this->prazo){
+                    case ($this->prazo >= 6 && $this->prazo <= 10):
+                        $this->commission_percent = 0.9;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo == 11):
+                        $this->commission_percent = 0.45;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo == 12):
+                        $this->commission_percent = 0.9;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 13 && $this->prazo <=15):
+                        $this->commission_percent = 1.50;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 16 && $this->prazo <= 18):
+                        $this->commission_percent = 2.50;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 19 && $this->prazo <= 22):
+                        $this->commission_percent = 3.50;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo == 23):
+                        $this->commission_percent = 1.50;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo == 24):
+                        $this->commission_percent = 3.50;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 25 && $this->prazo <= 30):
+                        $this->commission_percent = 5.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 31 && $this->prazo <= 34):
+                        $this->commission_percent = 6.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo == 35):
+                        $this->commission_percent = 4.50;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo == 36):
+                        $this->commission_percent = 6.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 37 && $this->prazo <= 41):
+                        $this->commission_percent = 8.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 42 && $this->prazo <= 46):
+                        $this->commission_percent = 10.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo == 47):
+                        $this->commission_percent= 8.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo == 48):
+                        $this->commission_percent = 10.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 59 && $this->prazo <= 54):
+                        $this->commission_percent = 10.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 55 && $this->prazo <= 58):
+                        $this->commission_percent = 11.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo == 59):
+                        $this->commission_percent = 7.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo == 60):
+                        $this->commission_percent = 13.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    }
+                    
+            }elseif($this->product_id == 802){
+                //INSS
+                switch($this->prazo){
+                    case ($this->prazo >= 6 && $this->prazo <= 11):
+                        $this->commission_percent = 1.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 12 && $this->prazo <= 17):
+                        $this->commission_percent = 5.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 18 && $this->prazo <= 23):
+                        $this->commission_percent = 4.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 24 && $this->prazo <= 29):
+                        $this->commission_percent = 3.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 30 && $this->prazo <= 35):
+                        $this->commission_percent = 1.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 36 && $this->prazo <= 41):
+                        $this->commission_percent = 14.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 42 && $this->prazo <= 47):
+                        $this->commission_percent = 12.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 48 && $this->prazo <= 53):
+                        $this->commission_percent = 11.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 54 && $this->prazo <= 59):
+                        $this->commission_percent = 8.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 60 && $this->prazo <= 72):
+                        $this->commission_percent = 10.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    }   
+                }
             //$this->quantity = 1;
             return true;
         } else {
@@ -36,7 +207,8 @@ class Dailyproductivity extends \yii\db\ActiveRecord
     }
 
     public $mounth;
-    public $year;    
+    public $year;  
+    public $prazo;
 
     public static function tableName()
     {
@@ -54,7 +226,7 @@ class Dailyproductivity extends \yii\db\ActiveRecord
                     }, 'whenClient' => "function(attribute, value) {
                       return $('#dailyproductivity-product_id').val() <= 37;
                   }"],
-            [['date', 'companys_revenue','created', 'updated'], 'safe'],
+            [['prazo','date', 'companys_revenue','created', 'updated'], 'safe'],
             [['buyer_name'], 'string', 'max' => 100],
             [['buyer_document'], 'string', 'max' => 18],
             //[['commission_percent'],'number','min'=>10,'max'=>100],
@@ -92,6 +264,7 @@ class Dailyproductivity extends \yii\db\ActiveRecord
             'value' => 'Valor',
             'quantity' => 'Quantidade',
             'commission_percent' => 'Comissão (%)',
+            'prazo_mes' => 'Prazo',
             'companys_revenue' => 'Receita da Cooperativa',
             'daily_productivity_status_id' => 'Situação',
             'buyer_document' => 'CPF/CNPJ Cliente',

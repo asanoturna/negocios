@@ -55,7 +55,7 @@ use yii\helpers\Url;
     </div>
     <div class="col-xs-6">
   <!-- LINHA 1 / COLUNA 2 -->
-  <?php // echo $form->field($model, 'value')->textInput(['maxlength' => true]) 
+  <?php //echo $form->field($model, 'value')->textInput(['maxlength' => true]) 
         use kartik\money\MaskMoney;
         echo $form->field($model, 'value')->widget(MaskMoney::classname(), [
             'pluginOptions' => [
@@ -75,106 +75,232 @@ use yii\helpers\Url;
 <?php
 $productId = Html::getInputId($model, 'product_id');
 $comissionId = Html::getInputId($model, 'commission_percent');
-$quantityId = Html::getInputId($model, 'quantity');
+$prazoId = Html::getInputId($model, 'prazo');
+$valueId = Html::getInputId($model, 'value');
 $js = <<<JS
 $('#{$productId}').on('change', function () {
     var id = $(this).val();
-
-    if (id == 14) { //Auto
+    
+    if (id == 2) { //Auto
         var min = 10;
         var max = 25;
-        $("#{$quantityId}").prop("disabled", true);
-        $("#{$quantityId}").prop("value", 1);
-    }else if (id == 15){ //Residencial Comum
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 3){ //Residencial Comum
         var min = 10;
         var max = 40;
-        $("#{$quantityId}").prop("disabled", true);
-        $("#{$quantityId}").prop("value", 1);        
-    }else if (id == 16){ //Residencial Simplificado
+        prazomin = 1;
+        prazomax = 1;       
+    }else if (id == 4){ //Residencial Simplificado
         var min = 30;
         var max = 30;
-    }else if (id == 17){ //Empresarial Simplificado
+        prazomin = 1;
+        prazomax = 1;   
+    }else if (id == 5){ //Empresarial Simplificado
         var min = 20;
         var max = 20;
-    }else if (id == 18){ //Empresarial Comum
+        prazomin = 1;
+        prazomax = 1;   
+    }else if (id == 6){ //Empresarial Comum
         var min = 20;
         var max = 40;
-    }else if (id == 19){ //Vida Apolice 105
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 7){ //Vida Apolice 105
         var min = 40;
         var max = 40;
-    }else if (id == 20){ //Vida Mulher
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 8){ //Vida Mulher
         var min = 35;
         var max = 35;
-    }else if (id == 21){ //Viagem
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 9){ //Viagem
         var min = 35;
         var max = 35;
-    }else if (id == 22){ //Passageiro 
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 10){ //Passageiro 
         var min = 40;
         var max = 40;
-    }else if (id == 23){ //AP Não Nominado
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 11){ //AP Não Nominado
         var min = 40;
         var max = 40;
-    }else if (id == 24){ //Estagiario 
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 12){ //Estagiario 
         var min = 40;
         var max = 40;
-    }else if (id == 25){ //Vida Individual
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 13){ //Vida Individual
         var min = 35;
         var max = 35;
-    }else if (id == 26){ //Vida Empresarial
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 14){ //Vida Empresarial
         var min = 35;
         var max = 35;
-    }else if (id == 27){ //Vida Empresarial Uniforme
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 15){ //Vida Empresarial Uniforme
         var min = 30;
         var max = 30;
-    }else if (id == 28){ //Auto tabela B
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 16){ // Prestamista Mongeral    
+        var min = 40;
+        var max = 40;
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 17){ // Prestamista Quitacred   
+        var min = 40;
+        var max = 40;
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 18){ // Prestamista Apolice 106 
+        var min = 42;
+        var max = 42;
+        prazomin = 1;
+        prazomax = 1;
+        
+    }else if (id == 101){ //Auto tabela B
         var min = 3.5;
         var max = 3.5;
-    }else if (id == 29){ //Auto tabela C
+        prazomin = 1;
+        prazomax = 1;   
+    }else if (id == 102){ //Auto tabela C
         var min = 5.5;
         var max = 5.5;
-    }else if (id == 30){ //Moto tabela B
+        prazomin = 1;
+        prazomax = 1;   
+    }else if (id == 103){ //Moto tabela B
         var min = 3.5;
         var max = 3.5;
-    }else if (id == 31){ //Moto tabela C
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 104){ //Moto tabela C
         var min = 5.5;
         var max = 5.5;
-    }else if (id == 32){ //Imovel tabela B
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 105){ //Imovel tabela B
         var min = 3.5;
         var max = 3.5;
-    }else if (id == 33){ //Imovel tabela C
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 106){ //Imovel tabela C
         var min = 5.5;
         var max = 5.5;
-        quantity = 1;
-    }else if (id == 34){ //Servicos tabela B
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 107){ //Equipamentos tabela B
         var min = 3.5;
         var max = 3.5;
-        quantity = 1;
-    }else if (id == 35){ //Servicos tabela C
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 108){ //Equipamentos tabela C
         var min = 5.5;
         var max = 5.5;
-        quantity = 1;
-    }else if (id == 36){ //Equipamentos tabela B
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 109){ //Servicos tabela B
         var min = 3.5;
         var max = 3.5;
-    }else if (id == 37){ //Equipamentos tabela C
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 110){ //Servicos tabela C
         var min = 5.5;
         var max = 5.5;
-    }else if (id == 38){ //Cielo
+        prazomin = 1;
+        prazomax = 1;
+   
+    }else if (id == 201){ //Cielo
         var min = 10;
         var max = 10;
-    }else if (id == 39){ //Redecard
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 202){ //Redecard
         var min = 10;
         var max = 10;
-    }else if (id == 40){ //Sipag
-        var min = 10;
-        var max = 10;
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 203){ //Sipag
+        var min = 1;
+        var max = 1;
+        prazomin = 1;
+        prazomax = 1;
+    
+    }else if (id == 301){ //Cabal Vale
+        var min = 1;
+        var max = 1;
+        prazomin = 1;
+        prazomax = 1;
+
+    }else if (id == 401){ //Travel Money
+        var min = 1;
+        var max = 1;
+        prazomin = 1;
+        prazomax = 1;
+
+    }else if (id == 502){ //SMS Ilimitado
+        var min = 1;
+        var max = 1;
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 501){ //Seguro PPR
+        var min = 1;
+        var max = 1;
+        prazomin = 1;
+        prazomax = 1;
+        
+    }else if (id == 601){ //Capital de Giro
+        var min = 1;
+        var max = 1;
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 602){ //Finame
+        var min = 1;
+        var max = 1;
+        prazomin = 1;
+        prazomax = 1;       
+        
+    }else if (id == 701){ //Sicoob Previ
+        var min = 75;
+        var max = 75;
+        prazomin = 1;
+        prazomax = 1;
+        
+    }else if (id == 801){ //Consignado Seplag
+        var min = 1;
+        var max = 1;
+        prazomin = 6;
+        prazomax = 60;
+    
+    }else if (id == 802){ //Consignado INSS 
+        var min = 1;
+        var max = 1;
+        prazomin = 6;
+        prazomax = 72;
+
+    }else if (id == 901){ //Cedente
+        var min = 1;
+        var max = 1;
+        prazomin = 1;
+        prazomax = 1;
     }
 
     $("#{$comissionId}").data('slider').options.min = min;
     $("#{$comissionId}").data('slider').options.max = max;
     $("#{$comissionId}").slider('setValue', min);
     
-
+    $("#{$prazoId}").data('slider').options.min = prazomin;
+    $("#{$prazoId}").data('slider').options.max = prazomax;
+    $("#{$prazoId}").slider('setValue', min);
+    
 });
 JS;
 $this->registerJs($js);
@@ -197,8 +323,24 @@ $this->registerJs($js);
             ]
         ]);
         ?>
+<p>
+        <?php
+            echo $form->field($model, 'prazo')->widget(Slider::classname(), [
+            'name'=>'prazo',
+            'value'=>7,
+            'sliderColor'=>Slider::TYPE_GREY,
+            'handleColor'=>Slider::TYPE_SUCCESS,
+            'pluginOptions'=>[
+                'handle'=>'round',
+                'tooltip'=>'always',
+                // 'min'=>0,
+                // 'max'=>100,
+                'step'=>1,
+            ]
+        ]);
+        ?>
         
-        <?= $form->field($model, 'quantity')->textInput(['value' => 1,'maxlength' => true]) ?>
+        <?php //echo $form->field($model, 'quantity')->textInput(['value' => 1,'maxlength' => true]) ?>
         <?php //echo $form->field($model, 'companys_revenue', ['inputOptions' => ['value' => 5, 'class' => 'form-control']])->textInput(['readonly' => true]) ?>
 </div>
 </div>
