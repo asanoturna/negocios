@@ -30,6 +30,7 @@
                     [
                         'label'   => '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Inserir',
                         'url'     => ['/visits/create'],
+                        'visible' => Yii::$app->user->can("business_visits"),
                     ],
                     [
                         'label'   => '<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> Listar',
