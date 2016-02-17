@@ -13,7 +13,7 @@ use yii\helpers\Url;
 	$t = Yii::$app->getRequest()->getQueryParam('id');
 	$cod = $model->id;
 	$dataProvider = new SqlDataProvider([
-	    'sql' => "SELECT i.id, i.name as img
+	    'sql' => "SELECT i.id, i.name as img, business_visits_id
 	    FROM visits_images i
 	    WHERE i.business_visits_id = $t",
 	    'totalCount' => 200,
@@ -83,8 +83,8 @@ use yii\helpers\Url;
                     'attribute'=>'img',
                     'format' => 'html',
                     'value'=>function ($data) {
-                        return Html::a(Html::img(Yii::$app->params['imgPath'].$data["img"],
-                             ['width' => '50px', 'class' => 'img-rounded img-responsive']), Yii::$app->params['imgPath'].$data["img"], ['target' => '_blank']);
+                        return Html::a(Html::img(Yii::$app->params['imgPath'].$data["business_visits_id"].'/'.$data["img"],
+                             ['width' => '50px', 'class' => 'img-rounded img-responsive']), Yii::$app->params['imgPath'].$data["business_visits_id"].'/'.$data["img"], ['target' => '_blank']);
                     },                                     
                     'contentOptions'=>['style'=>'width: 70%;text-align:left'],
                     ],

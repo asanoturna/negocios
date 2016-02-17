@@ -19,7 +19,7 @@ class Visits extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['date', 'responsible', 'company_person', 'visits_finality_id', 'visits_status_id', 'person_id', 'location_id', 'user_id','visits_status_id'], 'required', 'message' => 'Campo Obrigatório'],
+            [['date', 'company_person', 'visits_finality_id', 'visits_status_id', 'person_id', 'location_id', 'user_id','visits_status_id'], 'required', 'message' => 'Campo Obrigatório'],
             [['date', 'created', 'updated','attachment'], 'safe'],
             [['value'], 'number'],
             [['num_proposal', 'visits_finality_id', 'visits_status_id', 'person_id', 'location_id', 'user_id'], 'integer'],

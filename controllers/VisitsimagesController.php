@@ -68,8 +68,8 @@ class VisitsimagesController extends Controller
             $file = $model->uploadImage();
             if ($model->save()) {
                 if ($file !== false) {
-                    if(!is_dir(Yii::$app->params['imgUrl'])){
-                    mkdir(Yii::$app->params['imgUrl'], 0777, true);
+                    if(!is_dir(Yii::$app->params['imgUrl'].$model->business_visits_id.'/')){
+                    mkdir(Yii::$app->params['imgUrl'].$model->business_visits_id.'/', 0777, true);
                     }
                     $path = $model->getImageFile();
                     $file->saveAs($path);

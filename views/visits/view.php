@@ -145,8 +145,8 @@ $this->title = "Detalhes da visita #" . $model->id;
                         {
                             // echo Html::img(Yii::$app->params['imgPath'].$row["img"],
                             //                 ['width' => '50px', 'class' => 'img-thumbnail']);
-                            echo Html::a(Html::img(Yii::$app->params['imgPath'].$row["img"],
-                             ['width' => '50px']), Yii::$app->params['imgPath'].$row["img"], ['target' => '_blank', 'class' => 'img-thumbnail']);
+                            echo Html::a(Html::img(Yii::$app->params['imgPath'].$cod.'/'.$row["img"],
+                             ['width' => '50px']), Yii::$app->params['imgPath'].$cod.'/'.$row["img"], ['target' => '_blank', 'class' => 'img-thumbnail']);
                         }   
                     } else {
                         echo "<span class=\"not-set\">(não possui imagens)</span>";
