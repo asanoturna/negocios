@@ -63,7 +63,17 @@ AppAsset::register($this);
 <div style="background-image: url('images/footer.jpg'); height: 29px;"></div>
 <footer class="footer">
     <div class="container-fluid">
-        <p class="pull-center">&copy; <?= Yii::$app->params['company'] ?> <?= date('Y') ?> - <?= Yii::$app->params['appname']?> - Administração do sistema</p>
+        <p class="pull-center">&copy; 
+        <?= Yii::$app->params['company'] ?> 
+        <?= date('Y') ?> - 
+        <?= Yii::$app->params['appname']?> - 
+        Administração do sistema 
+        <?= Html::mailto('Contato', Yii::$app->params['supportEmail'], [
+            'class' => 'pull-right',
+            'title' => 'Dúvidas e Sugestões ',
+            'style' => 'color: #97afb3;',
+            ]) ?></p>
+
     </div>
 </footer>
 

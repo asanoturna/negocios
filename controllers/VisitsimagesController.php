@@ -75,6 +75,7 @@ class VisitsimagesController extends Controller
                     $file->saveAs($path);
                     // optimize image (path, border width, color, transp)
                     Image::frame($path, 5, '#0d4549', 100)
+                    ->thumbnail(new Box(1200, 1200))
                     ->save($path, ['quality' => 60]);                    
                 }
                 Yii::$app->session->setFlash('img-success', 'Imagem enviada com sucesso');

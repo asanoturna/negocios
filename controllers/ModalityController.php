@@ -9,9 +9,6 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-/**
- * ModalityController implements the CRUD actions for Modality model.
- */
 class ModalityController extends Controller
 {
     public function behaviors()
@@ -26,10 +23,6 @@ class ModalityController extends Controller
         ];
     }
 
-    /**
-     * Lists all Modality models.
-     * @return mixed
-     */
     public function actionIndex()
     {
         $searchModel = new ModalitySearch();
@@ -41,11 +34,6 @@ class ModalityController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single Modality model.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionView($id)
     {
         return $this->render('view', [
@@ -53,11 +41,6 @@ class ModalityController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new Modality model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate()
     {
         $model = new Modality();
@@ -71,12 +54,6 @@ class ModalityController extends Controller
         }
     }
 
-    /**
-     * Updates an existing Modality model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
@@ -90,12 +67,6 @@ class ModalityController extends Controller
         }
     }
 
-    /**
-     * Deletes an existing Modality model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
@@ -103,13 +74,6 @@ class ModalityController extends Controller
         return $this->redirect(['index']);
     }
 
-    /**
-     * Finds the Modality model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Modality the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     protected function findModel($id)
     {
         if (($model = Modality::findOne($id)) !== null) {

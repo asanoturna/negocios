@@ -1,5 +1,7 @@
 <?php
-
+/*
+Yii::$app->params['imgUrl']
+*/
 return [
     'adminEmail' => 'admin@example.com',
     'appname' => 'Intranet Negócios',
