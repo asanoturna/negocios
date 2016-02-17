@@ -352,7 +352,7 @@ $this->registerJs($js);
     <!-- LINHA 2 / COLUNA 1 -->
         
         <?= $form->field($model, 'person_id')->radioList(
-(ArrayHelper::map(Person::find()->orderBy("name ASC")->all(), 'id', 'name'))
+(ArrayHelper::map(Person::find()->where('id != :id', ['id'=>7])->orderBy("name ASC")->all(), 'id', 'name'))
             , ['itemOptions' => ['class' =>'radio-inline','labelOptions'=>array('style'=>'padding:4px;')]])->label('Pessoa');
         ?>
         <?= $form->field($model, 'buyer_document')->widget(\yii\widgets\MaskedInput::classname(), [

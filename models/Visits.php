@@ -121,17 +121,17 @@ class Visits extends \yii\db\ActiveRecord
 
     public function getVisitsStatus()
     {
-        return $this->hasOne(VisitsStatus::className(), ['id' => 'visits_status_id']);
+        return $this->hasOne(Visitsstatus::className(), ['id' => 'visits_status_id']);
     }
 
     public function getVisitsFinality()
     {
-        return $this->hasOne(VisitsFinality::className(), ['id' => 'visits_finality_id']);
+        return $this->hasOne(Visitsfinality::className(), ['id' => 'visits_finality_id']);
     }
 
     public function getVisitsImages()
     {
-        return $this->hasMany(VisitsImages::className(), ['business_visits_id' => 'id']);
+        return $this->hasMany(Visitsimages::className(), ['business_visits_id' => 'id']);
     }
     public function getUser()
     {
