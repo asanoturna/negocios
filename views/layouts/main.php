@@ -42,10 +42,10 @@ AppAsset::register($this);
                 ['label' => '<img src="images/users/'.Yii::$app->user->identity->profile->avatar.'" class="profile-image img-avatar" > '. Yii::$app->user->displayName,
                 'items' => 
                     [
-                        ['label' => '<i class="fa fa-briefcase"></i> Alterar Senha', 'url' => ['/user/account']],
-                        ['label' => '<i class="fa fa-briefcase"></i> Perfil', 'url' => ['/user/profile']],
+                        ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Alterar Senha', 'url' => ['/user/account']],
+                        ['label' => '<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Perfil', 'url' => ['/user/profile']],
                         '<li class="divider"></li>',
-                        ['label' => '<i class="fa fa-unlock"></i> Sair',
+                        ['label' => '<span class="glyphicon glyphicon-off" aria-hidden="true"></span> Sair',
                             'url' => ['/user/logout'],
                             'linkOptions' => ['data-method' => 'post']],
                     ],
