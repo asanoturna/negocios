@@ -68,9 +68,9 @@ AppAsset::register($this);
         <?= date('Y') ?> - 
         <?= Yii::$app->params['appname']?> - 
         Administração do sistema 
-        <?= Html::mailto('Contato', Yii::$app->params['supportEmail'], [
+        <?= Html::mailto('Dúvidas e Sugestões', Yii::$app->params['supportEmail'], [
             'class' => 'pull-right',
-            'title' => 'Dúvidas e Sugestões ',
+            'title' => 'Envie Dúvidas e Sugestões ',
             'style' => 'color: #97afb3;',
             ]) ?></p>
 
