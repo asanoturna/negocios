@@ -91,7 +91,7 @@ use yii\widgets\MaskedInput;
     <hr/>
     <div class="form-group">
         <div class="col-lg-offset-2 col-lg-10">
-        <?= Html::submitButton($model->isNewRecord ? 'Gravar' : 'Gravar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-success']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Gravar' : 'Gravar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-success']) ?> teste
         </div>
     </div>
 

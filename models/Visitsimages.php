@@ -22,7 +22,7 @@ class Visitsimages extends \yii\db\ActiveRecord
             [['name', 'business_visits_id'], 'required'],
             [['business_visits_id'], 'integer'],
             [['name'], 'safe'],
-            [['file'], 'file', 'extensions'=>'jpg, png', 'maxSize' => 1024 * 1024 * 2],
+            [['file'], 'file', 'extensions'=>'jpg, png', 'maxSize' => 1024 * 1024 * 4],
         ];
     }
 
