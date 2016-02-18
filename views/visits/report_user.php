@@ -25,7 +25,7 @@ $this->title = "Desempenho por Usuário";
                     window.location.href = "' . Url::to(['/visits/report_user']) . '&user_id=" + val;
                 }
                 }', View::POS_HEAD);
-                echo Html::activeDropDownList($model, 'user_id', ArrayHelper::map(User::find()->where(['status' => 1])
+                echo Html::activeDropDownList($model, 'user_id', ArrayHelper::map(User::find()->where(['role_id' => 4])
                             ->orderBy("username ASC")
                             ->all(), 'id', 'username'), ['onchange'=>'submit(this.value);','prompt'=>'Usuário','class'=>'form-control']);
                 ?>
