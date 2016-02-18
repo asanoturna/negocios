@@ -364,9 +364,9 @@ $this->registerJs($js);
     </div>
     <div class="col-xs-6">
     <!-- LINHA 2 / COLUNA 2 -->
-    <?= $form->field($model, 'seller_id')->dropDownList(ArrayHelper::map(User::find()->where(['role_id' => 2])->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])  ?>
+    <?= $form->field($model, 'seller_id')->dropDownList(ArrayHelper::map(User::find()->where('role_id != :id', ['id'=>1],['status' => 1])->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])?>
 
-    <?= $form->field($model, 'operator_id')->dropDownList(ArrayHelper::map(User::find()->where(['role_id' => 2])->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])  ?>
+    <?= $form->field($model, 'operator_id')->dropDownList(ArrayHelper::map(User::find()->where('role_id != :id', ['id'=>1],['status' => 1])->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])?>
     
     </div>
 </div>
