@@ -1,42 +1,34 @@
-	<?php
-
-    use yii\bootstrap\Nav;
-
-            echo Nav::widget([
-                'activateItems' => true,
-                'encodeLabels' => false,
-                'items' => [
-                    [
-                        'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Visitas dos Gerentes',
-                        'url'     => ['/visits/index'],
-                        //'options' => ['class' => 'disabled'],
-                    ],
-                    [
-                        'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Produtividade Diária',
-                        'url'     => ['/dailyproductivity/performance_overview'],
-
-                    ],                      
-                    // [
-                    //     'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Adequação de Limites',
-                    //     //'url'     => ['/dailyproductivity/create'],
-                    //     'options' => ['class' => 'disabled'],
-                    // ],
-                    [
-                        'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Ação Capital', //grafico pizza
-                        'url'     => ['/capitalaction/index'],
-                        //'options' => ['class' => 'disabled'],
-                    ],    
-                    [
-                        'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Controle Recursos', //grafico pizza
-                        //'url'     => ['/dailyproductivity/create'],
-                        'options' => ['class' => 'disabled'],
-                    ],                     
-                    [
-                        'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Relatórios Olap/TCF', //grafico pizza
-                        //'url'     => ['/dailyproductivity/create'],
-                        'options' => ['class' => 'disabled'],
-                    ],                                                                
-                ],
-                'options' => ['class' =>'nav-pills nav-stacked'], // set this to nav-tab to get tab-styled navigation
-            ]);
-	?>
+<?php
+use yii\bootstrap\Nav;
+    echo Nav::widget([
+    'activateItems' => true,
+    'encodeLabels' => false,
+    'items' => [
+        [
+        'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Visitas dos Gerentes',
+        'url'     => ['/visits/index'],
+        //'options' => ['class' => 'disabled'],
+        ],
+        [
+        'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Produtividade Diária',
+        'url'     => ['/dailyproductivity/performance_overview'],
+        ],                      
+        [
+        'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Ação Capital',
+        'url'     => ['/capitalaction/index'],
+        ],    
+        [
+        'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Controle Recursos',
+        //'url'     => ['/dailyproductivity/create'],
+        'options' => ['class' => 'disabled'],
+        ],                     
+        [
+        'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Relatórios Olap/TCF',
+        'options' => ['class' => 'disabled'],
+        //'url'     => ['/dailyproductivity/create'],
+        ],                                                                
+    ],
+    'options' => ['class' =>'nav-pills nav-stacked'],
+    // set this to nav-tab to get tab-styled navigation
+    ]);
+?>

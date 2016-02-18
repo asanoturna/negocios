@@ -203,8 +203,23 @@ class VisitsController extends Controller
         $model->ip = '127.0.0.1';
         $model->updated = date('Y-m-d'); 
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $file = $model->uploadImage();
+ 
+            if ($model->save()) {
+
+                if ($file !== false) {
+                    if(!is_dir(Yii::$app->params['uploadUrl'])){
+                    mkdir(Yii::$app->params['uploadUrl'], 0777, true);
+                    }
+                    $path = $model->getImageFile();
+                    $file->saveAs($path);
+                }
+                Yii::$app->session->setFlash('visit-success', 'Registro de visita alterado com sucesso!');
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                // error in saving model
+            }
         } else {
             return $this->render('update', [
                 'model' => $model,

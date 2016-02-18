@@ -177,7 +177,7 @@ class DailyproductivityController extends Controller
         $command = Yii::$app->db->createCommand(
         "SELECT
             t2. NAME AS p,
-            SUM(t1. VALUE) AS t,
+            SUM(t1. companys_revenue) AS t,
             SUM(t1.quantity) AS q
         FROM
             daily_productivity AS t1

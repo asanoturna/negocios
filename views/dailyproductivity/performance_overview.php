@@ -58,7 +58,7 @@ $this->title = 'Produtividade Diária';
 <div class="row">
   <div class="col-md-6">
   	<div class="panel panel-primary">
-	  <div class="panel-heading"><b>Produtos Mais Vendidos por Valor</b></div>
+	  <div class="panel-heading"><b>Produtos Mais Vendidos por Receita</b></div>
 	  <div class="panel-body">
 		<?php
 		echo Highcharts::widget([
@@ -106,7 +106,6 @@ $this->title = 'Produtividade Diária';
 	  <div class="panel-body">
 		<?php
 		echo Highcharts::widget([
-
 		            'options' => [
 		                'credits' => ['enabled' => false],
 		                'title' => [
@@ -114,7 +113,6 @@ $this->title = 'Produtividade Diária';
 		                ],
 		                'colors'=> ['#00A295','#27cdd9'],
 		                'xAxis' => [
-		                    //'categories' => ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Nov', 'Dez'],
 		                    'categories' => $p,
 		                ],
 		                'yAxis' => [
@@ -124,7 +122,7 @@ $this->title = 'Produtividade Diária';
 		                'series' => [
 		                    [
 		                        'type' => 'column',
-		                        'name' => 'Produtos',
+		                        'name' => 'Volume',
 		                        'data' => $q,
 		                    ],
 		                    // [
