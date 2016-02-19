@@ -75,7 +75,6 @@ use yii\widgets\MaskedInput;
         ]
     ])?>  
 
-
         <?= $form->field($model, 'value')->textInput(['maxlength' => true,'style'=>'width:80px']) ?>
 
         <?= $form->field($model, 'num_proposal')->textInput(['maxlength' => true,'style'=>'width:80px']) ?>
@@ -91,7 +90,7 @@ use yii\widgets\MaskedInput;
     <hr/>
     <div class="form-group">
         <div class="col-lg-offset-2 col-lg-10">
-        <?= Html::submitButton($model->isNewRecord ? 'Gravar' : 'Gravar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-success']) ?> teste
+        <?= Html::submitButton($model->isNewRecord ? '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Gravar Visita' : '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Alterar Visita', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-success']) ?> <span class="text-muted"> * Imagens poderão ser adicionadas na próxima tela</span>
         </div>
     </div>
 

@@ -28,10 +28,7 @@ $this->title = 'Produtividade Diária';
                         window.location.href = "' . Url::to(['/dailyproductivity/performance_location']) . '&product_id=" + val;
                     }
                     }', View::POS_HEAD);
-
-                    echo Html::activeDropDownList($model, 'product_id', ArrayHelper::map(Product::find()->where(['parent_id' => 9])
-                                ->orderBy("name ASC")
-                                ->all(), 'id', 'name'), ['onchange'=>'submit(this.value);','prompt'=>'Todos os produtos','class'=>'form-control']);
+                    echo Html::activeDropDownList($model, 'product_id', app\models\Product::getHierarchy(), ['onchange'=>'submit(this.value);','prompt'=>'Todos os Produtos','class'=>'form-control required']);
                     ?>
         </div>
     </div>  

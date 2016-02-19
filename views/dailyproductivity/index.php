@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
@@ -9,18 +8,16 @@ use app\models\Modality;
 use app\models\User;
 use app\models\Dailyproductivitystatus;
 
-
 $this->title = 'Produtividade Diária';
-
 ?>
 <div class="dailyproductivity-index">
 
-<div class="row">
-  <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
-  <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;"><?php  echo $this->render('_menu'); ?></span></div>
-</div>
+  <div class="row">
+    <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
+    <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;"><?php  echo $this->render('_menu'); ?></span></div>
+  </div>
 
-<hr/>
+  <hr/>
     <div class="panel panel-primary">
     <div class="panel-heading"><b>Pesquisar</b></div>
       <div class="panel-body">
@@ -44,11 +41,6 @@ $this->title = 'Produtividade Diária';
             ];
         },       
         'columns' => [
-            // [
-            //  'attribute' => 'id',
-            //  'enableSorting' => true,
-            //  'contentOptions'=>['style'=>'width: 5%;text-align:left'],
-            // ],
             [
              'attribute' => 'date',
              'enableSorting' => true,

@@ -71,6 +71,9 @@ use yii\helpers\Url;
             ],
         ]); 
         ?>
+<p>
+<br/>
+</p>        
 
 <?php
 $productId = Html::getInputId($model, 'product_id');
@@ -324,6 +327,8 @@ $this->registerJs($js);
         ]);
         ?>
 <p>
+<br/>
+</p>
         <?php
             echo $form->field($model, 'prazo')->widget(Slider::classname(), [
             'name'=>'prazo',

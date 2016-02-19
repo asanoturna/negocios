@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
@@ -14,7 +13,6 @@ use yii\web\JsExpression;
 use yii\widgets\ActiveForm;
 
 $this->title = 'Produtividade Diária';
-
 ?>
 <div class="dailyproductivity-index">
 
@@ -22,21 +20,16 @@ $this->title = 'Produtividade Diária';
   <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
   <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;"><?php  echo $this->render('_menu'); ?></span></div>
 </div>
-
 <hr/>
     <div class="row">   
         <div class="col-md-3 pull-right"> 
-                <?php 
-                $this->registerJs('var submit = function (val){if (val > 0) {
-                    window.location.href = "' . Url::to(['/dailyproductivity/performance_user']) . '&product_id=" + val;
-                }
-                }', View::POS_HEAD);
-
-                echo Html::activeDropDownList($model, 'product_id', ArrayHelper::map(Product::find()->where(['parent_id' => 1] or ['parent_id' => 900])
-                            ->orderBy("id ASC")
-                            ->all(), 'id', 'name'), ['onchange'=>'submit(this.value);','prompt'=>'Selecione o Produto','class'=>'form-control required']);
-                ?>
-    
+            <?php 
+            $this->registerJs('var submit = function (val){if (val > 0) {
+                window.location.href = "' . Url::to(['/dailyproductivity/performance_user']) . '&product_id=" + val;
+            }
+            }', View::POS_HEAD);
+            echo Html::activeDropDownList($model, 'product_id', app\models\Product::getHierarchy(), ['onchange'=>'submit(this.value);','prompt'=>'Todos os Produtos','class'=>'form-control required']);
+            ?>
         </div>
     </div>  
     </p>  
@@ -45,63 +38,55 @@ $this->title = 'Produtividade Diária';
         <div class="panel panel-primary">
           <div class="panel-heading"><b>Ranking de Vendas Por Receita</b></div>
           <div class="panel-body">
-        <?= GridView::widget([
-          'dataProvider' => $dataProviderValor,
-          'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
-          'summary'      =>  '',
-          'showHeader'   => true,        
-          'tableOptions' => ['class'=>'table table-striped table-hover '],
-          'columns' => [   
-                // [
-                //     'attribute' => 'avatar',
-                //     'format' => 'image',
-                //     'value' => function ($data) {                      
-                //         return Yii::$app->request->BaseUrl.'/images/users/'.$data["avatar"];
-                //     },
-                //     'contentOptions'=>['style'=>'width: 20%;text-align:center'],
-                // ],   
-                [
-                    'attribute' => 'avatar',
-                    'header' => '',
-                    'format' => 'html',
-                    'value' => function ($data) {
-                        return Html::img(Yii::$app->request->BaseUrl.'/images/users/'.$data["avatar"],
-                            ['width' => '50px', 'class' => 'img-rounded img-responsive']);
-                    },
-                    'contentOptions'=>['style'=>'width: 10%;text-align:middle'],                    
-                ],                                 
-                [
-                    'attribute' => 'seller',
-                    'format' => 'raw',
-                    'header' => '',
-                    'value' => function ($data) {                      
-                        return $data["seller"];
-                    },
-                    'contentOptions'=>['style'=>'width: 30%;text-align:left;vertical-align: middle;'],
-                ],  
-                [
-                    'attribute' => 'confirmed',
-                    'header' => 'Efetivado',
-                    'format' => 'raw',
-                    'value' => function ($data) {                      
-                        return "<b class=\"text-success\">R$ ".$data["confirmed"]."</b>";
-                    },
-                    'headerOptions' => ['class' => 'text-success','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
-                    'contentOptions'=>['style'=>'width: 50%;text-align:right;vertical-align: middle;'],
-                ],    
-                [
-                    'attribute' => 'unconfirmed',
-                    'header' => 'Pendente',
-                    'format' => 'raw',
-                    'value' => function ($data) {                      
-                        return "<b class=\"text-danger\">R$ ".$data["unconfirmed"]."</b>";
-                    },
-                    'headerOptions' => ['class' => 'text-danger','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
-                    'contentOptions'=>['style'=>'width: 30%;text-align:right;vertical-align: middle;'],
-                ],                        
+            <?= GridView::widget([
+              'dataProvider' => $dataProviderValor,
+              'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
+              'summary'      =>  '',
+              'showHeader'   => true,        
+              'tableOptions' => ['class'=>'table table-striped table-hover '],
+              'columns' => [     
+                    [
+                        'attribute' => 'avatar',
+                        'header' => '',
+                        'format' => 'html',
+                        'value' => function ($data) {
+                            return Html::img(Yii::$app->request->BaseUrl.'/images/users/'.$data["avatar"],
+                                ['width' => '50px', 'class' => 'img-rounded img-responsive']);
+                        },
+                        'contentOptions'=>['style'=>'width: 10%;text-align:middle'],                    
+                    ],                                 
+                    [
+                        'attribute' => 'seller',
+                        'format' => 'raw',
+                        'header' => '',
+                        'value' => function ($data) {                      
+                            return $data["seller"];
+                        },
+                        'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;'],
+                    ],  
+                    [
+                        'attribute' => 'confirmed',
+                        'header' => 'Efetivado',
+                        'format' => 'raw',
+                        'value' => function ($data) {                      
+                            return "<b class=\"text-success\">R$ ".$data["confirmed"]."</b>";
+                        },
+                        'headerOptions' => ['class' => 'text-success','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                        'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                    ],    
+                    [
+                        'attribute' => 'unconfirmed',
+                        'header' => 'Pendente',
+                        'format' => 'raw',
+                        'value' => function ($data) {                      
+                            return "<b class=\"text-danger\">R$ ".$data["unconfirmed"]."</b>";
+                        },
+                        'headerOptions' => ['class' => 'text-danger','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                        'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                    ],                        
 
-            ],
-        ]); ?>
+                ],
+            ]); ?>
             </div>
         </div>
         </div>
@@ -109,63 +94,54 @@ $this->title = 'Produtividade Diária';
         <div class="panel panel-primary">
           <div class="panel-heading"><b>Ranking de Vendas Por Quantidade</b></div>
           <div class="panel-body">
-        <?= GridView::widget([
-          'dataProvider' => $dataProviderQtde,
-          'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
-          'summary'      =>  '',
-          'showHeader'   => true,        
-          'tableOptions' => ['class'=>'table table-striped table-hover '],
-          'columns' => [   
-                // [
-                //     'attribute' => 'avatar',
-                //     'format' => 'image',
-                //     'value' => function ($data) {                      
-                //         return Yii::$app->request->BaseUrl.'/images/users/'.$data["avatar"];
-                //     },
-                //     'contentOptions'=>['style'=>'width: 20%;text-align:center'],
-                // ],   
-                [
-                    'attribute' => 'avatar',
-                    'format' => 'html',
-                    'header' => '',
-                    'value' => function ($data) {
-                        return Html::img(Yii::$app->request->BaseUrl.'/images/users/'.$data["avatar"],
-                            ['width' => '50px', 'class' => 'img-rounded img-responsive']);
-                    },
-                    'contentOptions'=>['style'=>'width: 10%;text-align:center'],                    
-                ],                                 
-                [
-                    'attribute' => 'seller',
-                    'format' => 'raw',
-                    'header' => '',
-                    'value' => function ($data) {                      
-                        return $data["seller"];
-                    },
-                    'contentOptions'=>['style'=>'width: 60%;text-align:left;vertical-align: middle;'],
-                ],  
-                [
-                    'attribute' => 'confirmed',
-                    'header' => 'Efetivado',
-                    'format' => 'raw',
-                    'value' => function ($data) {                      
-                        return "<b class=\"text-success\">".$data["confirmed"]."</b>";
-                    },
-                    'headerOptions' => ['class' => 'text-success','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
-                    'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
-                ],    
-                [
-                    'attribute' => 'unconfirmed',
-                    'header' => 'Pendente',
-                    'format' => 'raw',
-                    'value' => function ($data) {                      
-                        return "<b class=\"text-danger\">".$data["unconfirmed"]."</b>";
-                    },
-                    'headerOptions' => ['class' => 'text-danger','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
-                    'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
-                ],                         
-
-            ],
-        ]); ?>
+            <?= GridView::widget([
+              'dataProvider' => $dataProviderQtde,
+              'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
+              'summary'      =>  '',
+              'showHeader'   => true,        
+              'tableOptions' => ['class'=>'table table-striped table-hover '],
+              'columns' => [     
+                    [
+                        'attribute' => 'avatar',
+                        'format' => 'html',
+                        'header' => '',
+                        'value' => function ($data) {
+                            return Html::img(Yii::$app->request->BaseUrl.'/images/users/'.$data["avatar"],
+                                ['width' => '50px', 'class' => 'img-rounded img-responsive']);
+                        },
+                        'contentOptions'=>['style'=>'width: 10%;text-align:center'],                    
+                    ],                                 
+                    [
+                        'attribute' => 'seller',
+                        'format' => 'raw',
+                        'header' => '',
+                        'value' => function ($data) {                      
+                            return $data["seller"];
+                        },
+                        'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;'],
+                    ],  
+                    [
+                        'attribute' => 'confirmed',
+                        'header' => 'Efetivado',
+                        'format' => 'raw',
+                        'value' => function ($data) {                      
+                            return "<b class=\"text-success\">".$data["confirmed"]."</b>";
+                        },
+                        'headerOptions' => ['class' => 'text-success','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                        'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                    ],    
+                    [
+                        'attribute' => 'unconfirmed',
+                        'header' => 'Pendente',
+                        'format' => 'raw',
+                        'value' => function ($data) {                      
+                            return "<b class=\"text-danger\">".$data["unconfirmed"]."</b>";
+                        },
+                        'headerOptions' => ['class' => 'text-danger','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                        'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                    ],                         
+                ],
+            ]); ?>
             </div>
         </div>
         </div>
