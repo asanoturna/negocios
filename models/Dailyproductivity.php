@@ -197,6 +197,9 @@ class Dailyproductivity extends \yii\db\ActiveRecord
                         $this->companys_revenue = abs($companys_revenue);
                         break;
                     }   
+                }elseif($this->product_id == 901){
+                    //MODULO CEDENTE
+                    $this->value = 0;
                 }
             //$this->quantity = 1;
             return true;
