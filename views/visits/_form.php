@@ -28,6 +28,8 @@ use yii\widgets\MaskedInput;
 
     <div class="row">
         <div class="col-md-5">
+
+        <?php //echo $form->field($model, 'location_id')->input('number', ['maxlength' => 4, 'step' => '0.1', 'min' => '0']) ?>
         <!-- LEFT SIDE -->
         <?= $form->field($model, 'date')->widget('trntv\yii\datetime\DateTimeWidget',
             [

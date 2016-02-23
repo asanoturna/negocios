@@ -70,7 +70,7 @@ $this->title = 'Visitas dos Gerentes';
             ], 
             [
             'attribute' => 'company_person',
-            'contentOptions'=>['style'=>'width: 18%;text-align:left'],
+            'contentOptions'=>['style'=>'width: 18%;text-align:left;text-transform: uppercase'],
             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ], 
             [

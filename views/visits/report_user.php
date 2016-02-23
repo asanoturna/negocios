@@ -27,7 +27,7 @@ $this->title = "Desempenho por Usuário";
                 }', View::POS_HEAD);
                 echo Html::activeDropDownList($model, 'user_id', ArrayHelper::map(User::find()->where(['role_id' => 4, 'status' => 1])
                             ->orderBy("username ASC")
-                            ->all(), 'id', 'username'), ['onchange'=>'submit(this.value);','prompt'=>'Usuário','class'=>'form-control']);
+                            ->all(), 'id', 'username'), ['onchange'=>'submit(this.value);','prompt'=>'Usuário','class'=>'form-control', 'style' => 'text-transform: lowercase']);
                 ?>
         </div>
         <div class="col-md-1 pull-right"> 
