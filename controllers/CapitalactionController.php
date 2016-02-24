@@ -58,6 +58,9 @@ class CapitalactionController extends Controller
     {
         $model = new Capitalaction();
 
+        $model->user_id = Yii::$app->user->id;
+        $model->created = date('Y-m-d');
+       
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -70,6 +73,8 @@ class CapitalactionController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+
+        $model->updated = date('Y-m-d');         
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
