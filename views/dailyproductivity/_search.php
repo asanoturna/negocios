@@ -38,12 +38,9 @@ use kartik\date\DatePicker;
                 ]);
             ?>
         </div>
-        <div class="col-md-3">
-            <?= $form->field($model, 'seller_id')->checkbox([
-                'label' => 'Apenas minhas vendas',
-                'labelOptions'=>array('style'=>'padding:5px;'),
-                ]) ?>
-        </div>
+<!--         <div class="col-md-3">
+
+        </div> -->
         <div class="form-group">
             <?= Html::submitButton('Filtrar', ['class' => 'btn btn-success']) ?>
         </div>

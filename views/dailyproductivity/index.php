@@ -46,7 +46,18 @@ $this->title = 'Produtividade Diária';?>
               'contentOptions'=>['style'=>'width: 4%;text-align:center'],
               'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
               'format' => ['date', 'php:d/m/Y'],
-            ],            
+            ],      
+            [
+              'attribute' => 'user_id',
+              'format' => 'raw',
+              'enableSorting' => true,
+              'value' => function ($model) {                      
+                  return $model->user ? $model->user->username : '<span class="text-danger"><em>Nenhum</em></span>';
+              },
+              'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
+              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'contentOptions'=>['style'=>'width: 7%;text-align:left'],
+            ],                  
             [
               'attribute' => 'location_id',
               'enableSorting' => true,

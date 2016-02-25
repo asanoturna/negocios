@@ -14,10 +14,6 @@ use miloschuman\highcharts\Highcharts;
 use miloschuman\highcharts\SeriesDataHelper;
 
 $this->title = 'Produtividade Diária';
-// SELECT t2.name AS PRODUTO, SUM(t1.value) AS TOTAL
-// FROM daily_productivity AS t1
-// LEFT JOIN product AS t2 ON t1.product_id = t2.id 
-// GROUP BY PRODUTO
 ?>
 <div class="dailyproductivity-index">
 
