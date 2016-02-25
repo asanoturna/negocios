@@ -9,10 +9,11 @@ use app\models\Managerdailyproductivity;
 
 class ManagerdailyproductivitySearch extends Managerdailyproductivity
 {
+
     public function rules()
     {
         return [
-            [['id', 'product_id', 'location_id', 'person_id', 'daily_productivity_status_id', 'seller_id', 'operator_id', 'user_id', 'manager_id'], 'integer'],
+            [['id', 'product_id', 'location_id', 'person_id', 'daily_productivity_status_id', 'seller_id', 'operator_id', 'user_id'], 'integer'],
             [['buyer_document', 'buyer_name', 'date', 'created', 'updated'], 'safe'],
             [['value', 'commission_percent', 'companys_revenue'], 'number'],
         ];
@@ -60,7 +61,6 @@ class ManagerdailyproductivitySearch extends Managerdailyproductivity
             'seller_id' => $this->seller_id,
             'operator_id' => $this->operator_id,
             'user_id' => $this->user_id,
-            'manager_id' => $this->manager_id,
             'date' => $this->date,
             'created' => $this->created,
             'updated' => $this->updated,

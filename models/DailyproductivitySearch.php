@@ -15,7 +15,7 @@ class DailyproductivitySearch extends Dailyproductivity
     public function rules()
     {
         return [
-            [['id', 'location_id', 'product_id', 'daily_productivity_status_id', 'seller_id', 'operator_id', 'user_id'], 'integer'],
+            [['id', 'location_id', 'product_id', 'daily_productivity_status_id', 'seller_id', 'operator_id'], 'integer'],
             [['start_date', 'end_date', 'buyer_document', 'buyer_name', 'date', 'created', 'updated'], 'safe'],
             [['value', 'quantity', 'commission_percent', 'companys_revenue'], 'number'],
         ];
@@ -54,7 +54,6 @@ class DailyproductivitySearch extends Dailyproductivity
         $query->andFilterWhere([
             'id' => $this->id,
             'product_id' => $this->product_id,
-            'user_id' => $this->user_id,
             'location_id' => $this->location_id,
             'value' => $this->value,
             'quantity' => $this->quantity,
