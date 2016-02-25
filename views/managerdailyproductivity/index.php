@@ -41,15 +41,15 @@ $this->title = 'Gestão Produtividade Diária';
                 'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
                 'contentOptions'=>['style'=>'width: 7%;text-align:left'],
             ],              
-            // [
-            //  'attribute' => 'location_id',
-            //  'enableSorting' => true,
-            //  'value' => function ($model) {                      
-            //         return $model->location->shortname;
-            //         },
-            //  'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
-            //  'contentOptions'=>['style'=>'width: 7%;text-align:center'],
-            // ],            
+            [
+             'attribute' => 'location_id',
+             'enableSorting' => true,
+             'value' => function ($model) {                      
+                    return $model->location->shortname;
+                    },
+             'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
+             'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            ],            
             [
                 'attribute' => 'product_id',
                 'enableSorting' => true,
@@ -57,7 +57,7 @@ $this->title = 'Gestão Produtividade Diária';
                        return $model->product->name;
                        },
                 'filter' => ArrayHelper::map(Product::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
-                'contentOptions'=>['style'=>'width: 25%;text-align:left'],
+                'contentOptions'=>['style'=>'width: 22%;text-align:left'],
             ],              
             [
                 'attribute' => 'value',
@@ -77,19 +77,7 @@ $this->title = 'Gestão Produtividade Diária';
                 'format' => 'raw',
                 'enableSorting' => true,
                 'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-            ],               
-            [
-                'attribute' => 'daily_productivity_status_id',
-                'format' => 'raw',
-                'enableSorting' => true,
-                'value' => function ($model) {                      
-                        return $model->daily_productivity_status_id === 1 ? "<span class=\"label label-warning\">".$model->dailyProductivityStatus->name."</span>" : "<span class=\"label label-success\">".$model->dailyProductivityStatus->name."</span>";
-                        },
-                'filter' => ArrayHelper::map(Dailyproductivitystatus::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
-                'contentOptions'=>['style'=>'width: 10%;text-align:center'],
-            ],             
-            // 'buyer_document',
-            // 'buyer_name',
+            ],                       
             [
                 'attribute' => 'seller_id',
                 'format' => 'raw',
@@ -98,7 +86,7 @@ $this->title = 'Gestão Produtividade Diária';
                     return $model->seller ? $model->seller->username : '<span class="text-danger"><em>Nenhum</em></span>';
                 },
                 'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
-                'contentOptions'=>['style'=>'width: 7%;text-align:left'],
+                'contentOptions'=>['style'=>'width: 8%;text-align:left'],
             ],             
             [
                 'attribute' => 'operator_id',
@@ -108,12 +96,49 @@ $this->title = 'Gestão Produtividade Diária';
                     return $model->operator ? $model->operator->username : '<span class="text-danger"><em>Nenhum</em></span>';
                 },
                 'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
-                'contentOptions'=>['style'=>'width: 7%;text-align:left'],
-            ],            
+                'contentOptions'=>['style'=>'width: 8%;text-align:left'],
+            ],   
+            [
+                'attribute' => 'daily_productivity_status_id',
+                'format' => 'raw',
+                'enableSorting' => true,
+                'value' => function ($model) {                      
+                        return $model->daily_productivity_status_id === 1 ? "<span class=\"label label-warning\">".$model->dailyProductivityStatus->name."</span>" : "<span class=\"label label-success\">".$model->dailyProductivityStatus->name."</span>";
+                        },
+                'filter' => ArrayHelper::map(Dailyproductivitystatus::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+                'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+            ],     
+            [
+                'attribute' => 'manager_id',
+                'format' => 'raw',
+                'enableSorting' => true,
+                'value' => function ($model) {                      
+                    return $model->manager ? $model->manager->username : '<span class="text-danger"><em>Nenhum</em></span>';
+                },
+                'filter' => ArrayHelper::map(User::find()->where(['role_id' => 3])->orderBy('username')->asArray()->all(), 'id', 'username'),
+                'contentOptions'=>['style'=>'width: 8%;text-align:left'],
+            ],                       
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update} {delete}',
-                'contentOptions'=>['style'=>'width: 8%;text-align:right'],
+                'buttons' => [
+                    'update' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
+                                    'title' => 'Alterar',
+                                    'class' => 'btn btn-default btn-xs',
+                        ]);
+                    },
+                    'delete' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
+                                    'title' => 'Alterar',
+                                    'class' => 'btn btn-default btn-xs',
+                                    'data-confirm' => 'Tem certeza que deseja excluir?',
+                                    'data-method' => 'post',
+                                    'data-pjax' => '0',
+                        ]);
+                    },                
+                ],
+                'contentOptions'=>['style'=>'width: 5%;text-align:right'],
             ],
         ],
     ]); ?>
