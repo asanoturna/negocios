@@ -65,12 +65,12 @@ $this->title = 'Produtividade Diária';
                 'format' => 'raw',
                 'value' => $model->user->username,
             ],   
-            [ 
-                'label' => 'Aprovador',
-                'format' => 'raw',
-                'value' => $model->manager->username == '' ? '<span class="text-danger"><em>Nenhum</em></span>' : $model->manager->username,
-                'visible' => $model->manager->username <> '' ? true : false,
-            ],                                  
+            // [ 
+            //     'label' => 'Aprovador',
+            //     'format' => 'raw',
+            //     //'value' => $model->manager->username,
+            //     'value' => $model->manager->username == '' ? '<span class="text-danger"><em>Nenhum</em></span>' : 'kkk'
+            // ],                                  
         ],
     ]) ?>
 

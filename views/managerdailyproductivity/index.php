@@ -115,30 +115,13 @@ $this->title = 'Gestão Produtividade Diária';
                 'value' => function ($model) {                      
                     return $model->manager ? $model->manager->username : '<span class="text-danger"><em>Nenhum</em></span>';
                 },
-                'filter' => ArrayHelper::map(User::find()->where(['role_id' => 3])->orderBy('username')->asArray()->all(), 'id', 'username'),
+                'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
                 'contentOptions'=>['style'=>'width: 8%;text-align:left'],
             ],                                  
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update} {delete}',
-                'buttons' => [
-                    'update' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
-                                    'title' => 'Alterar',
-                                    'class' => 'btn btn-default btn-xs',
-                        ]);
-                    },
-                    'delete' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
-                                    'title' => 'Alterar',
-                                    'class' => 'btn btn-default btn-xs',
-                                    'data-confirm' => 'Tem certeza que deseja excluir?',
-                                    'data-method' => 'post',
-                                    'data-pjax' => '0',
-                        ]);
-                    },                
-                ],
-                'contentOptions'=>['style'=>'width: 5%;text-align:right'],
+                'contentOptions'=>['style'=>'width: 8%;text-align:right'],
             ],
         ],
     ]); ?>
