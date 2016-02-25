@@ -221,7 +221,7 @@ class Dailyproductivity extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['person_id', 'location_id', 'product_id', 'commission_percent','daily_productivity_status_id', 'buyer_document', 'buyer_name', 'seller_id', 'operator_id', 'user_id','date', 'created', 'updated'], 'required', 'message' => 'Campo Obrigatório'],
+            [['person_id', 'location_id', 'product_id', 'commission_percent','daily_productivity_status_id', 'buyer_document', 'buyer_name', 'seller_id', 'operator_id', 'user_id', 'manager_id', 'date', 'created', 'updated'], 'required', 'message' => 'Campo Obrigatório'],
             [['quantity', 'person_id', 'location_id', 'product_id', 'daily_productivity_status_id', 'seller_id', 'operator_id', 'user_id'], 'integer', 'message' => 'Preencha corretamente'],
             [['value'], 'number'],
             [['value',], 'required', 'message' => 'Campo obrigatório!', 'when' => function ($model) {
@@ -314,6 +314,10 @@ class Dailyproductivity extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
-    }        
-
+    }     
+       
+    public function getManager()
+    {
+        return $this->hasOne(User::className(), ['id' => 'manager_id']);
+    }  
 }

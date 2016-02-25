@@ -219,7 +219,7 @@ class DailyproductivityController extends Controller
         $model->daily_productivity_status_id = 1;
         $model->user_id = Yii::$app->user->id;
         $model->created = date('Y-m-d');
-        $model->updated = date('Y-m-d');
+        //$model->updated = date('Y-m-d');
         $model->quantity = 1;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

@@ -41,23 +41,23 @@ $this->title = 'Gestão Produtividade Diária';
                 'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
                 'contentOptions'=>['style'=>'width: 7%;text-align:left'],
             ],              
-            // [
-            //  'attribute' => 'location_id',
-            //  'enableSorting' => true,
-            //  'value' => function ($model) {                      
-            //         return $model->location->shortname;
-            //         },
-            //  'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
-            //  'contentOptions'=>['style'=>'width: 7%;text-align:center'],
-            // ],            
+            [
+             'attribute' => 'location_id',
+             'enableSorting' => true,
+             'value' => function ($model) {                      
+                    return $model->location->shortname;
+                    },
+             'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
+             'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],            
             [
                 'attribute' => 'product_id',
                 'enableSorting' => true,
                 'value' => function ($model) {                      
                        return $model->product->name;
                        },
-                'filter' => ArrayHelper::map(Product::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
-                'contentOptions'=>['style'=>'width: 25%;text-align:left'],
+                'filter' => Product::getHierarchy(),
+                'contentOptions'=>['style'=>'width: 20%;text-align:left'],
             ],              
             [
                 'attribute' => 'value',
@@ -79,18 +79,6 @@ $this->title = 'Gestão Produtividade Diária';
                 'contentOptions'=>['style'=>'width: 5%;text-align:center'],
             ],               
             [
-                'attribute' => 'daily_productivity_status_id',
-                'format' => 'raw',
-                'enableSorting' => true,
-                'value' => function ($model) {                      
-                        return $model->daily_productivity_status_id === 1 ? "<span class=\"label label-warning\">".$model->dailyProductivityStatus->name."</span>" : "<span class=\"label label-success\">".$model->dailyProductivityStatus->name."</span>";
-                        },
-                'filter' => ArrayHelper::map(Dailyproductivitystatus::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
-                'contentOptions'=>['style'=>'width: 10%;text-align:center'],
-            ],             
-            // 'buyer_document',
-            // 'buyer_name',
-            [
                 'attribute' => 'seller_id',
                 'format' => 'raw',
                 'enableSorting' => true,
@@ -98,7 +86,7 @@ $this->title = 'Gestão Produtividade Diária';
                     return $model->seller ? $model->seller->username : '<span class="text-danger"><em>Nenhum</em></span>';
                 },
                 'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
-                'contentOptions'=>['style'=>'width: 7%;text-align:left'],
+                'contentOptions'=>['style'=>'width: 8%;text-align:left'],
             ],             
             [
                 'attribute' => 'operator_id',
@@ -108,8 +96,28 @@ $this->title = 'Gestão Produtividade Diária';
                     return $model->operator ? $model->operator->username : '<span class="text-danger"><em>Nenhum</em></span>';
                 },
                 'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
-                'contentOptions'=>['style'=>'width: 7%;text-align:left'],
-            ],            
+                'contentOptions'=>['style'=>'width: 8%;text-align:left'],
+            ],    
+            [
+                'attribute' => 'daily_productivity_status_id',
+                'format' => 'raw',
+                'enableSorting' => true,
+                'value' => function ($model) {                      
+                        return $model->daily_productivity_status_id === 1 ? "<span class=\"label label-warning\">".$model->dailyProductivityStatus->name."</span>" : "<span class=\"label label-success\">".$model->dailyProductivityStatus->name."</span>";
+                        },
+                'filter' => ArrayHelper::map(Dailyproductivitystatus::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+                'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+            ],   
+            [
+                'attribute' => 'manager_id',
+                'format' => 'raw',
+                'enableSorting' => true,
+                'value' => function ($model) {                      
+                    return $model->manager ? $model->manager->username : '<span class="text-danger"><em>Nenhum</em></span>';
+                },
+                'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
+                'contentOptions'=>['style'=>'width: 8%;text-align:left'],
+            ],                                  
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update} {delete}',

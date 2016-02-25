@@ -70,6 +70,8 @@ class ManagerdailyproductivityController extends Controller
     {
         $model = $this->findModel($id);
 
+        $model->updated = date('Y-m-d');      
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {

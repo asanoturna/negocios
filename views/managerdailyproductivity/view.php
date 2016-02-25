@@ -24,8 +24,7 @@ $this->title = 'Gestão Produtividade Diária';
 
 <?= DetailView::widget([
         'model' => $model,
-        'attributes' => [
-            //'id',  
+        'attributes' => [ 
             'companys_revenue',
             [ 
                 'label' => 'Situação',
@@ -58,7 +57,8 @@ $this->title = 'Gestão Produtividade Diária';
                 'label' => 'Usuário',
                 'format' => 'raw',
                 'value' => $model->user->username,
-            ],                        
+            ],    
+                              
         ],
     ]) ?>
 
