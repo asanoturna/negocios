@@ -130,7 +130,7 @@ $this->title = 'Gestão Produtividade Diária';
                     },
                     'delete' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
-                                    'title' => 'Alterar',
+                                    'title' => 'Excluir',
                                     'class' => 'btn btn-default btn-xs',
                                     'data-confirm' => 'Tem certeza que deseja excluir?',
                                     'data-method' => 'post',
