@@ -3,6 +3,8 @@ TODO
 incluir dados em LOCATION (endereço, ativo, etc)
 incluir modal com descricao status
 Paginas com Ultimos acessos
+Alerta de pendencias nas visitas
+Alerta de pendencias nas prod diaria
 
 
 
