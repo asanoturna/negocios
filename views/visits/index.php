@@ -19,6 +19,98 @@ $this->title = 'Visitas dos Gerentes';
       <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;"><?php  echo $this->render('_menu'); ?></span></div>
     </div>
     <hr/>
+
+    <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-primary">
+      <div class="panel-heading"><b>Pesquisar</b></div>
+        <div class="panel-body">
+          <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
+        </div>
+      </div>
+    </div>      
+    <div class="col-md-6">
+      <div class="panel panel-primary">
+      <div class="panel-heading"><b>Opções</b></div>
+        <div class="panel-body">
+          <?php
+          use kartik\export\ExportMenu;
+              $gridColumns = [
+                  ['attribute'=>'id', 'hAlign'=>'right', 'width'=>'100px'],  
+                  ['attribute'=>'date','format'=>['date'], 'hAlign'=>'right', 'width'=>'110px'],  
+                  [
+                      'attribute'=>'user_id',
+                      'label'=> 'Usuário',
+                      'vAlign'=>'middle',
+                      'width'=>'100px',
+                      'value'=>function ($model, $key, $index, $widget) { 
+                          return Html::a($model->user->username, '#', []);
+                      },
+                      'format'=>'raw'
+                  ],                   
+                  [
+                      'attribute'=>'location_id',
+                      'label'=> 'PA',
+                      'vAlign'=>'middle',
+                      'width'=>'100px',
+                      'value'=>function ($model, $key, $index, $widget) { 
+                          return Html::a($model->location->shortname, '#', []);
+                      },
+                      'format'=>'raw'
+                  ], 
+                  ['attribute'=>'company_person', 'hAlign'=>'right', 'width'=>'140px'], 
+                  [
+                      'attribute'=>'visits_finality_id',
+                      'label'=> 'Finalidade',
+                      'vAlign'=>'middle',
+                      'width'=>'180px',
+                      'value'=>function ($model, $key, $index, $widget) { 
+                          return Html::a($model->visitsFinality->name, '#', []);
+                      },
+                      'format'=>'raw'
+                  ],                    
+                  [
+                      'attribute'=>'visits_status_id',
+                      'label'=> 'Situação',
+                      'vAlign'=>'middle',
+                      'width'=>'120px',
+                      'value'=>function ($model, $key, $index, $widget) { 
+                          return Html::a($model->visitsStatus->name, '#', []);
+                      },
+                      'format'=>'raw'
+                  ],                   
+              ];
+              echo ExportMenu::widget([
+              'dataProvider' => $dataProvider,
+              'columns' => $gridColumns,
+              'fontAwesome' => true,
+              'emptyText' => 'Nenhum registro',
+              'showColumnSelector' => true,
+              'asDropdown' => true,
+              'target' => ExportMenu::TARGET_BLANK,
+              'showConfirmAlert' => false,
+              'exportConfig' => [
+                ExportMenu::FORMAT_HTML => false,
+                ExportMenu::FORMAT_CSV => false,
+                ExportMenu::FORMAT_TEXT => false,
+                ExportMenu::FORMAT_PDF => false
+            ],
+            'columnSelectorOptions' => [
+              'class' => 'btn btn-success',
+            ],
+            'dropdownOptions' => [
+              'icon' => false,
+              'label' => 'Exportar Registros',
+              'class' => 'btn btn-success',
+            ],
+            'filename' => 'relatorio-visitas',
+            ]);
+          ?>
+        </div>
+      </div>
+    </div>
+    </div>
+
     <?php foreach (Yii::$app->session->getAllFlashes() as $key=>$message):?>
         <?php $alertClass = substr($key,strpos($key,'-')+1); ?>
         <div class="alert alert-dismissible alert-<?=$alertClass?>" role="alert">
@@ -39,6 +131,13 @@ $this->title = 'Visitas dos Gerentes';
             'contentOptions'=>['style'=>'width: 4%;text-align:center'],
             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],
+            [
+            'attribute' => 'date',
+            'enableSorting' => true,
+            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+            'format' => ['date', 'php:d/m/Y'],
+            ],             
             [
             'attribute' => 'user_id',
             'format' => 'raw',
@@ -61,13 +160,6 @@ $this->title = 'Visitas dos Gerentes';
             'contentOptions'=>['style'=>'width: 3%;text-align:center'],
             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],             
-            [
-            'attribute' => 'date',
-            'enableSorting' => true,
-            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-            'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
-            'format' => ['date', 'php:d/m/Y'],
-            ], 
             [
             'attribute' => 'company_person',
             'contentOptions'=>['style'=>'width: 18%;text-align:left;text-transform: uppercase'],

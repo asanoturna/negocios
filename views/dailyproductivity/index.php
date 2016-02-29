@@ -70,7 +70,7 @@ $this->title = 'Produtividade Diária';?>
                       'attribute'=>'daily_productivity_status_id',
                       'label'=> 'Situação',
                       'vAlign'=>'middle',
-                      'width'=>'12    0px',
+                      'width'=>'120px',
                       'value'=>function ($model, $key, $index, $widget) { 
                           return Html::a($model->dailyProductivityStatus->name, '#', []);
                       },
@@ -100,6 +100,7 @@ $this->title = 'Produtividade Diária';?>
               'label' => 'Exportar Registros',
               'class' => 'btn btn-success',
             ],
+            'filename' => 'relatorio-produtividade',
             ]);
           ?>
         </div>

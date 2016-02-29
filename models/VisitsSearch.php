@@ -9,11 +9,14 @@ use app\models\Visits;
 
 class VisitsSearch extends Visits
 {
+    public $start_date;
+    public $end_date;
+
     public function rules()
     {
         return [
             [['id', 'num_proposal', 'visits_finality_id', 'visits_status_id', 'person_id', 'location_id', 'user_id'], 'integer'],
-            [['date', 'responsible', 'company_person', 'contact', 'email', 'phone', 'observation', 'created', 'updated', 'ip', 'attachment', 'localization_map'], 'safe'],
+            [['start_date', 'end_date', 'date', 'responsible', 'company_person', 'contact', 'email', 'phone', 'observation', 'created', 'updated', 'ip', 'attachment', 'localization_map'], 'safe'],
             [['value'], 'number'],
         ];
     }
@@ -61,6 +64,8 @@ class VisitsSearch extends Visits
             'location_id' => $this->location_id,
             'user_id' => $this->user_id,
         ]);
+
+        $query->andFilterWhere(['between', 'date', $this->start_date, $this->end_date]);         
 
         $query->andFilterWhere(['like', 'responsible', $this->responsible])
             ->andFilterWhere(['like', 'company_person', $this->company_person])
