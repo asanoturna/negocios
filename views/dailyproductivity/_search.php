@@ -17,7 +17,7 @@ use kartik\date\DatePicker;
     ]); ?>
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-5">
             <?php
                 //echo '<label class="control-label">Período</label>';
                 echo DatePicker::widget([
@@ -38,14 +38,9 @@ use kartik\date\DatePicker;
                 ]);
             ?>
         </div>
-<!--         <div class="col-md-3">
-
-        </div> -->
         <div class="form-group">
             <?= Html::submitButton('Filtrar', ['class' => 'btn btn-success']) ?>
         </div>
     </div>
-
     <?php ActiveForm::end(); ?>
-
 </div>

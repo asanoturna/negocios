@@ -17,12 +17,64 @@ $this->title = 'Produtividade Diária';?>
   </div>
 
   <hr/>
-    <div class="panel panel-primary">
-    <div class="panel-heading"><b>Pesquisar</b></div>
-      <div class="panel-body">
-        <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-primary">
+      <div class="panel-heading"><b>Pesquisar</b></div>
+        <div class="panel-body">
+          <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
+        </div>
+      </div>
+    </div>      
+    <div class="col-md-6">
+      <div class="panel panel-primary">
+      <div class="panel-heading"><b>Opções</b></div>
+        <div class="panel-body">
+          <?php
+          use kartik\export\ExportMenu;
+              $gridColumns = [
+                  ['attribute'=>'date','format'=>['date'], 'hAlign'=>'right', 'width'=>'110px'],  
+              // [
+              //     'attribute'=>'category_id',
+              //     'label'=> Yii::t('app', 'Category'),
+              //     'vAlign'=>'middle',
+              //     'width'=>'190px',
+              //     'value'=>function ($model, $key, $index, $widget) { 
+              //         return Html::a($model->category->desc_category, '#', []);
+              //     },
+              //     'format'=>'raw'
+              // ],                    
+                  ['attribute'=>'value','format'=>['decimal',2], 'hAlign'=>'right', 'width'=>'110px'],
+              ];
+              echo ExportMenu::widget([
+              'dataProvider' => $dataProvider,
+              'columns' => $gridColumns,
+              'fontAwesome' => true,
+              'emptyText' => 'Nenhum registro',
+              'showColumnSelector' => true,
+              'asDropdown' => true,
+              'target' => ExportMenu::TARGET_BLANK,
+              'showConfirmAlert' => false,
+              'exportConfig' => [
+                ExportMenu::FORMAT_HTML => false,
+                ExportMenu::FORMAT_CSV => false,
+                ExportMenu::FORMAT_TEXT => false,
+                ExportMenu::FORMAT_PDF => false
+            ],
+            'columnSelectorOptions' => [
+              'class' => 'btn btn-success',
+            ],
+            'dropdownOptions' => [
+              'icon' => false,
+              'label' => 'Exportar Registros',
+              'class' => 'btn btn-success',
+            ],
+            ]);
+          ?>
+        </div>
       </div>
     </div>
+  </div>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
