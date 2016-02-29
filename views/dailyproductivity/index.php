@@ -34,17 +34,48 @@ $this->title = 'Produtividade Diária';?>
           use kartik\export\ExportMenu;
               $gridColumns = [
                   ['attribute'=>'date','format'=>['date'], 'hAlign'=>'right', 'width'=>'110px'],  
-              // [
-              //     'attribute'=>'category_id',
-              //     'label'=> Yii::t('app', 'Category'),
-              //     'vAlign'=>'middle',
-              //     'width'=>'190px',
-              //     'value'=>function ($model, $key, $index, $widget) { 
-              //         return Html::a($model->category->desc_category, '#', []);
-              //     },
-              //     'format'=>'raw'
-              // ],                    
+                  [
+                      'attribute'=>'user_id',
+                      'label'=> 'Usuário',
+                      'vAlign'=>'middle',
+                      'width'=>'100px',
+                      'value'=>function ($model, $key, $index, $widget) { 
+                          return Html::a($model->user->username, '#', []);
+                      },
+                      'format'=>'raw'
+                  ],                   
+                  [
+                      'attribute'=>'location_id',
+                      'label'=> 'PA',
+                      'vAlign'=>'middle',
+                      'width'=>'100px',
+                      'value'=>function ($model, $key, $index, $widget) { 
+                          return Html::a($model->location->shortname, '#', []);
+                      },
+                      'format'=>'raw'
+                  ], 
+                  [
+                      'attribute'=>'product_id',
+                      'label'=> 'Produto',
+                      'vAlign'=>'middle',
+                      'width'=>'180px',
+                      'value'=>function ($model, $key, $index, $widget) { 
+                          return Html::a($model->product->name, '#', []);
+                      },
+                      'format'=>'raw'
+                  ],                    
                   ['attribute'=>'value','format'=>['decimal',2], 'hAlign'=>'right', 'width'=>'110px'],
+                  ['attribute'=>'quantity', 'hAlign'=>'right', 'width'=>'90px'],
+                  [
+                      'attribute'=>'daily_productivity_status_id',
+                      'label'=> 'Situação',
+                      'vAlign'=>'middle',
+                      'width'=>'12    0px',
+                      'value'=>function ($model, $key, $index, $widget) { 
+                          return Html::a($model->dailyProductivityStatus->name, '#', []);
+                      },
+                      'format'=>'raw'
+                  ],                   
               ];
               echo ExportMenu::widget([
               'dataProvider' => $dataProvider,
