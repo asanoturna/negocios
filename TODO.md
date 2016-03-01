@@ -1,10 +1,49 @@
 TODO
 --------------------
-incluir dados em LOCATION (endereço, ativo, etc)
-incluir modal com descricao status
-Paginas com Ultimos acessos
-Alerta de pendencias nas visitas
-Alerta de pendencias nas prod diaria
+- incluir dados em LOCATION (endereço, ativo, email, etc)
+- incluir modal com descricao status
+- Paginas com Ultimos acessos
+- Alerta de pendencias nas visitas
+- Alerta de pendencias nas prod diaria
+- Na tela de GERENCIAR organizar Produtos por Grupo
+- O Proprio usuário lançador editar seu produto.
+- Colocar consulta por NOME e CPF na tela de GERENCIAR
+- Selecionar o mês do TOP 3
+- Selecionar 5 produtos para exibir no ranking por agencia.
+- INCLUIR PRODUTOS abaixo:
+
+
+-> CREDITO CONSIGNADO
+=== INNS
+=== SEPLAG
+=== CDL  **
+=== PRESBITERIANO **
+
+Presbiteriano
+ 
+ 
+	Prazo Mín.:	Prazo Máx.: 	Tx Juros:	Tx Comissão:
+			
+		3		3	2,3000 		0,5500 
+		4		6	2,3100 		1,0000 
+		7		12	2,3200 		2,0000 
+		13		18	2,3200 		2,5000 
+		19		24	2,3300 		3,5000 
+
+
+	CDL
+ 
+	Prazo Mín.:	Prazo Máx.: 	Tx Juros:	Tx Comissão:
+			
+		3		3	2,7600 		1,0000 
+		4		6	2,9700 		2,0000 
+		7		12	3,0400 		4,0000 
+		13		18	3,0500 		6,0000 
+		19		24	3,0500 		8,0000 
+
+
+
+
 
 
 MAP
