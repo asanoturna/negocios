@@ -2,58 +2,60 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\date\DatePicker;
+use yii\helpers\ArrayHelper;
+use app\models\Person;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\ManagerdailyproductivitySearch */
-/* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="managerdailyproductivity-search">
+<div class="dailyproductivity-search">
 
     <?php $form = ActiveForm::begin([
+        'options' => [
+                    'class' => 'form-inline',
+                    ],
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <div class="row">
+        <div class="col-md-2">
+            <?php
+                //echo '<label class="control-label">Período</label>';
+                echo DatePicker::widget([
+                    'model' => $model,
+                    'attribute' => 'start_date',
+                    'attribute2' => 'end_date',
+                    'language' => 'pt',
+                    'type' => DatePicker::TYPE_RANGE,
+                    'separator' => 'até',
+                    'options' => [
+                        'placeholder' => '',
+                    ],
+                    'pluginOptions' => [
+                        'autoclose'=>true,
+                        'todayHighlight' => true,
+                        'format' => 'yyyy-mm-dd',
+                    ]
+                ]);
+            ?>
+        </div>
 
-    <?= $form->field($model, 'product_id') ?>
+        <div class="col-md-3">
+            <?php echo $form->field($model, 'buyer_name') ?>
+        </div>
 
-    <?= $form->field($model, 'modality_id') ?>
+        <div class="col-md-2">        
+        <?= $form->field($model, 'person_id')->dropDownList(ArrayHelper::map(Person::find()->where('id != :id', ['id'=>7])->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>''])  ?>  
+        </div>        
 
-    <?= $form->field($model, 'location_id') ?>
+        <div class="col-md-3">
+            <?php echo $form->field($model, 'buyer_document') ?>
+        </div>        
 
-    <?= $form->field($model, 'person_id') ?>
-
-    <?php // echo $form->field($model, 'manager') ?>
-
-    <?php // echo $form->field($model, 'valor') ?>
-
-    <?php // echo $form->field($model, 'commission_percent') ?>
-
-    <?php // echo $form->field($model, 'companys_revenue') ?>
-
-    <?php // echo $form->field($model, 'daily_productivity_status_id') ?>
-
-    <?php // echo $form->field($model, 'buyer_document') ?>
-
-    <?php // echo $form->field($model, 'buyer_name') ?>
-
-    <?php // echo $form->field($model, 'seller_id') ?>
-
-    <?php // echo $form->field($model, 'operator_id') ?>
-
-    <?php // echo $form->field($model, 'date') ?>
-
-    <?php // echo $form->field($model, 'created') ?>
-
-    <?php // echo $form->field($model, 'updated') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <div class="form-group">
+            <?= Html::submitButton('<span class="glyphicon glyphicon-search" aria-hidden="true"></span> Filtrar', ['class' => 'btn btn-success']) ?>
+        </div>
     </div>
-
     <?php ActiveForm::end(); ?>
-
 </div>

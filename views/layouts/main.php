@@ -67,7 +67,7 @@ AppAsset::register($this);
         <?= Yii::$app->params['company'] ?> 
         <?= date('Y') ?> - 
         <?= Yii::$app->params['appname']?> - 
-        Administração do sistema 
+        <?= Html::a('Administração do sistema', 'site/admin', ['title' => 'Area de Administração do sistema'])?> 
         <?= Html::mailto('<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Dúvidas e Sugestões', Yii::$app->params['supportEmail'], [
             'class' => 'pull-right',
             'title' => 'Envie Dúvidas e Sugestões ',

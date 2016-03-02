@@ -19,11 +19,19 @@ $this->title = 'Gestão Produtividade Diária';
 </div>
 
 <hr/>
+    <div class="panel panel-primary">
+    <div class="panel-heading"><b>Pesquisar</b></div>
+      <div class="panel-body">
+        <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
+    </div>
+    </div>
     
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'tableOptions' => ['class'=>'table table-striped table-hover'],  
+        'tableOptions' => ['class'=>'table table-striped table-bordered table-hover'],
+        //'headerRowOptions' => ['class'=> 'success'],
+        'headerRowOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;text-align:center'],
         'columns' => [
             [
                 'attribute' => 'date',
@@ -56,7 +64,7 @@ $this->title = 'Gestão Produtividade Diária';
                 'value' => function ($model) {                      
                        return $model->product->name;
                        },
-                'filter' => ArrayHelper::map(Product::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+                'filter' => Product::getHierarchy(),
                 'contentOptions'=>['style'=>'width: 22%;text-align:left'],
             ],              
             [

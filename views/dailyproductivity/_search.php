@@ -39,7 +39,7 @@ use kartik\date\DatePicker;
             ?>
         </div>
         <div class="form-group">
-            <?= Html::submitButton('Filtrar', ['class' => 'btn btn-success']) ?>
+            <?= Html::submitButton('<span class="glyphicon glyphicon-search" aria-hidden="true"></span> Filtrar', ['class' => 'btn btn-success']) ?>
         </div>
     </div>
     <?php ActiveForm::end(); ?>

@@ -1,5 +1,7 @@
 TODO
 --------------------
+- Listar locais
+- Listar Usuarios
 - incluir dados em LOCATION (endereço, ativo, email, etc)
 - incluir modal com descricao status
 - Paginas com Ultimos acessos
@@ -7,7 +9,7 @@ TODO
 - Alerta de pendencias nas prod diaria
 - Na tela de GERENCIAR organizar Produtos por Grupo
 - O Proprio usuário lançador editar seu produto.
-- Colocar consulta por NOME e CPF na tela de GERENCIAR
+- Colocar consulta por NOME e CPF na tela de GERENCIAR - ok
 - Selecionar o mês do TOP 3
 - Selecionar 5 produtos para exibir no ranking por agencia.
 - INCLUIR PRODUTOS abaixo:
