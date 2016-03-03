@@ -142,7 +142,7 @@ class Dailyproductivity extends \yii\db\ActiveRecord
                         $this->companys_revenue = abs($companys_revenue);
                         break;
                     }
-                    
+                    $this->value = 0; 
             }elseif($this->product_id == 802){
                 //INSS
                 switch($this->prazo){
@@ -197,10 +197,71 @@ class Dailyproductivity extends \yii\db\ActiveRecord
                         $this->companys_revenue = abs($companys_revenue);
                         break;
                     }   
-                }elseif($this->product_id == 901){
-                    //MODULO CEDENTE
-                    $this->value = 0;
-                }
+                    $this->value = 0; 
+            }elseif($this->product_id == 803){
+                //CDL
+                switch($this->prazo){
+                    case ($this->prazo >= 3 && $this->prazo <= 3):
+                        $this->commission_percent = 1.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 4 && $this->prazo <= 6):
+                        $this->commission_percent = 2.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 7 && $this->prazo <= 12):
+                        $this->commission_percent = 4.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;       
+                    case ($this->prazo >= 13 && $this->prazo <= 18):
+                        $this->commission_percent = 6.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;        
+                    case ($this->prazo >= 19 && $this->prazo <= 24):
+                        $this->commission_percent = 8.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;                                                         
+                }    
+                $this->value = 0;                        
+            }elseif($this->product_id == 804){
+                //Prebiteriano
+                switch($this->prazo){
+                    case ($this->prazo >= 3 && $this->prazo <= 3):
+                        $this->commission_percent = 0.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 4 && $this->prazo <= 6):
+                        $this->commission_percent = 1.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo >= 7 && $this->prazo <= 12):
+                        $this->commission_percent = 2.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;       
+                    case ($this->prazo >= 13 && $this->prazo <= 18):
+                        $this->commission_percent = 2.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;        
+                    case ($this->prazo >= 19 && $this->prazo <= 24):
+                        $this->commission_percent = 3.00;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;                                                         
+                }  
+                $this->value = 0;                         
+            }elseif($this->product_id == 901){
+                //MODULO CEDENTE
+                $this->value = 0;
+            }
             //$this->quantity = 1;
             return true;
         } else {

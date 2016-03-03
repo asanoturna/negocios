@@ -301,6 +301,18 @@ $('#{$productId}').on('change', function () {
         prazomin = 6;
         prazomax = 72;
 
+    }else if (id == 803){ //CDL
+        var min = 1;
+        var max = 1;
+        prazomin = 3;
+        prazomax = 24;      
+
+    }else if (id == 804){ //Presbiteriano
+        var min = 1;
+        var max = 1;
+        prazomin = 3;
+        prazomax = 24;           
+
     }else if (id == 901){ //Cedente
         var min = 1;
         var max = 1;
