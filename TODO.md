@@ -1,8 +1,7 @@
 TODO
 --------------------
-- Listar locais
+- Listar locais (incluir dados em LOCATION (endereço, ativo, email, etc))
 - Listar Usuarios
-- incluir dados em LOCATION (endereço, ativo, email, etc)
 - incluir modal com descricao status
 - Paginas com Ultimos acessos
 - Alerta de pendencias nas visitas
@@ -11,7 +10,6 @@ TODO
 - O Proprio usuário lançador editar seu produto.
 - Selecionar o mês do TOP 3
 - Selecionar 5 produtos para exibir no ranking por agencia
-
 
 
 
