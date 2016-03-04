@@ -15,7 +15,7 @@ $this->title = 'Informações do Usuário';
   <div class="col-md-4">
 
     <div class="col-md-5">
-        <img src="images/users/<?php echo Yii::$app->user->identity->profile->avatar;?>" alt="" class="img-rounded img-responsive img-thumbnail" />
+        <img src="images/users/<?php echo Yii::$app->user->identity->profile->avatar;?>" alt="Imagem perfil" class="img-rounded img-responsive img-thumbnail" />
     <?php 
     Modal::begin([
         'header' => '<h2>Alterar Imagem</h2>',
@@ -32,7 +32,11 @@ $this->title = 'Informações do Usuário';
       <dt>E-mail: </dt>
       <dd><a href="mailto:<?php echo Yii::$app->user->identity->email;?>"><?php echo Yii::$app->user->identity->email;?></a></dd>      
       <dt>Usuário: </dt>
-      <dd><?php echo Yii::$app->user->displayName;?></dd>                 
+      <dd><?php echo Yii::$app->user->displayName;?></dd>      
+      <dt>Perfil: </dt>
+      <dd><?php echo Yii::$app->user->identity->role->name;?></dd> 
+      <dt>Ultimo acesso: </dt>
+      <dd><?php echo Yii::$app->user->identity->logged_in_at;?></dd>                        
     </dl>
 
   </div>
