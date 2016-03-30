@@ -27,7 +27,8 @@
         "yiisoft/yii2-imagine": "^2.0",
         "karpoff/yii2-crop-image-upload": "*",
         "kartik-v/yii2-export": "@dev",
-        "kartik-v/yii2-grid": "@dev"
+        "kartik-v/yii2-grid": "@dev",
+        "fxp/composer-asset-plugin": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
