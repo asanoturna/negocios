@@ -35,47 +35,67 @@ $this->title = 'Produtividade Diária';?>
               $gridColumns = [
                   ['attribute'=>'date','format'=>['date'], 'hAlign'=>'right', 'width'=>'110px'],  
                   [
-                      'attribute'=>'user_id',
-                      'label'=> 'Usuário',
-                      'vAlign'=>'middle',
-                      'width'=>'100px',
-                      'value'=>function ($model, $key, $index, $widget) { 
-                          return Html::a($model->user->username, '#', []);
-                      },
-                      'format'=>'raw'
+                  'attribute'=>'user_id',
+                  'label'=> 'Usuário',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value'=>function ($model, $key, $index, $widget) { 
+                      return Html::a($model->user->username, '#', []);
+                  },
+                  'format'=>'raw'
                   ],                   
                   [
-                      'attribute'=>'location_id',
-                      'label'=> 'PA',
-                      'vAlign'=>'middle',
-                      'width'=>'100px',
-                      'value'=>function ($model, $key, $index, $widget) { 
-                          return Html::a($model->location->shortname, '#', []);
-                      },
-                      'format'=>'raw'
+                  'attribute'=>'location_id',
+                  'label'=> 'PA',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value'=>function ($model, $key, $index, $widget) { 
+                      return Html::a($model->location->shortname, '#', []);
+                  },
+                  'format'=>'raw'
                   ], 
                   [
-                      'attribute'=>'product_id',
-                      'label'=> 'Produto',
-                      'vAlign'=>'middle',
-                      'width'=>'180px',
-                      'value'=>function ($model, $key, $index, $widget) { 
-                          return Html::a($model->product->name, '#', []);
-                      },
-                      'format'=>'raw'
+                  'attribute'=>'product_id',
+                  'label'=> 'Produto',
+                  'vAlign'=>'middle',
+                  'width'=>'180px',
+                  'value'=>function ($model, $key, $index, $widget) { 
+                      return Html::a($model->product->name, '#', []);
+                  },
+                  'format'=>'raw'
                   ],                    
                   ['attribute'=>'value','format'=>['decimal',2], 'hAlign'=>'right', 'width'=>'110px'],
                   ['attribute'=>'quantity', 'hAlign'=>'right', 'width'=>'90px'],
                   [
-                      'attribute'=>'daily_productivity_status_id',
-                      'label'=> 'Situação',
-                      'vAlign'=>'middle',
-                      'width'=>'120px',
-                      'value'=>function ($model, $key, $index, $widget) { 
-                          return Html::a($model->dailyProductivityStatus->name, '#', []);
-                      },
-                      'format'=>'raw'
-                  ],                   
+                  'attribute'=>'daily_productivity_status_id',
+                  'label'=> 'Situação',
+                  'vAlign'=>'middle',
+                  'width'=>'120px',
+                  'value'=>function ($model, $key, $index, $widget) { 
+                      return Html::a($model->dailyProductivityStatus->name, '#', []);
+                  },
+                  'format'=>'raw'
+                  ], 
+                  [
+                  'attribute'=>'seller_id',
+                  'label'=> 'Indicador',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value'=>function ($model, $key, $index, $widget) { 
+                      return Html::a($model->seller->username, '#', []);
+                  },
+                  'format'=>'raw'
+                  ], 
+                  [
+                  'attribute'=>'operator_id',
+                  'label'=> 'Angaridor',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value'=>function ($model, $key, $index, $widget) { 
+                      return Html::a($model->operator->username, '#', []);
+                  },
+                  'format'=>'raw'
+                  ],                                                       
               ];
               echo ExportMenu::widget([
               'dataProvider' => $dataProvider,
