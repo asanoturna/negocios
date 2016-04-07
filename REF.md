@@ -1,9 +1,9 @@
-REF
+INTERFACE
 --------------------
 http://www.precurio.com/
 
 
-MAP
+MAPS
 ---
 
 http://stackoverflow.com/questions/11236085/create-a-map-with-clickable-provinces-states-using-svg-html-css-imagemap
@@ -15,7 +15,7 @@ http://www.outsharked.com/imagemapster/default.aspx?what.html
 http://dev.filkor.org/2013/04/14/create-an-interactive-map-using-javascript-and-html-5-canvas/
 
 
-REF
+REFERENCES
 --------------------
 https://github.com/2amigos/yii2-google-maps-library
 https://github.com/Kolyunya/yii2-map-input-widget

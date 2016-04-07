@@ -91,7 +91,7 @@ $this->title = Yii::$app->params['appname'];
                         return Html::img(Yii::$app->request->BaseUrl.'/images/users/'.$data["avatar"],
                             ['width' => '50px', 'class' => 'img-rounded img-responsive']);
                     },
-                    'contentOptions'=>['style'=>'width: 20%;text-align:center'],                    
+                    'contentOptions'=>['style'=>'width: 20%;text-align:center;'],                    
                 ],                                 
                 [
                     'attribute' => 'seller',
@@ -99,7 +99,7 @@ $this->title = Yii::$app->params['appname'];
                     'value' => function ($data) {                      
                         return $data["seller"];
                     },
-                    'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;'],
+                    'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;text-transform: uppercase'],
                 ],  
                 [
                     'attribute' => 'total',
@@ -152,7 +152,7 @@ $this->title = Yii::$app->params['appname'];
                     'value' => function ($data) {                      
                         return $data["seller"];
                     },
-                    'contentOptions'=>['style'=>'width: 60%;text-align:left;vertical-align: middle;'],
+                    'contentOptions'=>['style'=>'width: 60%;text-align:left;vertical-align: middle;text-transform: uppercase'],
                 ],  
                 [
                     'attribute' => 'total',
