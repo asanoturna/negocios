@@ -12,6 +12,7 @@ return [
     'uploadPath' => '../../1media_visitas_anexos/',
     'uploadUrl'  => '../../1media_visitas_anexos/',    
     'imgPath' => '../../1media_visitas_imagens/',
-    'imgUrl'  => '../../1media_visitas_imagens/', 
+    'imgUrl'  => '../../1media_visitas_imagens/',
+    'reportbasePath' => '../../1media_reportbase/',
     'imglimit' => 5,     
 ];

@@ -22,12 +22,18 @@ use yii\bootstrap\Nav;
         //'url'     => ['/dailyproductivity/create'],
         'options' => ['class' => 'disabled'],
         ],                     
-        [
-        'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Relatórios Olap/TCF',
-        'options' => ['class' => 'disabled'],
-        //'url'     => ['/dailyproductivity/create'],
-        ],                                                                
-    ],
+        // [
+        // 'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Relatórios Olap/TCF',
+        // 'options' => ['class' => 'disabled'],
+        // //'url'     => ['/dailyproductivity/create'],
+        // ],    
+        ['label' => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Relatórios',  'items' => [
+                            ['label' => 'Planilha Base', 'url' => 'index.php?r=reportbase'],
+                            ['label' => 'TCF', 'url' => '#', 'options' => ['class' => 'disabled']],
+                            ['label' => 'Olap', 'url' => '#', 'options' => ['class' => 'disabled']],
+                            ],
+                        ],                                                                    
+            ],
     'options' => ['class' =>'nav-pills nav-stacked'],
     // set this to nav-tab to get tab-styled navigation
     ]);

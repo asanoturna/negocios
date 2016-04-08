@@ -19,3 +19,5 @@ TODO
 - Prod Diaria -> Quadro Metas por agência (cadastrar metas por local para todos os produtos)
 - Prod Diaria -> Filtrar mais de um produto
 - Prod Diaria -> Filtrar top 3 por mês
+
+- add Seguros -> Outros / min 0 , max 40
