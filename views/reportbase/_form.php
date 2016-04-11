@@ -30,7 +30,8 @@ use yii\widgets\ActiveForm;
             'PA_17' => 'PA_17',            
             'PA_18' => 'PA_18',
             'PA_19' => 'PA_19', 
-            'PA_20' => 'PA_20',                                                           
+            'PA_20' => 'PA_20', 
+			'Consolidado' => 'Consolidado',                                                                       
             //'PA_20' => 'PA_20',             
     ])->label('Selecione o nome do arquivo'); ?>
 

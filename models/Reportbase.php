@@ -24,7 +24,7 @@ class Reportbase extends \yii\db\ActiveRecord
             [['updated'], 'safe'],
             [['downloads','user_id'], 'integer'],
             [['attachment', 'spreadsheetname'], 'string', 'max' => 255],
-            [['file'], 'file', 'extensions'=>'zip', 'maxSize' => 1024 * 1024 * 9],
+            [['file'], 'file', 'extensions'=>'zip', 'maxSize' => 1024 * 1024 * 15],
         ];
     }
 
@@ -43,7 +43,7 @@ class Reportbase extends \yii\db\ActiveRecord
 
     public function getImageFile()
     {
-        return isset($this->attachment) ? Yii::$app->params['reportbasePath'].'/'. $this->attachment : null;
+        return isset($this->attachment) ? Yii::$app->params['reportbasePath'] . $this->attachment : null;
     }
     public function getImageUrl()
     {

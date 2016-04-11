@@ -9,7 +9,6 @@ TODO
 - Alerta de pendencias nas prod diaria
 - Send mail (recover pass, notifications, etc)
 
-- Prod Diaria -> O Proprio usuário lançador editar seu produto.
 - Prod Diaria -> Selecionar o mês do TOP 3 *
 - Prod Diaria -> Selecionar 5 produtos para exibir no ranking por agencia
 
