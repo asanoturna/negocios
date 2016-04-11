@@ -24,7 +24,7 @@ class Reportbase extends \yii\db\ActiveRecord
             [['updated'], 'safe'],
             [['downloads','user_id'], 'integer'],
             [['attachment', 'spreadsheetname'], 'string', 'max' => 255],
-            [['file'], 'file', 'extensions'=>'zip', 'maxSize' => 1024 * 1024 * 5],
+            [['file'], 'file', 'extensions'=>'zip', 'maxSize' => 1024 * 1024 * 9],
         ];
     }
 

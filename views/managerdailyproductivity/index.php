@@ -125,7 +125,16 @@ $this->title = 'Gestão Produtividade Diária';
                 },
                 'filter' => ArrayHelper::map(User::find()->where(['role_id' => 3])->orderBy('username')->asArray()->all(), 'id', 'username'),
                 'contentOptions'=>['style'=>'width: 8%;text-align:left'],
-            ],                       
+            ],  
+            [ 
+                'attribute' => 'is_commission_received',
+                'format' => 'raw',
+                'value' => function ($model) {                      
+                        return $model->is_commission_received == 1 ? '<b style="color:green">Sim</b>' : '<b style="color:gray">Não</b>';
+                        },
+                'filter'=>[0=>'Não', 1=>'Sim'],
+                'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],                                 
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update} {delete}',

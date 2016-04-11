@@ -29,7 +29,7 @@ class Managerdailyproductivity extends \yii\db\ActiveRecord
             [['product_id', 'location_id', 'person_id', 'value', 'commission_percent', 'companys_revenue', 'daily_productivity_status_id', 'buyer_document', 'buyer_name', 'seller_id', 'operator_id', 'date', 'created', 'updated'], 'required'],
             [['product_id', 'location_id', 'person_id', 'daily_productivity_status_id', 'seller_id', 'operator_id','manager_id'], 'integer'],
             [['value', 'commission_percent', 'companys_revenue'], 'number'],
-            [['date', 'created', 'updated'], 'safe'],
+            [['date', 'created', 'updated', 'is_commission_received'], 'safe'],
             [['buyer_name'], 'string', 'max' => 100],
             [['buyer_document'], 'string', 'max' => 18]
         ];
@@ -55,6 +55,7 @@ class Managerdailyproductivity extends \yii\db\ActiveRecord
             'date' => 'Data',
             'created' => 'Criado',
             'updated' => 'Alterado',
+            'is_commission_received' => 'Recebida',
         ];
     }
 

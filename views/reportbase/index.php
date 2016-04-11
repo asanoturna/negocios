@@ -35,7 +35,7 @@ $this->title = 'Planilha Base';
         'columns' => [
             [
             'attribute' => 'attachment',
-            'contentOptions'=>['style'=>'width: 50%;text-align:left;'],
+            'contentOptions'=>['style'=>'width: 40%;text-align:left;'],
             'headerOptions' => ['class' => 'text-center'],
             ],             
             [
@@ -89,7 +89,7 @@ $this->title = 'Planilha Base';
                         ]);
                     },                
                 ],
-                'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+                'contentOptions'=>['style'=>'width: 20%;text-align:center'],
             ],
         ],
     ]); ?>

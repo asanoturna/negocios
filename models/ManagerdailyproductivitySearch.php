@@ -16,7 +16,7 @@ class ManagerdailyproductivitySearch extends Managerdailyproductivity
     {
         return [
             [['id', 'product_id', 'location_id', 'person_id', 'daily_productivity_status_id', 'seller_id', 'operator_id', 'user_id','manager_id'], 'integer'],
-            [['start_date', 'end_date', 'buyer_document', 'buyer_name', 'date', 'created', 'updated'], 'safe'],
+            [['start_date', 'end_date', 'buyer_document', 'buyer_name', 'date', 'created', 'updated', 'is_commission_received'], 'safe'],
             [['value', 'commission_percent', 'companys_revenue'], 'number'],
         ];
     }
@@ -67,6 +67,7 @@ class ManagerdailyproductivitySearch extends Managerdailyproductivity
             'date' => $this->date,
             'created' => $this->created,
             'updated' => $this->updated,
+            'is_commission_received' => $this->is_commission_received,
         ]);
 
         $query->andFilterWhere(['between', 'date', $this->start_date, $this->end_date]);          

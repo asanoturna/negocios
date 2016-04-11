@@ -13,8 +13,8 @@ TODO
 - Prod Diaria -> Selecionar o mês do TOP 3 *
 - Prod Diaria -> Selecionar 5 produtos para exibir no ranking por agencia
 
-- Prod Diaria -> Add campo p/ gestor "comissão recebida" (SIM/NAO)
 - Prod Diaria -> Quadro Metas por agência (cadastrar metas por local para todos os produtos)
 - Prod Diaria -> Filtrar mais de um produto
 
 - Add Seguros -> Outros / min 0 , max 40
+- consertar paths (anexos, avatar, etc)

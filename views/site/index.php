@@ -28,7 +28,7 @@ $this->title = Yii::$app->params['appname'];
     </div>
     <div class="col-sm-10">
       <div class="panel panel-primary">
-      <div class="panel-heading"><b>Top 3 Produtividade Diária - Todos os Produtos</b></div>
+      <div class="panel-heading"><b>Top 3 Produtividade do Mês</b></div>
       <div class="panel-body">
         <?php
         $dataProviderValor = new SqlDataProvider([

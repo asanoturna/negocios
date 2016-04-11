@@ -25,10 +25,17 @@ use yii\helpers\Url;
     ]); ?>
 
     <div class="row">
-    
-    <?= $form->field($model, 'daily_productivity_status_id')->dropDownList(ArrayHelper::map(Dailyproductivitystatus::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?>    
-    <hr/>
+    <div class="col-md-6">
+    <?= $form->field($model, 'daily_productivity_status_id')->dropDownList(ArrayHelper::map(Dailyproductivitystatus::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?>  
     </div>
+    <div class="col-md-6">
+    <?= $form->field($model, 'is_commission_received')->radioList([
+        '1' => 'Sim', 
+        '0' => 'Não',
+        ], ['itemOptions' => ['class' =>'radio-inline','labelOptions'=>array('style'=>'padding:5px;')]])->label('Comissão Recebida') ?>  
+    </div>
+    </div>
+    <hr/>
 
     <div class="row">
     <div class="col-md-6">
@@ -100,6 +107,7 @@ use yii\helpers\Url;
     <div class="form-group">
         <div class="col-lg-offset-2 col-lg-10">
         <?= Html::submitButton($model->isNewRecord ? '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Gravar' : '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Gravar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-success']) ?>
+
         </div>
     </div>
 
