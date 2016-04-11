@@ -7,14 +7,9 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Reportbase;
 
-/**
- * ReportbaseSearch represents the model behind the search form about `app\models\Reportbase`.
- */
 class ReportbaseSearch extends Reportbase
 {
-    /**
-     * @inheritdoc
-     */
+
     public function rules()
     {
         return [
@@ -23,28 +18,26 @@ class ReportbaseSearch extends Reportbase
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function scenarios()
     {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
 
-    /**
-     * Creates data provider instance with search query applied
-     *
-     * @param array $params
-     *
-     * @return ActiveDataProvider
-     */
     public function search($params)
     {
         $query = Reportbase::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'attachment' => SORT_ASC, 
+                ]
+            ],
+            'pagination' => [
+                'pageSize' => 100,
+            ],
         ]);
 
         $this->load($params);

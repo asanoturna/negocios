@@ -2,17 +2,17 @@
 
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Reportbase */
-
-$this->title = 'Update Reportbase: ' . ' ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Reportbases', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Alterar arquivo: ' . ' ' . $model->attachment;
 ?>
 <div class="reportbase-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+	    <div class="col-md-6"><h1><i class="fa fa-file-excel-o"></i> <?= Html::encode($this->title) ?></h1></div>
+	    <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;">
+	        <?= Html::a('<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> Lista de Arquivos', ['index'], ['class' => 'btn btn-success']) ?></span>
+	    </div>      
+    </div>
+    <hr/>
 
     <?= $this->render('_form', [
         'model' => $model,

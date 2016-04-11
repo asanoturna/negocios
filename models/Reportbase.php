@@ -15,13 +15,15 @@ class Reportbase extends \yii\db\ActiveRecord
 
     public $file;
     public $filename;
+    public $spreadsheetname;
 
     public function rules()
     {
         return [
-            //[['file', 'updated'], 'required'],
+            //[['file'], 'required'],
             [['updated'], 'safe'],
-            [['downloads'], 'integer'],
+            [['downloads','user_id'], 'integer'],
+            [['attachment', 'spreadsheetname'], 'string', 'max' => 255],
             [['file'], 'file', 'extensions'=>'zip', 'maxSize' => 1024 * 1024 * 5],
         ];
     }
@@ -30,9 +32,11 @@ class Reportbase extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'spreadsheetname' => 'Nome para o arquivo',
             'attachment' => 'Arquivo',
             'file' => 'Planilha',
-            'updated' => 'Alterado',
+            'updated' => 'Publicação',
+            'user_id' => 'Responsável',
             'downloads' => 'Downloads',
         ];
     }
@@ -56,9 +60,14 @@ class Reportbase extends \yii\db\ActiveRecord
         $this->filename = $file->name;
         $ext = end((explode(".", $file->name)));
 
-        $this->attachment = Yii::$app->security->generateRandomString().".{$ext}";
+        $this->attachment = $this->spreadsheetname.".{$ext}";
 
 
         return $file;
-    }    
+    }  
+
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }        
 }

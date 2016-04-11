@@ -58,19 +58,20 @@ class ReportbaseController extends Controller
         $model = new Reportbase();
 
         $model->updated = date('Y-m-d');
+        $model->user_id = Yii::$app->user->id;
 
-            if ($model->load(Yii::$app->request->post())) {
-            // process uploaded image file instance
+        if ($model->load(Yii::$app->request->post())) {
+
             $file = $model->uploadImage();
  
             if ($model->save()) {
-                // upload only if valid uploaded file instance found
+
                 if ($file !== false) {
                     $path = $model->getImageFile();
                     $file->saveAs($path);
                 }
-                Yii::$app->session->setFlash("file-success", '<i class="fa fa-check"></i> Arquivo anexado com sucesso!');
-                return $this->redirect(['/reportbase/view', 'id' => $model->id]);
+                Yii::$app->session->setFlash("file-success", '<i class="fa fa-check"></i> Arquivo atualizado com sucesso!');
+                return $this->redirect(['/reportbase/index']);
             } else {
                 // error in saving model
             }
@@ -84,9 +85,25 @@ class ReportbaseController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+        $model->updated = date('Y-m-d'); 
+        $model->user_id = Yii::$app->user->id;       
+
+        if ($model->load(Yii::$app->request->post())) {
+            // process uploaded image file instance
+            $file = $model->uploadImage();
+ 
+            if ($model->save()) {
+                // upload only if valid uploaded file instance found
+                if ($file !== false) {
+                    $path = $model->getImageFile();
+                    $file->saveAs($path);
+                }
+                Yii::$app->session->setFlash("file-success", '<i class="fa fa-check"></i> Arquivo atualizado com sucesso!');
+                return $this->redirect(['/reportbase/index']);
+            } else {
+                // error in saving model
+            }
+        }else {
             return $this->render('update', [
                 'model' => $model,
             ]);
