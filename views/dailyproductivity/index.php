@@ -34,16 +34,16 @@ $this->title = 'Produtividade Diária';?>
           use kartik\export\ExportMenu;
               $gridColumns = [
                   ['attribute'=>'date','format'=>['date'], 'hAlign'=>'right', 'width'=>'110px'],  
-                  [
-                  'attribute'=>'user_id',
-                  'label'=> 'Usuário',
-                  'vAlign'=>'middle',
-                  'width'=>'100px',
-                  'value'=>function ($model, $key, $index, $widget) { 
-                      return Html::a($model->user->username, '#', []);
-                  },
-                  'format'=>'raw'
-                  ],                   
+                  // [
+                  // 'attribute'=>'user_id',
+                  // 'label'=> 'Usuário',
+                  // 'vAlign'=>'middle',
+                  // 'width'=>'100px',
+                  // 'value'=>function ($model, $key, $index, $widget) { 
+                  //     return Html::a($model->user->username, '#', []);
+                  // },
+                  // 'format'=>'raw'
+                  // ],                   
                   [
                   'attribute'=>'location_id',
                   'label'=> 'PA',
@@ -54,6 +54,8 @@ $this->title = 'Produtividade Diária';?>
                   },
                   'format'=>'raw'
                   ], 
+                  ['attribute'=>'buyer_document', 'hAlign'=>'right', 'width'=>'90px'],
+                  ['attribute'=>'buyer_name', 'hAlign'=>'right', 'width'=>'90px'],
                   [
                   'attribute'=>'product_id',
                   'label'=> 'Produto',
