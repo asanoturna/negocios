@@ -137,7 +137,7 @@ $this->title = 'Visitas dos Gerentes';
             'contentOptions'=>['style'=>'width: 5%;text-align:center'],
             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             'format' => ['date', 'php:d/m/Y'],
-            ],             
+            ],
             [
             'attribute' => 'user_id',
             'format' => 'raw',
@@ -160,12 +160,12 @@ $this->title = 'Visitas dos Gerentes';
             'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
             'contentOptions'=>['style'=>'width: 3%;text-align:center'],
             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
-            ],             
+            ],
             [
             'attribute' => 'company_person',
             'contentOptions'=>['style'=>'width: 18%;text-align:left;text-transform: uppercase'],
             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
-            ], 
+            ],
             [
             'attribute' => 'person_id',
             'format' => 'raw',
@@ -176,18 +176,18 @@ $this->title = 'Visitas dos Gerentes';
             'filter' => ArrayHelper::map(Person::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
             'contentOptions'=>['style'=>'width: 3%;text-align:center'],
             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
-            ],            
+            ],
             [
             'attribute' => 'visits_finality_id',
             'format' => 'raw',
             'enableSorting' => true,
             'value' => function ($model) {                      
                     return $model->visitsFinality->name;
-                    },                
+                    },
             'filter' => ArrayHelper::map(VisitsFinality::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
             'contentOptions'=>['style'=>'width: 15%;text-align:center'],
             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
-            ],             
+            ],
             [
             'attribute' => 'visits_status_id',
             'format' => 'raw',
@@ -195,11 +195,11 @@ $this->title = 'Visitas dos Gerentes';
             
             'value' => function ($model) {                      
                   return '<span style="color:'.$model->visitsStatus->hexcolor.'">'.$model->visitsStatus->name.'</span>';
-                  },                                      
+                  },
             'filter' => ArrayHelper::map(VisitsStatus::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
             'contentOptions'=>['style'=>'width: 10%;text-align:center'],
             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
-            ],             
+            ],
             [
             'class' => 'yii\grid\ActionColumn',
             'header' => 'Ações',
@@ -216,7 +216,7 @@ $this->title = 'Visitas dos Gerentes';
                                     'class' => 'btn btn-default btn-xs',
                                     'disabled' => true,
                         ]);
-                    },                  
+                    },
                     'has_map' => function ($url, $model) {
                         return $model->localization_map <> '' ? Html::a('<span class="glyphicon glyphicon-map-marker" ></span>', ['view', 'id' => $model->id,'#' => 'map'], [
                                     'title' => 'Possui mapa',
@@ -236,7 +236,7 @@ $this->title = 'Visitas dos Gerentes';
                                     'class' => 'btn btn-default btn-xs',
                                     'disabled' => true,
                         ]);
-                    },                                   
+                    },
                     'view' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-eye-open" ></span>', $url, [
                                     'title' => 'Visualizar',
