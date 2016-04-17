@@ -6,9 +6,6 @@ use yii\helpers\ArrayHelper;
 use app\models\User;
 
 ?>
-
-
-
     <?php $form = ActiveForm::begin([
         'options' => [
                     'class' => 'form-inline',

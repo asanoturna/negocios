@@ -146,13 +146,67 @@ class DailyproductivityController extends Controller
 
     public function actionPerformance_user()
     {
-        $searchModel = new DailyproductivitySearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        // $searchModel = new DailyproductivitySearch();
+        // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        // return $this->render('performance_user', [
+        //     'searchModel' => $searchModel,
+        //     'dataProvider' => $dataProvider,
+        // ]);       
+
+        $model = new Dailyproductivity();
+
+        $thisyear  = date('Y');
+        $thismonth = date('m');       
+
+        $url = Yii::$app->getRequest()->getQueryParam('seller_id');
+        $seller_id = isset($url) ? $url : Yii::$app->user->identity->id;
+
+        $commandsell = Yii::$app->db->createCommand(
+            "SELECT
+                t2.NAME AS p,
+                SUM(t1.quantity) AS q
+            FROM
+                daily_productivity AS t1
+            LEFT JOIN product AS t2 ON t1.product_id = t2.id
+            WHERE YEAR(date) = $thisyear AND daily_productivity_status_id = 2 AND seller_id = $seller_id
+            GROUP BY p ORDER BY q DESC"
+                );
+        $report_sell = $commandsell->queryAll();
+
+        $p = array();
+        $q = array();
+ 
+        for ($i = 0; $i < sizeof($report_sell); $i++) {
+           $p[] = $report_sell[$i]["p"];
+           $q[] = (int) $report_sell[$i]["q"];
+        }
+
+        $commandevolution = Yii::$app->db->createCommand("SELECT 
+        SUM(IF(daily_productivity.daily_productivity_status_id=1, quantity, 0)) as pending,
+        SUM(IF(daily_productivity.daily_productivity_status_id=2, quantity, 0)) as approved,
+        MONTHNAME(date) as m 
+        FROM daily_productivity WHERE seller_id = $seller_id AND YEAR(date) = $thisyear GROUP BY m ORDER BY MONTH(date)");
+        $report_evolution = $commandevolution->queryAll();
+        
+        $m = array();
+        $pending = array();
+        $approved = array();
+ 
+        for ($i = 0; $i < sizeof($report_evolution); $i++) {
+           $m[] = $report_evolution[$i]["m"];
+           $pending[] = (int) $report_evolution[$i]["pending"];
+           $approved[] = abs((int) $report_evolution[$i]["approved"]);
+        }
 
         return $this->render('performance_user', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);       
+            'model' => $model,  
+            'p' => $p,
+            'q' => $q,
+            'm' => $m,
+            'pending' => $pending,
+            'approved' => $approved,
+        ]); 
     }     
 
     public function actionPerformance_overview()
