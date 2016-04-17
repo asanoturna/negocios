@@ -23,7 +23,6 @@ class DailyproductivitySearch extends Dailyproductivity
 
     public function scenarios()
     {
-        // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
 
@@ -66,10 +65,7 @@ class DailyproductivitySearch extends Dailyproductivity
             'date' => $this->date,
             'created' => $this->created,
             'updated' => $this->updated,
-            //'my_daily_productivity' => Yii::$app->user->identity->id,
         ]);
-
-        //$query->andFilterWhere(['=', 'seller_id', Yii::$app->user->identity->id]); 
 
         $query->andFilterWhere(['between', 'date', $this->start_date, $this->end_date]);        
 

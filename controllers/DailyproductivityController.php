@@ -20,7 +20,7 @@ class DailyproductivityController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::classname(),
-                'only'  => ['index','create','view','performance'],
+                'only'  => ['index','create','view','update','performance_user','performance_overview', 'ranking_user','ranking_location'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -48,26 +48,7 @@ class DailyproductivityController extends Controller
         ]);
     }
 
-    public function actionListm($id)
-    {
-        $rows = \app\models\Modality::find()->where(['product_id' => $id])->all();
-        echo "<option>--</option>";
-        if(count($rows)>0){
-            foreach($rows as $row){
-                echo "<option value='$row->id'>$row->name</option>";
-            }
-        }
-        else {
-            echo "<option>Nenhum modalidade </option>";
-        }
-    }    
-
-    public function actionPercent($id)
-    {
-        echo 2;
-    } 
-
-    public function actionPerformance_user()
+    public function actionRanking_user()
     {
         $model = new Dailyproductivity();
 
@@ -108,14 +89,14 @@ class DailyproductivityController extends Controller
             ],
         ]);
 
-        return $this->render('performance_user', [
+        return $this->render('ranking_user', [
             'model' => $model,
             'dataProviderValor' => $dataProviderValor,
             'dataProviderQtde' => $dataProviderQtde,        
         ]);
     }   
 
-    public function actionPerformance_location()
+    public function actionRanking_location()
     {
         $model = new Dailyproductivity();
 
@@ -156,12 +137,23 @@ class DailyproductivityController extends Controller
             ],
         ]);
 
-        return $this->render('performance_location', [
+        return $this->render('ranking_location', [
             'model' => $model,
             'dataProviderValor' => $dataProviderValor,
             'dataProviderQtde' => $dataProviderQtde,        
         ]);
     }   
+
+    public function actionPerformance_user()
+    {
+        $searchModel = new DailyproductivitySearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('performance_user', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);       
+    }     
 
     public function actionPerformance_overview()
     {

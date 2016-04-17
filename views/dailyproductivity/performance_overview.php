@@ -41,7 +41,6 @@ $this->title = 'Produtividade Diária';
                     ['id' => '11', 'name' => 'Novembro'],
                     ['id' => '12', 'name' => 'Dezembro'],
                 ];
-                //$result = ArrayHelper::map($array, 'id', 'name');
                 $this->registerJs('var submit = function (val){if (val > 0) {
                     window.location.href = "' . Url::to(['/dailyproductivity/performance_overview']) . '&mounth=" + val;
                 }
@@ -58,39 +57,28 @@ $this->title = 'Produtividade Diária';
 	  <div class="panel-body">
 		<?php
 		echo Highcharts::widget([
-		                    'options' => [
-		                        'credits' => ['enabled' => false],
-		                        'title' => [
-		                            'text' => '',
-		                        ],
-		                        'colors'=> ['#00A295','#27cdd9'],
-		                        'xAxis' => [
-		                            //'categories' => ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Nov', 'Dez'],
-		                            'categories' => $p,
-		                        ],
-		                        'yAxis' => [
-		                            'min' => 0,
-		                            'title' => '',
-		                        ],                        
-		                        'series' => [
-		                            [
-		                                'type' => 'column',
-		                                'name' => 'Produtos',
-		                                'data' => $t,
-		                            ],
-		                            // [
-		                            //     'type' => 'spline',
-		                            //     'name' => 'Evolução',
-		                            //     'data' => $quantity,
-		                            //     'marker' => [
-		                            //         'lineWidth' => 2,
-		                            //         'lineColor' => new JsExpression('Highcharts.getOptions().colors[7]'),
-		                            //         'fillColor' => 'white',
-		                            //     ],
-		                            // ],                           
-		                        ],
-		                    ]
-		                ]);
+                'options' => [
+                    'credits' => ['enabled' => false],
+                    'title' => [
+                        'text' => '',
+                    ],
+                    'colors'=> ['#00A295','#27cdd9'],
+                    'xAxis' => [
+                        'categories' => $p,
+                    ],
+                    'yAxis' => [
+                        'min' => 0,
+                        'title' => '',
+                    ],                        
+                    'series' => [
+                        [
+                            'type' => 'column',
+                            'name' => 'Produtos',
+                            'data' => $t,
+                        ],                          
+                    ],
+                ]
+            ]);
 		?>
 	  </div>
 	</div>
@@ -102,46 +90,31 @@ $this->title = 'Produtividade Diária';
 	  <div class="panel-body">
 		<?php
 		echo Highcharts::widget([
-		            'options' => [
-		                'credits' => ['enabled' => false],
-		                'title' => [
-		                    'text' => '',
-		                ],
-		                'colors'=> ['#00A295','#27cdd9'],
-		                'xAxis' => [
-		                    'categories' => $p,
-		                ],
-		                'yAxis' => [
-		                    'min' => 0,
-		                    'title' => '',
-		                ],                        
-		                'series' => [
-		                    [
-		                        'type' => 'column',
-		                        'name' => 'Volume',
-		                        'data' => $q,
-		                    ],
-		                    // [
-		                    //     'type' => 'spline',
-		                    //     'name' => 'Evolução',
-		                    //     'data' => $quantity,
-		                    //     'marker' => [
-		                    //         'lineWidth' => 2,
-		                    //         'lineColor' => new JsExpression('Highcharts.getOptions().colors[7]'),
-		                    //         'fillColor' => 'white',
-		                    //     ],
-		                    // ],                           
-		                ],
-		            ]
-		        ]);
+            'options' => [
+                'credits' => ['enabled' => false],
+                'title' => [
+                    'text' => '',
+                ],
+                'colors'=> ['#00A295','#27cdd9'],
+                'xAxis' => [
+                    'categories' => $p,
+                ],
+                'yAxis' => [
+                    'min' => 0,
+                    'title' => '',
+                ],                        
+                'series' => [
+                    [
+                        'type' => 'column',
+                        'name' => 'Volume',
+                        'data' => $q,
+                    ],                           
+                ],
+            ]
+        ]);
 		?>	    
 	  </div>
 	</div>
   </div>
-
-  <?php
-  //var_dump($t);
-  ?>
 </div>
-
 </div>
