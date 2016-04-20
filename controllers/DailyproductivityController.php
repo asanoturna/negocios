@@ -56,7 +56,7 @@ class DailyproductivityController extends Controller
         $product = isset($url) ? $url : '"%"';
 
         $dataProviderValor = new SqlDataProvider([
-            'sql' => "SELECT avatar, full_name as seller,
+            'sql' => "SELECT profile.user_id, avatar, full_name as seller,
                 SUM(IF(daily_productivity.daily_productivity_status_id=1, companys_revenue, 0)) as unconfirmed,
                 SUM(IF(daily_productivity.daily_productivity_status_id=2, companys_revenue, 0)) as confirmed
                     FROM daily_productivity
@@ -73,7 +73,7 @@ class DailyproductivityController extends Controller
         ]);
 
         $dataProviderQtde = new SqlDataProvider([
-            'sql' => "SELECT avatar, full_name as seller,
+            'sql' => "SELECT profile.user_id, avatar, full_name as seller,
                 SUM(IF(daily_productivity.daily_productivity_status_id=1, quantity, 0)) as unconfirmed,
                 SUM(IF(daily_productivity.daily_productivity_status_id=2, quantity, 0)) as confirmed
                     FROM daily_productivity

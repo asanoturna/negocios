@@ -82,8 +82,8 @@ $this->title = 'Produtividade Diária';
                         'attribute' => 'seller',
                         'format' => 'raw',
                         'header' => '',
-                        'value' => function ($data) {                      
-                            return $data["seller"];
+                        'value' => function ($data) { 
+                            return Html::a( $data["seller"], ['dailyproductivity/performance_user', 'seller_id' => $data["user_id"]], ['title' => 'Clique para ver o desempenho']);
                         },
                         'contentOptions'=>['style'=>'width: 50%;text-transform: uppercase;text-align:left;vertical-align: middle;'],
                     ],  
@@ -138,9 +138,9 @@ $this->title = 'Produtividade Diária';
                         'attribute' => 'seller',
                         'format' => 'raw',
                         'header' => '',
-                        'value' => function ($data) {                      
-                            return $data["seller"];
-                        },
+                        'value' => function ($data) { 
+                                return Html::a( $data["seller"], ['dailyproductivity/performance_user', 'seller_id' => $data["user_id"]], ['title' => 'Clique para ver o desempenho']);
+                            },
                         'contentOptions'=>['style'=>'width: 50%;text-transform: uppercase;text-align:left;vertical-align: middle;'],
                     ],  
                     [

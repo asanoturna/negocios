@@ -32,7 +32,7 @@ $this->title = Yii::$app->params['appname'];
       <div class="panel-body">
         <?php
         $dataProviderValor = new SqlDataProvider([
-            'sql' => "SELECT avatar, full_name as seller, sum(companys_revenue) as total
+            'sql' => "SELECT profile.user_id, avatar, full_name as seller, sum(companys_revenue) as total
                     FROM daily_productivity
                     INNER JOIN `profile` ON daily_productivity.seller_id = `profile`.user_id
                     WHERE daily_productivity_status_id = 2 AND MONTH(date) = $thismonth AND YEAR(date) = $thisyear
@@ -46,7 +46,7 @@ $this->title = Yii::$app->params['appname'];
             ],
         ]);
         $dataProviderQtde = new SqlDataProvider([
-            'sql' => "SELECT avatar, full_name as seller, sum(quantity) as total
+            'sql' => "SELECT profile.user_id, avatar, full_name as seller, sum(quantity) as total
                     FROM daily_productivity
                     INNER JOIN `profile` ON daily_productivity.seller_id = `profile`.user_id
                     WHERE daily_productivity_status_id = 2 AND MONTH(date) = $thismonth AND YEAR(date) = $thisyear
@@ -96,8 +96,8 @@ $this->title = Yii::$app->params['appname'];
                 [
                     'attribute' => 'seller',
                     'format' => 'raw',
-                    'value' => function ($data) {                      
-                        return $data["seller"];
+                    'value' => function ($data) { 
+                        return Html::a( $data["seller"], ['dailyproductivity/performance_user', 'seller_id' => $data["user_id"]], ['title' => 'Clique para ver o desempenho']);
                     },
                     'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;text-transform: uppercase'],
                 ],  
@@ -149,11 +149,11 @@ $this->title = Yii::$app->params['appname'];
                 [
                     'attribute' => 'seller',
                     'format' => 'raw',
-                    'value' => function ($data) {                      
-                        return $data["seller"];
+                    'value' => function ($data) { 
+                        return Html::a( $data["seller"], ['dailyproductivity/performance_user', 'seller_id' => $data["user_id"]], ['title' => 'Clique para ver o desempenho']);
                     },
-                    'contentOptions'=>['style'=>'width: 60%;text-align:left;vertical-align: middle;text-transform: uppercase'],
-                ],  
+                    'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;text-transform: uppercase'],
+                ],   
                 [
                     'attribute' => 'total',
                     'format' => 'raw',
