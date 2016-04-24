@@ -37,19 +37,20 @@ AppAsset::register($this);
         'encodeLabels' => false,
         'items' => [
             ['label' => '<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Início', 'url' => ['/site/index']],
+            ['label' => '<span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Cooperativa', 'url' => ['/site/coop'], 'visible' => Yii::$app->user->can("productmanager"),],
             Yii::$app->user->isGuest ?
-                ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Entrar', 'url' => ['/user/login']] :
-                ['label' => '<img src="images/users/'.Yii::$app->user->identity->profile->avatar.'" class="profile-image img-avatar" > '. Yii::$app->user->displayName,
-                'items' => 
-                    [
-                        ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Alterar Senha', 'url' => ['/user/account']],
-                        ['label' => '<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Perfil', 'url' => ['/user/profile']],
-                        '<li class="divider"></li>',
-                        ['label' => '<span class="glyphicon glyphicon-off" aria-hidden="true"></span> Sair',
-                            'url' => ['/user/logout'],
-                            'linkOptions' => ['data-method' => 'post']],
-                    ],
+            ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Entrar', 'url' => ['/user/login']] :
+            ['label' => '<img src="images/users/'.Yii::$app->user->identity->profile->avatar.'" class="profile-image img-avatar" > '. Yii::$app->user->displayName,
+            'items' => 
+                [
+                    ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Alterar Senha', 'url' => ['/user/account']],
+                    ['label' => '<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Perfil', 'url' => ['/user/profile']],
+                    '<li class="divider"></li>',
+                    ['label' => '<span class="glyphicon glyphicon-off" aria-hidden="true"></span> Sair',
+                        'url' => ['/user/logout'],
+                        'linkOptions' => ['data-method' => 'post']],
                 ],
+            ],
         ],
     ]);
     NavBar::end();

@@ -9,6 +9,8 @@ use app\models\Visitsfinality;
 use app\models\Visitsstatus;
 use app\models\Visitsimages;
 use app\models\User;
+use yii\bootstrap\Modal;
+
 
 $this->title = 'Visitas dos Gerentes';
 ?>
@@ -33,6 +35,16 @@ $this->title = 'Visitas dos Gerentes';
       <div class="panel panel-primary">
       <div class="panel-heading"><b>Opções</b></div>
         <div class="panel-body">
+          <?php
+          Modal::begin([
+              'header' => '<h3>Tipos de Situação das Visitas</h3>',
+              'toggleButton' => ['label' => 'Tipos de Situação', 'class' => 'btn btn-success'],
+          ]);
+
+          echo $this->render('liststatus');
+
+          Modal::end();
+          ?>
           <?php
           use kartik\export\ExportMenu;
               $gridColumns = [
