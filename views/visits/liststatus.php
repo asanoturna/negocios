@@ -15,10 +15,23 @@ $dataProvider = new ActiveDataProvider([
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
     'summary' => '',
-    'tableOptions' => ['class'=>'table table-striped'],
+    //'tableOptions' => ['class'=>'table table-striped'],
     'columns' => [
-        'name',
-        'hexcolor',
-        'about',
+        //'name',
+        [
+        'header' => 'Situação',
+        'format' => 'raw',
+        //'contentOptions'=>['style' => 'background-color: '.$model->hexcolor.';'],
+                    'value' => function ($model) {                      
+                  return "<b style=\"color: ".$model->hexcolor.";\">$model->name</b>";
+                  },
+        ],         
+        [
+         'header' => 'Descrição',
+         'format' => 'raw',
+	     'value' => function ($model) {                      
+	      		return "<em >$model->about</em>";
+	      	},
+        ],        
     ],
 ]); ?>

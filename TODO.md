@@ -3,7 +3,7 @@ TODO
 - Listar locais (incluir dados em LOCATION (endereço, ativo, email, etc))
 - Listar Usuarios
 - Listar Departamentos (nome, descrição, usuários vinculados?)
-- Incluir modal com descricao status
+
 - Paginas com Ultimos acessos
 - Alerta de pendencias nas visitas
 - Alerta de pendencias nas prod diaria
@@ -18,3 +18,5 @@ TODO
 - consertar paths (anexos, avatar, etc)
 
 - incluir na gestao de usuarios o niveis de acesso para cada
+
+- Definir action com acesso somente Gerente do sistema

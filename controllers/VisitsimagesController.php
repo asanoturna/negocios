@@ -10,7 +10,6 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\base\Security;
-
 use yii\imagine\Image;
 use Imagine\Gd;
 use Imagine\Image\Box;
