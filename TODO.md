@@ -15,6 +15,7 @@ TODO
 - Prod Diaria -> Filtrar mais de um produto
 
 - Add Seguros -> Outros / min 0 , max 40
+
 - consertar paths (anexos, avatar, etc)
 
 - incluir na gestao de usuarios o niveis de acesso para cada
