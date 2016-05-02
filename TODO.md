@@ -14,3 +14,4 @@ TODO
 - Admin -Definir view/action somente para Gerente do sistema
 - Usuario - Proprio usuario enviar/alterar foto
 - Geral - Corrigir telas responsivas (gridview, etc)
+- Prod Diaria - Exbir data de inclusão e alteraçaõ - Exibir ID

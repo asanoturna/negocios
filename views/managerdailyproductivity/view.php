@@ -7,11 +7,12 @@ $this->title = 'Gestão Produtividade Diária';
 ?>
 <div class="managerdailyproductivity-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php  echo $this->render('//dailyproductivity/_menu'); ?>
+    <div class="row">
+      <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
+      <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;"><?php  echo $this->render('//dailyproductivity/_menu'); ?></span></div>
+    </div>
     <hr/>
-
-    <p>
+    <p class="pull-right">
         <?= Html::a('Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
         <?= Html::a('Excluir', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
@@ -61,5 +62,27 @@ $this->title = 'Gestão Produtividade Diária';
             ],                        
         ],
     ]) ?>
+    <hr/>
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [              
+            [ 
+                'label' => 'Data de inclusão no sistema',
+                'format' => 'raw',
+                'value' => date("d/m/Y",  strtotime($model->created))
+            ],           
+            [ 
+                'label' => 'Última alteração realizada',
+                'format' => 'raw',
+                'value' => date("d/m/Y",  strtotime($model->updated))
+            ],    
+            [ 
+                'attribute' => 'is_commission_received',
+                'label' => 'Comissão recebida?',  
+                'format' => 'raw',
+                'value' => $model->is_commission_received == 1 ? '<b style="color:green">Sim</b>' : '<b style="color:gray">Não</b>',
+            ],                                     
+        ],
+    ]) ?>     
 
 </div>

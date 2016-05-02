@@ -67,5 +67,21 @@ $this->title = 'Produtividade Diária';
             ],                        
         ],
     ]) ?>
+    <hr/>
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [              
+            [ 
+                'label' => 'Data de inclusão no sistema',
+                'format' => 'raw',
+                'value' => date("d/m/Y",  strtotime($model->created))
+            ],           
+            [ 
+                'label' => 'Última alteração realizada',
+                'format' => 'raw',
+                'value' => date("d/m/Y",  strtotime($model->updated))
+            ],                          
+        ],
+    ]) ?>    
 
 </div>

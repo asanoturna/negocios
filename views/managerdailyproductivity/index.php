@@ -34,6 +34,12 @@ $this->title = 'Gestão Produtividade Diária';
         'headerRowOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;text-align:center'],
         'columns' => [
             [
+              'attribute' => 'id',
+              'enableSorting' => true,
+              'contentOptions'=>['style'=>'width: 3%;text-align:center'],
+              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+            ],          
+            [
                 'attribute' => 'date',
                 'enableSorting' => true,
                 'contentOptions'=>['style'=>'width: 4%;text-align:center'],
@@ -65,7 +71,7 @@ $this->title = 'Gestão Produtividade Diária';
                        return $model->product->name;
                        },
                 'filter' => Product::getHierarchy(),
-                'contentOptions'=>['style'=>'width: 22%;text-align:left'],
+                'contentOptions'=>['style'=>'width: 18%;text-align:left'],
             ],              
             [
                 'attribute' => 'value',
@@ -137,8 +143,14 @@ $this->title = 'Gestão Produtividade Diária';
             ],                                 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{update} {delete}',
+                'template' => '{view} {update} {delete}',
                 'buttons' => [
+                    'view' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', $url, [
+                                    'title' => 'Detalhes',
+                                    'class' => 'btn btn-default btn-xs',
+                        ]);
+                    },                
                     'update' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
                                     'title' => 'Alterar',
@@ -155,7 +167,7 @@ $this->title = 'Gestão Produtividade Diária';
                         ]);
                     },                
                 ],
-                'contentOptions'=>['style'=>'width: 5%;text-align:right'],
+                'contentOptions'=>['style'=>'width: 6%;text-align:right'],
             ],
         ],
     ]); ?>

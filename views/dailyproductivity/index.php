@@ -147,6 +147,12 @@ $this->title = 'Produtividade Diária';?>
         },       
         'columns' => [
             [
+              'attribute' => 'id',
+              'enableSorting' => true,
+              'contentOptions'=>['style'=>'width: 3%;text-align:center'],
+              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+            ],          
+            [
               'attribute' => 'date',
               'enableSorting' => true,
               'contentOptions'=>['style'=>'width: 4%;text-align:center'],
@@ -181,7 +187,7 @@ $this->title = 'Produtividade Diária';?>
                       return $model->product->name;
                       },
               'filter' => Product::getHierarchy(),
-              'contentOptions'=>['style'=>'width: 20%;text-align:left'],
+              'contentOptions'=>['style'=>'width: 18%;text-align:left'],
               'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],
             [
