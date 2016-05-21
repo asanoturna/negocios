@@ -19,8 +19,8 @@ use yii\bootstrap\Nav;
         ],    
         [
         'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Controle Recursos',
-        //'url'     => ['/dailyproductivity/create'],
-        'options' => ['class' => 'disabled'],
+        'url'     => ['/resourcerequest/index'],
+        //'options' => ['class' => 'disabled'],
         ],                     
         // [
         // 'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Relatórios Olap/TCF',
