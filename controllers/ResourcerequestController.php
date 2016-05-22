@@ -46,7 +46,8 @@ class ResourcerequestController extends Controller
         $model = new Resourcerequest();
 
         $model->user_id = Yii::$app->user->id;
-        $model->created = date('Y-m-d');        
+        $model->created = date('Y-m-d');   
+        $model->resource_status_id = 1;       
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

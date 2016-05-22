@@ -5,6 +5,7 @@ use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
 use app\models\Location;
 use app\models\Resourcerequest;
+use app\models\Resourcestatus;
 
 $this->title = 'Recursos Solicitados';
 ?>
@@ -35,9 +36,9 @@ $this->title = 'Recursos Solicitados';
               'format' => ['date', 'php:d/m/Y'],
             ],              
             [
-            'attribute' => 'client_name',
-            'contentOptions'=>['style'=>'width: 18%;text-align:left;text-transform: uppercase'],
-            'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'attribute' => 'client_name',
+              'contentOptions'=>['style'=>'width: 18%;text-align:left;text-transform: uppercase'],
+              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],            
             [
               'attribute' => 'location_id',
@@ -50,26 +51,31 @@ $this->title = 'Recursos Solicitados';
               'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],   
             [
-                'attribute' => 'value_request',
-                'format' => 'raw',
-                'enableSorting' => true,
-                'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-                'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'attribute' => 'value_request',
+              'format' => 'raw',
+              'enableSorting' => true,
+              'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],     
             [
-                'attribute' => 'requested_month',
-                'enableSorting' => true,
-                'filter' => Resourcerequest::$Static_requested_month,
-                'contentOptions'=>['style'=>'width: 18%;text-align:left'],
-                'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'attribute' => 'requested_month',
+              'enableSorting' => true,
+              // 'value' => function ($data) {
+              //       return Resourcerequest::$Static_requested_month['0'];
+              //  },
+              'filter' => Resourcerequest::$Static_requested_month,
+              'contentOptions'=>['style'=>'width: 10%;text-align:left'],
+              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],     
             [
-                'attribute' => 'requested_year',
-                'enableSorting' => true,
-
-                'filter' => Resourcerequest::$Static_requested_year,
-                'contentOptions'=>['style'=>'width: 18%;text-align:left'],
-                'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'attribute' => 'requested_year',
+              'enableSorting' => true,
+              'value' => function ($data) {
+                    return Resourcerequest::$Static_requested_year[1];
+               },
+              'filter' => Resourcerequest::$Static_requested_year,
+              'contentOptions'=>['style'=>'width: 10%;text-align:left'],
+              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],                           
             // 'expiration_register',
             // 'lastupdate_register',
@@ -85,6 +91,16 @@ $this->title = 'Recursos Solicitados';
             // 'resource_type_id',
             // 'resource_purpose_id',
             // 'resource_status_id',
+            [
+              'attribute' => 'resource_status_id',
+              'enableSorting' => true,
+              'value' => function ($model) {                      
+                      return $model->resourceStatus->name;
+                      },
+              'filter' => ArrayHelper::map(Resourcestatus::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+              'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+            ],              
 
             [
             'class' => 'yii\grid\ActionColumn',

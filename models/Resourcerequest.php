@@ -11,15 +11,15 @@ class Resourcerequest extends \yii\db\ActiveRecord
         return 'resource_request';
     }   
 
-    public static $Static_has_transfer   = ['Sim', 'Não'];
+    public static $Static_has_transfer     = ['Sim', 'Não'];
 
-    public static $Static_receive_credit = ['Yes', 'Não']; 
+    public static $Static_receive_credit   = ['Sim', 'Não']; 
 
-    public static $Static_add_insurance  = ['Sim', 'Não'];
+    public static $Static_add_insurance    = ['Sim', 'Não'];
 
     public static $Static_requested_month  = ['Janeiro', 'Fevereiro', 'Março', 'Abril'];
 
-    public static $Static_requested_year  = ['2016', '2017', '2018', '2019', '2020'];    
+    public static $Static_requested_year   = ['2016', '2017', '2018', '2019', '2020'];    
 
     public function rules()
     {

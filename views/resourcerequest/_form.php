@@ -5,6 +5,8 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\Location;
 use app\models\Resourcerequest;
+use app\models\Resourcestatus;
+use kartik\money\MaskMoney;
 
 ?>
 
@@ -23,7 +25,6 @@ use app\models\Resourcerequest;
 
     <?php //$form->field($model, 'value_request')->textInput(['maxlength' => true]) ?>
     <?php 
-    use kartik\money\MaskMoney;
     echo $form->field($model, 'value_request')->widget(MaskMoney::classname(), [
         'pluginOptions' => [
             //'prefix' => 'R$ ',
@@ -37,11 +38,8 @@ use app\models\Resourcerequest;
             'value' => 0.01
         ],
     ]); 
-    ?>
-
-    <?php // $form->field($model, 'value_capital')->textInput(['maxlength' => true]) ?>   
+    ?>   
     <?php
-        //use kartik\money\MaskMoney;
         echo $form->field($model, 'value_capital')->widget(MaskMoney::classname(), [
             'pluginOptions' => [
                 //'prefix' => 'R$ ',
@@ -55,7 +53,7 @@ use app\models\Resourcerequest;
                 'value' => 0.01
             ],
         ]); 
-        ?>     
+    ?>     
 
     <?= $form->field($model, 'expiration_register')->widget('trntv\yii\datetime\DateTimeWidget',
         [
@@ -104,9 +102,7 @@ use app\models\Resourcerequest;
 
     <?= $form->field($model, 'resource_type_id')->textInput() ?>
 
-    <?= $form->field($model, 'resource_purpose_id')->textInput() ?>
-
-    <?= $form->field($model, 'resource_status_id')->textInput() ?>        
+    <?= $form->field($model, 'resource_purpose_id')->textInput() ?>      
 
     <?= $form->field($model, 'has_transfer')->dropDownList(Resourcerequest::$Static_has_transfer,['prompt'=>'--']) ?>
 
