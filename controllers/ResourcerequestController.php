@@ -9,9 +9,6 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-/**
- * ResourcerequestController implements the CRUD actions for Resourcerequest model.
- */
 class ResourcerequestController extends Controller
 {
     public function behaviors()
@@ -26,10 +23,6 @@ class ResourcerequestController extends Controller
         ];
     }
 
-    /**
-     * Lists all Resourcerequest models.
-     * @return mixed
-     */
     public function actionIndex()
     {
         $searchModel = new ResourcerequestSearch();
@@ -41,11 +34,6 @@ class ResourcerequestController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single Resourcerequest model.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionView($id)
     {
         return $this->render('view', [
@@ -53,14 +41,12 @@ class ResourcerequestController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new Resourcerequest model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate()
     {
         $model = new Resourcerequest();
+
+        $model->user_id = Yii::$app->user->id;
+        $model->created = date('Y-m-d');        
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -71,12 +57,6 @@ class ResourcerequestController extends Controller
         }
     }
 
-    /**
-     * Updates an existing Resourcerequest model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
@@ -90,12 +70,6 @@ class ResourcerequestController extends Controller
         }
     }
 
-    /**
-     * Deletes an existing Resourcerequest model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
@@ -103,13 +77,6 @@ class ResourcerequestController extends Controller
         return $this->redirect(['index']);
     }
 
-    /**
-     * Finds the Resourcerequest model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Resourcerequest the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     protected function findModel($id)
     {
         if (($model = Resourcerequest::findOne($id)) !== null) {

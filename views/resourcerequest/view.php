@@ -3,23 +3,24 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Resourcerequest */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Resourcerequests', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = "Solicitação #" . $model->id;
+
 ?>
 <div class="resourcerequest-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+      <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
+      <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;"><?php  echo $this->render('_menu'); ?></span></div>
+    </div>
+    <hr/>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Excluir', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'confirma exclusão do registro?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -33,20 +34,33 @@ $this->params['breadcrumbs'][] = $this->title;
             'client_name',
             'client_phone',
             'value_request',
-            'expiration_register',
-            'lastupdate_register',
-            'value_capital',
-            'observation:ntext',
+            'value_capital',            
+            [ 
+                'attribute' => 'expiration_register',
+                'format' => 'raw',
+                'value' => date("d/m/Y",  strtotime($model->expiration_register))
+            ],             
+            [ 
+                'attribute' => 'lastupdate_register',
+                'format' => 'raw',
+                'value' => date("d/m/Y",  strtotime($model->lastupdate_register))
+            ],                         
             'has_transfer',
             'receive_credit',
             'add_insurance',
-            'requested _month',
-            'requested _year',
+            'requested_month',
+            'requested_year',
             'location_id',
             'user_id',
             'resource_type_id',
             'resource_purpose_id',
             'resource_status_id',
+            [ 
+                'label' => 'Usuário',
+                'format' => 'raw',
+                'value' => $model->user->username,
+            ],              
+            'observation:ntext',
         ],
     ]) ?>
 
