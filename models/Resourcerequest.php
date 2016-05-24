@@ -11,13 +11,26 @@ class Resourcerequest extends \yii\db\ActiveRecord
         return 'resource_request';
     }   
 
-    public static $Static_has_transfer      = ['Sim', 'Não'];
+    public static $Static_has_transfer      = ['SIM', 'NÃO'];
 
-    public static $Static_receive_credit    = ['Sim', 'Não']; 
+    public static $Static_receive_credit    = ['SIM', 'NÃO']; 
 
-    public static $Static_add_insurance     = ['Sim', 'Não'];
+    public static $Static_add_insurance     = ['SIM', 'NÃO'];
 
-    public static $Static_requested_month   = ['Janeiro', 'Fevereiro', 'Março', 'Abril'];
+    public static $Static_requested_month   = [
+        'JANEIRO', 
+        'FEVEREIRO', 
+        'MARÇO', 
+        'ABRIL',
+        'MAIO',
+        'JUNHO',
+        'JULHO',
+        'AGOSTO',
+        'SETEMBRO',
+        'OUTUBRO',
+        'NOVEMBRO',
+        'DEZEMBRO'
+        ];
 
     public static $Static_requested_year    = ['2016', '2017', '2018', '2019', '2020'];   
 
@@ -27,6 +40,17 @@ class Resourcerequest extends \yii\db\ActiveRecord
         'INVESTIMENTO AGRICOLA', 
         'INVESTIMENTO PECUARIO'
         ];
+
+    public static $Static_resource_type = [
+        'FUNCAFE', 
+        'POUPANÇA EQUALIZAVEL', 
+        'PRONAMP', 
+        'PRONAF NIVEL I',
+        'PRONAF NIVEL II',
+        'PRONAF NIVEL III',
+        'RECURSOS OBRIGATORIOS',
+        'RPL'
+        ];        
 
 
     public function getRequestedMonthValue()
@@ -53,18 +77,24 @@ class Resourcerequest extends \yii\db\ActiveRecord
         return self::$Static_resource_purposes[$this->resource_purposes];
     }      
 
+    public function getResourceType()
+    {
+        if ($this->resource_type === null) {
+            return null;
+        }
+        return self::$Static_resource_type[$this->resource_type];
+    }       
+
     public function rules()
     {
         return [
-            [['created', 'client_name', 'client_phone', 'value_request', 'expiration_register', 'lastupdate_register', 'value_capital', 'requested_month', 'requested_year', 'resource_purposes', 'location_id', 'user_id', 'resource_type_id', 'resource_status_id','has_transfer', 'receive_credit', 'add_insurance'], 'required'],
+            [['created', 'client_name', 'client_phone', 'value_request', 'expiration_register', 'lastupdate_register', 'value_capital', 'requested_month', 'requested_year', 'resource_purposes', 'location_id', 'user_id', 'resource_type', 'resource_status_id','has_transfer', 'receive_credit', 'add_insurance'], 'required'],
             [['created', 'expiration_register', 'lastupdate_register'], 'safe'],
             [['value_request', 'value_capital'], 'number'],
             [['observation'], 'string'],
-            [['location_id', 'user_id', 'resource_type_id', 'resource_status_id', 'resource_purposes'], 'integer'],
+            [['location_id', 'user_id', 'resource_status_id', 'requested_month', 'requested_year', 'resource_purposes', 'resource_type', 'has_transfer', 'receive_credit', 'add_insurance'], 'integer'],
             [['client_name'], 'string', 'max' => 200],
-            [['client_phone'], 'string', 'max' => 50],
-            [['requested_month'], 'string', 'max' => 15],
-            [['requested_year', 'has_transfer', 'receive_credit', 'add_insurance'], 'string', 'max' => 4]
+            [['client_phone'], 'string', 'max' => 50]
         ];
     }
 
@@ -76,7 +106,7 @@ class Resourcerequest extends \yii\db\ActiveRecord
             'client_name' => 'Nome do Cliente',
             'client_phone' => 'Telefone do Cliente',
             'value_request' => 'Valor Solicitado',
-            'expiration_register' => 'Vencimento Cadastro',
+            'expiration_register' => 'Vencimento do Cadastro',
             'lastupdate_register' => 'Ultima Atualização Cadastral',
             'value_capital' => 'Valor Capital',
             'observation' => 'Observação',
@@ -88,7 +118,7 @@ class Resourcerequest extends \yii\db\ActiveRecord
             'resource_purposes' => 'Finalidade',
             'location_id' => 'PA',
             'user_id' => 'Usuário',
-            'resource_type_id' => 'Tipo do Recurso',
+            'resource_type' => 'Tipo do Recurso',
             'resource_status_id' => 'Situação',
         ];
     }
@@ -101,11 +131,6 @@ class Resourcerequest extends \yii\db\ActiveRecord
     public function getLocation()
     {
         return $this->hasOne(Location::className(), ['id' => 'location_id']);
-    }
-
-    public function getResourceType()
-    {
-        return $this->hasOne(ResourceType::className(), ['id' => 'resource_type_id']);
     }
     
     public function getUser()

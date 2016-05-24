@@ -52,7 +52,7 @@ $this->title = "Solicitação #" . $model->id;
             'requested_year',
             'location_id',
             'user_id',
-            'resource_type_id',
+            'resource_type',
             'resource_purposes',
             'resource_status_id',
             [ 

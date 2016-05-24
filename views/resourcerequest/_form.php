@@ -17,30 +17,20 @@ use kartik\money\MaskMoney;
     <div class="row">
         <div class="col-md-6">
 
-    <?= $form->field($model, 'client_name')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'client_phone')->widget(\yii\widgets\MaskedInput::classname(), [
+    <div class="panel panel-default">
+      <div class="panel-heading">Informações do Cliente</div>
+      <div class="panel-body">
+        <div class="row">
+        <div class="col-md-6"><?= $form->field($model, 'client_name')->textInput(['maxlength' => true]) ?></div>
+        <div class="col-md-6">    <?= $form->field($model, 'client_phone')->widget(\yii\widgets\MaskedInput::classname(), [
         'mask' => ['(99)9999-9999', '(99)99999-9999'],
-    ]) ?>    
+    ]) ?>   </div>
+        </div>
 
-    <?php //$form->field($model, 'value_request')->textInput(['maxlength' => true]) ?>
-    <?php 
-    echo $form->field($model, 'value_request')->widget(MaskMoney::classname(), [
-        'pluginOptions' => [
-            //'prefix' => 'R$ ',
-            //'suffix' => ' c',
-            'affixesStay' => true,
-            'thousands' => '.',
-            'decimal' => ',',
-            'precision' => 2, 
-            'allowZero' => true,
-            'allowNegative' => false,
-            'value' => 0.01
-        ],
-    ]); 
-    ?>   
-    <?php
-        echo $form->field($model, 'value_capital')->widget(MaskMoney::classname(), [
+        <div class="row">
+        <div class="col-md-6">
+        <?php 
+        echo $form->field($model, 'value_request')->widget(MaskMoney::classname(), [
             'pluginOptions' => [
                 //'prefix' => 'R$ ',
                 //'suffix' => ' c',
@@ -53,64 +43,92 @@ use kartik\money\MaskMoney;
                 'value' => 0.01
             ],
         ]); 
-    ?>     
-
-    <?= $form->field($model, 'expiration_register')->widget('trntv\yii\datetime\DateTimeWidget',
-        [
-            'phpDatetimeFormat' => 'yyyy-MM-dd',
-            'clientOptions' => [
-                'minDate' => new \yii\web\JsExpression('new Date("2016-01-01")'),
-                'allowInputToggle' => true,
-                'widgetPositioning' => [
-                   'horizontal' => 'auto',
-                   'vertical' => 'auto'
-                ]
-            ]
-        ]
-    ) ?>    
-
-    <?= $form->field($model, 'lastupdate_register')->widget('trntv\yii\datetime\DateTimeWidget',
-        [
-            'phpDatetimeFormat' => 'yyyy-MM-dd',
-            'clientOptions' => [
-                'minDate' => new \yii\web\JsExpression('new Date("2016-01-01")'),
-                'allowInputToggle' => true,
-                'widgetPositioning' => [
-                   'horizontal' => 'auto',
-                   'vertical' => 'auto'
-                ]
-            ]
-        ]
-    ) ?>    
-
-    <fieldset>
-    <legend>Período de aplicação do recurso</legend>
-
-    <div class="row">
-      <div class="col-md-6"><?= $form->field($model, 'requested_month')->dropDownList(Resourcerequest::$Static_requested_month,['prompt'=>'--']) ?></div>
-      <div class="col-md-6"><?= $form->field($model, 'requested_year')->dropDownList(Resourcerequest::$Static_requested_year,['prompt'=>'--']) ?></div>
-    </div>
-    
-    </fieldset>
-
-
-
+        ?> 
         </div>
         <div class="col-md-6">
+        <?php
+            echo $form->field($model, 'value_capital')->widget(MaskMoney::classname(), [
+                'pluginOptions' => [
+                    //'prefix' => 'R$ ',
+                    //'suffix' => ' c',
+                    'affixesStay' => true,
+                    'thousands' => '.',
+                    'decimal' => ',',
+                    'precision' => 2, 
+                    'allowZero' => true,
+                    'allowNegative' => false,
+                    'value' => 0.01
+                ],
+            ]); 
+        ?>
+        </div>
+        </div>
 
-    <?= $form->field($model, 'location_id')->dropDownList(ArrayHelper::map(Location::find()->where(['is_active' => 1])->orderBy("shortname ASC")->all(), 'id', 'shortname'),['prompt'=>'--'])  ?>       
+        <div class="row">
+        <div class="col-md-6">
+        <?= $form->field($model, 'expiration_register')->widget('trntv\yii\datetime\DateTimeWidget',
+            [
+                'phpDatetimeFormat' => 'yyyy-MM-dd',
+                'clientOptions' => [
+                    'minDate' => new \yii\web\JsExpression('new Date("2016-01-01")'),
+                    'allowInputToggle' => true,
+                    'widgetPositioning' => [
+                       'horizontal' => 'auto',
+                       'vertical' => 'auto'
+                    ]
+                ]
+            ]
+        ) ?> 
+        </div>
+        <div class="col-md-6">
+        <?= $form->field($model, 'lastupdate_register')->widget('trntv\yii\datetime\DateTimeWidget',
+            [
+                'phpDatetimeFormat' => 'yyyy-MM-dd',
+                'clientOptions' => [
+                    'minDate' => new \yii\web\JsExpression('new Date("2016-01-01")'),
+                    'allowInputToggle' => true,
+                    'widgetPositioning' => [
+                       'horizontal' => 'auto',
+                       'vertical' => 'auto'
+                    ]
+                ]
+            ]
+        ) ?>  
+        </div>
+        </div>                
+      </div>
+    </div> 
 
-    <?= $form->field($model, 'resource_type_id')->textInput() ?>
+    <div class="panel panel-default">
+      <div class="panel-heading">Período de aplicação do recurso</div>
+      <div class="panel-body">
+        <div class="row">
+      <div class="col-md-6"><?= $form->field($model, 'requested_month')->dropDownList(Resourcerequest::$Static_requested_month,['prompt'=>'--']) ?></div>
+      <div class="col-md-6"><?= $form->field($model, 'requested_year')->dropDownList(Resourcerequest::$Static_requested_year,['prompt'=>'--']) ?></div>
+        </div>
+      </div>
+    </div>   
 
-    <?= $form->field($model, 'resource_purposes')->dropDownList(Resourcerequest::$Static_resource_purposes,['prompt'=>'--']) ?>
+    </div>
+    <div class="col-md-6">
 
-    <?= $form->field($model, 'has_transfer')->dropDownList(Resourcerequest::$Static_has_transfer,['prompt'=>'--']) ?>
+    <div class="panel panel-default">
+    <div class="panel-heading">Informações Auxiliares</div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4"><?= $form->field($model, 'location_id')->dropDownList(ArrayHelper::map(Location::find()->where(['is_active' => 1])->orderBy("shortname ASC")->all(), 'id', 'shortname'),['prompt'=>'--'])  ?> </div>
+          <div class="col-md-4"><?= $form->field($model, 'resource_type')->dropDownList(Resourcerequest::$Static_resource_type,['prompt'=>'--']) ?></div>
+          <div class="col-md-4"><?= $form->field($model, 'resource_purposes')->dropDownList(Resourcerequest::$Static_resource_purposes,['prompt'=>'--']) ?></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4"><?= $form->field($model, 'has_transfer')->dropDownList(Resourcerequest::$Static_has_transfer,['prompt'=>'--']) ?></div>
+          <div class="col-md-4"><?= $form->field($model, 'receive_credit')->dropDownList(Resourcerequest::$Static_receive_credit,['prompt'=>'--']) ?></div>
+          <div class="col-md-4"><?= $form->field($model, 'add_insurance')->dropDownList(Resourcerequest::$Static_add_insurance,['prompt'=>'--']) ?></div>
+        </div>
+      </div>
+    </div>   
 
-    <?= $form->field($model, 'receive_credit')->dropDownList(Resourcerequest::$Static_receive_credit,['prompt'=>'--']) ?>
-
-    <?= $form->field($model, 'add_insurance')->dropDownList(Resourcerequest::$Static_add_insurance,['prompt'=>'--']) ?>
-
-    <?= $form->field($model, 'observation')->textarea(['rows' => 5]) ?>
+    <?= $form->field($model, 'observation')->textarea(['rows' => 9]) ?>
 
         </div>
     </div>

@@ -12,7 +12,7 @@ class ResourcerequestSearch extends Resourcerequest
     public function rules()
     {
         return [
-            [['id', 'has_transfer', 'receive_credit', 'add_insurance', 'location_id', 'user_id', 'resource_type_id', 'resource_purposes', 'resource_status_id'], 'integer'],
+            [['id', 'has_transfer', 'receive_credit', 'add_insurance', 'location_id', 'user_id', 'resource_type', 'resource_purposes', 'resource_status_id'], 'integer'],
             [['created', 'client_name', 'client_phone', 'expiration_register', 'lastupdate_register', 'observation', 'requested_month', 'requested_year'], 'safe'],
             [['value_request', 'value_capital'], 'number'],
         ];
@@ -51,7 +51,7 @@ class ResourcerequestSearch extends Resourcerequest
             'add_insurance' => $this->add_insurance,
             'location_id' => $this->location_id,
             'user_id' => $this->user_id,
-            'resource_type_id' => $this->resource_type_id,
+            'resource_type' => $this->resource_type,
             'resource_purposes' => $this->resource_purposes,
             'resource_status_id' => $this->resource_status_id,
         ]);

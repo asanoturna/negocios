@@ -98,7 +98,17 @@ $this->title = 'Recursos Solicitados';
               'filter' => Resourcerequest::$Static_resource_purposes,
               'contentOptions'=>['style'=>'width: 10%;text-align:left'],
               'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
-            ],                                    
+            ],            
+            [
+              'attribute' => 'resource_type',
+              'enableSorting' => true,
+              'value' => function($data) {
+                  return $data->getResourceType(); // OR use magic property $data->requestedMounthValue;
+              },
+              'filter' => Resourcerequest::$Static_resource_type,
+              'contentOptions'=>['style'=>'width: 10%;text-align:left'],
+              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+            ],                                     
             // 'expiration_register',
             // 'lastupdate_register',
             // 'value_capital',
