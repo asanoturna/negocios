@@ -6,6 +6,7 @@ use yii\helpers\ArrayHelper;
 use app\models\Location;
 use app\models\Resourcerequest;
 use app\models\Resourcestatus;
+use app\models\User;
 
 $this->title = 'Recursos Solicitados';
 ?>
@@ -34,12 +35,18 @@ $this->title = 'Recursos Solicitados';
               'contentOptions'=>['style'=>'width: 4%;text-align:center'],
               'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
               'format' => ['date', 'php:d/m/Y'],
-            ],              
+            ],   
             [
-              'attribute' => 'client_name',
-              'contentOptions'=>['style'=>'width: 18%;text-align:left;text-transform: uppercase'],
+              'attribute' => 'user_id',
+              'format' => 'raw',
+              'enableSorting' => true,
+              'value' => function ($model) {                      
+                  return $model->user ? $model->user->username : '<span class="text-danger"><em>Nenhum</em></span>';
+              },
+              'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
               'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
-            ],            
+              'contentOptions'=>['style'=>'width: 7%;text-align:left'],
+            ],   
             [
               'attribute' => 'location_id',
               'enableSorting' => true,
@@ -49,7 +56,12 @@ $this->title = 'Recursos Solicitados';
               'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
               'contentOptions'=>['style'=>'width: 5%;text-align:center'],
               'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
-            ],   
+            ],                                   
+            [
+              'attribute' => 'client_name',
+              'contentOptions'=>['style'=>'width: 18%;text-align:left;text-transform: uppercase'],
+              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+            ],
             [
               'attribute' => 'value_request',
               'format' => 'raw',
@@ -60,9 +72,9 @@ $this->title = 'Recursos Solicitados';
             [
               'attribute' => 'requested_month',
               'enableSorting' => true,
-              // 'value' => function ($data) {
-              //       return Resourcerequest::$Static_requested_month['0'];
-              //  },
+              'value' => function($data) {
+                  return $data->getRequestedMonthValue(); // OR use magic property $data->requestedMounthValue;
+              },
               'filter' => Resourcerequest::$Static_requested_month,
               'contentOptions'=>['style'=>'width: 10%;text-align:left'],
               'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
@@ -70,13 +82,23 @@ $this->title = 'Recursos Solicitados';
             [
               'attribute' => 'requested_year',
               'enableSorting' => true,
-              'value' => function ($data) {
-                    return Resourcerequest::$Static_requested_year[1];
-               },
+              'value' => function($data) {
+                  return $data->getRequestedYearValue(); // OR use magic property $data->requestedMounthValue;
+              },
               'filter' => Resourcerequest::$Static_requested_year,
               'contentOptions'=>['style'=>'width: 10%;text-align:left'],
               'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
-            ],                           
+            ],    
+            [
+              'attribute' => 'resource_purposes',
+              'enableSorting' => true,
+              'value' => function($data) {
+                  return $data->getResourcePurposes(); // OR use magic property $data->requestedMounthValue;
+              },
+              'filter' => Resourcerequest::$Static_resource_purposes,
+              'contentOptions'=>['style'=>'width: 10%;text-align:left'],
+              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+            ],                                    
             // 'expiration_register',
             // 'lastupdate_register',
             // 'value_capital',
@@ -89,8 +111,6 @@ $this->title = 'Recursos Solicitados';
             // 'location_id',
             // 'user_id',
             // 'resource_type_id',
-            // 'resource_purpose_id',
-            // 'resource_status_id',
             [
               'attribute' => 'resource_status_id',
               'enableSorting' => true,

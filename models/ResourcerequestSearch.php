@@ -7,39 +7,22 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Resourcerequest;
 
-/**
- * ResourcerequestSearch represents the model behind the search form about `app\models\Resourcerequest`.
- */
 class ResourcerequestSearch extends Resourcerequest
 {
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
-            [['id', 'has_transfer', 'receive_credit', 'add_insurance', 'location_id', 'user_id', 'resource_type_id', 'resource_purpose_id', 'resource_status_id'], 'integer'],
+            [['id', 'has_transfer', 'receive_credit', 'add_insurance', 'location_id', 'user_id', 'resource_type_id', 'resource_purposes', 'resource_status_id'], 'integer'],
             [['created', 'client_name', 'client_phone', 'expiration_register', 'lastupdate_register', 'observation', 'requested_month', 'requested_year'], 'safe'],
             [['value_request', 'value_capital'], 'number'],
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function scenarios()
     {
-        // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
 
-    /**
-     * Creates data provider instance with search query applied
-     *
-     * @param array $params
-     *
-     * @return ActiveDataProvider
-     */
     public function search($params)
     {
         $query = Resourcerequest::find();
@@ -69,7 +52,7 @@ class ResourcerequestSearch extends Resourcerequest
             'location_id' => $this->location_id,
             'user_id' => $this->user_id,
             'resource_type_id' => $this->resource_type_id,
-            'resource_purpose_id' => $this->resource_purpose_id,
+            'resource_purposes' => $this->resource_purposes,
             'resource_status_id' => $this->resource_status_id,
         ]);
 

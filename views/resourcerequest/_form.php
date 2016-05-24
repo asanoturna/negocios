@@ -102,7 +102,7 @@ use kartik\money\MaskMoney;
 
     <?= $form->field($model, 'resource_type_id')->textInput() ?>
 
-    <?= $form->field($model, 'resource_purpose_id')->textInput() ?>      
+    <?= $form->field($model, 'resource_purposes')->dropDownList(Resourcerequest::$Static_resource_purposes,['prompt'=>'--']) ?>
 
     <?= $form->field($model, 'has_transfer')->dropDownList(Resourcerequest::$Static_has_transfer,['prompt'=>'--']) ?>
 

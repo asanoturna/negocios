@@ -53,7 +53,7 @@ $this->title = "Solicitação #" . $model->id;
             'location_id',
             'user_id',
             'resource_type_id',
-            'resource_purpose_id',
+            'resource_purposes',
             'resource_status_id',
             [ 
                 'label' => 'Usuário',
