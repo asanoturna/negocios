@@ -7,14 +7,8 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Resourcestatus;
 
-/**
- * ResourcestatusSearch represents the model behind the search form about `app\models\Resourcestatus`.
- */
 class ResourcestatusSearch extends Resourcestatus
 {
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
@@ -23,22 +17,12 @@ class ResourcestatusSearch extends Resourcestatus
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function scenarios()
     {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
 
-    /**
-     * Creates data provider instance with search query applied
-     *
-     * @param array $params
-     *
-     * @return ActiveDataProvider
-     */
     public function search($params)
     {
         $query = Resourcestatus::find();

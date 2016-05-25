@@ -133,8 +133,51 @@ $this->title = 'Recursos Solicitados';
             ],              
 
             [
-            'class' => 'yii\grid\ActionColumn',
-            'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update} {delete} {manager}',
+                'buttons' => [
+                    'view' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', $url, [
+                                    'title' => 'Detalhes',
+                                    'class' => 'btn btn-default btn-xs',
+                        ]);
+                    },                
+                    'update' => function ($url, $model) {
+                        return $model->user_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
+                                    'title' => 'Alterar',
+                                    'class' => 'btn btn-default btn-xs',
+                        ]): Html::a('<span class="glyphicon glyphicon-pencil" ></span>', "#", [
+                                    'title' => 'Registro pertence a outro usuário!',
+                                    'class' => 'btn btn-default btn-xs',
+                                    'disabled' => true,
+                        ]);
+                    },
+                    'delete' => function ($url, $model) {
+                        return $model->user_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
+                                    'title' => 'Excluir',
+                                    'class' => 'btn btn-default btn-xs',
+                                    'data-confirm' => 'Tem certeza que deseja excluir?',
+                                    'data-method' => 'post',
+                                    'data-pjax' => '0',
+                        ]): Html::a('<span class="glyphicon glyphicon-trash" ></span>', "#", [
+                                    'title' => 'Registro pertence a outro usuário!',
+                                    'class' => 'btn btn-default btn-xs',
+                                    'disabled' => true,
+                        ]);
+                    }, 
+                    'manager' => function ($url, $model) {
+                        return Yii::$app->user->can("productmanager") === true ? Html::a('<span class="glyphicon glyphicon-cog" ></span>', $url, [
+                                    'title' => 'Gerenciar',
+                                    'class' => 'btn btn-default btn-xs',
+                        ]): Html::a('<span class="glyphicon glyphicon-cog" ></span>', "#", [
+                                    'title' => 'Não possui anexo!',
+                                    'class' => 'btn btn-default btn-xs',
+                                    'disabled' => true,
+                        ]);
+                    },                                   
+                ],
+                'contentOptions'=>['style'=>'width: 8%;text-align:right'],
+                'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],
         ],
     ]); ?>

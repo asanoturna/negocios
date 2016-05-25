@@ -4,28 +4,13 @@ namespace app\models;
 
 use Yii;
 
-/**
- * This is the model class for table "resource_status".
- *
- * @property integer $id
- * @property string $name
- * @property string $hexcolor
- *
- * @property ResourceRequest[] $resourceRequests
- */
 class Resourcestatus extends \yii\db\ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
     public static function tableName()
     {
         return 'resource_status';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
@@ -35,9 +20,6 @@ class Resourcestatus extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [
@@ -47,9 +29,6 @@ class Resourcestatus extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
     public function getResourceRequests()
     {
         return $this->hasMany(ResourceRequest::className(), ['resource_status_id' => 'id']);
