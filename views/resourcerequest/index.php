@@ -22,17 +22,18 @@ $this->title = 'Recursos Solicitados';
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'tableOptions' => ['class'=>'table table-striped table-hover'],
+        'emptyText'    => '</br><p class="text-info">Nenhum registro encontrado!</p>',
         'columns' => [
             [
               'attribute' => 'id',
               'enableSorting' => true,
-              'contentOptions'=>['style'=>'width: 3%;text-align:center'],
+              'contentOptions'=>['style'=>'width: 4%;text-align:center'],
               'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ], 
             [
               'attribute' => 'created',
               'enableSorting' => true,
-              'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+              'contentOptions'=>['style'=>'width: 5%;text-align:center'],
               'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
               'format' => ['date', 'php:d/m/Y'],
             ],   
@@ -45,7 +46,7 @@ $this->title = 'Recursos Solicitados';
               },
               'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
               'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
-              'contentOptions'=>['style'=>'width: 7%;text-align:left'],
+              'contentOptions'=>['style'=>'width: 8%;text-align:left'],
             ],   
             [
               'attribute' => 'location_id',
@@ -54,18 +55,18 @@ $this->title = 'Recursos Solicitados';
                       return $model->location->shortname;
                       },
               'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
-              'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+              'contentOptions'=>['style'=>'width: 3%;text-align:center'],
               'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],                                   
             [
               'attribute' => 'client_name',
-              'contentOptions'=>['style'=>'width: 18%;text-align:left;text-transform: uppercase'],
+              'contentOptions'=>['style'=>'width: 15%;text-align:left;text-transform: uppercase'],
               'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],
             [
               'attribute' => 'value_request',
-              'format' => 'raw',
               'enableSorting' => true,
+              'format'=>['decimal',2],
               'contentOptions'=>['style'=>'width: 5%;text-align:center'],
               'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],     
@@ -76,7 +77,7 @@ $this->title = 'Recursos Solicitados';
                   return $data->getRequestedMonthValue(); // OR use magic property $data->requestedMounthValue;
               },
               'filter' => Resourcerequest::$Static_requested_month,
-              'contentOptions'=>['style'=>'width: 10%;text-align:left'],
+              'contentOptions'=>['style'=>'width: 10%;text-align:center'],
               'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],     
             [
@@ -86,7 +87,7 @@ $this->title = 'Recursos Solicitados';
                   return $data->getRequestedYearValue(); // OR use magic property $data->requestedMounthValue;
               },
               'filter' => Resourcerequest::$Static_requested_year,
-              'contentOptions'=>['style'=>'width: 10%;text-align:left'],
+              'contentOptions'=>['style'=>'width: 10%;text-align:center'],
               'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],    
             [
@@ -96,7 +97,7 @@ $this->title = 'Recursos Solicitados';
                   return $data->getResourcePurposes(); // OR use magic property $data->requestedMounthValue;
               },
               'filter' => Resourcerequest::$Static_resource_purposes,
-              'contentOptions'=>['style'=>'width: 10%;text-align:left'],
+              'contentOptions'=>['style'=>'width: 10%;text-align:center'],
               'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],            
             [
@@ -106,7 +107,7 @@ $this->title = 'Recursos Solicitados';
                   return $data->getResourceType(); // OR use magic property $data->requestedMounthValue;
               },
               'filter' => Resourcerequest::$Static_resource_type,
-              'contentOptions'=>['style'=>'width: 10%;text-align:left'],
+              'contentOptions'=>['style'=>'width: 10%;text-align:center'],
               'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],                                     
             // 'expiration_register',
@@ -124,8 +125,9 @@ $this->title = 'Recursos Solicitados';
             [
               'attribute' => 'resource_status_id',
               'enableSorting' => true,
+              'format' => 'raw',          
               'value' => function ($model) {                      
-                      return $model->resourceStatus->name;
+                      return '<span style="color:'.$model->resourceStatus->hexcolor.'">'.$model->resourceStatus->name.'</span>';
                       },
               'filter' => ArrayHelper::map(Resourcestatus::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
               'contentOptions'=>['style'=>'width: 10%;text-align:center'],
@@ -133,51 +135,52 @@ $this->title = 'Recursos Solicitados';
             ],              
 
             [
-                'class' => 'yii\grid\ActionColumn',
-                'template' => '{view} {update} {delete} {manager}',
-                'buttons' => [
-                    'view' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', $url, [
-                                    'title' => 'Detalhes',
-                                    'class' => 'btn btn-default btn-xs',
-                        ]);
-                    },                
-                    'update' => function ($url, $model) {
-                        return $model->user_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
-                                    'title' => 'Alterar',
-                                    'class' => 'btn btn-default btn-xs',
-                        ]): Html::a('<span class="glyphicon glyphicon-pencil" ></span>', "#", [
-                                    'title' => 'Registro pertence a outro usuário!',
-                                    'class' => 'btn btn-default btn-xs',
-                                    'disabled' => true,
-                        ]);
-                    },
-                    'delete' => function ($url, $model) {
-                        return $model->user_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
-                                    'title' => 'Excluir',
-                                    'class' => 'btn btn-default btn-xs',
-                                    'data-confirm' => 'Tem certeza que deseja excluir?',
-                                    'data-method' => 'post',
-                                    'data-pjax' => '0',
-                        ]): Html::a('<span class="glyphicon glyphicon-trash" ></span>', "#", [
-                                    'title' => 'Registro pertence a outro usuário!',
-                                    'class' => 'btn btn-default btn-xs',
-                                    'disabled' => true,
-                        ]);
-                    }, 
-                    'manager' => function ($url, $model) {
-                        return Yii::$app->user->can("productmanager") === true ? Html::a('<span class="glyphicon glyphicon-cog" ></span>', $url, [
-                                    'title' => 'Gerenciar',
-                                    'class' => 'btn btn-default btn-xs',
-                        ]): Html::a('<span class="glyphicon glyphicon-cog" ></span>', "#", [
-                                    'title' => 'Não possui anexo!',
-                                    'class' => 'btn btn-default btn-xs',
-                                    'disabled' => true,
-                        ]);
-                    },                                   
+              'class' => 'yii\grid\ActionColumn',
+              'header' => 'Ações',  
+              'contentOptions'=>['style'=>'width: 15%;text-align:right'],
+              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],                            
+              'template' => '{view} {update} {delete} {manager}',
+              'buttons' => [
+                  'view' => function ($url, $model) {
+                      return Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', $url, [
+                                  'title' => 'Detalhes',
+                                  'class' => 'btn btn-default btn-xs',
+                      ]);
+                  },                
+                  'update' => function ($url, $model) {
+                      return $model->user_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
+                                  'title' => 'Alterar',
+                                  'class' => 'btn btn-default btn-xs',
+                      ]): Html::a('<span class="glyphicon glyphicon-pencil" ></span>', "#", [
+                                  'title' => 'Registro pertence a outro usuário!',
+                                  'class' => 'btn btn-default btn-xs',
+                                  'disabled' => true,
+                      ]);
+                  },
+                  'delete' => function ($url, $model) {
+                      return $model->user_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
+                                  'title' => 'Excluir',
+                                  'class' => 'btn btn-default btn-xs',
+                                  'data-confirm' => 'Tem certeza que deseja excluir?',
+                                  'data-method' => 'post',
+                                  'data-pjax' => '0',
+                      ]): Html::a('<span class="glyphicon glyphicon-trash" ></span>', "#", [
+                                  'title' => 'Registro pertence a outro usuário!',
+                                  'class' => 'btn btn-default btn-xs',
+                                  'disabled' => true,
+                      ]);
+                  }, 
+                  'manager' => function ($url, $model) {
+                      return Yii::$app->user->can("productmanager") === true ? Html::a('<span class="glyphicon glyphicon-cog" ></span>', $url, [
+                                  'title' => 'Alterar Situação',
+                                  'class' => 'btn btn-default btn-xs',
+                      ]): Html::a('<span class="glyphicon glyphicon-cog" ></span>', "#", [
+                                  'title' => 'Acesso não permitido!',
+                                  'class' => 'btn btn-default btn-xs',
+                                  'disabled' => true,
+                      ]);
+                  },                                   
                 ],
-                'contentOptions'=>['style'=>'width: 8%;text-align:right'],
-                'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],
         ],
     ]); ?>

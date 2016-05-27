@@ -204,7 +204,6 @@ $this->title = 'Visitas dos Gerentes';
             'attribute' => 'visits_status_id',
             'format' => 'raw',
             'enableSorting' => true,
-            
             'value' => function ($model) {                      
                   return '<span style="color:'.$model->visitsStatus->hexcolor.'">'.$model->visitsStatus->name.'</span>';
                   },

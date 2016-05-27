@@ -11,11 +11,11 @@ class Resourcerequest extends \yii\db\ActiveRecord
         return 'resource_request';
     }   
 
-    public static $Static_has_transfer      = ['SIM', 'NÃO'];
+    public static $Static_has_transfer      = ['NÃO', 'SIM'];
 
-    public static $Static_receive_credit    = ['SIM', 'NÃO']; 
+    public static $Static_receive_credit    = ['NÃO', 'SIM']; 
 
-    public static $Static_add_insurance     = ['SIM', 'NÃO'];
+    public static $Static_add_insurance     = ['NÃO', 'SIM'];
 
     public static $Static_requested_month   = [
         'JANEIRO', 
@@ -91,7 +91,7 @@ class Resourcerequest extends \yii\db\ActiveRecord
             [['created', 'client_name', 'client_phone', 'value_request', 'expiration_register', 'lastupdate_register', 'value_capital', 'requested_month', 'requested_year', 'resource_purposes', 'location_id', 'user_id', 'resource_type', 'resource_status_id','has_transfer', 'receive_credit', 'add_insurance'], 'required'],
             [['created', 'expiration_register', 'lastupdate_register'], 'safe'],
             [['value_request', 'value_capital'], 'number', 'min' => 500, 'message' => '{attribute} Valor precisa ser maior que 500'],
-            [['observation'], 'string'],
+            [['observation', 'observation_status'], 'string'],
             [['location_id', 'user_id', 'resource_status_id', 'requested_month', 'requested_year', 'resource_purposes', 'resource_type', 'has_transfer', 'receive_credit', 'add_insurance'], 'integer'],
             [['client_name'], 'string', 'max' => 200],
             [['client_phone'], 'string', 'max' => 50]
@@ -110,6 +110,7 @@ class Resourcerequest extends \yii\db\ActiveRecord
             'expiration_register' => 'Vencimento do Cadastro',
             'lastupdate_register' => 'Ultima Atualização Cadastral',            
             'observation' => 'Observação',
+            'observation_status' => 'Sobre a Situação',
             'has_transfer' => 'Possui Repasse?',
             'receive_credit' => 'Recebe credito de leite em C/C?',
             'add_insurance' => 'Adesão Seguro Prestamista?',
