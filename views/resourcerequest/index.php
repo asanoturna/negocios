@@ -26,6 +26,139 @@ $this->title = 'Recursos Solicitados';
         </div>
     <?php endforeach ?>
 
+    <div class="row">
+    <div class="col-md-8">
+      <div class="panel panel-primary">
+      <div class="panel-heading"><b>Pesquisar</b></div>
+        <div class="panel-body">
+          <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
+        </div>
+      </div>
+    </div>      
+    <div class="col-md-4">
+      <div class="panel panel-primary">
+      <div class="panel-heading"><b>Opções</b></div>
+        <div class="panel-body">
+          <?php
+          use kartik\export\ExportMenu;
+              $gridColumns = [
+                  ['attribute'=>'id', 'hAlign'=>'right', 'width'=>'100px'],  
+                  ['attribute'=>'created','format'=>['date'], 'hAlign'=>'right', 'width'=>'110px'],  
+                  [
+                      'attribute'=>'user_id',
+                      'label'=> 'Usuário',
+                      'vAlign'=>'middle',
+                      'width'=>'100px',
+                      'value'=>function ($model, $key, $index, $widget) { 
+                          return Html::a($model->user->username, '#', []);
+                      },
+                      'format'=>'raw'
+                  ],                   
+                  [
+                      'attribute'=>'location_id',
+                      'label'=> 'PA',
+                      'vAlign'=>'middle',
+                      'width'=>'100px',
+                      'value'=>function ($model, $key, $index, $widget) { 
+                          return Html::a($model->location->shortname, '#', []);
+                      },
+                      'format'=>'raw'
+                  ], 
+                  ['attribute'=>'client_name', 'hAlign'=>'right', 'width'=>'140px'], 
+                  ['attribute'=>'value_request', 'hAlign'=>'right', 'width'=>'50'],   
+                  ['attribute'=>'value_capital', 'hAlign'=>'right', 'width'=>'50'], 
+                  [
+                      'attribute'=>'requested_month',
+                      'label'=> 'Mês',
+                      'vAlign'=>'middle',
+                      'width'=>'100px',
+                      'value'=>function ($data) { 
+                          return Html::a($data->getRequestedMonthValue(), '#', []);
+                      },
+                      'format'=>'raw'
+                  ],       
+                  [
+                      'attribute'=>'requested_year',
+                      'label'=> 'Mês',
+                      'vAlign'=>'middle',
+                      'width'=>'100px',
+                      'value'=>function ($data) { 
+                          return Html::a($data->getRequestedYearValue(), '#', []);
+                      },
+                      'format'=>'raw'
+                  ], 
+                  [
+                      'attribute'=>'resource_purposes',
+                      'label'=> 'Finalidade',
+                      'vAlign'=>'middle',
+                      'width'=>'100px',
+                      'value'=>function ($data) { 
+                          return Html::a($data->getResourcePurposes(), '#', []);
+                      },
+                      'format'=>'raw'
+                  ],   
+                  [
+                      'attribute'=>'resource_type',
+                      'label'=> 'Finalidade',
+                      'vAlign'=>'middle',
+                      'width'=>'100px',
+                      'value'=>function ($data) { 
+                          return Html::a($data->getResourceType(), '#', []);
+                      },
+                      'format'=>'raw'
+                  ],    
+                 [
+                      'attribute'=>'add_insurance',
+                      'label'=> 'Seguro?',
+                      'vAlign'=>'middle',
+                      'width'=>'100px',
+                      'value'=>function ($model, $key, $index, $widget) { 
+                          return Html::a(($model->add_insurance == 1 ? 'SIM' : 'NÃO'), '#', []);
+                      },
+                      'format'=>'raw'
+                  ],                                                   
+                  [
+                      'attribute'=>'resource_status_id',
+                      'label'=> 'Situação',
+                      'vAlign'=>'middle',
+                      'width'=>'100px',
+                      'value'=>function ($model, $key, $index, $widget) { 
+                          return Html::a($model->resourceStatus->name, '#', []);
+                      },
+                      'format'=>'raw'
+                  ],                                                                
+              ];
+              echo ExportMenu::widget([
+              'dataProvider' => $dataProvider,
+              'columns' => $gridColumns,
+              'fontAwesome' => true,
+              'emptyText' => 'Nenhum registro',
+              'showColumnSelector' => true,
+              'asDropdown' => true,
+              'target' => ExportMenu::TARGET_BLANK,
+              'showConfirmAlert' => false,
+              'exportConfig' => [
+                ExportMenu::FORMAT_HTML => false,
+                ExportMenu::FORMAT_CSV => false,
+                ExportMenu::FORMAT_TEXT => false,
+                ExportMenu::FORMAT_PDF => false
+            ],
+            'columnSelectorOptions' => [
+              'class' => 'btn btn-success',
+            ],
+            'dropdownOptions' => [
+              'icon' => false,
+              'label' => 'Exportar Registros',
+              'class' => 'btn btn-success',
+            ],
+            'filename' => 'relatorio-recursos',
+            ]);
+          ?>
+        </div>
+      </div>
+    </div>
+    </div>    
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -95,9 +228,9 @@ $this->title = 'Recursos Solicitados';
                   return $data->getRequestedYearValue(); // OR use magic property $data->requestedMounthValue;
               },
               'filter' => Resourcerequest::$Static_requested_year,
-              'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+              'contentOptions'=>['style'=>'width: 5%;text-align:center'],
               'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
-            ],    
+            ],             
             [
               'attribute' => 'resource_purposes',
               'enableSorting' => true,
@@ -118,18 +251,17 @@ $this->title = 'Recursos Solicitados';
               'contentOptions'=>['style'=>'width: 10%;text-align:center'],
               'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
             ],                                     
-            // 'expiration_register',
-            // 'lastupdate_register',
-            // 'value_capital',
-            // 'observation:ntext',
-            // 'has_transfer',
-            // 'receive_credit',
-            // 'add_insurance',
-            // 'requested_month',
-            // 'requested_year',
-            // 'location_id',
-            // 'user_id',
-            // 'resource_type_id',
+            [
+              'attribute' => 'add_insurance',
+              'label' => 'Seguro?',
+              'enableSorting' => true,
+              'value' => function($model) {
+                  return $model->add_insurance == 1 ? 'SIM' : 'NÃO';
+              },
+              'filter' => Resourcerequest::$Static_add_insurance,
+              'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+            ], 
             [
               'attribute' => 'resource_status_id',
               'enableSorting' => true,

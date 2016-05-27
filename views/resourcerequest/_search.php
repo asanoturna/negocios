@@ -2,60 +2,31 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use app\models\Resourcerequest;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\ResourcerequestSearch */
-/* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="resourcerequest-search">
 
     <?php $form = ActiveForm::begin([
+        'options' => [
+                    'class' => 'form-inline',
+                    ],
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <div class="row">
+    <div class="col-md-6">
+    <?= $form->field($model, 'has_transfer')->dropDownList(Resourcerequest::$Static_has_transfer,['prompt'=>'--']) ?>
+    <?= $form->field($model, 'receive_credit')->dropDownList(Resourcerequest::$Static_receive_credit,['prompt'=>'--']) ?>
 
-    <?= $form->field($model, 'created') ?>
-
-    <?= $form->field($model, 'client_name') ?>
-
-    <?= $form->field($model, 'client_phone') ?>
-
-    <?= $form->field($model, 'value_request') ?>
-
-    <?php // echo $form->field($model, 'expiration_register') ?>
-
-    <?php // echo $form->field($model, 'lastupdate_register') ?>
-
-    <?php // echo $form->field($model, 'value_capital') ?>
-
-    <?php // echo $form->field($model, 'observation') ?>
-
-    <?php // echo $form->field($model, 'has_transfer') ?>
-
-    <?php // echo $form->field($model, 'receive_credit') ?>
-
-    <?php // echo $form->field($model, 'add_insurance') ?>
-
-    <?php // echo $form->field($model, 'requested _month') ?>
-
-    <?php // echo $form->field($model, 'requested _year') ?>
-
-    <?php // echo $form->field($model, 'location_id') ?>
-
-    <?php // echo $form->field($model, 'user_id') ?>
-
-    <?php // echo $form->field($model, 'resource_type_id') ?>
-
-    <?php // echo $form->field($model, 'resource_purpose_id') ?>
-
-    <?php // echo $form->field($model, 'resource_status_id') ?>
-
+    </div>
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton('Filtrar', ['class' => 'btn btn-success']) ?>
+    </div>
+
     </div>
 
     <?php ActiveForm::end(); ?>
