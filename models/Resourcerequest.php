@@ -126,7 +126,7 @@ class Resourcerequest extends \yii\db\ActiveRecord
 
     public function getResourceStatus()
     {
-        return $this->hasOne(ResourceStatus::className(), ['id' => 'resource_status_id']);
+        return $this->hasOne(Resourcestatus::className(), ['id' => 'resource_status_id']);
     }
 
     public function getLocation()
