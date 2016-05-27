@@ -22,5 +22,6 @@ TODO
 - Recursos - > Incluir campo "ultima Atualização Cadastral" apos "Vencimento Cadastro".
 - Recursos - > Remover o campo "Vencimento Lior".
 - Recursos - > Incluir campo "Adesão Seguro Prestamista" (sim/Não).
+- Recursos - > Proibir acesso de outro usuario
 
 - Cadastro -> Verificar migração da ferramenta de Apoio Cadastro

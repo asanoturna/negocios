@@ -18,6 +18,14 @@ $this->title = 'Recursos Solicitados';
     </div>
     <hr/>
 
+    <?php foreach (Yii::$app->session->getAllFlashes() as $key=>$message):?>
+        <?php $alertClass = substr($key,strpos($key,'-')+1); ?>
+        <div class="alert alert-dismissible alert-<?=$alertClass?>" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <p><?=$message?></p>
+        </div>
+    <?php endforeach ?>
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -142,11 +150,15 @@ $this->title = 'Recursos Solicitados';
               'template' => '{view} {update} {delete} {manager}',
               'buttons' => [
                   'view' => function ($url, $model) {
-                      return Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', $url, [
+                      return $model->user_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', $url, [
                                   'title' => 'Detalhes',
                                   'class' => 'btn btn-default btn-xs',
+                      ]): Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', "#", [
+                                  'title' => 'Registro pertence a outro usuário!',
+                                  'class' => 'btn btn-default btn-xs',
+                                  'disabled' => true,
                       ]);
-                  },                
+                  },                                 
                   'update' => function ($url, $model) {
                       return $model->user_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
                                   'title' => 'Alterar',

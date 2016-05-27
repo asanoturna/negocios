@@ -8,7 +8,7 @@ use app\models\Resourcerequest;
 use app\models\Resourcestatus;
 
 
-$this->title = 'Gerenciar Solicitação: ' . ' ' . $model->id;
+$this->title = 'Gerenciar Solicitação: #'  . $model->id;
 ?>
 <div class="resourcerequest-manager">
 

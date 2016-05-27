@@ -50,7 +50,8 @@ class ResourcerequestController extends Controller
         $model->resource_status_id = 1;       
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('visit-success', 'Solicitação incluída com sucesso!');
+            return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
