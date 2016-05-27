@@ -92,7 +92,7 @@ class Resourcerequest extends \yii\db\ActiveRecord
             [['created', 'expiration_register', 'lastupdate_register'], 'safe'],
             [['value_request', 'value_capital'], 'number', 'min' => 500, 'message' => '{attribute} Valor precisa ser maior que 500'],
             [['observation', 'observation_status'], 'string'],
-            [['location_id', 'user_id', 'resource_status_id', 'requested_month', 'requested_year', 'resource_purposes', 'resource_type', 'has_transfer', 'receive_credit', 'add_insurance'], 'integer'],
+            [['location_id', 'user_id', 'resource_status_id', 'requested_month', 'requested_year', 'resource_purposes', 'resource_type', 'has_transfer', 'receive_credit', 'add_insurance', 'manager_id'], 'integer'],
             [['client_name'], 'string', 'max' => 200],
             [['client_phone'], 'string', 'max' => 50]
         ];
@@ -121,6 +121,7 @@ class Resourcerequest extends \yii\db\ActiveRecord
             'user_id' => 'Usuário',
             'resource_type' => 'Tipo do Recurso',
             'resource_status_id' => 'Situação',
+            'manager_id' => 'Alterado por',
         ];
     }
 
@@ -138,4 +139,9 @@ class Resourcerequest extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }      
+    
+    public function getManager()
+    {
+        return $this->hasOne(User::className(), ['id' => 'manager_id']);
+    }     
 }

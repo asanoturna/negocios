@@ -127,7 +127,12 @@ $this->title = "Solicitação de Recurso #" . $model->id;
             'label' => 'Situação',
             'format' => 'raw',
             'value' => "<strong style=\"color:".$model->resourceStatus->hexcolor."\">" . $model->resourceStatus->name . "</strong>",
-            ],              
+            ],   
+            [ 
+            'attribute' => 'manager_id',
+            'format' => 'raw',
+                            'value' => $model->manager ? $model->manager->username : '<span class="text-danger"><em>Nenhum</em></span>',
+            ],                         
             //change by *user*           
             'observation_status:ntext',
         ],

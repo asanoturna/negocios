@@ -76,6 +76,8 @@ class ResourcerequestController extends Controller
     {
         $model = $this->findModel($id);
 
+        $model->manager_id = Yii::$app->user->id;
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
