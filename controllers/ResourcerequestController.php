@@ -6,6 +6,8 @@ use Yii;
 use app\models\Resourcerequest;
 use app\models\ResourcerequestSearch;
 use yii\web\Controller;
+use yii\filters\AccessControl;
+use yii\base\Security;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -14,6 +16,16 @@ class ResourcerequestController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::classname(),
+                'only'  => ['index','create','view','manager'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@']
+                    ],
+                ]
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

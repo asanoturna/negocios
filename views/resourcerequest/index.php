@@ -138,10 +138,10 @@ $this->title = 'Recursos Solicitados';
               //         return '<span style="color:'.$model->resourceStatus->hexcolor.'">'.$model->resourceStatus->name.'</span>';
               //         },
               'value'=>function($model) {
-                  if(isset($model->manager->username)) {
-                      return Html::tag('div', '<span style="color:'.$model->resourceStatus->hexcolor.'">'.$model->resourceStatus->name.'</span>', ['data-toggle'=>'tooltip','data-placement'=>'bottom','title'=>'Alterado por '.$model->manager->username,'style'=>'cursor:default;']);
+                  if(isset($model->manager)) {
+                      return Html::tag('div', '<span style="color:'.$model->resourceStatus->hexcolor.'">'.$model->resourceStatus->name.'</span>', ['data-toggle'=>'tooltip','data-placement'=>'bottom','title'=>'Alterado por '.$model->manager->username]);
                   } else {
-                      return Html::tag('div', '<span style="color:'.$model->resourceStatus->hexcolor.'">'.$model->resourceStatus->name.'</span>', ['data-toggle'=>'tooltip','data-placement'=>'bottom','title'=>'Aguardando atendimento'.$model->manager->username,'style'=>'cursor:default;']);
+                      return Html::tag('div', '<span style="color:'.$model->resourceStatus->hexcolor.'">'.$model->resourceStatus->name.'</span>', ['data-toggle'=>'tooltip','data-placement'=>'bottom','title'=>'Aguardando atendimento']);
                   }
               },                      
               'filter' => ArrayHelper::map(Resourcestatus::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
