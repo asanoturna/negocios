@@ -22,7 +22,7 @@ $this->title = "Desempenho por Usuário";
         <div class="col-md-3 pull-right"> 
                 <?php 
                 $this->registerJs('var submit = function (val){if (val > 0) {
-                    window.location.href = "' . Url::to(['/visits/report_user']) . '&user_id=" + val;
+                    window.location.href = "' . Url::to(['/visits/report_user']) . '?user_id=" + val;
                 }
                 }', View::POS_HEAD);
                 echo Html::activeDropDownList($model, 'user_id', ArrayHelper::map(User::find()->where(['role_id' => 4, 'status' => 1])

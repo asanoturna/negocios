@@ -16,12 +16,5 @@ TODO
 - Geral - Corrigir telas responsivas (gridview, etc)
 - Prod Diaria - ordernar por ID desc
 
-- Recursos - > Incluir campo para o usuario solicitar o "Mes de aplicação do Recurso" (mes e anos apenas).
-- Recursos - > Incluir na lista "Recurso" o item RPL.
-- Recursos - > Remover "Data Programa Visita".
-- Recursos - > Incluir campo "ultima Atualização Cadastral" apos "Vencimento Cadastro".
-- Recursos - > Remover o campo "Vencimento Lior".
-- Recursos - > Incluir campo "Adesão Seguro Prestamista" (sim/Não).
-- Recursos - > Proibir acesso de outro usuario
-
+- Geral -> novo core de autenticação, mais simples 
 - Cadastro -> Verificar migração da ferramenta de Apoio Cadastro

@@ -10,20 +10,31 @@ $config = [
     'language' => 'pt-BR',
     'sourceLanguage' => 'en-US',    
     'components' => [
-        'assetManager' => [
-            'bundles' => [
-                'dosamigos\google\maps\MapAsset' => [
-                    'options' => [
-                        'key' => 'AIzaSyDu0tafuRLYW1BW7OgMe7CuFIDAwCXS4A0',
-                        'language' => 'id',
-                        'version' => '3.1.18'
-                    ]
-                ]
-            ]
-        ],    
+        // 'assetManager' => [
+        //     'bundles' => [
+        //         'dosamigos\google\maps\MapAsset' => [
+        //             'options' => [
+        //                 'key' => 'AIzaSyDu0tafuRLYW1BW7OgMe7CuFIDAwCXS4A0',
+        //                 'language' => 'id',
+        //                 'version' => '3.1.18'
+        //             ]
+        //         ]
+        //     ]
+        // ],    
         'request' => [
             'cookieValidationKey' => 'pZimOwEEKa95a8BMJx-r8GftAYE0iqf_',
         ],
+        'urlManager' => [
+            'class' => 'yii\web\UrlManager',
+            'showScriptName' => false,
+            'enablePrettyUrl' => true,
+            'rules' => array(
+                    '<controller:\w+>/<id:\d+>' => '<controller>/view',
+                    '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                    '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+                    //'category/<id:\w+>' => 'category/view'
+            ),
+        ],        
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
