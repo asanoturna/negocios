@@ -28,7 +28,7 @@ $this->title = 'Produtividade Diária';
     <div class="col-md-2 pull-right"> 
         <?php 
         $this->registerJs('var submit = function (val){if (val > 0) {
-            window.location.href = "' . Url::to(['/dailyproductivity/performance_user']) . '&seller_id=" + val;
+            window.location.href = "' . Url::to(['/dailyproductivity/performance_user']) . '?seller_id=" + val;
         }
         }', View::POS_HEAD);
         echo Html::activeDropDownList($model, 'seller_id', ArrayHelper::map(User::find()->where(['role_id' => 2, 'status' => 1])
