@@ -19,6 +19,8 @@ return [
     'imgPath'           => '../../Anexos_visitas_imagens/',
     'imgUrl'            => '../../Anexos_visitas_imagens/',
     'reportbasePath'    => '../../Anexos_reportbase/',
+    //assets_users_avatars
+    'usersAvatars'    => '../../assets_users_avatars/',
     // Quantidade limite de anexos
     'imglimit'          => 5,     
 ];

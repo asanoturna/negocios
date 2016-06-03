@@ -30,22 +30,17 @@ $this->title = 'Colaboradores';
     <?php
     $dataProviderUsers = new SqlDataProvider([
         'sql' => "SELECT
-                    'u.id', 
-                    p.avatar as avatar,
-                    u.username, 
-                    u.email,
-                    p.full_name,
-                    u.status,
-                    r.name
-                    FROM user u
-                    Inner JOIN profile p
-                    ON u.id = p.user_id
-                    INNER JOIN role r
-                    ON u.role_id = r.id
-                    WHERE role_id <> 1 AND status = 1
-                    ORDER BY u.username",
+                    id, 
+                    avatar as avatar,
+                    username, 
+                    email,
+                    fullname,
+                    status
+                    FROM user
+                    WHERE status = 10
+                    ORDER BY username",
         'totalCount' => 100,
-        'key'  => 'u.id',
+        'key'  => 'id',
         'pagination' => [
             'pageSize' => 100,
         ],
@@ -69,11 +64,11 @@ $this->title = 'Colaboradores';
                         'contentOptions'=>['style'=>'width: 10%;text-align:middle'],                    
                     ],                                 
                     [
-                        'attribute' => 'full_name',
+                        'attribute' => 'fullname',
                         'format' => 'raw',
                         'header' => 'Nome / Usuário',
                         'value' => function ($data) {                      
-                            return $data["full_name"]."</br>".$data["username"];
+                            return $data["fullname"]."</br>".$data["username"];
                         },
                         'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;'],
                     ],  

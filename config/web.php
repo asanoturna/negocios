@@ -13,31 +13,23 @@ $config = [
         'request' => [
             'cookieValidationKey' => 'pZimOwEEKa95a8BMJx-r8GftAYE0iqf_',
         ],
-        'urlManager' => [
-            'class' => 'yii\web\UrlManager',
-            'showScriptName' => false,
-            'enablePrettyUrl' => true,
-            'rules' => array(
-                    '<controller:\w+>/<id:\d+>' => '<controller>/view',
-                    '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-                    '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-            ),
-        ],        
+        // 'urlManager' => [
+        //     'class' => 'yii\web\UrlManager',
+        //     'showScriptName' => false,
+        //     'enablePrettyUrl' => true,
+        //     'rules' => array(
+        //             '<controller:\w+>/<id:\d+>' => '<controller>/view',
+        //             '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+        //             '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+        //     ),
+        // ],        
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'class' => 'amnah\yii2\user\components\User',
             'identityClass' => 'app\models\User',
-        ],
-        'view' => [
-                'theme' => [
-                    'pathMap' => [
-                        '@vendor/amnah/yii2-user/views/default' => '@app/views/user',
-                        '@vendor/amnah/yii2-user/views/admin' => '@app/views/adminuser',
-                    ],
-                ],
-            ],          
+            'enableAutoLogin' => true,
+        ],        
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -69,17 +61,6 @@ $config = [
             // 'downloadAction' => 'gridview/export/download',
             // 'i18n' => []
         ],    
-        'user' => [
-            'class' => 'amnah\yii2\user\Module',
-            'controllerMap' => [
-                'default' => 'app\controllers\UserController',
-                'auth' => 'app\controllers\AuthController'
-            ],
-            'modelClasses'  => [
-                'Profile' => 'app\models\Profile',
-            ],
-            // set custom module properties here ...
-        ],
         'redactor' => 'yii\redactor\RedactorModule',
     ],    
     'params' => $params,

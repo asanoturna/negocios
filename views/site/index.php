@@ -24,14 +24,14 @@ $this->title = Yii::$app->params['appname'];
 
     </div>
     <div class="col-sm-10">
-      <div class="panel panel-primary">
+      <div class="panel panel-default">
       <div class="panel-heading"><b>Top 3 Produtividade do Mês</b></div>
       <div class="panel-body">
         <?php
         $dataProviderValor = new SqlDataProvider([
-            'sql' => "SELECT profile.user_id, avatar, full_name as seller, sum(companys_revenue) as total
+            'sql' => "SELECT user.id, avatar, username as seller, sum(companys_revenue) as total
                     FROM daily_productivity
-                    INNER JOIN `profile` ON daily_productivity.seller_id = `profile`.user_id
+                    INNER JOIN `user` ON daily_productivity.seller_id = `user`.id
                     WHERE daily_productivity_status_id = 2 AND MONTH(date) = $thismonth AND YEAR(date) = $thisyear
                     GROUP BY seller_id
                     ORDER BY sum(companys_revenue) DESC",
@@ -43,9 +43,9 @@ $this->title = Yii::$app->params['appname'];
             ],
         ]);
         $dataProviderQtde = new SqlDataProvider([
-            'sql' => "SELECT profile.user_id, avatar, full_name as seller, sum(quantity) as total
+            'sql' => "SELECT user.id, avatar, username as seller, sum(quantity) as total
                     FROM daily_productivity
-                    INNER JOIN `profile` ON daily_productivity.seller_id = `profile`.user_id
+                    INNER JOIN `user` ON daily_productivity.seller_id = `user`.id
                     WHERE daily_productivity_status_id = 2 AND MONTH(date) = $thismonth AND YEAR(date) = $thisyear
                     GROUP BY seller_id
                     ORDER BY sum(quantity) DESC",
@@ -85,7 +85,7 @@ $this->title = Yii::$app->params['appname'];
                     'attribute' => 'avatar',
                     'format' => 'html',
                     'value' => function ($data) {
-                        return Html::img(Yii::$app->request->BaseUrl.'/images/users/'.$data["avatar"],
+                        return Html::img(Yii::$app->params['usersAvatars'].$data["avatar"],
                             ['width' => '50px', 'class' => 'img-rounded img-responsive']);
                     },
                     'contentOptions'=>['style'=>'width: 20%;text-align:center;'],                    
@@ -94,7 +94,7 @@ $this->title = Yii::$app->params['appname'];
                     'attribute' => 'seller',
                     'format' => 'raw',
                     'value' => function ($data) { 
-                        return Html::a( $data["seller"], ['dailyproductivity/performance_user', 'seller_id' => $data["user_id"]], ['title' => 'Clique para ver o desempenho']);
+                        return Html::a( $data["seller"], ['dailyproductivity/performance_user', 'seller_id' => $data["id"]], ['title' => 'Clique para ver o desempenho']);
                     },
                     'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;text-transform: uppercase'],
                 ],  
@@ -138,7 +138,7 @@ $this->title = Yii::$app->params['appname'];
                     'attribute' => 'avatar',
                     'format' => 'html',
                     'value' => function ($data) {
-                        return Html::img(Yii::$app->request->BaseUrl.'/images/users/'.$data["avatar"],
+                        return Html::img(Yii::$app->params['usersAvatars'].$data["avatar"],
                             ['width' => '50px', 'class' => 'img-rounded img-responsive']);
                     },
                     'contentOptions'=>['style'=>'width: 20%;text-align:center'],                    
@@ -147,7 +147,7 @@ $this->title = Yii::$app->params['appname'];
                     'attribute' => 'seller',
                     'format' => 'raw',
                     'value' => function ($data) { 
-                        return Html::a( $data["seller"], ['dailyproductivity/performance_user', 'seller_id' => $data["user_id"]], ['title' => 'Clique para ver o desempenho']);
+                        return Html::a( $data["seller"], ['dailyproductivity/performance_user', 'seller_id' => $data["id"]], ['title' => 'Clique para ver o desempenho']);
                     },
                     'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;text-transform: uppercase'],
                 ],   
