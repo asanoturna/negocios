@@ -18,3 +18,4 @@ TODO
 
 - Geral -> novo core de autenticação, mais simples 
 - Cadastro -> Verificar migração da ferramenta de Apoio Cadastro
+-> Planilha base corrigir registros

@@ -18,7 +18,7 @@ use app\models\Resourcerequest;
     ]); ?>
 
     <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-7">
     <?= $form->field($model, 'has_transfer')->dropDownList(Resourcerequest::$Static_has_transfer,['prompt'=>'--']) ?>
     <?= $form->field($model, 'receive_credit')->dropDownList(Resourcerequest::$Static_receive_credit,['prompt'=>'--']) ?>
 

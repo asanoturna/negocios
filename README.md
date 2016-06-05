@@ -1,4 +1,4 @@
-Intranet Negocios *(Intranet Business)*
+Intranet Corporativa *(Corporate intranet)*
 ============================
 
 Solução de intranet para gerenciar e acompanhar a produtividade dos colaboradores na empresa

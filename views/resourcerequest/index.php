@@ -154,6 +154,7 @@ $this->title = 'Recursos Solicitados';
             'filename' => 'relatorio-recursos',
             ]);
           ?>
+          <?= Html::a('<span class="glyphicon glyphicon-save" ></span> Registros antigos', [Yii::$app->params['reportbasePath'].'/baseantiga.xls'], ['class'=>'btn btn-success']) ?>
         </div>
       </div>
     </div>

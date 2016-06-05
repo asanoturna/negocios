@@ -22,7 +22,7 @@ use yii\bootstrap\Nav;
         'url'     => ['/resourcerequest/index'],
         ],                        
         ['label' => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Relatórios',  'items' => [
-                            ['label' => 'Planilha Base', 'url' => 'index.php?r=reportbase'],
+                            ['label' => 'Planilha Base', 'url' => 'reportbase/index'],
                             ['label' => 'TCF', 'url' => '#', 'options' => ['class' => 'disabled']],
                             ['label' => 'Olap', 'url' => '#', 'options' => ['class' => 'disabled']],
                             ],

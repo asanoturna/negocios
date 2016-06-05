@@ -14,5 +14,5 @@ return [
     'imgPath'           => '../../Anexos_visitas_imagens/',
     'imgUrl'            => '../../Anexos_visitas_imagens/',
     'reportbasePath'    => '../../Anexos_reportbase/',
-    'imglimit' => 5,     
+    'imglimit'          => 5,     
 ];
