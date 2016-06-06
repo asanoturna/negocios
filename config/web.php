@@ -46,6 +46,7 @@ $config = [
                 'theme' => [
                     'pathMap' => [
                         '@vendor/amnah/yii2-user/views/default' => '@app/views/user',
+                        '@vendor/amnah/yii2-user/views/admin' => '@app/views/adminuser',
                     ],
                 ],
             ],          
