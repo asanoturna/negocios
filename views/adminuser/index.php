@@ -7,7 +7,7 @@ $module = $this->context->module;
 $user = $module->model("User");
 $role = $module->model("Role");
 
-$this->title = 'Lista de Usuários';
+$this->title = 'Gestão de Usuários';
 ?>
 <div class="user-index">
 
@@ -31,7 +31,17 @@ $this->title = 'Lista de Usuários';
             'label' => 'ID',
             'enableSorting' => true,
             'contentOptions'=>['style'=>'width: 4%;text-align:center'],
-            ], 
+            ],
+            [
+            'attribute' => 'avatar',
+            'header' => '',
+            'format' => 'html',
+            'value' => function ($model) {
+                return Html::img(Yii::$app->request->BaseUrl.'/images/users/'.$model->profile->avatar,
+                    ['width' => '50px', 'class' => 'img-rounded img-responsive']);
+            },
+            'contentOptions'=>['style'=>'width: 6%;text-align:middle'],                    
+            ],                 
             'profile.full_name',
             'email:email',
             [
@@ -42,6 +52,7 @@ $this->title = 'Lista de Usuários';
                 $roleDropdown = $role::dropdown();
                 return $roleDropdown[$model->role_id];
             },
+            'contentOptions'=>['style'=>'width: 8%;text-align:middle'], 
             ],
             [
             'attribute' => 'status',
@@ -51,6 +62,7 @@ $this->title = 'Lista de Usuários';
                 $statusDropdown = $user::statusDropdown();
                 return $statusDropdown[$model->status];
             },
+            'contentOptions'=>['style'=>'width: 8%;text-align:middle'], 
             ],
             // 'username',
             // 'password',

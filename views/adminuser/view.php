@@ -3,9 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-$this->title = $user->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('user', 'Users'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = "Detalhes do Usuário #" . $user->id;
 ?>
 <div class="user-view">
 
@@ -18,11 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <hr/>
 
     <p class="pull-right">
-        <?= Html::a(Yii::t('user', 'Update'), ['update', 'id' => $user->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('user', 'Delete'), ['delete', 'id' => $user->id], [
+        <?= Html::a('Alterar', ['update', 'id' => $user->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Excluir', ['delete', 'id' => $user->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => Yii::t('user', 'Are you sure you want to delete this item?'),
+                'confirm' => 'Confirma exclusão?',
                 'method' => 'post',
             ],
         ]) ?>

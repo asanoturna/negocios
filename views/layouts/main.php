@@ -82,7 +82,7 @@ SCRIPT;
         <?= Yii::$app->params['company'] ?> 
         <?= date('Y') ?> - 
         <?= Yii::$app->params['appname']?> - 
-        <?= Html::a('Administração do sistema', 'adminuser/index', [
+        <?= Html::a('Administração do sistema', 'user/admin', [
             'title' => 'Area de Administração do sistema',
             'style' => 'color: #97afb3;',])?> 
         <?= Html::mailto('<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Dúvidas e Sugestões', Yii::$app->params['supportEmail'], [
