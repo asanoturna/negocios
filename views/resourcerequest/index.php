@@ -289,15 +289,11 @@ $this->title = 'Recursos Solicitados';
               'template' => '{view} {update} {delete} {manager}',
               'buttons' => [
                   'view' => function ($url, $model) {
-                      return $model->user_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', $url, [
+                      return Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', $url, [
                                   'title' => 'Detalhes',
                                   'class' => 'btn btn-default btn-xs',
-                      ]): Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', "#", [
-                                  'title' => 'Registro pertence a outro usuário!',
-                                  'class' => 'btn btn-default btn-xs',
-                                  'disabled' => true,
                       ]);
-                  },                                 
+                  },                                                
                   'update' => function ($url, $model) {
                       return $model->user_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
                                   'title' => 'Alterar',

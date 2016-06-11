@@ -51,6 +51,7 @@ SCRIPT;
         'encodeLabels' => false,
         'items' => [
             ['label' => '<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Início', 'url' => ['/site/index']],
+            ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Administração', 'url' => ['/user/admin'], 'visible' => Yii::$app->user->can("admin"),],
             ['label' => '<span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Cooperativa', 'url' => ['/site/coop'], 'visible' => Yii::$app->user->can("productmanager"),],
             Yii::$app->user->isGuest ?
             ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Entrar', 'url' => ['/user/login']] :
@@ -81,10 +82,7 @@ SCRIPT;
         <p class="pull-center">&copy; 
         <?= Yii::$app->params['company'] ?> 
         <?= date('Y') ?> - 
-        <?= Yii::$app->params['appname']?> - 
-        <?= Html::a('Administração do sistema', 'user/admin', [
-            'title' => 'Area de Administração do sistema',
-            'style' => 'color: #97afb3;',])?> 
+        <?= Yii::$app->params['appname']?>
         <?= Html::mailto('<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Dúvidas e Sugestões', Yii::$app->params['supportEmail'], [
             'class' => 'pull-right',
             'title' => 'Envie Dúvidas e Sugestões ',
