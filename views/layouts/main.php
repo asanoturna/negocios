@@ -51,7 +51,7 @@ SCRIPT;
         'encodeLabels' => false,
         'items' => [
             ['label' => '<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Início', 'url' => ['/site/index']],
-            ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Administração', 'url' => ['/user/admin'], 'visible' => Yii::$app->user->can("admin"),],
+            ['label' => '<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Administração', 'url' => ['/user/admin'], 'visible' => Yii::$app->user->can("admin"),],
             ['label' => '<span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Cooperativa', 'url' => ['/site/coop'], 'visible' => Yii::$app->user->can("productmanager"),],
             Yii::$app->user->isGuest ?
             ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Entrar', 'url' => ['/user/login']] :
