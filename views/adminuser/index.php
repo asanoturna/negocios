@@ -19,8 +19,6 @@ $this->title = 'Gestão de Usuários';
     </div>
     <hr/>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <?php \yii\widgets\Pjax::begin(); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -32,27 +30,28 @@ $this->title = 'Gestão de Usuários';
             'enableSorting' => true,
             'contentOptions'=>['style'=>'width: 4%;text-align:center'],
             ],
-            [
-            'attribute' => 'avatar',
-            'header' => '',
-            'format' => 'html',
-            'value' => function ($model) {
-                return Html::img(Yii::$app->request->BaseUrl.'/images/users/'.$model->profile->avatar,
-                    ['width' => '50px', 'class' => 'img-rounded img-responsive']);
-            },
-            'contentOptions'=>['style'=>'width: 6%;text-align:middle'],                    
-            ],                 
+            // [
+            // 'attribute' => 'avatar',
+            // 'header' => '',
+            // 'format' => 'html',
+            // 'value' => function ($model) {
+            //     return Html::img(Yii::$app->request->BaseUrl.'/images/users/'.$model->profile->avatar,
+            //         ['width' => '50px', 'class' => 'img-rounded img-responsive']);
+            // },
+            // 'contentOptions'=>['style'=>'width: 6%;text-align:middle'],                    
+            // ],  
+            'username',               
             'profile.full_name',
             'email:email',
             [
             'attribute' => 'role_id',
-            'label' => 'Perfil',
+            'label' => 'Perfil de Acesso',
             'filter' => $role::dropdown(),
             'value' => function($model, $index, $dataColumn) use ($role) {
                 $roleDropdown = $role::dropdown();
                 return $roleDropdown[$model->role_id];
             },
-            'contentOptions'=>['style'=>'width: 8%;text-align:middle'], 
+            'contentOptions'=>['style'=>'width: 10%;text-align:center'], 
             ],
             [
             'attribute' => 'status',
@@ -62,20 +61,44 @@ $this->title = 'Gestão de Usuários';
                 $statusDropdown = $user::statusDropdown();
                 return $statusDropdown[$model->status];
             },
-            'contentOptions'=>['style'=>'width: 8%;text-align:middle'], 
+            'contentOptions'=>['style'=>'width: 8%;text-align:center'], 
             ],
-            // 'username',
-            // 'password',
-            // 'auth_key',
-            // 'access_token',
-            // 'logged_in_ip',
-            // 'logged_in_at',
-            // 'created_ip',
-            // 'updated_at',
-            // 'banned_at',
-            // 'banned_reason',
-            ['class' => 'yii\grid\ActionColumn',
-            'header' => 'Opções',],
+            [
+              'class' => 'yii\grid\ActionColumn',
+              'header' => 'Ações',  
+              'contentOptions'=>['style'=>'width: 10%;text-align:right'],
+              'headerOptions' => ['class' => 'text-center'],                            
+              'template' => '{avatar} {view} {update} {delete}',
+              'buttons' => [
+                  'avatar' => function ($url, $model) {
+                      return Html::a('<span class="glyphicon glyphicon-camera" ></span>', $url, [
+                                  'title' => 'Alterar Foto',
+                                  'class' => 'btn btn-default btn-xs',
+                      ]);
+                  },              
+                  'view' => function ($url, $model) {
+                      return Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', $url, [
+                                  'title' => 'Detalhes',
+                                  'class' => 'btn btn-default btn-xs',
+                      ]);
+                  },                                                
+                  'update' => function ($url, $model) {
+                      return Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
+                                  'title' => 'Alterar',
+                                  'class' => 'btn btn-default btn-xs',
+                      ]);
+                  },
+                  'delete' => function ($url, $model) {
+                      return Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
+                                  'title' => 'Excluir',
+                                  'class' => 'btn btn-default btn-xs',
+                                  'data-confirm' => 'Tem certeza que deseja excluir?',
+                                  'data-method' => 'post',
+                                  'data-pjax' => '0',
+                      ]);
+                  },                                    
+                ],
+            ],
         ],
     ]); ?>
     <?php \yii\widgets\Pjax::end(); ?>

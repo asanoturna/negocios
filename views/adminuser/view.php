@@ -16,8 +16,8 @@ $this->title = "Detalhes do Usuário #" . $user->id;
     <hr/>
 
     <p class="pull-right">
-        <?= Html::a('Alterar', ['update', 'id' => $user->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Excluir', ['delete', 'id' => $user->id], [
+        <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Alterar', ['update', 'id' => $user->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Excluir', ['delete', 'id' => $user->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Confirma exclusão?',
