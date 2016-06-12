@@ -1,4 +1,5 @@
 <?php
+
 use yii\bootstrap\Nav;
     echo Nav::widget([
     'activateItems' => true,

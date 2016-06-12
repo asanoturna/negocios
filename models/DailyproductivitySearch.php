@@ -34,7 +34,7 @@ class DailyproductivitySearch extends Dailyproductivity
             'query' => $query,
             'sort' => [
                 'defaultOrder' => [
-                    'created' => SORT_DESC, 
+                    'id' => SORT_DESC, 
                 ]
             ],
             'pagination' => [
