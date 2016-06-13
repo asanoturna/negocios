@@ -3,23 +3,21 @@ TODO
 Criar calendario (sinc google agenda ?)
 Gestão de arquivos
 Listar locais (incluir dados em LOCATION (endereço, ativo, email, etc)) map
-Listar Usuarios
 Listar Departamentos (nome, descrição, usuários vinculados?)
-Paginas com Ultimos acessos ???
-Novo core de autenticação, mais simples ???
 Consertar paths (anexos, avatar, etc)
 Proprio usuario enviar/alterar foto
 Corrigir telas responsivas (gridview, etc)
 Alerta de pendencias para usuario (visitas,prod diaria,etc)
 Envio de email (recover pass, notifications, etc)
-Tentar reduzir o Managerdailyprod... ***
 Template completo ?????
+Novo core de autenticação, mais simples ???
 
 Módulos
 --------------------
 - Modularizar as ferramentas auxiliares (visitas, produtividade, etc) ***
+Tentar reduzir o Managerdailyprod... ***
 - Migração da ferramenta de Apoio Cadastro
-- ADMIN -> Criar dashboard inicial
+- ADMIN -> Criar dashboard inicial (ultimos acessos)
 - ADMIN -> Gestao de menus (tb menu_items)
 - ADMIN -> Upload de avatar com redimencionamento
 - ADMIN -> Criar gestao de Unidades
