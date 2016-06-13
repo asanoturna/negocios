@@ -76,7 +76,7 @@ SCRIPT;
     </div>
 </div>
 
-<div style="background-image: url('images/footer.jpg'); height: 29px;"></div>
+<div style="background-image: url(<?php echo Yii::$app->homeUrl;?>/images/footer-dark.jpg); height: 5px;"></div>
 <footer class="footer">
     <div class="container-fluid">
         <p class="pull-center">&copy; 
