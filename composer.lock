@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0964ca9cdb5a0cea1a8ecda3e81d59f3",
-    "content-hash": "c679072e11ae1e0619450b9dd4955022",
+    "hash": "868d6ba18abab2a8a6df06fe8575d4aa",
+    "content-hash": "2e8bca44d3759cc682825c4802f0fd05",
     "packages": [
         {
             "name": "amnah/yii2-user",
@@ -416,6 +416,48 @@
             "time": "2015-03-06 05:28:07"
         },
         {
+            "name": "cyneek/yii2-menu",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Patroklo/yii2-menu.git",
+                "reference": "2d24273ef6254bcaa7ee34869add6a06885b237e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Patroklo/yii2-menu/zipball/2d24273ef6254bcaa7ee34869add6a06885b237e",
+                "reference": "2d24273ef6254bcaa7ee34869add6a06885b237e",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/yii2-widget-sidenav": "*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "cyneek\\yii2\\menu\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Joseba Juániz",
+                    "email": "joseba.juaniz@gmail.com"
+                }
+            ],
+            "description": "DataBase loader with menu items for Kartik Menu Widget.",
+            "keywords": [
+                "menu",
+                "widget",
+                "yii2"
+            ],
+            "time": "2015-07-19 15:51:23"
+        },
+        {
             "name": "ezyang/htmlpurifier",
             "version": "v4.6.0",
             "source": {
@@ -573,12 +615,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/karpoff/yii2-crop-image-upload.git",
-                "reference": "42bc37832487d4b13de08b3f788856f8250f6ead"
+                "reference": "b4cd26bd7e326d62c7a8158f640682186c67a2a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/karpoff/yii2-crop-image-upload/zipball/42bc37832487d4b13de08b3f788856f8250f6ead",
-                "reference": "42bc37832487d4b13de08b3f788856f8250f6ead",
+                "url": "https://api.github.com/repos/karpoff/yii2-crop-image-upload/zipball/b4cd26bd7e326d62c7a8158f640682186c67a2a8",
+                "reference": "b4cd26bd7e326d62c7a8158f640682186c67a2a8",
                 "shasum": ""
             },
             "require": {
@@ -610,7 +652,7 @@
                 "upload",
                 "yii2"
             ],
-            "time": "2014-12-15 18:32:02"
+            "time": "2014-12-15 18:13:03"
         },
         {
             "name": "kartik-v/yii2-export",
@@ -622,7 +664,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-export/zipball/b040d1ff78506f35cfb63b22f1d7b7c315380fd6",
+                "url": "https://api.github.com/repos/kartik-v/yii2-export/zipball/5c2429fae2bc176fdc7f5edb3965ddf989b46e26",
                 "reference": "5c2429fae2bc176fdc7f5edb3965ddf989b46e26",
                 "shasum": ""
             },
@@ -732,7 +774,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/e4a33f62ff43bca27a7604516039e0aa3977c069",
+                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/574c0e310bda692253c1ba0eac9a94c699b299d5",
                 "reference": "574c0e310bda692253c1ba0eac9a94c699b299d5",
                 "shasum": ""
             },
@@ -924,7 +966,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-datepicker/zipball/af32eeee557fa12e1b362e24fd8d0bc14713e361",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-datepicker/zipball/bc22b97c342f9cbea25e5eee6ce7312ed0561cbd",
                 "reference": "bc22b97c342f9cbea25e5eee6ce7312ed0561cbd",
                 "shasum": ""
             },
@@ -967,6 +1009,55 @@
                 "yii2"
             ],
             "time": "2016-02-28 17:19:12"
+        },
+        {
+            "name": "kartik-v/yii2-widget-sidenav",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-widget-sidenav.git",
+                "reference": "02ee4f142d7dfbb316f878e538cc7b946f4502d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-sidenav/zipball/02ee4f142d7dfbb316f878e538cc7b946f4502d2",
+                "reference": "02ee4f142d7dfbb316f878e538cc7b946f4502d2",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/yii2-krajee-base": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "kartik\\sidenav\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD 3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "An enhanced side navigation menu styled for bootstrap (sub repo split from yii2-widgets)",
+            "homepage": "https://github.com/kartik-v/yii2-widget-sidenav",
+            "keywords": [
+                "bootstrap",
+                "extension",
+                "jquery",
+                "menu",
+                "navigation",
+                "plugin",
+                "sidenav",
+                "widget",
+                "yii2"
+            ],
+            "time": "2014-11-09 08:07:23"
         },
         {
             "name": "miloschuman/yii2-highcharts-widget",
@@ -1963,7 +2054,8 @@
         "tugmaks/yii2-google-maps": 20,
         "kartik-v/yii2-export": 20,
         "kartik-v/yii2-grid": 20,
-        "fxp/composer-asset-plugin": 20
+        "fxp/composer-asset-plugin": 20,
+        "cyneek/yii2-menu": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
