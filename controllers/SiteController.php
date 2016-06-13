@@ -63,9 +63,9 @@ class SiteController extends Controller
         return $this->render('admin');
     }
 
-    public function actionMap()
+    public function actionLocations()
     {
-        return $this->render('map');
+        return $this->render('locations');
     }
 
     public function actionUsers()
