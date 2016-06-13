@@ -39,5 +39,10 @@ http://www.no-margin-for-errors.com/projects/prettyPhoto-jquery-lightbox-clone/#
 https://github.com/himiklab/yii2-easy-thumbnail-image-helper
 
 https://github.com/bubasuma/yii2-simplechat
-
 https://github.com/tecnocen-com/yii2-bootstrap-year-calendar
+
+menu
+https://libraries.io/packagist/host33%2Fyii2-multilevel-vertical-menu
+https://github.com/pceuropa/yii2-menu
+https://bitbucket.org/sim4nix/yii2-menu-module.git
+https://yiigist.com/package/cornernote/yii2-menu#?tab=readme
