@@ -20,8 +20,7 @@ $this->title = Yii::$app->params['appname'];
     <div class="row">
     
     <div class="col-sm-2">
-        <?php
-
+    <?php
     echo \cyneek\yii2\menu\Menu::widget([
         //'heading' => 'Options',
         'options' => [
@@ -32,12 +31,12 @@ $this->title = Yii::$app->params['appname'];
         //'class'=>'head-style',
         ]);
     ?>
-    <div class="panel panel-primary">
+<!--     <div class="panel panel-primary">
 	  <div class="panel-heading"><b>Módulos</b></div>
 	  <div class="panel-body">
 	    <?php  echo $this->render('_menu'); ?>
 	  </div>
-	</div>
+	</div> -->
     </div>
     <div class="col-sm-10">
       <div class="panel panel-primary">

@@ -70,32 +70,7 @@ class SiteController extends Controller
 
     public function actionUsers()
     {
-        $dataProviderUsers = new SqlDataProvider([
-            'sql' => "SELECT
-                u.id, 
-                p.avatar as avatar,
-                u.username, 
-                u.email,
-                p.full_name,
-                u.status,
-                r.name
-                FROM user u
-                Inner JOIN profile p
-                ON u.id = p.user_id
-                INNER JOIN role r
-                ON u.role_id = r.id
-                ORDER BY u.username",
-            'totalCount' => 100,
-            //'sort' =>true,
-            'key'  => 'u.id',
-            'pagination' => [
-                'pageSize' => 100,
-            ],
-        ]);
-        return $this->render('users', [
-            'model' => $model,
-            'dataProviderUsers' => $dataProviderUsers,       
-        ]);        
+        return $this->render('users');        
     }      
 
     public function actionLogin()

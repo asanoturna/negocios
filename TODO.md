@@ -13,6 +13,7 @@ Corrigir telas responsivas (gridview, etc)
 Alerta de pendencias para usuario (visitas,prod diaria,etc)
 Envio de email (recover pass, notifications, etc)
 Tentar reduzir o Managerdailyprod... ***
+Template completo ?????
 
 Módulos
 --------------------
@@ -32,3 +33,9 @@ Módulos
 - Prod Diaria -> Quadro Metas por agência (cadastrar metas por local para todos os produtos)
 
 -> Planilha base corrigir registros
+
+menu manager
+http://www.yiiframework.com/forum/index.php/topic/61206-yii2-admin-how-to-create-a-menu-with-menu-manager/
+https://github.com/mdmsoft/yii2-admin/blob/master/docs/guide/using-menu.md
+https://github.com/hiqdev/yii2-menumanager *
+https://github.com/hanterrian/yii2-menu-manager
