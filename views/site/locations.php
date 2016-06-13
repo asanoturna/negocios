@@ -27,6 +27,11 @@ $this->title = 'Agências';
     <div class="col-sm-10">
     <h1><?= Html::encode($this->title) ?></h1>
     <hr/>
+
+    <p class="pull-right">
+        <?= Html::a('<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Mapa', 'map', ['class' => 'btn btn-success']) ?>
+    </p>
+
     <?php
     $dataProviderUsers = new SqlDataProvider([
         'sql' => "SELECT
