@@ -2,7 +2,8 @@ TODO
 --------------------
 Criar calendario (sinc google agenda ?)
 Gestão de arquivos
-Listar locais (incluir dados em LOCATION (endereço, ativo, email, etc)) map
+Usuarios (incluir campos: phone, celphone, birthdate, location_id, department_id)
+--- Usar listview http://www.codevoila.com/post/4/yii2-listview-example
 Listar Departamentos (nome, descrição, usuários vinculados?)
 Consertar paths (anexos, avatar, etc)
 Proprio usuario enviar/alterar foto
@@ -15,7 +16,7 @@ Novo core de autenticação, mais simples ???
 Módulos
 --------------------
 - Modularizar as ferramentas auxiliares (visitas, produtividade, etc) ***
-Tentar reduzir o Managerdailyprod... ***
+- Tentar reduzir o Managerdailyprod... ***
 - Migração da ferramenta de Apoio Cadastro
 - ADMIN -> Criar dashboard inicial (ultimos acessos)
 - ADMIN -> Gestao de menus (tb menu_items)

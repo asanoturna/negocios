@@ -3,6 +3,7 @@ use yii\helpers\Html;
 use kartik\sidenav\SideNav;
 use yii\data\SqlDataProvider;
 use yii\grid\GridView;
+use yii\widgets\ListView;
 use yii\helpers\ArrayHelper;
 
 $this->title = 'Agências';
@@ -19,7 +20,6 @@ $this->title = 'Agências';
             'heading' => false,
             'encodeLabels' => true,
             ],
-        //'class'=>'head-style',
         ]);
     ?>
     </div>
@@ -41,39 +41,38 @@ $this->title = 'Agências';
 					email,
 					phone
 				FROM location
+				WHERE is_active = 1
 				ORDER BY fullname",
-        //'totalCount' => 100,
-        //'sort' =>true,
         'key'  => 'id',
     ]);
-    ?>    
+    ?>   
     <?= GridView::widget([
-              'dataProvider' => $dataProviderUsers,
-              'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
-              'summary'      =>  '',
-              'showHeader'   => false,        
-              'tableOptions' => ['class'=>'table '],
-              'columns' => [                                    
-                    [
-                        'attribute' => 'fullname',
-                        'format' => 'raw',
-                        'header' => '',
-                        'value' => function ($data) {                      
-                            return $data["fullname"];
-                        },
-                        'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;'],
-                    ],  
-                    [
-                        'attribute' => 'email',
-                        'format' => 'raw',
-                        'header' => '',
-                        'value' => function ($data) {                      
-                            return $data["email"];
-                        },
-                        'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;'],
-                    ],                                                           
-                ],
-            ]); ?>    
+      'dataProvider' => $dataProviderUsers,
+      'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
+      'summary'      =>  '',
+      'showHeader'   => false,        
+      'tableOptions' => ['class'=>'table '],
+      'columns' => [                                    
+            [
+                'attribute' => 'fullname',
+                'format' => 'raw',
+                'header' => '',
+                'value' => function ($data) {                      
+                    return $data["fullname"]."</br>Endereço: abcabcabc";
+                },
+                'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;'],
+            ],  
+            [
+                'attribute' => 'email',
+                'format' => 'raw',
+                'header' => '',
+                'value' => function ($data) {                      
+                    return '<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> '.$data["email"]."</br>".'<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>';
+                },
+                'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;'],
+            ],                                                           
+        ],
+    ]); ?>    
     </div>
     </div>
 </div>
