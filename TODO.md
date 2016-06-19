@@ -10,8 +10,9 @@ Proprio usuario enviar/alterar foto
 Corrigir telas responsivas (gridview, etc)
 Alerta de pendencias para usuario (visitas,prod diaria,etc)
 Envio de email (recover pass, notifications, etc)
-Template completo ?????
+Novo Template completo ?????
 Novo core de autenticação, mais simples ???
+Autenticaçaõ por LDAP
 
 Módulos
 --------------------

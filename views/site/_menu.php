@@ -1,6 +1,11 @@
 <?php
-
+use kartik\sidenav\SideNav;
 use yii\bootstrap\Nav;
+
+/*
+    <div class="panel panel-primary">
+      <div class="panel-heading"><b>Módulos</b></div>
+      <div class="panel-body">
     echo Nav::widget([
     'activateItems' => true,
     'encodeLabels' => false,
@@ -31,4 +36,19 @@ use yii\bootstrap\Nav;
             ],
     'options' => ['class' =>'nav-pills nav-stacked'],
     ]);
+      </div>
+    </div>    
+    */
 ?>
+    <?php
+    echo \cyneek\yii2\menu\Menu::widget([
+        //'heading' => 'Options',
+        'options' => [
+            'type' => SideNav::TYPE_DEFAULT,
+            'heading' => false,
+            'encodeLabels' => false,
+            'indItem' => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>',
+            ],
+        //'class'=>'active',
+        ]);
+    ?>

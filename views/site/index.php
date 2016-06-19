@@ -1,7 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-use kartik\sidenav\SideNav;
 use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
 use app\models\Location;
@@ -20,23 +19,9 @@ $this->title = Yii::$app->params['appname'];
     <div class="row">
     
     <div class="col-sm-2">
-    <?php
-    echo \cyneek\yii2\menu\Menu::widget([
-        //'heading' => 'Options',
-        'options' => [
-            'type' => SideNav::TYPE_DEFAULT,
-            'heading' => false,
-            'encodeLabels' => true,
-            ],
-        //'class'=>'head-style',
-        ]);
-    ?>
-<!--     <div class="panel panel-primary">
-	  <div class="panel-heading"><b>Módulos</b></div>
-	  <div class="panel-body">
-	    <?php  echo $this->render('_menu'); ?>
-	  </div>
-	</div> -->
+
+    <?php  echo $this->render('_menu'); ?>
+
     </div>
     <div class="col-sm-10">
       <div class="panel panel-primary">
