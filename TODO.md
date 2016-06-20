@@ -3,6 +3,7 @@ TODO
 Criar calendario (sinc google agenda ?)
 Gestão de arquivos
 Usuarios (incluir campos: phone, celphone, birthdate, location_id, department_id)
+*********************
 --- Usar listview http://www.codevoila.com/post/4/yii2-listview-example
 Listar Departamentos (nome, descrição, usuários vinculados?)
 Consertar paths (anexos, avatar, etc)
