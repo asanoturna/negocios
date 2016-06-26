@@ -3,8 +3,9 @@
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-//use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+//use yii\widgets\Breadcrumbs;
+
 
 
 ?>
@@ -50,11 +51,23 @@ SCRIPT;
         'options' => ['class' => 'navbar-nav navbar-right'],
         'encodeLabels' => false,
         'items' => [
-            ['label' => '<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Início', 'url' => ['/site/index']],
-            ['label' => '<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Administração', 'url' => ['/user/admin'], 'visible' => Yii::$app->user->can("admin"),],
+            [
+            'label' => '<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Início', 
+            'url' => ['/site/index']
+            ],
+            [
+            'label' => '<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Administração', 
+            'url' => ['/site/administration'], 
+            'visible' => Yii::$app->user->can("admin"),
+            ],
             Yii::$app->user->isGuest ?
-            ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Entrar', 'url' => ['/user/login']] :
-            ['label' => '<img src="images/users/'.Yii::$app->user->identity->profile->avatar.'" class="profile-image img-avatar" > '. Yii::$app->user->displayName,
+            [
+            'label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Entrar', 
+            'url' => ['/user/login'],
+            ]
+            :
+            [
+            'label' => '<img src="images/users/'.Yii::$app->user->identity->profile->avatar.'" class="profile-image img-avatar" > '. Yii::$app->user->displayName,
             'items' => 
                 [
                     ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Alterar Senha', 'url' => ['/user/account']],

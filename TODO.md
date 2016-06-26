@@ -12,7 +12,7 @@ Corrigir telas responsivas (gridview, etc)
 Alerta de pendencias para usuario (visitas,prod diaria,etc)
 Envio de email (recover pass, notifications, etc)
 Novo Template completo ?????
-Novo core de autenticação, mais simples ???
+Novo core de autenticação, mais simples e se possivel com LDAP
 Autenticaçaõ por LDAP
 
 Módulos
@@ -20,7 +20,6 @@ Módulos
 - Modularizar as ferramentas auxiliares (visitas, produtividade, etc) ***
 - Tentar reduzir o Managerdailyprod... ***
 - Migração da ferramenta de Apoio Cadastro
-- ADMIN -> Criar dashboard inicial (ultimos acessos)
 - ADMIN -> Gestao de menus (tb menu_items)
 - ADMIN -> Upload de avatar com redimencionamento
 - ADMIN -> Criar gestao de Unidades

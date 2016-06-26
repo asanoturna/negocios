@@ -58,9 +58,9 @@ class SiteController extends Controller
         return $this->render('coop');
     }    
 
-    public function actionAdmin()
+    public function actionAdministration()
     {
-        return $this->render('admin');
+        return $this->render('administration');
     }
 
     public function actionLocations()
