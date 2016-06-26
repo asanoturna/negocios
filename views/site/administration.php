@@ -27,7 +27,7 @@ $this->title = 'Administração';
 			<?php
 		    $command = Yii::$app->db->createCommand("SELECT
 			count(id) as q,
-			MONTH(logged_in_at) as m
+			MONTHNAME(logged_in_at) as m
 			FROM user
 			WHERE MONTH(logged_in_at)
 			GROUP BY MONTH(logged_in_at)
@@ -59,8 +59,8 @@ $this->title = 'Administração';
 			                    ],                        
 			                    'series' => [
 			                        [
-			                            'type' => 'line',
-			                            'name' => 'Qtde',
+			                            'type' => 'spline',
+			                            'name' => 'Quantidade de Acesso',
 			                            'data' => $q,
 			                        ],                          
 			                    ],

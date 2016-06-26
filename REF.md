@@ -48,5 +48,10 @@ https://github.com/pceuropa/yii2-menu
 https://bitbucket.org/sim4nix/yii2-menu-module.git
 https://yiigist.com/package/cornernote/yii2-menu#?tab=readme
 
+Crop Avatar
 
-2516061324929
+https://github.com/karpoff/yii2-crop-image-upload
+https://github.com/Patroklo/yii2-widget-upload-crop
+https://github.com/budyaga/yii2-cropper
+https://github.com/bupy7/yii2-widget-cropbox
+https://github.com/maxmirazh33/yii2-uploadable-cropable-image
