@@ -55,3 +55,13 @@ https://github.com/Patroklo/yii2-widget-upload-crop
 https://github.com/budyaga/yii2-cropper
 https://github.com/bupy7/yii2-widget-cropbox
 https://github.com/maxmirazh33/yii2-uploadable-cropable-image
+
+login
+
+http://stackoverflow.com/questions/27669945/yii2-0-complete-login-basic-template
+http://stackoverflow.com/questions/27334260/yii2-basic-template-how-to-login-from-mysql-database
+http://jai-notes.blogspot.com.br/2015/12/yii2-login-with-mysql-database.html
+http://www.bsourcecode.com/yiiframework2/yii-2-user-login-from-database/
+
+https://www.youtube.com/watch?v=eFOIUeU-Y74&index=18&list=PLRd0zhQj3CBmusDbBzFgg3H20VxLx2mkF
+https://www.youtube.com/watch?v=iEmzyaY4rk8&index=7&list=PLpNYlUeSK_rn_3mWq_vPt_jKz6cp7a6sZ
