@@ -45,6 +45,7 @@ $this->title = 'Administração';
 			<?php
 					echo Highcharts::widget([
 			                'options' => [
+			                	'chart' => ['height' => 200],
 			                    'credits' => ['enabled' => false],
 			                    'title' => [
 			                        'text' => '',
