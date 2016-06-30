@@ -30,7 +30,10 @@ Módulos
 
 - Prod Diaria -> Selecionar o mês do TOP 3 ???
 - Prod Diaria -> Grafico por modalidade de produto
+
 - Prod Diaria -> Quadro Metas por agência (cadastrar metas por local para todos os produtos)
+Exe.: tabela meta > valor, pa, data(m/y), 
+
 
 -> Planilha base corrigir registros
 

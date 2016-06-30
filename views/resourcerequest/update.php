@@ -13,7 +13,7 @@ $this->title = 'Alterar Solicitação: ' . ' ' . $model->id;
     </div>
     <hr/>
 
-    <?= $this->render('_form', [
+    <?= $this->render('_formupdate', [
         'model' => $model,
     ]) ?>
 
