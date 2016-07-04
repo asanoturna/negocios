@@ -11,15 +11,7 @@ $this->title = 'Colaboradores';
 
     <div class="row">
     <div class="col-sm-2">
-    <?php
-    echo \cyneek\yii2\menu\Menu::widget([
-        'options' => [
-            'type' => SideNav::TYPE_DEFAULT,
-            'heading' => false,
-            'encodeLabels' => true,
-            ],
-        ]);
-    ?>
+    <?php  echo $this->render('_menu'); ?>
     </div>
 
     <div class="col-sm-10">

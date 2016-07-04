@@ -16,16 +16,7 @@ $this->title = 'Agências';
     <i class="fa fa-twitter fa-stack-1x"></i>
     </span> -->
     <div class="col-sm-2">
-    <?php
-    echo \cyneek\yii2\menu\Menu::widget([
-        //'heading' => 'Options',
-        'options' => [
-            'type' => SideNav::TYPE_DEFAULT,
-            'heading' => false,
-            'encodeLabels' => true,
-            ],
-        ]);
-    ?>
+    <?php  echo $this->render('_menu'); ?>
     </div>
 
     <div class="col-sm-10">
@@ -43,7 +34,9 @@ $this->title = 'Agências';
 					fullname, 
 					address,
 					email,
-					phone
+					phone,
+                    zipcode,
+                    num_cnpj
 				FROM location
 				WHERE is_active = 1
 				ORDER BY fullname",
@@ -62,7 +55,10 @@ $this->title = 'Agências';
                 'format' => 'raw',
                 'header' => '',
                 'value' => function ($data) {                      
-                    return $data["fullname"]."</br>Endereço: abcabcabc";
+                    return '<strong>'.$data["fullname"].
+                           '</strong></br><i class="fa fa-building" aria-hidden="true"></i> Endereço: '.$data["address"]. 
+                           ' CEP: '.$data["zipcode"]."</br>".
+                           '<i class="fa fa-book" aria-hidden="true"></i> CNPJ: ' .$data["num_cnpj"];
                 },
                 'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;'],
             ],  
@@ -71,7 +67,8 @@ $this->title = 'Agências';
                 'format' => 'raw',
                 'header' => '',
                 'value' => function ($data) {                      
-                    return '<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> '.$data["email"]."</br>".'<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>';
+                    return '<i class="fa fa-envelope-o" aria-hidden="true"></i> '.Html::mailto($data["email"], $data["email"])."</br>".
+                    '<i class="fa fa-phone" aria-hidden="true"></i> '.$data["phone"];
                 },
                 'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;'],
             ],                                                           

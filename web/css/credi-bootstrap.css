@@ -87,6 +87,7 @@ figure {
   margin: 1em 40px;
 }
 hr {
+  border-color: #0d4549;
   height: 0;
   -webkit-box-sizing: content-box;
      -moz-box-sizing: content-box;

@@ -9,17 +9,7 @@ $this->title = 'Mapa';
 
     <div class="row">
     <div class="col-sm-2">
-    <?php
-    echo \cyneek\yii2\menu\Menu::widget([
-        //'heading' => 'Options',
-        'options' => [
-            'type' => SideNav::TYPE_DEFAULT,
-            'heading' => false,
-            'encodeLabels' => true,
-            ],
-        //'class'=>'head-style',
-        ]);
-    ?>
+    <?php  echo $this->render('_menu'); ?>
     </div>
 
     <div class="col-sm-10">
