@@ -13,13 +13,11 @@ $this->title = 'Colaboradores';
     <div class="col-sm-2">
     <?php
     echo \cyneek\yii2\menu\Menu::widget([
-        //'heading' => 'Options',
         'options' => [
             'type' => SideNav::TYPE_DEFAULT,
             'heading' => false,
             'encodeLabels' => true,
             ],
-        //'class'=>'head-style',
         ]);
     ?>
     </div>
@@ -27,6 +25,11 @@ $this->title = 'Colaboradores';
     <div class="col-sm-10">
     <h1><?= Html::encode($this->title) ?></h1>
     <hr/>
+
+    <p class="pull-right">
+        <?= Html::a('<span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Agrupar por Agência', '#', ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Inativos', '#', ['class' => 'btn btn-success']) ?>     
+    </p>    
     <?php
     $dataProviderUsers = new SqlDataProvider([
         'sql' => "SELECT
@@ -37,12 +40,12 @@ $this->title = 'Colaboradores';
                     fullname,
                     status
                     FROM user
-                    WHERE status = 10
+                    WHERE status = 1
                     ORDER BY username",
-        'totalCount' => 100,
+        'totalCount' => 300,
         'key'  => 'id',
         'pagination' => [
-            'pageSize' => 100,
+            'pageSize' => 300,
         ],
     ]);
     ?>  
@@ -58,7 +61,7 @@ $this->title = 'Colaboradores';
                         'header' => '',
                         'format' => 'raw',
                         'value' => function ($data) {
-                            return Html::img('@web/images/users/'.$data["avatar"],
+                            return Html::img(Yii::$app->params['usersAvatars'].$data["avatar"],
                                 ['width' => '50px', 'class' => 'img-rounded img-responsive']);
                         },
                         'contentOptions'=>['style'=>'width: 10%;text-align:middle'],                    

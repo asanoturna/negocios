@@ -5,17 +5,10 @@ use Yii;
 use yii\base\Model;
 use app\models\User;
 
-/**
- * Password reset request form
- */
 class PasswordResetRequestForm extends Model
 {
     public $email;
 
-
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
@@ -23,18 +16,13 @@ class PasswordResetRequestForm extends Model
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'exist',
-                'targetClass' => '\common\models\User',
+                'targetClass' => 'app\models\User',
                 'filter' => ['status' => User::STATUS_ACTIVE],
-                'message' => 'There is no user with such email.'
+                'message' => 'E-mail não encontrado!'
             ],
         ];
     }
 
-    /**
-     * Sends an email with a link, for resetting the password.
-     *
-     * @return boolean whether the email was send
-     */
     public function sendEmail()
     {
         /* @var $user User */

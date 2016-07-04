@@ -129,7 +129,7 @@ $this->title = 'Gestão Produtividade Diária';
                 'value' => function ($model) {                      
                     return $model->manager ? $model->manager->username : '<span class="text-danger"><em>Nenhum</em></span>';
                 },
-                'filter' => ArrayHelper::map(User::find()->where(['role_id' => 3])->orderBy('username')->asArray()->all(), 'id', 'username'),
+                'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
                 'contentOptions'=>['style'=>'width: 8%;text-align:left'],
             ],  
             [ 

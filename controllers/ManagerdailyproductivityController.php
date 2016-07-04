@@ -22,7 +22,8 @@ class ManagerdailyproductivityController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['productmanager']
+                        'roles' => ['@']
+                        //
                     ],
                 ]
             ],

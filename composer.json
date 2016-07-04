@@ -15,7 +15,7 @@
         "yiisoft/yii2": ">=2.0.5",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
-        "amnah/yii2-user": "^4.0",
+        "fxp/composer-asset-plugin": "dev-master",        
         "trntv/yii2-datetime-widget": "*",
         "miloschuman/yii2-highcharts-widget": "dev-master",
         "kartik-v/yii2-money": "*",
@@ -28,7 +28,6 @@
         "karpoff/yii2-crop-image-upload": "*",
         "kartik-v/yii2-export": "@dev",
         "kartik-v/yii2-grid": "@dev",
-        "fxp/composer-asset-plugin": "dev-master",
         "cyneek/yii2-menu": "dev-master",
         "kartik-v/yii2-widget-sidenav": "@dev"
     },

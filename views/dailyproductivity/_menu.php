@@ -36,7 +36,7 @@
                     [
                         'label'   => '<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Gerenciar',
                         'url'     => ['/managerdailyproductivity/index'],
-                        'visible' => Yii::$app->user->can("productmanager"),
+                        'visible' => Yii::$app->user->identity->can_managerproductivity == 1,
                     ], 
                 ],
             'options' => ['class' =>'nav-pills'],

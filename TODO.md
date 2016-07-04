@@ -1,21 +1,26 @@
-TODO
+INTRANET
 --------------------
+Corrigir o titulo em todas as paginas: "Intranet > Visitas dos Gerentes"
+Corrigir TODOS campos para apenas usuarios ativos aparecerem (e nao aparecer o admin)
+Testar todas as permissões
+Excluir arqquivos componente 'user' antigo
+Filtros na paginas "Colaboradores"
+Pegar lista com data de nascimento de todos
+
 Criar calendario (sinc google agenda ?)
-Gestão de arquivos
+Criar Gestão de arquivos
+Criar Galeria de fotos
+
 Usuarios (incluir campos: phone, celphone, birthdate, location_id, department_id)
 *********************
 --- Usar listview http://www.codevoila.com/post/4/yii2-listview-example
-Listar Departamentos (nome, descrição, usuários vinculados?)
 Consertar paths (anexos, avatar, etc)
 Proprio usuario enviar/alterar foto
 Corrigir telas responsivas (gridview, etc)
 Alerta de pendencias para usuario (visitas,prod diaria,etc)
 Envio de email (recover pass, notifications, etc)
-Novo Template completo ?????
-Novo core de autenticação, mais simples e se possivel com LDAP
-Autenticaçaõ por LDAP
 
-Módulos
+MÓDULOS
 --------------------
 - Modularizar as ferramentas auxiliares (visitas, produtividade, etc) ***
 - Tentar reduzir o Managerdailyprod... ***
@@ -27,7 +32,6 @@ Módulos
 - Criação de módulo Helpdesk
 - Criação de módulo Enquetes e Questionarios
 - Criação de módulo Fila de atendimento
-
 - Prod Diaria -> Selecionar o mês do TOP 3 ???
 - Prod Diaria -> Grafico por modalidade de produto
 
