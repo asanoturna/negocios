@@ -22,11 +22,9 @@ $this->title = 'Agências';
     <div class="col-sm-10">
     <h1><?= Html::encode($this->title) ?></h1>
     <hr/>
-
-    <p class="pull-right">
-        <?= Html::a('<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Mapa', 'map', ['class' => 'btn btn-success']) ?>
-    </p>
-
+    
+    <div class="panel panel-default">
+      <div class="panel-body">
     <?php
     $dataProviderUsers = new SqlDataProvider([
         'sql' => "SELECT
@@ -73,7 +71,10 @@ $this->title = 'Agências';
                 'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;'],
             ],                                                           
         ],
-    ]); ?>    
+    ]); ?>   
+    </div>
+    </div>
+
     </div>
     </div>
 </div>
