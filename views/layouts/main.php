@@ -58,7 +58,7 @@ SCRIPT;
             [
             'label' => '<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Administração', 
             'url' => ['/site/administration'], 
-            'visible' => Yii::$app->user->can("admin"),
+            'visible' => Yii::$app->user->identity->can_admin == 1,
             ],
             Yii::$app->user->isGuest ?
             [

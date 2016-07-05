@@ -25,7 +25,7 @@ $this->title = 'Produtividade Diária';
         <div class="col-md-2 pull-right"> 
             <?php 
             $this->registerJs('var submit = function (val){if (val > 0) {
-                window.location.href = "' . Url::to(['/dailyproductivity/ranking_user']) . '?product_id=" + val;
+                window.location.href = "' . Url::to(['/dailyproductivity/ranking_user']) . '&product_id=" + val;
             }
             }', View::POS_HEAD);
             echo Html::activeDropDownList($model, 'product_id', app\models\Product::getHierarchy(),  ['onchange'=>'submit(this.value);','prompt'=>'Todos os Produtos','class'=>'form-control required']);

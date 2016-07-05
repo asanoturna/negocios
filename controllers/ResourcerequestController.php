@@ -75,6 +75,11 @@ class ResourcerequestController extends Controller
     {
         $model = $this->findModel($id);
 
+        if ($model->user_id != Yii::$app->user->id){
+            Yii::$app->session->setFlash('Visits-danger', 'Não é permitido alterar registros de outro usuário!');
+            return $this->redirect(['view', 'id' => $model->id]);
+        }          
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {

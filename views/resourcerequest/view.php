@@ -14,20 +14,23 @@ $this->title = "Solicitação de Recurso #" . $model->id;
     <hr/>
 
     <p>
-        <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary hidden-print', 'disabled' => !Yii::$app->user->can("business_visits")]) ?>
-        <?= Html::a('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Excluir', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger hidden-print', 'disabled' => !Yii::$app->user->can("business_visits"),
-            'data' => [
-                'confirm' => 'confirma exclusão do registro?',
-                'method' => 'post',
-            ],
-        ]) ?>
-        <?= Html::a('<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Gerenciar', ['manager', 'id' => $model->id], ['class' => 'btn btn-warning hidden-print', 'disabled' => !Yii::$app->user->can("productmanager")]) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Gerenciar', ['manager', 'id' => $model->id], ['class' => 'btn btn-warning hidden-print', 'disabled' => !Yii::$app->user->identity->can_managerrequestresources == 1]) ?>
         <?= Html::a('<span class="glyphicon glyphicon-print" aria-hidden="true"></span> Imprimir', '#', ['onclick'=>"myFunction()",'class' => 'btn btn-success hidden-print']) ?>
     </p>
 
     <div class="row">
-      <div class="col-md-6">
+    <div class="col-md-9">    
+    <?php foreach (Yii::$app->session->getAllFlashes() as $key=>$message):?>
+        <?php $alertClass = substr($key,strpos($key,'-')+1); ?>
+        <div class="alert alert-dismissible alert-<?=$alertClass?>" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <p><?=$message?></p>
+        </div>
+    <?php endforeach ?>
+    </div></div>
+
+    <div class="row">
+    <div class="col-md-6">
 
 <?= DetailView::widget([
         'model' => $model,

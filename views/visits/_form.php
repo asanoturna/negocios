@@ -40,9 +40,12 @@ if(preg_match('/(?i)msie [5-8]/',$_SERVER['HTTP_USER_AGENT']))
 
     <div class="row">
         <div class="col-md-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">Informações do Cliente</div>
+          <div class="panel-body">
 
         <?php //echo $form->field($model, 'location_id')->input('number', ['maxlength' => 4, 'step' => '0.1', 'min' => '0']) ?>
-        <!-- LEFT SIDE -->
+
         <?= $form->field($model, 'date')->widget('trntv\yii\datetime\DateTimeWidget',
             [
                 'phpDatetimeFormat' => 'yyyy-MM-dd',
@@ -76,10 +79,13 @@ if(preg_match('/(?i)msie [5-8]/',$_SERVER['HTTP_USER_AGENT']))
 
         <?= $form->field($model, 'phone')->textInput(['maxlength' => 15,'style'=>'width:100px']) ?>
 
+        </div></div>
         </div>
 
         <div class="col-md-7">
-        <!-- RIGHT SITE -->
+        <div class="panel panel-default">
+          <div class="panel-heading">Informações da Visita</div>
+          <div class="panel-body">
 
         <?= $form->field($model, 'observation')->widget(\yii\redactor\widgets\Redactor::className(), [
         'clientOptions' => [
@@ -99,6 +105,7 @@ if(preg_match('/(?i)msie [5-8]/',$_SERVER['HTTP_USER_AGENT']))
 
         <?= $form->field($model, 'visits_status_id')->dropDownList(ArrayHelper::map(Visitsstatus::find()->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?> 
 
+        </div></div>
         </div>
     </div>    
     <hr/>

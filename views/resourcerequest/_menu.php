@@ -10,14 +10,14 @@
                         'options' => ['class' => 'disabled'],
                     ],                      
                     [
-                        'label'   => '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Inserir',
-                        'url'     => ['/resourcerequest/create'],
-                        'visible' => Yii::$app->user->can("business_visits"),
-                    ],
-                    [
                         'label'   => '<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> Listar',
                         'url'     => ['/resourcerequest/index'],
-                    ],                                                                               
+                    ],                  
+                    [
+                        'label'   => '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Inserir',
+                        'url'     => ['/resourcerequest/create'],
+                        'visible' => Yii::$app->user->identity->can_requestresources == 1,
+                    ],                                                                                 
                 ],
             'options' => ['class' =>'nav-pills'],
             ]);

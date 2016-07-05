@@ -157,7 +157,7 @@ $this->title = 'Visitas dos Gerentes';
             'value' => function ($model) {
                          return Html::a($model->user->username, ['/visits/report_user', 'user_id' => $model->user_id]);
                      },            
-            'filter' => ArrayHelper::map(User::find()->where(['status' => 10])->orderBy('username')->asArray()->all(), 'id', 'username'),
+            'filter' => ArrayHelper::map(User::find()->where(['status' => 1])->orderBy('username')->asArray()->all(), 'id', 'username'),
             'filterInputOptions' => ['class' => 'form-control', 'style'=>'text-transform: lowercase'],
             'contentOptions'=>['style'=>'width: 8%;text-align:left;text-transform: lowercase'],
             'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],

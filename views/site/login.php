@@ -12,21 +12,21 @@ $this->title = Yii::$app->params['appname'] . ' > Autenticação';
             <div class="panel panel-default">
               <div class="panel-heading"><h1 class="text-center login-title"><span class="glyphicon glyphicon-lock pull-left" aria-hidden="true"></span> Autenticação</h1></div>
               <div class="panel-body">
-                        <div class="account-wall">
-                        <?php $form = ActiveForm::begin([
-                            'id' => 'login-form',
-                            'options' => ['class' => 'form-signin'],
-                        ]); ?>
+                    <div class="account-wall">
+                    <?php $form = ActiveForm::begin([
+                        'id' => 'login-form',
+                        'options' => ['class' => 'form-signin'],
+                    ]); ?>
 
-                        <?= $form->field($model, 'username')->label('Usuário',['class'=>'label-class'])->textInput(['autofocus' => true]) ?>
-                        <?= $form->field($model, 'password')->label('Senha',['class'=>'label-class'])->passwordInput() ?>
-                        <?= $form->field($model, 'rememberMe')->checkbox() ?>
+                    <?= $form->field($model, 'username')->label('Usuário',['class'=>'label-class'])->textInput(['autofocus' => true]) ?>
+                    <?= $form->field($model, 'password')->label('Senha',['class'=>'label-class'])->passwordInput() ?>
+                    <?php // $form->field($model, 'rememberMe')->checkbox() ?>
 
-                                <?= Html::submitButton('Entrar', ['class' => 'btn btn-lg btn-success btn-block']) ?>
-                                </p>
-                                <?= Html::a('Esqueceu sua senha' . "?", ["site/request-password-reset"], array('class' => 'text-center new-account')) ?>
+                    <?= Html::submitButton('Entrar', ['class' => 'btn btn-lg btn-success btn-block']) ?>
+                    </p>
+                    <?= Html::a('Esqueceu sua senha' . "?", ["site/request-password-reset"], array('class' => 'text-center new-account')) ?>
 
-                        <?php ActiveForm::end(); ?>
+                    <?php ActiveForm::end(); ?>
                     </br>
                     <p class="text-muted">(Senha inicial de todos os usuários: <b>123456</b>)</p>
                     </div>
