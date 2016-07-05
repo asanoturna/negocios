@@ -165,7 +165,7 @@ $this->title = Yii::$app->params['appname'];
         </div>
       </div>
     </div>
-    <div class="panel panel-primary">
+    <div class="panel panel-default">
           <div class="panel-heading"><b>Top 10 Maiores Visitantes do mês</b></div>
           <div class="panel-body">
           <?php 
