@@ -55,11 +55,11 @@ SCRIPT;
             'label' => '<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Início', 
             'url' => ['/site/index']
             ],
-            [
-            'label' => '<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Administração', 
-            'url' => ['/site/administration'], 
-            'visible' => Yii::$app->user->identity->can_admin == 1,
-            ],
+            // [
+            // 'label' => '<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Administração', 
+            // 'url' => ['/site/administration'], 
+            // 'visible' => Yii::$app->user->identity->can_admin == 1,
+            // ],
             Yii::$app->user->isGuest ?
             [
             'label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Entrar', 
@@ -70,8 +70,8 @@ SCRIPT;
             'label' => '<img src="'.Yii::$app->params['usersAvatars'].Yii::$app->user->identity->avatar.'" class="profile-image img-avatar" > '. Yii::$app->user->identity->username,
             'items' => 
                 [
-                    ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Alterar Senha', 'url' => ['/user/account']],
-                    ['label' => '<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Perfil', 'url' => ['/user/profile']],
+                    ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Alterar Senha', 'url' => ['#']],
+                    ['label' => '<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Perfil', 'url' => ['#']],
                     '<li class="divider"></li>',
                     ['label' => '<span class="glyphicon glyphicon-off" aria-hidden="true"></span> Sair',
                         'url' => ['/site/logout'],

@@ -25,6 +25,7 @@ $this->title = 'Administração';
 		  <div class="panel-heading">Estatísticas de Acesso</div>
 		  <div class="panel-body">
 			<?php
+			/*
 		    $command = Yii::$app->db->createCommand("SELECT
 			count(id) as q,
 			MONTHNAME(logged_in_at) as m
@@ -67,6 +68,7 @@ $this->title = 'Administração';
 			                    ],
 			                ]
 			            ]);
+					*/
 					?>
 		  </div>
 		</div>	  	
@@ -76,6 +78,7 @@ $this->title = 'Administração';
 		  <div class="panel-heading">Novos Usuários</div>
 		  <div class="panel-body">
 			<?php
+			/*
 		    $dataProviderRecentUsers = new SqlDataProvider([
 		        'sql' => "SELECT
 						username,
@@ -87,6 +90,7 @@ $this->title = 'Administração';
 		            'pageSize' => 10,
 		        ],
 		    ]);
+
 		    ?>  
     		<?= GridView::widget([
 	              'dataProvider' => $dataProviderRecentUsers,
@@ -112,7 +116,7 @@ $this->title = 'Administração';
 	                        'format' => ['date', 'php:d/m/Y'],
 	                    ],                                                           
 	                ],
-            ]); ?>
+            ]);*/ ?>
 		  </div>
 		</div>
 	  </div>
@@ -121,6 +125,7 @@ $this->title = 'Administração';
 		  <div class="panel-heading">Acessos Recentes</div>
 		  <div class="panel-body">
 			<?php
+			/*
 		    $dataProviderRecentAccess = new SqlDataProvider([
 		        'sql' => "SELECT
 						id, username,
@@ -160,7 +165,7 @@ $this->title = 'Administração';
 	                        'format' => ['date', 'php:d/m/Y'],
 	                    ],                                                           
 	                ],
-            ]); ?>
+            ]); */?>
 		  </div>
 		</div>
 	  </div>
