@@ -14,31 +14,31 @@ use yii\bootstrap\Nav;
         [
         'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Usuários',
         'url'     => ['/user/admin'],
-        'visible' => Yii::$app->user->can("admin"),
+        'visible' => Yii::$app->user->identity->can_admin == 1,
         //'options' => ['class' => 'disabled'],
         ],
         [
         'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Perfis de Acesso',
         'url'     => ['/dailyproductivity/index'],
-        'visible' => Yii::$app->user->can("admin"),
+        'visible' => Yii::$app->user->identity->can_admin == 1,
         'options' => ['class' => 'disabled'],
         ],
         [
         'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Locais',
         'url'     => ['/capitalaction/index'],
-        'visible' => Yii::$app->user->can("admin"),
+        'visible' => Yii::$app->user->identity->can_admin == 1,
         'options' => ['class' => 'disabled'],
         ],
         [
         'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Departamentos',
         'url'     => ['/resourcerequest/index'],
-        'visible' => Yii::$app->user->can("admin"),
+        'visible' => Yii::$app->user->identity->can_admin == 1,
         'options' => ['class' => 'disabled'],
         ],
         [
         'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Menu',
         'url'     => ['/resourcerequest/index'],
-        'visible' => Yii::$app->user->can("admin"),
+        'visible' => Yii::$app->user->identity->can_admin == 1,
         'options' => ['class' => 'disabled'],
         ],   
         [

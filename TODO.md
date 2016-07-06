@@ -2,16 +2,14 @@ INTRANET
 --------------------
 Corrigir o titulo em todas as paginas: "Intranet > Visitas dos Gerentes"
 Corrigir TODOS campos para apenas usuarios ativos aparecerem (e nao aparecer o admin)
-Testar todas as permissões
-Excluir arqquivos componente 'user' antigo
 Filtros na paginas "Colaboradores"
 Pegar lista com data de nascimento de todos
 
 Criar calendario (sinc google agenda ?)
 Criar Gestão de arquivos
+Criar Área de Notícias
 Criar Galeria de fotos
 
-Usuarios (incluir campos: phone, celphone, birthdate, location_id, department_id)
 *********************
 --- Usar listview http://www.codevoila.com/post/4/yii2-listview-example
 Consertar paths (anexos, avatar, etc)
