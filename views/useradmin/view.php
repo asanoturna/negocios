@@ -3,55 +3,86 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Useradmin */
-
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Useradmins', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Detalhes do Usuário #' . $model->id;
 ?>
 <div class="useradmin-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+    <div class="col-sm-2">
+    <?php  echo $this->render('//site/_menuadmin'); ?>
+    </div>
+
+    <div class="col-sm-10">
+
+    <div class="row">
+      <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
+      <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;">
+        <?= Html::a('<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Lista de Usuários', ['index'], ['class' => 'btn btn-success']) ?>
+      </span></div>
+    </div>
+    <hr/>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Excluir', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Deseja realmente excluir?',
                 'method' => 'post',
             ],
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'username',
-            'auth_key',
-            'password_hash',
-            'password_reset_token',
-            'updated_at',
-            'created_at',
-            'status',
-            'email:email',
-            'avatar',
-            'fullname',
-            'phone',
-            'celphone',
-            'birthdate',
-            'location_id',
-            'department_id',
-            'can_admin',
-            'can_visits',
-            'can_productivity',
-            'can_requestresources',
-            'can_managervisits',
-            'can_managerproductivity',
-            'can_managerrequestresources',
-        ],
-    ]) ?>
+    <div class="row">
 
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">Informações do Usuário</div>
+          <div class="panel-body">
+            <?= DetailView::widget([
+                'model' => $model,
+                'attributes' => [
+                    //'id',
+                    'username',
+                    'fullname', 
+                    'email:email',
+                    'location_id',
+                    'department_id',
+                    'status',
+                    //'avatar',
+                    'phone',
+                    'celphone',
+                    'birthdate',
+                    'updated_at',
+                    'created_at',
+                ],
+            ]) ?>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">Permissões de Acesso</div>
+          <div class="panel-body">
+            <?= DetailView::widget([
+                'model' => $model,
+                'attributes' => [
+                    'can_admin',
+                    'can_visits',
+                    'can_productivity',
+                    'can_requestresources',
+                    'can_managervisits',
+                    'can_managerproductivity',
+                    'can_managerrequestresources',
+                ],
+            ]) ?>
+          </div>
+        </div>
+      </div>
+
+    </div>    
+
+    </div>
+    </div>
 </div>

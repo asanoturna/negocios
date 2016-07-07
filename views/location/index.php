@@ -3,35 +3,71 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
-/* @var $this yii\web\View */
-/* @var $searchModel app\models\LocationSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
-
-$this->title = 'Locations';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Gestão de Unidades';
 ?>
 <div class="location-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <div class="row">
+    <div class="col-sm-2">
+    <?php  echo $this->render('//site/_menuadmin'); ?>
+    </div>
 
-    <p>
-        <?= Html::a('Create Location', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <div class="col-sm-10">
+
+    <div class="row">
+      <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
+      <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;">
+        <?= Html::a('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nova Unidade', ['create'], ['class' => 'btn btn-success']) ?>
+      </span></div>
+    </div>
+    <hr/>
+
+    <div class="panel panel-default">
+      <div class="panel-body"> 
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
             'id',
             'shortname',
             'fullname',
             'is_active',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+              'class' => 'yii\grid\ActionColumn',
+              'header' => 'Ações',  
+              'contentOptions'=>['style'=>'width: 10%;text-align:right'],
+              'headerOptions' => ['class' => 'text-center'],                            
+              'template' => '{view} {update} {delete}',
+              'buttons' => [                               
+                  'view' => function ($url, $model) {
+                      return Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', $url, [
+                                  'title' => 'Detalhes',
+                                  'class' => 'btn btn-default btn-xs',
+                      ]);
+                  },                                                
+                  'update' => function ($url, $model) {
+                      return Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
+                                  'title' => 'Alterar',
+                                  'class' => 'btn btn-default btn-xs',
+                      ]);
+                  },
+                  'delete' => function ($url, $model) {
+                      return Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
+                                  'title' => 'Excluir',
+                                  'class' => 'btn btn-default btn-xs',
+                                  'data-confirm' => 'Tem certeza que deseja excluir?',
+                                  'data-method' => 'post',
+                                  'data-pjax' => '0',
+                      ]);
+                  },                                    
+                ],
+            ],
         ],
     ]); ?>
 
+    </div>
+    </div>
+    </div>
+  </div>
 </div>

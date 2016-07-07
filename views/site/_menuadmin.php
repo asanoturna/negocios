@@ -13,43 +13,34 @@ use yii\bootstrap\Nav;
     'items' => [
         [
         'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Usuários',
-        'url'     => ['/user/admin'],
+        'url'     => ['/useradmin/index'],
         'visible' => Yii::$app->user->identity->can_admin == 1,
         //'options' => ['class' => 'disabled'],
         ],
         [
-        'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Perfis de Acesso',
-        'url'     => ['/dailyproductivity/index'],
+        'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Unidades',
+        'url'     => ['/location/index'],
         'visible' => Yii::$app->user->identity->can_admin == 1,
-        'options' => ['class' => 'disabled'],
-        ],
-        [
-        'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Locais',
-        'url'     => ['/capitalaction/index'],
-        'visible' => Yii::$app->user->identity->can_admin == 1,
-        'options' => ['class' => 'disabled'],
         ],
         [
         'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Departamentos',
         'url'     => ['/resourcerequest/index'],
         'visible' => Yii::$app->user->identity->can_admin == 1,
-        'options' => ['class' => 'disabled'],
         ],
         [
         'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Menu',
         'url'     => ['/resourcerequest/index'],
         'visible' => Yii::$app->user->identity->can_admin == 1,
-        'options' => ['class' => 'disabled'],
         ],   
-        [
-        'label' => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Módulos',  
-        'items' => [
-                ['label' => 'Visitas', 'url' => '#'],
-                ['label' => 'Produtividade', 'url' => '#', 'options' => ['class' => 'disabled']],
-                ['label' => 'Arquivos', 'url' => '#', 'options' => ['class' => 'disabled']],
-            ],
-        'options' => ['class' => 'disabled'],
-        ],                                                                                   
+        // [
+        // 'label' => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Módulos',  
+        // 'items' => [
+        //         ['label' => 'Visitas', 'url' => '#'],
+        //         ['label' => 'Produtividade', 'url' => '#', 'options' => ['class' => 'disabled']],
+        //         ['label' => 'Arquivos', 'url' => '#', 'options' => ['class' => 'disabled']],
+        //     ],
+        // 'options' => ['class' => 'disabled'],
+        // ],                                                                                   
     ],
     'options' => ['class' =>'nav-pills nav-stacked'],
     ]);

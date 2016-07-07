@@ -73,7 +73,7 @@ class SiteController extends Controller
     }
 
     public function actionLocations()
-    {
+    {       
         // if (Yii::$app->user->identity->can_admin == 1) {
         //     return $this->render('locations');
         // } else {
@@ -89,7 +89,14 @@ class SiteController extends Controller
 
     public function actionUsers()
     {
-        return $this->render('users');        
+        // $searchModel = new \app\models\UseradminSearch();
+        // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        // return $this->render('users', [
+        //     'searchModel' => $searchModel,
+        //     'dataProvider' => $dataProvider,
+        // ]);         
+        //return $this->render('users');        
     }      
 
     public function actionLogin()

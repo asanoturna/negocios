@@ -22,10 +22,14 @@ $this->title = 'Gestão de Usuários';
     </div>
     <hr/>
 
+    <div class="panel panel-default">
+      <div class="panel-body">    
+
     <?php \yii\widgets\Pjax::begin(); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'tableOptions' => ['class'=>'table table-striped table-bordered table-hover'],
         'columns' => [
             [
             'attribute' => 'id',
@@ -116,6 +120,9 @@ $this->title = 'Gestão de Usuários';
         ],
     ]); ?>
     <?php \yii\widgets\Pjax::end(); ?>
+    </div>
+    </div>
+
     </div>
   </div>
 </div>

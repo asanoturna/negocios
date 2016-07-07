@@ -2,20 +2,30 @@
 
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Useradmin */
-
-$this->title = 'Update Useradmin: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Useradmins', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Alteração do Usuário: #' . $model->id;
 ?>
 <div class="useradmin-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+    <div class="col-sm-2">
+    <?php  echo $this->render('//site/_menuadmin'); ?>
+    </div>
+
+    <div class="col-sm-10">
+
+    <div class="row">
+      <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
+      <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;">
+        <?= Html::a('<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Lista de Usuários', ['index'], ['class' => 'btn btn-success']) ?>
+      </span></div>
+    </div>
+    <hr/>
 
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
+
+    </div>
+    </div>
 
 </div>
