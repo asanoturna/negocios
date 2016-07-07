@@ -41,20 +41,27 @@ $this->title = 'Detalhes do Usuário #' . $model->id;
           <div class="panel-body">
             <?= DetailView::widget([
                 'model' => $model,
-                'attributes' => [
-                    //'id',
+                'attributes' => [  
+                    [
+                    'attribute'=>'avatar',
+                    'value' => Yii::$app->params['usersAvatars'].$model->avatar,
+                    'format' => ['image',['width'=>'100','height'=>'200', 'class'=>'img-thumbnail']],
+                    ],                                
                     'username',
                     'fullname', 
                     'email:email',
                     'location_id',
                     'department_id',
-                    'status',
-                    //'avatar',
                     'phone',
                     'celphone',
                     'birthdate',
-                    'updated_at',
-                    'created_at',
+                    [ 
+                    'attribute' => 'status', 
+                    'format' => 'raw',
+                    'value' => $model->status == 1 ? '<b style="color:green">Sim</b>' : '<b style="color:gray">Não</b>',
+                    ],                      
+                    'updated_at:datetime',                   
+                    'created_at:datetime',
                 ],
             ]) ?>
           </div>
@@ -68,13 +75,41 @@ $this->title = 'Detalhes do Usuário #' . $model->id;
             <?= DetailView::widget([
                 'model' => $model,
                 'attributes' => [
-                    'can_admin',
-                    'can_visits',
-                    'can_productivity',
-                    'can_requestresources',
-                    'can_managervisits',
-                    'can_managerproductivity',
-                    'can_managerrequestresources',
+                    [ 
+                        'attribute' => 'can_admin', 
+                        'format' => 'raw',
+                        'value' => $model->can_admin == 1 ? '<b style="color:green">Sim</b>' : '<b style="color:gray">Não</b>',
+                    ],      
+                    [ 
+                        'attribute' => 'can_visits', 
+                        'format' => 'raw',
+                        'value' => $model->can_visits == 1 ? '<b style="color:green">Sim</b>' : '<b style="color:gray">Não</b>',
+                    ],  
+                    [ 
+                        'attribute' => 'can_productivity', 
+                        'format' => 'raw',
+                        'value' => $model->can_productivity == 1 ? '<b style="color:green">Sim</b>' : '<b style="color:gray">Não</b>',
+                    ],    
+                    [ 
+                        'attribute' => 'can_requestresources', 
+                        'format' => 'raw',
+                        'value' => $model->can_admin == 1 ? '<b style="color:green">Sim</b>' : '<b style="color:gray">Não</b>',
+                    ],      
+                    [ 
+                        'attribute' => 'can_managervisits', 
+                        'format' => 'raw',
+                        'value' => $model->can_visits == 1 ? '<b style="color:green">Sim</b>' : '<b style="color:gray">Não</b>',
+                    ],  
+                    [ 
+                        'attribute' => 'can_managerproductivity', 
+                        'format' => 'raw',
+                        'value' => $model->can_productivity == 1 ? '<b style="color:green">Sim</b>' : '<b style="color:gray">Não</b>',
+                    ],
+                    [ 
+                        'attribute' => 'can_managerrequestresources', 
+                        'format' => 'raw',
+                        'value' => $model->can_productivity == 1 ? '<b style="color:green">Sim</b>' : '<b style="color:gray">Não</b>',
+                    ],                                                                  
                 ],
             ]) ?>
           </div>

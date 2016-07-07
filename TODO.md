@@ -5,6 +5,7 @@ Corrigir TODOS campos para apenas usuarios ativos aparecerem (e nao aparecer o a
 Filtros na paginas "Colaboradores"
 Pegar lista com data de nascimento de todos
 
+Criar Área de Alertas (local mais visivel possível)
 Criar calendario (sinc google agenda ?)
 Criar Gestão de arquivos
 Criar Área de Notícias

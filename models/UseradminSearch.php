@@ -31,6 +31,14 @@ class UseradminSearch extends Useradmin
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'username' => SORT_ASC, 
+                ]
+            ],
+            'pagination' => [
+                'pageSize' => 200,
+            ],
         ]);
 
         $this->load($params);

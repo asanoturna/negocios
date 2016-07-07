@@ -89,6 +89,18 @@ class SiteController extends Controller
 
     public function actionUsers()
     {
+        $searchModel = new \app\models\UseradminSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('users', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);         
+        //return $this->render('users');        
+    }    
+
+    public function actionBirthdate()
+    {
         // $searchModel = new \app\models\UseradminSearch();
         // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -96,8 +108,8 @@ class SiteController extends Controller
         //     'searchModel' => $searchModel,
         //     'dataProvider' => $dataProvider,
         // ]);         
-        //return $this->render('users');        
-    }      
+        return $this->render('birthdate');        
+    }        
 
     public function actionLogin()
     {
@@ -161,11 +173,11 @@ class SiteController extends Controller
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
-                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
+                Yii::$app->session->setFlash('success', 'Siga as instruções enviadas no e-mail!');
 
                 return $this->goHome();
             } else {
-                Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for email provided.');
+                Yii::$app->session->setFlash('error', 'Não foi possível redefinir a senha para o e-mail informado!');
             }
         }
 
@@ -183,7 +195,7 @@ class SiteController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            Yii::$app->session->setFlash('success', 'New password was saved.');
+            Yii::$app->session->setFlash('success', 'Nova senha definida com sucesso!');
 
             return $this->goHome();
         }
