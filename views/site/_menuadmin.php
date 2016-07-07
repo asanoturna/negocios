@@ -24,12 +24,12 @@ use yii\bootstrap\Nav;
         ],
         [
         'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Departamentos',
-        'url'     => ['/resourcerequest/index'],
+        'url'     => ['/department/index'],
         'visible' => Yii::$app->user->identity->can_admin == 1,
         ],
         [
         'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Menu',
-        'url'     => ['/resourcerequest/index'],
+        'url'     => ['/menuadmin/index'],
         'visible' => Yii::$app->user->identity->can_admin == 1,
         ],   
         // [
