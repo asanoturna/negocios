@@ -56,11 +56,11 @@ class DailyproductivityController extends Controller
         $product = isset($url) ? $url : '"%"';
 
         $dataProviderValor = new SqlDataProvider([
-            'sql' => "SELECT profile.user_id, avatar, full_name as seller,
+            'sql' => "SELECT user.id, avatar, fullname as seller,
                 SUM(IF(daily_productivity.daily_productivity_status_id=1, companys_revenue, 0)) as unconfirmed,
                 SUM(IF(daily_productivity.daily_productivity_status_id=2, companys_revenue, 0)) as confirmed
                     FROM daily_productivity
-                    INNER JOIN `profile` ON daily_productivity.seller_id = `profile`.user_id
+                    INNER JOIN `user` ON daily_productivity.seller_id = `user`.id
                     WHERE product_id LIKE $product
                     GROUP BY seller_id
                     ORDER BY confirmed DESC",
@@ -73,11 +73,11 @@ class DailyproductivityController extends Controller
         ]);
 
         $dataProviderQtde = new SqlDataProvider([
-            'sql' => "SELECT profile.user_id, avatar, full_name as seller,
+            'sql' => "SELECT user.id, avatar, fullname as seller,
                 SUM(IF(daily_productivity.daily_productivity_status_id=1, quantity, 0)) as unconfirmed,
                 SUM(IF(daily_productivity.daily_productivity_status_id=2, quantity, 0)) as confirmed
                     FROM daily_productivity
-                    INNER JOIN `profile` ON daily_productivity.seller_id = `profile`.user_id
+                    INNER JOIN `user` ON daily_productivity.seller_id = `user`.id
                     WHERE product_id LIKE $product
                     GROUP BY seller_id
                     ORDER BY confirmed DESC",

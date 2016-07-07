@@ -73,7 +73,7 @@ $this->title = 'Produtividade Diária';
                         'header' => '',
                         'format' => 'html',
                         'value' => function ($data) {
-                            return Html::img(Yii::$app->request->BaseUrl.'/images/users/'.$data["avatar"],
+                            return Html::img(Yii::$app->params['usersAvatars'].$data["avatar"],
                                 ['width' => '50px', 'class' => 'img-rounded img-responsive']);
                         },
                         'contentOptions'=>['style'=>'width: 10%;text-align:middle'],                    
@@ -83,7 +83,7 @@ $this->title = 'Produtividade Diária';
                         'format' => 'raw',
                         'header' => '',
                         'value' => function ($data) { 
-                            return Html::a( $data["seller"], ['dailyproductivity/performance_user', 'seller_id' => $data["user_id"]], ['title' => 'Clique para ver o desempenho']);
+                            return Html::a( $data["seller"], ['dailyproductivity/performance_user', 'seller_id' => $data["id"]], ['title' => 'Clique para ver o desempenho']);
                         },
                         'contentOptions'=>['style'=>'width: 50%;text-transform: uppercase;text-align:left;vertical-align: middle;'],
                     ],  
@@ -129,7 +129,7 @@ $this->title = 'Produtividade Diária';
                         'format' => 'html',
                         'header' => '',
                         'value' => function ($data) {
-                            return Html::img(Yii::$app->request->BaseUrl.'/images/users/'.$data["avatar"],
+                            return Html::img(Yii::$app->params['usersAvatars'].$data["avatar"],
                                 ['width' => '50px', 'class' => 'img-rounded img-responsive']);
                         },
                         'contentOptions'=>['style'=>'width: 10%;text-align:center'],                    
@@ -139,7 +139,7 @@ $this->title = 'Produtividade Diária';
                         'format' => 'raw',
                         'header' => '',
                         'value' => function ($data) { 
-                                return Html::a( $data["seller"], ['dailyproductivity/performance_user', 'seller_id' => $data["user_id"]], ['title' => 'Clique para ver o desempenho']);
+                                return Html::a( $data["seller"], ['dailyproductivity/performance_user', 'seller_id' => $data["id"]], ['title' => 'Clique para ver o desempenho']);
                             },
                         'contentOptions'=>['style'=>'width: 50%;text-transform: uppercase;text-align:left;vertical-align: middle;'],
                     ],  

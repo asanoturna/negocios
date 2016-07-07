@@ -94,11 +94,11 @@ use yii\helpers\Url;
 
         <?= $form->field($model, 'buyer_name')->textInput(['maxlength' => true]) ?>
 
-        <?= $form->field($model, 'seller_id')->dropDownList(ArrayHelper::map(User::find()->where('role_id != :id', ['id'=>1],['status' => 1])->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])  ?>
+        <?= $form->field($model, 'seller_id')->dropDownList(ArrayHelper::map(User::find()->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])  ?>
 
-        <?= $form->field($model, 'operator_id')->dropDownList(ArrayHelper::map(User::find()->where('role_id != :id', ['id'=>1],['status' => 1])->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])  ?>
+        <?= $form->field($model, 'operator_id')->dropDownList(ArrayHelper::map(User::find()->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])  ?>
 
-        <?= $form->field($model, 'user_id')->dropDownList(ArrayHelper::map(User::find()->where('role_id != :id', ['id'=>1],['status' => 1])->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])  ?>
+        <?= $form->field($model, 'user_id')->dropDownList(ArrayHelper::map(User::find()->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])  ?>
 
     </div>
 

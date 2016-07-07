@@ -31,7 +31,7 @@ $this->title = 'Produtividade Diária';
             window.location.href = "' . Url::to(['/dailyproductivity/performance_user']) . '&seller_id=" + val;
         }
         }', View::POS_HEAD);
-        echo Html::activeDropDownList($model, 'seller_id', ArrayHelper::map(User::find()->where(['role_id' => 2, 'status' => 1])
+        echo Html::activeDropDownList($model, 'seller_id', ArrayHelper::map(User::find()->where(['status' => 1])
                     ->orderBy("username ASC")
                     ->all(), 'id', 'username'), ['onchange'=>'submit(this.value);','prompt'=>'Selecione o usuário','class'=>'form-control', 'style' => 'text-transform: lowercase']);
         ?>
