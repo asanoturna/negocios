@@ -18,7 +18,7 @@ $this->title = 'Departamentos';
     <div class="row">
       <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
       <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;">
-        <?= Html::a('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo Departamento', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar', ['create'], ['class' => 'btn btn-success']) ?>
       </span></div>
     </div>
     <hr/>
@@ -30,11 +30,19 @@ $this->title = 'Departamentos';
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
             'columns' => [
-
                 'id',
                 'name',
                 'description:ntext',
-                'is_active',
+                [ 
+                'attribute' => 'is_active',
+                'enableSorting' => true,
+                'format' => 'raw',
+                'value' => function ($model) {                      
+                        return $model->is_active == 1 ? '<b style="color:green">Sim</b>' : '<b style="color:gray">Não</b>';
+                        },
+                'filter'=>[0=>'Não', 1=>'Sim'],
+                'contentOptions'=>['style'=>'width: 6%;text-align:center'],
+                ], 
             [
               'class' => 'yii\grid\ActionColumn',
               'header' => 'Ações',  

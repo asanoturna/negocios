@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
-$this->title = 'Gestão de Usuários';
+$this->title = 'Usuários';
 ?>
 <div class="useradmin-index">
 
@@ -17,7 +17,7 @@ $this->title = 'Gestão de Usuários';
     <div class="row">
       <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
       <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;">
-        <?= Html::a('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo Usuário', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar', ['create'], ['class' => 'btn btn-success']) ?>
       </span></div>
     </div>
     <hr/>
