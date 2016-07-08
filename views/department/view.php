@@ -45,7 +45,7 @@ $this->title = 'Detalhes do Departamento #' . $model->id;
             [ 
             'attribute' => 'is_active', 
             'format' => 'raw',
-            'value' => $model->is_active == 1 ? '<b style="color:green">Sim</b>' : '<b style="color:gray">Não</b>',
+            'value' => $model->is_active == 1 ? '<b style="color:#6CAF3F">Ativo</b>' : '<b style="color:#d43f3a">Inativo</b>',
             ], 
         ],
     ]) ?>

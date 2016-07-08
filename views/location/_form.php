@@ -13,6 +13,16 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'fullname')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'zipcode')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'num_cnpj')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'is_active')->radioList([
         '1' => 'Sim', 
         '0' => 'Não',

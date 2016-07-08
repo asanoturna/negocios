@@ -14,7 +14,7 @@ class Useradmin extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'auth_key', 'password_hash', 'updated_at', 'created_at', 'email', 'birthdate', 'location_id', 'department_id'], 'required'],
+            [['username', 'fullname', 'auth_key', 'password_hash', 'updated_at', 'created_at', 'email', 'birthdate', 'location_id', 'department_id', 'status'], 'required'],
             [['updated_at', 'created_at', 'status', 'location_id', 'department_id', 'can_admin', 'can_visits', 'can_productivity', 'can_requestresources', 'can_managervisits', 'can_managerproductivity', 'can_managerrequestresources'], 'integer'],
             [['birthdate'], 'safe'],
             [['username', 'password_hash', 'password_reset_token', 'email', 'fullname'], 'string', 'max' => 255],
@@ -39,7 +39,7 @@ class Useradmin extends \yii\db\ActiveRecord
             'status' => 'Situação',
             'email' => 'Email',
             'avatar' => 'Imagem',
-            'fullname' => 'Nome',
+            'fullname' => 'Nome Completo',
             'phone' => 'Telefone',
             'celphone' => 'Celular',
             'birthdate' => 'Data de Nascimento',
@@ -54,4 +54,14 @@ class Useradmin extends \yii\db\ActiveRecord
             'can_managerrequestresources' => 'Gerenciar Recursos',
         ];
     }
+
+    public function getLocation()
+    {
+        return $this->hasOne(Location::className(), ['id' => 'location_id']);
+    }      
+
+    public function getDepartment()
+    {
+        return $this->hasOne(Department::className(), ['id' => 'department_id']);
+    }         
 }

@@ -25,7 +25,7 @@ class Department extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Nome',
+            'name' => 'Departamento',
             'description' => 'Descrição',
             'is_active' => 'Situação',
         ];

@@ -28,6 +28,11 @@ class Location extends \yii\db\ActiveRecord
             'id' => 'ID',
             'shortname' => 'PA',
             'fullname' => 'Agência',
+            'address' => 'Endereço',
+            'zipcode' => 'CEP',
+            'num_cnpj' => 'CNPJ',
+            'email' => 'E-mail',
+            'phone' => 'Telefone',
             'is_active' => 'Situação',
         ];
     }

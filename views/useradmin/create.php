@@ -21,9 +21,15 @@ $this->title = 'Novo Usuário';
     </div>
     <hr/>
 
+    <div class="panel panel-default">
+      <div class="panel-body"> 
+
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
+
+        </div>
+    </div>
 
     </div>
     </div>
