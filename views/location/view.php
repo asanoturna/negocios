@@ -34,20 +34,24 @@ $this->title = 'Detalhes da Unidade #' . $model->id;
     </p>
 
     <div class="panel panel-default">
-      <div class="panel-body"> 
+        <div class="panel-body"> 
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'shortname',
-            'fullname',
-            'is_active',
-        ],
-    ]) ?>
+        <?= DetailView::widget([
+            'model' => $model,
+            'attributes' => [
+                'id',
+                'shortname',
+                'fullname',
+                [ 
+                'attribute' => 'is_active', 
+                'format' => 'raw',
+                'value' => $model->is_active == 1 ? '<b style="color:green">Sim</b>' : '<b style="color:gray">Não</b>',
+                ],                 
+            ],
+        ]) ?>
 
-    </div>   </div>   
-
+        </div>
+    </div>   
     </div>
     </div>
 </div>

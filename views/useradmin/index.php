@@ -61,7 +61,7 @@ $this->title = 'Usuários';
             'enableSorting' => true,
             'format' => 'raw',
             'value' => function ($model) {                      
-                    return $model->status == 1 ? '<b style="color:green">Sim</b>' : '<b style="color:gray">Não</b>';
+                    return $model->status == 1 ? '<b style="color:#6CAF3F">Ativo</b>' : '<b style="color:#d43f3a">Inativo</b>';
                     },
             'filter'=>[0=>'Não', 1=>'Sim'],
             'contentOptions'=>['style'=>'width: 6%;text-align:center'],

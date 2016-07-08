@@ -15,7 +15,7 @@ class Location extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['shortname', 'fullname'], 'required'],
+            [['shortname', 'fullname', 'is_active'], 'required'],
             [['is_active'], 'integer'],
             [['shortname'], 'string', 'max' => 50],
             [['fullname'], 'string', 'max' => 100]
@@ -28,7 +28,7 @@ class Location extends \yii\db\ActiveRecord
             'id' => 'ID',
             'shortname' => 'PA',
             'fullname' => 'Agência',
-            'is_active' => 'Ativo',
+            'is_active' => 'Situação',
         ];
     }
 }

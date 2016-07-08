@@ -25,6 +25,14 @@ $this->title = 'Unidades';
     <div class="panel panel-default">
       <div class="panel-body"> 
 
+    <?php foreach (Yii::$app->session->getAllFlashes() as $key=>$message):?>
+        <?php $alertClass = substr($key,strpos($key,'-')+1); ?>
+        <div class="alert alert-dismissible alert-<?=$alertClass?>" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <p><?=$message?></p>
+        </div>
+    <?php endforeach ?>      
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -37,7 +45,7 @@ $this->title = 'Unidades';
             'enableSorting' => true,
             'format' => 'raw',
             'value' => function ($model) {                      
-                    return $model->is_active == 1 ? '<b style="color:green">Sim</b>' : '<b style="color:gray">Não</b>';
+                    return $model->is_active == 1 ? '<b style="color:#6CAF3F">Ativo</b>' : '<b style="color:#d43f3a">Inativo</b>';
                     },
             'filter'=>[0=>'Não', 1=>'Sim'],
             'contentOptions'=>['style'=>'width: 6%;text-align:center'],

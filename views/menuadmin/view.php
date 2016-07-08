@@ -3,27 +3,38 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Menuadmin */
-
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Menuadmins', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Parâmentros do Menu #' . $model->id;
 ?>
 <div class="menuadmin-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+    <div class="col-sm-2">
+    <?php  echo $this->render('//site/_menuadmin'); ?>
+    </div>
+
+    <div class="col-sm-10">
+
+    <div class="row">
+      <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
+      <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;">
+        <?= Html::a('<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Lista de Menu', ['index'], ['class' => 'btn btn-success']) ?>
+      </span></div>
+    </div>
+    <hr/>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Excluir', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Deseja realmente excluir?',
                 'method' => 'post',
             ],
         ]) ?>
     </p>
+
+    <div class="panel panel-default">
+      <div class="panel-body"> 
 
     <?= DetailView::widget([
         'model' => $model,
@@ -39,4 +50,8 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
+        </div>
+    </div>   
+    </div>
+    </div>
 </div>

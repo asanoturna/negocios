@@ -46,7 +46,8 @@ class LocationController extends Controller
         $model = new Location();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('location-success', 'Inclusão realizada com sucesso!');
+                return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -59,7 +60,8 @@ class LocationController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('location-success', 'Registro alterado com sucesso!');
+                return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -71,7 +73,8 @@ class LocationController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        Yii::$app->session->setFlash('location-success', 'Registro excluído com sucesso!');
+                return $this->redirect(['index']);
     }
 
     protected function findModel($id)
