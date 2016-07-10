@@ -17,7 +17,7 @@ $this->title = 'Usuários';
     <div class="row">
       <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
       <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;">
-        <?= Html::a('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar', ['signup'], ['class' => 'btn btn-success']) ?>
       </span></div>
     </div>
     <hr/>
@@ -48,14 +48,19 @@ $this->title = 'Usuários';
             [
             'attribute' => 'username',
             'enableSorting' => true,
-            'contentOptions'=>['style'=>'width: 15%;text-align:left'],
+            'contentOptions'=>['style'=>'width: 15%;text-align:lef;tvertical-align: middle;text-transform: lowercase'],
             ],             
             [
             'attribute' => 'fullname',
             'enableSorting' => true,
-            'contentOptions'=>['style'=>'width: 25%;text-align:left'],
+            'contentOptions'=>['style'=>'width: 25%;text-align:left;vertical-align: middle;text-transform: uppercase'],
             ],       
-            'email:email',           
+            [
+            'attribute' => 'email',
+            'format' => 'email',
+            'enableSorting' => true,
+            'contentOptions'=>['style'=>'width: 25%;text-align:left'],
+            ],                      
             [ 
             'attribute' => 'status',
             'enableSorting' => true,

@@ -22,6 +22,7 @@ class Useradmin extends \yii\db\ActiveRecord
             [['avatar', 'phone', 'celphone'], 'string', 'max' => 50],
             [['username'], 'unique'],
             [['email'], 'unique'],
+            [['email'], 'email'],
             [['password_reset_token'], 'unique'],
         ];
     }
@@ -40,7 +41,7 @@ class Useradmin extends \yii\db\ActiveRecord
             'email' => 'Email',
             'avatar' => 'Imagem',
             'fullname' => 'Nome Completo',
-            'phone' => 'Telefone',
+            'phone' => 'Telefone / Ramal',
             'celphone' => 'Celular',
             'birthdate' => 'Data de Nascimento',
             'location_id' => 'Unidade',

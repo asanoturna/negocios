@@ -8,7 +8,11 @@ Pegar lista com data de nascimento de todos
 *********************
 --- Usar listview http://www.codevoila.com/post/4/yii2-listview-example
 Consertar paths (anexos, avatar, etc)
-Proprio usuario enviar/alterar foto
+
+Area do Usuário - Alterar Senha
+Area do Usuário - Alterar Perfil
+Area do Usuário - Alterar/Enviar Foto com ajuste e redimensionamento
+
 Corrigir telas responsivas (gridview, etc)
 Alerta de pendencias para usuario (visitas,prod diaria,etc)
 Envio de email (recover pass, notifications, etc)
@@ -26,22 +30,20 @@ MÓDULOS
 - Migração da ferramenta de Apoio Cadastro
 - ADMIN -> Gestao de menus (tb menu_items)
 - ADMIN -> Upload de avatar com redimencionamento
-- ADMIN -> Criar gestao de Unidades
-- ADMIN -> Criar gestao de Departamentos
-- Criação de módulo Helpdesk
-- Criação de módulo Enquetes e Questionarios
-- Criação de módulo Fila de atendimento
+
+- Criar de módulo Helpdesk
+- Criar de módulo Enquetes e Questionarios
+- Criar de módulo Plano de Ação (igual do GMI) 
+- Criar de módulo Fila de atendimento
+
 - Prod Diaria -> Selecionar o mês do TOP 3 ???
 - Prod Diaria -> Grafico por modalidade de produto
 
 - Prod Diaria -> Quadro Metas por agência (cadastrar metas por local para todos os produtos)
 Exe.: tabela meta > valor, pa, data(m/y), 
 
+- Planilha base corrigir registros e migrar para area de downloads
 
--> Planilha base corrigir registros
-
-Paginas 
+PÁGINAS 
 --------------------
-
 Dicas PABX, Voip, etc
-

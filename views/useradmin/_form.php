@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\Location;
 use app\models\Department;
+use yii\widgets\MaskedInput;
 
 ?>
 
@@ -16,7 +17,7 @@ use app\models\Department;
 
       <div class="col-md-6">
         <div class="panel panel-default">
-          <div class="panel-heading">Informações do Usuário</div>
+          <div class="panel-heading"><i class="fa fa-user" aria-hidden="true"></i> Informações do Usuário</div>
           <div class="panel-body">
             <?= $form->field($model, 'fullname')->textInput(['maxlength' => true]) ?>
 
@@ -35,7 +36,9 @@ use app\models\Department;
 
             <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
 
-            <?= $form->field($model, 'celphone')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'celphone')->widget(\yii\widgets\MaskedInput::classname(), [
+                'mask' => ['(99)99999-9999'],
+            ]) ?>            
 
             <?= $form->field($model, 'birthdate')->textInput() ?>
 
@@ -49,7 +52,7 @@ use app\models\Department;
 
       <div class="col-md-6">
         <div class="panel panel-default">
-          <div class="panel-heading">Permissões de Acesso</div>
+          <div class="panel-heading"><i class="fa fa-key" aria-hidden="true"></i> Permissões de Acesso</div>
           <div class="panel-body">
 
             <?= $form->field($model, 'can_admin')->radioList([
@@ -94,7 +97,7 @@ use app\models\Department;
     </div>      
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Gravar' : 'Gravar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Gravar' : 'Gravar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
