@@ -19,7 +19,7 @@ class UseradminController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::classname(),
-                'only'  => ['index','create','view','update'],
+                'only'  => ['index','create','view','update','signup'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -101,9 +101,7 @@ class UseradminController extends Controller
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
-                }
+                return $this->redirect(['index']);
             }
         }
 

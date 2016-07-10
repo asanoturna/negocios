@@ -17,7 +17,6 @@ class LoginForm extends Model
         return [
             [['username', 'password'], 'required', 'message' => 'Campos Obrigatórios!'],
             ['rememberMe', 'boolean'],
-            // password is validated by validatePassword()
             ['password', 'validatePassword'],
         ];
     }
