@@ -25,7 +25,7 @@ use yii\widgets\MaskedInput;
 
             <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
-            <?= $form->field($model, 'password_hash')->textInput(['maxlength' => true]) ?>
+            <?php // $form->field($model, 'password_hash')->textInput(['maxlength' => true]) ?>
 
             <?= $form->field($model, 'status')->radioList([
                 '1' => 'Sim', 

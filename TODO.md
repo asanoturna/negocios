@@ -27,9 +27,11 @@ MÓDULOS
 --------------------
 - Modularizar as ferramentas auxiliares (visitas, produtividade, etc) ***
 - Tentar reduzir o Managerdailyprod... ***
+
 - Migração da ferramenta de Apoio Cadastro
 - ADMIN -> Gestao de menus (tb menu_items)
 - ADMIN -> Upload de avatar com redimencionamento
+- ADMIN -> Consertar campo "birthdate"
 
 - Criar de módulo Helpdesk
 - Criar de módulo Enquetes e Questionarios

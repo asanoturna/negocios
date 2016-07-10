@@ -67,6 +67,21 @@ class UseradminController extends Controller
         }
     }
 
+    public function actionSignup()
+    {
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+                Yii::$app->session->setFlash('useradmin-success', 'Inclusão realizada com sucesso!');
+                return $this->redirect(['index']);
+            }
+        }
+
+        return $this->render('signup', [
+            'model' => $model,
+        ]);
+    }     
+
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
@@ -94,19 +109,5 @@ class UseradminController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
-    }
-
-    public function actionSignup()
-    {
-        $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->signup()) {
-                return $this->redirect(['index']);
-            }
-        }
-
-        return $this->render('signup', [
-            'model' => $model,
-        ]);
-    }    
+    }   
 }
