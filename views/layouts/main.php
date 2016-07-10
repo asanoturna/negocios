@@ -63,18 +63,18 @@ SCRIPT;
             Yii::$app->user->isGuest ?
             [
             'label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Entrar', 
-            'url' => ['site/login'],
+            'url' => ['user/login'],
             ]
             :
             [
             'label' => '<img src="'.Yii::$app->params['usersAvatars'].Yii::$app->user->identity->avatar.'" class="profile-image img-avatar" > '. Yii::$app->user->identity->username,
             'items' => 
                 [
-                    ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Alterar Senha', 'url' => ['#']],
-                    ['label' => '<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Perfil', 'url' => ['#']],
+                    ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Alterar Senha', 'url' => ['user/changepassword']],
+                    ['label' => '<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Perfil', 'url' => ['user/changeprofile']],
                     '<li class="divider"></li>',
                     ['label' => '<span class="glyphicon glyphicon-off" aria-hidden="true"></span> Sair',
-                        'url' => ['/site/logout'],
+                        'url' => ['/user/logout'],
                         'linkOptions' => ['data-method' => 'post']],
                 ],
             ],

@@ -24,11 +24,11 @@ $this->title = Yii::$app->params['appname'] . ' > Autenticação';
 
                     <?= Html::submitButton('Entrar', ['class' => 'btn btn-lg btn-success btn-block']) ?>
                     </p>
-                    <?= Html::a('Esqueceu sua senha' . "?", ["site/request-password-reset"], array('class' => 'text-center new-account')) ?>
+                    <?php // Html::a('Esqueceu sua senha' . "?", ["site/request-password-reset"], array('class' => 'text-center new-account')) ?>
 
                     <?php ActiveForm::end(); ?>
                     </br>
-                    <p class="text-danger">(Devido a uma manutenção na base de dados da intranet, as senhas de todos os usuários foram reiniciadas para: <b>123456</b>)</p>
+                    <p class="text-muted">(Devido a uma manutenção na base de dados da intranet, as senhas de todos os usuários foram reiniciadas para: <b>123456</b>)</p>
                     </div>
               </div>
             </div>      
