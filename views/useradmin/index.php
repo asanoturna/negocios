@@ -37,7 +37,7 @@ $this->title = 'Usuários';
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'tableOptions' => ['class'=>'table table-striped table-bordered table-hover'],
+        'tableOptions' => ['class'=>'table table-striped table-bordered table-hover table-responsive'],
         'columns' => [
             [
             'attribute' => 'id',

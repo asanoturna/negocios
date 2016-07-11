@@ -8,9 +8,8 @@ use yii\web\NotFoundHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
-use app\models\PasswordResetRequestForm;
 use app\models\ResetPasswordForm;
-use app\models\ChangePasswordForm;
+
 
 class UserController extends \yii\web\Controller
 {
@@ -19,7 +18,7 @@ class UserController extends \yii\web\Controller
         return [
             'access' => [
                 'class' => AccessControl::classname(),
-                'only'  => ['changeprofile','changepassword'],
+                'only'  => ['changeprofile','resetpassword'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -35,11 +34,6 @@ class UserController extends \yii\web\Controller
             ],
         ];
     }    
-
-    public function actionChangepassword()
-    {
-        return $this->render('changepassword');
-    }
 
     public function actionChangeprofile()
     {
@@ -68,4 +62,21 @@ class UserController extends \yii\web\Controller
 
         return $this->goHome();
     }
+
+    public function actionResetpassword()
+    {
+        /* @var $userModel UserModel */
+        $userModel = Yii::$app->user->identity;
+        $resetPasswordForm = new ResetPasswordForm($userModel);
+
+        if ($resetPasswordForm->load(Yii::$app->request->post()) && $resetPasswordForm->resetPassword()) {
+            Yii::$app->session->setFlash('resetpassword-success', 'Senha alterada com sucesso!');
+            return $this->redirect(['resetpassword']);
+        }
+
+        return $this->render('resetpassword', [
+            'resetPasswordForm' => $resetPasswordForm,
+            'userModel' => $userModel
+        ]);
+    }    
 }

@@ -9,12 +9,26 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+    public $fullname;
+    public $status;
+    public $phone;
+    public $celphone;
+    public $birthdate;
+    public $location_id;
+    public $department_id;
+    public $can_admin;
+    public $can_visits;
+    public $can_productivity;
+    public $can_requestresources;
+    public $can_managervisits;
+    public $can_managerproductivity;
+    public $can_managerrequestresources;
 
     public function rules()
     {
         return [
             ['username', 'filter', 'filter' => 'trim'],
-            ['username', 'required'],
+            [['username', 'fullname', 'status', 'phone', 'birthdate', 'location_id', 'department_id'], 'required'],
             ['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Usuário já existe!'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
@@ -68,9 +82,25 @@ class SignupForm extends Model
         $user = new User();
         $user->username = $this->username;
         $user->email = $this->email;
+        $user->fullname = $this->fullname;
+        $user->status = $this->status;
+        $user->location_id = $this->location_id;
+        $user->department_id = $this->department_id;
+        $user->phone = $this->phone;
+        $user->celphone = $this->celphone;
         $user->setPassword($this->password);
         $user->generateAuthKey();
         
         return $user->save() ? $user : null;
     }
+
+    public function getLocation()
+    {
+        return $this->hasOne(Location::className(), ['id' => 'location_id']);
+    }
+
+    public function getDepartment()
+    {
+        return $this->hasOne(Department::className(), ['id' => 'department_id']);
+    } 
 }
