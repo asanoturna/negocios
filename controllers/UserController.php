@@ -18,7 +18,7 @@ class UserController extends \yii\web\Controller
         return [
             'access' => [
                 'class' => AccessControl::classname(),
-                'only'  => ['changeprofile','resetpassword'],
+                'only'  => ['profile','changeprofile','resetpassword'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -33,11 +33,6 @@ class UserController extends \yii\web\Controller
                 ],
             ],
         ];
-    }    
-
-    public function actionChangeprofile()
-    {
-        return $this->render('changeprofile');
     }    
 
     public function actionLogin()
@@ -63,9 +58,17 @@ class UserController extends \yii\web\Controller
         return $this->goHome();
     }
 
+    public function actionProfile()
+    {
+        $userModel = Yii::$app->user->identity;
+
+        return $this->render('profile', [
+            'userModel' => $userModel
+        ]);
+    }     
+
     public function actionResetpassword()
     {
-        /* @var $userModel UserModel */
         $userModel = Yii::$app->user->identity;
         $resetPasswordForm = new ResetPasswordForm($userModel);
 

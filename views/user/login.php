@@ -10,7 +10,8 @@ $this->title = Yii::$app->params['appname'] . ' > Autenticação';
         <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
             <div class="panel panel-default">
-              <div class="panel-heading"><h1 class="text-center login-title"><span class="glyphicon glyphicon-lock pull-left" aria-hidden="true"></span> Autenticação</h1></div>
+              <div class="panel-heading"><h1 class="text-center login-title"><i class="fa fa-lock pull-left" aria-hidden="true"></i>
+ Autenticação</h1></div>
               <div class="panel-body">
                     <div class="account-wall">
                     <?php $form = ActiveForm::begin([
@@ -33,7 +34,6 @@ $this->title = Yii::$app->params['appname'] . ' > Autenticação';
               </div>
             </div>      
         
-
         </div>
         </div>
     </div> 

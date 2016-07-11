@@ -32,6 +32,35 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'username' => 'Usuário',
+            'auth_key' => 'Chave de Autenticação',
+            'password_hash' => 'Senha',
+            'password_reset_token' => 'Password Reset Token',
+            'updated_at' => 'Alterado em',
+            'created_at' => 'Criado em',
+            'status' => 'Situação',
+            'email' => 'Email',
+            'avatar' => 'Imagem',
+            'fullname' => 'Nome Completo',
+            'phone' => 'Telefone / Ramal',
+            'celphone' => 'Celular',
+            'birthdate' => 'Data de Nascimento',
+            'location_id' => 'Unidade',
+            'department_id' => 'Departamento',
+            'can_admin' => 'Administração do Sistema',
+            'can_visits' => 'Visitas',
+            'can_productivity' => 'Produtividade',
+            'can_requestresources' => 'Recursos',
+            'can_managervisits' => 'Gerenciar Visitas',
+            'can_managerproductivity' => 'Gerenciar Produtividade',
+            'can_managerrequestresources' => 'Gerenciar Recursos',
+        ];
+    }    
+
     public static function findIdentity($id)
     {
         return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
@@ -98,4 +127,14 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+
+    public function getLocation()
+    {
+        return $this->hasOne(Location::className(), ['id' => 'location_id']);
+    }      
+
+    public function getDepartment()
+    {
+        return $this->hasOne(Department::className(), ['id' => 'department_id']);
+    }      
 }

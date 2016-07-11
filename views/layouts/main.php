@@ -71,7 +71,7 @@ SCRIPT;
             'items' => 
                 [
                     ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Alterar Senha', 'url' => ['user/resetpassword']],
-                    ['label' => '<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Perfil', 'url' => ['user/changeprofile']],
+                    ['label' => '<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Perfil', 'url' => ['user/profile']],
                     '<li class="divider"></li>',
                     ['label' => '<span class="glyphicon glyphicon-off" aria-hidden="true"></span> Sair',
                         'url' => ['/user/logout'],
