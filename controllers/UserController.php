@@ -67,6 +67,24 @@ class UserController extends \yii\web\Controller
         ]);
     }     
 
+    public function actionChangeprofile()
+    {
+        $userModel = Yii::$app->user->identity;
+
+        return $this->render('changeprofile', [
+            'userModel' => $userModel
+        ]);
+    }   
+
+    public function actionChangeavatar()
+    {
+        $userModel = Yii::$app->user->identity;
+
+        return $this->render('changeavatar', [
+            'userModel' => $userModel
+        ]);
+    }            
+
     public function actionResetpassword()
     {
         $userModel = Yii::$app->user->identity;
@@ -74,7 +92,7 @@ class UserController extends \yii\web\Controller
 
         if ($resetPasswordForm->load(Yii::$app->request->post()) && $resetPasswordForm->resetPassword()) {
             Yii::$app->session->setFlash('resetpassword-success', 'Senha alterada com sucesso!');
-            return $this->redirect(['resetpassword']);
+            return $this->redirect(['profile']);
         }
 
         return $this->render('resetpassword', [

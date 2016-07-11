@@ -52,13 +52,15 @@ use yii\widgets\MaskedInput;
 
       <div class="col-md-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><i class="fa fa-key" aria-hidden="true"></i> Permissões de Acesso</div>
+          <div class="panel-heading"><i class="fa fa-shield" aria-hidden="true"></i> Permissões de Acesso</div>
           <div class="panel-body">
 
             <?= $form->field($model, 'can_admin')->radioList([
                 '1' => 'Sim', 
                 '0' => 'Não',
                 ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>
+
+            <?= $form->field($model, 'can_admin')->checkbox(['uncheck' =>  0, 'checked' => 1]); ?>                
 
             <?= $form->field($model, 'can_visits')->radioList([
                 '1' => 'Sim', 

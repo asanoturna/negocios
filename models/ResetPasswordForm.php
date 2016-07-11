@@ -10,9 +10,7 @@ use yii\base\Model;
 class ResetPasswordForm extends Model
 {
     public $password;
-
     public $confirmPassword;
-
     private $_user;
 
     public function __construct($user, $config = [])
@@ -40,7 +38,7 @@ class ResetPasswordForm extends Model
     {
         return [
             'password' => 'Nova Senha',
-            'confirmPassword' => 'Confirmar Senha',
+            'confirmPassword' => 'Confirmação da Senha',
         ];
     }
 

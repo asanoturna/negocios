@@ -7,17 +7,15 @@ Pegar lista com data de nascimento de todos
 
 *********************
 --- Usar listview http://www.codevoila.com/post/4/yii2-listview-example
-Consertar paths (anexos, avatar, etc)
 
-Area do Usuário - Alterar Senha
-Area do Usuário - Alterar Perfil
+Area do Usuário - Alterar Informações
 Area do Usuário - Alterar/Enviar Foto com ajuste e redimensionamento
 
 Corrigir telas responsivas (gridview, etc)
 Alerta de pendencias para usuario (visitas,prod diaria,etc)
 Envio de email (recover pass, notifications, etc)
 
-Criar Área de Alertas (local mais visivel possível)
+Criar Área de Alertas (local mais visivel no top da intranet)
 Criar calendario (sinc google agenda ?)
 Criar Gestão de arquivos
 Criar Área de Notícias (comentarios? likes?)
