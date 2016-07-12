@@ -4,53 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1a56a2818d4a92f81f9997c6cacc99b3",
-    "content-hash": "a50e06a2f131d9cfdc222b995b3f599f",
+    "hash": "8a165e3d21a0202c2a1b988d8ad7c243",
+    "content-hash": "df9f7612c85392cb5f6d1ece18815ef9",
     "packages": [
-        {
-            "name": "amnah/yii2-user",
-            "version": "4.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/amnah/yii2-user.git",
-                "reference": "e0c20f543a33f75d690bd36352ffed18e809af96"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/amnah/yii2-user/zipball/e0c20f543a33f75d690bd36352ffed18e809af96",
-                "reference": "e0c20f543a33f75d690bd36352ffed18e809af96",
-                "shasum": ""
-            },
-            "require": {
-                "yiisoft/yii2": "*",
-                "yiisoft/yii2-authclient": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "amnah\\yii2\\user\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "amnah",
-                    "email": "amnah.dev@gmail.com"
-                }
-            ],
-            "description": "Yii 2 user authentication module",
-            "keywords": [
-                "Authentication",
-                "auth",
-                "user",
-                "yii",
-                "yii2"
-            ],
-            "time": "2015-11-10 03:06:24"
-        },
         {
             "name": "bower-asset/bootstrap",
             "version": "v3.3.6",
@@ -89,6 +45,56 @@
                 "MIT"
             ],
             "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+            "keywords": [
+                "css",
+                "framework",
+                "front-end",
+                "js",
+                "less",
+                "mobile-first",
+                "responsive",
+                "web"
+            ]
+        },
+        {
+            "name": "bower-asset/bootstrap3-dialog",
+            "version": "v1.35.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nakupanda/bootstrap3-dialog.git",
+                "reference": "49b786d4949bb02a22a9358d7d65f30e058c5438"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nakupanda/bootstrap3-dialog/zipball/49b786d4949bb02a22a9358d7d65f30e058c5438",
+                "reference": "49b786d4949bb02a22a9358d7d65f30e058c5438",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/bootstrap": ">=3.1.0",
+                "bower-asset/jquery": ">=1.9.0"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "dist/less/bootstrap-dialog.less",
+                    "dist/css/bootstrap-dialog.min.css",
+                    "dist/js/bootstrap-dialog.min.js"
+                ],
+                "bower-asset-ignore": [
+                    "source",
+                    "spec",
+                    ".bowerrc",
+                    ".gitignore",
+                    ".jshintignore",
+                    ".jshintrc",
+                    "bower.json",
+                    "gruntfile.js",
+                    "package.json",
+                    "README.md"
+                ]
+            },
+            "description": "Make use of Bootstrap Modal more monkey-friendly. http://nakupanda.github.io/bootstrap3-dialog/",
             "keywords": [
                 "css",
                 "framework",
@@ -226,16 +232,16 @@
         },
         {
             "name": "bower-asset/moment",
-            "version": "2.13.0",
+            "version": "2.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/moment/moment.git",
-                "reference": "d6651c21c6131fbb5db891b60971357739015688"
+                "reference": "227746b29044a4c2160ae7c597c7f24aacac2635"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moment/moment/zipball/d6651c21c6131fbb5db891b60971357739015688",
-                "reference": "d6651c21c6131fbb5db891b60971357739015688",
+                "url": "https://api.github.com/repos/moment/moment/zipball/227746b29044a4c2160ae7c597c7f24aacac2635",
+                "reference": "227746b29044a4c2160ae7c597c7f24aacac2635",
                 "shasum": ""
             },
             "type": "bower-asset-library",
@@ -417,64 +423,6 @@
             "time": "2015-03-06 05:28:07"
         },
         {
-            "name": "circulon/yii2-columnlistview",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/circulon/yii2-columnlistview.git",
-                "reference": "06217130843005d96be2a69727f73cb37ccebe5c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/circulon/yii2-columnlistview/zipball/06217130843005d96be2a69727f73cb37ccebe5c",
-                "reference": "06217130843005d96be2a69727f73cb37ccebe5c",
-                "shasum": ""
-            },
-            "require": {
-                "yiisoft/yii2": "~2.0.0"
-            },
-            "type": "yii2-extension",
-            "extra": {
-                "asset-installer-paths": {
-                    "npm-asset-library": "vendor/npm",
-                    "bower-asset-library": "vendor/bower"
-                },
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "circulon\\widgets\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kieren Eaton",
-                    "email": "circledev@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Responsive columnar List View for Yii 2.x",
-            "homepage": "https://github.com/circulon/yii2-columnlistview.git",
-            "keywords": [
-                "ListView",
-                "circulon",
-                "column",
-                "columns",
-                "list view",
-                "responsive",
-                "yii",
-                "yii 2",
-                "yii2"
-            ],
-            "time": "2015-06-28 12:49:52"
-        },
-        {
             "name": "cyneek/yii2-menu",
             "version": "dev-master",
             "source": {
@@ -565,13 +513,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/francoispluchino/composer-asset-plugin.git",
-                "reference": "cda0161bf989f4cc8ed777b098f557c9949e7fd9"
+                "url": "https://github.com/fxpio/composer-asset-plugin.git",
+                "reference": "8d74bc7c714aadbda54622c216b2e7bf786595cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/francoispluchino/composer-asset-plugin/zipball/cda0161bf989f4cc8ed777b098f557c9949e7fd9",
-                "reference": "cda0161bf989f4cc8ed777b098f557c9949e7fd9",
+                "url": "https://api.github.com/repos/fxpio/composer-asset-plugin/zipball/8d74bc7c714aadbda54622c216b2e7bf786595cb",
+                "reference": "8d74bc7c714aadbda54622c216b2e7bf786595cb",
                 "shasum": ""
             },
             "require": {
@@ -579,8 +527,7 @@
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "composer/composer": "^1.0.0",
-                "phpunit/phpunit": "^4.8 || ^5.3.0"
+                "composer/composer": "^1.0.0"
             },
             "type": "composer-plugin",
             "extra": {
@@ -605,7 +552,7 @@
                 }
             ],
             "description": "NPM/Bower Dependency Manager for Composer",
-            "homepage": "https://github.com/francoispluchino/composer-asset-plugin",
+            "homepage": "https://github.com/fxpio/composer-asset-plugin",
             "keywords": [
                 "asset",
                 "bower",
@@ -615,7 +562,7 @@
                 "npm",
                 "package"
             ],
-            "time": "2016-06-13 16:53:53"
+            "time": "2016-07-01 12:04:16"
         },
         {
             "name": "imagine/imagine",
@@ -713,6 +660,58 @@
                 "yii2"
             ],
             "time": "2014-12-15 18:32:02"
+        },
+        {
+            "name": "kartik-v/yii2-dialog",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-dialog.git",
+                "reference": "c0f83291c050fb05a1dc66a90ad6151de2d1e982"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-dialog/zipball/c0f83291c050fb05a1dc66a90ad6151de2d1e982",
+                "reference": "c0f83291c050fb05a1dc66a90ad6151de2d1e982",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/bootstrap3-dialog": "~1.34",
+                "kartik-v/yii2-krajee-base": "~1.7"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\dialog\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "An asset bundle for bootstrap3-dialog for Yii 2.0 framework.",
+            "homepage": "https://github.com/kartik-v/yii2-dialog",
+            "keywords": [
+                "alert",
+                "bootstrap",
+                "dialog",
+                "extension",
+                "modal",
+                "yii2"
+            ],
+            "time": "2016-02-22 10:58:46"
         },
         {
             "name": "kartik-v/yii2-export",
@@ -830,15 +829,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-grid.git",
-                "reference": "0de680803dbe09baab83b03f1f13037bd19fa4a4"
+                "reference": "0d3cf25ad0ff5aa75d8641af492dee16d9041db1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/0de680803dbe09baab83b03f1f13037bd19fa4a4",
-                "reference": "0de680803dbe09baab83b03f1f13037bd19fa4a4",
+                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/0d3cf25ad0ff5aa75d8641af492dee16d9041db1",
+                "reference": "0d3cf25ad0ff5aa75d8641af492dee16d9041db1",
                 "shasum": ""
             },
             "require": {
+                "kartik-v/yii2-dialog": "~1.0",
                 "kartik-v/yii2-krajee-base": "~1.7"
             },
             "type": "yii2-extension",
@@ -871,7 +871,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-06-09 10:21:32"
+            "time": "2016-07-06 19:34:21"
         },
         {
             "name": "kartik-v/yii2-krajee-base",
@@ -1027,12 +1027,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-datepicker.git",
-                "reference": "52606c8764a174aa0d5e6483ed811f617c74ee4e"
+                "reference": "4ccb7262716f405f51720956a453a61a1b48dd53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-datepicker/zipball/52606c8764a174aa0d5e6483ed811f617c74ee4e",
-                "reference": "52606c8764a174aa0d5e6483ed811f617c74ee4e",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-datepicker/zipball/4ccb7262716f405f51720956a453a61a1b48dd53",
+                "reference": "4ccb7262716f405f51720956a453a61a1b48dd53",
                 "shasum": ""
             },
             "require": {
@@ -1041,7 +1041,7 @@
             "type": "yii2-extension",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3.x-dev"
+                    "dev-master": "1.4.x-dev"
                 }
             },
             "autoload": {
@@ -1073,7 +1073,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-04-08 10:42:51"
+            "time": "2016-07-01 11:15:25"
         },
         {
             "name": "kartik-v/yii2-widget-sidenav",
@@ -1284,23 +1284,23 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.4.2",
+            "version": "v5.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "d8db871a54619458a805229a057ea2af33c753e8"
+                "reference": "4cc92842069c2bbc1f28daaaf1d2576ec4dfe153"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/d8db871a54619458a805229a057ea2af33c753e8",
-                "reference": "d8db871a54619458a805229a057ea2af33c753e8",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/4cc92842069c2bbc1f28daaaf1d2576ec4dfe153",
+                "reference": "4cc92842069c2bbc1f28daaaf1d2576ec4dfe153",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "mockery/mockery": "~0.9.1,<0.9.4"
+                "mockery/mockery": "~0.9.1"
             },
             "type": "library",
             "extra": {
@@ -1333,7 +1333,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2016-05-01 08:45:47"
+            "time": "2016-07-08 11:51:25"
         },
         {
             "name": "trntv/yii2-datetime-widget",
@@ -1471,20 +1471,20 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.8",
+            "version": "2.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "53992b136b993e32ca7b6f399cf42b143f8685a6"
+                "reference": "2b75151ea60e1fd820046416eee2e89c3dda1133"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/53992b136b993e32ca7b6f399cf42b143f8685a6",
-                "reference": "53992b136b993e32ca7b6f399cf42b143f8685a6",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/2b75151ea60e1fd820046416eee2e89c3dda1133",
+                "reference": "2b75151ea60e1fd820046416eee2e89c3dda1133",
                 "shasum": ""
             },
             "require": {
-                "bower-asset/jquery": "2.2.*@stable | 2.1.*@stable | 1.11.*@stable",
+                "bower-asset/jquery": "2.2.*@stable | 2.1.*@stable | 1.11.*@stable | 1.12.*@stable",
                 "bower-asset/jquery.inputmask": "~3.2.2",
                 "bower-asset/punycode": "1.3.*",
                 "bower-asset/yii2-pjax": "~2.0.1",
@@ -1561,55 +1561,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2016-04-28 14:50:20"
-        },
-        {
-            "name": "yiisoft/yii2-authclient",
-            "version": "2.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/yiisoft/yii2-authclient.git",
-                "reference": "22910bfe0000538f5b3ca1102cd3de0b5d14a0e2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-authclient/zipball/22910bfe0000538f5b3ca1102cd3de0b5d14a0e2",
-                "reference": "22910bfe0000538f5b3ca1102cd3de0b5d14a0e2",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "yiisoft/yii2": ">=2.0.4"
-            },
-            "type": "yii2-extension",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "yii\\authclient\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Paul Klimov",
-                    "email": "klimov.paul@gmail.com"
-                }
-            ],
-            "description": "External authentication via OAuth and OpenID for the Yii framework",
-            "keywords": [
-                "OpenId",
-                "auth",
-                "oauth",
-                "yii2"
-            ],
-            "time": "2015-09-23 17:26:02"
+            "time": "2016-07-11 13:36:42"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -2117,12 +2069,12 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "fxp/composer-asset-plugin": 20,
         "miloschuman/yii2-highcharts-widget": 20,
         "kartik-v/yii2-widget-datepicker": 20,
         "tugmaks/yii2-google-maps": 20,
         "kartik-v/yii2-export": 20,
         "kartik-v/yii2-grid": 20,
-        "fxp/composer-asset-plugin": 20,
         "cyneek/yii2-menu": 20,
         "kartik-v/yii2-widget-sidenav": 20
     },
