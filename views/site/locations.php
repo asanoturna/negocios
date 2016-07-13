@@ -65,7 +65,7 @@ $this->title = 'Agências';
                 'format' => 'raw',
                 'header' => '',
                 'value' => function ($data) {                      
-                    return '<i class="fa fa-envelope-o" aria-hidden="true"></i> '.Html::mailto($data["email"], $data["email"])."</br>".
+                    return '<i class="fa fa-envelope" aria-hidden="true"></i> '.Html::mailto($data["email"], $data["email"])."</br>".
                     '<i class="fa fa-phone" aria-hidden="true"></i> '.$data["phone"];
                 },
                 'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;'],

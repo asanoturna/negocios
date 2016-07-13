@@ -5,8 +5,6 @@ use yii\data\SqlDataProvider;
 use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
 use app\models\Location;
-use app\models\Person;
-
 
 $this->title = 'Colaboradores';
 ?>
@@ -21,8 +19,7 @@ $this->title = 'Colaboradores';
     <h1><?= Html::encode($this->title) ?></h1>
     <hr/>
 
-    <?php 
-    //use kartik\grid\GridView;
+    <?php
     echo kartik\grid\GridView::widget([
         'dataProvider'=>$dataProvider,
         //'filterModel'=>$searchModel,
@@ -61,52 +58,47 @@ $this->title = 'Colaboradores';
                 //     'pluginOptions'=>['allowClear'=>true],
                 // ],
                 //'filterInputOptions'=>['placeholder'=>'Any supplier'],
-                'group'=>true,  // enable grouping,
-                'groupedRow'=>true,                    // move grouped column to a single grouped row
-                'groupOddCssClass'=>'h4 bg-success',  // configure odd group cell css class
-                'groupEvenCssClass'=>'h4 bg-success', // configure even group cell css class
+                'group'=>true,
+                'groupedRow'=>true,
+                'groupOddCssClass'=>'h4 bg-success',
+                'groupEvenCssClass'=>'h4 bg-success',
             ],
             [
-            'header' => false,
             'attribute' => 'avatar',
-            'format' => 'html',
+            'format' => 'raw',
             'value' => function ($model) {
                 return Html::img(Yii::$app->params['usersAvatars'].$model->avatar,
                     ['width' => '50px', 'class' => 'img-rounded img-thumbnail']);
             },
-            'contentOptions'=>['style'=>'width: 6%;text-align:middle'], 
+            'contentOptions'=>['style'=>'width: 5%;text-align:middle'], 
             ],            
             [
             'attribute' => 'fullname',
-            'enableSorting' => true,
-            'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;text-transform: uppercase'],
-            ],              
+            'format' => 'html',
+            'value' => function ($model) {
+                return "<p>".$model->fullname."</p><em class=\"text-lowercase\">".$model->username."</em>";
+            },               
+            'contentOptions'=>['style'=>'width: 40%;text-align:left;vertical-align: middle'],
+            ],     
             [
-            'attribute' => 'username',
-            'enableSorting' => true,
-            'contentOptions'=>['style'=>'width: 25%;text-align:left;vertical-align: middle;text-transform: lowercase'],
-            ],             
-            'email:email', 
-            // [
-            //     'class'=>'kartik\grid\FormulaColumn',
-            //     'header'=>'Amount In Stock',
-            //     'value'=>function ($model, $key, $index, $widget) { 
-            //         $p = compact('model', 'key', 'index');
-            //         return $widget->col(4, $p) * $widget->col(5, $p);
-            //     },
-            //     'mergeHeader'=>true,
-            //     'width'=>'150px',
-            //     'hAlign'=>'right',
-            //     'format'=>['decimal', 2],
-            //     'pageSummary'=>true
-            // ],
+            'attribute' => 'email',
+            'format' => 'raw',
+            'value' => function ($model) {
+                return $model->email != '' ? '<i class="fa fa-envelope" aria-hidden="true"></i> '.Html::mailto($model->email,$model->email) : '<i class="fa fa-envelope" aria-hidden="true"></i> <span class="text-danger"><em>Não informado</em></span>';
+            },               
+            'contentOptions'=>['style'=>'width: 30%;text-align:left;vertical-align: middle'],
+            ],                      
+            [
+            'attribute' => 'phone',
+            'format' => 'html',
+            'value' => function ($model) {
+                return $model->phone != '' ? '<i class="fa fa-phone" aria-hidden="true"></i> '.$model->phone : '<i class="fa fa-phone" aria-hidden="true"></i> <span class="text-danger"><em>Não informado</em></span>';
+            },               
+            'contentOptions'=>['style'=>'width: 25%;text-align:left;vertical-align: middle'],
+            ],              
         ],
     ]);
-
-
-
-     ?>
-  
+    ?>
     </div>
     </div>
 </div>
