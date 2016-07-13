@@ -79,7 +79,7 @@ class SiteController extends Controller
     public function actionUsers()
     {
         $searchModel = new \app\models\UseradminSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->searchbylocation(Yii::$app->request->queryParams);
 
         return $this->render('users', [
             'searchModel' => $searchModel,

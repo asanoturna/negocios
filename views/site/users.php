@@ -56,15 +56,15 @@ $this->title = 'Colaboradores';
                     return $model->location->fullname;
                 },
                 //'filterType'=>GridView::FILTER_SELECT2,
-                'filter'=>ArrayHelper::map(Location::find()->orderBy('fullname')->asArray()->all(), 'id', 'fullname'), 
+                //'filter'=>ArrayHelper::map(Location::find()->orderBy('fullname')->asArray()->all(), 'id', 'fullname'), 
                 // 'filterWidgetOptions'=>[
                 //     'pluginOptions'=>['allowClear'=>true],
                 // ],
                 //'filterInputOptions'=>['placeholder'=>'Any supplier'],
                 'group'=>true,  // enable grouping,
                 'groupedRow'=>true,                    // move grouped column to a single grouped row
-                'groupOddCssClass'=>'kv-grouped-row',  // configure odd group cell css class
-                'groupEvenCssClass'=>'kv-grouped-row', // configure even group cell css class
+                'groupOddCssClass'=>'h4 bg-success',  // configure odd group cell css class
+                'groupEvenCssClass'=>'h4 bg-success', // configure even group cell css class
             ],
             [
             'header' => false,
@@ -77,11 +77,16 @@ $this->title = 'Colaboradores';
             'contentOptions'=>['style'=>'width: 6%;text-align:middle'], 
             ],            
             [
-                'attribute'=>'fullname',
-            ],            
+            'attribute' => 'fullname',
+            'enableSorting' => true,
+            'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;text-transform: uppercase'],
+            ],              
             [
-                'attribute'=>'username',
-            ],
+            'attribute' => 'username',
+            'enableSorting' => true,
+            'contentOptions'=>['style'=>'width: 25%;text-align:left;vertical-align: middle;text-transform: lowercase'],
+            ],             
+            'email:email', 
             // [
             //     'class'=>'kartik\grid\FormulaColumn',
             //     'header'=>'Amount In Stock',
