@@ -16,7 +16,7 @@ $this->title = 'Colaboradores';
     </div>
 
     <div class="col-sm-10">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><i class="fa fa-users" aria-hidden="true"></i> <?= Html::encode($this->title) ?></h1>
     <hr/>
 
     <?php
