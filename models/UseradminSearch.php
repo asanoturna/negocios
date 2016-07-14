@@ -103,6 +103,8 @@ class UseradminSearch extends Useradmin
             return $dataProvider;
         }
 
+        $query->andWhere(['status' => 1]);
+
         return $dataProvider;
     }    
 }
