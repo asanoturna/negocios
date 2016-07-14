@@ -76,7 +76,7 @@ $this->title = 'Colaboradores';
             'attribute' => 'fullname',
             'format' => 'html',
             'value' => function ($model) {
-                return "<p>".$model->fullname."</p><em class=\"text-lowercase\">".$model->username."</em>";
+                return "<p><strong>".$model->fullname."</strong></p><em class=\"text-lowercase\">".$model->username."</em>";
             },               
             'contentOptions'=>['style'=>'width: 40%;text-align:left;vertical-align: middle'],
             ],     
