@@ -1,7 +1,8 @@
 <?php
 
-namespace app\models;
-
+namespace app\modules\campaign\models;
+use app\models\User;
+use app\models\Location;
 use Yii;
 
 class Capitalaction extends \yii\db\ActiveRecord

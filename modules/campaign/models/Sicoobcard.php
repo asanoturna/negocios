@@ -2,7 +2,6 @@
 
 namespace app\modules\campaign\models;
 use app\models\User;
-
 use Yii;
 
 class Sicoobcard extends \yii\db\ActiveRecord

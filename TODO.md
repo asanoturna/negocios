@@ -14,8 +14,6 @@ Pegar lista com data de nascimento de todos
 Área do Usuário - Criar campo NOTAS para anotações diversas do colaborador
 
 Corrigir telas responsivas (gridview, etc)
-Envio de email (recover pass, notifications, etc)
-
 
 Criar Área de Alertas (local mais visivel no top da intranet)
 Criar Calendario de Eventos (sinc google agenda ?)

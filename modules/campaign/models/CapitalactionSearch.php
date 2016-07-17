@@ -1,11 +1,11 @@
 <?php
 
-namespace app\models;
+namespace app\modules\campaign\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Capitalaction;
+use app\modules\campaign\models\Capitalaction;
 
 class CapitalactionSearch extends Capitalaction
 {

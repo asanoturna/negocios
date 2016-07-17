@@ -1,10 +1,10 @@
 <?php
 
-namespace app\controllers;
+namespace app\modules\campaign\controllers;
 
 use Yii;
-use app\models\Capitalaction;
-use app\models\CapitalactionSearch;
+use app\modules\campaign\models\Capitalaction;
+use app\modules\campaign\models\CapitalactionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
