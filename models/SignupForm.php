@@ -88,6 +88,7 @@ class SignupForm extends Model
         $user->department_id = $this->department_id;
         $user->phone = $this->phone;
         $user->celphone = $this->celphone;
+        $user->birthdate = $this->birthdate;
         $user->setPassword($this->password);
         $user->generateAuthKey();
         

@@ -6,17 +6,13 @@
                 'activateItems' => true,
                 'encodeLabels' => false,
                 'items' => [ 
-                    // [
-                    //     'label'   => '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Inserir',
-                    //     'url'     => ['/capitalaction/create'],
-                    // ], 
                     [
                         'label'   => '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Inserir',
-                        'url'     => ['/capitalaction/create'],
+                        'url'     => ['create'],
                     ],
                     [
                         'label'   => '<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> Listar',
-                        'url'     => ['/capitalaction/index'],
+                        'url'     => ['index'],
                     ],                                                                               
                 ],
             'options' => ['class' =>'nav-pills'],

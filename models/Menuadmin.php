@@ -4,31 +4,13 @@ namespace app\models;
 
 use Yii;
 
-/**
- * This is the model class for table "menu_items".
- *
- * @property integer $id
- * @property string $name
- * @property string $label
- * @property string $icon
- * @property string $url
- * @property integer $visible
- * @property string $options
- * @property integer $parent_id
- */
 class Menuadmin extends \yii\db\ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
     public static function tableName()
     {
         return 'menu_items';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
@@ -42,20 +24,17 @@ class Menuadmin extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'label' => 'Label',
-            'icon' => 'Icon',
-            'url' => 'Url',
-            'visible' => 'Visible',
-            'options' => 'Options',
-            'parent_id' => 'Parent ID',
+            'name' => 'Nome',
+            'label' => 'Título',
+            'icon' => 'Ícone',
+            'url' => 'URL',
+            'visible' => 'Situação',
+            'options' => 'Opções Html',
+            'parent_id' => 'Categoria Pai',
         ];
     }
 }

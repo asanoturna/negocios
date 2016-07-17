@@ -29,16 +29,73 @@ $this->title = 'Menu';
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            'id',
-            'name',
-            'label',
-            'icon',
-            'url:url',
-            // 'visible',
+            [
+            'attribute' => 'id',
+            'enableSorting' => true,
+            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            ],
+            [
+            'attribute' => 'name',
+            'enableSorting' => true,
+            'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+            ],
+            [
+            'attribute' => 'label',
+            'enableSorting' => true,
+            'contentOptions'=>['style'=>'width: 15%;text-align:center'],
+            ],
+            [
+            'attribute' => 'icon',
+            'enableSorting' => true,
+            'contentOptions'=>['style'=>'width: 8%;text-align:center'],
+            ],
+            [
+            'attribute' => 'url',
+            'enableSorting' => true,
+            'contentOptions'=>['style'=>'width: 25%;text-align:left'],
+            ],
             // 'options:ntext',
             // 'parent_id',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [ 
+            'attribute' => 'visible',
+            'enableSorting' => true,
+            'format' => 'raw',
+            'value' => function ($model) {                      
+                    return $model->visible == 1 ? '<b style="color:#6CAF3F">Ativo</b>' : '<b style="color:#d43f3a">Inativo</b>';
+                    },
+            'filter'=>[0=>'Não', 1=>'Sim'],
+            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ], 
+            [
+              'class' => 'yii\grid\ActionColumn',
+              'header' => 'Ações',  
+              'contentOptions'=>['style'=>'width: 5%;text-align:right'],
+              'headerOptions' => ['class' => 'text-center'],                            
+              'template' => '{update} {delete}',
+              'buttons' => [                              
+                  'view' => function ($url, $model) {
+                      return Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', $url, [
+                                  'title' => 'Detalhes',
+                                  'class' => 'btn btn-default btn-xs',
+                      ]);
+                  },                                                
+                  'update' => function ($url, $model) {
+                      return Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
+                                  'title' => 'Alterar',
+                                  'class' => 'btn btn-default btn-xs',
+                      ]);
+                  },
+                  'delete' => function ($url, $model) {
+                      return Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
+                                  'title' => 'Excluir',
+                                  'class' => 'btn btn-default btn-xs',
+                                  'data-confirm' => 'Tem certeza que deseja excluir?',
+                                  'data-method' => 'post',
+                                  'data-pjax' => '0',
+                      ]);
+                  },                                    
+                ],
+            ],
         ],
     ]); ?>
 

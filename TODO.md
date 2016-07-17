@@ -24,7 +24,6 @@ Criar Galeria de fotos
 MÓDULOS
 --------------------
 - Modularizar as ferramentas auxiliares (visitas, produtividade, etc) ***
-
 - Tentar reduzir o Managerdailyprod... ***
 
 - Migração da ferramenta de Apoio Cadastro
