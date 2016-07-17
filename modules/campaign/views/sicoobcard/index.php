@@ -26,7 +26,7 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
             <p><?=$message?></p>
         </div>
     <?php endforeach ?>
-    
+
     <div class="panel panel-default">
         <div class="panel-body">     
         <?= GridView::widget([
@@ -47,15 +47,32 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
                   'filter' => Sicoobcard::$Static_product_type,
                   'contentOptions'=>['style'=>'width: 10%;text-align:center'],
                 ],                            
-                'name',
-                'card',
+                [
+                  'attribute' => 'name',
+                  'enableSorting' => true,
+                  'contentOptions'=>['style'=>'width: 15%;text-align:letf'],
+                ],                 
+                [
+                  'attribute' => 'card',
+                  'enableSorting' => true,
+                  'contentOptions'=>['style'=>'width: 12%;text-align:center'],
+                ],                
                 [
                   'attribute' => 'purchasedate',
                   'enableSorting' => true,
                   'contentOptions'=>['style'=>'width: 5%;text-align:center'],
                   'format' => ['date', 'php:d/m/Y'],
                 ],                  
-                'purchasevalue',
+                [
+                  'attribute' => 'purchasevalue',
+                  'enableSorting' => true,
+                  'contentOptions'=>['style'=>'width: 6%;text-align:center'],
+                ],                 
+                [
+                  'attribute' => 'purchaselocal',
+                  'enableSorting' => true,
+                  'contentOptions'=>['style'=>'width: 25%;text-align:center'],
+                ],                  
                 [
                   'attribute' => 'user_id',
                   'format' => 'raw',

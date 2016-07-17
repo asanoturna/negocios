@@ -12,8 +12,8 @@ class SicoobcardSearch extends Sicoobcard
     public function rules()
     {
         return [
-            [['id', 'purchaselocal', 'product_type', 'user_id'], 'integer'],
-            [['name', 'card', 'purchasedate', 'created', 'updated'], 'safe'],
+            [['id', 'product_type', 'user_id'], 'integer'],
+            [['name', 'purchaselocal', 'card', 'purchasedate', 'created', 'updated'], 'safe'],
             [['purchasevalue'], 'number'],
         ];
     }
@@ -27,10 +27,16 @@ class SicoobcardSearch extends Sicoobcard
     {
         $query = Sicoobcard::find();
 
-        // add conditions that should always apply here
-
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_DESC, 
+                ]
+            ],
+            'pagination' => [
+                'pageSize' => 50,
+            ],            
         ]);
 
         $this->load($params);
@@ -46,7 +52,6 @@ class SicoobcardSearch extends Sicoobcard
             'id' => $this->id,
             'purchasedate' => $this->purchasedate,
             'purchasevalue' => $this->purchasevalue,
-            'purchaselocal' => $this->purchaselocal,
             'product_type' => $this->product_type,
             'created' => $this->created,
             'updated' => $this->updated,
@@ -54,6 +59,7 @@ class SicoobcardSearch extends Sicoobcard
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'purchaselocal', $this->purchaselocal])
             ->andFilterWhere(['like', 'card', $this->card]);
 
         return $dataProvider;

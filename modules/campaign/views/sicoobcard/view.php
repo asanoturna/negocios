@@ -30,15 +30,36 @@ $this->title = 'Campanha Sicoobcard Todo Dia - #' . $model->name;
         'model' => $model,
         'attributes' => [
             'id',
+            [ 
+                'attribute' => 'product_type',  
+                'format' => 'raw',
+                'value' => $model->ProductType,
+            ],             
             'name',
             'card',
-            'purchasedate',
+            [ 
+                'attribute' => 'purchasedate',
+                'format' => 'raw',
+                'value' => date("d/m/Y",  strtotime($model->purchasedate))
+            ],              
             'purchasevalue',
             'purchaselocal',
-            'product_type',
-            'created',
-            'updated',
-            'user_id',
+            [ 
+                'label' => 'Usuário',
+                'format' => 'raw',
+                'value' => $model->user->username,
+            ],             
+            [ 
+                'attribute' => 'created',
+                'format' => 'raw',
+                'value' => date("d/m/Y",  strtotime($model->created))
+            ],  
+            [ 
+                'attribute' => 'updated',
+                'format' => 'raw',
+                //'value' => date("d/m/Y",  strtotime($model->updated))
+                'value' => $model->updated == null ? 'Sem alteração' : date("d/m/Y",  strtotime($model->updated)),                
+            ],                          
         ],
     ]) ?>
 
