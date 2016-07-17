@@ -36,7 +36,7 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
                 [
                   'attribute' => 'id',
                   'enableSorting' => true,
-                  'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+                  'contentOptions'=>['style'=>'width: 5%;text-align:center'],
                 ], 
                 [
                   'attribute' => 'product_type',
@@ -50,12 +50,12 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
                 [
                   'attribute' => 'name',
                   'enableSorting' => true,
-                  'contentOptions'=>['style'=>'width: 15%;text-align:letf'],
+                  'contentOptions'=>['style'=>'width: 20%;text-align:letf'],
                 ],                 
                 [
                   'attribute' => 'card',
                   'enableSorting' => true,
-                  'contentOptions'=>['style'=>'width: 12%;text-align:center'],
+                  'contentOptions'=>['style'=>'width: 10%;text-align:center'],
                 ],                
                 [
                   'attribute' => 'purchasedate',
@@ -66,12 +66,12 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
                 [
                   'attribute' => 'purchasevalue',
                   'enableSorting' => true,
-                  'contentOptions'=>['style'=>'width: 6%;text-align:center'],
+                  'contentOptions'=>['style'=>'width: 5%;text-align:center'],
                 ],                 
                 [
                   'attribute' => 'purchaselocal',
                   'enableSorting' => true,
-                  'contentOptions'=>['style'=>'width: 25%;text-align:center'],
+                  'contentOptions'=>['style'=>'width: 20%;text-align:center'],
                 ],                  
                 [
                   'attribute' => 'user_id',
@@ -81,7 +81,7 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
                       return $model->user ? $model->user->username : '<span class="text-danger"><em>Nenhum</em></span>';
                   },
                   'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
-                  'contentOptions'=>['style'=>'width: 8%;text-align:left'],
+                  'contentOptions'=>['style'=>'width: 10%;text-align:left'],
                 ],
                 [
                 'class' => 'yii\grid\ActionColumn',
@@ -90,28 +90,35 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
                 'headerOptions' => ['class' => 'text-center'],                            
                 'template' => '{view} {update} {delete}',
                 'buttons' => [
-                               
-                      'view' => function ($url, $model) {
-                          return Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', $url, [
-                                      'title' => 'Detalhes',
-                                      'class' => 'btn btn-default btn-xs',
-                          ]);
-                      },                                                
-                      'update' => function ($url, $model) {
-                          return Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
-                                      'title' => 'Alterar',
-                                      'class' => 'btn btn-default btn-xs',
-                          ]);
-                      },
-                      'delete' => function ($url, $model) {
-                          return Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
-                                      'title' => 'Excluir',
-                                      'class' => 'btn btn-default btn-xs',
-                                      'data-confirm' => 'Tem certeza que deseja excluir?',
-                                      'data-method' => 'post',
-                                      'data-pjax' => '0',
-                          ]);
-                      },                                    
+                  'view' => function ($url, $model) {
+                      return Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', $url, [
+                                  'title' => 'Detalhes',
+                                  'class' => 'btn btn-default btn-xs',
+                      ]);
+                  },                                                
+                  'update' => function ($url, $model) {
+                      return $model->user_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
+                                  'title' => 'Alterar',
+                                  'class' => 'btn btn-default btn-xs',
+                      ]): Html::a('<span class="glyphicon glyphicon-pencil" ></span>', "#", [
+                                  'title' => 'Registro pertence a outro usuário!',
+                                  'class' => 'btn btn-default btn-xs',
+                                  'disabled' => true,
+                      ]);
+                  },
+                  'delete' => function ($url, $model) {
+                      return $model->user_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
+                                  'title' => 'Excluir',
+                                  'class' => 'btn btn-default btn-xs',
+                                  'data-confirm' => 'Tem certeza que deseja excluir?',
+                                  'data-method' => 'post',
+                                  'data-pjax' => '0',
+                      ]): Html::a('<span class="glyphicon glyphicon-trash" ></span>', "#", [
+                                  'title' => 'Registro pertence a outro usuário!',
+                                  'class' => 'btn btn-default btn-xs',
+                                  'disabled' => true,
+                      ]);
+                  },                                   
                     ],                
               ],
             ],

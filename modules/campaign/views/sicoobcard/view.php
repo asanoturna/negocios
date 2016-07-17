@@ -15,17 +15,6 @@ $this->title = 'Campanha Sicoobcard Todo Dia - #' . $model->name;
     </div>
     <hr/>
 
-    <p class="pull-right">
-        <?= Html::a('Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Excluir', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Confirma exclusão do registro?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
