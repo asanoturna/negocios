@@ -13,7 +13,7 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
     <div class="row">
       <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
       <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;">
-      <?= Html::a('Adicionar', ['create'], ['class' => 'btn btn-success']) ?>
+      <?= Html::a('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar', ['create'], ['class' => 'btn btn-success']) ?>
       </span></div>
     </div>
     <hr/>
@@ -65,6 +65,7 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
                 ],                  
                 [
                   'attribute' => 'purchasevalue',
+                  'format'=>['decimal',2],
                   'enableSorting' => true,
                   'contentOptions'=>['style'=>'width: 5%;text-align:center'],
                 ],                 
