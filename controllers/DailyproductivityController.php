@@ -305,7 +305,7 @@ class DailyproductivityController extends Controller
         if (($model = Dailyproductivity::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            throw new NotFoundHttpException('Pagina solicitada não foi encontrada');
         }
     }
 }

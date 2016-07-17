@@ -22,9 +22,8 @@ use kartik\money\MaskMoney;
       <div class="panel-body">
         <div class="row">
         <div class="col-md-6"><?= $form->field($model, 'client_name')->textInput(['maxlength' => true]) ?></div>
-        <div class="col-md-6">    <?= $form->field($model, 'client_phone')->widget(\yii\widgets\MaskedInput::classname(), [
-        'mask' => ['(99)9999-9999', '(99)99999-9999'],
-    ]) ?>   </div>
+        <div class="col-md-6"><?= $form->field($model, 'client_phone')->widget(\yii\widgets\MaskedInput::classname(), ['mask' => ['(99)9999-9999', '(99)99999-9999'],]) ?>
+        </div>
         </div>
 
         <div class="row">

@@ -1,5 +1,6 @@
 INTRANET
 --------------------
+Bloquear uso do IE versão 8 pra baixo
 Corrigir o titulo em todas as paginas: "Intranet > Visitas dos Gerentes"
 Corrigir TODOS campos para apenas usuarios ativos aparecerem (e nao aparecer o admin)
 Filtros na paginas "Colaboradores"
@@ -13,12 +14,11 @@ Pegar lista com data de nascimento de todos
 Área do Usuário - Criar campo NOTAS para anotações diversas do colaborador
 
 Corrigir telas responsivas (gridview, etc)
-Alerta de pendencias para usuario (visitas,prod diaria,etc)
 Envio de email (recover pass, notifications, etc)
 
 
 Criar Área de Alertas (local mais visivel no top da intranet)
-Criar calendario (sinc google agenda ?)
+Criar Calendario de Eventos (sinc google agenda ?)
 Criar Gestão de arquivos
 Criar Área de Notícias (comentarios? likes?)
 Criar Galeria de fotos
@@ -26,6 +26,7 @@ Criar Galeria de fotos
 MÓDULOS
 --------------------
 - Modularizar as ferramentas auxiliares (visitas, produtividade, etc) ***
+
 - Tentar reduzir o Managerdailyprod... ***
 
 - Migração da ferramenta de Apoio Cadastro
