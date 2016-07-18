@@ -19,7 +19,6 @@ class DepartmentSearch extends Department
 
     public function scenarios()
     {
-        // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
 
@@ -27,10 +26,16 @@ class DepartmentSearch extends Department
     {
         $query = Department::find();
 
-        // add conditions that should always apply here
-
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'name' => SORT_ASC, 
+                ]
+            ],
+            'pagination' => [
+                'pageSize' => 50,
+            ],             
         ]);
 
         $this->load($params);

@@ -6,7 +6,6 @@ use Yii;
 
 class Location extends \yii\db\ActiveRecord
 {
-
     public static function tableName()
     {
         return 'location';
@@ -17,8 +16,10 @@ class Location extends \yii\db\ActiveRecord
         return [
             [['shortname', 'fullname', 'is_active'], 'required'],
             [['is_active'], 'integer'],
-            [['shortname'], 'string', 'max' => 50],
-            [['fullname'], 'string', 'max' => 100]
+            [['shortname','num_cnpj','zipcode','phone'], 'string', 'max' => 50],
+            [['fullname','email'], 'string', 'max' => 100],
+            [['address'], 'string', 'max' => 200],
+            [['email'], 'email'],
         ];
     }
 

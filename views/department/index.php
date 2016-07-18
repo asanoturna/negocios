@@ -38,9 +38,22 @@ $this->title = 'Departamentos';
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
             'columns' => [
-                'id',
-                'name',
-                'description:ntext',
+                [
+                'attribute' => 'id',
+                'enableSorting' => true,
+                'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+                ],
+                [
+                'attribute' => 'name',
+                'enableSorting' => true,
+                'contentOptions'=>['style'=>'width: 20%;text-align:center'],
+                ],
+                [
+                'attribute' => 'description',
+                'format'=>'html',
+                'enableSorting' => true,
+                'contentOptions'=>['style'=>'width: 50%;text-align:left'],
+                ],
                 [ 
                 'attribute' => 'is_active',
                 'enableSorting' => true,
@@ -49,7 +62,7 @@ $this->title = 'Departamentos';
                         return $model->is_active == 1 ? '<b style="color:#6CAF3F">Ativo</b>' : '<b style="color:#d43f3a">Inativo</b>';
                         },
                 'filter'=>[0=>'Não', 1=>'Sim'],
-                'contentOptions'=>['style'=>'width: 6%;text-align:center'],
+                'contentOptions'=>['style'=>'width: 5%;text-align:center'],
                 ], 
             [
               'class' => 'yii\grid\ActionColumn',

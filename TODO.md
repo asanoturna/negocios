@@ -6,6 +6,8 @@ Corrigir TODOS campos para apenas usuarios ativos aparecerem (e nao aparecer o a
 Filtros na paginas "Colaboradores"
 Pegar lista com data de nascimento de todos
 
+Departamento > Descrição (null)
+Departamento > Campo email (null)
 *********************
 --- Usar listview http://www.codevoila.com/post/4/yii2-listview-example
 

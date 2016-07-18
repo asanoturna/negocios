@@ -14,10 +14,11 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'is_active')->radioList([
-        '1' => 'Sim', 
-        '0' => 'Não',
+        '1' => 'Ativo', 
+        '0' => 'Inativo',
         ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>
 
+    <hr/>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Gravar' : 'Gravar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

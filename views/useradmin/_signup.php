@@ -96,9 +96,10 @@ use yii\widgets\MaskedInput;
 
     </div>      
 
-        <div class="form-group">
-            <?= Html::submitButton('Gravar', ['class' => 'btn btn-success', 'name' => 'signup-button']) ?>
-        </div>
+    <hr/>
+    <div class="form-group">
+        <?= Html::submitButton('Gravar', ['class' => 'btn btn-success', 'name' => 'signup-button']) ?>
+    </div>
 
     <?php ActiveForm::end(); ?>
 

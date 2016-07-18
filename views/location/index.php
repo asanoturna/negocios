@@ -37,9 +37,31 @@ $this->title = 'Unidades';
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            'id',
-            'shortname',
-            'fullname',
+            [
+            'attribute' => 'id',
+            'enableSorting' => true,
+            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],
+            [
+            'attribute' => 'shortname',
+            'enableSorting' => true,
+            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],
+            [
+            'attribute' => 'fullname',
+            'enableSorting' => true,
+            'contentOptions'=>['style'=>'width: 15%;text-align:left'],
+            ],
+            [
+            'attribute' => 'email',
+            'enableSorting' => true,
+            'contentOptions'=>['style'=>'width: 15%;text-align:left'],
+            ],     
+            [
+            'attribute' => 'phone',
+            'enableSorting' => true,
+            'contentOptions'=>['style'=>'width: 8%;text-align:left'],
+            ],               
             [ 
             'attribute' => 'is_active',
             'enableSorting' => true,

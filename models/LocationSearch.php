@@ -14,13 +14,12 @@ class LocationSearch extends Location
     {
         return [
             [['id', 'is_active'], 'integer'],
-            [['shortname', 'fullname'], 'safe'],
+            [['shortname', 'fullname', 'address', 'zipcode', 'num_cnpj', 'email','phone'], 'safe'],
         ];
     }
 
     public function scenarios()
     {
-        // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
 
@@ -30,6 +29,14 @@ class LocationSearch extends Location
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'shortname' => SORT_ASC, 
+                ]
+            ],
+            'pagination' => [
+                'pageSize' => 50,
+            ],             
         ]);
 
         $this->load($params);
@@ -46,7 +53,12 @@ class LocationSearch extends Location
         ]);
 
         $query->andFilterWhere(['like', 'shortname', $this->shortname])
-            ->andFilterWhere(['like', 'fullname', $this->fullname]);
+            ->andFilterWhere(['like', 'fullname', $this->fullname])
+            ->andFilterWhere(['like', 'address', $this->address])
+            ->andFilterWhere(['like', 'zipcode', $this->zipcode])
+            ->andFilterWhere(['like', 'num_cnpj', $this->num_cnpj])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'phone', $this->phone]);
 
         return $dataProvider;
     }

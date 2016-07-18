@@ -98,6 +98,7 @@ use yii\widgets\MaskedInput;
 
     </div>      
 
+    <hr/>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Gravar' : 'Gravar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-success']) ?>
     </div>

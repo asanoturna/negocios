@@ -9,25 +9,35 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'shortname')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+      <div class="col-md-6">
 
-    <?= $form->field($model, 'fullname')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'shortname')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'fullname')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'zipcode')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'num_cnpj')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'is_active')->radioList([
+            '1' => 'Ativo', 
+            '0' => 'Inativo',
+            ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>        
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+      </div>
+      <div class="col-md-6">
 
-    <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'is_active')->radioList([
-        '1' => 'Sim', 
-        '0' => 'Não',
-        ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>
+        <?= $form->field($model, 'zipcode')->textInput(['maxlength' => true]) ?>
 
+        <?= $form->field($model, 'num_cnpj')->textInput(['maxlength' => true]) ?>
+
+        <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>      
+
+      </div>
+    </div>    
+
+    <hr/>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Gravar' : 'Gravar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

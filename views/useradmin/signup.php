@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Cadastro de Usuário';
+$this->title = 'Novo Usuário';
 ?>
 <div class="useradmin-create">
 
