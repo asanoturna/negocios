@@ -28,8 +28,8 @@ use yii\widgets\MaskedInput;
             <?= $form->field($model, 'password')->textInput(['maxlength' => true]) ?>
 
             <?= $form->field($model, 'status')->radioList([
-                '1' => 'Sim', 
-                '0' => 'Não',
+                '1' => 'Ativo', 
+                '0' => 'Inativo',
                 ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>            
 
             <hr/>
