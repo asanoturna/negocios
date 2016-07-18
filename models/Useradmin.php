@@ -14,16 +14,14 @@ class Useradmin extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'fullname', 'auth_key', 'password_hash', 'updated_at', 'created_at', 'email', 'birthdate', 'location_id', 'department_id', 'status'], 'required'],
+            [['username', 'fullname', 'updated_at', 'created_at', 'email', 'birthdate', 'location_id', 'department_id', 'status'], 'required'],
             [['updated_at', 'created_at', 'status', 'location_id', 'department_id', 'can_admin', 'can_visits', 'can_productivity', 'can_requestresources', 'can_managervisits', 'can_managerproductivity', 'can_managerrequestresources'], 'integer'],
             [['birthdate'], 'safe'],
-            [['username', 'password_hash', 'password_reset_token', 'email', 'fullname'], 'string', 'max' => 255],
-            [['auth_key'], 'string', 'max' => 32],
+            [['username', 'email', 'fullname'], 'string', 'max' => 255],
             [['avatar', 'phone', 'celphone'], 'string', 'max' => 50],
             [['username'], 'unique'],
             [['email'], 'unique'],
             [['email'], 'email'],
-            [['password_reset_token'], 'unique'],
         ];
     }
 
@@ -55,6 +53,25 @@ class Useradmin extends \yii\db\ActiveRecord
             'can_managerrequestresources' => 'Gerenciar Recursos',
         ];
     }
+
+    public function change()
+    {
+        if (!$this->validate()) {
+            return null;
+        }
+        
+        $user = new User();
+        $user->username = $this->username;
+        $user->email = $this->email;
+        $user->fullname = $this->fullname;
+        $user->status = $this->status;
+        $user->location_id = $this->location_id;
+        $user->department_id = $this->department_id;
+        $user->phone = $this->phone;
+        $user->celphone = $this->celphone;
+        $user->birthdate = $this->birthdate;        
+        return $user->save() ? $user : null;
+    }    
 
     public function getLocation()
     {

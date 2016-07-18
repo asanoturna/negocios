@@ -70,7 +70,7 @@ $this->title = 'Detalhes do Usuário #' . $model->id;
 
       <div class="col-md-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><i class="fa fa-key" aria-hidden="true"></i> Permissões de Acesso</div>
+          <div class="panel-heading"><i class="fa fa-shield" aria-hidden="true"></i> Permissões de Acesso</div>
           <div class="panel-body">
             <?= DetailView::widget([
                 'model' => $model,
@@ -93,22 +93,22 @@ $this->title = 'Detalhes do Usuário #' . $model->id;
                     [ 
                     'attribute' => 'can_requestresources', 
                     'format' => 'raw',
-                    'value' => $model->can_admin == 1 ? '<b style="color:#6CAF3F">Sim</b>' : '<b style="color:#d43f3a">Não</b>',
+                    'value' => $model->can_requestresources == 1 ? '<b style="color:#6CAF3F">Sim</b>' : '<b style="color:#d43f3a">Não</b>',
                     ],      
                     [ 
                     'attribute' => 'can_managervisits', 
                     'format' => 'raw',
-                    'value' => $model->can_visits == 1 ? '<b style="color:#6CAF3F">Sim</b>' : '<b style="color:#d43f3a">Não</b>',
+                    'value' => $model->can_managervisits == 1 ? '<b style="color:#6CAF3F">Sim</b>' : '<b style="color:#d43f3a">Não</b>',
                     ],  
                     [ 
                     'attribute' => 'can_managerproductivity', 
                     'format' => 'raw',
-                    'value' => $model->can_productivity == 1 ? '<b style="color:#6CAF3F">Sim</b>' : '<b style="color:#d43f3a">Não</b>',
+                    'value' => $model->can_managerproductivity == 1 ? '<b style="color:#6CAF3F">Sim</b>' : '<b style="color:#d43f3a">Não</b>',
                     ],
                     [ 
                     'attribute' => 'can_managerrequestresources', 
                     'format' => 'raw',
-                    'value' => $model->can_productivity == 1 ? '<b style="color:#6CAF3F">Sim</b>' : '<b style="color:#d43f3a">Não</b>',
+                    'value' => $model->can_managerrequestresources == 1 ? '<b style="color:#6CAF3F">Sim</b>' : '<b style="color:#d43f3a">Não</b>',
                     ],                                                                  
                 ],
             ]) ?>

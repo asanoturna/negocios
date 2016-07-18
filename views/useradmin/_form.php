@@ -28,23 +28,36 @@ use yii\widgets\MaskedInput;
             <?php // $form->field($model, 'password_hash')->textInput(['maxlength' => true]) ?>
 
             <?= $form->field($model, 'status')->radioList([
-                '1' => 'Sim', 
-                '0' => 'Não',
+                '1' => 'Ativo', 
+                '0' => 'Inativo',
                 ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>            
 
             <hr/>
 
-            <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+            <div class="row">
+              <div class="col-md-3">
+              <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+              </div>
+              <div class="col-md-3">
+              <?= $form->field($model, 'celphone')->widget(\yii\widgets\MaskedInput::classname(), ['mask' => ['(99)99999-9999'],
+            ]) ?> 
+            </div>
+            <div class="col-md-3"><?= $form->field($model, 'birthdate')->textInput() ?></div>
+            </div>            
 
-            <?= $form->field($model, 'celphone')->widget(\yii\widgets\MaskedInput::classname(), [
-                'mask' => ['(99)99999-9999'],
-            ]) ?>            
 
-            <?= $form->field($model, 'birthdate')->textInput() ?>
+            <div class="row">
+              <div class="col-md-5">
+              <?= $form->field($model, 'location_id')->dropDownList(ArrayHelper::map(Location::find()->where(['is_active' => 1])->orderBy("fullname ASC")->all(), 'id', 'fullname'),['prompt'=>'--'])  ?> 
+              </div>
+              <div class="col-md-5">
+              <?= $form->field($model, 'department_id')->dropDownList(ArrayHelper::map(Department::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?>
+              </div>
+            </div>
 
-            <?= $form->field($model, 'location_id')->dropDownList(ArrayHelper::map(Location::find()->where(['is_active' => 1])->orderBy("fullname ASC")->all(), 'id', 'fullname'),['prompt'=>'--'])  ?> 
+            
 
-            <?= $form->field($model, 'department_id')->dropDownList(ArrayHelper::map(Department::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?> 
+            
 
           </div>
         </div>
@@ -55,42 +68,19 @@ use yii\widgets\MaskedInput;
           <div class="panel-heading"><i class="fa fa-shield" aria-hidden="true"></i> Permissões de Acesso</div>
           <div class="panel-body">
 
-            <?= $form->field($model, 'can_admin')->radioList([
-                '1' => 'Sim', 
-                '0' => 'Não',
-                ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>
+            <?= $form->field($model, 'can_admin')->checkbox(['uncheck' =>  0, 'checked' => 1]); ?>     
 
-            <?= $form->field($model, 'can_admin')->checkbox(['uncheck' =>  0, 'checked' => 1]); ?>                
+            <?= $form->field($model, 'can_visits')->checkbox(['uncheck' =>  0, 'checked' => 1]); ?> 
 
-            <?= $form->field($model, 'can_visits')->radioList([
-                '1' => 'Sim', 
-                '0' => 'Não',
-                ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>
+            <?= $form->field($model, 'can_productivity')->checkbox(['uncheck' =>  0, 'checked' => 1]); ?>            
 
-            <?= $form->field($model, 'can_productivity')->radioList([
-                '1' => 'Sim', 
-                '0' => 'Não',
-                ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>
+            <?= $form->field($model, 'can_requestresources')->checkbox(['uncheck' =>  0, 'checked' => 1]); ?>   
 
-            <?= $form->field($model, 'can_requestresources')->radioList([
-                '1' => 'Sim', 
-                '0' => 'Não',
-                ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>
+            <?= $form->field($model, 'can_managervisits')->checkbox(['uncheck' =>  0, 'checked' => 1]); ?>   
 
-            <?= $form->field($model, 'can_managervisits')->radioList([
-                '1' => 'Sim', 
-                '0' => 'Não',
-                ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>
+            <?= $form->field($model, 'can_managerproductivity')->checkbox(['uncheck' =>  0, 'checked' => 1]); ?>   
 
-            <?= $form->field($model, 'can_managerproductivity')->radioList([
-                '1' => 'Sim', 
-                '0' => 'Não',
-                ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>
-
-            <?= $form->field($model, 'can_managerrequestresources')->radioList([
-                '1' => 'Sim', 
-                '0' => 'Não',
-                ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>
+            <?= $form->field($model, 'can_managerrequestresources')->checkbox(['uncheck' =>  0, 'checked' => 1]); ?> 
 
           </div>
         </div>

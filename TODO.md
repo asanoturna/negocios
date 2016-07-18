@@ -4,10 +4,9 @@ Bloquear uso do IE versão 8 pra baixo
 Corrigir o titulo em todas as paginas: "Intranet > Visitas dos Gerentes"
 Corrigir TODOS campos para apenas usuarios ativos aparecerem (e nao aparecer o admin)
 Filtros na paginas "Colaboradores"
-Pegar lista com data de nascimento de todos
 
-Departamento > Descrição (null)
 Departamento > Campo email (null)
+
 *********************
 --- Usar listview http://www.codevoila.com/post/4/yii2-listview-example
 
