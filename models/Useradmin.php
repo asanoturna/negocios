@@ -54,25 +54,6 @@ class Useradmin extends \yii\db\ActiveRecord
         ];
     }
 
-    public function change()
-    {
-        if (!$this->validate()) {
-            return null;
-        }
-        
-        $user = new User();
-        $user->username = $this->username;
-        $user->email = $this->email;
-        $user->fullname = $this->fullname;
-        $user->status = $this->status;
-        $user->location_id = $this->location_id;
-        $user->department_id = $this->department_id;
-        $user->phone = $this->phone;
-        $user->celphone = $this->celphone;
-        $user->birthdate = $this->birthdate;        
-        return $user->save() ? $user : null;
-    }    
-
     public function getLocation()
     {
         return $this->hasOne(Location::className(), ['id' => 'location_id']);

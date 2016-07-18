@@ -44,15 +44,6 @@ $this->title = 'Usuários';
             'enableSorting' => true,
             'contentOptions'=>['style'=>'width: 4%;text-align:center'],
             ],
-            // [
-            // 'attribute' => 'avatar',
-            // 'format' => 'html',
-            // 'value' => function ($model) {
-            //     return Html::img(Yii::$app->params['usersAvatars'].Yii::$app->user->identity->avatar,
-            //         ['width' => '50px', 'class' => 'img-rounded img-responsive']);
-            // },
-            // 'contentOptions'=>['style'=>'width: 6%;text-align:middle'],                    
-            // ],
             [
             'attribute' => 'username',
             'enableSorting' => true,
@@ -84,14 +75,20 @@ $this->title = 'Usuários';
               'header' => 'Ações',  
               'contentOptions'=>['style'=>'width: 10%;text-align:right'],
               'headerOptions' => ['class' => 'text-center'],                            
-              'template' => '{avatar} {view} {update} {delete}',
+              'template' => '{avatar} {password} {view} {update} {delete}',
               'buttons' => [
                   'avatar' => function ($url, $model) {
                       return Html::a('<span class="glyphicon glyphicon-camera" ></span>', $url, [
                                   'title' => 'Alterar Foto',
                                   'class' => 'btn btn-default btn-xs',
                       ]);
-                  },                                
+                  },    
+                  'password' => function ($url, $model) {
+                      return Html::a('<span class="glyphicon glyphicon-lock" ></span>', $url, [
+                                  'title' => 'Redefinir Senha',
+                                  'class' => 'btn btn-default btn-xs',
+                      ]);
+                  },                                               
                   'view' => function ($url, $model) {
                       return Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', $url, [
                                   'title' => 'Detalhes',
