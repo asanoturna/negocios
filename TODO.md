@@ -29,7 +29,6 @@ MÓDULOS
 - Tentar reduzir o Managerdailyprod... ***
 
 - Migração da ferramenta de Apoio Cadastro
-- ADMIN -> Gestao de menus (tb menu_items)
 - ADMIN -> Upload de avatar com redimencionamento
 - ADMIN -> Consertar campo "birthdate"
 

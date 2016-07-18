@@ -39,7 +39,7 @@ $this->title = 'Aniversariantes do Mês';
           <div class="panel-body">
                 <?= GridView::widget([
                   'dataProvider' => $dataProviderBirthdate,
-                  'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
+                  'emptyText'    => '</br><p class="text-danger">Nenhum aniversariante encontrado</p>',
                   'summary'      =>  '',
                   'showHeader'   => true,        
                   'tableOptions' => ['class'=>'table'],

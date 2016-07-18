@@ -76,7 +76,8 @@ class SicoobcardController extends Controller
         $model->updated = date('Y-m-d');        
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('campaign-success', 'Registro alterado com sucesso!');
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
