@@ -6,7 +6,7 @@ return [
     //
     'adminEmail'        => 'admin@example.com',
     //
-    'appname'           => 'Intranet Negócios',
+    'appname'           => 'Intranet Crediriodoce',
     //
     'company'           => 'Sicoob Crediriodoce',
     //

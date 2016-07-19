@@ -61,7 +61,7 @@ $this->title = 'Aniversariantes do Mês';
                             'value' => function ($data) {                      
                                 return $data["fullname"];
                             },
-                            'contentOptions'=>['style'=>'width: 60%;text-align:left;vertical-align: middle;'],
+                            'contentOptions'=>['style'=>'width: 60%;text-align:left;vertical-align: middle;text-transform: uppercase'],
                         ],
                         [
                             'attribute' => 'dia',
