@@ -37,8 +37,12 @@ if(preg_match('/(?i)msie [5-8]/',$_SERVER['HTTP_USER_AGENT']))
     ]); ?>
 
 <div class="row">
-    <div class="col-xs-6">
-    <!-- LINHA 2 / COLUNA 1 -->
+
+  <div class="col-xs-6">
+  <div class="panel panel-default">
+  <div class="panel-heading"><b>Informações do Cliente</b></div>
+  <div class="panel-body">
+
     <?php echo $form->field($model, 'date')->widget('trntv\yii\datetime\DateTimeWidget',
         [
             'phpDatetimeFormat' => 'yyyy-MM-dd',
@@ -64,9 +68,25 @@ if(preg_match('/(?i)msie [5-8]/',$_SERVER['HTTP_USER_AGENT']))
     )->dropDownList(app\models\Product::getHierarchy(), ['prompt' => 'Selecione', 'class'=>'form-control required']);
     ?>
 
-    </div>
-    <div class="col-xs-6">
-  <!-- LINHA 1 / COLUNA 2 -->
+    <hr/>
+
+    <?= $form->field($model, 'person_id')->radioList(
+(ArrayHelper::map(Person::find()->where('id != :id', ['id'=>7])->orderBy("name ASC")->all(), 'id', 'name'))
+            , ['itemOptions' => ['class' =>'radio-inline','labelOptions'=>array('style'=>'padding:4px;')]])->label('Pessoa');
+        ?>
+    <?= $form->field($model, 'buyer_document')->widget(\yii\widgets\MaskedInput::classname(), [
+            'mask' => ['999.999.999-99', '99.999.999/9999-99'],
+        ]) ?>
+
+    <?= $form->field($model, 'buyer_name')->textInput(['maxlength' => true]) ?>    
+
+  </div></div></div>
+
+  <div class="col-xs-6">
+  <div class="panel panel-default">
+  <div class="panel-heading"><b>Informações da Venda</b></div>
+  <div class="panel-body">
+
   <?php //echo $form->field($model, 'value')->textInput(['maxlength' => true]) 
         use kartik\money\MaskMoney;
         echo $form->field($model, 'value')->widget(MaskMoney::classname(), [
@@ -83,9 +103,7 @@ if(preg_match('/(?i)msie [5-8]/',$_SERVER['HTTP_USER_AGENT']))
             ],
         ]); 
         ?>
-<p>
-<br/>
-</p>        
+        <br/>
 
 <?php
 $productId = Html::getInputId($model, 'product_id');
@@ -338,8 +356,7 @@ JS;
 $this->registerJs($js);
 ?>
 
-        <?php //echo $form->field($model, 'commission_percent')->textInput(['maxlength' => true])
-        //http://demos.krajee.com/slider
+        <?php
             use kartik\slider\Slider;
             echo $form->field($model, 'commission_percent')->widget(Slider::classname(), [
             'name'=>'commission_percent',
@@ -354,10 +371,9 @@ $this->registerJs($js);
                 'step'=>1,
             ]
         ]);
-        ?>
-<p>
-<br/>
-</p>
+        ?>   
+        <br/> 
+        
         <?php
             echo $form->field($model, 'prazo')->widget(Slider::classname(), [
             'name'=>'prazo',
@@ -375,35 +391,17 @@ $this->registerJs($js);
         ?>
         
         <?php //echo $form->field($model, 'quantity')->textInput(['value' => 1,'maxlength' => true]) ?>
-        <?php //echo $form->field($model, 'companys_revenue', ['inputOptions' => ['value' => 5, 'class' => 'form-control']])->textInput(['readonly' => true]) ?>
-</div>
-</div>
+        <?php //echo $form->field($model, 'companys_revenue', ['inputOptions' => ['value' => 5, 'class' => 'form-control']])->textInput(['readonly' => true]) ?>  
 
-<hr/>
-
-<div class="row">
-    <div class="col-xs-6">
-    <!-- LINHA 2 / COLUNA 1 -->
+    <hr/>          
         
-        <?= $form->field($model, 'person_id')->radioList(
-(ArrayHelper::map(Person::find()->where('id != :id', ['id'=>7])->orderBy("name ASC")->all(), 'id', 'name'))
-            , ['itemOptions' => ['class' =>'radio-inline','labelOptions'=>array('style'=>'padding:4px;')]])->label('Pessoa');
-        ?>
-        <?= $form->field($model, 'buyer_document')->widget(\yii\widgets\MaskedInput::classname(), [
-            'mask' => ['999.999.999-99', '99.999.999/9999-99'],
-        ]) ?>
+    <?= $form->field($model, 'seller_id')->dropDownList(ArrayHelper::map(User::find()->where(['status' => 1])->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])?>
 
-        <?= $form->field($model, 'buyer_name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'operator_id')->dropDownList(ArrayHelper::map(User::find()->where(['status' => 1])->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])?>                
 
-    </div>
-    <div class="col-xs-6">
-    <!-- LINHA 2 / COLUNA 2 -->
-    <?= $form->field($model, 'seller_id')->dropDownList(ArrayHelper::map(User::find()->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])?>
+    </div></div></div>
 
-    <?= $form->field($model, 'operator_id')->dropDownList(ArrayHelper::map(User::find()->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])?>
-    
-    </div>
-</div>
+    </div>    
 
     <div class="form-group">
         <div class="col-lg-offset-2 col-lg-10">

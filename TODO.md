@@ -12,7 +12,6 @@ Departamento > Campo email (null)
 
 Área do Usuário - Alterar Informações
 Área do Usuário - Alterar/Enviar Foto com ajuste e redimensionamento
-Área do Usuário - Criar campo NOTAS para anotações diversas do colaborador
 
 Corrigir telas responsivas (gridview, etc)
 
@@ -28,8 +27,6 @@ MÓDULOS
 - Tentar reduzir o Managerdailyprod... ***
 
 - Migração da ferramenta de Apoio Cadastro
-- ADMIN -> Upload de avatar com redimencionamento
-- ADMIN -> Consertar campo "birthdate"
 
 - Criar de módulo Helpdesk
 - Criar de módulo Enquetes e Questionarios
@@ -38,7 +35,6 @@ MÓDULOS
 
 - Prod Diaria -> Selecionar o mês do TOP 3 ???
 - Prod Diaria -> Grafico por modalidade de produto
-
 - Prod Diaria -> Quadro Metas por agência (cadastrar metas por local para todos os produtos)
 Exe.: tabela meta > valor, pa, data(m/y), 
 

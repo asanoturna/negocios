@@ -21,10 +21,10 @@ $this->title = 'Aniversariantes do Mês';
     <?php
     $dataProviderBirthdate = new SqlDataProvider([
         'sql' => "SELECT
-            avatar, fullname, day(birthdate) as dia
-            FROM user   
-            WHERE week(birthdate) = week(Now()) 
-            ORDER BY day(birthdate)",
+                avatar, fullname, day(birthdate) as dia
+                FROM user   
+                WHERE MONTH(birthdate) = MONTH(Now()) 
+                ORDER BY day(birthdate)",
         'totalCount' => 300,
         'key'  => 'fullname',
         'pagination' => [

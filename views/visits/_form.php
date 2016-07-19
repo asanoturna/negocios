@@ -41,7 +41,7 @@ if(preg_match('/(?i)msie [5-8]/',$_SERVER['HTTP_USER_AGENT']))
     <div class="row">
         <div class="col-md-5">
         <div class="panel panel-default">
-          <div class="panel-heading">Informações do Cliente</div>
+          <div class="panel-heading"><b>Informações do Cliente</b></div>
           <div class="panel-body">
 
         <?php //echo $form->field($model, 'location_id')->input('number', ['maxlength' => 4, 'step' => '0.1', 'min' => '0']) ?>
@@ -84,7 +84,7 @@ if(preg_match('/(?i)msie [5-8]/',$_SERVER['HTTP_USER_AGENT']))
 
         <div class="col-md-7">
         <div class="panel panel-default">
-          <div class="panel-heading">Informações da Visita</div>
+          <div class="panel-heading"><b>Informações da Visita</b></div>
           <div class="panel-body">
 
         <?= $form->field($model, 'observation')->widget(\yii\redactor\widgets\Redactor::className(), [
