@@ -45,7 +45,7 @@ $this->title = 'Minhas Informações';
                 'department.name',
                 'phone',
                 'celphone',
-                'birthdate',
+                'birthdate:date',
                 [ 
                 'attribute' => 'status', 
                 'format' => 'raw',

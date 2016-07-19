@@ -87,7 +87,8 @@ class UseradminController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+                Yii::$app->session->setFlash('useradmin-success', 'Inclusão realizada com sucesso!');
+                return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
