@@ -34,6 +34,10 @@ class Dailyproductivity extends \yii\db\ActiveRecord
                 //SMS ILIMITADO
                 $this->companys_revenue = 0.30;
                 $this->value = 0;
+            }elseif($this->product_id == 503){
+                //CDC Sicoobcard
+                $this->companys_revenue = 0.01;
+                $this->value = 0;                
             }elseif($this->product_id == 301){
                 //CABAL VALE
                 $this->companys_revenue = 35.00;

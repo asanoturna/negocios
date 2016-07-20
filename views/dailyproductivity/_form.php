@@ -284,16 +284,21 @@ $('#{$productId}').on('change', function () {
         prazomin = 1;
         prazomax = 1;
 
-    }else if (id == 502){ //SMS Ilimitado
-        var min = 1;
-        var max = 1;
-        prazomin = 1;
-        prazomax = 1;
     }else if (id == 501){ //Seguro PPR
         var min = 1;
         var max = 1;
         prazomin = 1;
         prazomax = 1;
+    }else if (id == 502){ //SMS Ilimitado
+        var min = 1;
+        var max = 1;
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 503){ //CDC Sicoobcard
+        var min = 1;
+        var max = 1;
+        prazomin = 1;
+        prazomax = 1;        
         
     }else if (id == 601){ //Capital de Giro
         var min = 1;
