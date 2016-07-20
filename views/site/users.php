@@ -68,19 +68,12 @@ $this->title = 'Colaboradores';
             'attribute' => 'avatar',
             'format' => 'raw',
             'value' => function ($model) {
-                // return Html::a(Html::img(Yii::$app->params['usersAvatars'].$model->avatar,
-                //     ['width' => '50px', 'class' => 'img-rounded img-thumbnail']),['userdetail','id'=>$model->id],[
-                //                                     'data-toggle'=>"modal",
-                //                                     'data-target'=>"#myModal",
-                //                                     'data-title'=>"teste",
-                //                                     'title' => 'teste',
-                //                                     ]);
-                       return Html::a(Html::img(Yii::$app->params['usersAvatars'].$model->avatar, ['width' => '50px', 'class' => 'img-rounded img-thumbnail']),['userdetail','avatar'=>$model->avatar],[
-                                                    'data-toggle'=>"modal",
-                                                    'data-target'=>"#myModal",
-                                                    'data-title'=>"Colaborador",
-                                                    'title' => 'Colaborador',
-                                                    ]);                
+                   return Html::a(Html::img(Yii::$app->params['usersAvatars'].$model->avatar, ['width' => '50px', 'class' => 'img-rounded img-thumbnail']),['userdetail','avatar'=>$model->avatar],[
+                                                'data-toggle'=>"modal",
+                                                'data-target'=>"#myModal",
+                                                'data-title'=>"Colaborador",
+                                                'title' => 'Colaborador',
+                                                ]);                
             },
             'contentOptions'=>['style'=>'width: 5%;text-align:middle'], 
             ],            
