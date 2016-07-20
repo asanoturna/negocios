@@ -30,7 +30,7 @@ $this->title = 'Alterar Minhas Informações';
     <div class="panel panel-default">
       	<div class="panel-body">    
 
-		
+		<p class="text-muted">Recurso ainda não disponível!</p>
 
 		</div>
 	</div>

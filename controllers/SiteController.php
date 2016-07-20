@@ -62,12 +62,7 @@ class SiteController extends Controller
     }
 
     public function actionLocations()
-    {       
-        // if (Yii::$app->user->identity->can_admin == 1) {
-        //     return $this->render('locations');
-        // } else {
-        //     throw new NotFoundHttpException('Não possui permissão');
-        // }   
+    {        
         return $this->render('locations');     
     }
 
@@ -84,8 +79,16 @@ class SiteController extends Controller
         return $this->render('users', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-        ]);         
-        //return $this->render('users');        
+        ]);
+    }    
+
+    public function actionUserdetail()
+    {
+        $model = new \app\models\UseradminSearch();
+
+        return  $this->renderAjax('userdetail', [ 
+            'model' => $model,
+        ]);
     }    
 
     public function actionBirthdate()
