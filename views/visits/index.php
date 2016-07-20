@@ -33,7 +33,7 @@ $this->title = 'Visitas dos Gerentes';
 
     <div class="row">
     <div class="col-md-6">
-      <div class="panel panel-primary">
+      <div class="panel panel-default">
       <div class="panel-heading"><b>Pesquisar</b></div>
         <div class="panel-body">
           <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -41,7 +41,7 @@ $this->title = 'Visitas dos Gerentes';
       </div>
     </div>      
     <div class="col-md-6">
-      <div class="panel panel-primary">
+      <div class="panel panel-default">
       <div class="panel-heading"><b>Opções</b></div>
         <div class="panel-body">
           <?php
