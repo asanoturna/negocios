@@ -105,6 +105,11 @@ class UseradminSearch extends Useradmin
 
         $query->andWhere(['status' => 1]);
 
+        $query->andFilterWhere(['like', 'username', $this->username])
+            ->andFilterWhere(['like', 'fullname', $this->fullname])
+            ->andFilterWhere(['like', 'phone', $this->phone])
+            ->andFilterWhere(['like', 'celphone', $this->celphone]);        
+
         return $dataProvider;
     }    
 }

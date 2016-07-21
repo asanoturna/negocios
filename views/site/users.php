@@ -23,15 +23,15 @@ $this->title = 'Colaboradores';
     <?php
     echo kartik\grid\GridView::widget([
         'dataProvider'=>$dataProvider,
-        //'filterModel'=>$searchModel,
+        'filterModel'=>$searchModel,
         'showPageSummary'=>false,
-        'showHeader' => false,
+        'showHeader' => true,
         'pjax'=>false,
         'striped'=>false,
         'summary' => false,
         'responsive'=>true,
         'hover'=>false,
-        'panel'=>['type'=>'default', 'heading'=>'Lista agrupada por Unidades'],
+        //'panel'=>['type'=>'default', 'heading'=>'Lista agrupada por Unidades'],
         'export'=>[
             'fontAwesome' => true,
             'showConfirmAlert' => false,
@@ -41,11 +41,8 @@ $this->title = 'Colaboradores';
             kartik\export\ExportMenu::EXCEL => true,
             //kartik\export\ExportMenu::PDF => false,
         ],
-        'toolbar' => false,
-        'panel'=>[
-            'type'=>false,
-            'heading'=>false
-        ],         
+        //'toolbar' => true,
+        //'panel'=>['type'=>'primary', 'heading'=>'Grid Grouping Example'],      
         'columns'=>[
             [
                 'attribute'=>'location_id', 
@@ -66,19 +63,22 @@ $this->title = 'Colaboradores';
             ],
             [
             'attribute' => 'avatar',
+            'label' => '',
+            'filter' => false,
             'format' => 'raw',
             'value' => function ($model) {
-                   return Html::a(Html::img(Yii::$app->params['usersAvatars'].$model->avatar, ['width' => '50px', 'class' => 'img-rounded img-thumbnail']),['userdetail','avatar'=>$model->avatar],[
+                   return Html::a(Html::img(Yii::$app->params['usersAvatars'].'thumb/'.$model->avatar, ['width' => '50px', 'class' => 'img-rounded img-thumbnail']),['userdetail','avatar'=>$model->avatar],[
                                                 'data-toggle'=>"modal",
                                                 'data-target'=>"#myModal",
-                                                'data-title'=>"Colaborador",
-                                                'title' => 'Colaborador',
+                                                'data-title'=> $model->fullname,
+                                                'title' => $model->fullname,
                                                 ]);                
             },
             'contentOptions'=>['style'=>'width: 5%;text-align:middle'], 
             ],            
             [
             'attribute' => 'fullname',
+            'label' => 'Nome',
             'format' => 'html',
             'value' => function ($model) {
                 return "<p class=\"text-uppercase\"><strong>".$model->fullname."</strong></p><em class=\"text-lowercase\">".$model->username."</em>";
