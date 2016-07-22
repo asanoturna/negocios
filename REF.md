@@ -25,10 +25,6 @@ http://dev.filkor.org/2013/04/14/create-an-interactive-map-using-javascript-and-
 
 UTILS
 --------------------
-https://github.com/2amigos/yii2-google-maps-library
-https://github.com/Kolyunya/yii2-map-input-widget
-https://github.com/tugmaks/yii2-google-maps/blob/master/composer.json
-
 https://github.com/CostaRico/yii2-images
 https://github.com/2amigos/yii2-gallery-widget
 http://www.yiiframework.com/extension/yii2-prettyphoto/#hh4
