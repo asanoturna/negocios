@@ -56,6 +56,8 @@ use kartik\money\MaskMoney;
 
     <?= $form->field($model, 'purchaselocal')->textInput() ?>
 
+    <p class="text-warning">Estes dados podem ser extraídos tanto de um comprovante de venda que o associado trouxer, quanto do SIPAGNET, na opção "Transações na Função Crédito".</p>
+
       </div>
     </div>    
 
