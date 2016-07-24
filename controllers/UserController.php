@@ -9,6 +9,9 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ResetPasswordForm;
+use app\models\Useradmin;
+use app\models\UseradminSearch;
+use app\models\SignupForm;
 
 
 class UserController extends \yii\web\Controller
@@ -69,11 +72,19 @@ class UserController extends \yii\web\Controller
 
     public function actionChangeprofile()
     {
-        $userModel = Yii::$app->user->identity;
-
-        return $this->render('changeprofile', [
-            'userModel' => $userModel
-        ]);
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }        
+        $id = Yii::$app->user->id;
+        $model = $this->findModel($id);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->save();
+            return $this->redirect(['profile']);
+        } else {
+            return $this->render('changeprofile', [
+                    'model' => $model,
+            ]);
+        }
     }   
 
     public function actionChangeavatar()
@@ -100,4 +111,13 @@ class UserController extends \yii\web\Controller
             'userModel' => $userModel
         ]);
     }    
+
+    protected function findModel($id)
+    {
+        if (($model = Useradmin::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }     
 }
