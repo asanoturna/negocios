@@ -58,6 +58,9 @@ class SiteController extends Controller
 
     public function actionAdministration()
     {
+        // if (Yii::$app->user->isGuest) {
+        //     return $this->goHome();
+        // }        
         return $this->render('administration');
     }
 
