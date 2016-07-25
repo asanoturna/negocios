@@ -129,12 +129,7 @@ $this->title = 'Colaboradores';
             });
         })
 ");
-
-    // echo Html::a('teste',['create','group_id'=>8],[
-    //                                                 'data-toggle'=>"modal",
-    //                                                 'data-target'=>"#myModal",
-    //                                                 'data-title'=>"Detail Data",
-    //                                                 ]);
+]);
     ?>   
     </div>
     </div>

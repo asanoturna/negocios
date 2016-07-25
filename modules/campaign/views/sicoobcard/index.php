@@ -13,7 +13,7 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
     <div class="row">
       <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
       <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;">
-      <?= Html::a('<span class="glyphicon glyphicon-save" ></span> Material de Apoio', [Yii::$app->params['reportbasePath'].'/../material_de_apoio.zip'], ['class'=>'btn btn-success']) ?>
+      <a href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/doc/442/raw" class="btn btn-success" target="_blank"><span class="glyphicon glyphicon-save" ></span> Material de Apoio</a>
       <?= Html::a('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar', ['create'], ['class' => 'btn btn-success']) ?>
       </span></div>
     </div>
