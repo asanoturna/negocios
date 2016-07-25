@@ -128,8 +128,7 @@ $this->title = 'Colaboradores';
                 modal.find('.modal-body').html(data)
             });
         })
-");
-]);
+    ");
     ?>   
     </div>
     </div>
