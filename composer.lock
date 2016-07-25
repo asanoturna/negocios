@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8a165e3d21a0202c2a1b988d8ad7c243",
-    "content-hash": "df9f7612c85392cb5f6d1ece18815ef9",
+    "hash": "98a510f7cfdd052807f0a1739fc5813d",
+    "content-hash": "e2e220570c31a6a0cc1c54c31caea513",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -154,6 +154,48 @@
             ]
         },
         {
+            "name": "bower-asset/jq-cropbox",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bupy7/jquery-cropbox.git",
+                "reference": "292013d58981f0bcc740d347c5e71971b68c5a48"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bupy7/jquery-cropbox/zipball/292013d58981f0bcc740d347c5e71971b68c5a48",
+                "reference": "292013d58981f0bcc740d347c5e71971b68c5a48",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.8",
+                "bower-asset/jquery-mousewheel": "*"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "dist/*.js",
+                    "dist/*.css",
+                    "src/*.js",
+                    "src/*.css"
+                ],
+                "bower-asset-ignore": [
+                    ".*",
+                    "*.md",
+                    "/scripts"
+                ]
+            },
+            "license": [
+                "BSD 3-Clause"
+            ],
+            "description": "A lightweight and simple plugin to crop your image.",
+            "keywords": [
+                "crop",
+                "cropbox",
+                "image"
+            ]
+        },
+        {
             "name": "bower-asset/jquery",
             "version": "2.2.4",
             "source": {
@@ -183,6 +225,37 @@
                 "jquery",
                 "library"
             ]
+        },
+        {
+            "name": "bower-asset/jquery-mousewheel",
+            "version": "3.1.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jquery/jquery-mousewheel.git",
+                "reference": "67289b6b2aa0066d7d78a5807f520387135ffb22"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jquery/jquery-mousewheel/zipball/67289b6b2aa0066d7d78a5807f520387135ffb22",
+                "reference": "67289b6b2aa0066d7d78a5807f520387135ffb22",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.2.2"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "./jquery.mousewheel.js",
+                "bower-asset-ignore": [
+                    "*.json",
+                    "*.markdown",
+                    "*.txt",
+                    ".*",
+                    "!LICENSE.txt",
+                    "Gruntfile.js",
+                    "test"
+                ]
+            }
         },
         {
             "name": "bower-asset/jquery.inputmask",
@@ -361,6 +434,52 @@
             "license": [
                 "MIT"
             ]
+        },
+        {
+            "name": "bupy7/yii2-widget-cropbox",
+            "version": "4.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bupy7/yii2-widget-cropbox.git",
+                "reference": "b640ff9a906c2da1d73956d3a7256c52d9aba312"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bupy7/yii2-widget-cropbox/zipball/b640ff9a906c2da1d73956d3a7256c52d9aba312",
+                "reference": "b640ff9a906c2da1d73956d3a7256c52d9aba312",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jq-cropbox": "1.0.*",
+                "yiisoft/yii2-bootstrap": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "bupy7\\cropbox\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD 3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Vasilij Belosludcev",
+                    "email": "bupy765@gmail.com",
+                    "homepage": "http://mihaly4.ru"
+                }
+            ],
+            "description": "This is widget wrapper of https://github.com/bupy7/jquery-cropbox. This widget allows crop image before upload to server and send informations about crop in JSON format.",
+            "homepage": "https://github.com/bupy7/yii2-widget-cropbox",
+            "keywords": [
+                "crop image",
+                "extension",
+                "image",
+                "widget",
+                "yii2"
+            ],
+            "time": "2016-05-18 18:07:02"
         },
         {
             "name": "cebe/markdown",

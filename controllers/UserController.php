@@ -89,11 +89,23 @@ class UserController extends \yii\web\Controller
 
     public function actionChangeavatar()
     {
-        $userModel = Yii::$app->user->identity;
-
-        return $this->render('changeavatar', [
-            'userModel' => $userModel
-        ]);
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }        
+        $id = Yii::$app->user->id;
+        $model = $this->findModel($id);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->image = \yii\web\UploadedFile::getInstance($model, 'image');
+            $model->avatar = str_pad($model->id, 6, "0", STR_PAD_LEFT) . '.jpg';
+            if ($model->save()) 
+            {
+                return $this->redirect(['profile']);
+            }
+        } else {
+            return $this->render('changeavatar', [
+                    'model' => $model,
+            ]);
+        }
     }            
 
     public function actionResetpassword()

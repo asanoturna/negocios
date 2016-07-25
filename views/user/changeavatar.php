@@ -3,7 +3,7 @@ use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Html;
 use yii\widgets\DetailView;
 
-$this->title = 'Minha Imagem de Perfil';
+$this->title = 'Alterar Imagem';
 ?>
 <div class="site-profile">
 
@@ -30,7 +30,23 @@ $this->title = 'Minha Imagem de Perfil';
     <div class="panel panel-default">
       	<div class="panel-body">    
 
-		<p class="text-muted">Recurso ainda não disponível!</p>
+		<?php
+        use bupy7\cropbox\Cropbox;
+
+        $form = ActiveForm::begin([
+            'options' => ['enctype'=>'multipart/form-data'],
+        ]);
+
+        echo $form->field($model, 'image')->widget(Cropbox::className(), [
+            'attributeCropInfo' => 'crop_info',
+        ]);
+        ?>
+        <hr/>
+        <div class="form-group">
+            <?= Html::submitButton('Gravar', ['class' => 'btn btn-success', 'name' => 'signup-button']) ?>
+        </div>
+
+        <?php ActiveForm::end(); ?>         
 
 		</div>
 	</div>

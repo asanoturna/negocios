@@ -10,7 +10,6 @@ Departamento > Campo email (null)
 *********************
 --- Usar listview http://www.codevoila.com/post/4/yii2-listview-example
 
-Área do Usuário - Alterar Informações
 Área do Usuário - Alterar/Enviar Foto com ajuste e redimensionamento
 
 Corrigir telas responsivas (gridview, etc)
