@@ -22,7 +22,20 @@ class Sicoobcard extends \yii\db\ActiveRecord
             return null;
         }
         return self::$Static_product_type[$this->product_type];
-    }             
+    }
+
+    public static $Static_status = [
+        'PENDENTE', 
+        'APROVADO', 
+        ];   
+
+    public function getStatus()
+    {
+        if ($this->status === null) {
+            return null;
+        }
+        return self::$Static_status[$this->status];
+    }     
 
     public function rules()
     {
@@ -30,7 +43,7 @@ class Sicoobcard extends \yii\db\ActiveRecord
             [['name', 'card', 'purchasedate', 'purchasevalue', 'purchaselocal', 'product_type','user_id'], 'required'],
             [['purchasedate', 'created', 'updated'], 'safe'],
             [['purchasevalue'], 'number'],
-            [['product_type', 'user_id'], 'integer'],
+            [['product_type', 'user_id','status','approved_by'], 'integer'],
             [['purchaselocal','name'], 'string', 'max' => 100],
             [['card'], 'string', 'max' => 13],
             [['card'], 'string', 'min' => 13, 'message' => 'Favor informar os 13 dígitos'],          
@@ -50,11 +63,17 @@ class Sicoobcard extends \yii\db\ActiveRecord
             'created' => 'Incluído em',
             'updated' => 'Alterado em',
             'user_id' => 'Usuário',
+            'status' => 'Situação',
+            'approved_by' => 'Aprovado por',
         ];
     }
 
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
-    }        
+    }  
+    public function getApprovedby()
+    {
+        return $this->hasOne(User::className(), ['id' => 'approved_by']);
+    }           
 }

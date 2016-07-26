@@ -85,6 +85,21 @@ class SicoobcardController extends Controller
         }
     }
 
+    public function actionManager($id)
+    {
+        $model = $this->findModel($id);
+
+        $model->approved_by = Yii::$app->user->id;
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index', 'id' => $model->id]);
+        } else {
+            return $this->render('manager', [
+                'model' => $model,
+            ]);
+        }
+    }      
+
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();

@@ -51,7 +51,7 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
                 [
                   'attribute' => 'name',
                   'enableSorting' => true,
-                  'contentOptions'=>['style'=>'width: 20%;text-align:letf'],
+                  'contentOptions'=>['style'=>'width: 15%;text-align:letf'],
                 ],                 
                 [
                   'attribute' => 'card',
@@ -73,7 +73,7 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
                 [
                   'attribute' => 'purchaselocal',
                   'enableSorting' => true,
-                  'contentOptions'=>['style'=>'width: 20%;text-align:center'],
+                  'contentOptions'=>['style'=>'width: 15%;text-align:center'],
                 ],                  
                 [
                   'attribute' => 'user_id',
@@ -86,11 +86,30 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
                   'contentOptions'=>['style'=>'width: 10%;text-align:left'],
                 ],
                 [
+                  'attribute' => 'status',
+                  'enableSorting' => true,
+                  'value' => function($data) {
+                      return $data->getStatus();
+                  },
+                  'filter' => Sicoobcard::$Static_status,
+                  'contentOptions'=>['style'=>'width: 6%;text-align:center'],
+                ],   
+                [
+                    'attribute' => 'approved_by',
+                    'format' => 'raw',
+                    'enableSorting' => true,
+                    'value' => function ($model) {                      
+                        return $model->approvedby ? $model->approvedby->username : '<span class="text-danger"><em>Nenhum</em></span>';
+                    },
+                    'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
+                    'contentOptions'=>['style'=>'width: 6%;text-align:left'],
+                ],                              
+                [
                 'class' => 'yii\grid\ActionColumn',
                 'header' => 'Ações',  
-                'contentOptions'=>['style'=>'width: 10%;text-align:right'],
+                'contentOptions'=>['style'=>'width: 8%;text-align:right'],
                 'headerOptions' => ['class' => 'text-center'],                            
-                'template' => '{view} {update} {delete}',
+                'template' => '{view} {update} {delete} {manager}',
                 'buttons' => [
                   'view' => function ($url, $model) {
                       return Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', $url, [
@@ -120,7 +139,17 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
                                   'class' => 'btn btn-default btn-xs',
                                   'disabled' => true,
                       ]);
-                  },                                   
+                  },  
+                  'manager' => function ($url, $model) {
+                      return Yii::$app->user->identity->can_managerproductivity == 1 ? Html::a('<span class="glyphicon glyphicon-cog" ></span>', $url, [
+                                  'title' => 'Alterar Situação',
+                                  'class' => 'btn btn-default btn-xs',
+                      ]): Html::a('<span class="glyphicon glyphicon-cog" ></span>', "#", [
+                                  'title' => 'Acesso não permitido!',
+                                  'class' => 'btn btn-default btn-xs',
+                                  'disabled' => true,
+                      ]);
+                  },                                                    
                     ],                
               ],
             ],

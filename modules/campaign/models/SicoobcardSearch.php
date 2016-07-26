@@ -12,7 +12,7 @@ class SicoobcardSearch extends Sicoobcard
     public function rules()
     {
         return [
-            [['id', 'product_type', 'user_id'], 'integer'],
+            [['id', 'product_type', 'user_id','status','approved_by'], 'integer'],
             [['name', 'purchaselocal', 'card', 'purchasedate', 'created', 'updated'], 'safe'],
             [['purchasevalue'], 'number'],
         ];
@@ -53,6 +53,8 @@ class SicoobcardSearch extends Sicoobcard
             'purchasedate' => $this->purchasedate,
             'purchasevalue' => $this->purchasevalue,
             'product_type' => $this->product_type,
+            'status' => $this->status,
+            'approved_by' => $this->approved_by,
             'created' => $this->created,
             'updated' => $this->updated,
             'user_id' => $this->user_id,
