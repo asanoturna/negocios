@@ -43,6 +43,10 @@ class Useradmin extends \yii\db\ActiveRecord
 
     public function afterSave($insert, $changedAttributes)
     {
+        
+        if (empty($image)) {
+            return false;
+        }
         // open image
         $image = Image::getImagine()->open($this->image->tempName);
 

@@ -55,40 +55,19 @@ use yii\widgets\MaskedInput;
           <div class="panel-heading"><i class="fa fa-key" aria-hidden="true"></i> Permissões de Acesso</div>
           <div class="panel-body">
 
-            <?= $form->field($model, 'can_admin')->radioList([
-                '1' => 'Sim', 
-                '0' => 'Não',
-                ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>
+            <?= $form->field($model, 'can_admin')->checkbox(['uncheck' =>  0, 'checked' => 1]); ?>     
 
-            <?= $form->field($model, 'can_visits')->radioList([
-                '1' => 'Sim', 
-                '0' => 'Não',
-                ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>
+            <?= $form->field($model, 'can_visits')->checkbox(['uncheck' =>  0, 'checked' => 1]); ?> 
 
-            <?= $form->field($model, 'can_productivity')->radioList([
-                '1' => 'Sim', 
-                '0' => 'Não',
-                ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>
+            <?= $form->field($model, 'can_productivity')->checkbox(['uncheck' =>  0, 'checked' => 1]); ?>            
 
-            <?= $form->field($model, 'can_requestresources')->radioList([
-                '1' => 'Sim', 
-                '0' => 'Não',
-                ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>
+            <?= $form->field($model, 'can_requestresources')->checkbox(['uncheck' =>  0, 'checked' => 1]); ?>   
 
-            <?= $form->field($model, 'can_managervisits')->radioList([
-                '1' => 'Sim', 
-                '0' => 'Não',
-                ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>
+            <?= $form->field($model, 'can_managervisits')->checkbox(['uncheck' =>  0, 'checked' => 1]); ?>   
 
-            <?= $form->field($model, 'can_managerproductivity')->radioList([
-                '1' => 'Sim', 
-                '0' => 'Não',
-                ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>
+            <?= $form->field($model, 'can_managerproductivity')->checkbox(['uncheck' =>  0, 'checked' => 1]); ?>   
 
-            <?= $form->field($model, 'can_managerrequestresources')->radioList([
-                '1' => 'Sim', 
-                '0' => 'Não',
-                ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>
+            <?= $form->field($model, 'can_managerrequestresources')->checkbox(['uncheck' =>  0, 'checked' => 1]); ?> 
 
           </div>
         </div>

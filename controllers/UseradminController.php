@@ -19,7 +19,7 @@ class UseradminController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::classname(),
-                'only'  => ['index','create','view','update','signup'],
+                'only'  => ['index','create','view','update','signup','avatar'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -70,6 +70,9 @@ class UseradminController extends Controller
     public function actionSignup()
     {
         $model = new SignupForm();
+
+        $model->status = 1;
+
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
                 Yii::$app->session->setFlash('useradmin-success', 'Inclusão realizada com sucesso!');
@@ -87,7 +90,7 @@ class UseradminController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                Yii::$app->session->setFlash('useradmin-success', 'Inclusão realizada com sucesso!');
+                Yii::$app->session->setFlash('useradmin-success', 'Alterãção realizada com sucesso!');
                 return $this->redirect(['index']);
         } else {
             return $this->render('update', [
