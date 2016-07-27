@@ -37,7 +37,7 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
                 [
                   'attribute' => 'id',
                   'enableSorting' => true,
-                  'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+                  'contentOptions'=>['style'=>'width: 3%;text-align:center'],
                 ], 
                 [
                   'attribute' => 'product_type',
@@ -46,12 +46,12 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
                       return $data->getProductType();
                   },
                   'filter' => Sicoobcard::$Static_product_type,
-                  'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+                  'contentOptions'=>['style'=>'width: 6%;text-align:center'],
                 ],                            
                 [
                   'attribute' => 'name',
                   'enableSorting' => true,
-                  'contentOptions'=>['style'=>'width: 15%;text-align:letf'],
+                  'contentOptions'=>['style'=>'width: 12%;text-align:letf'],
                 ],                 
                 [
                   'attribute' => 'card',
@@ -61,19 +61,19 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
                 [
                   'attribute' => 'purchasedate',
                   'enableSorting' => true,
-                  'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+                  'contentOptions'=>['style'=>'width: 4%;text-align:center'],
                   'format' => ['date', 'php:d/m/Y'],
                 ],                  
                 [
                   'attribute' => 'purchasevalue',
                   'format'=>['decimal',2],
                   'enableSorting' => true,
-                  'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+                  'contentOptions'=>['style'=>'width: 4%;text-align:center'],
                 ],                 
                 [
                   'attribute' => 'purchaselocal',
                   'enableSorting' => true,
-                  'contentOptions'=>['style'=>'width: 15%;text-align:center'],
+                  'contentOptions'=>['style'=>'width: 12%;text-align:center'],
                 ],                  
                 [
                   'attribute' => 'user_id',
@@ -83,13 +83,14 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
                       return $model->user ? $model->user->username : '<span class="text-danger"><em>Nenhum</em></span>';
                   },
                   'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
-                  'contentOptions'=>['style'=>'width: 10%;text-align:left'],
+                  'contentOptions'=>['style'=>'width: 8%;text-align:left'],
                 ],
                 [
                   'attribute' => 'status',
+                  'format' => 'raw',
                   'enableSorting' => true,
                   'value' => function($data) {
-                      return $data->getStatus();
+                      return $data->getStatus() == 'APROVADO' ? "<span class=\"label label-success\">".$data->getStatus()."</span>" : "<span class=\"label label-warning\">".$data->getStatus()."</span>";
                   },
                   'filter' => Sicoobcard::$Static_status,
                   'contentOptions'=>['style'=>'width: 6%;text-align:center'],
@@ -107,7 +108,7 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
                 [
                 'class' => 'yii\grid\ActionColumn',
                 'header' => 'Ações',  
-                'contentOptions'=>['style'=>'width: 8%;text-align:right'],
+                'contentOptions'=>['style'=>'width: 10%;text-align:right'],
                 'headerOptions' => ['class' => 'text-center'],                            
                 'template' => '{view} {update} {delete} {manager}',
                 'buttons' => [
