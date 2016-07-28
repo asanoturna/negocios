@@ -58,7 +58,7 @@ $this->title = 'Produtividade Diária';
     </p>  
     <div class="row">
         <div class="col-md-6">
-        <div class="panel panel-primary">
+        <div class="panel panel-default">
           <div class="panel-heading"><b>Ranking de Vendas Por Receita</b></div>
           <div class="panel-body">
             <?= GridView::widget([
@@ -70,18 +70,18 @@ $this->title = 'Produtividade Diária';
               'columns' => [     
                     [
                         'attribute' => 'avatar',
-                        'header' => '',
+                        'label' => false,
                         'format' => 'html',
                         'value' => function ($data) {
                             return Html::img(Yii::$app->params['usersAvatars'].$data["avatar"],
-                                ['width' => '50px', 'class' => 'img-rounded img-responsive']);
+                                ['width' => '50px', 'class' => 'img-rounded img-thumbnail']);
                         },
                         'contentOptions'=>['style'=>'width: 10%;text-align:middle'],                    
                     ],                                 
                     [
                         'attribute' => 'seller',
                         'format' => 'raw',
-                        'header' => '',
+                        'label' => false,
                         'value' => function ($data) { 
                             return Html::a( $data["seller"], ['dailyproductivity/performance_user', 'seller_id' => $data["id"]], ['title' => 'Clique para ver o desempenho']);
                         },
@@ -114,7 +114,7 @@ $this->title = 'Produtividade Diária';
         </div>
         </div>
         <div class="col-md-6">
-        <div class="panel panel-primary">
+        <div class="panel panel-default">
           <div class="panel-heading"><b>Ranking de Vendas Por Quantidade</b></div>
           <div class="panel-body">
             <?= GridView::widget([
@@ -127,17 +127,17 @@ $this->title = 'Produtividade Diária';
                     [
                         'attribute' => 'avatar',
                         'format' => 'html',
-                        'header' => '',
+                        'label' => false,
                         'value' => function ($data) {
                             return Html::img(Yii::$app->params['usersAvatars'].$data["avatar"],
-                                ['width' => '50px', 'class' => 'img-rounded img-responsive']);
+                                ['width' => '50px', 'class' => 'img-rounded img-thumbnail']);
                         },
                         'contentOptions'=>['style'=>'width: 10%;text-align:center'],                    
                     ],                                 
                     [
                         'attribute' => 'seller',
                         'format' => 'raw',
-                        'header' => '',
+                        'label' => false,
                         'value' => function ($data) { 
                                 return Html::a( $data["seller"], ['dailyproductivity/performance_user', 'seller_id' => $data["id"]], ['title' => 'Clique para ver o desempenho']);
                             },
