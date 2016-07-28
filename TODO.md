@@ -29,7 +29,7 @@ MÓDULOS
 - Criar de módulo Helpdesk
 - Criar de módulo Enquetes e Questionarios
 - Criar de módulo Plano de Ação (igual do GMI) 
-- Criar de módulo Fila de atendimento
+- Criar de módulo Gerenciamento de Tarefas / Atividades
 
 - Prod Diaria -> Selecionar o mês do TOP 3 ???
 - Prod Diaria -> Grafico por modalidade de produto

@@ -339,7 +339,13 @@ $('#{$productId}').on('change', function () {
         var min = 1;
         var max = 1;
         prazomin = 3;
-        prazomax = 24;           
+        prazomax = 24;  
+
+    }else if (id == 805){ //Prefeitura
+        var min = 1;
+        var max = 1;
+        prazomin = 6;
+        prazomax = 60;                  
 
     }else if (id == 901){ //Cedente
         var min = 1;
