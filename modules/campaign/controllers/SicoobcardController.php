@@ -92,7 +92,8 @@ class SicoobcardController extends Controller
         $model->approved_by = Yii::$app->user->id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index', 'id' => $model->id]);
+            Yii::$app->session->setFlash('campaign-success', 'Registro alterado com sucesso!');
+            return $this->redirect(['index']);
         } else {
             return $this->render('manager', [
                 'model' => $model,
@@ -104,7 +105,8 @@ class SicoobcardController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+            Yii::$app->session->setFlash('campaign-warning', 'Registro excluído com sucesso!');
+            return $this->redirect(['index']);
     }
 
     protected function findModel($id)

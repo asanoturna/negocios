@@ -129,7 +129,7 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
                       ]);
                   },
                   'delete' => function ($url, $model) {
-                      return $model->user_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
+                      return Yii::$app->user->identity->can_managerproductivity == 1 ? Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
                                   'title' => 'Excluir',
                                   'class' => 'btn btn-default btn-xs',
                                   'data-confirm' => 'Tem certeza que deseja excluir?',
