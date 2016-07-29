@@ -36,7 +36,7 @@ $this->title = 'Aniversariantes do Mês';
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <div class="panel panel-default">
-          <div class="panel-body">
+          <div class="panel-body" style="background: url(<?php echo Yii::$app->request->baseUrl;?>/images/birthdate1.png) !important;background-repeat: repeat-y;background-size: cover;">
                 <?= GridView::widget([
                   'dataProvider' => $dataProviderBirthdate,
                   'emptyText'    => '</br><p class="text-danger">Nenhum aniversariante encontrado</p>',
@@ -50,7 +50,7 @@ $this->title = 'Aniversariantes do Mês';
                             'format' => 'raw',
                             'value' => function ($data) {
                                 return Html::img(Yii::$app->params['usersAvatars'].$data["avatar"],
-                                    ['width' => '50px', 'class' => 'img-rounded img-responsive']);
+                                    ['width' => '50px', 'class' => 'img-rounded img-thumbnail img-responsive']);
                             },
                             'contentOptions'=>['style'=>'width: 10%;text-align:middle'],                    
                         ],                                 
@@ -59,7 +59,7 @@ $this->title = 'Aniversariantes do Mês';
                             'format' => 'raw',
                             'header' => 'Colaborador',
                             'value' => function ($data) {                      
-                                return $data["fullname"];
+                                return "<h4>".$data["fullname"]."</h4>";
                             },
                             'contentOptions'=>['style'=>'width: 60%;text-align:left;vertical-align: middle;text-transform: uppercase'],
                         ],
@@ -68,9 +68,10 @@ $this->title = 'Aniversariantes do Mês';
                             'format' => 'raw',
                             'header' => 'Dia',
                             'value' => function ($data) {                      
-                                return $data["dia"];
+                                return "<h4>".$data["dia"]."</h4>";
                             },
-                            'contentOptions'=>['style'=>'width: 30%;text-align:left;vertical-align: middle;'],
+                            'headerOptions' => ['class' => 'text-center', 'style' => 'text-align:center;vertical-align: middle;'],
+                            'contentOptions'=>['style'=>'width: 30%;text-align:center;vertical-align: middle;'],
                         ],                                                                             
                     ],
                 ]); ?>
