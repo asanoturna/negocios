@@ -21,10 +21,13 @@ $this->title = 'Aniversariantes do Mês';
     <?php
     $dataProviderBirthdate = new SqlDataProvider([
         'sql' => "SELECT
-                avatar, fullname, day(birthdate) as dia
-                FROM user   
-                WHERE MONTH(birthdate) = MONTH(Now()) 
-                ORDER BY day(birthdate)",
+        avatar, user.fullname as fullname, day(birthdate) as dia,
+        location.fullname as localization
+        FROM user   
+        INNER JOIN location
+        ON user.location_id = location.id
+        WHERE MONTH(birthdate) = MONTH(Now()) 
+        ORDER BY day(birthdate)",
         'totalCount' => 300,
         'key'  => 'fullname',
         'pagination' => [
@@ -33,10 +36,10 @@ $this->title = 'Aniversariantes do Mês';
     ]);
     ?>  
 
-    <div class="row">
+    <div class="row" style="background: url(<?php echo Yii::$app->request->baseUrl;?>/images/birthdate.png) !important;background-repeat: repeat-y;background-size: cover;">
       <div class="col-md-6 col-md-offset-3">
         <div class="panel panel-default">
-          <div class="panel-body" style="background: url(<?php echo Yii::$app->request->baseUrl;?>/images/birthdate1.png) !important;background-repeat: repeat-y;background-size: cover;">
+          <div class="panel-body" >
                 <?= GridView::widget([
                   'dataProvider' => $dataProviderBirthdate,
                   'emptyText'    => '</br><p class="text-danger">Nenhum aniversariante encontrado</p>',
@@ -59,7 +62,7 @@ $this->title = 'Aniversariantes do Mês';
                             'format' => 'raw',
                             'header' => 'Colaborador',
                             'value' => function ($data) {                      
-                                return "<h4>".$data["fullname"]."</h4>";
+                                return "<h5>".$data["fullname"]."</h5><p>"."<em class=\"text-muted\">".$data["localization"]."</em>";
                             },
                             'contentOptions'=>['style'=>'width: 60%;text-align:left;vertical-align: middle;text-transform: uppercase'],
                         ],
@@ -68,7 +71,7 @@ $this->title = 'Aniversariantes do Mês';
                             'format' => 'raw',
                             'header' => 'Dia',
                             'value' => function ($data) {                      
-                                return "<h4>".$data["dia"]."</h4>";
+                                return $data["dia"] <> date('d') ? "<h5>".$data["dia"]."</h5>" : "<h5 class=\"label label-default\">Hoje</h5>";
                             },
                             'headerOptions' => ['class' => 'text-center', 'style' => 'text-align:center;vertical-align: middle;'],
                             'contentOptions'=>['style'=>'width: 30%;text-align:center;vertical-align: middle;'],
