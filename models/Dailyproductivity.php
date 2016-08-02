@@ -10,12 +10,17 @@ class Dailyproductivity extends \yii\db\ActiveRecord
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
-            $companys_revenue = ($this->value*$this->commission_percent)/100;
-            $companys_revenue = $companys_revenue*0.75;
+            //$companys_revenue = ($this->value*$this->commission_percent)/100;
+            //$companys_revenue = $companys_revenue*0.75;
             //$this->companys_revenue = abs($companys_revenue);
 
+            //SEGUROS
+            if($this->product_id >= 1 && $this->product_id <= 99){
+                $companys_revenue = ($this->value*$this->commission_percent)/100;
+                $companys_revenue = $companys_revenue*0.75;
+                $this->companys_revenue = abs($companys_revenue);
             //CONSORCIO
-            if($this->product_id >= 100 && $this->product_id <= 199){
+            }elseif($this->product_id >= 100 && $this->product_id <= 199){
                 $companys_revenue = ($this->value*$this->commission_percent)/100;
                 $this->companys_revenue = abs($companys_revenue);
             // FIM REGRA CONSORCIO
