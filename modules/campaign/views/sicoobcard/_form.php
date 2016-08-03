@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\modules\campaign\models\Sicoobcard;
+use app\models\Location;
 use kartik\money\MaskMoney;
 
 ?>
@@ -15,13 +16,20 @@ use kartik\money\MaskMoney;
     <div class="row">
       <div class="col-md-6">
 
-    <?= $form->field($model, 'product_type')->dropDownList(Sicoobcard::$Static_product_type,['prompt'=>'--']) ?>
+    <div class="row">
+      <div class="col-md-6"><?= $form->field($model, 'product_type')->dropDownList(Sicoobcard::$Static_product_type,['prompt'=>'--']) ?></div>
+      <div class="col-md-6"><?= $form->field($model, 'location_id')->dropDownList(ArrayHelper::map(Location::find()->where(['is_active' => 1])->orderBy("shortname ASC")->all(), 'id', 'shortname'),['prompt'=>'--'])  ?></div>
+    </div>    
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'card')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+      <div class="col-md-6"><?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?></div>
+      <div class="col-md-6"><?= $form->field($model, 'card')->textInput(['maxlength' => true]) ?></div>
+    </div>
 
       </div>
+      <div class="col-md-6">
+
+    <div class="row">
       <div class="col-md-6">
 
     <?= $form->field($model, 'purchasedate')->widget('trntv\yii\datetime\DateTimeWidget',
@@ -36,7 +44,10 @@ use kartik\money\MaskMoney;
                 ]
             ]
         ]
-    ) ?>  
+    ) ?> 
+
+      </div>
+      <div class="col-md-6">
 
     <?php 
     echo $form->field($model, 'purchasevalue')->widget(MaskMoney::classname(), [
@@ -53,6 +64,9 @@ use kartik\money\MaskMoney;
         ],
     ]); 
     ?>
+
+      </div>
+    </div>
 
     <?= $form->field($model, 'purchaselocal')->textInput() ?>
 

@@ -2,6 +2,7 @@
 
 namespace app\modules\campaign\models;
 use app\models\User;
+use app\models\Location;
 use Yii;
 
 class Sicoobcard extends \yii\db\ActiveRecord
@@ -40,10 +41,10 @@ class Sicoobcard extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'card', 'purchasedate', 'purchasevalue', 'purchaselocal', 'product_type','user_id'], 'required'],
+            [['location_id','name', 'card', 'purchasedate', 'purchasevalue', 'purchaselocal', 'product_type','user_id'], 'required'],
             [['purchasedate', 'created', 'updated'], 'safe'],
             [['purchasevalue'], 'number'],
-            [['product_type', 'user_id','status','approved_by'], 'integer'],
+            [['location_id','product_type', 'user_id','status','approved_by'], 'integer'],
             [['purchaselocal','name'], 'string', 'max' => 100],
             [['card'], 'string', 'max' => 13],
             [['card'], 'string', 'min' => 13, 'message' => 'Favor informar os 13 dígitos'],          
@@ -55,6 +56,7 @@ class Sicoobcard extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Nome Titular',
+            'location_id' => 'PA',
             'card' => 'Conta Cartão',
             'purchasedate' => 'Data da Compra',
             'purchasevalue' => 'Valor da Compra',
@@ -75,5 +77,10 @@ class Sicoobcard extends \yii\db\ActiveRecord
     public function getApprovedby()
     {
         return $this->hasOne(User::className(), ['id' => 'approved_by']);
-    }           
+    }   
+
+    public function getLocation()
+    {
+        return $this->hasOne(Location::className(), ['id' => 'location_id']);
+    }                
 }

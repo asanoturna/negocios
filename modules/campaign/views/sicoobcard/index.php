@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
+use app\models\Location;
 use app\modules\campaign\models\Sicoobcard;
 use app\models\User;
 
@@ -47,7 +48,17 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
                   },
                   'filter' => Sicoobcard::$Static_product_type,
                   'contentOptions'=>['style'=>'width: 6%;text-align:center'],
-                ],                            
+                ], 
+                [
+                  'attribute' => 'location_id',
+                  'format' => 'raw',
+                  'enableSorting' => true,
+                  'value' => function ($model) {                      
+                      return $model->location ? $model->location->shortname : '<span class="text-danger"><em>Nenhum</em></span>';
+                  },
+                  'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
+                  'contentOptions'=>['style'=>'width: 6%;text-align:center'],
+                ],                                             
                 [
                   'attribute' => 'name',
                   'enableSorting' => true,
