@@ -9,14 +9,12 @@ Departamento > Campo email (null)
 *********************
 --- Usar listview http://www.codevoila.com/post/4/yii2-listview-example
 
-- Área do Usuário - Alterar/Enviar Foto com ajuste e redimensionamento
-
 Corrigir telas responsivas (gridview, etc)
 
 - Criar Área de Alertas (local mais visivel no top da intranet)
-- Criar Agenda / Calendario (global e para cada usuario) (sinc google agenda ?)
-- Criar Gestão de arquivos
 - Criar Área de Notícias (comentarios? likes?)
+- Criar Gestão de arquivos (incluir a area Planilha Base e categorias da intranet antiga)
+- Criar Agenda / Calendario (global e para cada usuario) (sinc google agenda ?)
 - Criar Galeria de fotos
 
 MÓDULOS
@@ -36,8 +34,7 @@ MÓDULOS
 - Prod Diaria -> Quadro Metas por agência (cadastrar metas por local para todos os produtos)
   Exemplo.: tabela meta > valor, pa, data(m/y), 
 
-- Planilha base corrigir registros e migrar para area de downloads (Gestao de Arquivos)
-
 PÁGINAS 
 --------------------
+Inicial: noticias e aniversariantes - ranking, destaques e agenda
 Dicas PABX, Voip, etc

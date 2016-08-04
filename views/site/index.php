@@ -24,6 +24,10 @@ $this->title = Yii::$app->params['appname'];
 
     </div>
     <div class="col-sm-10">
+
+    <div class="row"><!-- LINE 1 -->
+      <div class="col-md-8">
+
       <div class="panel panel-default">
       <div class="panel-heading"><b>Top 3 Produtividade do Mês</b></div>
       <div class="panel-body">
@@ -165,6 +169,77 @@ $this->title = Yii::$app->params['appname'];
         </div>
       </div>
     </div>
+
+      </div>
+      <div class="col-md-4">
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><b>Aniversariantes da Semana</b></div>
+          <div class="panel-body" style="max-height: 10;overflow-y: scroll;">
+
+        <?php
+        $dataProviderBirthdate = new SqlDataProvider([
+            'sql' => "SELECT 
+                    avatar, user.fullname as fullname, day(birthdate) as dia,
+                    day(birthdate) as dia
+                    FROM `user`
+                    WHERE WEEKOFYEAR( CONCAT( YEAR(NOW()),'-',MONTH(birthdate),'-',DAY(birthdate) ) ) = WEEKOFYEAR( NOW() )
+                    ORDER BY day(birthdate)",
+            'totalCount' => 300,
+            'key'  => 'fullname',
+            'pagination' => [
+                'pageSize' => 300,
+            ],
+        ]);
+        ?> 
+        <?= GridView::widget([
+                  'dataProvider' => $dataProviderBirthdate,
+                  'emptyText'    => '</br><p class="text-danger">Nenhum aniversariante esta semana!</p>',
+                  'summary'      =>  '',
+                  'showHeader'   => true,        
+                  'tableOptions' => ['class'=>'table'],
+                  'columns' => [     
+                        [
+                            'attribute' => 'avatar',
+                            'label' => false,
+                            'format' => 'raw',
+                            'value' => function ($data) {
+                                return Html::img(Yii::$app->params['usersAvatars'].$data["avatar"],
+                                    ['width' => '40px', 'class' => 'img-rounded img-thumbnail img-responsive']);
+                            },
+                            'contentOptions'=>['style'=>'width: 10%;text-align:middle'],                    
+                        ],                                 
+                        [
+                            'attribute' => 'fullname',
+                            'format' => 'raw',
+                            'header' => 'Colaborador',
+                            'value' => function ($data) {                      
+                                return "<h5>".$data["fullname"]."</h5><p>"."<em class=\"text-muted\">".$data["localization"]."</em>";
+                            },
+                            'contentOptions'=>['style'=>'width: 60%;text-align:left;vertical-align: middle;text-transform: uppercase'],
+                        ],
+                        [
+                            'attribute' => 'dia',
+                            'format' => 'raw',
+                            'header' => 'Dia',
+                            'value' => function ($data) {                      
+                                return $data["dia"] <> date('d') ? "<h5>".$data["dia"]."</h5>" : "<h5 class=\"label label-default\">Hoje</h5>";
+                            },
+                            'headerOptions' => ['class' => 'text-center', 'style' => 'text-align:center;vertical-align: middle;'],
+                            'contentOptions'=>['style'=>'width: 30%;text-align:center;vertical-align: middle;'],
+                        ],                                                                             
+                    ],
+                ]); ?>        
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row"><!-- LINE 2 -->
+      <div class="col-md-8">
+
     <div class="panel panel-default">
           <div class="panel-heading"><b>Top 10 Maiores Visitantes do mês</b></div>
           <div class="panel-body">
@@ -220,6 +295,41 @@ $this->title = Yii::$app->params['appname'];
             ?>
           </div>
     </div>
+
+      </div>
+      <div class="col-md-4">
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><b>Destaques</b></div>
+          <div class="panel-body">
+
+<p><a target="_blank" href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/doc/421/raw"><img alt="btn pagi" src="http://172.19.37.4/intranet/images/icones/btn_pagi.png" height="37" width="177" /></a>
+</p>
+
+<p><a target="_blank" href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/category/69/2015-07-31-17-44-50"><img alt="btn projetos" src="http://172.19.37.4/intranet/images/icones/btn_projetos.png" height="37" width="177" /></a>
+</p>
+
+<p><a target="_blank" href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/category/68/caderno-de-indicadores"><img alt="btn caderno indicadores" src="http://172.19.37.4/intranet/images/icones/btn_caderno_indicadores.png" height="37" width="177" /></a>
+</p>
+
+<p><a target="_blank" href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/category/67/sig"><img alt="btn sig explicado" src="http://172.19.37.4/intranet/images/icones/btn_sig_explicado.png" height="37" width="177" /></a>
+</p>
+
+<p><a href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/category/62/2014-07-14-21-07-06"><img alt="btn gestao desempenho" src="http://172.19.37.4/intranet/images/icones/btn_gestao_desempenho.png" height="37" width="177" /></a>
+</p>
+
+<p><a href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/doc/255/raw"><img alt="btn planilha cobranca" src="http://172.19.37.4/intranet/images/icones/btn_planilha_cobranca.png" height="37" width="177" /></a>
+</p>
+
+<p><a target="_blank" href="http://172.19.37.4/talentos"><img alt="btn indique talento" src="http://172.19.37.4/intranet/images/icones/btn_indique_talento.png" height="37" width="177" /></a>
+</p>         
+
+          </div>
+        </div>
+
+      </div>
+    </div>    
+
     </div>
 
     </div>
