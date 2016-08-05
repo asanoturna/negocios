@@ -30,7 +30,7 @@ $this->title = Yii::$app->params['appname'];
 
       <div class="panel panel-default">
       <div class="panel-heading"><b>Top 3 Produtividade do Mês</b></div>
-      <div class="panel-body">
+      <div class="panel-body" style="height: 300px;max-height: 10;">
         <?php
         $dataProviderValor = new SqlDataProvider([
             'sql' => "SELECT user.id, avatar, username as seller, sum(companys_revenue) as total
@@ -90,7 +90,7 @@ $this->title = Yii::$app->params['appname'];
                     'format' => 'html',
                     'value' => function ($data) {
                         return Html::img(Yii::$app->params['usersAvatars'].$data["avatar"],
-                            ['width' => '50px', 'class' => 'img-rounded img-responsive']);
+                            ['width' => '50px', 'class' => 'img-rounded img-thumbnail img-responsive']);
                     },
                     'contentOptions'=>['style'=>'width: 20%;text-align:center;'],                    
                 ],                                 
@@ -143,7 +143,7 @@ $this->title = Yii::$app->params['appname'];
                     'format' => 'html',
                     'value' => function ($data) {
                         return Html::img(Yii::$app->params['usersAvatars'].$data["avatar"],
-                            ['width' => '50px', 'class' => 'img-rounded img-responsive']);
+                            ['width' => '50px', 'class' => 'img-rounded img-thumbnail img-responsive']);
                     },
                     'contentOptions'=>['style'=>'width: 20%;text-align:center'],                    
                 ],                                 
@@ -174,8 +174,13 @@ $this->title = Yii::$app->params['appname'];
       <div class="col-md-4">
 
         <div class="panel panel-default">
-          <div class="panel-heading"><b>Aniversariantes da Semana</b></div>
-          <div class="panel-body" style="max-height: 10;overflow-y: scroll;">
+          <div class="panel-heading"><b>Aniversariantes da Semana</b>
+            <!--             
+            <button class="btn btn-default btn-xs pull-right">Mensal</button>
+            <div class="clearfix"></div>
+            -->
+          </div>
+          <div class="panel-body" style="height: 300px;max-height: 10;overflow-y: scroll;">
 
         <?php
         $dataProviderBirthdate = new SqlDataProvider([
@@ -204,7 +209,7 @@ $this->title = Yii::$app->params['appname'];
                             'label' => false,
                             'format' => 'raw',
                             'value' => function ($data) {
-                                return Html::img(Yii::$app->params['usersAvatars'].$data["avatar"],
+                                return Html::img(Yii::$app->params['usersAvatars']."thumb/".$data["avatar"],
                                     ['width' => '40px', 'class' => 'img-rounded img-thumbnail img-responsive']);
                             },
                             'contentOptions'=>['style'=>'width: 10%;text-align:middle'],                    
@@ -242,7 +247,7 @@ $this->title = Yii::$app->params['appname'];
 
     <div class="panel panel-default">
           <div class="panel-heading"><b>Top 10 Maiores Visitantes do mês</b></div>
-          <div class="panel-body">
+          <div class="panel-body" style="height: 310px;max-height: 10;">
           <?php 
 
             $commandtop10 = Yii::$app->db->createCommand(
@@ -269,6 +274,7 @@ $this->title = Yii::$app->params['appname'];
             use miloschuman\highcharts\Highcharts;
             echo Highcharts::widget([
                 'options' => [
+                'chart' => ['height' => 260],
                     'credits' => ['enabled' => false],
                     'title' => [
                         'text' => '',
@@ -301,29 +307,18 @@ $this->title = Yii::$app->params['appname'];
 
         <div class="panel panel-default">
           <div class="panel-heading"><b>Destaques</b></div>
-          <div class="panel-body">
+          <div class="panel-body" style="height: 310px;max-height: 10;">
 
-<p><a target="_blank" href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/doc/421/raw"><img alt="btn pagi" src="http://172.19.37.4/intranet/images/icones/btn_pagi.png" height="37" width="177" /></a>
-</p>
-
-<p><a target="_blank" href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/category/69/2015-07-31-17-44-50"><img alt="btn projetos" src="http://172.19.37.4/intranet/images/icones/btn_projetos.png" height="37" width="177" /></a>
-</p>
-
-<p><a target="_blank" href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/category/68/caderno-de-indicadores"><img alt="btn caderno indicadores" src="http://172.19.37.4/intranet/images/icones/btn_caderno_indicadores.png" height="37" width="177" /></a>
-</p>
-
-<p><a target="_blank" href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/category/67/sig"><img alt="btn sig explicado" src="http://172.19.37.4/intranet/images/icones/btn_sig_explicado.png" height="37" width="177" /></a>
-</p>
-
-<p><a href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/category/62/2014-07-14-21-07-06"><img alt="btn gestao desempenho" src="http://172.19.37.4/intranet/images/icones/btn_gestao_desempenho.png" height="37" width="177" /></a>
-</p>
-
-<p><a href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/doc/255/raw"><img alt="btn planilha cobranca" src="http://172.19.37.4/intranet/images/icones/btn_planilha_cobranca.png" height="37" width="177" /></a>
-</p>
-
-<p><a target="_blank" href="http://172.19.37.4/talentos"><img alt="btn indique talento" src="http://172.19.37.4/intranet/images/icones/btn_indique_talento.png" height="37" width="177" /></a>
+<div class="list-group">
+  <a href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/doc/421/raw" class="list-group-item"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Apresentação PAGI</a>
+  <a href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/category/69/2015-07-31-17-44-50" class="list-group-item"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Projetos Estratégicos</a>
+  <a href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/category/68/caderno-de-indicadores" class="list-group-item"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Caderno de Indicadores</a>
+  <a href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/category/67/sig" class="list-group-item"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> APN Explicado</a>
+  <a href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/category/62/2014-07-14-21-07-06" class="list-group-item"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Gestão de Desempenho</a>
+  <a href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/doc/255/raw" class="list-group-item"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Planilha de Cobrança</a>
+  <a href="http://172.19.37.4/talentos" class="list-group-item"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Indique um Talento!</a>
+</div>
 </p>         
-
           </div>
         </div>
 
