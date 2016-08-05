@@ -14,7 +14,7 @@ Corrigir telas responsivas (gridview, etc)
 - Criar Área de Alertas (local mais visivel no top da intranet)
 - Criar Área de Notícias (comentarios? likes?)
 - Criar Gestão de arquivos (incluir a area Planilha Base e categorias da intranet antiga)
-- Criar Agenda / Calendario (global e para cada usuario) (sinc google agenda ?)
+- Criar Agenda / Calendario (global e para cada usuario) (sinc google agenda ?) (ver REF)
 - Criar Galeria de fotos
 
 MÓDULOS

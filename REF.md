@@ -9,6 +9,11 @@ https://github.com/Mihai-P/yii2theme-brain
 https://github.com/yiister/yii2-gentelella
 https://github.com/yiister/yii2-adminlte
 
+CALENDAR
+--------------------
+https://github.com/Edofre/yii2-fullcalendar-scheduler
+https://github.com/Edofre/yii2-ckeditor
+
 IMAGE MANIPULATION
 --------------------
 http://www.yiiframework.com/extension/yii2-image-cropper/
