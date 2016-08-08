@@ -35,7 +35,7 @@ $this->title = 'Produtividade Diária';
     <p>   
     <div class="row">
         <div class="col-md-6">
-        <div class="panel panel-primary">
+        <div class="panel panel-default">
           <div class="panel-heading"><b>Ranking de Vendas Por Receita</b></div>
           <div class="panel-body">
         <?= GridView::widget([
@@ -98,7 +98,7 @@ $this->title = 'Produtividade Diária';
             </div>
         </div>
         <div class="col-md-6">
-        <div class="panel panel-primary">
+        <div class="panel panel-default">
           <div class="panel-heading"><b>Ranking de Vendas Por Quantidade</b></div>
           <div class="panel-body">
         <?= GridView::widget([

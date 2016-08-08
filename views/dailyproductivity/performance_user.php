@@ -45,7 +45,7 @@ $this->title = 'Produtividade Diária';
 <div class="row">
 
 	<div class="col-md-4">
-  	<div class="panel panel-primary">
+  	<div class="panel panel-default">
 	  <div class="panel-heading"><b>Mais Vendidos</b></div>
 	  <div class="panel-body">
 		<?php
@@ -80,7 +80,7 @@ $this->title = 'Produtividade Diária';
   	</div>
 
 	<div class="col-md-8">
-  	<div class="panel panel-primary">
+  	<div class="panel panel-default">
 	  <div class="panel-heading"><b>Evolução</b></div>
 	  <div class="panel-body">
 		<?php

@@ -47,7 +47,7 @@ $this->title = 'Visitas dos Gerentes';
           <?php
           Modal::begin([
               'header' => '<h3>Tipos de Situação das Visitas</h3>',
-              'toggleButton' => ['label' => 'Tipos de Situação', 'class' => 'btn btn-success'],
+              'toggleButton' => ['label' => '<span class="glyphicon glyphicon-flag" aria-hidden="true"></span> Tipos de Situação', 'class' => 'btn btn-success'],
           ]);
 
           echo $this->render('liststatus');
@@ -132,6 +132,8 @@ $this->title = 'Visitas dos Gerentes';
     </div>
     </div>
 
+    <div class="panel panel-default">
+    <div class="panel-body"> 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -141,13 +143,13 @@ $this->title = 'Visitas dos Gerentes';
             [
             'attribute' => 'id',
             'contentOptions'=>['style'=>'width: 4%;text-align:center'],
-            'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+            'headerOptions' => ['class' => 'text-center'],
             ],
             [
             'attribute' => 'date',
             'enableSorting' => true,
             'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-            'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+            'headerOptions' => ['class' => 'text-center'],
             'format' => ['date', 'php:d/m/Y'],
             ],
             [
@@ -160,7 +162,7 @@ $this->title = 'Visitas dos Gerentes';
             'filter' => ArrayHelper::map(User::find()->where(['status' => 1])->orderBy('username')->asArray()->all(), 'id', 'username'),
             'filterInputOptions' => ['class' => 'form-control', 'style'=>'text-transform: lowercase'],
             'contentOptions'=>['style'=>'width: 8%;text-align:left;text-transform: lowercase'],
-            'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+            'headerOptions' => ['class' => 'text-center'],
             ],
             [
             'attribute' => 'location_id',
@@ -171,12 +173,12 @@ $this->title = 'Visitas dos Gerentes';
                     },  
             'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
             'contentOptions'=>['style'=>'width: 3%;text-align:center'],
-            'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+            'headerOptions' => ['class' => 'text-center'],
             ],
             [
             'attribute' => 'company_person',
             'contentOptions'=>['style'=>'width: 18%;text-align:left;text-transform: uppercase'],
-            'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+            'headerOptions' => ['class' => 'text-center'],
             ],
             [
             'attribute' => 'person_id',
@@ -187,7 +189,7 @@ $this->title = 'Visitas dos Gerentes';
                     },  
             'filter' => ArrayHelper::map(Person::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
             'contentOptions'=>['style'=>'width: 3%;text-align:center'],
-            'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+            'headerOptions' => ['class' => 'text-center'],
             ],
             [
             'attribute' => 'visits_finality_id',
@@ -198,7 +200,7 @@ $this->title = 'Visitas dos Gerentes';
                     },
             'filter' => ArrayHelper::map(VisitsFinality::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
             'contentOptions'=>['style'=>'width: 15%;text-align:center'],
-            'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+            'headerOptions' => ['class' => 'text-center'],
             ],
             [
             'attribute' => 'visits_status_id',
@@ -209,13 +211,13 @@ $this->title = 'Visitas dos Gerentes';
                   },
             'filter' => ArrayHelper::map(VisitsStatus::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
             'contentOptions'=>['style'=>'width: 10%;text-align:center'],
-            'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+            'headerOptions' => ['class' => 'text-center'],
             ],
             [
             'class' => 'yii\grid\ActionColumn',
             'header' => 'Ações',
             'contentOptions'=>['style'=>'width: 10%;text-align:right'],
-            'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+            'headerOptions' => ['class' => 'text-center'],
             'template' => '{has_map} {has_attach} {has_img} {view} {update} {delete}',
                 'buttons' => [
                     'has_attach' => function ($url, $model) {
@@ -282,5 +284,6 @@ $this->title = 'Visitas dos Gerentes';
             ],            
         ],
     ]); ?>
-
+    </div>
+    </div>
 </div>

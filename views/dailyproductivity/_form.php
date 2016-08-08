@@ -297,8 +297,8 @@ $('#{$productId}').on('change', function () {
     }else if (id == 503){ //CDC Sicoobcard
         var min = 1;
         var max = 1;
-        prazomin = 1;
-        prazomax = 1;        
+        prazomin = 2;
+        prazomax = 12;        
         
     }else if (id == 601){ //Capital de Giro
         var min = 1;

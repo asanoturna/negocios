@@ -19,7 +19,7 @@ $this->title = 'Produtividade Diária';?>
   <hr/>
   <div class="row">
     <div class="col-md-6">
-      <div class="panel panel-primary">
+      <div class="panel panel-default">
       <div class="panel-heading"><b>Pesquisar</b></div>
         <div class="panel-body">
           <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -27,23 +27,13 @@ $this->title = 'Produtividade Diária';?>
       </div>
     </div>      
     <div class="col-md-6">
-      <div class="panel panel-primary">
+      <div class="panel panel-default">
       <div class="panel-heading"><b>Opções</b></div>
         <div class="panel-body">
           <?php
           use kartik\export\ExportMenu;
               $gridColumns = [
-                  ['attribute'=>'date','format'=>['date'], 'hAlign'=>'right', 'width'=>'110px'],  
-                  // [
-                  // 'attribute'=>'user_id',
-                  // 'label'=> 'Usuário',
-                  // 'vAlign'=>'middle',
-                  // 'width'=>'100px',
-                  // 'value'=>function ($model, $key, $index, $widget) { 
-                  //     return Html::a($model->user->username, '#', []);
-                  // },
-                  // 'format'=>'raw'
-                  // ],                   
+                  ['attribute'=>'date','format'=>['date'], 'hAlign'=>'right', 'width'=>'110px'],                     
                   [
                   'attribute'=>'location_id',
                   'label'=> 'PA',
@@ -130,12 +120,14 @@ $this->title = 'Produtividade Diária';?>
     </div>
   </div>
 
+    <div class="panel panel-default">
+    <div class="panel-body">  
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'tableOptions' => ['class'=>'table table-striped table-bordered table-hover'],
+        'tableOptions' => ['class'=>'table table-striped table-hover'],
         'emptyText'    => '</br><p class="text-info">Nenhum registro encontrado!</p>',   
-        'summary' => "<p class=\"text-info pull-right\"><h5>Registros: {totalCount} </h5></p>",  
+        //'summary' => "<p class=\"text-info pull-right\"><h5>Total de Registros: {totalCount} </h5></p>",  
         'rowOptions'   => function ($model, $index, $widget, $grid) {
             return [
                 'id' => $model['id'], 
@@ -150,13 +142,13 @@ $this->title = 'Produtividade Diária';?>
               'attribute' => 'id',
               'enableSorting' => true,
               'contentOptions'=>['style'=>'width: 3%;text-align:center'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
             ],          
             [
               'attribute' => 'date',
               'enableSorting' => true,
               'contentOptions'=>['style'=>'width: 4%;text-align:center'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
               'format' => ['date', 'php:d/m/Y'],
             ],      
             [
@@ -167,7 +159,7 @@ $this->title = 'Produtividade Diária';?>
                   return $model->user ? $model->user->username : '<span class="text-danger"><em>Nenhum</em></span>';
               },
               'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
               'contentOptions'=>['style'=>'width: 7%;text-align:left'],
             ],                  
             [
@@ -178,7 +170,7 @@ $this->title = 'Produtividade Diária';?>
                       },
               'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
               'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
             ],            
             [
               'attribute' => 'product_id',
@@ -188,17 +180,17 @@ $this->title = 'Produtividade Diária';?>
                       },
               'filter' => Product::getHierarchy(),
               'contentOptions'=>['style'=>'width: 18%;text-align:left'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
             ],
             [
               'attribute' => 'value',
               'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
             ],
             [
               'attribute' => 'quantity',
               'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
             ],
             [
               'attribute' => 'seller_id',
@@ -210,7 +202,7 @@ $this->title = 'Produtividade Diária';?>
               'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
               'filterInputOptions' => ['class' => 'form-control', 'style'=>'text-transform: lowercase'],
               'contentOptions'=>['style'=>'width: 8%;text-align:left;text-transform: lowercase'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
             ],             
             [
               'attribute' => 'operator_id',
@@ -222,7 +214,7 @@ $this->title = 'Produtividade Diária';?>
               'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
               'filterInputOptions' => ['class' => 'form-control', 'style'=>'text-transform: lowercase', 'prompt'=>''],
               'contentOptions'=>['style'=>'width: 8%;text-align:left;text-transform: lowercase'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
             ],  
             [
               'attribute' => 'daily_productivity_status_id',
@@ -233,9 +225,11 @@ $this->title = 'Produtividade Diária';?>
                       },
               'filter' => ArrayHelper::map(Dailyproductivitystatus::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
               'contentOptions'=>['style'=>'width: 10%;text-align:center'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
             ],                         
             //['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+    </div>
+    </div>
 </div>

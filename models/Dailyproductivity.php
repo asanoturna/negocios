@@ -46,8 +46,63 @@ class Dailyproductivity extends \yii\db\ActiveRecord
                 $this->value = 0;
             }elseif($this->product_id == 503){
                 //CDC Sicoobcard
-                $this->companys_revenue = 0.01;
-                $this->value = 0;                
+                switch($this->prazo){
+                    case ($this->prazo == 2):
+                        $this->commission_percent = 2.30;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo == 3):
+                        $this->commission_percent = 4.60;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo == 4):
+                        $this->commission_percent = 6.90;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;       
+                    case ($this->prazo == 5):
+                        $this->commission_percent = 9.20;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;        
+                    case ($this->prazo == 6):
+                        $this->commission_percent = 11.30;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;  
+                    case ($this->prazo == 7):
+                        $this->commission_percent = 13.60;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo == 8):
+                        $this->commission_percent = 15.90;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo == 9):
+                        $this->commission_percent = 18.20;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo == 10):
+                        $this->commission_percent = 20.50;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;
+                    case ($this->prazo == 11):
+                        $this->commission_percent = 22.80;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break; 
+                    case ($this->prazo == 12):
+                        $this->commission_percent = 25.10;
+                        $companys_revenue = ($this->value*$this->commission_percent)/100;
+                        $this->companys_revenue = abs($companys_revenue);
+                        break;                                                 
+                }                 
             }elseif($this->product_id == 301){
                 //CABAL VALE
                 $this->companys_revenue = 35.00;
