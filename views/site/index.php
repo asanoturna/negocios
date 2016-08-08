@@ -219,7 +219,7 @@ $this->title = Yii::$app->params['appname'];
                             'format' => 'raw',
                             'header' => 'Colaborador',
                             'value' => function ($data) {                      
-                                return "<h5>".$data["fullname"]."</h5><p>"."<em class=\"text-muted\">".$data["localization"]."</em>";
+                                return "<h5>".$data["fullname"]."</h5><p>";
                             },
                             'contentOptions'=>['style'=>'width: 60%;text-align:left;vertical-align: middle;text-transform: uppercase'],
                         ],
