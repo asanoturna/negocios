@@ -316,7 +316,6 @@ $this->title = Yii::$app->params['appname'];
   <a href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/category/67/sig" class="list-group-item"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> APN Explicado</a>
   <a href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/category/62/2014-07-14-21-07-06" class="list-group-item"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Gestão de Desempenho</a>
   <a href="http://172.19.37.4/intranet/index.php/arquivos-a-manuais/doc/255/raw" class="list-group-item"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Planilha de Cobrança</a>
-  <a href="http://172.19.37.4/talentos" class="list-group-item"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Indique um Talento!</a>
 </div>
 </p>         
           </div>
