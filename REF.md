@@ -14,6 +14,11 @@ CALENDAR
 https://github.com/Edofre/yii2-fullcalendar-scheduler
 https://github.com/Edofre/yii2-ckeditor
 
+NEWS
+--------------------
+https://github.com/dmstr/yii2-news-module
+https://github.com/bupy7/yii2-pages
+
 IMAGE MANIPULATION
 --------------------
 http://www.yiiframework.com/extension/yii2-image-cropper/

@@ -1,20 +1,19 @@
 INTRANET
 --------------------
 Bloquear uso do IE versão 8 pra baixo
-Corrigir o titulo em todas as paginas: "Intranet > Visitas dos Gerentes"
 Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc)
 
 Departamento > Campo email (null)
 
 *********************
---- Usar listview http://www.codevoila.com/post/4/yii2-listview-example
+---> Usar listview http://www.codevoila.com/post/4/yii2-listview-example
 
 Corrigir telas responsivas (gridview, etc)
 
 - Criar Área de Alertas (local mais visivel no top da intranet)
 - Criar Área de Notícias (comentarios? likes?)
 - Criar Gestão de arquivos (incluir a area Planilha Base e categorias da intranet antiga)
-- Criar Agenda / Calendario (global e para cada usuario) (sinc google agenda ?) (ver REF)
+- Criar Agenda / Calendario (global e para cada usuario) (sinc google agenda ?)
 - Criar Galeria de fotos
 
 MÓDULOS
@@ -30,11 +29,38 @@ MÓDULOS
 - Criar de módulo Gerenciamento de Tarefas / Atividades
 
 - Prod Diaria -> Selecionar o mês do TOP 3 ???
+- Prod Diaria -> Gravar Formula/Cálculo
 - Prod Diaria -> Grafico por modalidade de produto
 - Prod Diaria -> Quadro Metas por agência (cadastrar metas por local para todos os produtos)
-  Exemplo.: tabela meta > valor, pa, data(m/y), 
+  ---> Exemplo.: tabela meta > valor, pa, data(m/y), 
 
 PÁGINAS 
 --------------------
-Inicial: noticias e aniversariantes - ranking, destaques e agenda
 Dicas PABX, Voip, etc
+
+DOWNLOADS
+---------
+id
+filecategory_id
+title
+attachment
+description
+downloads
+filesize
+created
+updated
+published
+responsible
+user_id
+
+LINKS UTEIS
+-----------
+id
+type (global por user)
+title
+url
+description
+created
+updated
+published
+user id ?
