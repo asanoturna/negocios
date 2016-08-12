@@ -38,9 +38,10 @@ SCRIPT;
 <?php $this->beginBody() ?>
 
 <div class="wrap">
+    <div class="topbar">
     <?php
     NavBar::begin([
-        'brandLabel' => '<span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> ' . Yii::$app->params['appname'],
+        'brandLabel' => '<img src="'.Yii::$app->request->baseUrl.'/images/logo.png" style="height:60px;" > ',
         'brandUrl' => Yii::$app->homeUrl,
         'innerContainerOptions' => ['class'=>'container-fluid'],
         'options' => [
@@ -82,7 +83,7 @@ SCRIPT;
     ]);
     NavBar::end();
     ?>
-
+    </div>
     <div class="container-fluid">
         <?= $content ?>
     </div>
