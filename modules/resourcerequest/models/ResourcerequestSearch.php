@@ -1,11 +1,11 @@
 <?php
 
-namespace app\models;
+namespace app\modules\resourcerequest\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Resourcerequest;
+use app\modules\resourcerequest\models\Resourcerequest;
 
 class ResourcerequestSearch extends Resourcerequest
 {

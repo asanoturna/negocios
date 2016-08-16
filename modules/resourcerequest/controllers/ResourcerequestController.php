@@ -1,10 +1,10 @@
 <?php
 
-namespace app\controllers;
+namespace app\modules\resourcerequest\controllers;
 
 use Yii;
-use app\models\Resourcerequest;
-use app\models\ResourcerequestSearch;
+use app\modules\resourcerequest\models\Resourcerequest;
+use app\modules\resourcerequest\models\ResourcerequestSearch;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii\base\Security;

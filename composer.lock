@@ -22,7 +22,7 @@
                 "shasum": ""
             },
             "require": {
-                "bower-asset/jquery": ">=1.9.1,<4.0"
+                "bower-asset/jquery": ">=1.9.1,<=3"
             },
             "type": "bower-asset-library",
             "extra": {
@@ -342,16 +342,16 @@
         },
         {
             "name": "bower-asset/moment-timezone",
-            "version": "0.5.4",
+            "version": "0.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/moment/moment-timezone.git",
-                "reference": "eda36cb2c5ed62b7082593c3aeaff9b94204aa1a"
+                "reference": "32ef9eff5781a7fa57f75a84caebedc905d2ab8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moment/moment-timezone/zipball/eda36cb2c5ed62b7082593c3aeaff9b94204aa1a",
-                "reference": "eda36cb2c5ed62b7082593c3aeaff9b94204aa1a",
+                "url": "https://api.github.com/repos/moment/moment-timezone/zipball/32ef9eff5781a7fa57f75a84caebedc905d2ab8a",
+                "reference": "32ef9eff5781a7fa57f75a84caebedc905d2ab8a",
                 "shasum": ""
             },
             "require": {
@@ -633,12 +633,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fxpio/composer-asset-plugin.git",
-                "reference": "47c08367901b64d41d87f84e7f3fd2aa9417ea71"
+                "reference": "d7d189e8ffac26a2e39e26a9c75e1fc5c2e2b98d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fxpio/composer-asset-plugin/zipball/47c08367901b64d41d87f84e7f3fd2aa9417ea71",
-                "reference": "47c08367901b64d41d87f84e7f3fd2aa9417ea71",
+                "url": "https://api.github.com/repos/fxpio/composer-asset-plugin/zipball/d7d189e8ffac26a2e39e26a9c75e1fc5c2e2b98d",
+                "reference": "d7d189e8ffac26a2e39e26a9c75e1fc5c2e2b98d",
                 "shasum": ""
             },
             "require": {
@@ -681,7 +681,7 @@
                 "npm",
                 "package"
             ],
-            "time": "2016-07-14 08:50:38"
+            "time": "2016-08-03 07:44:07"
         },
         {
             "name": "imagine/imagine",
@@ -778,7 +778,7 @@
                 "upload",
                 "yii2"
             ],
-            "time": "2014-12-15 18:32:02"
+            "time": "2014-12-15 18:13:03"
         },
         {
             "name": "kartik-v/yii2-dialog",
@@ -948,12 +948,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-grid.git",
-                "reference": "a5445cb849cdc2038762666b53c971d4c4c24a0f"
+                "reference": "6373e72c8747d64e9df53b4d03a76c7069f37431"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/a5445cb849cdc2038762666b53c971d4c4c24a0f",
-                "reference": "a5445cb849cdc2038762666b53c971d4c4c24a0f",
+                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/6373e72c8747d64e9df53b4d03a76c7069f37431",
+                "reference": "6373e72c8747d64e9df53b4d03a76c7069f37431",
                 "shasum": ""
             },
             "require": {
@@ -990,7 +990,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-07-25 13:27:13"
+            "time": "2016-08-09 13:17:33"
         },
         {
             "name": "kartik-v/yii2-krajee-base",
@@ -1249,12 +1249,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/miloschuman/yii2-highcharts.git",
-                "reference": "6951fef6cc72273f8e4278154eb756416d5caab4"
+                "reference": "cb0cb30e370545d272aa7910ef9cb2ec7175f461"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/miloschuman/yii2-highcharts/zipball/6951fef6cc72273f8e4278154eb756416d5caab4",
-                "reference": "6951fef6cc72273f8e4278154eb756416d5caab4",
+                "url": "https://api.github.com/repos/miloschuman/yii2-highcharts/zipball/cb0cb30e370545d272aa7910ef9cb2ec7175f461",
+                "reference": "cb0cb30e370545d272aa7910ef9cb2ec7175f461",
                 "shasum": ""
             },
             "require": {
@@ -1289,7 +1289,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-05-26 17:42:51"
+            "time": "2016-08-07 15:55:04"
         },
         {
             "name": "mongosoft/yii2-upload-behavior",

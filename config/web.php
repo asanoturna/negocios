@@ -60,7 +60,10 @@ $config = [
         'redactor' => 'yii\redactor\RedactorModule',
         'campaign' => [
             'class' => 'app\modules\campaign\Module',
-        ],        
+        ],
+        'resourcerequest' => [
+            'class' => 'app\modules\resourcerequest\Module',
+        ],                        
     ],    
     'params' => $params,
 ];

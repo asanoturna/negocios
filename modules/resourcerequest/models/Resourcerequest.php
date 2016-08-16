@@ -1,7 +1,8 @@
 <?php
 
-namespace app\models;
-
+namespace app\modules\resourcerequest\models;
+use app\models\User;
+use app\models\Location;
 use Yii;
 
 class Resourcerequest extends \yii\db\ActiveRecord

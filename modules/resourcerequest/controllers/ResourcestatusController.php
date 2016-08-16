@@ -1,10 +1,10 @@
 <?php
 
-namespace app\controllers;
+namespace app\modules\resourcerequest\controllers;
 
 use Yii;
-use app\models\Resourcestatus;
-use app\models\ResourcestatusSearch;
+use app\modules\resourcerequest\models\Resourcestatus;
+use app\modules\resourcerequest\models\ResourcestatusSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
