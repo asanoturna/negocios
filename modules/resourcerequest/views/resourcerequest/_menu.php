@@ -6,16 +6,16 @@
                 'items' => [ 
                     [
                         'label'   => '<span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Relatórios',
-                        'url'     => ['/resourcerequest/report'],
+                        'url'     => ['report'],
                         'options' => ['class' => 'disabled'],
                     ],                      
                     [
                         'label'   => '<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> Listar',
-                        'url'     => ['/resourcerequest/index'],
+                        'url'     => ['index'],
                     ],                  
                     [
                         'label'   => '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Inserir',
-                        'url'     => ['/resourcerequest/create'],
+                        'url'     => ['create'],
                         'visible' => Yii::$app->user->identity->can_requestresources == 1,
                     ],                                                                                 
                 ],

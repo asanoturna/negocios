@@ -28,7 +28,7 @@ $this->title = 'Recursos Solicitados';
 
     <div class="row">
     <div class="col-md-8">
-      <div class="panel panel-primary">
+      <div class="panel panel-default">
       <div class="panel-heading"><b>Pesquisar</b></div>
         <div class="panel-body">
           <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -36,7 +36,7 @@ $this->title = 'Recursos Solicitados';
       </div>
     </div>      
     <div class="col-md-4">
-      <div class="panel panel-primary">
+      <div class="panel panel-default">
       <div class="panel-heading"><b>Opções</b></div>
         <div class="panel-body">
           <?php
@@ -160,6 +160,8 @@ $this->title = 'Recursos Solicitados';
     </div>
     </div>    
 
+    <div class="panel panel-default">
+        <div class="panel-body"> 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -170,13 +172,13 @@ $this->title = 'Recursos Solicitados';
               'attribute' => 'id',
               'enableSorting' => true,
               'contentOptions'=>['style'=>'width: 4%;text-align:center'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
             ], 
             [
               'attribute' => 'created',
               'enableSorting' => true,
               'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
               'format' => ['date', 'php:d/m/Y'],
             ],   
             [
@@ -187,7 +189,7 @@ $this->title = 'Recursos Solicitados';
                   return $model->user ? $model->user->username : '<span class="text-danger"><em>Nenhum</em></span>';
               },
               'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
               'contentOptions'=>['style'=>'width: 8%;text-align:left'],
             ],   
             [
@@ -198,19 +200,19 @@ $this->title = 'Recursos Solicitados';
                       },
               'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
               'contentOptions'=>['style'=>'width: 3%;text-align:center'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
             ],                                   
             [
               'attribute' => 'client_name',
               'contentOptions'=>['style'=>'width: 15%;text-align:left;text-transform: uppercase'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
             ],
             [
               'attribute' => 'value_request',
               'enableSorting' => true,
               'format'=>['decimal',2],
               'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
             ],     
             [
               'attribute' => 'requested_month',
@@ -220,7 +222,7 @@ $this->title = 'Recursos Solicitados';
               },
               'filter' => Resourcerequest::$Static_requested_month,
               'contentOptions'=>['style'=>'width: 10%;text-align:center'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
             ],     
             [
               'attribute' => 'requested_year',
@@ -230,7 +232,7 @@ $this->title = 'Recursos Solicitados';
               },
               'filter' => Resourcerequest::$Static_requested_year,
               'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
             ],             
             [
               'attribute' => 'resource_purposes',
@@ -240,7 +242,7 @@ $this->title = 'Recursos Solicitados';
               },
               'filter' => Resourcerequest::$Static_resource_purposes,
               'contentOptions'=>['style'=>'width: 10%;text-align:center'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
             ],            
             [
               'attribute' => 'resource_type',
@@ -250,7 +252,7 @@ $this->title = 'Recursos Solicitados';
               },
               'filter' => Resourcerequest::$Static_resource_type,
               'contentOptions'=>['style'=>'width: 10%;text-align:center'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
             ],                                     
             [
               'attribute' => 'add_insurance',
@@ -261,7 +263,7 @@ $this->title = 'Recursos Solicitados';
               },
               'filter' => Resourcerequest::$Static_add_insurance,
               'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
             ], 
             [
               'attribute' => 'resource_status_id',
@@ -279,13 +281,13 @@ $this->title = 'Recursos Solicitados';
               },                      
               'filter' => ArrayHelper::map(Resourcestatus::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
               'contentOptions'=>['style'=>'width: 10%;text-align:center'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
             ],
             [
               'class' => 'yii\grid\ActionColumn',
               'header' => 'Ações',  
               'contentOptions'=>['style'=>'width: 15%;text-align:right'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],                            
+              'headerOptions' => ['class' => 'text-center'],                            
               'template' => '{view} {update} {delete} {manager}',
               'buttons' => [
                   'view' => function ($url, $model) {
@@ -331,5 +333,6 @@ $this->title = 'Recursos Solicitados';
             ],
         ],
     ]); ?>
-
+    </div>
+    </div>
 </div>
