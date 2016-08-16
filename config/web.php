@@ -63,7 +63,10 @@ $config = [
         ],
         'resourcerequest' => [
             'class' => 'app\modules\resourcerequest\Module',
-        ],                        
+        ],
+        'productivity' => [
+            'class' => 'app\modules\productivity\Module',
+        ],                                
     ],    
     'params' => $params,
 ];

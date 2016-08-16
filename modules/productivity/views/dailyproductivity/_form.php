@@ -4,8 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\Location;
-use app\models\Product;
-use app\models\Modality;
+use app\modules\productivity\models\Product;
 use app\models\Person;
 use app\models\User;
 use yii\widgets\MaskedInput;
@@ -65,7 +64,7 @@ if(preg_match('/(?i)msie [5-8]/',$_SERVER['HTTP_USER_AGENT']))
             'class' => 'selectpicker '
         ]
     ]
-    )->dropDownList(app\models\Product::getHierarchy(), ['prompt' => 'Selecione', 'class'=>'form-control required']);
+    )->dropDownList(app\modules\productivity\models\Product::getHierarchy(), ['prompt' => 'Selecione', 'class'=>'form-control required']);
     ?>
 
     <hr/>

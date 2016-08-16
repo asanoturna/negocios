@@ -1,10 +1,10 @@
 <?php
 
-namespace app\controllers;
+namespace app\modules\productivity\controllers;
 
 use Yii;
-use app\models\Dailyproductivity;
-use app\models\DailyproductivitySearch;
+use app\modules\productivity\models\Dailyproductivity;
+use app\modules\productivity\models\DailyproductivitySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

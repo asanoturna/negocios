@@ -1,6 +1,8 @@
 <?php
 
-namespace app\models;
+namespace app\modules\productivity\models;
+use app\models\User;
+use app\models\Location;
 
 use Yii;
 

@@ -3,10 +3,9 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
 use app\models\Location;
-use app\models\Product;
-use app\models\Modality;
+use app\modules\productivity\models\Product;
 use app\models\User;
-use app\models\Dailyproductivitystatus;
+use app\modules\productivity\models\Dailyproductivitystatus;
 
 $this->title = 'Produtividade Diária';?>
 <div class="dailyproductivity-index">

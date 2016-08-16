@@ -1,32 +1,19 @@
 <?php
 
-namespace app\controllers;
+namespace app\modules\productivity\controllers;
 
 use Yii;
-use app\models\Managerdailyproductivity;
-use app\models\ManagerdailyproductivitySearch;
+use app\modules\productivity\models\Product;
+use app\modules\productivity\models\ProductSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
-use yii\base\Security;
 
-class ManagerdailyproductivityController extends Controller
+class ProductController extends Controller
 {
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::classname(),
-                'only'  => ['index','create','view'],
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['@']
-                        //
-                    ],
-                ]
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -38,7 +25,7 @@ class ManagerdailyproductivityController extends Controller
 
     public function actionIndex()
     {
-        $searchModel = new ManagerdailyproductivitySearch();
+        $searchModel = new ProductSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -56,7 +43,7 @@ class ManagerdailyproductivityController extends Controller
 
     public function actionCreate()
     {
-        $model = new Managerdailyproductivity();
+        $model = new Product();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -89,7 +76,7 @@ class ManagerdailyproductivityController extends Controller
 
     protected function findModel($id)
     {
-        if (($model = Managerdailyproductivity::findOne($id)) !== null) {
+        if (($model = Product::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

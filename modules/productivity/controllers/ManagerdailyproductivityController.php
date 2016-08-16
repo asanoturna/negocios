@@ -1,19 +1,32 @@
 <?php
 
-namespace app\controllers;
+namespace app\modules\productivity\controllers;
 
 use Yii;
-use app\models\Dailyproductivitystatus;
-use app\models\DailyproductivitystatusSearch;
+use app\modules\productivity\models\Managerdailyproductivity;
+use app\modules\productivity\models\ManagerdailyproductivitySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use yii\base\Security;
 
-class DailyproductivitystatusController extends Controller
+class ManagerdailyproductivityController extends Controller
 {
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::classname(),
+                'only'  => ['index','create','view'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@']
+                        //
+                    ],
+                ]
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -25,7 +38,7 @@ class DailyproductivitystatusController extends Controller
 
     public function actionIndex()
     {
-        $searchModel = new DailyproductivitystatusSearch();
+        $searchModel = new ManagerdailyproductivitySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -43,7 +56,7 @@ class DailyproductivitystatusController extends Controller
 
     public function actionCreate()
     {
-        $model = new Dailyproductivitystatus();
+        $model = new Managerdailyproductivity();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +89,7 @@ class DailyproductivitystatusController extends Controller
 
     protected function findModel($id)
     {
-        if (($model = Dailyproductivitystatus::findOne($id)) !== null) {
+        if (($model = Managerdailyproductivity::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

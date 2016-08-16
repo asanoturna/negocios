@@ -1,15 +1,15 @@
 <?php
 
-namespace app\controllers;
+namespace app\modules\productivity\controllers;
 
 use Yii;
-use app\models\Product;
-use app\models\ProductSearch;
+use app\modules\productivity\models\Dailyproductivitystatus;
+use app\modules\productivity\models\DailyproductivitystatusSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-class ProductController extends Controller
+class DailyproductivitystatusController extends Controller
 {
     public function behaviors()
     {
@@ -25,7 +25,7 @@ class ProductController extends Controller
 
     public function actionIndex()
     {
-        $searchModel = new ProductSearch();
+        $searchModel = new DailyproductivitystatusSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -43,7 +43,7 @@ class ProductController extends Controller
 
     public function actionCreate()
     {
-        $model = new Product();
+        $model = new Dailyproductivitystatus();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +76,7 @@ class ProductController extends Controller
 
     protected function findModel($id)
     {
-        if (($model = Product::findOne($id)) !== null) {
+        if (($model = Dailyproductivitystatus::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

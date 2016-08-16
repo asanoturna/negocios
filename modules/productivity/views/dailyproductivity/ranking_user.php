@@ -3,7 +3,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
 use app\models\Location;
-use app\models\Product;
+use app\modules\productivity\models\Product;
 use app\models\Modality;
 use app\models\User;
 use yii\data\SqlDataProvider;
@@ -28,7 +28,7 @@ $this->title = 'Produtividade Diária';
                 window.location.href = "' . Url::to(['/dailyproductivity/ranking_user']) . '&product_id=" + val;
             }
             }', View::POS_HEAD);
-            echo Html::activeDropDownList($model, 'product_id', app\models\Product::getHierarchy(),  ['onchange'=>'submit(this.value);','prompt'=>'Todos os Produtos','class'=>'form-control required']);
+            echo Html::activeDropDownList($model, 'product_id', app\modules\productivity\models\Product::getHierarchy(),  ['onchange'=>'submit(this.value);','prompt'=>'Todos os Produtos','class'=>'form-control required']);
             ?>
         </div>    
         <div class="col-md-2 pull-right">

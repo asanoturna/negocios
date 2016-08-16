@@ -1,11 +1,11 @@
 <?php
 
-namespace app\models;
+namespace app\modules\productivity\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Managerdailyproductivity;
+use app\modules\productivity\models\Managerdailyproductivity;
 
 class ManagerdailyproductivitySearch extends Managerdailyproductivity
 {

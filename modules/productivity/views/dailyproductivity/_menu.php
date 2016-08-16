@@ -9,33 +9,33 @@ use yii\bootstrap\Nav;
                 'items' => [
                     [
                         'label' => 'Ranking por Usuário', 
-                        'url' => ['/dailyproductivity/ranking_user'],
+                        'url' => ['ranking_user'],
                     ],
                     [
                         'label' => 'Ranking por Agência',
-                        'url' => ['/dailyproductivity/ranking_location'],
+                        'url' => ['ranking_location'],
                     ],
                     [
                         'label' => 'Desempenho por Usuário',
-                        'url' => ['/dailyproductivity/performance_user'],
+                        'url' => ['performance_user'],
                     ],                            
                     [
                         'label' => 'Visão Geral dos Produtos',
-                        'url' => ['/dailyproductivity/performance_overview'],
+                        'url' => ['performance_overview'],
                     ],                            
                 ],
             ],   
             [
                 'label'   => '<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> Listar',
-                'url'     => ['/dailyproductivity/index'],
+                'url'     => ['index'],
             ],  
             [
                 'label'   => '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Inserir',
-                'url'     => ['/dailyproductivity/create'],
+                'url'     => ['create'],
             ],                                                                                                 
             [
                 'label'   => '<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Gerenciar',
-                'url'     => ['/managerdailyproductivity/index'],
+                'url'     => ['productivity/managerdailyproductivity/index'],
                 'visible' => Yii::$app->user->identity->can_managerproductivity == 1,
             ], 
         ],
