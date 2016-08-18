@@ -58,7 +58,7 @@ https://github.com/mdmsoft/yii2-admin/blob/master/docs/guide/using-menu.md
 https://github.com/hiqdev/yii2-menumanager *
 https://github.com/hanterrian/yii2-menu-manager
 
-Crop Avatar
+CROP AVATAR
 --------------------
 https://github.com/karpoff/yii2-crop-image-upload
 https://github.com/Patroklo/yii2-widget-upload-crop
@@ -74,6 +74,10 @@ http://jai-notes.blogspot.com.br/2015/12/yii2-login-with-mysql-database.html
 http://www.bsourcecode.com/yiiframework2/yii-2-user-login-from-database/
 https://www.youtube.com/watch?v=eFOIUeU-Y74&index=18&list=PLRd0zhQj3CBmusDbBzFgg3H20VxLx2mkF
 https://www.youtube.com/watch?v=iEmzyaY4rk8&index=7&list=PLpNYlUeSK_rn_3mWq_vPt_jKz6cp7a6sZ
+
+RBAC
+--------------------
+https://github.com/yii2mod/yii2-rbac
 
 MARKTING ACTION
 --------------------

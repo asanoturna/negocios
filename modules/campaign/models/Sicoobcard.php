@@ -12,6 +12,8 @@ class Sicoobcard extends \yii\db\ActiveRecord
         return 'campaign_sicoobcard';
     }
 
+    public $cnt;
+
     public static $Static_product_type = [
         'ATIVAÇÃO', 
         'REATIVAÇÃO', 

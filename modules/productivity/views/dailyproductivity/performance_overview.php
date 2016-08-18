@@ -42,7 +42,7 @@ $this->title = 'Produtividade Diária';
                     ['id' => '12', 'name' => 'Dezembro'],
                 ];
                 $this->registerJs('var submit = function (val){if (val > 0) {
-                    window.location.href = "' . Url::to(['/dailyproductivity/performance_overview']) . '&mounth=" + val;
+                    window.location.href = "' . Url::to(['dailyproductivity/performance_overview']) . '&mounth=" + val;
                 }
                 }', View::POS_HEAD);
                echo Html::activeDropDownList($model, 'mounth', ArrayHelper::map($array, 'id', 'name'),['onchange'=>'submit(this.value);','class'=>'form-control']);

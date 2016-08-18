@@ -28,7 +28,7 @@ $this->title = 'Produtividade Diária';
                         window.location.href = "' . Url::to(['/dailyproductivity/ranking_location']) . '&product_id=" + val;
                     }
                     }', View::POS_HEAD);
-                    echo Html::activeDropDownList($model, 'product_id', app\models\Product::getHierarchy(), ['onchange'=>'submit(this.value);','prompt'=>'Todos os Produtos','class'=>'form-control required']);
+                    echo Html::activeDropDownList($model, 'product_id', app\modules\productivity\models\Product::getHierarchy(), ['onchange'=>'submit(this.value);','prompt'=>'Todos os Produtos','class'=>'form-control required']);
                     ?>
         </div>
     </div>  
@@ -44,27 +44,10 @@ $this->title = 'Produtividade Diária';
           'summary'      =>  '',
           'showHeader'   => true,        
           'tableOptions' => ['class'=>'table table-striped table-hover '],
-          'columns' => [   
-                // [
-                //     'attribute' => 'avatar',
-                //     'format' => 'image',
-                //     'value' => function ($data) {                      
-                //         return Yii::$app->request->BaseUrl.'/images/users/'.$data["avatar"];
-                //     },
-                //     'contentOptions'=>['style'=>'width: 20%;text-align:center'],
-                // ],   
-                [
-                    'attribute' => 'sigla',
-                    'header' => '',
-                    'format' => 'html',
-                    'value' => function ($data) {                      
-                        return $data["sigla"];
-                    },
-                    'contentOptions'=>['style'=>'width: 10%;text-align:center'],                    
-                ],                                 
+          'columns' => [                                     
                 [
                     'attribute' => 'local',
-                    'header' => '',
+                    'label' => false,
                     'format' => 'raw',
                     'value' => function ($data) {                      
                         return $data["local"];
@@ -107,27 +90,10 @@ $this->title = 'Produtividade Diária';
           'summary'      =>  '',
           'showHeader'   => true,        
           'tableOptions' => ['class'=>'table table-striped table-hover '],
-          'columns' => [   
-                // [
-                //     'attribute' => 'avatar',
-                //     'format' => 'image',
-                //     'value' => function ($data) {                      
-                //         return Yii::$app->request->BaseUrl.'/images/users/'.$data["avatar"];
-                //     },
-                //     'contentOptions'=>['style'=>'width: 20%;text-align:center'],
-                // ],   
-                [
-                    'attribute' => 'sigla',
-                    'header' => '',
-                    'format' => 'html',
-                    'value' => function ($data) {                      
-                        return $data["sigla"];
-                    },
-                    'contentOptions'=>['style'=>'width: 10%;text-align:center'],                    
-                ],                                 
+          'columns' => [                                
                 [
                     'attribute' => 'local',
-                    'header' => '',
+                    'label' => false,
                     'format' => 'raw',
                     'value' => function ($data) {                      
                         return $data["local"];

@@ -9,6 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\data\SqlDataProvider;
+
 
 class SicoobcardController extends Controller
 {
@@ -17,7 +19,7 @@ class SicoobcardController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::classname(),
-                'only'  => ['index','create','view','update'],
+                'only'  => ['index','create','view','update','performance'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -44,6 +46,65 @@ class SicoobcardController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+
+    public function actionPerformance()
+    {
+        $searchModel = new Sicoobcard();
+
+        $dataPerformanceUser = new SqlDataProvider([
+            'sql' => "SELECT user.id, avatar, fullname, 
+                COUNT(if(campaign_sicoobcard.status = 0, campaign_sicoobcard.id, NULL)) as  unconfirmed,
+                COUNT(if(campaign_sicoobcard.status = 1, campaign_sicoobcard.id, NULL)) as  confirmed
+                FROM campaign_sicoobcard
+                INNER JOIN `user` ON campaign_sicoobcard.user_id = `user`.id
+                GROUP BY user_id
+                ORDER BY confirmed DESC",
+            'totalCount' => 300,
+            'sort' =>false,
+            'key'  => 'user.id',
+            'pagination' => [
+                'pageSize' => 300,
+            ],
+        ]);      
+
+        $dataPerformanceLocation = new SqlDataProvider([
+            'sql' => "SELECT location.id, fullname, 
+                COUNT(if(campaign_sicoobcard.status = 0, campaign_sicoobcard.id, NULL)) as  unconfirmed,
+                COUNT(if(campaign_sicoobcard.status = 1, campaign_sicoobcard.id, NULL)) as  confirmed
+                FROM campaign_sicoobcard
+                INNER JOIN `location` ON campaign_sicoobcard.location_id = `location`.id
+                GROUP BY location_id
+                ORDER BY confirmed DESC",
+            'totalCount' => 300,
+            'sort' =>false,
+            'key'  => 'location.id',
+            'pagination' => [
+                'pageSize' => 300,
+            ],
+        ]); 
+
+        $commandActivation = Yii::$app->db->createCommand("
+                        SELECT count(campaign_sicoobcard.id) as reativacao
+                        FROM campaign_sicoobcard
+                        WHERE campaign_sicoobcard.product_type = 1"
+                    );
+        $totalActivation = $commandActivation->queryScalar();   
+
+        $commandReactivation  = Yii::$app->db->createCommand("
+                        SELECT count(campaign_sicoobcard.id) as reativacao
+                        FROM campaign_sicoobcard
+                        WHERE campaign_sicoobcard.product_type = 0"
+                    );
+        $totalReactivation = $commandReactivation->queryScalar();
+
+        return $this->render('performance', [
+            'model' => $model,
+            'dataPerformanceUser' => $dataPerformanceUser,
+            'dataPerformanceLocation' => $dataPerformanceLocation,
+            'totalActivation'   => $totalActivation,
+            'totalReactivation' => $totalReactivation            
+        ]);
+    }      
 
     public function actionView($id)
     {
