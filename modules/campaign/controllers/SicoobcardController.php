@@ -49,7 +49,7 @@ class SicoobcardController extends Controller
 
     public function actionPerformance()
     {
-        $searchModel = new Sicoobcard();
+        $model = new Sicoobcard();
 
         $dataPerformanceUser = new SqlDataProvider([
             'sql' => "SELECT user.id, avatar, fullname, 
@@ -61,7 +61,7 @@ class SicoobcardController extends Controller
                 ORDER BY confirmed DESC",
             'totalCount' => 300,
             'sort' =>false,
-            'key'  => 'user.id',
+            'key'  => 'fullname',
             'pagination' => [
                 'pageSize' => 300,
             ],
@@ -77,7 +77,7 @@ class SicoobcardController extends Controller
                 ORDER BY confirmed DESC",
             'totalCount' => 300,
             'sort' =>false,
-            'key'  => 'location.id',
+            'key'  => 'fullname',
             'pagination' => [
                 'pageSize' => 300,
             ],
