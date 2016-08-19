@@ -19,7 +19,7 @@ $this->title = 'Gestão Produtividade Diária';
 </div>
 
 <hr/>
-    <div class="panel panel-primary">
+    <div class="panel panel-default">
     <div class="panel-heading"><b>Pesquisar</b></div>
       <div class="panel-body">
         <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -31,13 +31,13 @@ $this->title = 'Gestão Produtividade Diária';
         'filterModel' => $searchModel,
         'tableOptions' => ['class'=>'table table-striped table-bordered table-hover'],
         //'headerRowOptions' => ['class'=> 'success'],
-        'headerRowOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;text-align:center'],
+        'headerRowOptions' => ['class' => 'text-center'],
         'columns' => [
             [
               'attribute' => 'id',
               'enableSorting' => true,
               'contentOptions'=>['style'=>'width: 3%;text-align:center'],
-              'headerOptions' => ['class' => 'text-center', 'style' => 'background-color: #cde1a4;'],
+              'headerOptions' => ['class' => 'text-center'],
             ],          
             [
                 'attribute' => 'date',

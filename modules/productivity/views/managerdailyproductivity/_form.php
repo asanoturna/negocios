@@ -4,10 +4,10 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\Location;
-use app\models\Product;
+use app\modules\productivity\models\Product;
 use app\models\Modality;
 use app\models\Person;
-use app\models\Dailyproductivitystatus;
+use app\modules\productivity\models\Dailyproductivitystatus;
 use app\models\User;
 use yii\widgets\MaskedInput;
 use yii\helpers\Url;
@@ -61,7 +61,7 @@ use yii\helpers\Url;
                 'class' => 'selectpicker '
             ]
         ]
-        )->dropDownList(app\models\Product::getHierarchy(), ['prompt' => 'Selecione', 'class'=>'form-control required']);
+        )->dropDownList(app\modules\productivity\models\Product::getHierarchy(), ['prompt' => 'Selecione', 'class'=>'form-control required']);
         ?>
 
         <?php //echo $form->field($model, 'valor')->textInput(['maxlength' => true]) 

@@ -3,6 +3,7 @@
 namespace app\modules\productivity\models;
 use app\models\User;
 use app\models\Location;
+use app\models\Person;
 
 use Yii;
 
