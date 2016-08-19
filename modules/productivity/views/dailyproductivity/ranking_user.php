@@ -25,35 +25,12 @@ $this->title = 'Produtividade Diária';
         <div class="col-md-2 pull-right"> 
             <?php 
             $this->registerJs('var submit = function (val){if (val > 0) {
-                window.location.href = "' . Url::to(['/dailyproductivity/ranking_user']) . '&product_id=" + val;
+                window.location.href = "' . Url::to(['dailyproductivity/ranking_user']) . '&product_id=" + val;
             }
             }', View::POS_HEAD);
             echo Html::activeDropDownList($model, 'product_id', app\modules\productivity\models\Product::getHierarchy(),  ['onchange'=>'submit(this.value);','prompt'=>'Todos os Produtos','class'=>'form-control required']);
             ?>
         </div>    
-        <div class="col-md-2 pull-right">
-        <?php
-            $array = [
-                ['id' => '01', 'name' => 'Janeiro'],
-                ['id' => '02', 'name' => 'Fevereiro'],
-                ['id' => '03', 'name' => 'Março'],
-                ['id' => '04', 'name' => 'Abril'],
-                ['id' => '05', 'name' => 'Maio'],
-                ['id' => '06', 'name' => 'Junho'],
-                ['id' => '07', 'name' => 'Julho'],
-                ['id' => '08', 'name' => 'Agosto'],
-                ['id' => '09', 'name' => 'Setembro'],
-                ['id' => '10', 'name' => 'Outubro'],
-                ['id' => '11', 'name' => 'Novembro'],
-                ['id' => '12', 'name' => 'Dezembro'],
-            ];
-            $this->registerJs('var submit = function (mval){if (mval > 0) {
-                window.location.href = "' . Url::to(['/dailyproductivity/ranking_user']) . '?mounth=" + mval;
-            }
-            }', View::POS_HEAD);
-           echo Html::activeDropDownList($model, 'mounth', ArrayHelper::map($array, 'id', 'name'),['onchange'=>'submit(this.value);','class'=>'form-control']);
-            ?>
-        </div>
     </div>  
     </p>  
     <div class="row">

@@ -55,7 +55,7 @@ $this->title = 'Produtividade Diária';
                 'title' => [
                     'text' => '',
                 ],
-                'colors'=> ['#00A295','#27cdd9'],
+                'colors'=> ['#13AE9C','#BDD530'],
                 'xAxis' => [
                     'categories' => $p,
                 ],
