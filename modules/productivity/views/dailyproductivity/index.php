@@ -131,7 +131,7 @@ $this->title = 'Produtividade Diária';?>
             return [
                 'id' => $model['id'], 
                 'onclick' => 'location.href="'
-                    . Yii::$app->urlManager->createUrl('dailyproductivity/view') 
+                    . Yii::$app->urlManager->createUrl('productivity/dailyproductivity/view') 
                     . '&id="+(this.id);',
                 'style' => "cursor: pointer",
             ];
