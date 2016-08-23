@@ -23,13 +23,13 @@ $this->title = 'Produtividade Diária';
     <hr/>
     <div class="row">
         <div class="col-md-3 pull-right">
-                    <?php 
-                    $this->registerJs('var submit = function (val){if (val > 0) {
-                        window.location.href = "' . Url::to(['/dailyproductivity/ranking_location']) . '&product_id=" + val;
-                    }
-                    }', View::POS_HEAD);
-                    echo Html::activeDropDownList($model, 'product_id', app\modules\productivity\models\Product::getHierarchy(), ['onchange'=>'submit(this.value);','prompt'=>'Todos os Produtos','class'=>'form-control required']);
-                    ?>
+            <?php 
+            $this->registerJs('var submit = function (val){if (val > 0) {
+                window.location.href = "' . Url::to(['dailyproductivity/ranking_location']) . '&product_id=" + val;
+            }
+            }', View::POS_HEAD);
+            echo Html::activeDropDownList($model, 'product_id', app\modules\productivity\models\Product::getHierarchy(), ['onchange'=>'submit(this.value);','prompt'=>'Todos os Produtos','class'=>'form-control required']);
+            ?>
         </div>
     </div>  
     <p>   

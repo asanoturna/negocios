@@ -18,8 +18,8 @@ Corrigir telas responsivas (gridview, etc)
 
 MÓDULOS
 --------------------
-- Modularizar as ferramentas auxiliares (visitas, produtividade, etc) ***
-- Tentar reduzir o Managerdailyprod... ***
+- Modularizar as ferramentas auxiliares (visitas)
+- Tentar reduzir o Managerdailyprod...
 
 - Migração da ferramenta de Apoio Cadastro
 
@@ -33,6 +33,8 @@ MÓDULOS
 - Prod Diaria -> Grafico por modalidade de produto
 - Prod Diaria -> Quadro Metas por agência (cadastrar metas por local para todos os produtos)
   ---> Exemplo.: tabela meta > valor, pa, data(m/y), 
+
+  - Campanha SC -> Exportar Excel
 
 PÁGINAS 
 --------------------
