@@ -26,6 +26,85 @@ $this->title = 'Campanha Sicoobcard Todo Dia';
         </div>
     <?php endforeach ?>
 
+    <p>
+    <?php
+    use kartik\export\ExportMenu;
+              $gridColumns = [
+                  ['attribute'=>'id', 'hAlign'=>'right', 'width'=>'90px'],  
+                  [
+                  'attribute'=>'product_type',
+                  'label'=> 'Produto',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value' => function($data) {
+                      return $data->getProductType();
+                  },
+                  'format'=>'raw'
+                  ],                                      
+                  [
+                    'attribute'=>'location_id',
+                    'label'=> 'PA',
+                    'vAlign'=>'middle',
+                    'width'=>'100px',
+                    'value'=>function ($model, $key, $index, $widget) { 
+                        return Html::a($model->location->shortname, '#', []);
+                    },
+                    'format'=>'raw'
+                  ], 
+                  ['attribute'=>'name', 'hAlign'=>'right', 'width'=>'90px'],
+                  ['attribute'=>'card', 'hAlign'=>'right', 'width'=>'50px'],
+                  ['attribute'=>'purchasedate','format'=>['date'], 'hAlign'=>'right', 'width'=>'110px'],                 
+                  ['attribute'=>'purchasevalue','format'=>['decimal',2], 'hAlign'=>'right', 'width'=>'110px'],
+                  ['attribute'=>'purchaselocal', 'hAlign'=>'right', 'width'=>'90px'], 
+                  [
+                    'attribute'=>'user_id',
+                    'label'=> 'Usuário',
+                    'vAlign'=>'middle',
+                    'width'=>'100px',
+                    'value'=>function ($model, $key, $index, $widget) { 
+                        return Html::a($model->user->username, '#', []);
+                    },
+                    'format'=>'raw'
+                  ],   
+                  [
+                  'attribute'=>'status',
+                  'label'=> 'Situação',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value' => function($data) {
+                      return $data->getStatus();
+                  },
+                  'format'=>'raw'
+                  ],                                                                      
+              ];
+              echo ExportMenu::widget([
+              'dataProvider' => $dataProvider,
+              'columns' => $gridColumns,
+              'fontAwesome' => true,
+              'emptyText' => 'Nenhum registro',
+              'showColumnSelector' => true,
+              'asDropdown' => true,
+              'target' => ExportMenu::TARGET_BLANK,
+              'showConfirmAlert' => false,
+              'exportConfig' => [
+                ExportMenu::FORMAT_HTML => false,
+                ExportMenu::FORMAT_CSV => false,
+                ExportMenu::FORMAT_TEXT => false,
+                ExportMenu::FORMAT_PDF => false
+            ],
+            'columnSelectorOptions' => [
+              'class' => 'btn btn-success',
+            ],
+            'dropdownOptions' => [
+              'icon' => false,
+              'label' => 'Exportar Registros',
+              'class' => 'btn btn-success',
+            ],
+            'filename' => 'relatorio-campanha-sicoobcard-todo-dia',
+            ]);
+    ?> 
+    </p>      
+
     <div class="panel panel-default">
         <div class="panel-body">     
         <?= GridView::widget([
