@@ -69,6 +69,11 @@ class SiteController extends Controller
         return $this->render('locations');     
     }
 
+    public function actionPhones()
+    {        
+        return $this->render('phones');     
+    }    
+
     public function actionMap()
     {
         return $this->render('map');

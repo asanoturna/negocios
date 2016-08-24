@@ -1,0 +1,116 @@
+<?php
+use yii\helpers\Html;
+use kartik\sidenav\SideNav;
+use yii\data\SqlDataProvider;
+use yii\grid\GridView;
+use yii\widgets\ListView;
+use yii\helpers\ArrayHelper;
+
+$this->title = 'Telefones e Ramais';
+?>
+<div class="site-about">
+
+    <div class="row">
+    <div class="col-sm-2">
+    <?php  echo $this->render('_menu'); ?>
+    </div>
+
+    <div class="col-sm-10">
+    <h1><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> <?= Html::encode($this->title) ?></h1>
+    <hr/>
+    
+    <div class="panel panel-default">
+    <div class="panel-heading"><strong>Por Local</strong></div>
+      <div class="panel-body">
+    <?php
+    $dataProviderUsers = new SqlDataProvider([
+        'sql' => "SELECT
+            fullname, 
+            phone
+        FROM location
+        WHERE is_active = 1
+        ORDER BY fullname",
+            'key'  => 'fullname',
+    ]);
+    ?>   
+    <?= GridView::widget([
+      'dataProvider' => $dataProviderUsers,
+      'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
+      'summary'      =>  '',
+      'showHeader'   => false,        
+      'tableOptions' => ['class'=>'table '],
+      'columns' => [                                    
+            [
+                'attribute' => 'fullname',
+                'format' => 'raw',
+                'header' => '',
+                'value' => function ($data) {                      
+                    return $data["fullname"];
+                },
+                'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;text-transform: uppercase'],
+            ],  
+            [
+                'attribute' => 'phone',
+                'format' => 'raw',
+                'header' => '',
+                'value' => function ($data) {                      
+                    return $data["phone"];
+                },
+                'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;'],
+            ],                                                           
+        ],
+    ]); ?>   
+    </div>
+    </div>
+
+    <div class="panel panel-default">
+    <div class="panel-heading"><strong>Por Colaborador</strong></div>
+      <div class="panel-body">
+    <?php
+    $dataProviderUsers = new SqlDataProvider([
+        'sql' => "SELECT
+                    fullname, 
+                    phone
+                FROM user
+                WHERE status = 1
+                ORDER BY fullname",
+        'key'  => 'fullname',
+        'totalCount' => 300,
+        'pagination' => [
+            'pageSize' => 300,
+        ],            
+    ]);
+    ?>   
+    <?= GridView::widget([
+      'dataProvider' => $dataProviderUsers,
+      'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
+      'summary'      =>  '',
+      'showHeader'   => false,        
+      'tableOptions' => ['class'=>'table '],
+      'columns' => [                                    
+            [
+                'attribute' => 'fullname',
+                'format' => 'raw',
+                'header' => '',
+                'value' => function ($data) {                      
+                    return $data["fullname"];
+                },
+                'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;text-transform: uppercase'],
+            ],  
+            [
+                'attribute' => 'phone',
+                'format' => 'raw',
+                'header' => '',
+                'value' => function ($data) {                      
+                    return $data["phone"];
+                },
+                'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;'],
+            ],                                                           
+        ],
+    ]); ?>   
+    </div>
+    </div>    
+
+    </div>
+    </div>
+</div>

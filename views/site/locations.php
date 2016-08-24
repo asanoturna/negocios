@@ -11,10 +11,6 @@ $this->title = 'Agências';
 <div class="site-about">
 
     <div class="row">
-<!--     <span class="fa-stack">
-    <i class="fa fa-square-o fa-stack-2x"></i>
-    <i class="fa fa-twitter fa-stack-1x"></i>
-    </span> -->
     <div class="col-sm-2">
     <?php  echo $this->render('_menu'); ?>
     </div>
