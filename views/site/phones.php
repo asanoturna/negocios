@@ -18,6 +18,11 @@ $this->title = 'Telefones e Ramais';
     <div class="col-sm-10">
     <h1><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> <?= Html::encode($this->title) ?></h1>
     <hr/>
+
+<div class="alert alert-info fade in">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  Prezados colaborador, mantenha suas informações sempre atualizadas na intranet para que seja fácil entrar em contato. <?= Html::a('Clique aqui para atualizar', ['/user/changeprofile'], ['class'=>'btn btn-link']) ?>
+</div>
     
     <div class="panel panel-default">
     <div class="panel-heading"><strong>Por Local</strong></div>

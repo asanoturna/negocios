@@ -21,11 +21,13 @@ $this->title = 'Lista de E-mails';
 
     <div class="panel panel-default">
     <div class="panel-body">
-<ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">Por Colaborador</a></li>
-  <li role="presentation"><a href="#">Por Grupo</a></li>
-</ul>
-<?php
+
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="#">Por Colaborador</a></li>
+      <li role="presentation"><a href="#">Por Grupo</a></li>
+    </ul>
+
+    <?php
     $dataProviderUsers = new SqlDataProvider([
         'sql' => "SELECT
             fullname, 

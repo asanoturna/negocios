@@ -28,8 +28,7 @@ $this->title = 'Visitas dos Gerentes';
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <p><?=$message?></p>
         </div>
-    <?php endforeach ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>    
+    <?php endforeach ?>    
 
     <div class="row">
     <div class="col-md-6">
