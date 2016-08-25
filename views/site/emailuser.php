@@ -5,6 +5,7 @@ use yii\data\SqlDataProvider;
 use yii\grid\GridView;
 use yii\widgets\ListView;
 use yii\helpers\ArrayHelper;
+use yii\bootstrap\Tabs;
 
 $this->title = 'Lista de E-mails';
 ?>
@@ -22,20 +23,35 @@ $this->title = 'Lista de E-mails';
     <div class="panel panel-default">
     <div class="panel-body">
 
-    <ul class="nav nav-tabs">
-      <li role="presentation" class="active"><a href="#">Por Colaborador</a></li>
-      <li role="presentation"><a href="#">Por Grupo</a></li>
-    </ul>
-
+    <?php
+    echo Tabs::widget([
+        'items' => [
+            [
+                'label' => 'Por Colaborador',
+                'url' => ['/site/emailuser'],
+                'active' => true,
+            ],
+            [
+                'label' => 'Por Grupo',
+                'url' => ['/site/emailgroup'],
+            ],
+        ],
+    ]);
+    ?>
+    <br/>
     <?php
     $dataProviderUsers = new SqlDataProvider([
         'sql' => "SELECT
-            fullname, 
-            email
-        FROM location
-        WHERE is_active = 1
-        ORDER BY fullname",
-            'key'  => 'fullname',
+                    fullname, 
+                    email
+                FROM user
+                WHERE status = 1
+                ORDER BY fullname",
+        'key'  => 'fullname',
+        'totalCount' => 300,
+        'pagination' => [
+            'pageSize' => 300,
+        ],         
     ]);
     ?>   
     <?= GridView::widget([
@@ -43,7 +59,7 @@ $this->title = 'Lista de E-mails';
       'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '<span class="not-set">(não informado)</span>'],
       'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
       'summary'      =>  '',
-      'showHeader'   => true,        
+      'showHeader'   => false,        
       'tableOptions' => ['class'=>'table table-hover'],
       'columns' => [                                    
             [
@@ -55,15 +71,7 @@ $this->title = 'Lista de E-mails';
                 },
                 'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;text-transform: uppercase'],
             ],  
-            [
-                'attribute' => 'email',
-                'format' => 'raw',
-                'label'=> '',
-                'value' => function ($data) {                      
-                    return $data["email"];
-                },
-                'contentOptions'=>['style'=>'width: 25%;text-align:left;vertical-align: middle;'],
-            ],                                                                                 
+            'email:email',                                                                                
         ],
     ]); ?> 
     </div>

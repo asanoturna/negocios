@@ -21,11 +21,11 @@ $this->title = 'Telefones e Ramais';
 
 <div class="alert alert-info fade in">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  Prezados colaborador, mantenha suas informações sempre atualizadas na intranet para que seja fácil entrar em contato. <?= Html::a('Clique aqui para atualizar', ['/user/changeprofile'], ['class'=>'btn btn-link']) ?>
+  <i class="fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i> Prezado colaborador, mantenha suas informações sempre atualizadas na intranet para que seja fácil entrar em contato. <?= Html::a('Clique aqui para atualizar', ['/user/changeprofile'], ['class'=>'btn btn-link']) ?>
 </div>
     
     <div class="panel panel-default">
-    <div class="panel-heading"><strong>Por Local</strong></div>
+    <div class="panel-heading"><strong>Agências</strong></div>
       <div class="panel-body">
     <?php
     $dataProviderUsers = new SqlDataProvider([
@@ -92,7 +92,7 @@ $this->title = 'Telefones e Ramais';
     </div>
 
     <div class="panel panel-default">
-    <div class="panel-heading"><strong>Por Colaborador</strong></div>
+    <div class="panel-heading"><strong>Sede</strong></div>
       <div class="panel-body">
     <?php
     $dataProviderUsers = new SqlDataProvider([
@@ -101,7 +101,7 @@ $this->title = 'Telefones e Ramais';
                     phone,
                     celphone
                 FROM user
-                WHERE status = 1
+                WHERE status = 1 AND location_id = 1 OR location_id = 20
                 ORDER BY fullname",
         'key'  => 'fullname',
         'totalCount' => 300,
@@ -130,7 +130,7 @@ $this->title = 'Telefones e Ramais';
             [
                 'attribute' => 'phone',
                 'format' => 'raw',
-                'label' => 'Telefone',
+                'label' => 'Telefone / Ramal',
                 'value' => function ($data) {                      
                     return $data["phone"];
                 },
