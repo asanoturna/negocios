@@ -26,7 +26,8 @@ $this->title = 'Telefones e Ramais';
     $dataProviderUsers = new SqlDataProvider([
         'sql' => "SELECT
             fullname, 
-            phone
+            phone,
+            voip
         FROM location
         WHERE is_active = 1
         ORDER BY fullname",
@@ -35,15 +36,16 @@ $this->title = 'Telefones e Ramais';
     ?>   
     <?= GridView::widget([
       'dataProvider' => $dataProviderUsers,
+      'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '<span class="not-set">(não informado)</span>'],
       'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
       'summary'      =>  '',
-      'showHeader'   => false,        
-      'tableOptions' => ['class'=>'table '],
+      //'showHeader'   => false,        
+      'tableOptions' => ['class'=>'table table-hover'],
       'columns' => [                                    
             [
                 'attribute' => 'fullname',
                 'format' => 'raw',
-                'header' => '',
+                'label' => '',
                 'value' => function ($data) {                      
                     return $data["fullname"];
                 },
@@ -52,12 +54,33 @@ $this->title = 'Telefones e Ramais';
             [
                 'attribute' => 'phone',
                 'format' => 'raw',
-                'header' => '',
+                'label' => 'Telefone',
                 'value' => function ($data) {                      
                     return $data["phone"];
                 },
-                'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;'],
-            ],                                                           
+                'contentOptions'=>['style'=>'width: 25%;text-align:left;vertical-align: middle;'],
+            ],      
+            [
+                'attribute' => 'voip',
+                'format' => 'raw',
+                'label' => 'Voip',
+                'value' => function ($data) {                      
+                    return $data["voip"];
+                },
+                'contentOptions'=>['style'=>'width: 25%;text-align:left;vertical-align: middle;'],
+            ],
+            // [
+            //     'attribute' => 'voip',
+            //     'format'    => 'raw',
+            //     'value'     => function (ModelClass $model) {
+            //         if ($model->some_attribute != null) {
+            //             return $model->some_attribute; 
+            //       //or: return Html::encode($model->some_attribute)
+            //         } else {
+            //             return '';
+            //         }
+            //     },
+            // ],                                                                             
         ],
     ]); ?>   
     </div>
@@ -70,7 +93,8 @@ $this->title = 'Telefones e Ramais';
     $dataProviderUsers = new SqlDataProvider([
         'sql' => "SELECT
                     fullname, 
-                    phone
+                    phone,
+                    celphone
                 FROM user
                 WHERE status = 1
                 ORDER BY fullname",
@@ -83,15 +107,16 @@ $this->title = 'Telefones e Ramais';
     ?>   
     <?= GridView::widget([
       'dataProvider' => $dataProviderUsers,
+      'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '<span class="not-set">(não informado)</span>'],
       'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
       'summary'      =>  '',
-      'showHeader'   => false,        
-      'tableOptions' => ['class'=>'table '],
+      //'showHeader'   => false,        
+      'tableOptions' => ['class'=>'table table-hover'],
       'columns' => [                                    
             [
                 'attribute' => 'fullname',
                 'format' => 'raw',
-                'header' => '',
+                'label' => '',
                 'value' => function ($data) {                      
                     return $data["fullname"];
                 },
@@ -100,12 +125,21 @@ $this->title = 'Telefones e Ramais';
             [
                 'attribute' => 'phone',
                 'format' => 'raw',
-                'header' => '',
+                'label' => 'Telefone',
                 'value' => function ($data) {                      
                     return $data["phone"];
                 },
-                'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;'],
-            ],                                                           
+                'contentOptions'=>['style'=>'width: 25%;text-align:left;vertical-align: middle;'],
+            ],  
+            [
+                'attribute' => 'celphone',
+                'format' => 'raw',
+                'label' => 'Celular',
+                'value' => function ($data) {                      
+                    return $data["celphone"];
+                },
+                'contentOptions'=>['style'=>'width: 25%;text-align:left;vertical-align: middle;'],
+            ],                                                                       
         ],
     ]); ?>   
     </div>

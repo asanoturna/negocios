@@ -14,7 +14,7 @@ class LocationSearch extends Location
     {
         return [
             [['id', 'is_active'], 'integer'],
-            [['shortname', 'fullname', 'address', 'zipcode', 'num_cnpj', 'email','phone'], 'safe'],
+            [['shortname', 'fullname', 'address', 'zipcode', 'num_cnpj', 'email','phone', 'voip'], 'safe'],
         ];
     }
 
@@ -59,6 +59,7 @@ class LocationSearch extends Location
             ->andFilterWhere(['like', 'num_cnpj', $this->num_cnpj])
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'phone', $this->phone]);
+            ->andFilterWhere(['like', 'voip', $this->voip]);
 
         return $dataProvider;
     }
