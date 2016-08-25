@@ -47,6 +47,7 @@ $this->title = 'Detalhes da Unidade #' . $model->id;
                 'num_cnpj',
                 'email',
                 'phone',          
+                'voip', 
                 [ 
                 'attribute' => 'is_active', 
                 'format' => 'raw',

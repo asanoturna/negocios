@@ -28,13 +28,11 @@ MÓDULOS
 - Criar de módulo Plano de Ação (igual do GMI) 
 - Criar de módulo Gerenciamento de Tarefas / Atividades
 
-- Prod Diaria -> Selecionar o mês do TOP 3 ???
 - Prod Diaria -> Gravar Formula/Cálculo
 - Prod Diaria -> Grafico por modalidade de produto
 - Prod Diaria -> Quadro Metas por agência (cadastrar metas por local para todos os produtos)
   ---> Exemplo.: tabela meta > valor, pa, data(m/y), 
 
-  - Campanha SC -> Exportar Excel
 
 PÁGINAS 
 --------------------

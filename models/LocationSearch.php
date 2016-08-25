@@ -58,7 +58,7 @@ class LocationSearch extends Location
             ->andFilterWhere(['like', 'zipcode', $this->zipcode])
             ->andFilterWhere(['like', 'num_cnpj', $this->num_cnpj])
             ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'phone', $this->phone]);
+            ->andFilterWhere(['like', 'phone', $this->phone])
             ->andFilterWhere(['like', 'voip', $this->voip]);
 
         return $dataProvider;
