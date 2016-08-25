@@ -4,8 +4,8 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\Location;
-use app\models\Resourcerequest;
-use app\models\Resourcestatus;
+use app\modules\resourcerequest\models\Resourcerequest;
+use app\modules\resourcerequest\models\Resourcestatus;
 
 
 $this->title = 'Gerenciar Solicitação: #'  . $model->id;
