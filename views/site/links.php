@@ -22,10 +22,12 @@ $this->title = 'Links Uteis';
     <div class="panel panel-default">
     <div class="panel-body">
 
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#global">Links da Intranet</a></li>
-    <!-- <li><a data-toggle="tab" href="#custom">Meus Links Pessoais</a></li> -->
-  </ul>
+    <!--   
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#global">Links da Intranet</a></li>
+        <li><a data-toggle="tab" href="#custom">Meus Links Pessoais</a></li>
+    </ul> 
+    -->
 
   <div class="tab-content">
   <div id="global" class="tab-pane fade in active">

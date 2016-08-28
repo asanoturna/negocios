@@ -2,20 +2,24 @@ INTRANET
 --------------------
 Bloquear uso do IE versão 8 pra baixo
 Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc)
-verificar permissoes nos controllers
+Verificar permissoes nos controllers (permissão apenas para admin)
+Corrigir telas responsivas (gridview, etc)
 
 Departamento > Campo email (null)
 
 *********************
----> Usar listview http://www.codevoila.com/post/4/yii2-listview-example
-
-Corrigir telas responsivas (gridview, etc)
+site/user.php
+---> TESTAR listview http://www.codevoila.com/post/4/yii2-listview-example
+---> TESTAR http://www.yiiframework.com/extension/yii2-isotope-view/
+---> TESTAR http://www.yiiframework.com/extension/yii2-matchheight-view/
+---> TESTAR http://www.yiiframework.com/extension/yii2-masonry-view/
 
 - Criar Área de Alertas (local mais visivel no top da intranet)
 - Criar Área de Notícias (comentarios? likes?)
 - Criar Gestão de arquivos (incluir a area Planilha Base e categorias da intranet antiga)
 - Criar Agenda / Calendario (global e para cada usuario) (sinc google agenda ?)
 - Criar Galeria de fotos
+- Criar Área de Links Pessoais
 
 MÓDULOS
 --------------------
@@ -49,5 +53,3 @@ updated
 published
 responsible
 user_id
-
-links person
