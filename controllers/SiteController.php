@@ -69,6 +69,11 @@ class SiteController extends Controller
         return $this->render('locations');     
     }
 
+    public function actionBirthdate()
+    {        
+        return $this->render('birthdate');        
+    }    
+
     public function actionPhones()
     {        
         return $this->render('phones');     
@@ -89,6 +94,11 @@ class SiteController extends Controller
         return $this->render('map');
     }    
 
+    public function actionLinks()
+    {
+        return $this->render('links');
+    }      
+
     public function actionUsers()
     {
         $searchModel = new \app\models\UseradminSearch();
@@ -107,17 +117,5 @@ class SiteController extends Controller
         return  $this->renderAjax('userdetail', [ 
             'model' => $model,
         ]);
-    }    
-
-    public function actionBirthdate()
-    {
-        // $searchModel = new \app\models\UseradminSearch();
-        // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        // return $this->render('users', [
-        //     'searchModel' => $searchModel,
-        //     'dataProvider' => $dataProvider,
-        // ]);         
-        return $this->render('birthdate');        
-    }               
+    }                  
 }

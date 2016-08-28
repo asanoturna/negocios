@@ -57,7 +57,7 @@ LINKS UTEIS
 -----------
 id
 type (global por user)
-title
+name
 url
 description
 created
