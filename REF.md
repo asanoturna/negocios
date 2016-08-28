@@ -37,6 +37,7 @@ UTILS
 --------------------
 https://github.com/CostaRico/yii2-images
 https://github.com/2amigos/yii2-gallery-widget
+https://github.com/modernkernel/yii2-photoswipe
 http://www.yiiframework.com/extension/yii2-prettyphoto/#hh4
 http://www.no-margin-for-errors.com/projects/prettyPhoto-jquery-lightbox-clone/#prettyPhoto
 https://github.com/himiklab/yii2-easy-thumbnail-image-helper

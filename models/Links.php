@@ -16,10 +16,9 @@ class Links extends \yii\db\ActiveRecord
         return [
             [['name', 'url', 'created', 'updated', 'status'], 'required'],
             [['user_id', 'status'], 'integer'],
-            [['description'], 'string'],
             [['created', 'updated'], 'safe'],
             [['name'], 'string', 'max' => 100],
-            [['url'], 'string', 'max' => 200],
+            [['url','description'], 'string', 'max' => 200],
         ];
     }
 

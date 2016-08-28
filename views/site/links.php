@@ -24,7 +24,7 @@ $this->title = 'Links Uteis';
 
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#global">Links da Intranet</a></li>
-    <li><a data-toggle="tab" href="#custom">Meus Links Pessoais</a></li>
+    <!-- <li><a data-toggle="tab" href="#custom">Meus Links Pessoais</a></li> -->
   </ul>
 
   <div class="tab-content">
@@ -34,7 +34,8 @@ $this->title = 'Links Uteis';
     $dataProviderUsers = new SqlDataProvider([
         'sql' => "SELECT
                     name, 
-                    url
+                    url,
+                    description
                 FROM links
                 WHERE status = 1 AND user_id is null
                 ORDER BY name",
@@ -59,9 +60,22 @@ $this->title = 'Links Uteis';
                 'value' => function ($data) {                      
                     return $data["name"];
                 },
-                'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;text-transform: uppercase'],
+                'contentOptions'=>['style'=>'width: 30%;text-align:left;vertical-align: middle;text-transform: uppercase'],
             ],  
-            'url:url',                                                                                
+            'url:url',
+            [
+                'attribute' => 'description',
+                'format'    => 'raw',
+                'value'     => function ($data) {
+                    if ($data["description"] != null) {
+                        return "<p class=\"text-muted\">".$data["description"]."</p>"; 
+                        //or: return Html::encode($model->some_attribute)
+                    } else {
+                        return '';
+                    }
+                },
+                'contentOptions'=>['style'=>'width: 40%;text-align:left;vertical-align: middle;text-transform: uppercase'],                
+            ],                                                                                           
         ],
     ]); ?> 
 
