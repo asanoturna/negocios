@@ -37,7 +37,7 @@ $this->title = 'Links Uteis';
                     name, 
                     url
                 FROM links
-                WHERE status = 1
+                WHERE status = 1 AND user_id is null
                 ORDER BY name",
         'key'  => 'name',
         'totalCount' => 100,
@@ -79,7 +79,7 @@ $this->title = 'Links Uteis';
                     name, 
                     url
                 FROM links
-                WHERE status = 1 and user_id  = $user
+                WHERE status = 1 AND user_id  = $user
                 ORDER BY name",
         'key'  => 'name',
         'totalCount' => 100,

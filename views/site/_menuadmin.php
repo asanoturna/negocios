@@ -31,7 +31,12 @@ use yii\bootstrap\Nav;
         'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Menu',
         'url'     => ['/menuadmin/index'],
         'visible' => Yii::$app->user->identity->can_admin == 1,
-        ],   
+        ],
+        [
+        'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Links',
+        'url'     => ['/links/index'],
+        'visible' => Yii::$app->user->identity->can_admin == 1,
+        ],         
         // [
         // 'label' => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Módulos',  
         // 'items' => [
