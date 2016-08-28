@@ -52,13 +52,13 @@ $this->title = 'Usuários';
             [
             'attribute' => 'fullname',
             'enableSorting' => true,
-            'contentOptions'=>['style'=>'width: 25%;text-align:left;vertical-align: middle;text-transform: uppercase'],
+            'contentOptions'=>['style'=>'width: 24%;text-align:left;vertical-align: middle;text-transform: uppercase'],
             ],       
             [
             'attribute' => 'email',
             'format' => 'email',
             'enableSorting' => true,
-            'contentOptions'=>['style'=>'width: 25%;text-align:left'],
+            'contentOptions'=>['style'=>'width: 24%;text-align:left'],
             ],                      
             [ 
             'attribute' => 'status',
@@ -73,7 +73,7 @@ $this->title = 'Usuários';
             [
               'class' => 'yii\grid\ActionColumn',
               'header' => 'Ações',  
-              'contentOptions'=>['style'=>'width: 10%;text-align:right'],
+              'contentOptions'=>['style'=>'width: 12%;text-align:right'],
               'headerOptions' => ['class' => 'text-center'],                            
               'template' => '{avatar} {password} {view} {update} {delete}',
               'buttons' => [

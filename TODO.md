@@ -2,6 +2,7 @@ INTRANET
 --------------------
 Bloquear uso do IE versão 8 pra baixo
 Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc)
+verificar permissoes nos controllers
 
 Departamento > Campo email (null)
 
@@ -34,10 +35,6 @@ MÓDULOS
   ---> Exemplo.: tabela meta > valor, pa, data(m/y), 
 
 
-PÁGINAS 
---------------------
-Dicas PABX, Voip, etc
-
 DOWNLOADS
 ---------
 id
@@ -53,3 +50,4 @@ published
 responsible
 user_id
 
+links person
