@@ -66,7 +66,10 @@ $config = [
         ],
         'productivity' => [
             'class' => 'app\modules\productivity\Module',
-        ],                                
+        ],
+        'visits' => [
+            'class' => 'app\modules\visits\Module',
+        ],                                      
     ],    
     'params' => $params,
 ];

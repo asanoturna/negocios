@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\data\ActiveDataProvider;
-use app\models\VisitsstatusSearch;
+use app\modules\visits\models\VisitsstatusSearch;
 
 $dataProvider = new ActiveDataProvider([
     'query' => VisitsstatusSearch::find(),

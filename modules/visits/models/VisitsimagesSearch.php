@@ -1,19 +1,20 @@
 <?php
 
-namespace app\models;
+namespace app\modules\visits\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Visitsstatus;
+use app\modules\visits\models\Visitsimages;
 
-class VisitsstatusSearch extends Visitsstatus
+class VisitsimagesSearch extends Visitsimages
 {
+
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['name', 'hexcolor', 'about'], 'safe'],
+            [['id', 'business_visits_id'], 'integer'],
+            [['name'], 'safe'],
         ];
     }
 
@@ -25,7 +26,7 @@ class VisitsstatusSearch extends Visitsstatus
 
     public function search($params)
     {
-        $query = Visitsstatus::find();
+        $query = Visitsimages::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -41,11 +42,10 @@ class VisitsstatusSearch extends Visitsstatus
 
         $query->andFilterWhere([
             'id' => $this->id,
+            'business_visits_id' => $this->business_visits_id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'hexcolor', $this->hexcolor])
-            ->andFilterWhere(['like', 'about', $this->about]);
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

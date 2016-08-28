@@ -5,8 +5,8 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\Location;
 use app\models\Person;
-use app\models\Visitsfinality;
-use app\models\Visitsstatus;
+use app\modules\visits\models\Visitsfinality;
+use app\modules\visits\models\Visitsstatus;
 use app\models\User;
 use yii\widgets\MaskedInput;
 

@@ -5,9 +5,9 @@ use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
 use app\models\Location;
 use app\models\Person;
-use app\models\Visitsfinality;
-use app\models\Visitsstatus;
-use app\models\Visitsimages;
+use app\modules\visits\models\Visitsfinality;
+use app\modules\visits\models\Visitsstatus;
+use app\modules\visits\models\Visitsimages;
 use app\models\User;
 use yii\bootstrap\Modal;
 

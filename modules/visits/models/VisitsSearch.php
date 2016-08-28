@@ -1,11 +1,11 @@
 <?php
 
-namespace app\models;
+namespace app\modules\visits\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Visits;
+use app\modules\visits\models\Visits;
 
 class VisitsSearch extends Visits
 {

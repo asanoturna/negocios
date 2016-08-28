@@ -8,15 +8,15 @@ use yii\bootstrap\Nav;
         'items' => [  
             [
                 'label'   => '<span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Desempenho',
-                'url'     => ['/visits/report_user'],
+                'url'     => ['visits/report_user'],
             ],                      
             [
                 'label'   => '<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> Listar',
-                'url'     => ['/visits/index'],
+                'url'     => ['visits/index'],
             ],  
             [
                 'label'   => '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Inserir',
-                'url'     => ['/visits/create'],
+                'url'     => ['visits/create'],
                 'visible' => Yii::$app->user->identity->can_visits == 1,
             ],                                                                                         
         ],

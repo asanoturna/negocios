@@ -1,7 +1,10 @@
 <?php
 
-namespace app\models;
+namespace app\modules\visits\models;
 
+use app\models\User;
+use app\models\Location;
+use app\models\Person;
 use Yii;
 use yii\web\UploadedFile;
 
