@@ -6,10 +6,9 @@ use yii\grid\GridView;
 use yii\bootstrap\Tabs;
 use yii\helpers\ArrayHelper;
 
-
 $this->title = 'Links Uteis';
 ?>
-<div class="site-about">
+<div class="site-links">
 
     <div class="row">
     <div class="col-sm-2">
@@ -20,15 +19,15 @@ $this->title = 'Links Uteis';
     <h1><span class="glyphicon glyphicon-link" aria-hidden="true"></span> <?= Html::encode($this->title) ?></h1>
     <hr/>
     
-     <div class="panel panel-default">
+    <div class="panel panel-default">
     <div class="panel-body">
 
- <ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#global">Links da Intranet</a></li>
-  <li><a data-toggle="tab" href="#custom">Meus Links Pessoais</a></li>
-</ul>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#global">Links da Intranet</a></li>
+    <li><a data-toggle="tab" href="#custom">Meus Links Pessoais</a></li>
+  </ul>
 
-<div class="tab-content">
+  <div class="tab-content">
   <div id="global" class="tab-pane fade in active">
     <p>
     <?php

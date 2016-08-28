@@ -3,14 +3,13 @@ use yii\helpers\Html;
 use kartik\sidenav\SideNav;
 use yii\data\SqlDataProvider;
 use yii\grid\GridView;
-use yii\widgets\ListView;
-use yii\helpers\ArrayHelper;
 use yii\bootstrap\Tabs;
+use yii\helpers\ArrayHelper;
 use yii\data\ArrayDataProvider;
 
 $this->title = 'Lista de E-emails';
 ?>
-<div class="site-about">
+<div class="site-emails">
 
     <div class="row">
     <div class="col-sm-2">
@@ -20,26 +19,59 @@ $this->title = 'Lista de E-emails';
     <div class="col-sm-10">
     <h1><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <?= Html::encode($this->title) ?></h1>
     <hr/>
-
+    
     <div class="panel panel-default">
     <div class="panel-body">
 
-    <?php
-    echo Tabs::widget([
-        'items' => [
-            [
-                'label' => 'Por Colaborador',
-                'url' => ['/site/emailuser'],
-            ],
-            [
-                'label' => 'Por Grupo',
-                'url' => ['/site/emailgroup'],
-                'active' => true
-            ],
-        ],
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#user">Por Colaborador</a></li>
+    <li><a data-toggle="tab" href="#group">Por Grupo</a></li>
+  </ul>
+
+  <div class="tab-content">
+  <div id="user" class="tab-pane fade in active">
+    <p>
+    
+<?php
+    $dataProviderUsers = new SqlDataProvider([
+        'sql' => "SELECT
+                    fullname, 
+                    email
+                FROM user
+                WHERE status = 1
+                ORDER BY fullname",
+        'key'  => 'fullname',
+        'totalCount' => 300,
+        'pagination' => [
+            'pageSize' => 300,
+        ],         
     ]);
-    ?>
-    <br/>
+    ?>   
+    <?= GridView::widget([
+      'dataProvider' => $dataProviderUsers,
+      'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '<span class="not-set">(não informado)</span>'],
+      'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
+      'summary'      =>  '',
+      'showHeader'   => false,        
+      'tableOptions' => ['class'=>'table table-hover'],
+      'columns' => [                                    
+            [
+                'attribute' => 'fullname',
+                'format' => 'raw',
+                'label'=> '',
+                'value' => function ($data) {                      
+                    return $data["fullname"];
+                },
+                'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;text-transform: uppercase'],
+            ],  
+            'email:email',                                                                                
+        ],
+    ]); ?>    
+
+    </p>
+  </div>
+  <div id="group" class="tab-pane fade">
+    <p>
     <?php
     $dataProvideremail = new ArrayDataProvider([
         'allModels' => [
@@ -99,8 +131,13 @@ $this->title = 'Lista de E-emails';
         'name',
         'email:email',
         ],
-    ]); ?>     
+    ]); ?>  
 
+    </p>
+  </div>
+</div> 
+    <br/>
+    
     </div>
     </div>
 

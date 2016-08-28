@@ -79,15 +79,10 @@ class SiteController extends Controller
         return $this->render('phones');     
     }
 
-    public function actionEmailuser()
+    public function actionEmails()
     {        
-        return $this->render('emailuser');     
-    }
-
-    public function actionEmailgroup()
-    {        
-        return $this->render('emailgroup');     
-    }    
+        return $this->render('emails');     
+    }      
 
     public function actionMap()
     {
