@@ -33,7 +33,7 @@ $this->title = "Detalhes da visita #" . $model->id;
         if ($model->user_id === Yii::$app->user->id){ ?>
                     <p class="pull-right">
                     <?= Html::a('<span class="glyphicon glyphicon-print" aria-hidden="true"></span> Imprimir', '#', ['onclick'=>"myFunction()",'class' => 'btn btn-success']) ?>
-                    <?= Html::a('<span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Imagens', ['/visitsimages/create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+                    <?= Html::a('<span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Imagens', ['visitsimages/create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
                     <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
                     <?= Html::a('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Excluir', ['delete', 'id' => $model->id], [
                         'class' => 'btn btn-danger',
@@ -52,7 +52,7 @@ $this->title = "Detalhes da visita #" . $model->id;
     </div>
 
     <div class="row container-fluid">
-    <div class="panel panel-primary">
+    <div class="panel panel-default">
     <div class="panel-heading"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> <strong>Informações da Visita</strong></div>
     <div class="panel-body">
         <div class="col-md-6">
@@ -109,7 +109,7 @@ $this->title = "Detalhes da visita #" . $model->id;
     </div>
 
     <div class="row container-fluid">
-        <div class="panel panel-primary">
+        <div class="panel panel-default">
           <div class="panel-heading"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <strong>Parecer do Gerente</strong></div>
           <div class="panel-body">
             <?php echo $model->observation;?>
@@ -118,7 +118,7 @@ $this->title = "Detalhes da visita #" . $model->id;
     </div> 
 
     <div class="row container-fluid">
-        <div class="panel panel-primary">
+        <div class="panel panel-default">
           <div class="panel-heading"><a name="img"></a><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> <strong>Imagens da Visita</strong></div>
           <div class="panel-body">
             <?php
@@ -159,7 +159,7 @@ $this->title = "Detalhes da visita #" . $model->id;
     </div>
 
     <div class="row container-fluid">
-        <div class="panel panel-primary">
+        <div class="panel panel-default">
           <div class="panel-heading"><a name="map"></a><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> <strong>Mapa da Localização</strong> <?php echo $model->localization_map;?></div>
           <div class="panel-body">
                 <?php
@@ -186,7 +186,7 @@ $this->title = "Detalhes da visita #" . $model->id;
     </div>  
 
     <div class="row container-fluid">
-        <div class="panel panel-primary">
+        <div class="panel panel-default">
           <div class="panel-heading"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> <strong>Informações do Sistema</strong></div>
           <div class="panel-body">
             <?= DetailView::widget([

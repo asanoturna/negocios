@@ -28,12 +28,12 @@ use yii\helpers\Url;
 
 	<div class="row container-fluid">
 				<p class="pull-right">
-			<?= Html::a('<span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> Voltar para detalhes da visita', ['/visits/view', 'id' => $t], ['class' => 'btn btn-success']) ?>
+			<?= Html::a('<span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span> Voltar para detalhes da visita', ['visits/view', 'id' => $t], ['class' => 'btn btn-success']) ?>
 			</p>
 	</div>
 	<div class="row">
 	  <div class="col-md-6">
-	  	<div class="panel panel-primary">
+	  	<div class="panel panel-default">
 		  <div class="panel-heading"><strong>Enviar Imagem para Visita</strong></div>
 		  <div class="panel-body">
 		    <?php 
@@ -69,7 +69,7 @@ use yii\helpers\Url;
   		  </div>
 	</div>
 	  <div class="col-md-6">
-		<div class="panel panel-primary">
+		<div class="panel panel-default">
 		  <div class="panel-heading"><strong>Gerenciar Imagens Armazenadas</strong></div>
 		  <div class="panel-body">
             <?php Pjax::begin(['id' => 'pjax-container']) ?>
