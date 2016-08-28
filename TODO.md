@@ -53,14 +53,3 @@ published
 responsible
 user_id
 
-LINKS UTEIS
------------
-id
-type (global por user)
-name
-url
-description
-created
-updated
-published
-user id ?
