@@ -44,8 +44,7 @@ $this->title = 'Links Uteis';
             'pageSize' => 100,
         ],         
     ]);
-    ?>   
-    <?= GridView::widget([
+    echo GridView::widget([
       'dataProvider' => $dataProviderUsers,
       'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '<span class="not-set">(não informado)</span>'],
       'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
@@ -71,42 +70,42 @@ $this->title = 'Links Uteis';
   <div id="custom" class="tab-pane fade">
     <p>
     <?php
-    $user = Yii::$app->user->identity->id;
-    $page = Html::a('Acesse aqui', ['/user/profile'], ['class'=>'btn btn-link']);
-    $dataProviderUsers = new SqlDataProvider([
-        'sql' => "SELECT
-                    name, 
-                    url
-                FROM links
-                WHERE status = 1 AND user_id  = $user
-                ORDER BY name",
-        'key'  => 'name',
-        'totalCount' => 100,
-        'pagination' => [
-            'pageSize' => 100,
-        ],         
-    ]);
-    ?>   
-    <?= GridView::widget([
-      'dataProvider' => $dataProviderUsers,
-      'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '<span class="not-set">(não informado)</span>'],
-      'emptyText'    => '</br><p class="text-danger">Nenhum link encontrado! Crie sua lista de links pessoais acessível de qualquer computador.'.$page.'</p>',
-      'summary'      =>  '',
-      'showHeader'   => false,        
-      'tableOptions' => ['class'=>'table'],
-      'columns' => [                                    
-            [
-                'attribute' => 'name',
-                'format' => 'raw',
-                'label'=> '',
-                'value' => function ($data) {                      
-                    return $data["name"];
-                },
-                'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;text-transform: uppercase'],
-            ],  
-            'url:url',                                                                                
-        ],
-    ]); ?> 
+    // $user = Yii::$app->user->identity->id;
+    // $page = Html::a('Acesse aqui', ['/user/profile'], ['class'=>'btn btn-link']);
+    // $dataProviderUsers = new SqlDataProvider([
+    //     'sql' => "SELECT
+    //                 name, 
+    //                 url
+    //             FROM links
+    //             WHERE status = 1 AND user_id  = $user
+    //             ORDER BY name",
+    //     'key'  => 'name',
+    //     'totalCount' => 100,
+    //     'pagination' => [
+    //         'pageSize' => 100,
+    //     ],         
+    // ]);
+    // echo GridView::widget([
+    //   'dataProvider' => $dataProviderUsers,
+    //   'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '<span class="not-set">(não informado)</span>'],
+    //   'emptyText'    => '</br><p class="text-danger">Nenhum link encontrado! Crie sua lista de links pessoais acessível de qualquer computador.'.$page.'</p>',
+    //   'summary'      =>  '',
+    //   'showHeader'   => false,        
+    //   'tableOptions' => ['class'=>'table'],
+    //   'columns' => [                                    
+    //         [
+    //             'attribute' => 'name',
+    //             'format' => 'raw',
+    //             'label'=> '',
+    //             'value' => function ($data) {                      
+    //                 return $data["name"];
+    //             },
+    //             'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;text-transform: uppercase'],
+    //         ],  
+    //         'url:url',                                                                                
+    //     ],
+    // ]); 
+    ?> 
 
     </p>
   </div>
