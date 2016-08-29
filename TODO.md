@@ -33,20 +33,4 @@ MÓDULOS
 
 - Prod Diaria -> Gravar Formula/Cálculo
 - Prod Diaria -> Quadro Metas por agência (cadastrar metas por local para todos os produtos)
-  ---> Exemplo.: tabela meta > valor, pa, data(m/y), 
-
-
-archive
----------
-id
-download_category_id
-title
-attachment
-description
-downloads
-filesize
-created
-updated
-published
-responsible
-user_id
+  ---> Exemplo.: tabela meta > valor, pa, data(m/y)
