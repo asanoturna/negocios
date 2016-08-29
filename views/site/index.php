@@ -98,7 +98,7 @@ $this->title = Yii::$app->params['appname'];
                     'attribute' => 'seller',
                     'format' => 'raw',
                     'value' => function ($data) { 
-                        return Html::a( $data["seller"], ['dailyproductivity/performance_user', 'seller_id' => $data["id"]], ['title' => 'Clique para ver o desempenho']);
+                        return Html::a( $data["seller"], ['productivity/dailyproductivity/performance_user', 'seller_id' => $data["id"]], ['title' => 'Clique para ver o desempenho']);
                     },
                     'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;text-transform: uppercase'],
                 ],  
@@ -151,7 +151,7 @@ $this->title = Yii::$app->params['appname'];
                     'attribute' => 'seller',
                     'format' => 'raw',
                     'value' => function ($data) { 
-                        return Html::a( $data["seller"], ['dailyproductivity/performance_user', 'seller_id' => $data["id"]], ['title' => 'Clique para ver o desempenho']);
+                        return Html::a( $data["seller"], ['productivity/dailyproductivity/performance_user', 'seller_id' => $data["id"]], ['title' => 'Clique para ver o desempenho']);
                     },
                     'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;text-transform: uppercase'],
                 ],   
