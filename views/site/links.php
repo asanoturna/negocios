@@ -43,12 +43,12 @@ $this->title = 'Links Uteis';
             'attribute' => 'id',
             'label' => 'Nº',
             'enableSorting' => true,
-            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            'contentOptions'=>['style'=>'width: 3%;text-align:center'],
             ],
             [
             'attribute' => 'name',
             'enableSorting' => true,
-            'format'=>'raw',            
+            'format'=>'raw',
             'contentOptions'=>['style'=>'width: 50%;text-align:left'],
             'value'=>function ($model, $key, $index, $widget) { 
                 return Html::a($model->name, $model->url, ['target'=> 'blank', 'title'=>$model->url])."<br/><p class=\"text-muted\">".$model->description."</p>";
