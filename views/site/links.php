@@ -5,6 +5,7 @@ use yii\data\SqlDataProvider;
 use yii\grid\GridView;
 use yii\bootstrap\Tabs;
 use yii\helpers\ArrayHelper;
+use app\models\User;
 
 $this->title = 'Links Uteis';
 ?>
@@ -24,62 +25,37 @@ $this->title = 'Links Uteis';
 
     <!--   
     <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#global">Links da Intranet</a></li>
+        <li class="active"><a data-toggle="tab" href="#site">Links da Intranet</a></li>
         <li><a data-toggle="tab" href="#custom">Meus Links Pessoais</a></li>
     </ul> 
     -->
 
   <div class="tab-content">
-  <div id="global" class="tab-pane fade in active">
+  <div id="site" class="tab-pane fade in active">
     <p>
-    <?php
-    $dataProviderUsers = new SqlDataProvider([
-        'sql' => "SELECT
-                    name, 
-                    url,
-                    description
-                FROM links
-                WHERE status = 1 AND user_id is null
-                ORDER BY name",
-        'key'  => 'name',
-        'totalCount' => 100,
-        'pagination' => [
-            'pageSize' => 100,
-        ],         
-    ]);
-    echo GridView::widget([
-      'dataProvider' => $dataProviderUsers,
-      'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '<span class="not-set">(não informado)</span>'],
-      'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
-      'summary'      =>  '',
-      'showHeader'   => false,        
-      'tableOptions' => ['class'=>'table'],
-      'columns' => [                                    
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'showHeader'   => false,        
+        'tableOptions' => ['class'=>'table table-hover'],        
+        'columns' => [
             [
-                'attribute' => 'name',
-                'format' => 'raw',
-                'label'=> '',
-                'value' => function ($data) {                      
-                    return $data["name"];
-                },
-                'contentOptions'=>['style'=>'width: 30%;text-align:left;vertical-align: middle;text-transform: uppercase'],
-            ],  
-            'url:url',
+            'attribute' => 'id',
+            'label' => 'Nº',
+            'enableSorting' => true,
+            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],
             [
-                'attribute' => 'description',
-                'format'    => 'raw',
-                'value'     => function ($data) {
-                    if ($data["description"] != null) {
-                        return "<p class=\"text-muted\">".$data["description"]."</p>"; 
-                        //or: return Html::encode($model->some_attribute)
-                    } else {
-                        return '';
-                    }
-                },
-                'contentOptions'=>['style'=>'width: 40%;text-align:left;vertical-align: middle;text-transform: uppercase'],                
-            ],                                                                                           
+            'attribute' => 'name',
+            'enableSorting' => true,
+            'format'=>'raw',            
+            'contentOptions'=>['style'=>'width: 50%;text-align:left'],
+            'value'=>function ($model, $key, $index, $widget) { 
+                return Html::a($model->name, $model->url, ['target'=> 'blank', 'title'=>$model->url])."<br/><p class=\"text-muted\">".$model->description."</p>";
+                },            
+            ],                 
         ],
-    ]); ?> 
+    ]); ?>
 
     </p>
   </div>

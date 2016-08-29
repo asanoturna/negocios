@@ -21,6 +21,7 @@ site/user.php
 - Criar Agenda / Calendario (global e para cada usuario) (sinc google agenda ?)
 - Criar Galeria de fotos
 - Criar Área de Links Pessoais
+- Criar Links Externos/Ferramentas ??? (calculadora HP 12c, etc..)
 
 MÓDULOS
 --------------------

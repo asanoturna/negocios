@@ -31,6 +31,14 @@ class LinksSearch extends Links
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_ASC, 
+                ]
+            ],
+            'pagination' => [
+                'pageSize' => 50,
+            ],            
         ]);
 
         $this->load($params);
@@ -56,4 +64,38 @@ class LinksSearch extends Links
 
         return $dataProvider;
     }
+
+    public function site($params)
+    {
+        $query = Links::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_ASC, 
+                ]
+            ],
+            'pagination' => [
+                'pageSize' => 100,
+            ],            
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'status' => 1,
+        ]);
+
+        $query->andFilterWhere(['like', 'name', $this->name]);
+
+        return $dataProvider;
+    }    
 }

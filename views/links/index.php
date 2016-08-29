@@ -47,18 +47,18 @@ $this->title = 'Links';
             [
             'attribute' => 'name',
             'enableSorting' => true,
-            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            'contentOptions'=>['style'=>'width: 10%;text-align:center'],
             ],
             [
             'attribute' => 'url',
             'enableSorting' => true,
-            'contentOptions'=>['style'=>'width: 15%;text-align:left'],
+            'contentOptions'=>['style'=>'width: 10%;text-align:left'],
             ],
             [
             'attribute' => 'description',
             'format' => 'raw',
             'enableSorting' => true,
-            'contentOptions'=>['style'=>'width: 15%;text-align:left'],
+            'contentOptions'=>['style'=>'width: 10%;text-align:left'],
             ],      
             [
               'attribute' => 'user_id',
@@ -79,12 +79,12 @@ $this->title = 'Links';
                     return $model->status == 1 ? '<b style="color:#6CAF3F">Ativo</b>' : '<b style="color:#d43f3a">Inativo</b>';
                     },
             'filter'=>[0=>'Não', 1=>'Sim'],
-            'contentOptions'=>['style'=>'width: 6%;text-align:center'],
+            'contentOptions'=>['style'=>'width: 8%;text-align:center'],
             ],             
             [
               'class' => 'yii\grid\ActionColumn',
               'header' => 'Ações',  
-              'contentOptions'=>['style'=>'width: 10%;text-align:right'],
+              'contentOptions'=>['style'=>'width: 8%;text-align:right'],
               'headerOptions' => ['class' => 'text-center'],                            
               'template' => '{view} {update} {delete}',
               'buttons' => [                               

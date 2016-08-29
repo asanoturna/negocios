@@ -91,7 +91,13 @@ class SiteController extends Controller
 
     public function actionLinks()
     {
-        return $this->render('links');
+        $searchModel = new \app\models\LinksSearch();
+        $dataProvider = $searchModel->site(Yii::$app->request->queryParams);
+
+        return $this->render('links', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }      
 
     public function actionUsers()
