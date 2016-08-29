@@ -57,19 +57,11 @@ $config = [
         'gridview' =>  [
             'class' => '\kartik\grid\Module',
         ],    
-        'redactor' => 'yii\redactor\RedactorModule',
-        'campaign' => [
-            'class' => 'app\modules\campaign\Module',
-        ],
-        'resourcerequest' => [
-            'class' => 'app\modules\resourcerequest\Module',
-        ],
-        'productivity' => [
-            'class' => 'app\modules\productivity\Module',
-        ],
-        'visits' => [
-            'class' => 'app\modules\visits\Module',
-        ],                                      
+        'redactor'          => 'yii\redactor\RedactorModule',
+        'campaign'          => 'app\modules\campaign\Module',
+        'resourcerequest'   => 'app\modules\resourcerequest\Module',
+        'productivity'      => 'app\modules\productivity\Module',
+        'visits'            => 'app\modules\visits\Module',                                    
     ],    
     'params' => $params,
 ];

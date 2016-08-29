@@ -26,6 +26,8 @@ $this->title = 'Gestão Produtividade Diária';
     </div>
     </div>
     
+    <div class="panel panel-default">
+    <div class="panel-body">      
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -167,9 +169,10 @@ $this->title = 'Gestão Produtividade Diária';
                         ]);
                     },                
                 ],
-                'contentOptions'=>['style'=>'width: 6%;text-align:right'],
+                'contentOptions'=>['style'=>'width: 10%;text-align:right'],
             ],
         ],
     ]); ?>
-
+    </div>
+    </div>
 </div>

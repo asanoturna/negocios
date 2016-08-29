@@ -3,6 +3,7 @@ INTRANET
 Bloquear uso do IE versão 8 pra baixo
 Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc)
 Verificar permissoes nos controllers (permissão apenas para admin)
+Link para área administrativa
 Corrigir telas responsivas (gridview, etc)
 
 Departamento > Campo email (null)
@@ -23,9 +24,6 @@ site/user.php
 
 MÓDULOS
 --------------------
-- Modularizar as ferramentas auxiliares (visitas)
-- Tentar reduzir o Managerdailyprod...
-
 - Migração da ferramenta de Apoio Cadastro
 
 - Criar de módulo Helpdesk
@@ -34,15 +32,14 @@ MÓDULOS
 - Criar de módulo Gerenciamento de Tarefas / Atividades
 
 - Prod Diaria -> Gravar Formula/Cálculo
-- Prod Diaria -> Grafico por modalidade de produto
 - Prod Diaria -> Quadro Metas por agência (cadastrar metas por local para todos os produtos)
   ---> Exemplo.: tabela meta > valor, pa, data(m/y), 
 
 
-DOWNLOADS
+archive
 ---------
 id
-filecategory_id
+download_category_id
 title
 attachment
 description
