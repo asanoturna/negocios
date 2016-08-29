@@ -4,9 +4,6 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use app\assets\AppAsset;
-//use yii\widgets\Breadcrumbs;
-
-
 
 ?>
 <?php $this->beginPage() ?>
@@ -56,11 +53,11 @@ SCRIPT;
             'label' => '<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Início', 
             'url' => ['/site/index']
             ],
-            // [
-            // 'label' => '<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Administração', 
-            // 'url' => ['/site/administration'], 
-            // 'visible' => Yii::$app->user->identity->can_admin == 1,
-            // ],
+            [
+            'label' => '<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Administração', 
+            'url' => ['/site/administration'], 
+            'visible' => Yii::$app->user->identity->can_admin == 1,
+            ],
             Yii::$app->user->isGuest ?
             [
             'label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Entrar', 
