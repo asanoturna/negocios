@@ -19,6 +19,7 @@ site/user.php
 - Criar Área de Notícias (comentarios? likes?)
 - Criar Gestão de arquivos (incluir a area Planilha Base e categorias da intranet antiga)
 - Criar Agenda / Calendario (global e para cada usuario) (sinc google agenda ?)
+---> https://github.com/thiagotalma/yii2-talma-fullcalendar-widget
 - Criar Galeria de fotos
 - Criar Área de Links Pessoais
 - Criar Links Externos/Ferramentas ??? (calculadora HP 12c, etc..)
