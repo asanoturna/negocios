@@ -98,7 +98,18 @@ class SiteController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
-    }      
+    }   
+
+    public function actionArchives()
+    {
+        $searchModel = new \app\models\ArchiveSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('archives', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }         
 
     public function actionUsers()
     {
