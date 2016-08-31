@@ -5,15 +5,15 @@ namespace app\modules\campaign\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\campaign\models\Capitalaction;
+use app\modules\campaign\models\Opcredit;
 
-class CapitalactionSearch extends Capitalaction
+class OpcreditSearch extends Opcredit
 {
     public function rules()
     {
         return [
             [['id', 'location_id', 'user_id'], 'integer'],
-            [['name', 'date1', 'date2', 'progress', 'created', 'updated', 'ip'], 'safe'],
+            [['name', 'date1', 'date2', 'progress', 'created', 'updated'], 'safe'],
             [['proposed', 'accomplished'], 'number'],
         ];
     }
@@ -26,7 +26,7 @@ class CapitalactionSearch extends Capitalaction
 
     public function search($params)
     {
-        $query = Capitalaction::find();
+        $query = Opcredit::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -53,8 +53,7 @@ class CapitalactionSearch extends Capitalaction
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'progress', $this->progress])
-            ->andFilterWhere(['like', 'ip', $this->ip]);
+            ->andFilterWhere(['like', 'progress', $this->progress]);
 
         return $dataProvider;
     }

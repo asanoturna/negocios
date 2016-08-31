@@ -5,12 +5,12 @@ use app\models\User;
 use app\models\Location;
 use Yii;
 
-class Capitalaction extends \yii\db\ActiveRecord
+class Opcredit extends \yii\db\ActiveRecord
 {
 
     public static function tableName()
     {
-        return 'capital_action';
+        return 'campaign_opcredit';
     }
 
     public function rules()
@@ -22,7 +22,6 @@ class Capitalaction extends \yii\db\ActiveRecord
             [['progress'], 'string'],
             [['location_id', 'user_id'], 'integer'],
             [['name'], 'string', 'max' => 100],
-            [['ip'], 'string', 'max' => 20]
         ];
     }
 
@@ -38,7 +37,6 @@ class Capitalaction extends \yii\db\ActiveRecord
             'progress' => 'Andamento',
             'created' => 'Criado em',
             'updated' => 'Alterado em',
-            'ip' => 'IP',
             'location_id' => 'PA',
             'user_id' => 'Gerente',
         ];

@@ -3,8 +3,8 @@
 namespace app\modules\campaign\controllers;
 
 use Yii;
-use app\modules\campaign\models\Capitalaction;
-use app\modules\campaign\models\CapitalactionSearch;
+use app\modules\campaign\models\Opcredit;
+use app\modules\campaign\models\OpcreditSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -12,7 +12,7 @@ use yii\filters\AccessControl;
 use yii\base\Security;
 
 
-class CapitalactionController extends Controller
+class OpcreditController extends Controller
 {
     public function behaviors()
     {
@@ -38,7 +38,7 @@ class CapitalactionController extends Controller
 
     public function actionIndex()
     {
-        $searchModel = new CapitalactionSearch();
+        $searchModel = new OpcreditSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -56,7 +56,7 @@ class CapitalactionController extends Controller
 
     public function actionCreate()
     {
-        $model = new Capitalaction();
+        $model = new Opcredit();
 
         $model->user_id = Yii::$app->user->id;
         $model->created = date('Y-m-d');
@@ -94,7 +94,7 @@ class CapitalactionController extends Controller
 
     protected function findModel($id)
     {
-        if (($model = Capitalaction::findOne($id)) !== null) {
+        if (($model = Opcredit::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
