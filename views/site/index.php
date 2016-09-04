@@ -28,7 +28,206 @@ $this->title = Yii::$app->params['appname'];
     <div class="row"><!-- LINE 1 -->
       <div class="col-md-8">
 
-      <div class="panel panel-default">
+<div class="panel panel-default">
+          <div class="panel-heading"><b>Ranking da Campanha Interna 2016 Sicoobcard</b>
+          <?= Html::a('Ver Ranking Completo', ['campaign/sicoobcard/performance'], ['class' => 'btn btn-default btn-xs pull-right']) ?>
+            <div class="clearfix"></div>
+            
+          </div>
+          <div class="panel-body" style="height: 300px;max-height: 10;overflow-y: scroll;">
+
+    <?php
+    $dataProviderCampaign1 = new SqlDataProvider([
+        'sql' => "SELECT user.id, avatar, fullname, 
+                COUNT(if(campaign_sicoobcard.status = 1, campaign_sicoobcard.id, NULL)) as  confirmed
+                FROM campaign_sicoobcard
+                INNER JOIN `user` ON campaign_sicoobcard.user_id = `user`.id
+                GROUP BY user_id
+                ORDER BY confirmed DESC",
+        'key'  => 'fullname',
+        'totalCount' => 5,
+        'pagination' => [
+            'pageSize' => 5,
+        ],         
+    ]);
+
+    $dataProviderCampaign2 = new SqlDataProvider([
+        'sql' => "SELECT user.id, avatar, fullname, 
+              COUNT(if(daily_productivity_status_id = 2 AND daily_productivity.product_id = 503, daily_productivity.id, NULL)) as  confirmed
+              FROM daily_productivity
+              INNER JOIN `user` ON daily_productivity.user_id = `user`.id
+              GROUP BY user_id
+              ORDER BY confirmed DESC",
+        'key'  => 'fullname',
+        'totalCount' => 5,
+        'pagination' => [
+            'pageSize' => 5,
+        ],         
+    ]);
+    ?>
+    <div class="col-md-6">
+    <h4>Sicoobcard Todo Dia</h4>
+    <?= GridView::widget([
+      'dataProvider' => $dataProviderCampaign1,
+      'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '<span class="not-set">(não informado)</span>'],
+      'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
+      'summary'      =>  '',
+      'showHeader'   => false,        
+      'tableOptions' => ['class'=>'table table-hover'],
+      'columns' => [          
+            [
+                'attribute' => 'avatar',
+                'label' => false,
+                'format' => 'html',
+                'value' => function ($data) {
+                    return Html::img(Yii::$app->params['usersAvatars'].$data["avatar"],
+                        ['width' => '40px', 'class' => 'img-rounded img-thumbnail']);
+                },
+                'contentOptions'=>['style'=>'width: 10%;text-align:middle'],                    
+            ],                                
+            [
+                'attribute' => 'fullname',
+                'format' => 'raw',
+                'label'=> '',
+                'value' => function ($data) {                      
+                    return $data["fullname"];
+                },
+                'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;text-transform: uppercase'],
+            ],  
+            [
+                'attribute' => 'confirmed',
+                'header' => 'Aprovado',
+                'format' => 'raw',
+                'value' => function ($data) {                      
+                    return "<b class=\"text-success\">".$data["confirmed"]."</b>";
+                },
+                'headerOptions' => ['class' => 'text-success','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+            ],                                                                                 
+        ],
+    ]); ?>      
+    </div>
+    <div class="col-md-6">
+    <h4>CDC</h4>
+    <?= GridView::widget([
+      'dataProvider' => $dataProviderCampaign2,
+      'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '<span class="not-set">(não informado)</span>'],
+      'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
+      'summary'      =>  '',
+      'showHeader'   => false,        
+      'tableOptions' => ['class'=>'table table-hover'],
+      'columns' => [          
+            [
+                'attribute' => 'avatar',
+                'label' => false,
+                'format' => 'html',
+                'value' => function ($data) {
+                    return Html::img(Yii::$app->params['usersAvatars'].$data["avatar"],
+                        ['width' => '50px', 'class' => 'img-rounded img-thumbnail']);
+                },
+                'contentOptions'=>['style'=>'width: 10%;text-align:middle'],                    
+            ],                                
+            [
+                'attribute' => 'fullname',
+                'format' => 'raw',
+                'label'=> '',
+                'value' => function ($data) {                      
+                    return $data["fullname"];
+                },
+                'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;text-transform: uppercase'],
+            ],  
+            [
+                'attribute' => 'confirmed',
+                'header' => 'Aprovado',
+                'format' => 'raw',
+                'value' => function ($data) {                      
+                    return "<b class=\"text-success\">".$data["confirmed"]."</b>";
+                },
+                'headerOptions' => ['class' => 'text-success','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+            ],                                                                                 
+        ],
+    ]); ?></div>
+
+          </div>
+    </div>
+
+      </div>
+      <div class="col-md-4">
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><b>Aniversariantes da Semana</b>
+            <!--             
+            <button class="btn btn-default btn-xs pull-right">Mensal</button>
+            <div class="clearfix"></div>
+            -->
+          </div>
+          <div class="panel-body" style="height: 300px;max-height: 10;overflow-y: scroll;">
+
+        <?php
+        $dataProviderBirthdate = new SqlDataProvider([
+            'sql' => "SELECT 
+                    avatar, user.fullname as fullname, day(birthdate) as dia,
+                    day(birthdate) as dia
+                    FROM `user`
+                    WHERE WEEKOFYEAR( CONCAT( YEAR(NOW()),'-',MONTH(birthdate),'-',DAY(birthdate) ) ) = WEEKOFYEAR( NOW() )
+                    ORDER BY day(birthdate)",
+            'totalCount' => 300,
+            'key'  => 'fullname',
+            'pagination' => [
+                'pageSize' => 300,
+            ],
+        ]);
+        ?> 
+        <?= GridView::widget([
+                  'dataProvider' => $dataProviderBirthdate,
+                  'emptyText'    => '</br><p class="text-danger">Nenhum aniversariante esta semana!</p>',
+                  'summary'      =>  '',
+                  'showHeader'   => true,        
+                  'tableOptions' => ['class'=>'table'],
+                  'columns' => [     
+                        [
+                            'attribute' => 'avatar',
+                            'label' => false,
+                            'format' => 'raw',
+                            'value' => function ($data) {
+                                return Html::img(Yii::$app->params['usersAvatars']."thumb/".$data["avatar"],
+                                    ['width' => '40px', 'class' => 'img-rounded img-thumbnail img-responsive']);
+                            },
+                            'contentOptions'=>['style'=>'width: 10%;text-align:middle'],                    
+                        ],                                 
+                        [
+                            'attribute' => 'fullname',
+                            'format' => 'raw',
+                            'header' => 'Colaborador',
+                            'value' => function ($data) {                      
+                                return "<h5>".$data["fullname"]."</h5><p>";
+                            },
+                            'contentOptions'=>['style'=>'width: 60%;text-align:left;vertical-align: middle;text-transform: uppercase'],
+                        ],
+                        [
+                            'attribute' => 'dia',
+                            'format' => 'raw',
+                            'header' => 'Dia',
+                            'value' => function ($data) {                      
+                                return $data["dia"] <> date('d') ? "<h5>".$data["dia"]."</h5>" : "<h5 class=\"label label-default\">Hoje</h5>";
+                            },
+                            'headerOptions' => ['class' => 'text-center', 'style' => 'text-align:center;vertical-align: middle;'],
+                            'contentOptions'=>['style'=>'width: 30%;text-align:center;vertical-align: middle;'],
+                        ],                                                                             
+                    ],
+                ]); ?>        
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row"><!-- LINE 2 -->
+      <div class="col-md-8">
+
+<div class="panel panel-default">
       <div class="panel-heading"><b>Top 3 Produtividade do Mês</b></div>
       <div class="panel-body" style="height: 300px;max-height: 10;">
         <?php
@@ -168,138 +367,6 @@ $this->title = Yii::$app->params['appname'];
         ]); ?>
         </div>
       </div>
-    </div>
-
-      </div>
-      <div class="col-md-4">
-
-        <div class="panel panel-default">
-          <div class="panel-heading"><b>Aniversariantes da Semana</b>
-            <!--             
-            <button class="btn btn-default btn-xs pull-right">Mensal</button>
-            <div class="clearfix"></div>
-            -->
-          </div>
-          <div class="panel-body" style="height: 300px;max-height: 10;overflow-y: scroll;">
-
-        <?php
-        $dataProviderBirthdate = new SqlDataProvider([
-            'sql' => "SELECT 
-                    avatar, user.fullname as fullname, day(birthdate) as dia,
-                    day(birthdate) as dia
-                    FROM `user`
-                    WHERE WEEKOFYEAR( CONCAT( YEAR(NOW()),'-',MONTH(birthdate),'-',DAY(birthdate) ) ) = WEEKOFYEAR( NOW() )
-                    ORDER BY day(birthdate)",
-            'totalCount' => 300,
-            'key'  => 'fullname',
-            'pagination' => [
-                'pageSize' => 300,
-            ],
-        ]);
-        ?> 
-        <?= GridView::widget([
-                  'dataProvider' => $dataProviderBirthdate,
-                  'emptyText'    => '</br><p class="text-danger">Nenhum aniversariante esta semana!</p>',
-                  'summary'      =>  '',
-                  'showHeader'   => true,        
-                  'tableOptions' => ['class'=>'table'],
-                  'columns' => [     
-                        [
-                            'attribute' => 'avatar',
-                            'label' => false,
-                            'format' => 'raw',
-                            'value' => function ($data) {
-                                return Html::img(Yii::$app->params['usersAvatars']."thumb/".$data["avatar"],
-                                    ['width' => '40px', 'class' => 'img-rounded img-thumbnail img-responsive']);
-                            },
-                            'contentOptions'=>['style'=>'width: 10%;text-align:middle'],                    
-                        ],                                 
-                        [
-                            'attribute' => 'fullname',
-                            'format' => 'raw',
-                            'header' => 'Colaborador',
-                            'value' => function ($data) {                      
-                                return "<h5>".$data["fullname"]."</h5><p>";
-                            },
-                            'contentOptions'=>['style'=>'width: 60%;text-align:left;vertical-align: middle;text-transform: uppercase'],
-                        ],
-                        [
-                            'attribute' => 'dia',
-                            'format' => 'raw',
-                            'header' => 'Dia',
-                            'value' => function ($data) {                      
-                                return $data["dia"] <> date('d') ? "<h5>".$data["dia"]."</h5>" : "<h5 class=\"label label-default\">Hoje</h5>";
-                            },
-                            'headerOptions' => ['class' => 'text-center', 'style' => 'text-align:center;vertical-align: middle;'],
-                            'contentOptions'=>['style'=>'width: 30%;text-align:center;vertical-align: middle;'],
-                        ],                                                                             
-                    ],
-                ]); ?>        
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="row"><!-- LINE 2 -->
-      <div class="col-md-8">
-
-    <div class="panel panel-default">
-          <div class="panel-heading"><b>Top 10 Maiores Visitantes do mês</b></div>
-          <div class="panel-body" style="height: 310px;max-height: 10;">
-          <?php 
-
-            $commandtop10 = Yii::$app->db->createCommand(
-            "SELECT u.username as username, COUNT(b.id) as total
-                FROM business_visits b
-                INNER JOIN `user` u
-                ON b.user_id = u.id
-                WHERE b.visits_status_id = 3 AND MONTH(date) = $thismonth AND YEAR(date) = $thisyear
-                GROUP BY username
-                ORDER BY total DESC
-                LIMIT 10"
-                );
-            $report_top10 = $commandtop10->queryAll();
-
-            $total = array();
-            $username = array();
-
-            for ($i = 0; $i < sizeof($report_top10); $i++) {
-               $username[] = $report_top10[$i]["username"];
-               $total[] = (int) $report_top10[$i]["total"];
-            }            
-           
-            use yii\web\JsExpression;
-            use miloschuman\highcharts\Highcharts;
-            echo Highcharts::widget([
-                'options' => [
-                'chart' => ['height' => 260],
-                    'credits' => ['enabled' => false],
-                    'title' => [
-                        'text' => '',
-                    ],
-                    'colors'=> ['#00A295','#27cdd9'],
-                    'xAxis' => [
-                        'categories' => $username,
-                    ],
-                    'yAxis' => [
-                        'min' => 0,
-                        'title' => '',
-                    ],                        
-                    'series' => [
-                        [
-                            'type' => 'column',
-                            //'colorByPoint'=> true,
-                            'name' => 'Visitas Efetivadas',
-                            'data' => $total,
-                            //'colors' => $color,
-                        ],                         
-                    ],
-                ]
-            ]);            
-            ?>
-          </div>
     </div>
 
       </div>
