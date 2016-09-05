@@ -8,8 +8,11 @@ use yii\web\View;
 use miloschuman\highcharts\Highcharts;
 use miloschuman\highcharts\SeriesDataHelper;
 use app\modules\campaign\models\Sicoobcard;
+use yii\bootstrap\Tabs;
+use yii\bootstrap\Progress;
+use yii\data\SqlDataProvider;
 
-$this->title = 'Desempenho da Campanha Sicoobcard Todo Dia';
+$this->title = 'Desempenho das Campanhas';
 ?>
 <div class="campaign-sicoobcard-create">
 
@@ -19,10 +22,22 @@ $this->title = 'Desempenho da Campanha Sicoobcard Todo Dia';
     </div>
     <hr/>
 
-  <div class="row">
+<div class="row"><div class="col-md-12">
 
+    <div class="panel panel-default">
+    <div class="panel-body">  
+
+    <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#user">Sicoobcard Todo Dia</a></li>
+    <li><a data-toggle="tab" href="#group">CDC Sicoobcard</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="user" class="tab-pane fade in active"><!-- Sicoobcard Todo Dia -->
+
+<div class="row">
+    <br/>
     <div class="col-md-4">
-
     <div class="panel panel-default">
       <div class="panel-heading"><b>Comparação por Tipo de Produto</b></div>
       <div class="panel-body" style="height: 550px;max-height: 500;">
@@ -31,7 +46,7 @@ $this->title = 'Desempenho da Campanha Sicoobcard Todo Dia';
                 'options' => [
                     'credits' => ['enabled' => false],
                     'chart'=> [
-                    'height'=> 350,
+                    'height'=> 300,
                     ],
                     'title' => [
                         'text' => '',
@@ -190,6 +205,100 @@ $this->title = 'Desempenho da Campanha Sicoobcard Todo Dia';
     </div>
 
     </div>
+
   </div>
+
+      </div>
+      <div id="group" class="tab-pane fade"><!-- CDC -->
+          
+<div class="row">
+    <br/>
+
+<?php
+    $dataProviderCampaign2 = new SqlDataProvider([
+        'sql' => "SELECT user.id, avatar, fullname, 
+              COUNT(if(daily_productivity_status_id = 2 AND daily_productivity.product_id = 503, daily_productivity.id, NULL)) as  confirmed
+              FROM daily_productivity
+              INNER JOIN `user` ON daily_productivity.user_id = `user`.id
+              GROUP BY user_id
+              ORDER BY confirmed DESC",
+        'key'  => 'fullname',
+        'totalCount' => 100,
+        'pagination' => [
+            'pageSize' => 100,
+        ],         
+    ]);
+?>
+<div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Quantidade por Colaborador</b></div>
+      <div class="panel-body">
+<?= GridView::widget([
+      'dataProvider' => $dataProviderCampaign2,
+      'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '<span class="not-set">(não informado)</span>'],
+      'emptyText'    => '</br><p class="text-danger">Nenhuma informação encontrada</p>',
+      'summary'      =>  '',
+      'showHeader'   => false,        
+      'tableOptions' => ['class'=>'table table-hover'],
+      'columns' => [          
+            [
+                'attribute' => 'avatar',
+                'label' => false,
+                'format' => 'html',
+                'value' => function ($data) {
+                    return Html::img(Yii::$app->params['usersAvatars'].$data["avatar"],
+                        ['width' => '50px', 'class' => 'img-rounded img-thumbnail']);
+                },
+                'contentOptions'=>['style'=>'width: 10%;text-align:middle'],                    
+            ],                                
+            [
+                'attribute' => 'fullname',
+                'format' => 'raw',
+                'label'=> '',
+                'value' => function ($data) {                      
+                    return $data["fullname"].
+                        Progress::widget([
+                        'percent' => $data["confirmed"],
+                        'label' => $data["confirmed"],
+                        'barOptions' => ['class' => 'progress-bar-success'],
+                        'clientOptions' => [
+                            'value' => $data["confirmed"],
+                        ],
+                    ]);
+                },
+                'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;text-transform: uppercase'],
+            ],  
+            [
+                'attribute' => 'confirmed',
+                'header' => 'Aprovado',
+                'format' => 'raw',
+                'value' => function ($data) {                      
+                    return "<b class=\"text-success\">".$data["confirmed"]."</b>";
+                },
+                'headerOptions' => ['class' => 'text-success','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+            ], 
+            // [
+            //     'content' => function($data) {
+            //         return Progress::widget([
+            //             'percent' => 70,
+            //             'clientOptions' => [
+            //                 'value' => $data["confirmed"],
+            //             ],
+            //         ]);
+            //     },
+            // ],
+        ],
+    ]); ?>
+    </div></div></div> 
+
+</div>    
+
+      </div>
+    </div> 
+
+    </div></div> 
+
+</div></div>
 
 </div>

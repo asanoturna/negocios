@@ -8,6 +8,7 @@ use app\models\Product;
 use app\models\Modality;
 use app\models\User;
 use yii\data\SqlDataProvider;
+use yii\bootstrap\Progress;
 
 $thisyear  = date('Y');
 $thismonth = date('m');   
@@ -38,34 +39,33 @@ $this->title = Yii::$app->params['appname'];
 
     <?php
     $dataProviderCampaign1 = new SqlDataProvider([
-        'sql' => "SELECT user.id, avatar, fullname, 
+        'sql' => "SELECT user.id, avatar, username as fullname, 
                 COUNT(if(campaign_sicoobcard.status = 1, campaign_sicoobcard.id, NULL)) as  confirmed
                 FROM campaign_sicoobcard
                 INNER JOIN `user` ON campaign_sicoobcard.user_id = `user`.id
                 GROUP BY user_id
                 ORDER BY confirmed DESC",
         'key'  => 'fullname',
-        'totalCount' => 5,
+        'totalCount' => 3,
         'pagination' => [
-            'pageSize' => 5,
+            'pageSize' => 3,
         ],         
     ]);
 
     $dataProviderCampaign2 = new SqlDataProvider([
-        'sql' => "SELECT user.id, avatar, fullname, 
+        'sql' => "SELECT user.id, avatar, username as fullname, 
               COUNT(if(daily_productivity_status_id = 2 AND daily_productivity.product_id = 503, daily_productivity.id, NULL)) as  confirmed
               FROM daily_productivity
               INNER JOIN `user` ON daily_productivity.user_id = `user`.id
               GROUP BY user_id
               ORDER BY confirmed DESC",
         'key'  => 'fullname',
-        'totalCount' => 5,
+        'totalCount' => 3,
         'pagination' => [
-            'pageSize' => 5,
+            'pageSize' => 3,
         ],         
     ]);
 
-    use yii\bootstrap\Progress;
     ?>
     <div class="col-md-6">
     <h4>Sicoobcard Todo Dia</h4>
@@ -83,16 +83,24 @@ $this->title = Yii::$app->params['appname'];
                 'format' => 'html',
                 'value' => function ($data) {
                     return Html::img(Yii::$app->params['usersAvatars'].$data["avatar"],
-                        ['width' => '40px', 'class' => 'img-rounded img-thumbnail']);
+                        ['width' => '50px', 'class' => 'img-rounded img-thumbnail']);
                 },
-                'contentOptions'=>['style'=>'width: 10%;text-align:middle'],                    
+                'contentOptions'=>['style'=>'width: 20%;text-align:middle'],                    
             ],                                
             [
                 'attribute' => 'fullname',
                 'format' => 'raw',
                 'label'=> '',
                 'value' => function ($data) {                      
-                    return $data["fullname"];
+                    return $data["fullname"].
+                        Progress::widget([
+                        'percent' => $data["confirmed"],
+                        'label' => $data["confirmed"],
+                        'barOptions' => ['class' => 'progress-bar-success'],
+                        'clientOptions' => [
+                            'value' => $data["confirmed"],
+                        ],
+                    ]);
                 },
                 'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;text-transform: uppercase'],
             ],  
@@ -106,15 +114,6 @@ $this->title = Yii::$app->params['appname'];
                 'headerOptions' => ['class' => 'text-success','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
                 'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
             ],  
-        [
-            'content' => function($data) {
-                return Progress::widget([
-                    'clientOptions' => [
-                        'value' => $data["confirmed"],
-                    ],
-                ]);
-            },
-        ],
         ],
     ]); ?>      
     </div>
@@ -136,14 +135,22 @@ $this->title = Yii::$app->params['appname'];
                     return Html::img(Yii::$app->params['usersAvatars'].$data["avatar"],
                         ['width' => '50px', 'class' => 'img-rounded img-thumbnail']);
                 },
-                'contentOptions'=>['style'=>'width: 10%;text-align:middle'],                    
+                'contentOptions'=>['style'=>'width: 20%;text-align:middle'],                    
             ],                                
             [
                 'attribute' => 'fullname',
                 'format' => 'raw',
                 'label'=> '',
                 'value' => function ($data) {                      
-                    return $data["fullname"];
+                    return $data["fullname"].
+                        Progress::widget([
+                        'percent' => $data["confirmed"],
+                        'label' => $data["confirmed"],
+                        'barOptions' => ['class' => 'progress-bar-success'],
+                        'clientOptions' => [
+                            'value' => $data["confirmed"],
+                        ],
+                    ]);
                 },
                 'contentOptions'=>['style'=>'width: 50%;text-align:left;vertical-align: middle;text-transform: uppercase'],
             ],  
