@@ -258,11 +258,11 @@ $this->title = 'Desempenho das Campanhas';
                 'value' => function ($data) {                      
                     return $data["fullname"].
                         Progress::widget([
-                        'percent' => $data["confirmed"],
-                        'label' => $data["confirmed"],
+                        'percent' => (($data["confirmed"]*100)/50),
+                        'label' => round(($data["confirmed"]*100)/50)."%",
                         'barOptions' => ['class' => 'progress-bar-success'],
                         'clientOptions' => [
-                            'value' => $data["confirmed"],
+                            'value' => round(($data["confirmed"]*100)/50),
                         ],
                     ]);
                 },
