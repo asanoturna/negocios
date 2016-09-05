@@ -311,11 +311,11 @@ $this->title = Yii::$app->params['appname'];
                 'value' => function ($data) {                      
                     return $data["fullname"].
                         Progress::widget([
-                        'percent' => $data["confirmed"],
-                        'label' => $data["confirmed"],
+                        'percent' => (($data["confirmed"]*100)/70),
+                        'label' => round(($data["confirmed"]*100)/70)."%",
                         'barOptions' => ['class' => 'progress-bar-success'],
                         'clientOptions' => [
-                            'value' => $data["confirmed"],
+                            'value' => round(($data["confirmed"]*100)/70),
                         ],
                     ]);
                 },
@@ -335,7 +335,7 @@ $this->title = Yii::$app->params['appname'];
     ]); ?>      
     </div>
     <div class="col-md-6">
-    <h4>CDC</h4>
+    <h4>CDC Sicoobcard</h4>
     <?= GridView::widget([
       'dataProvider' => $dataProviderCampaign2,
       'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '<span class="not-set">(não informado)</span>'],
@@ -361,11 +361,11 @@ $this->title = Yii::$app->params['appname'];
                 'value' => function ($data) {                      
                     return $data["fullname"].
                         Progress::widget([
-                        'percent' => $data["confirmed"],
-                        'label' => $data["confirmed"],
+                        'percent' => (($data["confirmed"]*100)/50),
+                        'label' => round(($data["confirmed"]*100)/50)."%",
                         'barOptions' => ['class' => 'progress-bar-success'],
                         'clientOptions' => [
-                            'value' => $data["confirmed"],
+                            'value' => round(($data["confirmed"]*100)/50),
                         ],
                     ]);
                 },
