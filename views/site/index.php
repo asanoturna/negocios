@@ -64,6 +64,8 @@ $this->title = Yii::$app->params['appname'];
             'pageSize' => 5,
         ],         
     ]);
+
+    use yii\bootstrap\Progress;
     ?>
     <div class="col-md-6">
     <h4>Sicoobcard Todo Dia</h4>
@@ -103,7 +105,16 @@ $this->title = Yii::$app->params['appname'];
                 },
                 'headerOptions' => ['class' => 'text-success','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
                 'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
-            ],                                                                                 
+            ],  
+        [
+            'content' => function($data) {
+                return Progress::widget([
+                    'clientOptions' => [
+                        'value' => $data["confirmed"],
+                    ],
+                ]);
+            },
+        ],
         ],
     ]); ?>      
     </div>
