@@ -155,7 +155,7 @@ $this->title = 'Multirão';
                       ]);
                   },                                                
                   'update' => function ($url, $model) {
-                      return Html::a('<span class="glyphicon glyphicon-pencil" ></span>', "#", [
+                      return Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
                                   'title' => 'Alterar',
                                   'class' => 'btn btn-default btn-xs',
                       ]);

@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Ação Operação de Credito';
+$this->title = 'Multirão';
 ?>
 <div class="capitalaction-create">
 

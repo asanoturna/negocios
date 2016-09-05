@@ -3,11 +3,10 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
-use app\models\Location;
 use kartik\money\MaskMoney;
+use app\modules\campaign\models\Sipag;
 
 ?>
-
 <div class="capitalaction-form">
 
     <div class="panel panel-default">
@@ -18,46 +17,28 @@ use kartik\money\MaskMoney;
 <div class="row">
   <div class="col-md-4">
 
-    <?= $form->field($model, 'location_id')->dropDownList(ArrayHelper::map(Location::find()->where(['is_active' => 1])->orderBy("shortname ASC")->all(), 'id', 'shortname'),['prompt'=>'--'])  ?>    
+    <?= $form->field($model, 'establishmenttype')->dropDownList(Sipag::$Static_establishmenttype,['prompt'=>'--']) ?> 
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'establishmentname')->textInput(['maxlength' => true]) ?>
 
-    <?php 
-    echo $form->field($model, 'proposed')->widget(MaskMoney::classname(), [
-        'pluginOptions' => [
-            //'prefix' => 'R$ ',
-            //'suffix' => ' c',
-            'affixesStay' => true,
-            'thousands' => '.',
-            'decimal' => ',',
-            'precision' => 2, 
-            'allowZero' => true,
-            'allowNegative' => false,
-            'value' => 0.01
-        ],
-    ]); 
-    ?>
+    <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
-    <?php 
-    echo $form->field($model, 'accomplished')->widget(MaskMoney::classname(), [
-        'pluginOptions' => [
-            //'prefix' => 'R$ ',
-            //'suffix' => ' c',
-            'affixesStay' => true,
-            'thousands' => '.',
-            'decimal' => ',',
-            'precision' => 2, 
-            'allowZero' => true,
-            'allowNegative' => false,
-            'value' => 0.01
-        ],
-    ]); 
-    ?>
+    <?= $form->field($model, 'expedient')->textInput(['maxlength' => true]) ?>
 
   </div>
   <div class="col-md-4">
 
-    <?= $form->field($model, 'date1')->widget('trntv\yii\datetime\DateTimeWidget',
+    <?= $form->field($model, 'visited')->dropDownList(Sipag::$Static_visited,['prompt'=>'--']) ?>     
+
+    <?= $form->field($model, 'accredited')->dropDownList(Sipag::$Static_accredited,['prompt'=>'--']) ?>     
+
+    <?= $form->field($model, 'locked')->dropDownList(Sipag::$Static_locked,['prompt'=>'--']) ?>     
+
+    <?= $form->field($model, 'anticipation')->dropDownList(Sipag::$Static_anticipation,['prompt'=>'--']) ?>     
+
+    <?= $form->field($model, 'status')->dropDownList(Sipag::$Static_status,['prompt'=>'--']) ?>    
+
+    <?= $form->field($model, 'date')->widget('trntv\yii\datetime\DateTimeWidget',
         [
             'phpDatetimeFormat' => 'yyyy-MM-dd',
             'clientOptions' => [
@@ -69,23 +50,7 @@ use kartik\money\MaskMoney;
                 ]
             ]
         ]
-    ) ?> 
-
-    <?= $form->field($model, 'date2')->widget('trntv\yii\datetime\DateTimeWidget',
-        [
-            'phpDatetimeFormat' => 'yyyy-MM-dd',
-            'clientOptions' => [
-                'minDate' => new \yii\web\JsExpression('new Date("2016-01-01")'),
-                'allowInputToggle' => true,
-                'widgetPositioning' => [
-                   'horizontal' => 'auto',
-                   'vertical' => 'auto'
-                ]
-            ]
-        ]
-    ) ?>   
-
-    <?= $form->field($model, 'progress')->textarea(['rows' => 6]) ?>
+    ) ?>      
 
   </div>
 
