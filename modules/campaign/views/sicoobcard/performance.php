@@ -149,8 +149,7 @@ $this->title = 'Desempenho das Campanhas';
                         },
                         'headerOptions' => ['class' => 'text-danger','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
                         'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
-                    ],                        
-
+                    ],
                 ],
             ]); ?>
       </div>

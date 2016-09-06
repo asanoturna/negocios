@@ -6,7 +6,7 @@ use yii\helpers\ArrayHelper;
 use app\modules\campaign\models\Sipag;
 use app\models\User;
 
-$this->title = 'Multirão';
+$this->title = 'AÇÃO FOCO SIPAG';
 ?>
 <div class="opcredit-index">
 
@@ -49,15 +49,6 @@ $this->title = 'Multirão';
                 'enableSorting' => true,
                 'contentOptions'=>['style'=>'width: 5%;text-align:center'],
             ],
-            // [
-            //     'attribute' => 'establishmenttype',
-            //     'enableSorting' => true,
-            //     'value' => function($data) {
-            //       return $data->getEstablishmenttype();
-            //     },
-            //     'filter' => Sipag::$Static_establishmenttype,
-            //     'contentOptions'=>['style'=>'width: 8%;text-align:center'],
-            // ],
             [
                 'attribute' => 'establishmentname',
                 'format' => 'raw',

@@ -5,6 +5,7 @@ Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc)
 Verificar permissoes nos controllers (permissão apenas para admin)
 Link para área administrativa
 Corrigir telas responsivas (gridview, etc)
+Links Uteis ao abrir novo item, ele substitui o anterio
 
 Departamento > Campo email (null)
 

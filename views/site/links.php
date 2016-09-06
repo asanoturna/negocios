@@ -36,7 +36,7 @@ $this->title = 'Links Uteis';
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'showHeader'   => false,        
+        'showHeader'   => true,        
         'tableOptions' => ['class'=>'table table-hover'],        
         'columns' => [
             [
@@ -51,7 +51,7 @@ $this->title = 'Links Uteis';
             'format'=>'raw',
             'contentOptions'=>['style'=>'width: 50%;text-align:left'],
             'value'=>function ($model, $key, $index, $widget) { 
-                return Html::a($model->name, $model->url, ['target'=> 'blank', 'title'=>$model->url])."<br/><p class=\"text-muted\">".$model->description."</p>";
+                return Html::a($model->name, $model->url, ['target'=> '_blank', 'title'=>$model->url])."<br/><p class=\"text-muted\">".$model->description."</p>";
                 },            
             ],                 
         ],
