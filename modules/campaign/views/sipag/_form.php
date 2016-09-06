@@ -15,18 +15,24 @@ use app\modules\campaign\models\Sipag;
     <?php $form = ActiveForm::begin(); ?>
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-6">
 
-    <?= $form->field($model, 'establishmenttype')->dropDownList(Sipag::$Static_establishmenttype,['prompt'=>'--']) ?> 
+    <?= $form->field($model, 'establishmenttype')->dropDownList(Sipag::$Static_establishmenttype,['prompt'=>'--', 'onchange' => '
+        if($(this).val() == 1) {
+        $("#'.Html::getInputId($model, 'tax').'").val($(this).val());
+        }
+        else if($(this).val() == 2) {
+        $("#'.Html::getInputId($model, 'tax').'").val($(this).val());
+        } else if($(this).val() == 3){
+        $("#'.Html::getInputId($model, 'tax').'").val($(this).val());
+        }'
+        ]) ?> 
 
     <?= $form->field($model, 'establishmentname')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'expedient')->textInput(['maxlength' => true]) ?>
-
-  </div>
-  <div class="col-md-4">
 
     <?= $form->field($model, 'visited')->dropDownList(Sipag::$Static_visited,['prompt'=>'--']) ?>     
 
@@ -50,8 +56,243 @@ use app\modules\campaign\models\Sipag;
                 ]
             ]
         ]
-    ) ?>      
+    ) ?>          
 
+  </div>
+  <div class="col-md-6">
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <strong>SIPAG - Taxas</strong></a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+          <table class="table">
+            <tr class="active">
+                <td>Tipo do Estabelecimento</td>
+                <td>Débito</td>
+                <td>Crédito à vista</td>
+                <td>Crédito parcelado 2 a 6</td>
+                <td>Crédito Parcelado 7 a 12</td>
+            </tr>
+            <tr>
+                <td>RESTAURANTE</td>
+                <td>2%</td>
+                <td>3,45%</td>
+                <td>3,97%</td>
+                <td>4,24%</td>
+            </tr>
+            <tr>
+                <td>HOTEIS</td>
+                <td>1,85%</td>
+                <td>2,89%</td>
+                <td>3,32%</td>
+                <td>3,55%</td>
+            </tr>
+            <tr>
+                <td>ALIMENTAÇÃO EMERCADOS ESPECIAIS</td>
+                <td>1,76%</td>
+                <td>3,24%</td>
+                <td>3,73%</td>
+                <td>3,99%</td>
+            </tr>   
+            <tr>
+                <td>SUPERMERCADOS</td>
+                <td>1,55%</td>
+                <td>2,35%</td>
+                <td>2,70%</td>
+                <td>2,89%</td>
+            </tr>
+            <tr>
+                <td>POSTO DE COMBUSTIVEL</td>
+                <td>1,45%</td>
+                <td>2,37%</td>
+                <td>2,8%</td>
+                <td>3,1%</td>
+            </tr>
+            <tr>
+                <td>ACADEMIA</td>
+                <td>2,09%</td>
+                <td>3,06%</td>
+                <td>3,52%</td>
+                <td>3,76%</td>
+            </tr> 
+            <tr>
+                <td>ESCOLAS PARTICULARES</td>
+                <td>2,03%</td>
+                <td>3,24%</td>
+                <td>3,73%</td>
+                <td>3,99%</td>
+            </tr> 
+            <tr>
+                <td>LOJAS</td>
+                <td>1,85%</td>
+                <td>2,89%</td>
+                <td>3,32%</td>
+                <td>3,56%</td>
+            </tr>                                     
+          </table>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><strong>REDE - Taxas</strong></a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+<table class="table">
+            <tr class="active">
+                <td>Tipo do Estabelecimento</td>
+                <td>Débito</td>
+                <td>Crédito à vista</td>
+                <td>Crédito parcelado 2 a 6</td>
+                <td>Crédito Parcelado 7 a 12</td>
+            </tr>
+            <tr>
+                <td>RESTAURANTE</td>
+                <td>2%</td>
+                <td>3,45%</td>
+                <td>3,97%</td>
+                <td>4,24%</td>
+            </tr>
+            <tr>
+                <td>HOTEIS</td>
+                <td>1,85%</td>
+                <td>2,89%</td>
+                <td>3,32%</td>
+                <td>3,55%</td>
+            </tr>
+            <tr>
+                <td>ALIMENTAÇÃO EMERCADOS ESPECIAIS</td>
+                <td>1,76%</td>
+                <td>3,24%</td>
+                <td>3,73%</td>
+                <td>3,99%</td>
+            </tr>   
+            <tr>
+                <td>SUPERMERCADOS</td>
+                <td>1,55%</td>
+                <td>2,35%</td>
+                <td>2,70%</td>
+                <td>2,89%</td>
+            </tr>
+            <tr>
+                <td>POSTO DE COMBUSTIVEL</td>
+                <td>1,45%</td>
+                <td>2,37%</td>
+                <td>2,8%</td>
+                <td>3,1%</td>
+            </tr>
+            <tr>
+                <td>ACADEMIA</td>
+                <td>2,09%</td>
+                <td>3,06%</td>
+                <td>3,52%</td>
+                <td>3,76%</td>
+            </tr> 
+            <tr>
+                <td>ESCOLAS PARTICULARES</td>
+                <td>2,03%</td>
+                <td>3,24%</td>
+                <td>3,73%</td>
+                <td>3,99%</td>
+            </tr> 
+            <tr>
+                <td>LOJAS</td>
+                <td>1,85%</td>
+                <td>2,89%</td>
+                <td>3,32%</td>
+                <td>3,56%</td>
+            </tr>                                     
+          </table>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><strong>CIELO - Taxas</strong></a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+<table class="table">
+            <tr class="active">
+                <td>Tipo do Estabelecimento</td>
+                <td>Débito</td>
+                <td>Crédito à vista</td>
+                <td>Crédito parcelado 2 a 6</td>
+                <td>Crédito Parcelado 7 a 12</td>
+            </tr>
+            <tr>
+                <td>RESTAURANTE</td>
+                <td>2%</td>
+                <td>3,45%</td>
+                <td>3,97%</td>
+                <td>4,24%</td>
+            </tr>
+            <tr>
+                <td>HOTEIS</td>
+                <td>1,85%</td>
+                <td>2,89%</td>
+                <td>3,32%</td>
+                <td>3,55%</td>
+            </tr>
+            <tr>
+                <td>ALIMENTAÇÃO EMERCADOS ESPECIAIS</td>
+                <td>1,76%</td>
+                <td>3,24%</td>
+                <td>3,73%</td>
+                <td>3,99%</td>
+            </tr>   
+            <tr>
+                <td>SUPERMERCADOS</td>
+                <td>1,55%</td>
+                <td>2,35%</td>
+                <td>2,70%</td>
+                <td>2,89%</td>
+            </tr>
+            <tr>
+                <td>POSTO DE COMBUSTIVEL</td>
+                <td>1,45%</td>
+                <td>2,37%</td>
+                <td>2,8%</td>
+                <td>3,1%</td>
+            </tr>
+            <tr>
+                <td>ACADEMIA</td>
+                <td>2,09%</td>
+                <td>3,06%</td>
+                <td>3,52%</td>
+                <td>3,76%</td>
+            </tr> 
+            <tr>
+                <td>ESCOLAS PARTICULARES</td>
+                <td>2,03%</td>
+                <td>3,24%</td>
+                <td>3,73%</td>
+                <td>3,99%</td>
+            </tr> 
+            <tr>
+                <td>LOJAS</td>
+                <td>1,85%</td>
+                <td>2,89%</td>
+                <td>3,32%</td>
+                <td>3,56%</td>
+            </tr>                                     
+          </table>
+      </div>
+    </div>
+  </div>
+</div>  
+  <?php //echo $form->field($model, 'tax')->textInput() ?>
+  
   </div>
 
   <div class="col-md-4"></div>

@@ -12,10 +12,13 @@ class Sipag extends \yii\db\ActiveRecord
         return 'campaign_sipag';
     }
 
+    public $tax;
+    public $file;
+
     // establishmenttype
     public static $Static_establishmenttype = [
         'RESTAURANTE',
-        'LANCHONETE',
+        'ALIMENTAÇÃO EMERCADOS ESPECIAIS',
         'SUPERMERCADO',
         'AUTOPOSTO',
         'ACADEMIA',
@@ -113,7 +116,7 @@ class Sipag extends \yii\db\ActiveRecord
             'id' => 'ID',
             'created' => 'Criado em',
             'updated' => 'Alterado em',            
-            'establishmenttype' => 'Tipo',
+            'establishmenttype' => 'Tipo do Estabelecimento',
             'establishmentname' => 'Estabelecimento',
             'address' => 'Endereço',
             'expedient' => 'Expediente',

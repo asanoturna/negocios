@@ -16,24 +16,7 @@ $this->title = 'AÇÃO FOCO SIPAG';
     </div>
     <hr/>
 
-    <div class="row">
-    <div class="col-md-6">
-      <div class="panel panel-default">
-      <div class="panel-heading"><b>Pesquisar</b></div>
-        <div class="panel-body" style="height: 140px;max-height: 140;">
-          <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
-        </div>
-      </div>
-    </div> 
-    <div class="col-md-6">
-      <div class="panel panel-default">
-      <div class="panel-heading"><b>Taxas</b></div>
-        <div class="panel-body" style="height: 140px;max-height: 140;">
-          --
-        </div>
-      </div>
-    </div>     
-    </div>
+  <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <div class="panel panel-default">
     <div class="panel-body">
