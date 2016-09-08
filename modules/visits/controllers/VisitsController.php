@@ -54,6 +54,18 @@ class VisitsController extends Controller
         ]);
     }
 
+    public function actionDailysummary()
+    {
+        $searchModel = new VisitsSearch();
+        $searchModel->date = date('Y-m-d'); // current day 
+        $dataProvider = $searchModel->searchbylocation(Yii::$app->request->queryParams);
+            
+        return $this->render('dailysummary', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }    
+
     public function actionReport_general()
     {
         $model = new Visits();

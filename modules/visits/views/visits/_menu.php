@@ -5,7 +5,29 @@ use yii\bootstrap\Nav;
     echo Nav::widget([
         'activateItems' => true,
         'encodeLabels' => false,
-        'items' => [  
+        'items' => [ 
+            // [
+            //     'label' => '<span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Desempenho',
+            //     'items' => [
+
+            //         [
+            //             'label' => 'Resumo Diário',
+            //             'url' => ['visits/dailysummary'],
+            //         ],
+            //         [
+            //             'label' => 'Desempenho Por Usuário', 
+            //             'url' => ['visits/report_user'],
+            //         ],
+            //         // [
+            //         //     'label' => 'Desempenho Por Agência', 
+            //         //     'url' => ['visits/ranking_user'],
+            //         // ],
+            //     ],
+            // ],
+            [
+                'label'   => '<span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span> Resumo Diário',
+                'url'     => ['visits/dailysummary'],
+            ],                 
             [
                 'label'   => '<span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Desempenho',
                 'url'     => ['visits/report_user'],

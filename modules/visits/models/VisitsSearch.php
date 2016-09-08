@@ -79,4 +79,56 @@ class VisitsSearch extends Visits
 
         return $dataProvider;
     }
+
+    public function searchbylocation($params)
+    {
+        $query = Visits::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'location_id' => SORT_ASC,
+                    'user_id' => SORT_ASC, 
+                ]
+            ],
+            'pagination' => [
+                'pageSize' => 100,
+            ],
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            return $dataProvider;
+        }
+
+       $query->andFilterWhere([
+            'id' => $this->id,
+            'date' => $this->date,
+            'value' => $this->value,
+            'num_proposal' => $this->num_proposal,
+            'created' => $this->created,
+            'updated' => $this->updated,
+            'visits_finality_id' => $this->visits_finality_id,
+            'visits_status_id' => $this->visits_status_id,
+            'person_id' => $this->person_id,
+            'location_id' => $this->location_id,
+            'user_id' => $this->user_id,
+        ]);
+
+        //$query->andFilterWhere(['between', 'date', $this->start_date, $this->end_date]);         
+
+        $query->andFilterWhere(['like', 'responsible', $this->responsible])
+            ->andFilterWhere(['like', 'company_person', $this->company_person])
+            ->andFilterWhere(['like', 'contact', $this->contact])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'phone', $this->phone])
+            ->andFilterWhere(['like', 'observation', $this->observation])
+            ->andFilterWhere(['like', 'ip', $this->ip])
+            ->andFilterWhere(['like', 'attachment', $this->attachment])
+            ->andFilterWhere(['like', 'localization_map', $this->localization_map]);
+
+        return $dataProvider;
+    }        
 }
