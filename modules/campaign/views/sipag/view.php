@@ -15,13 +15,15 @@ $this->title = 'Ação Capital';
 
     <p>
         <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
-        <?= Html::a('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Excluir', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Tem certeza que deseja excluir?',
-                'method' => 'post',
-            ],
-        ]) ?>
+        <?php 
+        // echo Html::a('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Excluir', ['delete', 'id' => $model->id], [
+        //     'class' => 'btn btn-danger',
+        //     'data' => [
+        //         'confirm' => 'Tem certeza que deseja excluir?',
+        //         'method' => 'post',
+        //     ],
+        // ]) 
+        ?>
     </p>
 
     <div class="panel panel-default">
@@ -30,22 +32,56 @@ $this->title = 'Ação Capital';
         'model' => $model,
         'attributes' => [
             'id',
-            'name',
-            'proposed',
-            'accomplished',
-            'date1',
-            'date2',
-            'progress:ntext',
-            'created',
-            'updated',
-            'location.fullname',
+            'establishmentname',
+            'establishmentname',
+            'address',
+            'expedient',
             [ 
-            'label' => 'Usuário',
-            'format' => 'raw',
-            'value' => $model->user->username,
-            ],  
+                'attribute' => 'visited',  
+                'format' => 'raw',
+                'value' => $model->Visited,
+            ],             
+            [ 
+                'attribute' => 'accredited',  
+                'format' => 'raw',
+                'value' => $model->Accredited,
+            ],      
+            [ 
+                'attribute' => 'accredited',  
+                'format' => 'raw',
+                'value' => $model->Accredited,
+            ],                     
+            [ 
+                'attribute' => 'anticipation',  
+                'format' => 'raw',
+                'value' => $model->Anticipation,
+            ],               
+            [ 
+                'attribute' => 'status',  
+                'format' => 'raw',
+                'value' => $model->Status,
+            ],                                    
+            'user_id',
+            [ 
+                'attribute' => 'updated',
+                'format' => 'raw',
+                'value' => date("d/m/Y",  strtotime($model->updated))
+            ],               
         ],
     ]) ?>
+
+    <hr/>
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            'checkedby',
+            [ 
+                'attribute' => 'date',
+                'format' => 'raw',
+                'value' => date("d/m/Y",  strtotime($model->date))
+            ],             
+        ],
+    ]) ?>    
     </div>
     </div>
 

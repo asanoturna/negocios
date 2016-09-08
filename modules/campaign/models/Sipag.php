@@ -102,8 +102,8 @@ class Sipag extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['establishmenttype', 'establishmentname'], 'required'],
-            [['establishmenttype', 'visited ', 'accredited', 'status', 'locked', 'anticipation', 'status', 'user_id', 'checkedby'], 'integer'],
+            [['establishmenttype', 'establishmentname','visited', 'accredited', 'status', 'locked', 'anticipation', 'status'], 'required'],
+            [['establishmenttype', 'visited', 'accredited', 'status', 'locked', 'anticipation', 'status', 'user_id', 'checkedby'], 'integer'],
             [['date', 'created', 'updated'], 'safe'],
             [['establishmentname', 'address', 'expedient'], 'string'],
             [['establishmentname', 'address', 'expedient'], 'string', 'max' => 200],
@@ -126,8 +126,8 @@ class Sipag extends \yii\db\ActiveRecord
             'anticipation' => 'Antecipação Efet.',
             'status' => 'Ativo',                        
             'user_id' => 'Gerente',
-            'checkedby'=> 'Conferido',
-            'date' => 'Data',
+            'checkedby'=> 'Conferido por',
+            'date' => 'Conferido em',
         ];
     }
 

@@ -6,7 +6,7 @@ use yii\helpers\ArrayHelper;
 use app\modules\campaign\models\Sipag;
 use app\models\User;
 
-$this->title = 'AÇÃO FOCO SIPAG';
+$this->title = 'Ação Foco SIPAG';
 ?>
 <div class="opcredit-index">
 
@@ -120,7 +120,7 @@ $this->title = 'AÇÃO FOCO SIPAG';
               'header' => 'Ações',  
               'contentOptions'=>['style'=>'width: 5%;text-align:right'],
               'headerOptions' => ['class' => 'text-center'],                            
-              'template' => ' {update} {delete}',
+              'template' => ' {view} {update} {manager}',
               'buttons' => [
                   'view' => function ($url, $model) {
                       return Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', $url, [
@@ -146,7 +146,17 @@ $this->title = 'AÇÃO FOCO SIPAG';
                                   'class' => 'btn btn-default btn-xs',
                                   'disabled' => true,
                       ]);
-                  },                                  
+                  }, 
+                  'manager' => function ($url, $model) {
+                      return Yii::$app->user->identity->can_managerproductivity == 1 ? Html::a('<span class="glyphicon glyphicon-cog" ></span>', $url, [
+                                  'title' => 'Conferir Registro',
+                                  'class' => 'btn btn-default btn-xs',
+                      ]): Html::a('<span class="glyphicon glyphicon-cog" ></span>', "#", [
+                                  'title' => 'Acesso não permitido!',
+                                  'class' => 'btn btn-default btn-xs',
+                                  'disabled' => true,
+                      ]);
+                  },                                                    
                 ],
             ],
         ],

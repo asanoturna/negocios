@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 
-$this->title = 'AÇÃO FOCO SIPAG';
+$this->title = 'Ação Foco SIPAG';
 ?>
 <div class="capitalaction-update">
 

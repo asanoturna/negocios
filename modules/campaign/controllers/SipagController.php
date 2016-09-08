@@ -74,7 +74,8 @@ class SipagController extends Controller
     {
         $model = $this->findModel($id);
 
-        $model->updated = date('Y-m-d');         
+        $model->updated = date('Y-m-d');
+        $model->user_id = Yii::$app->user->id;        
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -84,6 +85,21 @@ class SipagController extends Controller
             ]);
         }
     }
+
+    public function actionManager($id)
+    {
+        $model = $this->findModel($id);
+
+        $model->checkedby = Yii::$app->user->id;
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('manager', [
+                'model' => $model,
+            ]);
+        }
+    }      
 
     public function actionDelete($id)
     {
