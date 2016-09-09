@@ -66,7 +66,8 @@ $this->title = 'Ação Capital';
                 'attribute' => 'updated',
                 'format' => 'raw',
                 'value' => date("d/m/Y",  strtotime($model->updated))
-            ],               
+            ], 
+            'observation:ntext',
         ],
     ]) ?>
 

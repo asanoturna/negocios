@@ -13,7 +13,7 @@ class SipagSearch extends Sipag
     {
         return [
             [['id', 'establishmenttype', 'visited', 'accredited', 'status', 'locked', 'anticipation', 'status', 'user_id', 'checkedby'], 'integer'],
-            [['establishmentname', 'address', 'date', 'created', 'updated'], 'safe'],
+            [['establishmentname', 'address', 'date', 'created', 'updated','observation'], 'safe'],
         ];
     }
 
@@ -50,7 +50,8 @@ class SipagSearch extends Sipag
         ]);
 
         $query->andFilterWhere(['like', 'establishmentname', $this->establishmentname])
-            ->andFilterWhere(['like', 'address', $this->address]);
+            ->andFilterWhere(['like', 'address', $this->address])
+            ->andFilterWhere(['like', 'observation', $this->observation]);;
 
         return $dataProvider;
     }

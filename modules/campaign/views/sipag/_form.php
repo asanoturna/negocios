@@ -33,7 +33,9 @@ use app\modules\campaign\models\Sipag;
 
     <?= $form->field($model, 'anticipation')->dropDownList(Sipag::$Static_anticipation,['prompt'=>'--']) ?>     
 
-    <?= $form->field($model, 'status')->dropDownList(Sipag::$Static_status,['prompt'=>'--']) ?>            
+    <?= $form->field($model, 'status')->dropDownList(Sipag::$Static_status,['prompt'=>'--']) ?> 
+
+    <?= $form->field($model, 'observation')->textarea(['rows' => 6]) ?>        
 
   </div>
   <div class="col-md-6">
