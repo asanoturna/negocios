@@ -58,6 +58,7 @@ class VisitsController extends Controller
     {
         $searchModel = new VisitsSearch();
         $searchModel->date = date('Y-m-d'); // current day 
+        //$searchModel->date = date('2016-09-08'); // current day 
         $dataProvider = $searchModel->searchbylocation(Yii::$app->request->queryParams);
             
         return $this->render('dailysummary', [

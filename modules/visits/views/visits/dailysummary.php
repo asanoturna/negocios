@@ -28,6 +28,7 @@ $this->title = 'Resumo Diário das Visitas';
     echo kartik\grid\GridView::widget([
         'dataProvider'=>$dataProvider,
         'filterModel'=>$searchModel,
+        'tableOptions' => ['class'=>'table table-striped table-hover'],
         'showPageSummary'=>false,
         'showHeader' => true,
         'pjax'=>false,
@@ -46,11 +47,20 @@ $this->title = 'Resumo Diário das Visitas';
             //kartik\export\ExportMenu::PDF => false,
         ],
         //'toolbar' => true,
-        //'panel'=>['type'=>'primary', 'heading'=>'Grid Grouping Example'],      
+        //'panel'=>['type'=>'primary', 'heading'=>'Grid Grouping Example'],
+        'rowOptions'   => function ($model, $index, $widget, $grid) {
+            return [
+                'id' => $model['id'], 
+                'onclick' => 'location.href="'
+                    . Yii::$app->urlManager->createUrl('visits/visits/view') 
+                    . '&id="+(this.id);',
+                'style' => "cursor: pointer",
+            ];
+        },    
         'columns'=>[
             [
                 'attribute'=>'location_id', 
-                'width'=>'310px',
+                //'width'=>'310px',
                 'value'=>function ($model, $key, $index, $widget) { 
                     return $model->location->fullname;
                 },
@@ -64,6 +74,7 @@ $this->title = 'Resumo Diário das Visitas';
                 'groupedRow'=>true,
                 'groupOddCssClass'=>'h4 bg-success',
                 'groupEvenCssClass'=>'h4 bg-success',
+                'contentOptions'=>['style'=>'width: 15%;text-align:center'],
             ],
             [
             'attribute' => 'date',
@@ -82,8 +93,13 @@ $this->title = 'Resumo Diário das Visitas';
                          return Html::a($model->user->fullname, ['visits/report_user', 'user_id' => $model->user_id]);
                      },
                 'format'=>'raw',
-                'contentOptions'=>['style'=>'width: 40%;text-align:left;text-transform: uppercase'],
-            ],   
+                'contentOptions'=>['style'=>'width: 20%;text-align:left;text-transform: uppercase'],
+            ],
+            [
+            'attribute' => 'company_person',
+            'contentOptions'=>['style'=>'width: 20%;text-align:left;text-transform: uppercase'],
+            'headerOptions' => ['class' => 'text-center'],
+            ],             
             [
             'attribute' => 'visits_finality_id',
             'format' => 'raw',
