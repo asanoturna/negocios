@@ -51,11 +51,11 @@ class Sipag extends \yii\db\ActiveRecord
     public static $Static_accredited = [
         'SIM',
         'NÃO',
-        // 'SIPAG', 
-        // 'CIELO', 
-        // 'REDE',
-        // 'OUTROS',
-        // 'NÃO',
+        'SIPAG', 
+        'CIELO', 
+        'REDE',
+        'OUTROS',
+        'NÃO',
         ];   
     public function getAccredited()
     {
@@ -108,8 +108,9 @@ class Sipag extends \yii\db\ActiveRecord
     {
         return [
             [['establishmenttype', 'establishmentname','visited', 'accredited', 'status', 'locked', 'anticipation', 'status'], 'required'],
-            [['establishmenttype', 'visited', 'accredited', 'status', 'locked', 'anticipation', 'status', 'user_id', 'checkedby'], 'integer'],
-            [['date', 'created', 'updated', 'observation'], 'safe'],
+            [['establishmenttype', 'visited', 'accredited', 'status', 'locked', 'anticipation', 'status', 'user_id', 'checkedby_id'], 'integer'],
+            [['date', 'created', 'updated'], 'safe'],
+            [['observation'], 'string'],
             [['establishmentname', 'address', 'expedient'], 'string'],
             [['establishmentname', 'address', 'expedient'], 'string', 'max' => 200],
         ];
@@ -131,7 +132,7 @@ class Sipag extends \yii\db\ActiveRecord
             'anticipation' => 'Antecipação Efet.',
             'status' => 'Ativo',                        
             'user_id' => 'Gerente',
-            'checkedby'=> 'Conferido por',
+            'checkedby_id'=> 'Conferido por',
             'date' => 'Conferido em',
             'observation' => 'Observação',
         ];
@@ -144,6 +145,6 @@ class Sipag extends \yii\db\ActiveRecord
 
     public function getCheckedby()
     {
-        return $this->hasOne(User::className(), ['id' => 'checkedby']);
+        return $this->hasOne(User::className(), ['id' => 'checkedby_id']);
     }       
 }

@@ -19,7 +19,7 @@ class SipagController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::classname(),
-                'only'  => ['index','create','view','update'],
+                'only'  => ['index','create','view','update','manager'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -90,7 +90,7 @@ class SipagController extends Controller
     {
         $model = $this->findModel($id);
 
-        $model->checkedby = Yii::$app->user->id;
+        $model->checkedby_id = Yii::$app->user->id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

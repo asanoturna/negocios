@@ -12,7 +12,7 @@ class SipagSearch extends Sipag
     public function rules()
     {
         return [
-            [['id', 'establishmenttype', 'visited', 'accredited', 'status', 'locked', 'anticipation', 'status', 'user_id', 'checkedby'], 'integer'],
+            [['id', 'establishmenttype', 'visited', 'accredited', 'status', 'locked', 'anticipation', 'status', 'user_id', 'checkedby_id'], 'integer'],
             [['establishmentname', 'address', 'date', 'created', 'updated','observation'], 'safe'],
         ];
     }

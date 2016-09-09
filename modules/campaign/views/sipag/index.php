@@ -100,11 +100,11 @@ $this->title = 'Ação Foco SIPAG';
                 'contentOptions'=>['style'=>'width: 10%;text-align:left'],
             ],
             [
-                'attribute' => 'checkedby',
+                'attribute' => 'checkedby_id',
                 'format' => 'raw',
                 'enableSorting' => true,
                 'value' => function ($model) {                      
-                    return $model->checkedby ? $model->user->username : null;
+                    return $model->checkedby ? $model->checkedby->username : null;
                 },
                 'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
                 'contentOptions'=>['style'=>'width: 10%;text-align:left'],

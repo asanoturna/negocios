@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-$this->title = 'Ação Capital';
+$this->title = 'Ação Foco SIPAG';
 ?>
 <div class="capitalaction-view">
 
@@ -32,7 +32,11 @@ $this->title = 'Ação Capital';
         'model' => $model,
         'attributes' => [
             'id',
-            'establishmentname',
+            [ 
+                'attribute' => 'establishmenttype',  
+                'format' => 'raw',
+                'value' => $model->Establishmenttype,
+            ],             
             'establishmentname',
             'address',
             'expedient',
@@ -75,7 +79,7 @@ $this->title = 'Ação Capital';
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'checkedby',
+            'checkedby_id',
             [ 
                 'attribute' => 'date',
                 'format' => 'raw',
