@@ -117,7 +117,7 @@ class VisitsSearch extends Visits
             'user_id' => $this->user_id,
         ]);
 
-        //$query->andFilterWhere(['between', 'date', $this->start_date, $this->end_date]);         
+        $query->andFilterWhere(['between', 'date', $this->start_date, $this->end_date]);         
 
         $query->andFilterWhere(['like', 'responsible', $this->responsible])
             ->andFilterWhere(['like', 'company_person', $this->company_person])

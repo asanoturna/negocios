@@ -22,6 +22,11 @@ $this->title = 'Visitas dos Gerentes';
     </div>
     <hr/>
 
+  <div class="alert alert-danger fade in" align="center">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <i class="fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i> <strong >É NECESSÁRIO CADASTRAR AS VISITAS REALIZADAS NO DIA ATÉ AS 17:00H DE CADA DIA</strong>
+  </div>    
+
     <?php foreach (Yii::$app->session->getAllFlashes() as $key=>$message):?>
         <?php $alertClass = substr($key,strpos($key,'-')+1); ?>
         <div class="alert alert-dismissible alert-<?=$alertClass?>" role="alert">

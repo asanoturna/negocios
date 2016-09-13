@@ -33,7 +33,7 @@ use yii\bootstrap\Nav;
                 'url'     => ['visits/report_user'],
             ],                      
             [
-                'label'   => '<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> Listar',
+                'label'   => '<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> Lista das Visitas',
                 'url'     => ['visits/index'],
             ],  
             [

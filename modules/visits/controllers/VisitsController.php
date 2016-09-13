@@ -46,6 +46,8 @@ class VisitsController extends Controller
     public function actionIndex()
     {
         $searchModel = new VisitsSearch();
+        // $searchModel->start_date = date('Y-m-d'); // current day
+        // $searchModel->end_date = date('Y-m-d'); // current day
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -57,8 +59,8 @@ class VisitsController extends Controller
     public function actionDailysummary()
     {
         $searchModel = new VisitsSearch();
-        $searchModel->date = date('Y-m-d'); // current day 
-        //$searchModel->date = date('2016-09-08'); // current day 
+        $searchModel->start_date = date('Y-m-d'); // current day
+        $searchModel->end_date = date('Y-m-d'); // current day
         $dataProvider = $searchModel->searchbylocation(Yii::$app->request->queryParams);
             
         return $this->render('dailysummary', [
