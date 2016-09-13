@@ -17,7 +17,7 @@ use kartik\date\DatePicker;
     ]); ?>
 
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-3">
             <?php
                 //echo '<label class="control-label">Período</label>';
                 echo DatePicker::widget([
