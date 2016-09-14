@@ -132,8 +132,8 @@ class Sipag extends \yii\db\ActiveRecord
             'anticipation' => 'Antecipação Efet.',
             'status' => 'Ativo',                        
             'user_id' => 'Gerente',
-            'checkedby_id'=> 'Conferido por',
-            'date' => 'Conferido em',
+            'checkedby_id'=> 'Aprovado por',
+            'date' => 'Aprovado em',
             'observation' => 'Observação',
         ];
     }
