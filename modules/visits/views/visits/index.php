@@ -23,6 +23,12 @@ $this->title = 'Visitas dos Gerentes';
     </div>
     <hr/>
 
+  <div class="alert alert-info fade in" align="center">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i> <strong >Prezados, conforme solicitado pela diretoria, a partir de 14/09/2016 foi incluído uma nova coluna chamada APROVADO, onde o gerente Otávio irá aprovar ou não os registros de visita.
+</strong>
+  </div>      
+
   <div class="alert alert-danger fade in" align="center">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <i class="fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i> <strong >É NECESSÁRIO CADASTRAR AS VISITAS REALIZADAS NO DIA ATÉ AS 17:00H DE CADA DIA</strong>
