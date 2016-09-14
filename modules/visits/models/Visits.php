@@ -13,19 +13,31 @@ class Visits extends \yii\db\ActiveRecord
 {
     public static function tableName()
     {
-        return 'business_visits';
+        return 'visits';
     }
 
     public $file;
-    public $filename;    
+    public $filename;  
+
+    public static $Static_approved = [
+        'NÃO', 
+        'SIM',
+        ];   
+    public function getApproved()
+    {
+        if ($this->approved === null) {
+            return null;
+        }
+        return self::$Static_approved[$this->approved];
+    }      
 
     public function rules()
     {
         return [
             [['date', 'company_person', 'visits_finality_id', 'visits_status_id', 'person_id', 'location_id', 'user_id','visits_status_id'], 'required', 'message' => 'Campo Obrigatório'],
-            [['date', 'created', 'updated','attachment'], 'safe'],
+            [['date', 'created', 'updated','attachment','approvedin'], 'safe'],
             [['value'], 'number'],
-            [['num_proposal', 'visits_finality_id', 'visits_status_id', 'person_id', 'location_id', 'user_id'], 'integer'],
+            [['num_proposal', 'visits_finality_id', 'visits_status_id', 'person_id', 'location_id', 'user_id', 'approved', 'approved_id'], 'integer'],
             [['observation'], 'string'],
             [['responsible', 'company_person', 'contact', 'email', 'phone'], 'string', 'max' => 45],
             [['ip'], 'string', 'max' => 20],
@@ -58,6 +70,9 @@ class Visits extends \yii\db\ActiveRecord
             'person_id' => 'Tipo',
             'location_id' => 'PA',
             'user_id' => 'Gerente',
+            'approved'    => 'Aprovado?',
+            'approved_id' => 'Aprovado por',
+            'approvedin'  => 'Aprovado em',
         ];
     }
 
@@ -136,8 +151,14 @@ class Visits extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Visitsimages::className(), ['business_visits_id' => 'id']);
     }
+
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
-    }    
+    }
+
+    public function getMannager()
+    {
+        return $this->hasOne(User::className(), ['id' => 'approved_id']);
+    }       
 }

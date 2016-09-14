@@ -242,6 +242,23 @@ class VisitsController extends Controller
         }
     }
 
+    public function actionManager($id)
+    {
+        $model = $this->findModel($id);
+
+        $model->approved_id = Yii::$app->user->id;
+        $model->approvedin = date('Y-m-d');
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                Yii::$app->session->setFlash('visit-success', 'Registro de visita alterado com sucesso!');
+                return $this->redirect(['index']);
+        } else {
+            return $this->render('manager', [
+                'model' => $model,
+            ]);
+        }
+    }       
+
     public function actionDelete($id)
     {
         $model= $this->findModel($id);

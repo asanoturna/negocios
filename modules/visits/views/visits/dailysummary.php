@@ -5,6 +5,7 @@ use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
 use app\models\Location;
 use app\models\Person;
+use app\modules\visits\models\Visits;
 use app\modules\visits\models\Visitsfinality;
 use app\modules\visits\models\Visitsstatus;
 use app\modules\visits\models\Visitsimages;
@@ -132,7 +133,20 @@ $this->title = 'Resumo Diário das Visitas';
             'filter' => ArrayHelper::map(VisitsStatus::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
             'contentOptions'=>['style'=>'width: 20%;text-align:center'],
             'headerOptions' => ['class' => 'text-center'],
-            ],             
+            ],
+            [
+            'attribute' => 'approved',
+            'format' => 'raw',
+            'enableSorting' => true,
+            // 'value' => function($data) {
+            //   return $data->getApproved();
+            // },
+            'value' => function ($data) {                      
+                    return $data->getApproved() == 'SIM' ? '<span class="label label-success">SIM</span>' : '<span class="label label-danger">NÃO</span>';
+                    },            
+            'filter' => Visits::$Static_approved,
+            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ], 
         ],
     ]);
     ?>

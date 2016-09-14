@@ -15,7 +15,7 @@ class VisitsSearch extends Visits
     public function rules()
     {
         return [
-            [['id', 'num_proposal', 'visits_finality_id', 'visits_status_id', 'person_id', 'location_id', 'user_id'], 'integer'],
+            [['id', 'num_proposal', 'visits_finality_id', 'visits_status_id', 'person_id', 'location_id', 'user_id', 'approved'], 'integer'],
             [['start_date', 'end_date', 'date', 'responsible', 'company_person', 'contact', 'email', 'phone', 'observation', 'created', 'updated', 'ip', 'attachment', 'localization_map'], 'safe'],
             [['value'], 'number'],
         ];
@@ -62,6 +62,7 @@ class VisitsSearch extends Visits
             'visits_status_id' => $this->visits_status_id,
             'person_id' => $this->person_id,
             'location_id' => $this->location_id,
+            'approved'=> $this->approved,
             'user_id' => $this->user_id,
         ]);
 

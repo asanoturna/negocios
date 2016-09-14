@@ -8,6 +8,7 @@ use app\models\Person;
 use app\modules\visits\models\Visitsfinality;
 use app\modules\visits\models\Visitsstatus;
 use app\modules\visits\models\Visitsimages;
+use app\modules\visits\models\Visits;
 use app\models\User;
 use yii\bootstrap\Modal;
 
@@ -218,11 +219,24 @@ $this->title = 'Visitas dos Gerentes';
             'headerOptions' => ['class' => 'text-center'],
             ],
             [
+            'attribute' => 'approved',
+            'format' => 'raw',
+            'enableSorting' => true,
+            // 'value' => function($data) {
+            //   return $data->getApproved();
+            // },
+            'value' => function ($data) {                      
+                    return $data->getApproved() == 'SIM' ? '<span class="label label-success">SIM</span>' : '<span class="label label-danger">NÃO</span>';
+                    },            
+            'filter' => Visits::$Static_approved,
+            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],            
+            [
             'class' => 'yii\grid\ActionColumn',
             'header' => 'Ações',
             'contentOptions'=>['style'=>'width: 10%;text-align:right'],
             'headerOptions' => ['class' => 'text-center'],
-            'template' => '{has_map} {has_attach} {has_img} {view} {update} {delete}',
+            'template' => '{has_map} {has_attach} {has_img} {view} {update} {delete} {manager}',
                 'buttons' => [
                     'has_attach' => function ($url, $model) {
                         return $model->attachment <> null ? Html::a('<span class="glyphicon glyphicon-paperclip" ></span>', ['view', 'id' => $model->id], [
@@ -283,6 +297,16 @@ $this->title = 'Visitas dos Gerentes';
                                     'disabled' => true,
                         ]);
                     },
+                    'manager' => function ($url, $model) {
+                        return Yii::$app->user->identity->can_managervisits == 1 ? Html::a('<span class="glyphicon glyphicon-cog" ></span>', $url, [
+                                    'title' => 'Aprovar Registro',
+                                    'class' => 'btn btn-default btn-xs',
+                        ]): Html::a('<span class="glyphicon glyphicon-cog" ></span>', "#", [
+                                    'title' => 'Acesso não permitido!',
+                                    'class' => 'btn btn-default btn-xs',
+                                    'disabled' => true,
+                        ]);
+                    },                      
                 ],
 
             ],            
