@@ -2,15 +2,15 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Campanha Recupere e Ganhe';
+$this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
 ?>
-<div class="capitalaction-create">
+<div class="recovery-update">
 
     <div class="row">
       <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
       <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;"><?php  echo $this->render('_menu'); ?></span></div>
     </div>
-    <hr/>    
+    <hr/>
 
 	<div class="panel panel-default">
 	  <div class="panel-body">
@@ -18,5 +18,6 @@ $this->title = 'Campanha Recupere e Ganhe';
 	        'model' => $model,
 	    ]) ?>
 	  </div>
-	</div>  
+	</div>    
+
 </div>

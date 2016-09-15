@@ -32,45 +32,45 @@ $this->title = 'Ação Foco SIPAG';
         'model' => $model,
         'attributes' => [
             'id',
-            [ 
+            [
                 'attribute' => 'establishmenttype',  
                 'format' => 'raw',
                 'value' => $model->Establishmenttype,
-            ],             
+            ],
             'establishmentname',
             'address',
             'expedient',
-            [ 
+            [
                 'attribute' => 'visited',  
                 'format' => 'raw',
                 'value' => $model->Visited,
-            ],             
-            [ 
+            ],
+            [
                 'attribute' => 'accredited',  
                 'format' => 'raw',
                 'value' => $model->Accredited,
-            ],      
-            [ 
+            ],
+            [
                 'attribute' => 'accredited',  
                 'format' => 'raw',
                 'value' => $model->Accredited,
-            ],                     
-            [ 
+            ],
+            [
                 'attribute' => 'anticipation',  
                 'format' => 'raw',
                 'value' => $model->Anticipation,
-            ],               
-            [ 
+            ],
+            [
                 'attribute' => 'status',  
                 'format' => 'raw',
                 'value' => $model->Status,
-            ],                                    
+            ],             
             'user_id',
-            [ 
+            [
                 'attribute' => 'updated',
                 'format' => 'raw',
                 'value' => date("d/m/Y",  strtotime($model->updated))
-            ], 
+            ],
             'observation:ntext',
         ],
     ]) ?>
