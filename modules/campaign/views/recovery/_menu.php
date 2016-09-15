@@ -11,6 +11,10 @@
                     //     'url'     => ['create'],
                     // ],
                     [
+                        'label'   => '<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Regulamento',
+                        'url'     => ['regulation'],
+                    ],                 
+                    [
                         'label'   => '<span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Ranking',
                         'url'     => ['index'],
                     ],                  
