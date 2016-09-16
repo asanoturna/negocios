@@ -17,7 +17,96 @@ $this->title = 'Campanha Recupere e Ganhe';
     </div>
     <hr/>
 
+    <?php
+    use kartik\export\ExportMenu;
+              $gridColumns = [
+                  ['attribute'=>'id', 'hAlign'=>'right', 'width'=>'20px'], 
+                  ['attribute'=>'clientname', 'hAlign'=>'right', 'width'=>'100px'], 
+                  ['attribute'=>'clientdoc', 'hAlign'=>'right', 'width'=>'100px'],
+                  [
+                    'attribute'=>'location_id',
+                    'label'=> 'PA',
+                    'vAlign'=>'middle',
+                    'width'=>'100px',
+                    'value'=>function ($model, $key, $index, $widget) { 
+                        return Html::a($model->location->shortname, '#', []);
+                    },
+                    'format'=>'raw'
+                  ],
+                  [
+                    'attribute'=>'negotiator_id',
+                    'label'=> 'Negociador',
+                    'vAlign'=>'middle',
+                    'width'=>'100px',
+                    'value'=>function ($model, $key, $index, $widget) { 
+                        return Html::a($model->user->username, '#', []);
+                    },
+                    'format'=>'raw'
+                  ],
+                  ['attribute'=>'value_traded','format'=>['decimal',2], 'hAlign'=>'right', 'width'=>'110px'],
+                  ['attribute'=>'value_input','format'=>['decimal',2], 'hAlign'=>'right', 'width'=>'110px'],
+                  [
+                  'attribute'=>'typeproposed',
+                  'label'=> 'Proposta',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value' => function($data) {
+                      return $data->getTypeproposed();
+                  },
+                  'format'=>'raw'
+                  ],
+                  ['attribute'=>'commission','format'=>['decimal',2], 'hAlign'=>'right', 'width'=>'110px'],
+                  [
+                  'attribute'=>'status',
+                  'label'=> 'Situação',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value' => function($data) {
+                      return $data->getStatus();
+                  },
+                  'format'=>'raw'
+                  ],
 
+                  ['attribute'=>'date','format'=>['date'], 'hAlign'=>'right', 'width'=>'110px'],                 
+
+                  [
+                    'attribute'=>'approvedby',
+                    'label'=> 'Aprovador Por',
+                    'vAlign'=>'middle',
+                    'width'=>'100px',
+                    'value'=>function ($model, $key, $index, $widget) { 
+                        return Html::a($model->checkedby->username, '#', []);
+                    },
+                    'format'=>'raw'
+                  ],                                                                     
+              ];
+              echo ExportMenu::widget([
+              'dataProvider' => $dataProvider,
+              'columns' => $gridColumns,
+              'fontAwesome' => true,
+              'emptyText' => 'Nenhum registro',
+              'showColumnSelector' => true,
+              'asDropdown' => true,
+              'target' => ExportMenu::TARGET_BLANK,
+              'showConfirmAlert' => false,
+              'exportConfig' => [
+                ExportMenu::FORMAT_HTML => false,
+                ExportMenu::FORMAT_CSV => false,
+                ExportMenu::FORMAT_TEXT => false,
+                ExportMenu::FORMAT_PDF => false
+            ],
+            'columnSelectorOptions' => [
+              'class' => 'btn btn-success',
+            ],
+            'dropdownOptions' => [
+              'icon' => false,
+              'label' => 'Exportar Registros',
+              'class' => 'btn btn-success',
+            ],
+            'filename' => 'relatorio-campanha-sicoobcard-todo-dia',
+            ]);
+    ?> 
+    </p>
     <div class="panel panel-default">
     <div class="panel-body">
     <?= GridView::widget([

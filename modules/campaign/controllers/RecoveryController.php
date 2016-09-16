@@ -18,7 +18,7 @@ class RecoveryController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::classname(),
-                'only'  => ['index','create','view','update','regulation'],
+                'only'  => ['index','create','view','update','regulation','ranking'],
                 'rules' => [
                     [
                         'allow' => true,
