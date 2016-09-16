@@ -27,6 +27,7 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
     </p>
 
     <div class="panel panel-default">
+    <div class="panel-heading"><b>Informações</b></div>
     <div class="panel-body">    
 
     <?= DetailView::widget([
@@ -45,7 +46,24 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
                 'format' => 'raw',
                 'value' => $model->Typeproposed,
             ],              
-            'commission',
+            'commission',           
+            [ 
+                'attribute' => 'date',
+                'format' => 'raw',
+                'value' => date("d/m/Y",  strtotime($model->date))
+            ],            
+        ],
+    ]) ?>
+
+    </div>
+    </div>
+
+<div class="panel panel-default">
+<div class="panel-heading"><b>Situação</b></div>
+    <div class="panel-body">    
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
             [ 
                 'attribute' => 'status',  
                 'format' => 'raw',
@@ -57,11 +75,15 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
                 'value' => date("d/m/Y",  strtotime($model->date))
             ], 
             'approvedby',
-            'approvedin',
+            [ 
+                'attribute' => 'approvedin',
+                'format' => 'raw',
+                'value' => date("d/m/Y",  strtotime($model->approvedin))
+            ],             
         ],
     ]) ?>
 
     </div>
-    </div>
+    </div>    
 
 </div>

@@ -32,7 +32,7 @@ $this->title = 'Campanha Recupere e Ganhe';
             ],
             [
             'attribute' => 'clientname',
-            'contentOptions'=>['style'=>'width: 10%;text-align:left'],
+            'contentOptions'=>['style'=>'width: 15%;text-align:left'],
             ],            
             [
             'attribute' => 'clientdoc',
@@ -46,7 +46,7 @@ $this->title = 'Campanha Recupere e Ganhe';
                     return $model->location->shortname;
                     },  
             'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
-            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
             ],             
             [
                 'attribute' => 'negotiator_id',
@@ -58,9 +58,20 @@ $this->title = 'Campanha Recupere e Ganhe';
                 'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
                 'contentOptions'=>['style'=>'width: 8%;text-align:left'],
             ],            
-            //'contracts',
-            'value_traded',
-            'value_input',
+            [
+            'attribute' => 'value_traded',
+            'value' => function ($model) {                      
+                    return "R$ " . $model->value_traded;
+                    },             
+            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],
+            [
+            'attribute' => 'value_input',
+            'value' => function ($model) {                      
+                    return "R$ " . $model->value_input;
+                    },             
+            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],            
             [
                 'attribute' => 'typeproposed',
                 'enableSorting' => true,
@@ -68,9 +79,15 @@ $this->title = 'Campanha Recupere e Ganhe';
                   return $data->getTypeproposed();
                 },
                 'filter' => Recovery::$Static_typeproposed,
-                'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+                'contentOptions'=>['style'=>'width: 8%;text-align:center'],
             ],            
-            'commission',
+            [
+            'attribute' => 'commission',
+            'value' => function ($model) {                      
+                    return "R$ " . $model->commission;
+                    },            
+            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],             
             [
                 'attribute' => 'status',
                 'enableSorting' => true,
@@ -84,7 +101,7 @@ $this->title = 'Campanha Recupere e Ganhe';
             [
               'attribute' => 'date',
               'enableSorting' => true,
-              'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+              'contentOptions'=>['style'=>'width: 6%;text-align:center'],
               'format' => ['date', 'php:d/m/Y'],
             ],
             [
@@ -103,7 +120,7 @@ $this->title = 'Campanha Recupere e Ganhe';
               'header' => 'Ações',  
               'contentOptions'=>['style'=>'width: 8%;text-align:right'],
               'headerOptions' => ['class' => 'text-center'],                            
-              'template' => ' {update} {manager}',
+              'template' => '{view} {update} {manager}',
               'buttons' => [
                   'view' => function ($url, $model) {
                       return Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', $url, [

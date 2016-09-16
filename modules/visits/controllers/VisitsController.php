@@ -26,7 +26,7 @@ class VisitsController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::classname(),
-                'only'  => ['index','create','view','report_user','report_general','report_location'],
+                'only'  => ['index','create','view','report_user','report_general','report_location','dailysummary','manager'],
                 'rules' => [
                     [
                         'allow' => true,

@@ -91,7 +91,8 @@ class RecoveryController extends Controller
     {
         $model = $this->findModel($id);
 
-        $model->approved_by = Yii::$app->user->id;
+        $model->approvedby = Yii::$app->user->id;
+        $model->approvedin = date('Y-m-d');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('campaign-success', 'Registro alterado com sucesso!');

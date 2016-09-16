@@ -60,7 +60,7 @@ class Recovery extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'negotiator_id' => 'Negociador',
-            'location_id' => 'Agência',
+            'location_id' => 'PA',
             'clientname' => 'Associado',
             'clientdoc' => 'CPF/CNPJ',
             'contracts' => 'Contratos',
@@ -70,8 +70,8 @@ class Recovery extends \yii\db\ActiveRecord
             'commission' => 'Comissão',
             'status' => 'Situação',
             'date' => 'Date Op.',
-            'approvedby' => 'Validado Por',
-            'approvedin' => 'Validado Em',
+            'approvedby' => 'Aprovado Por',
+            'approvedin' => 'Aprovado Em',
         ];
     }
 
