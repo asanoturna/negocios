@@ -58,7 +58,7 @@ $this->title = 'Campanha Recupere e Ganhe';
                 'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
                 'contentOptions'=>['style'=>'width: 8%;text-align:left'],
             ],            
-            'contracts',
+            //'contracts',
             'value_traded',
             'value_input',
             [

@@ -16,7 +16,7 @@
                     ],                 
                     [
                         'label'   => '<span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Ranking',
-                        'url'     => ['index'],
+                        'url'     => ['ranking'],
                     ],                  
                     [
                         'label'   => '<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> Listar',
