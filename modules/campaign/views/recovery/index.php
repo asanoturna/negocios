@@ -33,16 +33,16 @@ $this->title = 'Campanha Recupere e Ganhe';
                     },
                     'format'=>'raw'
                   ],
-                  [
-                    'attribute'=>'negotiator_id',
-                    'label'=> 'Negociador',
-                    'vAlign'=>'middle',
-                    'width'=>'100px',
-                    'value'=>function ($model, $key, $index, $widget) { 
-                        return Html::a($model->user->username, '#', []);
-                    },
-                    'format'=>'raw'
-                  ],
+                  // [
+                  //   'attribute'=>'negotiator_id',
+                  //   'label'=> 'Negociador',
+                  //   'vAlign'=>'middle',
+                  //   'width'=>'100px',
+                  //   'value'=>function ($model, $key, $index, $widget) { 
+                  //       return Html::a($model->user->username, '#', []);
+                  //   },
+                  //   'format'=>'raw'
+                  // ],
                   ['attribute'=>'value_traded','format'=>['decimal',2], 'hAlign'=>'right', 'width'=>'110px'],
                   ['attribute'=>'value_input','format'=>['decimal',2], 'hAlign'=>'right', 'width'=>'110px'],
                   [
@@ -68,17 +68,16 @@ $this->title = 'Campanha Recupere e Ganhe';
                   ],
 
                   ['attribute'=>'date','format'=>['date'], 'hAlign'=>'right', 'width'=>'110px'],                 
-
-                  [
-                    'attribute'=>'approvedby',
-                    'label'=> 'Aprovador Por',
-                    'vAlign'=>'middle',
-                    'width'=>'100px',
-                    'value'=>function ($model, $key, $index, $widget) { 
-                        return Html::a($model->checkedby->username, '#', []);
-                    },
-                    'format'=>'raw'
-                  ],                                                                     
+                  // [
+                  //   'attribute'=>'approvedby',
+                  //   'label'=> 'Aprovador Por',
+                  //   'vAlign'=>'middle',
+                  //   'width'=>'100px',
+                  //   'value'=>function ($model, $key, $index, $widget) { 
+                  //       return Html::a($model->checkedby->username, '#', []);
+                  //   },
+                  //   'format'=>'raw'
+                  // ],                                                                     
               ];
               echo ExportMenu::widget([
               'dataProvider' => $dataProvider,

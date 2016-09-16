@@ -25,6 +25,10 @@ use yii\bootstrap\Nav;
             //     ],
             // ],
             [
+                'label'   => '<span class="glyphicon glyphicon-download-alt text-danger" aria-hidden="true"></span> <strong class="text-danger">Gestão da Base</strong>',
+                'url'     => ['/reportbase/index'],
+            ],         
+            [
                 'label'   => '<span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span> Resumo Diário',
                 'url'     => ['visits/dailysummary'],
             ],                 

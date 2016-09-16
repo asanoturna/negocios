@@ -90,7 +90,7 @@ class VisitsController extends Controller
 
         $commandstats = Yii::$app->db->createCommand(
             "SELECT COUNT(v.id) as total_s, s.`name` as stats, s.hexcolor as color
-            FROM business_visits v
+            FROM visits v
             INNER JOIN visits_status s
             ON v.visits_status_id = s.id
             WHERE v.user_id LIKE $user_id
@@ -111,7 +111,7 @@ class VisitsController extends Controller
 
         $commandfinality = Yii::$app->db->createCommand(
             "SELECT COUNT(v.id) as total_f, f.`name` as finality
-            FROM business_visits v
+            FROM visits v
             INNER JOIN visits_finality f
             ON v.visits_finality_id = f.id
             WHERE v.user_id LIKE $user_id
@@ -129,18 +129,18 @@ class VisitsController extends Controller
         } 
 
         $commandTotal = Yii::$app->db->createCommand("SELECT COUNT(v.id) as fulltotal
-                    FROM business_visits v WHERE v.user_id LIKE $user_id"
+                    FROM visits v WHERE v.user_id LIKE $user_id"
                     );
         $fulltotal = $commandTotal->queryScalar();   
 
         $commandEffect = Yii::$app->db->createCommand("SELECT COUNT(v.id) as totaleffect
-                    FROM business_visits v WHERE v.user_id LIKE $user_id AND v.visits_status_id =3"
+                    FROM visits v WHERE v.user_id LIKE $user_id AND v.visits_status_id =3"
                     );
         $totaleffect = $commandEffect->queryScalar();  
 
         $commandImages = Yii::$app->db->createCommand("SELECT COUNT(i.id) as total_images
                     FROM visits_images i
-                    INNER JOIN business_visits b
+                    INNER JOIN visits b
                     ON i.business_visits_id = b.id
                     WHERE b.user_id = $user_id "
             );
