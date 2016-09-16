@@ -7,7 +7,7 @@ use yii\helpers\ArrayHelper;
 use app\models\Location;
 use app\models\User;
 
-$this->title = 'Campanha Recupere e Ganhe';
+$this->title = 'Regulamento da Campanha Recupere e Ganhe';
 ?>
 <div class="recovery-index">
 
@@ -19,15 +19,22 @@ $this->title = 'Campanha Recupere e Ganhe';
 
     <div class="panel panel-default">
     <div class="panel-body">
-    
+
+<h3>Objetivo</h3>	Impactar positivamente o resultado dos recebimentos da carteira de inadimplência da cooperativa de tal forma a possibilitar o alcance das metas de 2016 e premiar os funcionários e agências envolvidos		
+
+<h3>Vigência</h3>	
+01/09/2016	31/12/2016
+
+<h3>Associados Envolvidos</h3>	
+Participarão da campaha a base de associados direcionada pelo setor de recuperação e disponibilizada na intranet.																								
 <h3>Participação</h3>	
 Todos os funcionários que atuarem ativa e efetivamente na negociação da dívida.													
 O Setor de recuperação de crédito.													
 														
 <h3>Forma de distribuição dos valores</h3>
-	60 % destinado ao (s) funcionário (s) envolvido na negociação													
-	40 % destinado para a equipe da agência relacionada.													
-	Para o setor de recuperação os valores destinados serão rateados de forma proporcional a todos envolvidos no setor.																										
+60 % destinado ao (s) funcionário (s) envolvido na negociação													
+40 % destinado para a equipe da agência relacionada.													
+Para o setor de recuperação os valores destinados serão rateados de forma proporcional a todos envolvidos no setor.																										
 <h3>Condições</h3>
 
 <ul>
@@ -43,13 +50,6 @@ O Setor de recuperação de crédito.
   <li>Serão consideradas ações como: ligação efetiva de contato com o associado, avalistas e relacionados, visitas comprovadas e reuniões</li>
   <li>Ao final da campanha a agência destaque no resultado acumulado em 1º lugar receberá uma premiação no mês subsequente de R$ 1.000,00; em 2º lugar de R$ 700,00 e em 3º lugar de 500,00</li>
 </ul>
-											
-<h3>Vigência</h3>	
-01/09/2016	31/12/2016												
-														
-<h3>Associados Envolvidos</h3>	
-Participarão da campaha a base de associados direcionada pelo setor de recuperação e disponibilizada na intranet.																								
-<h3>Objetivo</h3>	Impactar positivamente o resultado dos recebimentos da carteira de inadimplência da cooperativa de tal forma a possibilitar o alcance das metas de 2016 e premiar os funcionários e agências envolvidos													
 
     </div>
     </div>
