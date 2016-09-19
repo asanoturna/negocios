@@ -12,7 +12,7 @@ class SipagSearch extends Sipag
     public function rules()
     {
         return [
-            [['id', 'establishmenttype', 'visited', 'accredited', 'status', 'locked', 'anticipation', 'status', 'user_id', 'checkedby_id'], 'integer'],
+            [['id', 'establishmenttype', 'visited', 'accredited', 'status', 'locked', 'anticipation', 'user_id', 'checkedby_id'], 'integer'],
             [['establishmentname', 'address', 'date', 'created', 'updated','observation'], 'safe'],
         ];
     }
@@ -46,6 +46,10 @@ class SipagSearch extends Sipag
             'establishmenttype' => $this->establishmenttype,
             'date' => $this->date,
             'visited' => $this->visited,
+            'accredited' => $this->accredited,
+            'locked' => $this->locked,
+            'anticipation' => $this->anticipation,
+            'status' => $this->status,
             'user_id' => $this->user_id,
         ]);
 

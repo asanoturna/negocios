@@ -5,9 +5,11 @@ http://www.sicoobsc.com.br
 
 THEME
 --------------------
+https://github.com/yiister/yii2-gentelella ***
+https://github.com/puikinsh/gentelella ***
 https://github.com/Mihai-P/yii2theme-brain
-https://github.com/yiister/yii2-gentelella
 https://github.com/yiister/yii2-adminlte
+
 
 CALENDAR
 --------------------
