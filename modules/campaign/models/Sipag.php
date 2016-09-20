@@ -51,12 +51,12 @@ class Sipag extends \yii\db\ActiveRecord
     public static $Static_accredited = [
         'SIM',
         'NÃO',
-        //'SIPAG', 
-        //'CIELO', 
-        //'REDE',
+        'SIPAG', 
+        'CIELO', 
+        'REDE',
         'OUTROS',
         'PENDENTE',
-        ];   
+        ];
     public function getAccredited()
     {
         if ($this->accredited === null) {
