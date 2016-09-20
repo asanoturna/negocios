@@ -40,6 +40,39 @@ $this->title = 'Ação Foco SIPAG';
             'establishmentname',
             'address',
             'expedient',
+            // ---
+            [
+                'attribute' => 'flag_sipag',  
+                'format' => 'raw',
+                'value' => $model->Flagsipag == 'SIM' ?  '<span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>' : '<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>',
+            ],
+            [
+                'attribute' => 'flag_sipag_locked',  
+                'format' => 'raw',
+                'value' => $model->Flagsipaglocked == 'SIM' ?  '<span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>' : '<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>',
+            ],
+            [
+                'attribute' => 'flag_rede',  
+                'format' => 'raw',
+                'value' => $model->Flagrede == 'SIM' ?  '<span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>' : '<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>',
+            ],
+            [
+                'attribute' => 'flag_rede_locked',  
+                'format' => 'raw',
+                'value' => $model->Flagredelocked == 'SIM' ?  '<span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>' : '<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>',
+            ],
+            [
+                'attribute' => 'flag_cielo',  
+                'format' => 'raw',
+                'value' => $model->Flagcielo == 'SIM' ?  '<span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>' : '<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>',
+            ],
+            [
+                'attribute' => 'flag_cielo_locked',  
+                'format' => 'raw',
+                'value' => $model->Flagcielolocked == 'SIM' ?  '<span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>' : '<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>',
+            ],
+
+            // ---            
             [
                 'attribute' => 'visited',  
                 'format' => 'raw',

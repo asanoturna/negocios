@@ -30,7 +30,7 @@ $this->title = 'Ação Foco SIPAG';
             [
                 'attribute' => 'id',
                 'enableSorting' => true,
-                'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+                'contentOptions'=>['style'=>'width: 3%;text-align:center'],
             ],
             [
                 'attribute' => 'establishmentname',
@@ -38,12 +38,81 @@ $this->title = 'Ação Foco SIPAG';
                 'value' => function ($model) {                      
                       return $model->establishmentname."<p class=\"text-muted\">".$model->expedient."</p>";
                 },                
-                'contentOptions'=>['style'=>'width: 15%;text-align:left'],
+                'contentOptions'=>['style'=>'width: 10%;text-align:left'],
             ],
             [
                 'attribute' => 'address',
                 'contentOptions'=>['style'=>'width: 10%;text-align:left'],
-            ],  
+            ],
+            [
+                'attribute' => 'flag_sipag',
+                'enableSorting' => true,
+                'format' => 'raw',
+                'value' => function ($data) {                      
+                        return $data->getFlagsipag() == 'SIM' ?  '<span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>' : '<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>';
+                        },
+                'filter' => Sipag::$Static_flag_sipag,
+                'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],
+            [
+                'label' => '<img src="'.Yii::$app->request->baseUrl.'/images/locked.png" style="height:25px;" >',
+                'encodeLabel' => false,
+                'headerOptions'=>['style'=>'width: 5%;text-align:center'],
+                'attribute' => 'flag_sipag_locked',
+                'enableSorting' => true,
+                'format' => 'raw',
+                'value' => function ($data) {                      
+                        return $data->getFlagsipaglocked() == 'SIM' ?  '<span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>' : '<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>';
+                        },
+                'filter' => Sipag::$Static_flag_sipag_locked,
+                'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],
+            [
+                'attribute' => 'flag_rede',
+                'enableSorting' => true,
+                'format' => 'raw',
+                'value' => function ($data) {                      
+                        return $data->getFlagrede() == 'SIM' ?  '<span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>' : '<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>';
+                        },
+                'filter' => Sipag::$Static_flag_rede,
+                'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],
+            [
+                'label' => '<img src="'.Yii::$app->request->baseUrl.'/images/locked.png" style="height:25px;" >',
+                'encodeLabel' => false,
+                'headerOptions'=>['style'=>'width: 5%;text-align:center'],            
+                'attribute' => 'flag_rede_locked',
+                'enableSorting' => true,
+                'format' => 'raw',
+                'value' => function ($data) {                      
+                        return $data->getFlagredelocked() == 'SIM' ?  '<span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>' : '<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>';
+                        },
+                'filter' => Sipag::$Static_flag_rede_locked,
+                'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],
+            [
+                'attribute' => 'flag_cielo',
+                'enableSorting' => true,
+                'format' => 'raw',
+                'value' => function ($data) {                      
+                        return $data->getFlagcielo() == 'SIM' ?  '<span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>' : '<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>';
+                        },
+                'filter' => Sipag::$Static_flag_cielo,
+                'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],
+            [
+                'label' => '<img src="'.Yii::$app->request->baseUrl.'/images/locked.png" style="height:25px;" >',
+                'encodeLabel' => false,
+                'headerOptions'=>['style'=>'width: 5%;text-align:center'],
+                'attribute' => 'flag_cielo_locked',
+                'enableSorting' => true,
+                'format' => 'raw',
+                'value' => function ($data) {                      
+                        return $data->getFlagcielolocked() == 'SIM' ?  '<span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>' : '<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>';
+                        },
+                'filter' => Sipag::$Static_flag_cielo_locked,
+                'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],
             [
                 'attribute' => 'visited',
                 'enableSorting' => true,
@@ -97,7 +166,7 @@ $this->title = 'Ação Foco SIPAG';
                     return $model->user ? $model->user->username : null;
                 },
                 'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
-                'contentOptions'=>['style'=>'width: 10%;text-align:left'],
+                'contentOptions'=>['style'=>'width: 8%;text-align:left'],
             ],
             [
                 'attribute' => 'checkedby_id',
@@ -107,18 +176,18 @@ $this->title = 'Ação Foco SIPAG';
                     return $model->checkedby ? $model->checkedby->username : null;
                 },
                 'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
-                'contentOptions'=>['style'=>'width: 10%;text-align:left'],
+                'contentOptions'=>['style'=>'width: 8%;text-align:left'],
             ],
-            [
-              'attribute' => 'date',
-              'enableSorting' => true,
-              'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-              'format' => ['date', 'php:d/m/Y'],
-            ],             
+            // [
+            //   'attribute' => 'date',
+            //   'enableSorting' => true,
+            //   'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            //   'format' => ['date', 'php:d/m/Y'],
+            // ],             
             [
               'class' => 'yii\grid\ActionColumn',
               'header' => 'Ações',  
-              'contentOptions'=>['style'=>'width: 5%;text-align:right'],
+              'contentOptions'=>['style'=>'width: 8%;text-align:right'],
               'headerOptions' => ['class' => 'text-center'],                            
               'template' => ' {view} {update} {manager}',
               'buttons' => [

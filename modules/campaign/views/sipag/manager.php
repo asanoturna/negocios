@@ -37,6 +37,25 @@ $this->title = 'Conferir registro: #'  . $model->id;
         ]
     ) ?> 
 
+    <fieldset >
+    <legend>Dominílios já existentes na Cooperativa</legend>
+    <div class="row">
+      <div class="col-md-6"><?= $form->field($model, 'flag_sipag')->checkbox() ?></div>
+      <div class="col-md-6"><?= $form->field($model, 'flag_sipag_locked')->checkbox() ?></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6"><?= $form->field($model, 'flag_rede')->checkbox() ?></div>
+      <div class="col-md-6"><?= $form->field($model, 'flag_rede_locked')->checkbox() ?></div>
+    </div>    
+
+    <div class="row">
+      <div class="col-md-6"><?= $form->field($model, 'flag_cielo')->checkbox() ?></div>
+      <div class="col-md-6"><?= $form->field($model, 'flag_cielo_locked')->checkbox() ?></div>
+    </div>
+    </fieldset>
+    <hr/>    
+
           </div>
         </div>
       </div>

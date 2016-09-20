@@ -41,7 +41,7 @@ class Sipag extends \yii\db\ActiveRecord
         ];   
     public function getVisited()
     {
-        if ($this->status === null) {
+        if ($this->visited === null) {
             return null;
         }
         return self::$Static_visited[$this->visited];
@@ -102,13 +102,90 @@ class Sipag extends \yii\db\ActiveRecord
             return null;
         }
         return self::$Static_status[$this->status];
-    }     
+    }
+
+    // flag_sipag
+    public static $Static_flag_sipag = [
+        'NÃO', 
+        'SIM', 
+        ];   
+    public function getFlagsipag()
+    {
+        if ($this->flag_sipag === null) {
+            return null;
+        }
+        return self::$Static_flag_sipag[$this->flag_sipag];
+    }
+    // flag_sipag_locked
+    public static $Static_flag_sipag_locked = [
+        'NÃO', 
+        'SIM',
+        ];   
+    public function getFlagsipaglocked()
+    {
+        if ($this->flag_sipag_locked === null) {
+            return null;
+        }
+        return self::$Static_flag_sipag_locked[$this->flag_sipag_locked];
+    }
+
+
+    // flag_rede
+    public static $Static_flag_rede = [
+        'NÃO', 
+        'SIM', 
+        ];   
+    public function getFlagrede()
+    {
+        if ($this->flag_rede === null) {
+            return null;
+        }
+        return self::$Static_flag_rede[$this->flag_rede];
+    }
+    // flag_rede_locked
+    public static $Static_flag_rede_locked = [
+        'NÃO', 
+        'SIM',  
+        ];   
+    public function getFlagredelocked()
+    {
+        if ($this->flag_rede_locked === null) {
+            return null;
+        }
+        return self::$Static_flag_rede_locked[$this->flag_rede_locked];
+    }
+
+
+    // flag_cielo
+    public static $Static_flag_cielo = [
+        'NÃO', 
+        'SIM',  
+        ];   
+    public function getFlagcielo()
+    {
+        if ($this->flag_cielo === null) {
+            return null;
+        }
+        return self::$Static_flag_cielo[$this->flag_cielo];
+    }
+    // flag_cielo_locked
+    public static $Static_flag_cielo_locked = [
+        'NÃO', 
+        'SIM', 
+        ];   
+    public function getFlagcielolocked()
+    {
+        if ($this->flag_cielo_locked === null) {
+            return null;
+        }
+        return self::$Static_flag_cielo_locked[$this->flag_cielo_locked];
+    }  
 
     public function rules()
     {
         return [
-            [['establishmenttype', 'establishmentname','visited', 'accredited', 'status', 'locked', 'anticipation', 'status'], 'required'],
-            [['establishmenttype', 'visited', 'accredited', 'status', 'locked', 'anticipation', 'status', 'user_id', 'checkedby_id'], 'integer'],
+            [['establishmenttype', 'establishmentname','visited', 'accredited', 'status', 'locked', 'anticipation', 'status','flag_sipag', 'flag_sipag_locked', 'flag_rede', 'flag_rede_locked', 'flag_cielo', 'flag_cielo_locked'], 'required'],
+            [['establishmenttype', 'visited', 'accredited', 'status', 'locked', 'anticipation', 'status', 'user_id', 'checkedby_id','flag_sipag', 'flag_sipag_locked', 'flag_rede', 'flag_rede_locked', 'flag_cielo', 'flag_cielo_locked'], 'integer'],
             [['date', 'created', 'updated'], 'safe'],
             [['observation'], 'string'],
             [['establishmentname', 'address', 'expedient'], 'string'],
@@ -129,12 +206,18 @@ class Sipag extends \yii\db\ActiveRecord
             'visited' => 'Visitado',
             'accredited' => 'Credenciado',
             'locked' => 'Travado',                        
-            'anticipation' => 'Antecipação Efet.',
+            'anticipation' => 'Antec. Efet.',
             'status' => 'Ativo',                        
             'user_id' => 'Gerente',
             'checkedby_id'=> 'Aprovado por',
             'date' => 'Aprovado em',
             'observation' => 'Observação',
+            'flag_sipag' => 'SIPAG',
+            'flag_sipag_locked' => 'SIPAG Travado',
+            'flag_rede' => 'REDE',
+            'flag_rede_locked' => 'REDE Travado',
+            'flag_cielo' => 'CIELO',
+            'flag_cielo_locked' => 'CIELO Travado',            
         ];
     }
 

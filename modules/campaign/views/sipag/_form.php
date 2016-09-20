@@ -25,6 +25,25 @@ use app\modules\campaign\models\Sipag;
 
     <?= $form->field($model, 'expedient')->textInput(['maxlength' => true]) ?>
 
+    <fieldset >
+    <legend>Dominílios já existentes na Cooperativa</legend>
+    <div class="row">
+      <div class="col-md-6"><?= $form->field($model, 'flag_sipag')->checkbox() ?></div>
+      <div class="col-md-6"><?= $form->field($model, 'flag_sipag_locked')->checkbox() ?></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6"><?= $form->field($model, 'flag_rede')->checkbox() ?></div>
+      <div class="col-md-6"><?= $form->field($model, 'flag_rede_locked')->checkbox() ?></div>
+    </div>    
+
+    <div class="row">
+      <div class="col-md-6"><?= $form->field($model, 'flag_cielo')->checkbox() ?></div>
+      <div class="col-md-6"><?= $form->field($model, 'flag_cielo_locked')->checkbox() ?></div>
+    </div>
+    </fieldset>
+    <hr/>
+
     <?= $form->field($model, 'visited')->dropDownList(Sipag::$Static_visited,['prompt'=>'--']) ?>     
 
     <?= $form->field($model, 'accredited')->dropDownList(Sipag::$Static_accredited,['prompt'=>'--']) ?>     
