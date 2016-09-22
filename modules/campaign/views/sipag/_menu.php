@@ -8,7 +8,7 @@
                 'items' => [ 
                     [
                         'label'   => '<span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Estatísticas',
-                        'url'     => '#',
+                        'url'     => ['ranking'],
                         'active'  => false,
                     ],                 
                     // [

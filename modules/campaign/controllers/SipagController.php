@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\base\Security;
+use yii\data\SqlDataProvider;
 
 
 class SipagController extends Controller
@@ -107,6 +108,33 @@ class SipagController extends Controller
 
         return $this->redirect(['index']);
     }
+
+public function actionRanking()
+    {
+        $model = new Sipag();
+
+        $dataRankingUser = new SqlDataProvider([
+            'sql' => "SELECT user.id, avatar, fullname, 
+            COUNT(if(campaign_sipag.status = 1, campaign_sipag.id, NULL)) as  aprovado,
+            COUNT(if(campaign_sipag.status = 0, campaign_sipag.id, NULL)) as  pendente
+            FROM campaign_sipag
+            INNER JOIN `user` 
+            ON campaign_sipag.user_id = `user`.id
+            GROUP BY `user`.id
+            ORDER BY aprovado DESC",
+            'totalCount' => 100,
+            'sort' =>false,
+            'key'  => 'fullname',
+            'pagination' => [
+                'pageSize' => 100,
+            ],
+        ]);
+
+        return $this->render('ranking', [
+            'model' => $model,
+            'dataRankingUser' => $dataRankingUser,          
+        ]);
+    }         
 
     protected function findModel($id)
     {

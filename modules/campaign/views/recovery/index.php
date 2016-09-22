@@ -208,7 +208,7 @@ $this->title = 'Campanha Recupere e Ganhe';
               'header' => 'Ações',  
               'contentOptions'=>['style'=>'width: 8%;text-align:right'],
               'headerOptions' => ['class' => 'text-center'],                            
-              'template' => '{view} {update} {manager}',
+              'template' => '{view} {update} {manager} {delete}',
               'buttons' => [
                   'view' => function ($url, $model) {
                       return Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', $url, [
@@ -223,7 +223,7 @@ $this->title = 'Campanha Recupere e Ganhe';
                       ]);
                   },
                   'delete' => function ($url, $model) {
-                      return $model->user_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
+                      return Yii::$app->user->identity->can_managerproductivity == 1 ? Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
                                   'title' => 'Excluir',
                                   'class' => 'btn btn-default btn-xs',
                                   'data-confirm' => 'Tem certeza que deseja excluir?',
