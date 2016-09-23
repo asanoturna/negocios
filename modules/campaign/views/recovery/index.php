@@ -119,13 +119,21 @@ $this->title = 'Campanha Recupere e Ganhe';
             'contentOptions'=>['style'=>'width: 4%;text-align:center'],
             ],
             [
-            'attribute' => 'clientname',
-            'contentOptions'=>['style'=>'width: 15%;text-align:left'],
-            ],            
+            'attribute' => 'id',
+            'encodeLabel' => false,
+            'label' => 'Dias',
+            //'value' => 'Data atual - data ref', //
+            'headerOptions'=>['style'=>'width: 5%;text-align:center'],
+            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            ],
             [
-            'attribute' => 'clientdoc',
-            'contentOptions'=>['style'=>'width: 8%;text-align:center'],
-            ],             
+            'attribute' => 'id',
+            'encodeLabel' => false,
+            'label' => 'Tipo Dívida',
+            //'value' => 'deixar como texto mesmo
+            'headerOptions'=>['style'=>'width: 5%;text-align:center'],
+            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            ],
             [
             'attribute' => 'location_id',
             'format' => 'raw',
@@ -135,47 +143,88 @@ $this->title = 'Campanha Recupere e Ganhe';
                     },  
             'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
             'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            ], 
+            [
+            'attribute' => 'clientname',
+            'contentOptions'=>['style'=>'width: 15%;text-align:left'],
+            ],            
+            [
+            'attribute' => 'clientdoc',
+            'contentOptions'=>['style'=>'width: 8%;text-align:center'],
             ],             
-            [
-                'attribute' => 'negotiator_id',
-                'format' => 'raw',
-                'enableSorting' => true,
-                'value' => function ($model) {                      
-                    return $model->user ? $model->user->username : null;
-                },
-                'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
-                'contentOptions'=>['style'=>'width: 8%;text-align:left'],
-            ],            
-            [
-            'attribute' => 'value_traded',
-            'value' => function ($model) {                      
-                    return "R$ " . $model->value_traded;
-                    },             
-            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-            ],
-            [
-            'attribute' => 'value_input',
-            'value' => function ($model) {                      
-                    return "R$ " . $model->value_input;
-                    },             
-            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-            ],            
+            
+           
+            // [
+            // 'attribute' => 'value_traded',
+            // 'value' => function ($model) {                      
+            //         return "R$ " . $model->value_traded;
+            //         },             
+            // 'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            // ],
+            // [
+            // 'attribute' => 'value_input',
+            // 'value' => function ($model) {                      
+            //         return "R$ " . $model->value_input;
+            //         },             
+            // 'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            // ],            
             [
                 'attribute' => 'typeproposed',
+                'encodeLabel' => false,
+                'label' => 'Proposta <br/> Selecionada',
                 'enableSorting' => true,
                 'value' => function($data) {
                   return $data->getTypeproposed();
                 },
                 'filter' => Recovery::$Static_typeproposed,
                 'contentOptions'=>['style'=>'width: 8%;text-align:center'],
-            ],            
+            ], 
+
             [
-            'attribute' => 'commission',
+            'attribute' => 'id',
+            'encodeLabel' => false,
+            'label' => 'Contrato',
+            'headerOptions'=>['style'=>'width: 5%;text-align:center'],
+            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            ],  
+            [
+            'attribute' => 'id',
+            'encodeLabel' => false,
+            'label' => 'Valor <br/>Referencia',
+            'headerOptions'=>['style'=>'width: 5%;text-align:center'],
+            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            ],
+            [
+            'attribute' => 'id',
+            'encodeLabel' => false,
+            'label' => 'Proposta A <br/> Comissão 3%',
             'value' => function ($model) {                      
-                    return "R$ " . $model->commission;
-                    },            
-            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-            ],             
+                    return "R$ " . $model->value_input ;
+                    }, 
+            'headerOptions'=>['style'=>'width: 5%;text-align:center'],
+            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            ],
+            [
+            'attribute' => 'id',
+            'encodeLabel' => false,
+            'label' => 'Proposta B <br/> Comissão 3%',
+            'headerOptions'=>['style'=>'width: 5%;text-align:center'],
+            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            ],   
+            [
+            'attribute' => 'id',
+            'encodeLabel' => false,
+            'label' => 'Proposta C <br/> Comissão 3%',
+            'headerOptions'=>['style'=>'width: 5%;text-align:center'],
+            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            ],   
+            // [
+            // 'attribute' => 'commission',
+            // 'value' => function ($model) {                      
+            //         return "R$ " . $model->commission;
+            //         },            
+            // 'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            // ],             
             [
                 'attribute' => 'status',
                 'enableSorting' => true,
@@ -192,6 +241,16 @@ $this->title = 'Campanha Recupere e Ganhe';
               'contentOptions'=>['style'=>'width: 6%;text-align:center'],
               'format' => ['date', 'php:d/m/Y'],
             ],
+            [
+                'attribute' => 'negotiator_id',
+                'format' => 'raw',
+                'enableSorting' => true,
+                'value' => function ($model) {                      
+                    return $model->user ? $model->user->username : null;
+                },
+                'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
+                'contentOptions'=>['style'=>'width: 8%;text-align:left'],
+            ], 
             [
                 'attribute' => 'approvedby',
                 'format' => 'raw',

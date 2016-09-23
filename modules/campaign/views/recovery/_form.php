@@ -77,19 +77,19 @@ use app\modules\campaign\models\Recovery;
 
 
     <div class="row">
-    <div class="col-md-6"><?= $form->field($model, 'typeproposed')->dropDownList(Recovery::$Static_typeproposed,['prompt'=>'--',
+    <div class="col-md-6">Proposta Selecionada<?= $form->field($model, 'typeproposed')->dropDownList(Recovery::$Static_typeproposed,['prompt'=>'--',
         'onchange' => 'if($(this).val() == 0) {
-        $("#'.Html::getInputId($model, 'commission').'").val($("#'.Html::getInputId($model, 'value_input').'").val()*0.03);
+        $("#'.Html::getInputId($model, 'commission').'").val($("#'.Html::getInputId($model, 'value_input').'").val()*0.05);
     }else if($(this).val() == 1) {
-        $("#'.Html::getInputId($model, 'commission').'").val($("#'.Html::getInputId($model, 'value_input').'").val()*0.02);
+        $("#'.Html::getInputId($model, 'commission').'").val($("#'.Html::getInputId($model, 'value_input').'").val()*0.03);
     }else if($(this).val() == 2){
-        $("#'.Html::getInputId($model, 'commission').'").val($("#'.Html::getInputId($model, 'value_input').'").val()*0.01);
+        $("#'.Html::getInputId($model, 'commission').'").val($("#'.Html::getInputId($model, 'value_input').'").val()*0.02);
     }else if($(this).val() == 3) {
-        $("#'.Html::getInputId($model, 'commission').'").val($("#'.Html::getInputId($model, 'value_input').'").val()*0.005);
+        $("#'.Html::getInputId($model, 'commission').'").val($("#'.Html::getInputId($model, 'value_input').'").val()*0.01);
     }else if($(this).val() == 4){
-        $("#'.Html::getInputId($model, 'commission').'").val($("#'.Html::getInputId($model, 'value_input').'").val()*0.003);
+        $("#'.Html::getInputId($model, 'commission').'").val($("#'.Html::getInputId($model, 'value_input').'").val()*0.005);
     }else if($(this).val() == 5){
-        $("#'.Html::getInputId($model, 'commission').'").val($("#'.Html::getInputId($model, 'value_input').'").val()*0.002);
+        $("#'.Html::getInputId($model, 'commission').'").val($("#'.Html::getInputId($model, 'value_input').'").val()*0.003);
     }']) 
    ?>
    </div>
@@ -97,44 +97,67 @@ use app\modules\campaign\models\Recovery;
     </div>
 
     <div class="panel panel-default">
-    <div class="panel-heading"><strong>Legenda da Proposta</strong></div>
+    <div class="panel-heading"><strong>Legenda</strong></div>
     <div class="panel-body">
     <table class="table">
             <tr class="active">
                 <td>PROPOSTA</td>
-                <td>LEGENDA</td>
+                <td>ALÇADA</td>
+                <td>PISO NEGOCIAL</td>
                 <td>COMISSÃO</td>
             </tr>
             <tr>
-                <td>A</td>
-                <td>Valor do débito corrigido a Juros Contratuais.</td>
+                <td>A - Valor do débito corrigido a Juros Contratuais</td>
+                <td>Agência</td>
+                <td>???</td>
+                <td><span class="label label-primary">5%</span></td>
+            </tr>
+            <tr>
+                <td>B - Valor do débito corrigido a Juros Contratuais Sem Multa e Mora.</td>
+                <td>Agência</td>
+                <td>???</td>
                 <td><span class="label label-primary">3%</span></td>
             </tr>
             <tr>
-                <td>B</td>
-                <td>Valor do débito corrigido a Juros Contratuais Sem Multa e Mora.</td>
+                <td>C - Valor do débito corrigido a Juros Judiciais</td>
+                <td>Agência</td>
+                <td>???</td>
                 <td><span class="label label-primary">2%</span></td>
-            </tr>
-            <tr>
-                <td>C</td>
-                <td>Valor do débito corrigido a Juros Judiciais.</td>
-                <td><span class="label label-primary">1%</span></td>
             </tr>   
             <tr>
-                <td>D</td>
-                <td>Valor do débito corrigido a Juros de Poupança.</td>
+                <td>D - Valor do débito corrigido a Juros de Poupança</td>
+                <td>Supervisor</td>
+                <td>???</td>
+                <td><span class="label label-success">1%</span></td>
+            </tr>
+            <tr>
+                <td>E - Correção por índice judicial</td>
+                <td>Diretor</td>
+                <td>???</td>
                 <td><span class="label label-success">0,50%</span></td>
             </tr>
             <tr>
-                <td>E</td>
-                <td>Correção por índice judicial.</td>
+                <td>F - Valor do débito sem correção</td>
+                <td>Diretor</td>
+                <td>???</td>
                 <td><span class="label label-success">0,30%</span></td>
+            </tr>                                     
+          </table>
+        </div></div>
+
+    <div class="panel panel-default">
+    <div class="panel-heading"><strong>Distribuição da Comissão</strong></div>
+    <div class="panel-body">
+    <table class="table">
+Se o valor da entrada for inferior a 10% do valor negociado, a cmissão é zerada!
+            <tr>
+                <td>FUNCIONÁRIOS</td>
+                <td>comissão * 0.60</td>
             </tr>
             <tr>
-                <td>F</td>
-                <td>Valor do débito sem correção.</td>
-                <td><span class="label label-success">0,20%</span></td>
-            </tr>                                     
+                <td>EQUIPE</td>
+                <td>comissão * 0.40</td>
+            </tr>                                    
           </table>
         </div></div>
 

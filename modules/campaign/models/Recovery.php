@@ -66,7 +66,7 @@ class Recovery extends \yii\db\ActiveRecord
             'contracts' => 'Contratos',
             'value_traded' => 'Valor Negociado',
             'value_input' => 'Valor Entrada',
-            'typeproposed' => 'Proposta',
+            'typeproposed' => 'Proposta Selecionada',
             'commission' => 'Comissão',
             'status' => 'Situação',
             'date' => 'Date Op.',
