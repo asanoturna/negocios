@@ -18,6 +18,175 @@ $this->title = 'Ação Foco SIPAG';
 
   <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 
+  <p>
+  <?php use kartik\export\ExportMenu;
+              $gridColumns = [
+                  ['attribute'=>'id', 'hAlign'=>'right', 'width'=>'20px'], 
+                 [
+                  'attribute'=>'establishmenttype',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value' => function($data) {
+                      return $data->getEstablishmenttype();
+                  },
+                  'format'=>'raw'
+                  ],
+                  ['attribute'=>'establishmentname', 'hAlign'=>'right', 'width'=>'100px'], 
+                  ['attribute'=>'address', 'hAlign'=>'right', 'width'=>'100px'],
+                  [
+                  'attribute'=>'flag_sipag',
+                  'label'=> 'SIPAG',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value' => function($data) {
+                      return $data->getFlagsipag();
+                  },
+                  'format'=>'raw'
+                  ],
+                  [
+                  'attribute'=>'flag_sipag_locked',
+                  'label'=> 'Travado SIPAG',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value' => function($data) {
+                      return $data->getFlagsipaglocked();
+                  },
+                  'format'=>'raw'
+                  ],
+                 [
+                  'attribute'=>'flag_rede',
+                  'label'=> 'REDE',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value' => function($data) {
+                      return $data->getFlagrede();
+                  },
+                  'format'=>'raw'
+                  ],
+                 [
+                  'attribute'=>'flag_rede_locked',
+                  'label'=> 'Travado REDE',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value' => function($data) {
+                      return $data->getFlagredelocked();
+                  },
+                  'format'=>'raw'
+                  ],
+                 [
+                  'attribute'=>'flag_cielo',
+                  'label'=> 'CIELO',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value' => function($data) {
+                      return $data->getFlagcielo();
+                  },
+                  'format'=>'raw'
+                  ],
+                 [
+                  'attribute'=>'flag_cielo_locked',
+                  'label'=> 'Travado CIELO',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value' => function($data) {
+                      return $data->getFlagcielolocked();
+                  },
+                  'format'=>'raw'
+                  ],
+                 [
+                  'attribute'=>'visited',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value' => function($data) {
+                      return $data->getVisited();
+                  },
+                  'format'=>'raw'
+                  ],
+                 [
+                  'attribute'=>'accredited',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value' => function($data) {
+                      return $data->getAccredited();
+                  },
+                  'format'=>'raw'
+                  ],
+                 [
+                  'attribute'=>'locked',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value' => function($data) {
+                      return $data->getLocked();
+                  },
+                  'format'=>'raw'
+                  ],
+                 [
+                  'attribute'=>'anticipation',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value' => function($data) {
+                      return $data->getAnticipation();
+                  },
+                  'format'=>'raw'
+                  ],
+                 [
+                  'attribute'=>'status',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value' => function($data) {
+                      return $data->getStatus();
+                  },
+                  'format'=>'raw'
+                  ],
+                  [
+                    'attribute'=>'user_id',
+                    'label'=> 'Usuário',
+                    'vAlign'=>'middle',
+                    'width'=>'100px',
+                    'value' => function ($model) {                      
+                        return $model->user ? $model->user->username : null;
+                    },
+                    'format'=>'raw'
+                  ],
+                  [
+                    'attribute'=>'checkedby_id',
+                    'label'=> 'Aprovador Por',
+                    'vAlign'=>'middle',
+                    'width'=>'100px',
+                    'value' => function ($model) {                      
+                        return $model->checkedby ? $model->checkedby->username : null;
+                    },
+                    'format'=>'raw'
+                  ],
+                  ['attribute'=>'date','format'=>['date'], 'hAlign'=>'right', 'width'=>'110px'],
+              ];
+              echo ExportMenu::widget([
+              'dataProvider' => $dataProvider,
+              'columns' => $gridColumns,
+              'fontAwesome' => true,
+              'emptyText' => 'Nenhum registro',
+              'showColumnSelector' => true,
+              'asDropdown' => true,
+              'target' => ExportMenu::TARGET_BLANK,
+              'showConfirmAlert' => false,
+              'exportConfig' => [
+                ExportMenu::FORMAT_HTML => false,
+                ExportMenu::FORMAT_CSV => false,
+                ExportMenu::FORMAT_TEXT => false,
+                ExportMenu::FORMAT_PDF => false
+            ],
+            'columnSelectorOptions' => [
+              'class' => 'btn btn-success',
+            ],
+            'dropdownOptions' => [
+              'icon' => false,
+              'label' => 'Exportar Registros',
+              'class' => 'btn btn-success',
+            ],
+            'filename' => 'relatorio-campanha-sipag',
+            ]);
+    ?> </p>
+
     <div class="panel panel-default">
     <div class="panel-body">
     <?= GridView::widget([
