@@ -3,9 +3,8 @@ INTRANET
 Bloquear uso do IE versão 8 pra baixo
 Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc)
 Verificar permissoes nos controllers (permissão apenas para admin)
-Link para área administrativa
 Corrigir telas responsivas (gridview, etc)
-Links Uteis ao abrir novo item, ele substitui o anterio
+Links Uteis ao abrir novo item, ele substitui o anterior
 
 Departamento > Campo email (null)
 
