@@ -34,6 +34,7 @@ MÓDULOS
 - Criar de módulo Plano de Ação (igual do GMI) 
 - Criar de módulo Gerenciamento de Tarefas / Atividades
 
+- Visitas -> Verificar / Usar plugin de galeria de fotos
 - Prod Diaria -> Gravar Formula/Cálculo
 - Prod Diaria -> Quadro Metas por agência (cadastrar metas por local para todos os produtos)
   ---> Exemplo.: tabela meta > valor, pa, data(m/y)
