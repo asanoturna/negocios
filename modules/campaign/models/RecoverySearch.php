@@ -13,7 +13,7 @@ class RecoverySearch extends Recovery
     {
         return [
             [['id', 'negotiator_id', 'location_id', 'typeproposed', 'status', 'approvedby'], 'integer'],
-            [['clientname', 'clientdoc', 'contracts', 'date', 'approvedin'], 'safe'],
+            [['typeofdebt', 'expirationdate', 'clientname', 'clientdoc', 'contracts', 'date', 'approvedin'], 'safe'],
             [['value_traded', 'value_input', 'commission'], 'number'],
         ];
     }
@@ -58,6 +58,8 @@ class RecoverySearch extends Recovery
         ]);
 
         $query->andFilterWhere(['like', 'clientname', $this->clientname])
+            ->andFilterWhere(['like', 'typeofdebt', $this->typeofdebt])
+            ->andFilterWhere(['like', 'expirationdate', $this->expirationdate])
             ->andFilterWhere(['like', 'clientdoc', $this->clientdoc])
             ->andFilterWhere(['like', 'contracts', $this->contracts]);
 

@@ -116,44 +116,80 @@ $this->title = 'Campanha Recupere e Ganhe';
         'columns' => [
             [
             'attribute' => 'id',
+            'headerOptions'=>['style'=>'text-align:center'],
             'contentOptions'=>['style'=>'width: 4%;text-align:center'],
             ],
             [
-            'attribute' => 'id',
-            'encodeLabel' => false,
+            'attribute' => 'expirationdate',
+            'encodeLabel' => true,
             'label' => 'Dias',
-            //'value' => 'Data atual - data ref', //
-            'headerOptions'=>['style'=>'width: 5%;text-align:center'],
+            'value' => function ($data) {                      
+                return $data->getDays();
+            },
+            'headerOptions'=>['style'=>'text-align:center'],
             'contentOptions'=>['style'=>'width: 4%;text-align:center'],
             ],
             [
-            'attribute' => 'id',
+            'attribute' => 'typeofdebt',
             'encodeLabel' => false,
-            'label' => 'Tipo Dívida',
-            //'value' => 'deixar como texto mesmo
-            'headerOptions'=>['style'=>'width: 5%;text-align:center'],
+            'headerOptions'=>['style'=>'text-align:center'],
             'contentOptions'=>['style'=>'width: 4%;text-align:center'],
             ],
-            [
-            'attribute' => 'location_id',
-            'format' => 'raw',
-            'enableSorting' => true,
-            'value' => function ($model) {                      
-                    return $model->location->shortname;
-                    },  
-            'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
-            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
-            ], 
-            [
-            'attribute' => 'clientname',
-            'contentOptions'=>['style'=>'width: 15%;text-align:left'],
-            ],            
             [
             'attribute' => 'clientdoc',
+            'encodeLabel' => false,
+            'headerOptions'=>['style'=>'text-align:center'],
             'contentOptions'=>['style'=>'width: 8%;text-align:center'],
-            ],             
-            
-           
+            ],
+            [
+            'attribute' => 'clientname',
+            'headerOptions'=>['style'=>'text-align:center'],
+            'contentOptions'=>['style'=>'width: 15%;text-align:left'],
+            ],
+            [
+            'attribute' => 'referencevalue',
+            'encodeLabel' => false,
+            'label' => 'Valor <br/>Referencia',
+            'headerOptions'=>['style'=>'text-align:center'],
+            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            ],
+            [
+            'encodeLabel' => false,
+            'label' => 'Proposta A <br/> Comissão 5%',
+            'value' => function ($data) {
+                return $data->getSimulation1();
+            },
+            'headerOptions'=>['style'=>'text-align:center'],
+            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            ],
+            [
+            'encodeLabel' => false,
+            'label' => 'Proposta B <br/> Comissão 3%',
+            'value' => function ($data) {
+                return $data->getSimulation2();
+            },
+            'headerOptions'=>['style'=>'text-align:center'],
+            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            ],
+            [
+            'encodeLabel' => false,
+            'label' => 'Proposta C <br/> Comissão 2%',
+            'value' => function ($data) {
+                return $data->getSimulation3();
+            },
+            'headerOptions'=>['style'=>'text-align:center'],
+            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            ],
+            // [
+            // 'attribute' => 'location_id',
+            // 'format' => 'raw',
+            // 'enableSorting' => true,
+            // 'value' => function ($model) {                      
+            //         return $model->location->shortname;
+            //         },  
+            // 'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
+            // 'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            // ], 
             // [
             // 'attribute' => 'value_traded',
             // 'value' => function ($model) {                      
@@ -168,56 +204,48 @@ $this->title = 'Campanha Recupere e Ganhe';
             //         },             
             // 'contentOptions'=>['style'=>'width: 5%;text-align:center'],
             // ],            
-            [
-                'attribute' => 'typeproposed',
-                'encodeLabel' => false,
-                'label' => 'Proposta <br/> Selecionada',
-                'enableSorting' => true,
-                'value' => function($data) {
-                  return $data->getTypeproposed();
-                },
-                'filter' => Recovery::$Static_typeproposed,
-                'contentOptions'=>['style'=>'width: 8%;text-align:center'],
-            ], 
-
-            [
-            'attribute' => 'id',
-            'encodeLabel' => false,
-            'label' => 'Contrato',
-            'headerOptions'=>['style'=>'width: 5%;text-align:center'],
-            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
-            ],  
-            [
-            'attribute' => 'id',
-            'encodeLabel' => false,
-            'label' => 'Valor <br/>Referencia',
-            'headerOptions'=>['style'=>'width: 5%;text-align:center'],
-            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
-            ],
-            [
-            'attribute' => 'id',
-            'encodeLabel' => false,
-            'label' => 'Proposta A <br/> Comissão 3%',
-            'value' => function ($model) {                      
-                    return "R$ " . $model->value_input ;
-                    }, 
-            'headerOptions'=>['style'=>'width: 5%;text-align:center'],
-            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
-            ],
-            [
-            'attribute' => 'id',
-            'encodeLabel' => false,
-            'label' => 'Proposta B <br/> Comissão 3%',
-            'headerOptions'=>['style'=>'width: 5%;text-align:center'],
-            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
-            ],   
-            [
-            'attribute' => 'id',
-            'encodeLabel' => false,
-            'label' => 'Proposta C <br/> Comissão 3%',
-            'headerOptions'=>['style'=>'width: 5%;text-align:center'],
-            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
-            ],   
+            // [
+            //     'attribute' => 'typeproposed',
+            //     'encodeLabel' => false,
+            //     'label' => 'Proposta <br/> Selecionada',
+            //     'enableSorting' => true,
+            //     'value' => function($data) {
+            //       return $data->getTypeproposed();
+            //     },
+            //     'filter' => Recovery::$Static_typeproposed,
+            //     'contentOptions'=>['style'=>'width: 8%;text-align:center'],
+            // ], 
+            // [
+            // 'attribute' => 'id',
+            // 'encodeLabel' => false,
+            // 'label' => 'Contrato',
+            // 'headerOptions'=>['style'=>'width: 5%;text-align:center'],
+            // 'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            // ],  
+            // [
+            // 'attribute' => 'id',
+            // 'encodeLabel' => false,
+            // 'label' => 'Proposta A <br/> Comissão 3%',
+            // 'value' => function ($model) {                      
+            //         return "R$ " . $model->value_input ;
+            //         }, 
+            // 'headerOptions'=>['style'=>'width: 5%;text-align:center'],
+            // 'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            // ],
+            // [
+            // 'attribute' => 'id',
+            // 'encodeLabel' => false,
+            // 'label' => 'Proposta B <br/> Comissão 3%',
+            // 'headerOptions'=>['style'=>'width: 5%;text-align:center'],
+            // 'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            // ],   
+            // [
+            // 'attribute' => 'id',
+            // 'encodeLabel' => false,
+            // 'label' => 'Proposta C <br/> Comissão 3%',
+            // 'headerOptions'=>['style'=>'width: 5%;text-align:center'],
+            // 'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            // ],   
             // [
             // 'attribute' => 'commission',
             // 'value' => function ($model) {                      
@@ -225,22 +253,23 @@ $this->title = 'Campanha Recupere e Ganhe';
             //         },            
             // 'contentOptions'=>['style'=>'width: 5%;text-align:center'],
             // ],             
-            [
-                'attribute' => 'status',
-                'enableSorting' => true,
-                'format' => 'raw',
-                'value' => function ($data) {                      
-                        return $data->getStatus() == 'APROVADO' ? '<span class="label label-success">APROVADO</span>' : '<span class="label label-warning">PENDENTE</span>';
-                        },  
-                'filter' => Recovery::$Static_status,
-                'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-            ],             
-            [
-              'attribute' => 'date',
-              'enableSorting' => true,
-              'contentOptions'=>['style'=>'width: 6%;text-align:center'],
-              'format' => ['date', 'php:d/m/Y'],
-            ],
+            // [
+            //     'attribute' => 'status',
+            //     'enableSorting' => true,
+            //     'format' => 'raw',
+            //     'value' => function ($data) {                      
+            //             return $data->getStatus() == 'APROVADO' ? '<span class="label label-success">APROVADO</span>' : '<span class="label label-warning">PENDENTE</span>';
+            //             },  
+            //     'filter' => Recovery::$Static_status,
+            //     'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            // ],             
+            // [
+            //   'attribute' => 'date',
+            //   'enableSorting' => true,
+            //   'contentOptions'=>['style'=>'width: 6%;text-align:center'],
+            //   'format' => ['date', 'php:d/m/Y'],
+            // ],
+            /*
             [
                 'attribute' => 'negotiator_id',
                 'format' => 'raw',
@@ -251,6 +280,8 @@ $this->title = 'Campanha Recupere e Ganhe';
                 'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
                 'contentOptions'=>['style'=>'width: 8%;text-align:left'],
             ], 
+            */
+            /*
             [
                 'attribute' => 'approvedby',
                 'format' => 'raw',
@@ -260,7 +291,8 @@ $this->title = 'Campanha Recupere e Ganhe';
                 },
                 'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
                 'contentOptions'=>['style'=>'width: 8%;text-align:left'],
-            ],            
+            ],  
+            */          
             //'approvedin',
             [
               'class' => 'yii\grid\ActionColumn',
