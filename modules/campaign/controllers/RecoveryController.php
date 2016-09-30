@@ -73,16 +73,20 @@ class RecoveryController extends Controller
 
     public function actionUpdate($id)
     {
+        // http://blog.neattutorials.com/examples/pjax/web/site/form-submission
         $model = $this->findModel($id);
 
         $model->updated = date('Y-m-d');
-        $model->negotiator_id = Yii::$app->user->id;          
+        $model->negotiator_id = Yii::$app->user->id;    
+
+        $randomString = Yii::$app->request->post('referencevalue');     
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'randomString' => $randomString,
             ]);
         }
     }

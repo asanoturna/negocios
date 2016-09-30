@@ -123,9 +123,11 @@ $this->title = 'Campanha Recupere e Ganhe';
             'attribute' => 'expirationdate',
             'encodeLabel' => true,
             'label' => 'Dias',
+            'format' => 'raw',
             'value' => function ($data) {                      
-                return $data->getDays();
-            },
+                //return $data->getDays();
+                return Html::tag('div', '<span>'.$data->getDays().'</span>', ['data-toggle'=>'tooltip','data-placement'=>'bottom','title'=>"Vencimento: ".date('d/m/Y', strtotime($data->expirationdate))]);
+            }, 
             'headerOptions'=>['style'=>'text-align:center'],
             'contentOptions'=>['style'=>'width: 4%;text-align:center'],
             ],
@@ -146,6 +148,16 @@ $this->title = 'Campanha Recupere e Ganhe';
             'headerOptions'=>['style'=>'text-align:center'],
             'contentOptions'=>['style'=>'width: 15%;text-align:left'],
             ],
+            // [
+            // 'attribute' => 'location_id',
+            // 'format' => 'raw',
+            // 'enableSorting' => true,
+            // 'value' => function ($model) {
+            //         return $model->location->shortname;
+            //         },
+            // 'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
+            // 'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            // ],
             [
             'attribute' => 'referencevalue',
             'encodeLabel' => false,
@@ -180,16 +192,6 @@ $this->title = 'Campanha Recupere e Ganhe';
             'headerOptions'=>['style'=>'text-align:center'],
             'contentOptions'=>['style'=>'width: 4%;text-align:center'],
             ],
-            // [
-            // 'attribute' => 'location_id',
-            // 'format' => 'raw',
-            // 'enableSorting' => true,
-            // 'value' => function ($model) {                      
-            //         return $model->location->shortname;
-            //         },  
-            // 'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
-            // 'contentOptions'=>['style'=>'width: 4%;text-align:center'],
-            // ], 
             // [
             // 'attribute' => 'value_traded',
             // 'value' => function ($model) {                      
@@ -262,7 +264,7 @@ $this->title = 'Campanha Recupere e Ganhe';
             //             },  
             //     'filter' => Recovery::$Static_status,
             //     'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-            // ],             
+            // ],
             // [
             //   'attribute' => 'date',
             //   'enableSorting' => true,
@@ -279,7 +281,7 @@ $this->title = 'Campanha Recupere e Ganhe';
                 },
                 'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
                 'contentOptions'=>['style'=>'width: 8%;text-align:left'],
-            ], 
+            ],
             */
             /*
             [
@@ -292,7 +294,7 @@ $this->title = 'Campanha Recupere e Ganhe';
                 'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
                 'contentOptions'=>['style'=>'width: 8%;text-align:left'],
             ],  
-            */          
+            */
             //'approvedin',
             [
               'class' => 'yii\grid\ActionColumn',
@@ -306,7 +308,7 @@ $this->title = 'Campanha Recupere e Ganhe';
                                   'title' => 'Detalhes',
                                   'class' => 'btn btn-default btn-xs',
                       ]);
-                  },                                                
+                  },
                   'update' => function ($url, $model) {
                       return Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
                                   'title' => 'Alterar',
@@ -325,7 +327,7 @@ $this->title = 'Campanha Recupere e Ganhe';
                                   'class' => 'btn btn-default btn-xs',
                                   'disabled' => true,
                       ]);
-                  }, 
+                  },
                   'manager' => function ($url, $model) {
                       return Yii::$app->user->identity->can_managerproductivity == 1 ? Html::a('<span class="glyphicon glyphicon-cog" ></span>', $url, [
                                   'title' => 'Aprovar Registro',
@@ -335,7 +337,7 @@ $this->title = 'Campanha Recupere e Ganhe';
                                   'class' => 'btn btn-default btn-xs',
                                   'disabled' => true,
                       ]);
-                  },                                                    
+                  },
                 ],
             ],
         ],

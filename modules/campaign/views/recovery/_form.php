@@ -6,6 +6,7 @@ use yii\helpers\ArrayHelper;
 use app\models\Location;
 use kartik\money\MaskMoney;
 use app\modules\campaign\models\Recovery;
+use yii\widgets\Pjax;
 
 ?>
 
@@ -16,29 +17,41 @@ use app\modules\campaign\models\Recovery;
     <div class="row">
       <div class="col-md-6">
 
-    <?= $form->field($model, 'location_id')->dropDownList(ArrayHelper::map(Location::find()->where(['is_active' => 1])->orderBy("shortname ASC")->all(), 'id', 'fullname'),['prompt'=>'--'])  ?>      
-          
-    <?= $form->field($model, 'clientname')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+      <div class="col-md-6">
 
-    <?= $form->field($model, 'clientdoc')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'clientname')->textInput(['maxlength' => true,'readonly' => true, 'disabled' => true]) ?>
 
-    <?= $form->field($model, 'contracts')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'clientdoc')->textInput(['maxlength' => true,'readonly' => true, 'disabled' => true]) ?>
 
-    <?php 
-    echo $form->field($model, 'value_traded')->widget(MaskMoney::classname(), [
-        'pluginOptions' => [
-            //'prefix' => 'R$ ',
-            //'suffix' => ' c',
-            'affixesStay' => true,
-            'thousands' => '.',
-            'decimal' => ',',
-            'precision' => 2, 
-            'allowZero' => true,
-            'allowNegative' => false,
-            'value' => 0.01
-        ],
-    ]); 
-    ?>
+      </div>
+      <div class="col-md-6">
+
+        <?= $form->field($model, 'location_id')->dropDownList(ArrayHelper::map(Location::find()->where(['is_active' => 1])->orderBy("shortname ASC")->all(), 'id', 'fullname'),['readonly' => true, 'disabled' => true])  ?> 
+
+        <?php 
+        echo $form->field($model, 'referencevalue')->widget(MaskMoney::classname(), ['readonly' => true, 'disabled' => true,
+            'pluginOptions' => [
+                //'prefix' => 'R$ ',
+                //'suffix' => ' c',
+                'affixesStay' => true,
+                'thousands' => '.',
+                'decimal' => ',',
+                'precision' => 2, 
+                'allowZero' => true,
+                'allowNegative' => false,
+                'value' => 0.01
+            ],
+        ]); 
+        ?>
+
+      </div>
+    </div>
+
+    <hr/>
+
+    <div class="row">
+      <div class="col-md-6">
 
     <?php 
     echo $form->field($model, 'value_input')->widget(MaskMoney::classname(), [
@@ -56,28 +69,9 @@ use app\modules\campaign\models\Recovery;
     ]); 
     ?>
 
-    <?= $form->field($model, 'date')->widget('trntv\yii\datetime\DateTimeWidget',
-        [
-            'phpDatetimeFormat' => 'yyyy-MM-dd',
-            'clientOptions' => [
-                'minDate' => new \yii\web\JsExpression('new Date("2016-01-01")'),
-                'allowInputToggle' => true,
-                'widgetPositioning' => [
-                   'horizontal' => 'auto',
-                   'vertical' => 'auto'
-                ]
-            ]
-        ]
-    ) ?>    
+    <?php $valueinput = Html::getInputId($model, 'value_input'); ?>
 
-      </div>
-      <div class="col-md-6">
-
-<?php $valueinput = Html::getInputId($model, 'value_input'); ?>
-
-
-    <div class="row">
-    <div class="col-md-6">Proposta Selecionada<?= $form->field($model, 'typeproposed')->dropDownList(Recovery::$Static_typeproposed,['prompt'=>'--',
+    <?= $form->field($model, 'typeproposed')->label('Selecione a Proposta')->dropDownList(Recovery::$Static_typeproposed,['prompt'=>'--',
         'onchange' => 'if($(this).val() == 0) {
         $("#'.Html::getInputId($model, 'commission').'").val($("#'.Html::getInputId($model, 'value_input').'").val()*0.05);
     }else if($(this).val() == 1) {
@@ -92,13 +86,60 @@ use app\modules\campaign\models\Recovery;
         $("#'.Html::getInputId($model, 'commission').'").val($("#'.Html::getInputId($model, 'value_input').'").val()*0.003);
     }']) 
    ?>
-   </div>
-      <div class="col-md-6"><?= $form->field($model, 'commission')->textInput(['maxlength' => true,'readonly' => true]) ?></div>
+
+      </div>
+      <div class="col-md-6">
+
+    <?= $form->field($model, 'date')->widget('trntv\yii\datetime\DateTimeWidget',
+        [
+            'phpDatetimeFormat' => 'yyyy-MM-dd',
+            'clientOptions' => [
+                'minDate' => new \yii\web\JsExpression('new Date("2016-01-01")'),
+                'allowInputToggle' => true,
+                'widgetPositioning' => [
+                   'horizontal' => 'auto',
+                   'vertical' => 'auto'
+                ]
+            ]
+        ]
+    ) ?>
+
+    <?= $form->field($model, 'commission')->textInput(['maxlength' => true,'readonly' => true]) ?>
+
+      </div>
     </div>
+
+    <div class="panel panel-default">
+    <div class="panel-heading"><strong>Distribuição da Comissão</strong></div>
+    <div class="panel-body">
+    <p class="text-muted">Se o valor da entrada for inferior a 10% do valor negociado, a comissão é zerada!</p>
+        <table class="table">
+            <tr>
+                <td>FUNCIONÁRIOS</td>
+                <td>comissão * 0.60</td>
+            </tr>
+            <tr>
+                <td>EQUIPE</td>
+                <td>comissão * 0.40</td>
+            </tr>                                    
+          </table>
+        </div>
+    </div>
+
+      </div>
+      <div class="col-md-6">
 
     <div class="panel panel-default">
     <div class="panel-heading"><strong>Legenda</strong></div>
     <div class="panel-body">
+
+    <div class="col-sm-12 col-md-6">
+        <?php Pjax::begin(); ?>
+        <?= Html::a("Generate Random String", ['site/multiple'], ['class' => 'btn btn-lg btn-primary']) ?>
+        <h3><?= $randomString ?></h3>
+        <?php Pjax::end(); ?>
+    </div>
+
     <table class="table">
             <tr class="active">
                 <td>PROPOSTA</td>
@@ -142,22 +183,6 @@ use app\modules\campaign\models\Recovery;
                 <td>???</td>
                 <td><span class="label label-success">0,30%</span></td>
             </tr>                                     
-          </table>
-        </div></div>
-
-    <div class="panel panel-default">
-    <div class="panel-heading"><strong>Distribuição da Comissão</strong></div>
-    <div class="panel-body">
-    <table class="table">
-Se o valor da entrada for inferior a 10% do valor negociado, a cmissão é zerada!
-            <tr>
-                <td>FUNCIONÁRIOS</td>
-                <td>comissão * 0.60</td>
-            </tr>
-            <tr>
-                <td>EQUIPE</td>
-                <td>comissão * 0.40</td>
-            </tr>                                    
           </table>
         </div></div>
 

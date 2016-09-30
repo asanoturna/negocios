@@ -115,7 +115,7 @@ class Recovery extends \yii\db\ActiveRecord
         $formula3 = ($formula1 + $formula2) * 0.02;
         $proposal = $formula1+$formula2+$formula3;
 
-        return round($proposal, 2);
+        return "R$ " . round($proposal, 2);
     }
 
     public function getSimulation2()
@@ -125,7 +125,7 @@ class Recovery extends \yii\db\ActiveRecord
 
         $proposal = $this->referencevalue*(pow((1+0.018),($days/30)));
 
-        return round($proposal, 2);
+        return "R$ " . round($proposal, 2);
     }
 
     public function getSimulation3()
@@ -135,6 +135,6 @@ class Recovery extends \yii\db\ActiveRecord
 
         $proposal = $this->referencevalue*(pow((1+0.014),($days/30)));
 
-        return round($proposal, 2);
+        return "R$ " . round($proposal, 2);
     } 
 }
