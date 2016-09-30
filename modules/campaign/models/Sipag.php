@@ -17,15 +17,19 @@ class Sipag extends \yii\db\ActiveRecord
 
     // establishmenttype
     public static $Static_establishmenttype = [
-        'RESTAURANTE',
-        'ALIMENTAÇÃO EMERCADOS ESPECIAIS',
-        'SUPERMERCADO',
-        'AUTOPOSTO',
-        'ACADEMIA',
-        'ESCOLAS',
-        'HOTEIS',
-        'LOJAS',
-        ];   
+        'RESTAURANTE', // 0
+        'ALIMENTAÇÃO EMERCADOS ESPECIAIS', // 1
+        'SUPERMERCADO', // 2
+        'AUTOPOSTO', // 3
+        'ACADEMIA', // 4
+        'ESCOLAS', // 5
+        'HOTEIS', // 6
+        'LOJAS', // 7
+        'DENTISTAS', // 8
+        'MEDICOS', // 9
+        'LABORATORIOS', // 10
+        'HOSPITAIS', // 11
+        ];
     public function getEstablishmenttype()
     {
         if ($this->establishmenttype === null) {

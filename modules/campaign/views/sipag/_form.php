@@ -131,7 +131,35 @@ use app\modules\campaign\models\Sipag;
                 <td>2,89%</td>
                 <td>3,32%</td>
                 <td>3,56%</td>
-            </tr>                                     
+            </tr>         
+            <tr>
+                <td>DENTISTAS</td>
+                <td>1,73%</td>
+                <td>2,89%</td>
+                <td>3,45%</td>
+                <td>3,65%</td>
+            </tr>
+            <tr>
+                <td>MEDICOS</td>
+                <td>1,73%</td>
+                <td>2,89%</td>
+                <td>3,45%</td>
+                <td>3,65%</td>
+            </tr>
+            <tr>
+                <td>LABORATORIOS</td>
+                <td>1,73%</td>
+                <td>2,89%</td>
+                <td>3,45%</td>
+                <td>3,65%</td>
+            </tr>
+            <tr>
+                <td>HOSPITAIS</td>
+                <td>1,73%</td>
+                <td>2,89%</td>
+                <td>3,45%</td>
+                <td>3,65%</td>
+            </tr> 
           </table>
       </div>
     </div>
@@ -207,7 +235,35 @@ use app\modules\campaign\models\Sipag;
                 <td>2,89%</td>
                 <td>3,32%</td>
                 <td>3,56%</td>
-            </tr>                                     
+            </tr>
+            <tr>
+                <td>DENTISTAS</td>
+                <td>2,68%</td>
+                <td>3,69%</td>
+                <td>4,13%</td>
+                <td>4,38%</td>
+            </tr>
+            <tr>
+                <td>MEDICOS</td>
+                <td>2,68%</td>
+                <td>3,68%</td>
+                <td>4,38%</td>
+                <td>4,63%</td>
+            </tr>
+            <tr>
+                <td>LABORATORIOS</td>
+                <td>3,70%</td>
+                <td>2,70%</td>
+                <td>4,40%</td>
+                <td>4,55%</td>
+            </tr>
+            <tr>
+                <td>HOSPITAIS</td>
+                <td>2,66%</td>
+                <td>3,66%</td>
+                <td>4,36%</td>
+                <td>4,61%</td>
+            </tr> 
           </table>
       </div>
     </div>
@@ -283,7 +339,35 @@ use app\modules\campaign\models\Sipag;
                 <td>2,89%</td>
                 <td>3,32%</td>
                 <td>3,56%</td>
-            </tr>                                     
+            </tr>
+            <tr>
+                <td>DENTISTAS</td>
+                <td>2,70%</td>
+                <td>3,70%</td>
+                <td>4,45%</td>
+                <td>4,70%</td>
+            </tr>
+            <tr>
+                <td>MEDICOS</td>
+                <td>2,70%</td>
+                <td>3,70%</td>
+                <td>4,45%</td>
+                <td>4,70%</td>
+            </tr>
+            <tr>
+                <td>LABORATORIOS</td>
+                <td>2,70%</td>
+                <td>3,70%</td>
+                <td>4,45%</td>
+                <td>4,70%</td>
+            </tr>
+            <tr>
+                <td>HOSPITAIS</td>
+                <td>2,70%</td>
+                <td>3,70%</td>
+                <td>4,45%</td>
+                <td>4,70%</td>
+            </tr> 
           </table>
       </div>
     </div>
