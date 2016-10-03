@@ -37,19 +37,20 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
         'model' => $model,
         'attributes' => [
             'id',
-            'negotiator_id',
+            'typeofdebt',
             'location_id',
             'clientname',
             'clientdoc',
             'contracts',
-            'value_traded',
+            'referencevalue',
             'value_input',
             [ 
                 'attribute' => 'typeproposed',  
                 'format' => 'raw',
                 'value' => $model->Typeproposed,
             ],              
-            'commission',           
+            'commission',  
+            'negotiator_id',         
             [ 
                 'attribute' => 'date',
                 'format' => 'raw',
@@ -103,12 +104,17 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
         $proposal_B = "R$ " . round($formula1, 2);
         // PROPOSTA C
         $proposal_C = "R$ " . round(($model->referencevalue*(pow((1+0.014),($days/30)))), 2);
-
+        // PROPOSTA D
+        $proposal_D = "R$ " . round(($model->referencevalue*(pow((1+0.007),($days/30)))), 2);
+        // PROPOSTA E
+        $proposal_E = "R$ " . round(($model->referencevalue*1.66675), 2);
+        // PROPOSTA F
+        $proposal_F = "R$ " . round(($model->referencevalue), 2);
+        // DISTRIBUIÇÃO COMISSÃO
         $comission_f = "R$ " . round(($model->commission*0.60), 2);
-
         $comission_e = "R$ " . round(($model->commission*0.40), 2);
     ?>
-    <table class="table">
+        <table class="table">
             <tr class="active">
                 <td>PROPOSTA</td>
                 <td>ALÇADA</td>
@@ -136,22 +142,22 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
             <tr>
                 <td>D - Valor do débito corrigido a Juros de Poupança</td>
                 <td>Supervisor</td>
-                <td>???</td>
+                <td><?=$proposal_D;?></td>
                 <td><span class="label label-success">1%</span></td>
             </tr>
             <tr>
                 <td>E - Correção por índice judicial</td>
                 <td>Diretor</td>
-                <td>???</td>
+                <td><?=$proposal_E;?></td>
                 <td><span class="label label-success">0,50%</span></td>
             </tr>
             <tr>
                 <td>F - Valor do débito sem correção</td>
                 <td>Diretor</td>
-                <td>???</td>
+                <td><?=$proposal_F;?></td>
                 <td><span class="label label-success">0,30%</span></td>
             </tr>                                     
-          </table>
+        </table>
         </div></div>
 
     <div class="panel panel-default">
@@ -161,11 +167,11 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
         <table class="table">
             <tr>
                 <td>FUNCIONÁRIOS</td>
-                <td><code><?=$comission_f;?></code></td>
+                <td><?=$comission_f;?></td>
             </tr>
             <tr>
                 <td>EQUIPE</td>
-                <td><code><?=$comission_e;?></code></td>
+                <td><?=$comission_e;?></td>
             </tr>                                    
           </table>
         </div>

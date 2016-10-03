@@ -125,7 +125,7 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
     <div class="panel-heading"><strong>Legenda</strong></div>
     <div class="panel-body">
     <?php
-    	//CALCULO DAS PROPOSTAS
+        //CALCULO DAS PROPOSTAS
         $diff = strtotime(date('Y-m-d')) - strtotime($model->expirationdate);
         $days = intval($diff / 60 / 60 / 24);
 
@@ -139,17 +139,22 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
         $proposal_B = "R$ " . round($formula1, 2);
         // PROPOSTA C
         $proposal_C = "R$ " . round(($model->referencevalue*(pow((1+0.014),($days/30)))), 2);
-
+        // PROPOSTA D
+        $proposal_D = "R$ " . round(($model->referencevalue*(pow((1+0.007),($days/30)))), 2);
+        // PROPOSTA E
+        $proposal_E = "R$ " . round(($model->referencevalue*1.66675), 2);
+        // PROPOSTA F
+        $proposal_F = "R$ " . round(($model->referencevalue), 2);
+        // DISTRIBUIÇÃO COMISSÃO
         $comission_f = "R$ " . round(($model->commission*0.60), 2);
-
         $comission_e = "R$ " . round(($model->commission*0.40), 2);
     ?>
-    <table class="table">
+        <table class="table">
             <tr class="active">
-                <td><strong>PROPOSTA</strong></td>
-                <td><strong>ALÇADA</strong></td>
-                <td><strong>PISO NEGOCIAL</strong></td>
-                <td><strong>COMISSÃO</strong></td>
+                <td>PROPOSTA</td>
+                <td>ALÇADA</td>
+                <td>PISO NEGOCIAL</td>
+                <td>COMISSÃO</td>
             </tr>
             <tr>
                 <td>A - Valor do débito corrigido a Juros Contratuais</td>
@@ -172,22 +177,22 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
             <tr>
                 <td>D - Valor do débito corrigido a Juros de Poupança</td>
                 <td>Supervisor</td>
-                <td>???</td>
+                <td><?=$proposal_D;?></td>
                 <td><span class="label label-success">1%</span></td>
             </tr>
             <tr>
                 <td>E - Correção por índice judicial</td>
                 <td>Diretor</td>
-                <td>???</td>
+                <td><?=$proposal_E;?></td>
                 <td><span class="label label-success">0,50%</span></td>
             </tr>
             <tr>
                 <td>F - Valor do débito sem correção</td>
                 <td>Diretor</td>
-                <td>???</td>
+                <td><?=$proposal_F;?></td>
                 <td><span class="label label-success">0,30%</span></td>
             </tr>                                     
-          </table>
+        </table>
         </div></div>
 
     <div class="panel panel-default">

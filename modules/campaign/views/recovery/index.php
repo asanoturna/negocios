@@ -102,7 +102,7 @@ $this->title = 'Campanha Recupere e Ganhe';
               'label' => 'Exportar Registros',
               'class' => 'btn btn-success',
             ],
-            'filename' => 'relatorio-campanha-sicoobcard-todo-dia',
+            'filename' => 'relatorio-campanha-recuperacao-'.date('Y-m-d'),
             ]);
     ?> 
     </p>
@@ -116,7 +116,7 @@ $this->title = 'Campanha Recupere e Ganhe';
         'columns' => [
             [
             'attribute' => 'id',
-            'headerOptions'=>['style'=>'text-align:center'],
+            'headerOptions'=>['class'=>'active', 'style'=>'text-align:center;vertical-align: middle;'],
             'contentOptions'=>['style'=>'width: 4%;text-align:center'],
             ],
             [
@@ -128,41 +128,42 @@ $this->title = 'Campanha Recupere e Ganhe';
                 //return $data->getDays();
                 return Html::tag('div', '<span>'.$data->getDays().'</span>', ['data-toggle'=>'tooltip','data-placement'=>'bottom','title'=>"Vencimento: ".date('d/m/Y', strtotime($data->expirationdate))]);
             }, 
-            'headerOptions'=>['style'=>'text-align:center'],
+            'headerOptions'=>['class'=>'active', 'style'=>'text-align:center;vertical-align: middle;'],
             'contentOptions'=>['style'=>'width: 4%;text-align:center'],
             ],
             [
             'attribute' => 'typeofdebt',
             'encodeLabel' => false,
-            'headerOptions'=>['style'=>'text-align:center'],
+            'headerOptions'=>['class'=>'active', 'style'=>'text-align:center;vertical-align: middle;'],
             'contentOptions'=>['style'=>'width: 4%;text-align:center'],
             ],
             [
             'attribute' => 'clientdoc',
             'encodeLabel' => false,
-            'headerOptions'=>['style'=>'text-align:center'],
+            'headerOptions'=>['class'=>'active', 'style'=>'text-align:center;vertical-align: middle;'],
             'contentOptions'=>['style'=>'width: 8%;text-align:center'],
             ],
             [
             'attribute' => 'clientname',
-            'headerOptions'=>['style'=>'text-align:center'],
+            'headerOptions'=>['class'=>'active', 'style'=>'text-align:center;vertical-align: middle;'],
             'contentOptions'=>['style'=>'width: 15%;text-align:left'],
             ],
-            // [
-            // 'attribute' => 'location_id',
-            // 'format' => 'raw',
-            // 'enableSorting' => true,
-            // 'value' => function ($model) {
-            //         return $model->location->shortname;
-            //         },
-            // 'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
-            // 'contentOptions'=>['style'=>'width: 4%;text-align:center'],
-            // ],
+            [
+            'attribute' => 'location_id',
+            'format' => 'raw',
+            'enableSorting' => true,
+            'value' => function ($model) {
+                    return $model->location->shortname;
+                    },
+            'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
+            'headerOptions'=>['class'=>'active', 'style'=>'text-align:center;vertical-align: middle;'],
+            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            ],
             [
             'attribute' => 'referencevalue',
             'encodeLabel' => false,
             'label' => 'Valor <br/>Referencia',
-            'headerOptions'=>['style'=>'text-align:center'],
+            'headerOptions'=>['class'=>'active', 'style'=>'text-align:center;vertical-align: middle;'],
             'contentOptions'=>['style'=>'width: 4%;text-align:center'],
             ],
             [
@@ -171,8 +172,8 @@ $this->title = 'Campanha Recupere e Ganhe';
             'value' => function ($data) {
                 return $data->getSimulation1();
             },
-            'headerOptions'=>['style'=>'text-align:center'],
-            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            'headerOptions'=>['class'=>'info', 'style'=>'text-align:center;vertical-align: middle;'],
+            'contentOptions'=>['class'=>'info','style'=>'width: 4%;text-align:center'],
             ],
             [
             'encodeLabel' => false,
@@ -180,8 +181,8 @@ $this->title = 'Campanha Recupere e Ganhe';
             'value' => function ($data) {
                 return $data->getSimulation2();
             },
-            'headerOptions'=>['style'=>'text-align:center'],
-            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            'headerOptions'=>['class'=>'info', 'style'=>'text-align:center;vertical-align: middle;'],
+            'contentOptions'=>['class'=>'info','style'=>'width: 4%;text-align:center'],
             ],
             [
             'encodeLabel' => false,
@@ -189,8 +190,8 @@ $this->title = 'Campanha Recupere e Ganhe';
             'value' => function ($data) {
                 return $data->getSimulation3();
             },
-            'headerOptions'=>['style'=>'text-align:center'],
-            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            'headerOptions'=>['class'=>'info', 'style'=>'text-align:center;vertical-align: middle;'],
+            'contentOptions'=>['class'=>'info','style'=>'width: 4%;text-align:center'],
             ],
             // [
             // 'attribute' => 'value_traded',
@@ -206,48 +207,18 @@ $this->title = 'Campanha Recupere e Ganhe';
             //         },             
             // 'contentOptions'=>['style'=>'width: 5%;text-align:center'],
             // ],            
-            // [
-            //     'attribute' => 'typeproposed',
-            //     'encodeLabel' => false,
-            //     'label' => 'Proposta <br/> Selecionada',
-            //     'enableSorting' => true,
-            //     'value' => function($data) {
-            //       return $data->getTypeproposed();
-            //     },
-            //     'filter' => Recovery::$Static_typeproposed,
-            //     'contentOptions'=>['style'=>'width: 8%;text-align:center'],
-            // ], 
-            // [
-            // 'attribute' => 'id',
-            // 'encodeLabel' => false,
-            // 'label' => 'Contrato',
-            // 'headerOptions'=>['style'=>'width: 5%;text-align:center'],
-            // 'contentOptions'=>['style'=>'width: 4%;text-align:center'],
-            // ],  
-            // [
-            // 'attribute' => 'id',
-            // 'encodeLabel' => false,
-            // 'label' => 'Proposta A <br/> Comissão 3%',
-            // 'value' => function ($model) {                      
-            //         return "R$ " . $model->value_input ;
-            //         }, 
-            // 'headerOptions'=>['style'=>'width: 5%;text-align:center'],
-            // 'contentOptions'=>['style'=>'width: 4%;text-align:center'],
-            // ],
-            // [
-            // 'attribute' => 'id',
-            // 'encodeLabel' => false,
-            // 'label' => 'Proposta B <br/> Comissão 3%',
-            // 'headerOptions'=>['style'=>'width: 5%;text-align:center'],
-            // 'contentOptions'=>['style'=>'width: 4%;text-align:center'],
-            // ],   
-            // [
-            // 'attribute' => 'id',
-            // 'encodeLabel' => false,
-            // 'label' => 'Proposta C <br/> Comissão 3%',
-            // 'headerOptions'=>['style'=>'width: 5%;text-align:center'],
-            // 'contentOptions'=>['style'=>'width: 4%;text-align:center'],
-            // ],   
+            [
+                'attribute' => 'typeproposed',
+                'encodeLabel' => false,
+                'label' => 'Proposta <br/> Selecionada',
+                'enableSorting' => true,
+                'value' => function($data) {
+                  return $data->getTypeproposed();
+                },
+                'filter' => Recovery::$Static_typeproposed,
+                'headerOptions'=>['class'=>'active', 'style'=>'text-align:center;vertical-align: middle;'],
+                'contentOptions'=>['style'=>'width: 8%;text-align:center'],
+            ],  
             // [
             // 'attribute' => 'commission',
             // 'value' => function ($model) {                      
@@ -255,16 +226,17 @@ $this->title = 'Campanha Recupere e Ganhe';
             //         },            
             // 'contentOptions'=>['style'=>'width: 5%;text-align:center'],
             // ],             
-            // [
-            //     'attribute' => 'status',
-            //     'enableSorting' => true,
-            //     'format' => 'raw',
-            //     'value' => function ($data) {                      
-            //             return $data->getStatus() == 'APROVADO' ? '<span class="label label-success">APROVADO</span>' : '<span class="label label-warning">PENDENTE</span>';
-            //             },  
-            //     'filter' => Recovery::$Static_status,
-            //     'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-            // ],
+            [
+                'attribute' => 'status',
+                'enableSorting' => true,
+                'format' => 'raw',
+                'value' => function ($data) {                      
+                        return $data->getStatus() == 'APROVADO' ? '<span class="label label-success">APROVADO</span>' : '<span class="label label-warning">PENDENTE</span>';
+                        },  
+                'filter' => Recovery::$Static_status,
+                'headerOptions'=>['class'=>'active', 'style'=>'text-align:center;vertical-align: middle;'],
+                'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],
             // [
             //   'attribute' => 'date',
             //   'enableSorting' => true,
@@ -300,7 +272,7 @@ $this->title = 'Campanha Recupere e Ganhe';
               'class' => 'yii\grid\ActionColumn',
               'header' => 'Ações',  
               'contentOptions'=>['style'=>'width: 8%;text-align:right'],
-              'headerOptions' => ['class' => 'text-center'],                            
+              'headerOptions'=>['class'=>'active', 'style'=>'text-align:center;vertical-align: middle;'],                         
               'template' => '{view} {update} {manager} {delete}',
               'buttons' => [
                   'view' => function ($url, $model) {
