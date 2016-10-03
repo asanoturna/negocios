@@ -189,7 +189,9 @@ $this->title = "Detalhes da visita #" . $model->id;
         <div class="panel panel-default">
           <div class="panel-heading"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> <strong>Informações do Sistema</strong></div>
           <div class="panel-body">
-            <?= DetailView::widget([
+    <div class="row">
+      <div class="col-md-6">
+        <?= DetailView::widget([
                 'model' => $model,
                 'attributes' => [
                     [ 
@@ -201,14 +203,12 @@ $this->title = "Detalhes da visita #" . $model->id;
                     [ 
                         'attribute' => 'created',
                         'format' => 'raw',
-                        'value' => Yii::$app->formatter->asDate($model->created, 'long'),
-                        //'value' => date("d/m/Y",  strtotime($model->created))
+                        'value' => date("d/m/Y",  strtotime($model->created))
                     ],           
                     [ 
                         'attribute' => 'updated',
                         'format' => 'raw',
-                        'value' => Yii::$app->formatter->asDate($model->updated, 'long'),
-                        //'value' => date("d/m/Y",  strtotime($model->updated))
+                        'value' => date("d/m/Y",  strtotime($model->updated))
                     ],  
                     [ 
                         'attribute' => 'ip',
@@ -218,6 +218,31 @@ $this->title = "Detalhes da visita #" . $model->id;
                     ],
                 ],
             ]) ?>
+      </div>
+      <div class="col-md-6">
+        <?= DetailView::widget([
+                'model' => $model,
+                'attributes' => [
+                    [ 
+                        'attribute' => 'approved',
+                        'format' => 'raw',
+                        'value' => $model->approved == 1 ? '<b style="color:#6CAF3F">SIM</b>' : '<b style="color:#d43f3a">NÃO</b>',
+                    ],  
+                    [ 
+                        'attribute' => 'approved_id',
+                        'format' => 'raw',
+                        //'value' => $model->approved_id,
+                        'value' => $model->approved_id == null ? "<span class=\"not-set\">(nenhum)</span>" : $model->user->username,
+                    ],           
+                    [ 
+                        'attribute' => 'approvedin',
+                        'format' => 'raw',
+                        'value' => date("d/m/Y",  strtotime($model->approvedin))
+                    ],  
+                ],
+            ]) ?>
+      </div>
+    </div>
           </div>
         </div>
     </div>  
