@@ -14,7 +14,7 @@ class RecoverySearch extends Recovery
         return [
             [['id', 'negotiator_id', 'location_id', 'typeproposed', 'status', 'approvedby'], 'integer'],
             [['typeofdebt', 'expirationdate', 'clientname', 'clientdoc', 'contracts', 'date', 'approvedin'], 'safe'],
-            [['value_traded', 'value_input', 'commission'], 'number'],
+            [['referencevalue', 'value_traded', 'value_input', 'commission'], 'number'],
         ];
     }
 
@@ -49,6 +49,7 @@ class RecoverySearch extends Recovery
             'location_id' => $this->location_id,
             'value_traded' => $this->value_traded,
             'value_input' => $this->value_input,
+            'referencevalue' => $this->referencevalue,
             'typeproposed' => $this->typeproposed,
             'commission' => $this->commission,
             'status' => $this->status,

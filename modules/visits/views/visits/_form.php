@@ -103,7 +103,7 @@ if(preg_match('/(?i)msie [5-8]/',$_SERVER['HTTP_USER_AGENT']))
 
         <?= $form->field($model, 'localization_map')->textInput(['maxlength' => true]) ?>
 
-        <?= $form->field($model, 'visits_status_id')->dropDownList(ArrayHelper::map(Visitsstatus::find()->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?> 
+        <?= $form->field($model, 'visits_status_id')->dropDownList(ArrayHelper::map(Visitsstatus::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?> 
 
         </div></div>
         </div>
