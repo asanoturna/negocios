@@ -13,6 +13,21 @@ class Recovery extends \yii\db\ActiveRecord
         return 'campaign_recovery';
     }
 
+    // typeofdebt
+    public static $Static_typeofdebt = [
+        'Acima de 180 dias',    // index 0 regra = 0%
+        'Ajuizado',             // index 1 regra = 20%
+        'Perdas',               // index 2 regra = 10%
+        'Prejuizo',             // index 3 regra = 10%
+        ];   
+    public function getTypeofdebt()
+    {
+        if ($this->typeofdebt === null) {
+            return null;
+        }
+        return self::$Static_typeofdebt[$this->typeofdebt];
+    }   
+
     // typeproposed
     public static $Static_typeproposed = [
         'A', 
@@ -115,7 +130,23 @@ class Recovery extends \yii\db\ActiveRecord
         $formula3 = ($formula1 + $formula2) * 0.02;
         $proposal = $formula1+$formula2+$formula3;
 
+        switch ($this->typeofdebt) {
+            case 0:
+                $proposal = $proposal;
+                break;
+            case 1:
+                $proposal = $proposal + ($proposal*0.2);
+                break;
+            case 2:
+                $proposal = $proposal + ($proposal*0.1);
+                break;
+            case 2:
+                $proposal = $proposal + ($proposal*0.1);
+                break;
+        }
+
         return "R$ " . round($proposal, 2);
+
     }
 
     public function getSimulation2()
@@ -124,6 +155,21 @@ class Recovery extends \yii\db\ActiveRecord
         $days = intval($diff / 60 / 60 / 24);
 
         $proposal = $this->referencevalue*(pow((1+0.018),($days/30)));
+
+        switch ($this->typeofdebt) {
+            case 0:
+                $proposal = $proposal;
+                break;
+            case 1:
+                $proposal = $proposal + ($proposal*0.2);
+                break;
+            case 2:
+                $proposal = $proposal + ($proposal*0.1);
+                break;
+            case 2:
+                $proposal = $proposal + ($proposal*0.1);
+                break;
+        }
 
         return "R$ " . round($proposal, 2);
     }
@@ -134,6 +180,21 @@ class Recovery extends \yii\db\ActiveRecord
         $days = intval($diff / 60 / 60 / 24);
 
         $proposal = $this->referencevalue*(pow((1+0.014),($days/30)));
+
+        switch ($this->typeofdebt) {
+            case 0:
+                $proposal = $proposal;
+                break;
+            case 1:
+                $proposal = $proposal + ($proposal*0.2);
+                break;
+            case 2:
+                $proposal = $proposal + ($proposal*0.1);
+                break;
+            case 2:
+                $proposal = $proposal + ($proposal*0.1);
+                break;
+        }
 
         return "R$ " . round($proposal, 2);
     } 

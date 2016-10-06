@@ -37,7 +37,11 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
         'model' => $model,
         'attributes' => [
             'id',
-            'typeofdebt',
+            [ 
+                'attribute' => 'typeofdebt',  
+                'format' => 'raw',
+                'value' => $model->Typeofdebt,
+            ],  
             'location_id',
             'clientname',
             'clientdoc',
@@ -110,10 +114,43 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
         $proposal_E = "R$ " . round(($model->referencevalue*1.66675), 2);
         // PROPOSTA F
         $proposal_F = "R$ " . round(($model->referencevalue), 2);
+        
+        switch ($model->typeofdebt) {
+            case 0:
+                $proposal = $proposal;
+                break;
+            case 1:
+        $formula1 = $model->referencevalue*(pow((1+0.018),($days/30)));
+        $formula2 = $model->referencevalue*(pow((1+0.01),($days/30)));
+        $formula3 = ($formula1 + $formula2) * 0.02;
+        $proposal = $formula1+$formula2+$formula3;
+        // PROPOSTA A
+        $proposal_A = $proposal + ($proposal*0.2);
+        $proposal_A = "R$ " . round($proposal_A, 2);
+        // PROPOSTA B
+        $proposal_B = "R$ " . round($formula1, 2);
+        // PROPOSTA C
+        $proposal_C = "R$ " . round(($model->referencevalue*(pow((1+0.014),($days/30)))), 2);
+        // PROPOSTA D
+        $proposal_D = "R$ " . round(($model->referencevalue*(pow((1+0.007),($days/30)))), 2);
+        // PROPOSTA E
+        $proposal_E = "R$ " . round(($model->referencevalue*1.66675), 2);
+        // PROPOSTA F
+        $proposal_F = "R$ " . round(($model->referencevalue), 2);
+                break;
+            case 2:
+                $proposal = $proposal + ($proposal*0.1);
+                break;
+            case 2:
+                $proposal = $proposal + ($proposal*0.1);
+                break;
+        }
+
         // DISTRIBUIÇÃO COMISSÃO
         $comission_f = "R$ " . round(($model->commission*0.60), 2);
         $comission_e = "R$ " . round(($model->commission*0.40), 2);
     ?>
+    
         <table class="table">
             <tr class="active">
                 <td>PROPOSTA</td>

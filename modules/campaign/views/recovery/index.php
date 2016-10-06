@@ -132,11 +132,17 @@ $this->title = 'Campanha Recupere e Ganhe';
             'contentOptions'=>['style'=>'width: 4%;text-align:center'],
             ],
             [
-            'attribute' => 'typeofdebt',
-            'encodeLabel' => false,
-            'headerOptions'=>['class'=>'active', 'style'=>'text-align:center;vertical-align: middle;'],
-            'contentOptions'=>['style'=>'width: 4%;text-align:center'],
-            ],
+                'attribute' => 'typeofdebt',
+                'encodeLabel' => false,
+                'label' => 'Tipo de Dívida',
+                'enableSorting' => true,
+                'value' => function($data) {
+                  return $data->getTypeofdebt();
+                },
+                'filter' => Recovery::$Static_typeofdebt,
+                'headerOptions'=>['class'=>'active', 'style'=>'text-align:center;vertical-align: middle;'],
+                'contentOptions'=>['style'=>'width: 8%;text-align:center'],
+            ],  
             [
             'attribute' => 'clientdoc',
             'encodeLabel' => false,
