@@ -30,21 +30,23 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
       <div class="col-md-6">
 
         <?= $form->field($model, 'clientname')->textInput(['maxlength' => true,'readonly' => true, 'disabled' => true]) ?>
-
-        <?= $form->field($model, 'clientdoc')->textInput(['maxlength' => true,'readonly' => true, 'disabled' => true]) ?>
-
-                <?= $form->field($model, 'typeofdebt')->textInput(['maxlength' => true,'readonly' => true, 'disabled' => true]) ?>
-
       </div>
       <div class="col-md-6">
 
-        <?= $form->field($model, 'location_id')->dropDownList(ArrayHelper::map(Location::find()->where(['is_active' => 1])->orderBy("shortname ASC")->all(), 'id', 'fullname'),['readonly' => true, 'disabled' => true])  ?> 
+        <?= $form->field($model, 'clientdoc')->textInput(['maxlength' => true,'readonly' => true, 'disabled' => true]) ?>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-md-4">
+      <?= $form->field($model, 'location_id')->dropDownList(ArrayHelper::map(Location::find()->where(['is_active' => 1])->orderBy("shortname ASC")->all(), 'id', 'fullname'),['readonly' => true, 'disabled' => true])  ?></div>
+      <div class="col-md-4">
+      <?= $form->field($model, 'typeofdebt')->dropDownList(Recovery::$Static_typeofdebt,['readonly' => true, 'disabled' => true]) ?>
+      </div>
+      <div class="col-md-4">
         <?php 
         echo $form->field($model, 'referencevalue')->widget(MaskMoney::classname(), ['readonly' => true, 'disabled' => true,
             'pluginOptions' => [
-                //'prefix' => 'R$ ',
-                //'suffix' => ' c',
                 'affixesStay' => true,
                 'thousands' => '.',
                 'decimal' => ',',
@@ -55,8 +57,7 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
             ],
         ]); 
         ?>
-
-      </div>
+        </div>
     </div>
 
     <hr/>

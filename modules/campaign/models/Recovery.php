@@ -165,7 +165,7 @@ class Recovery extends \yii\db\ActiveRecord
             'typeproposed' => 'Proposta Selecionada',
             'commission' => 'Comissão',
             'status' => 'Situação',
-            'date' => 'Data da Operação.',
+            'date' => 'Data da Operação',
             'approvedby' => 'Aprovado Por',
             'approvedin' => 'Aprovado Em',
         ];
