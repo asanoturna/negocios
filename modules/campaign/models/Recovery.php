@@ -36,7 +36,6 @@ class Recovery extends \yii\db\ActiveRecord
         // PROPOSTA F
         $proposal_F = floatval(round(($this->referencevalue), 2));
 
-        echo $proposal_A;
 
         // Calcula e define a proposta
 
@@ -190,7 +189,7 @@ class Recovery extends \yii\db\ActiveRecord
             case 2:
                 $proposal = $proposal + ($proposal*0.1);
                 break;
-            case 2:
+            case 3:
                 $proposal = $proposal + ($proposal*0.1);
                 break;
         }
@@ -216,7 +215,7 @@ class Recovery extends \yii\db\ActiveRecord
             case 2:
                 $proposal = $proposal + ($proposal*0.1);
                 break;
-            case 2:
+            case 3:
                 $proposal = $proposal + ($proposal*0.1);
                 break;
         }
@@ -241,7 +240,7 @@ class Recovery extends \yii\db\ActiveRecord
             case 2:
                 $proposal = $proposal + ($proposal*0.1);
                 break;
-            case 2:
+            case 3:
                 $proposal = $proposal + ($proposal*0.1);
                 break;
         }

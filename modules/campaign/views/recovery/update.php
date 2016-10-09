@@ -122,27 +122,50 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
     <div class="panel panel-default">
     <div class="panel-heading"><strong>Legenda</strong></div>
     <div class="panel-body">
-    <?php
+<?php
         //CALCULO DAS PROPOSTAS
         $diff = strtotime(date('Y-m-d')) - strtotime($model->expirationdate);
         $days = intval($diff / 60 / 60 / 24);
 
+        // FATOR DE MULTIPLICAÇÃO BASEADO NO TIPO DE DEBITO
+        if ($model->typeofdebt == 0) {
+            $factor = 1;
+        } elseif ($model->typeofdebt == 1) {
+            $factor = 0.2;
+        } elseif ($model->typeofdebt == 2) {
+            $factor = 0.1;
+        } elseif ($model->typeofdebt == 3) {
+            $factor = 0.1;
+        }
+
+        // FORMULAS
         $formula1 = $model->referencevalue*(pow((1+0.018),($days/30)));
         $formula2 = $model->referencevalue*(pow((1+0.01),($days/30)));
         $formula3 = ($formula1 + $formula2) * 0.02;
         $proposal = $formula1+$formula2+$formula3;
+        
         // PROPOSTA A
-        $proposal_A = "R$ " . round($proposal, 2);
+        $proposal_A = $proposal;
+        $proposal_A = "R$ " . round(($proposal_A+($proposal_A*$factor)), 2);
         // PROPOSTA B
-        $proposal_B = "R$ " . round($formula1, 2);
+        $proposal_B = $formula1;
+        $proposal_B = "R$ " . round(($proposal_B+($proposal_B*$factor)), 2);
         // PROPOSTA C
-        $proposal_C = "R$ " . round(($model->referencevalue*(pow((1+0.014),($days/30)))), 2);
+        $proposal_C = ($model->referencevalue*(pow((1+0.014),($days/30))));
+        $proposal_C = "R$ " . round(($proposal_C+($proposal_C*$factor)), 2);
         // PROPOSTA D
-        $proposal_D = "R$ " . round(($model->referencevalue*(pow((1+0.007),($days/30)))), 2);
+        $proposal_D = ($model->referencevalue*(pow((1+0.007),($days/30))));
+        $proposal_D = "R$ " . round(($proposal_D+($proposal_D*$factor)), 2);
         // PROPOSTA E
-        $proposal_E = "R$ " . round(($model->referencevalue*1.66675), 2);
+        $proposal_E = ($model->referencevalue*1.66675);
+        $proposal_E = "R$ " . round(($proposal_E+($proposal_E*$factor)), 2);
         // PROPOSTA F
-        $proposal_F = "R$ " . round(($model->referencevalue), 2);
+        $proposal_F = ($model->referencevalue);
+        $proposal_F = "R$ " . round(($proposal_F+($proposal_F*$factor)), 2);
+
+        // DISTRIBUIÇÃO COMISSÃO
+        $comission_f = "R$ " . round(($model->commission*0.60), 2);
+        $comission_e = "R$ " . round(($model->commission*0.40), 2);
     ?>
         <table class="table">
             <tr class="active">
