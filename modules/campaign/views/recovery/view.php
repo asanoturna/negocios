@@ -27,7 +27,7 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
     </p>
 
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-5">
 
     <div class="panel panel-default">
     <div class="panel-heading"><b>Informações</b></div>
@@ -64,7 +64,7 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
             [ 
                 'attribute' => 'date',
                 'format' => 'raw',
-                'value' => $model->approvedin == NULL ? null : date("d/m/Y",  strtotime($model->date)),
+                'value' => $model->date == NULL ? null : date("d/m/Y",  strtotime($model->date)),
             ],            
         ],
     ]) ?>
@@ -90,7 +90,7 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
     </div>  
 
       </div>
-      <div class="col-md-6">
+      <div class="col-md-7">
 
     <div class="panel panel-default">
     <div class="panel-heading"><strong>Legenda</strong></div>
