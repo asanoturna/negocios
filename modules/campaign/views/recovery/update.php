@@ -176,37 +176,37 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
                 <td>COMISSÃO</td>
             </tr>
             <tr>
-                <td>A - Valor do débito corrigido a Juros Contratuais</td>
+                <td><span class="label label-default">A</span> <small>Valor do débito corrigido a Juros Contratuais</small></td>
                 <td>Agência</td>
                 <td><?=$proposal_A;?></td>
                 <td><span class="label label-primary">5%</span></td>
             </tr>
             <tr>
-                <td>B - Valor do débito corrigido a Juros Contratuais Sem Multa e Mora.</td>
+                <td><span class="label label-default">B</span> <small>Valor do débito corrigido a Juros Contratuais Sem Multa e Mora</small></td>
                 <td>Agência</td>
                 <td><?=$proposal_B;?></td>
                 <td><span class="label label-primary">3%</span></td>
             </tr>
             <tr>
-                <td>C - Valor do débito corrigido a Juros Judiciais</td>
+                <td><span class="label label-default">C</span> <small>Valor do débito corrigido a Juros Judiciais</small></td>
                 <td>Agência</td>
                 <td><?=$proposal_C;?></td>
                 <td><span class="label label-primary">2%</span></td>
             </tr>   
             <tr>
-                <td>D - Valor do débito corrigido a Juros de Poupança</td>
+                <td><span class="label label-default">D</span> <small>Valor do débito corrigido a Juros de Poupança</small></td>
                 <td>Supervisor</td>
                 <td><?=$proposal_D;?></td>
                 <td><span class="label label-success">1%</span></td>
             </tr>
             <tr>
-                <td>E - Correção por índice judicial</td>
+                <td><span class="label label-default">E</span> <small>Correção por índice judicial</small></td>
                 <td>Diretor</td>
                 <td><?=$proposal_E;?></td>
                 <td><span class="label label-success">0,50%</span></td>
             </tr>
             <tr>
-                <td>F - Valor do débito sem correção</td>
+                <td><span class="label label-default">F</span> <small>Valor do débito sem correção</small></td>
                 <td>Diretor</td>
                 <td><?=$proposal_F;?></td>
                 <td><span class="label label-success">0,30%</span></td>
