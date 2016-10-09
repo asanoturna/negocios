@@ -24,7 +24,7 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
     <?php $form = ActiveForm::begin(); ?>
 
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-5">
 
     <div class="row">
       <div class="col-md-6">
@@ -32,6 +32,8 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
         <?= $form->field($model, 'clientname')->textInput(['maxlength' => true,'readonly' => true, 'disabled' => true]) ?>
 
         <?= $form->field($model, 'clientdoc')->textInput(['maxlength' => true,'readonly' => true, 'disabled' => true]) ?>
+
+                <?= $form->field($model, 'typeofdebt')->textInput(['maxlength' => true,'readonly' => true, 'disabled' => true]) ?>
 
       </div>
       <div class="col-md-6">
@@ -78,23 +80,21 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
     ]); 
     ?>
 
-    <?php $valueinput = Html::getInputId($model, 'value_input'); ?>
-
-    <?= $form->field($model, 'typeproposed')->label('Selecione a Proposta')->dropDownList(Recovery::$Static_typeproposed,['prompt'=>'--',
-        'onchange' => 'if($(this).val() == 0) {
-        $("#'.Html::getInputId($model, 'commission').'").val($("#'.Html::getInputId($model, 'value_input').'").val()*0.05);
-    }else if($(this).val() == 1) {
-        $("#'.Html::getInputId($model, 'commission').'").val($("#'.Html::getInputId($model, 'value_input').'").val()*0.03);
-    }else if($(this).val() == 2){
-        $("#'.Html::getInputId($model, 'commission').'").val($("#'.Html::getInputId($model, 'value_input').'").val()*0.02);
-    }else if($(this).val() == 3) {
-        $("#'.Html::getInputId($model, 'commission').'").val($("#'.Html::getInputId($model, 'value_input').'").val()*0.01);
-    }else if($(this).val() == 4){
-        $("#'.Html::getInputId($model, 'commission').'").val($("#'.Html::getInputId($model, 'value_input').'").val()*0.005);
-    }else if($(this).val() == 5){
-        $("#'.Html::getInputId($model, 'commission').'").val($("#'.Html::getInputId($model, 'value_input').'").val()*0.003);
-    }']) 
-   ?>
+    <?php 
+    echo $form->field($model, 'value_traded')->widget(MaskMoney::classname(), [
+        'pluginOptions' => [
+            //'prefix' => 'R$ ',
+            //'suffix' => ' c',
+            'affixesStay' => true,
+            'thousands' => '.',
+            'decimal' => ',',
+            'precision' => 2, 
+            'allowZero' => true,
+            'allowNegative' => false,
+            'value' => 0.01
+        ],
+    ]); 
+    ?>
 
       </div>
       <div class="col-md-6">
@@ -113,13 +113,11 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
         ]
     ) ?>
 
-    <?= $form->field($model, 'commission')->textInput(['maxlength' => true,'readonly' => true]) ?>
-
       </div>
     </div>
 
       </div>
-      <div class="col-md-6">
+    <div class="col-md-7">
 
     <div class="panel panel-default">
     <div class="panel-heading"><strong>Legenda</strong></div>
@@ -145,9 +143,6 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
         $proposal_E = "R$ " . round(($model->referencevalue*1.66675), 2);
         // PROPOSTA F
         $proposal_F = "R$ " . round(($model->referencevalue), 2);
-        // DISTRIBUIÇÃO COMISSÃO
-        $comission_f = "R$ " . round(($model->commission*0.60), 2);
-        $comission_e = "R$ " . round(($model->commission*0.40), 2);
     ?>
         <table class="table">
             <tr class="active">
@@ -195,30 +190,13 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
         </table>
         </div></div>
 
-    <div class="panel panel-default">
-    <div class="panel-heading"><strong>Distribuição da Comissão</strong></div>
-    <div class="panel-body">
-    <p class="text-warning"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Se o valor da entrada for inferior a 10% do valor negociado, a comissão é zerada!</p>
-        <table class="table">
-            <tr>
-                <td>FUNCIONÁRIOS</td>
-                <td><code><?=$comission_f;?></code></td>
-            </tr>
-            <tr>
-                <td>EQUIPE</td>
-                <td><code><?=$comission_e;?></code></td>
-            </tr>                                    
-          </table>
-        </div>
-    </div>
-
       </div>
     </div>
 
     <hr/>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Gravar' : '<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Gravar Simulação', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Gravar' : '<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Calcular e Gravar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

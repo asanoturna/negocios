@@ -14,7 +14,7 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
     <hr/>
 
     <p>
-        <?= Html::a('Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Re-Calcular', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
         <?php
         // Html::a('Excluir', ['delete', 'id' => $model->id], [
         //     'class' => 'btn btn-danger',
@@ -35,6 +35,7 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
 
     <?= DetailView::widget([
         'model' => $model,
+        'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '<span class="not-set"><em>não informado</em></span>'],
         'attributes' => [
             'id',
             [ 
@@ -42,44 +43,45 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
                 'format' => 'raw',
                 'value' => $model->Typeofdebt,
             ],  
-            'location_id',
+            'location.fullname',  
             'clientname',
             'clientdoc',
             'contracts',
             'referencevalue',
             'value_input',
+            'value_traded',
             [ 
                 'attribute' => 'typeproposed',  
                 'format' => 'raw',
                 'value' => $model->Typeproposed,
             ],              
             'commission',  
-            'negotiator_id',         
+            [ 
+                'attribute' => 'negotiator_id',
+                'format' => 'raw',
+                'value' => $model->user ? $model->user->username : null,
+            ],
             [ 
                 'attribute' => 'date',
                 'format' => 'raw',
-                'value' => date("d/m/Y",  strtotime($model->date))
+                'value' => $model->approvedin == NULL ? null : date("d/m/Y",  strtotime($model->date)),
             ],            
         ],
     ]) ?>
         <?= DetailView::widget([
         'model' => $model,
+        'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '<span class="not-set"><em>não informado</em></span>'],
         'attributes' => [
             [ 
                 'attribute' => 'status',  
                 'format' => 'raw',
-                'value' => $model->Status,
-            ],              
-            [ 
-                'attribute' => 'date',
-                'format' => 'raw',
-                'value' => date("d/m/Y",  strtotime($model->date))
-            ], 
+                'value' => $model->status == 1 ? '<span class="label label-success">APROVADO</span>' : '<span class="label label-warning">PENDENTE</span>',
+            ],
             'approvedby',
             [ 
                 'attribute' => 'approvedin',
                 'format' => 'raw',
-                'value' => date("d/m/Y",  strtotime($model->approvedin))
+                'value' => $model->approvedin == NULL ? null : date("d/m/Y",  strtotime($model->approvedin)),
             ],             
         ],
     ]) ?>

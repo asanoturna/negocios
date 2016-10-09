@@ -77,6 +77,7 @@ class RecoveryController extends Controller
         $model = $this->findModel($id);
 
         $model->updated = date('Y-m-d');
+        //$model->status = 0;
         $model->negotiator_id = Yii::$app->user->id;    
 
         $randomString = Yii::$app->request->post('referencevalue');     

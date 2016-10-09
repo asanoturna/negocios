@@ -69,6 +69,22 @@ use yii\widgets\Pjax;
     ]); 
     ?>
 
+    <?php 
+    echo $form->field($model, 'value_traded')->widget(MaskMoney::classname(), [
+        'pluginOptions' => [
+            //'prefix' => 'R$ ',
+            //'suffix' => ' c',
+            'affixesStay' => true,
+            'thousands' => '.',
+            'decimal' => ',',
+            'precision' => 2, 
+            'allowZero' => true,
+            'allowNegative' => false,
+            'value' => 0.01
+        ],
+    ]); 
+    ?>
+
     <?php $valueinput = Html::getInputId($model, 'value_input'); ?>
 
     <?= $form->field($model, 'typeproposed')->label('Selecione a Proposta')->dropDownList(Recovery::$Static_typeproposed,['prompt'=>'--',
