@@ -53,7 +53,7 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
             [ 
                 'attribute' => 'typeproposed',  
                 'format' => 'raw',
-                'value' => $model->typeproposed ? '<span class="label label-default">'.$model->Typeproposed.'</span>' : null,
+                'value' => $model->Typeproposed ? '<span class="label label-default">'.$model->Typeproposed.'</span>' : null,
             ],              
             'commission',  
             [ 

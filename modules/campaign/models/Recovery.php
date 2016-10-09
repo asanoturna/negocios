@@ -15,50 +15,79 @@ class Recovery extends \yii\db\ActiveRecord
 
     public function beforeSave($insert)
     {
-        //CALCULO DAS PROPOSTAS
-
+//CALCULO DAS PROPOSTAS
         $diff = strtotime(date('Y-m-d')) - strtotime($this->expirationdate);
         $days = intval($diff / 60 / 60 / 24);
+
+        // FATOR DE MULTIPLICAÇÃO BASEADO NO TIPO DE DEBITO
+        if ($this->typeofdebt == 0) {
+            $factor = 1;
+        } elseif ($this->typeofdebt == 1) {
+            $factor = 0.2;
+        } elseif ($this->typeofdebt == 2) {
+            $factor = 0.1;
+        } elseif ($this->typeofdebt == 3) {
+            $factor = 0.1;
+        }
+
+        // FORMULAS
         $formula1 = $this->referencevalue*(pow((1+0.018),($days/30)));
         $formula2 = $this->referencevalue*(pow((1+0.01),($days/30)));
         $formula3 = ($formula1 + $formula2) * 0.02;
         $proposal = $formula1+$formula2+$formula3;
-        // PROPOSTA A
-        $proposal_A = floatval($proposal);
-        // PROPOSTA B
-        $proposal_B = floatval($formula1);
-        // PROPOSTA C
-        $proposal_C = floatval(round(($this->referencevalue*(pow((1+0.014),($days/30)))), 2));
-        // PROPOSTA D
-        $proposal_D = floatval(round(($this->referencevalue*(pow((1+0.007),($days/30)))), 2));
-        // PROPOSTA E
-        $proposal_E = floatval(round(($this->referencevalue*1.66675), 2));
-        // PROPOSTA F
-        $proposal_F = floatval(round(($this->referencevalue), 2));
 
+        // PROPOSTA A
+        $proposal_A = $proposal;
+        $proposal_A = floatval(round(($proposal_A+($proposal_A*$factor)), 2));
+        // PROPOSTA B
+        $proposal_B = $formula1;
+        $proposal_B = floatval(round(($proposal_B+($proposal_B*$factor)), 2));
+        // PROPOSTA C
+        $proposal_C = ($this->referencevalue*(pow((1+0.014),($days/30))));
+        $proposal_C = floatval(round(($proposal_C+($proposal_C*$factor)), 2));
+        // PROPOSTA D
+        $proposal_D = ($this->referencevalue*(pow((1+0.007),($days/30))));
+        $proposal_D = floatval(round(($proposal_D+($proposal_D*$factor)), 2));
+        // PROPOSTA E
+        $proposal_E = ($this->referencevalue*1.66675);
+        $proposal_E = floatval(round(($proposal_E+($proposal_E*$factor)), 2));
+        // PROPOSTA F
+        $proposal_F = ($this->referencevalue);
+        $proposal_F = floatval(round(($proposal_F+($proposal_F*$factor)), 2));
 
         // Calcula e define a proposta
 
-        if($this->value_traded <= $proposal_A && $this->value_traded >= $proposal_B){
+        if($this->value_traded >= $proposal_A){
             $this->typeproposed = 0;
+            $this->commission = $this->value_input*0.05;
             $this->status = 1;
         }
         if($this->value_traded <= $proposal_B && $this->value_traded >= $proposal_C){
             $this->typeproposed = 1;
+            $this->commission = $this->value_input*0.03;
             $this->status = 1;
         }
         if($this->value_traded <= $proposal_C && $this->value_traded >= $proposal_D){
             $this->typeproposed = 2;
+            $this->commission = $this->value_input*0.02;
             $this->status = 1;
         }
         if($this->value_traded <= $proposal_D && $this->value_traded >= $proposal_E){
             $this->typeproposed = 3;
+            $this->commission = $this->value_input*0.01;
             $this->status = 0;
         }
         if($this->value_traded <= $proposal_E && $this->value_traded >= $proposal_F){
             $this->typeproposed = 4;
+            $this->commission = $this->value_input*0.005;
             $this->status = 0;
         }
+        if($this->value_traded <= $proposal_E && $this->value_traded >= $proposal_F){
+            $this->typeproposed = 5;
+            $this->commission = $this->value_input*0.003;
+            $this->status = 0;
+        }
+
         return parent::beforeSave($insert);
     }
 
@@ -132,7 +161,7 @@ class Recovery extends \yii\db\ActiveRecord
             'location_id' => 'PA',
             'contracts' => 'Contratos',
             'value_traded' => 'Valor Negociado',
-            'value_input' => 'Valor Entrada',
+            'value_input' => 'Valor da Quitação ou Entrada',
             'typeproposed' => 'Proposta Selecionada',
             'commission' => 'Comissão',
             'status' => 'Situação',
