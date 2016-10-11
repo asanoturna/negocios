@@ -49,7 +49,7 @@ class Recovery extends \yii\db\ActiveRecord
         $proposal_D = ($this->referencevalue*(pow((1+0.007),($days/30))));
         $proposal_D = floatval(round(($proposal_D+($proposal_D*$factor)), 2));
         // PROPOSTA E
-        $proposal_E = ($this->referencevalue*1.66675);
+        $proposal_E = ($this->referencevalue*(pow((1+0.007),($days/30)))*0.9);
         $proposal_E = floatval(round(($proposal_E+($proposal_E*$factor)), 2));
         // PROPOSTA F
         $proposal_F = ($this->referencevalue);
@@ -62,27 +62,27 @@ class Recovery extends \yii\db\ActiveRecord
             $this->commission = $this->value_input*0.05;
             $this->status = 1;
         }
-        if($this->value_traded <= $proposal_B && $this->value_traded >= $proposal_C){
+        if($this->value_traded < $proposal_A && $this->value_traded >= $proposal_C){
             $this->typeproposed = 1;
             $this->commission = $this->value_input*0.03;
             $this->status = 1;
         }
-        if($this->value_traded <= $proposal_C && $this->value_traded >= $proposal_D){
+        if($this->value_traded < $proposal_B && $this->value_traded >= $proposal_C){
             $this->typeproposed = 2;
             $this->commission = $this->value_input*0.02;
             $this->status = 1;
         }
-        if($this->value_traded <= $proposal_D && $this->value_traded >= $proposal_E){
+        if($this->value_traded < $proposal_C && $this->value_traded >= $proposal_D){
             $this->typeproposed = 3;
             $this->commission = $this->value_input*0.01;
             $this->status = 0;
         }
-        if($this->value_traded <= $proposal_E && $this->value_traded >= $proposal_F){
+        if($this->value_traded < $proposal_D && $this->value_traded >= $proposal_E){
             $this->typeproposed = 4;
             $this->commission = $this->value_input*0.005;
             $this->status = 0;
         }
-        if($this->value_traded <= $proposal_E && $this->value_traded >= $proposal_F){
+        if($this->value_traded < $proposal_E && $this->value_traded >= $proposal_F){
             $this->typeproposed = 5;
             $this->commission = $this->value_input*0.003;
             $this->status = 0;

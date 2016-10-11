@@ -130,7 +130,7 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
         $proposal_D = ($model->referencevalue*(pow((1+0.007),($days/30))));
         $proposal_D = "R$ " . round(($proposal_D+($proposal_D*$factor)), 2);
         // PROPOSTA E
-        $proposal_E = ($model->referencevalue*1.66675);
+        $proposal_E = ($model->referencevalue*(pow((1+0.007),($days/30)))*0.9);
         $proposal_E = "R$ " . round(($proposal_E+($proposal_E*$factor)), 2);
         // PROPOSTA F
         $proposal_F = ($model->referencevalue);

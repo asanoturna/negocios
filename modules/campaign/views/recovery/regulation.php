@@ -40,7 +40,6 @@ Para o setor de recuperação os valores destinados serão rateados de forma pro
 <ul>
   <li>Só será considerada válida como ação ativa e efetiva os registros realizados no período da campanha no sistema SisBr 2.0 no módulo de cobrança administrativa</li>
   <li>Ações como: confecção de contrato, registro da proposta, cálculo da dívida, não são consideradas como ativas e efetivas, portante inirentes ao trabalho</li>
-  <li>As ações serão julgadas conforme comitê de recuperação</li>
   <li>Acordos realizados pelos escritórios terceirizados não serão considerados, desde que possuam ações ativas e efetivas na negociação demonstradas no sistema de cobrança administrativa e aprovados pelo comitê de recuperação.</li>
   <li>A parte destinada ao pagamento do funcionário (poderá ser rateada em até 3 funcionários 20 % para cada parte), porém desde que registradas as ações no sistema e avaliadas pelo comitê</li>
   <li>A parte destinada à agência (equipe) poderá ser rateada com o setor de recuperação, caso seja demonstrada a participação efetiva do mesmo na negociação, avaliado pelo comitê de ercuperação</li>
@@ -50,6 +49,9 @@ Para o setor de recuperação os valores destinados serão rateados de forma pro
   <li>Serão consideradas ações como: ligação efetiva de contato com o associado, avalistas e relacionados, visitas comprovadas e reuniões</li>
   <li>Ao final da campanha a agência destaque no resultado acumulado em 1º lugar receberá uma premiação no mês subsequente de R$ 1.000,00; em 2º lugar de R$ 700,00 e em 3º lugar de 500,00</li>
 </ul>
+
+<div class="alert alert-danger">
+  <i class="fa fa-exclamation-triangle fa-lg" aria-hidden="true"> </i> As ações serão julgadas pelo comitê de recuperação, principalemente os casos com envolvimento do setor Crédito, Cadastro e Cobrança</div>
 
     </div>
     </div>
