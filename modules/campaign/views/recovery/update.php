@@ -64,10 +64,8 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
       <div class="col-md-6">
 
     <?php 
-    echo $form->field($model, 'value_input')->widget(MaskMoney::classname(), [
+    echo $form->field($model, 'value_traded')->widget(MaskMoney::classname(), [
         'pluginOptions' => [
-            //'prefix' => 'R$ ',
-            //'suffix' => ' c',
             'affixesStay' => true,
             'thousands' => '.',
             'decimal' => ',',
@@ -80,10 +78,8 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
     ?>
 
     <?php 
-    echo $form->field($model, 'value_traded')->widget(MaskMoney::classname(), [
+    echo $form->field($model, 'value_input')->widget(MaskMoney::classname(), [
         'pluginOptions' => [
-            //'prefix' => 'R$ ',
-            //'suffix' => ' c',
             'affixesStay' => true,
             'thousands' => '.',
             'decimal' => ',',
@@ -212,6 +208,7 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
                 <td><span class="label label-success">0,30%</span></td>
             </tr>                                     
         </table>
+        <p class="text-warning"><i class="fa fa-info-circle" aria-hidden="true"></i> Propostas A, B e C são aprovadas automaticamente!</p> 
         </div></div>
 
       </div>

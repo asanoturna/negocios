@@ -15,7 +15,7 @@ class Recovery extends \yii\db\ActiveRecord
 
     public function beforeSave($insert)
     {
-//CALCULO DAS PROPOSTAS
+        //CALCULO DAS PROPOSTAS
         $diff = strtotime(date('Y-m-d')) - strtotime($this->expirationdate);
         $days = intval($diff / 60 / 60 / 24);
 
@@ -55,14 +55,14 @@ class Recovery extends \yii\db\ActiveRecord
         $proposal_F = ($this->referencevalue);
         $proposal_F = floatval(round(($proposal_F+($proposal_F*$factor)), 2));
 
-        // Calcula e define a proposta
+        // CALCULA E DEFINE O TIPO DE PROPOSTA BASEADO NO VALOR NEGOCIADO
 
         if($this->value_traded >= $proposal_A){
             $this->typeproposed = 0;
             $this->commission = $this->value_input*0.05;
             $this->status = 1;
         }
-        if($this->value_traded < $proposal_A && $this->value_traded >= $proposal_C){
+        if($this->value_traded < $proposal_A && $this->value_traded >= $proposal_B){
             $this->typeproposed = 1;
             $this->commission = $this->value_input*0.03;
             $this->status = 1;
@@ -83,6 +83,11 @@ class Recovery extends \yii\db\ActiveRecord
             $this->status = 0;
         }
         if($this->value_traded < $proposal_E && $this->value_traded >= $proposal_F){
+            $this->typeproposed = 5;
+            $this->commission = $this->value_input*0.003;
+            $this->status = 0;
+        }
+        if($this->value_traded < $proposal_F){
             $this->typeproposed = 5;
             $this->commission = $this->value_input*0.003;
             $this->status = 0;

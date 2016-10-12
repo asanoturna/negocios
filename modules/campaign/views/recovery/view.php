@@ -14,7 +14,7 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
     <hr/>
 
     <p>
-        <?= Html::a('<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Re-Calcular', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
         <?php
         // Html::a('Excluir', ['delete', 'id' => $model->id], [
         //     'class' => 'btn btn-danger',
@@ -183,14 +183,14 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
                 <td>Diretor</td>
                 <td><?=$proposal_F;?></td>
                 <td><span class="label label-success">0,30%</span></td>
-            </tr>                                     
+            </tr>
         </table>
+        <p class="text-warning"><i class="fa fa-info-circle" aria-hidden="true"></i> Propostas A, B e C são aprovadas automaticamente!</p> 
         </div></div>
 
     <div class="panel panel-default">
     <div class="panel-heading"><strong>Distribuição da Comissão</strong></div>
     <div class="panel-body">
-    <p class="text-warning"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Se o valor da entrada for inferior a 10% do valor negociado, a comissão é zerada!</p>
         <table class="table">
             <tr>
                 <td>FUNCIONÁRIOS</td>
@@ -201,6 +201,7 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
                 <td><?=$comission_e;?></td>
             </tr>                                    
           </table>
+          <p class="text-warning"><i class="fa fa-info-circle" aria-hidden="true"></i> Se o valor da entrada for inferior a 10% do valor negociado, a comissão é zerada!</p>
         </div>
     </div>
 
