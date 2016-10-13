@@ -6,6 +6,8 @@ use app\modules\campaign\models\Recovery;
 use yii\helpers\ArrayHelper;
 use app\models\Location;
 use app\models\User;
+use miloschuman\highcharts\Highcharts;
+use miloschuman\highcharts\SeriesDataHelper;
 
 $this->title = 'Ranking da Campanha Recupere e Ganhe';
 ?>
@@ -21,7 +23,91 @@ $this->title = 'Ranking da Campanha Recupere e Ganhe';
     <div class="panel-body">
 
 <div class="row">
-  <div class="col-md-6">
+    <div class="col-md-4">
+
+        <?php
+        echo Highcharts::widget([
+                'options' => [
+                    'credits' => ['enabled' => false],
+                    'chart'=> [
+                    'height'=> 300,
+                    ],
+                    'title' => [
+                        'text' => '',
+                        'align' => 'center',
+                        'verticalAlign' => 'middle',
+                          'style' => [
+                              'color' => '#0C3E45',
+                          ] 
+                        ],
+                    'colors'=> ['#d43f3a','#BDD530'],
+                    'tooltip'=> ['pointFormat'=> 'Percentual: <b>{point.percentage:.1f}%</b>'],
+                    'plotOptions'=> [
+                        'pie'=> [
+                            'allowPointSelect'=> true,
+                            'cursor'=> 'pointer',
+                            'size'=> '100%',
+                            'innerSize'=> '60%',
+                            'dataLabels'=> [
+                                'enabled'=> true,
+                            ],
+                            'center'=> ['50%', '55%'],
+                        ]
+                    ],
+                    'series'=> [[
+                        'type'=> 'pie',
+                        'name'=> 'Valor',
+                        'data'=> [
+                            ['Total Dívida',  $d],
+                            ['Total Negociado', $n],
+                        ]
+                    ]]
+                ]
+                ]);
+                ?>
+        <?php
+        echo Highcharts::widget([
+                'options' => [
+                    'credits' => ['enabled' => false],
+                    'title' => [
+                        'text' => '',
+                    ],
+                    'colors'=> ['#00A295','#BDD530'],
+                    'xAxis' => [
+                        'categories' => ['R$']
+                    ],
+                    'yAxis' => [
+                        'min' => 0,
+                        'title' => '',
+                    ],                        
+                    'series' => [
+                        [
+                            'type' => 'column',
+                            'name' => 'Acima de 180 dias',
+                            'data' => $typeofdebt1,
+                        ], 
+                        [
+                            'type' => 'column',
+                            'name' => 'Ajuizado',
+                            'data' => $typeofdebt2,
+                        ], 
+                        [
+                            'type' => 'column',
+                            'name' => 'Perdas',
+                            'data' => $typeofdebt3,
+                        ], 
+                        [
+                            'type' => 'column',
+                            'name' => 'Prejuizo',
+                            'data' => $typeofdebt4,
+                        ], 
+                    ],
+                ]
+            ]);
+        ?>
+
+    </div>
+    <div class="col-md-4">
 
 <div class="panel panel-default">
 <div class="panel-heading"><b>Ranking por Negociador</b></div>
@@ -77,7 +163,7 @@ $this->title = 'Ranking da Campanha Recupere e Ganhe';
 </div></div>
 
   </div>
-  <div class="col-md-6">
+  <div class="col-md-4">
 
     <div class="panel panel-default">
       <div class="panel-heading"><b>Ranking por Agência</b></div>

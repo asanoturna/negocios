@@ -154,10 +154,54 @@ class RecoveryController extends Controller
             ],
         ]); 
 
+        $commandoverview = Yii::$app->db->createCommand(
+        "SELECT
+        SUM(r. referencevalue) AS d,
+        SUM(r.value_traded) AS n
+        FROM
+        campaign_recovery AS r");
+        $overview = $commandoverview->queryAll();
+
+        $d = array(); //divida
+        $n = array(); // negociado
+ 
+        for ($i = 0; $i < sizeof($overview); $i++) {
+           $d[] = (float) $overview[$i]["d"];
+           $n[] = (float) $overview[$i]["n"];
+        }
+
+        $commandtypeofdebt = Yii::$app->db->createCommand(
+        "SELECT
+        SUM(IF(r.typeofdebt=0, referencevalue, 0)) as typeofdebt1,
+        SUM(IF(r.typeofdebt=1, referencevalue, 0)) as typeofdebt2,
+        SUM(IF(r.typeofdebt=2, referencevalue, 0)) as typeofdebt3,
+        SUM(IF(r.typeofdebt=3, referencevalue, 0)) as typeofdebt4
+        FROM
+        campaign_recovery as r");
+        $typeofdebt = $commandtypeofdebt->queryAll();
+
+        // $typeofdebt1 = array(); //divida
+        // $typeofdebt2 = array(); //divida
+        // $typeofdebt3 = array(); //divida
+        // $typeofdebt4 = array(); //divida
+ 
+        for ($i = 0; $i < sizeof($typeofdebt); $i++) {
+           $typeofdebt1[] = (float) $typeofdebt[$i]["typeofdebt1"];
+           $typeofdebt2[] = (float) $typeofdebt[$i]["typeofdebt2"];
+           $typeofdebt3[] = (float) $typeofdebt[$i]["typeofdebt3"];
+           $typeofdebt4[] = (float) $typeofdebt[$i]["typeofdebt4"];
+        }
+
         return $this->render('ranking', [
             'model' => $model,
             'dataRankingUser' => $dataRankingUser,
-            'dataRankingLocation' => $dataRankingLocation,           
+            'dataRankingLocation' => $dataRankingLocation,
+            'd' => $d,
+            'n' => $n,
+            'typeofdebt1' => $typeofdebt1,
+            'typeofdebt2' => $typeofdebt2,
+            'typeofdebt3' => $typeofdebt3,
+            'typeofdebt4' => $typeofdebt4,  
         ]);
     }      
 
