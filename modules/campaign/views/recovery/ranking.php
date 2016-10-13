@@ -24,13 +24,15 @@ $this->title = 'Ranking da Campanha Recupere e Ganhe';
 
 <div class="row">
     <div class="col-md-4">
-
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Desempenho</b></div>
+      <div class="panel-body">
         <?php
         echo Highcharts::widget([
                 'options' => [
                     'credits' => ['enabled' => false],
                     'chart'=> [
-                    'height'=> 300,
+                    'height'=> 200,
                     ],
                     'title' => [
                         'text' => '',
@@ -64,11 +66,17 @@ $this->title = 'Ranking da Campanha Recupere e Ganhe';
                     ]]
                 ]
                 ]);
-                ?>
+                ?></div></div>
+<div class="panel panel-default">
+  <div class="panel-heading"><b>Total por Tipo de Dívida</b></div>
+  <div class="panel-body">
         <?php
         echo Highcharts::widget([
                 'options' => [
                     'credits' => ['enabled' => false],
+                    'chart'=> [
+                    'height'=> 200,
+                    ],
                     'title' => [
                         'text' => '',
                     ],
@@ -104,7 +112,7 @@ $this->title = 'Ranking da Campanha Recupere e Ganhe';
                     ],
                 ]
             ]);
-        ?>
+        ?></div></div>
 
     </div>
     <div class="col-md-4">
