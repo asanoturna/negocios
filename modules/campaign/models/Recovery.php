@@ -43,16 +43,16 @@ class Recovery extends \yii\db\ActiveRecord
         $proposal_B = $formula1;
         $proposal_B = floatval(round(($proposal_B+($proposal_B*$factor)), 2));
         // PROPOSTA C
-        $proposal_C = ($this->referencevalue*(pow((1+0.014),($days/30))));
+        $proposal_C = ($this->referencevalue*(pow((1+0.015),($days/30))));
         $proposal_C = floatval(round(($proposal_C+($proposal_C*$factor)), 2));
         // PROPOSTA D
-        $proposal_D = ($this->referencevalue*(pow((1+0.007),($days/30))));
+        $proposal_D = ($this->referencevalue*(pow((1+0.013),($days/30))));
         $proposal_D = floatval(round(($proposal_D+($proposal_D*$factor)), 2));
         // PROPOSTA E
-        $proposal_E = ($this->referencevalue*(pow((1+0.007),($days/30)))*0.9);
+        $proposal_E = ($this->referencevalue*(pow((1+0.011),($days/30))));
         $proposal_E = floatval(round(($proposal_E+($proposal_E*$factor)), 2));
         // PROPOSTA F
-        $proposal_F = ($this->referencevalue);
+        $proposal_F = ($this->referencevalue*(pow((1+0.0067),($days/30))));
         $proposal_F = floatval(round(($proposal_F+($proposal_F*$factor)), 2));
 
         // CALCULA E DEFINE O TIPO DE PROPOSTA BASEADO NO VALOR NEGOCIADO
@@ -92,7 +92,6 @@ class Recovery extends \yii\db\ActiveRecord
             $this->commission = $this->value_input*0.003;
             $this->status = 0;
         }
-
         return parent::beforeSave($insert);
     }
 
@@ -144,7 +143,7 @@ class Recovery extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['negotiator_id', 'location_id', 'clientname', 'clientdoc', 'status'], 'required'],
+            [['negotiator_id', 'location_id', 'clientname', 'clientdoc', 'status','date','value_traded','value_input'], 'required'],
             [['negotiator_id', 'location_id', 'typeproposed', 'status', 'approvedby'], 'integer'],
             [['referencevalue', 'value_traded', 'value_input'], 'number'],
             [['expirationdate', 'date', 'approvedin'], 'safe'],

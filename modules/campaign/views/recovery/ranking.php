@@ -36,36 +36,29 @@ $this->title = 'Ranking da Campanha Recupere e Ganhe';
                     ],
                     'title' => [
                         'text' => '',
-                        'align' => 'center',
-                        'verticalAlign' => 'middle',
-                          'style' => [
-                              'color' => '#0C3E45',
-                          ] 
-                        ],
-                    'colors'=> ['#d43f3a','#BDD530'],
-                    'tooltip'=> ['pointFormat'=> 'Percentual: <b>{point.percentage:.1f}%</b>'],
-                    'plotOptions'=> [
-                        'pie'=> [
-                            'allowPointSelect'=> true,
-                            'cursor'=> 'pointer',
-                            'size'=> '100%',
-                            'innerSize'=> '60%',
-                            'dataLabels'=> [
-                                'enabled'=> true,
-                            ],
-                            'center'=> ['50%', '55%'],
-                        ]
                     ],
-                    'series'=> [[
-                        'type'=> 'pie',
-                        'name'=> 'Valor',
-                        'data'=> [
-                            ['Total Dívida',  $d],
-                            ['Total Negociado', $n],
-                        ]
-                    ]]
+                    'colors'=> ['#d43f3a','#0CA293'],
+                    'xAxis' => [
+                        'categories' => ['R$']
+                    ],
+                    'yAxis' => [
+                        'min' => 0,
+                        'title' => '',
+                    ],                        
+                    'series' => [
+                        [
+                            'type' => 'bar',
+                            'name' => 'Total Dívida',
+                            'data' => $d,
+                        ], 
+                        [
+                            'type' => 'bar',
+                            'name' => 'Total Negociado',
+                            'data' => $n,
+                        ], 
+                    ],
                 ]
-                ]);
+            ]);
                 ?></div></div>
 <div class="panel panel-default">
   <div class="panel-heading"><b>Total por Tipo de Dívida</b></div>
@@ -147,23 +140,23 @@ $this->title = 'Ranking da Campanha Recupere e Ganhe';
                         'contentOptions'=>['style'=>'width: 50%;text-transform: uppercase;text-align:left;vertical-align: middle;'],
                     ],  
                     [
-                        'attribute' => 'aprovado',
-                        'header' => 'Aprovado',
+                        'attribute' => 'value_traded',
+                        'header' => 'Total Negociado',
                         'format' => 'raw',
                         'value' => function ($data) {                      
-                            return "<b class=\"text-success\">".$data["aprovado"]."</b>";
+                            return "<b class=\"text-success\">".$data["value_traded"]."</b>";
                         },
                         'headerOptions' => ['class' => 'text-success','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
                         'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
                     ],    
                     [
-                        'attribute' => 'pendente',
-                        'header' => 'Pendente',
+                        'attribute' => 'value_input',
+                        'header' => 'Total Quit./Entrada',
                         'format' => 'raw',
                         'value' => function ($data) {                      
-                            return "<b class=\"text-danger\">".$data["pendente"]."</b>";
+                            return "<b class=\"text-info\">".$data["value_input"]."</b>";
                         },
-                        'headerOptions' => ['class' => 'text-danger','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                        'headerOptions' => ['class' => 'text-info','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
                         'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
                     ],
                 ],
@@ -192,26 +185,26 @@ $this->title = 'Ranking da Campanha Recupere e Ganhe';
                     },
                     'contentOptions'=>['style'=>'width: 50%;text-align:left'],                    
                 ],                                  
-                [
-                    'attribute' => 'aprovado',
-                    'header' => 'Aprovado',
-                    'format' => 'raw',
-                    'value' => function ($data) {                      
-                        return "<b class=\"text-success\">".$data["aprovado"]."</b>";
-                    },
-                    'headerOptions' => ['class' => 'text-success','style'=>'width: 25%;text-align:right;vertical-align: middle;'],
-                    'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
-                ],    
-                [
-                    'attribute' => 'pendente',
-                    'header' => 'Pendente',
-                    'format' => 'raw',
-                    'value' => function ($data) {                      
-                        return "<b class=\"text-danger\">".$data["pendente"]."</b>";
-                    },
-                    'headerOptions' => ['class' => 'text-danger','style'=>'width: 25%;text-align:right;vertical-align: middle;'],
-                    'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
-                ],                                     
+                    [
+                        'attribute' => 'value_traded',
+                        'header' => 'Total Negociado',
+                        'format' => 'raw',
+                        'value' => function ($data) {                      
+                            return "<b class=\"text-success\">".$data["value_traded"]."</b>";
+                        },
+                        'headerOptions' => ['class' => 'text-success','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                        'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                    ],    
+                    [
+                        'attribute' => 'value_input',
+                        'header' => 'Total Quit./Entrada',
+                        'format' => 'raw',
+                        'value' => function ($data) {                      
+                            return "<b class=\"text-info\">".$data["value_input"]."</b>";
+                        },
+                        'headerOptions' => ['class' => 'text-info','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                        'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                    ],                                   
 
             ],
         ]); ?>
