@@ -90,7 +90,7 @@ class UseradminController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                Yii::$app->session->setFlash('useradmin-success', 'Alterãção realizada com sucesso!');
+                Yii::$app->session->setFlash('useradmin-success', 'Alteração realizada com sucesso!');
                 return $this->redirect(['index']);
         } else {
             return $this->render('update', [
@@ -111,7 +111,7 @@ class UseradminController extends Controller
         if (($model = Useradmin::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            throw new NotFoundHttpException('Página não encontrada!');
         }
     }   
 }
