@@ -173,7 +173,8 @@ $this->title = "Detalhes da visita #" . $model->id;
                         'height' => 400,
                         'mapType' => Map::MAP_TYPE_ROADMAP,
                         'markers' => [
-                            ['position' => 'Hotel Master'],
+                            ['position' => 'Governador Valadares, MG '.$model->localization_map,],
+                            ['position' => 'Governador Valadares, rua belo horizonte, 761 '],
                         ]
                     ]);
                 }else{
