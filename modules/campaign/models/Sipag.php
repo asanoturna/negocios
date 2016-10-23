@@ -185,10 +185,23 @@ class Sipag extends \yii\db\ActiveRecord
         return self::$Static_flag_cielo_locked[$this->flag_cielo_locked];
     }  
 
+    // situation
+    public static $Static_situation = [
+        'PENDENTE', 
+        'APROVADO', 
+        ];   
+    public function getSituation()
+    {
+        if ($this->situation === null) {
+            return null;
+        }
+        return self::$Static_situation[$this->situation];
+    }
+
     public function rules()
     {
         return [
-            [['establishmenttype', 'establishmentname','visited', 'accredited', 'status', 'locked', 'anticipation', 'status','flag_sipag', 'flag_sipag_locked', 'flag_rede', 'flag_rede_locked', 'flag_cielo', 'flag_cielo_locked'], 'required'],
+            [['establishmenttype', 'establishmentname','visited', 'accredited', 'status', 'locked', 'anticipation', 'status','flag_sipag', 'flag_sipag_locked', 'flag_rede', 'flag_rede_locked', 'flag_cielo', 'flag_cielo_locked', 'situation'], 'required'],
             [['establishmenttype', 'visited', 'accredited', 'status', 'locked', 'anticipation', 'status', 'user_id', 'checkedby_id','flag_sipag', 'flag_sipag_locked', 'flag_rede', 'flag_rede_locked', 'flag_cielo', 'flag_cielo_locked'], 'integer'],
             [['date', 'created', 'updated'], 'safe'],
             [['observation'], 'string'],

@@ -337,22 +337,26 @@ $this->title = 'Ação Foco SIPAG';
                 'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
                 'contentOptions'=>['style'=>'width: 8%;text-align:left'],
             ],
-            [
-                'attribute' => 'checkedby_id',
-                'format' => 'raw',
-                'enableSorting' => true,
-                'value' => function ($model) {                      
-                    return $model->checkedby ? $model->checkedby->username : null;
-                },
-                'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
-                'contentOptions'=>['style'=>'width: 8%;text-align:left'],
-            ],
             // [
-            //   'attribute' => 'date',
-            //   'enableSorting' => true,
-            //   'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-            //   'format' => ['date', 'php:d/m/Y'],
-            // ],             
+            //     'attribute' => 'checkedby_id',
+            //     'format' => 'raw',
+            //     'enableSorting' => true,
+            //     'value' => function ($model) {                      
+            //         return $model->checkedby ? $model->checkedby->username : null;
+            //     },
+            //     'filter' => ArrayHelper::map(User::find()->orderBy('username')->asArray()->all(), 'id', 'username'),
+            //     'contentOptions'=>['style'=>'width: 8%;text-align:left'],
+            // ],
+            [
+                'attribute' => 'situation',
+                'enableSorting' => true,
+                'format' => 'raw',
+                'value' => function ($data) {                      
+                        return $data->getSituation() == 'APROVADO' ? '<span class="label label-success">APROVADO</span>' : '<span class="label label-warning">PENDENTE</span>';
+                        },  
+                'filter' => Sipag::$Static_situation,
+                'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],             
             [
               'class' => 'yii\grid\ActionColumn',
               'header' => 'Ações',  
