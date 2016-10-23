@@ -131,9 +131,17 @@ public function actionRanking()
             ],
         ]);
 
+        $commandNo = Yii::$app->db->createCommand("SELECT COUNT(v.id) as totalno FROM campaign_sipag v WHERE situation = 0");
+        $totalno = $commandNo->queryScalar();   
+
+        $commandYes = Yii::$app->db->createCommand("SELECT COUNT(v.id) as totalyes FROM campaign_sipag v WHERE situation = 1");
+        $totalyes = $commandYes->queryScalar();
+
         return $this->render('ranking', [
             'model' => $model,
-            'dataRankingUser' => $dataRankingUser,          
+            'dataRankingUser' => $dataRankingUser,
+            'totalno' => $totalno,
+            'totalyes'   => $totalyes,
         ]);
     }         
 
