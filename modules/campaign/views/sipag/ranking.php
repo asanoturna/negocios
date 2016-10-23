@@ -25,7 +25,7 @@ $this->title = 'Ranking da Campanha Ação Foco SIPAG';
 <div class="row">
 		<div class="col-md-3">
             <div class="panel panel-default">
-              <div class="panel-heading"><b>Aprovado?	</b></div>
+              <div class="panel-heading"><b>Aprovados x Não Aprovados</b></div>
               <div class="panel-body" style="height: 450px;">
                 <?php
                 $n = abs(round((int)$totalno));
@@ -42,10 +42,10 @@ $this->title = 'Ranking da Campanha Ação Foco SIPAG';
                         'verticalAlign' => 'middle',
                           'style' => [
                               'fontSize'=> '12px',
-                              'color' => '#00A295',
+                              'color' => '#0D4549',
                           ] 
                         ],
-                    'colors'=> ['#D9534F','#00A295'],
+                    'colors'=> ['#D9534F','#5CB85C'],
                     'tooltip'=> ['pointFormat'=> 'Percentual: <b>{point.percentage:.1f}%</b>'],
                     'plotOptions'=> [
                         'pie'=> [
