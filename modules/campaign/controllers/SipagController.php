@@ -92,6 +92,7 @@ class SipagController extends Controller
         $model = $this->findModel($id);
 
         $model->checkedby_id = Yii::$app->user->id;
+        $model->situation = 1;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

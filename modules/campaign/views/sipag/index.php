@@ -189,12 +189,16 @@ $this->title = 'Ação Foco SIPAG';
 
     <div class="panel panel-default">
     <div class="panel-body">
+    <?php
+    yii\bootstrap\Modal::begin(['id' =>'modal']);
+    yii\bootstrap\Modal::end();
+    ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'tableOptions' => ['class'=>'table table-striped table-hover'],
         'emptyText'    => '</br><p class="text-info">Nenhum registro encontrado!</p>',  
-        'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '<span class="not-set">(não informado)</span>'],      
+        'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '<span class="not-set">(não informado)</span>'],
         'columns' => [
             [
                 'attribute' => 'id',
@@ -204,13 +208,18 @@ $this->title = 'Ação Foco SIPAG';
             [
                 'attribute' => 'establishmentname',
                 'format' => 'raw',
-                'value' => function ($model) {                      
+                'value' => function ($model) {
                       return $model->establishmentname."<p class=\"text-muted\">".$model->expedient."</p>";
-                },                
+                },
                 'contentOptions'=>['style'=>'width: 10%;text-align:left'],
             ],
             [
                 'attribute' => 'address',
+                'value'=> function($model){
+                      return  '<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> '.Html::a($model->address, ['view','id'=>$model->id,'#' => 'map'], [
+                                    'title' => 'Clique para ver o mapa']);
+                },
+                'format' => 'raw',
                 'contentOptions'=>['style'=>'width: 10%;text-align:left'],
             ],
             [
@@ -402,7 +411,15 @@ $this->title = 'Ação Foco SIPAG';
                 ],
             ],
         ],
-    ]); ?>
+    ]); 
+    $this->registerJs("$(function() {
+    $('#popupModal').click(function(e) {
+     e.preventDefault();
+     $('#modal').modal('show').find('.modal-content')
+     .load($(this).attr('href'));
+    });
+    });");
+    ?>
     </div>
     </div>
 </div>

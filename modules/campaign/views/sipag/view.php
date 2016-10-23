@@ -28,7 +28,10 @@ $this->title = 'Ação Foco SIPAG';
 
     <div class="panel panel-default">
     <div class="panel-body">
-    <?= DetailView::widget([
+
+    <div class="row">
+      <div class="col-md-6">
+        <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
@@ -38,9 +41,33 @@ $this->title = 'Ação Foco SIPAG';
                 'value' => $model->Establishmenttype,
             ],
             'establishmentname',
-            'address',
-            'expedient',
-            // ---
+            //'address',
+            'expedient',            
+            'user_id',
+            [
+                'attribute' => 'updated',
+                'format' => 'raw',
+                'value' => date("d/m/Y",  strtotime($model->updated))
+            ],
+            'observation:ntext',
+            [ 
+                'attribute' => 'situation',
+                'format' => 'raw',
+                'value' => $model->situation == 0 ? '<span class="label label-warning">PENDENTE</span>' : '<span class="label label-success">APROVADO</span>',
+            ],
+            'checkedby_id',
+            [ 
+                'attribute' => 'date',
+                'format' => 'raw',
+                'value' => date("d/m/Y",  strtotime($model->date))
+            ],
+        ],
+        ]) ?>
+      </div>
+      <div class="col-md-6">
+        <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
             [
                 'attribute' => 'flag_sipag',  
                 'format' => 'raw',
@@ -70,18 +97,11 @@ $this->title = 'Ação Foco SIPAG';
                 'attribute' => 'flag_cielo_locked',  
                 'format' => 'raw',
                 'value' => $model->Flagcielolocked == 'SIM' ?  '<span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>' : '<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>',
-            ],
-
-            // ---            
+            ],         
             [
                 'attribute' => 'visited',  
                 'format' => 'raw',
                 'value' => $model->Visited,
-            ],
-            [
-                'attribute' => 'accredited',  
-                'format' => 'raw',
-                'value' => $model->Accredited,
             ],
             [
                 'attribute' => 'accredited',  
@@ -97,29 +117,40 @@ $this->title = 'Ação Foco SIPAG';
                 'attribute' => 'status',  
                 'format' => 'raw',
                 'value' => $model->Status,
-            ],             
-            'user_id',
-            [
-                'attribute' => 'updated',
-                'format' => 'raw',
-                'value' => date("d/m/Y",  strtotime($model->updated))
             ],
-            'observation:ntext',
         ],
-    ]) ?>
+        ]) ?>
+      </div>
+    </div>
 
     <hr/>
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'checkedby_id',
-            [ 
-                'attribute' => 'date',
-                'format' => 'raw',
-                'value' => date("d/m/Y",  strtotime($model->date))
-            ],             
-        ],
-    ]) ?>    
+    <div class="row container-fluid">
+        <div class="panel panel-default">
+          <div class="panel-heading"><a name="map"></a><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> <strong>Mapa da Localização</strong> <?php echo $model->address;?></div>
+          <div class="panel-body">
+                <?php
+                use tugmaks\GoogleMaps\Map;
+                if($model->address <> ''){  
+                    echo Map::widget([
+                        'apiKey'=> 'AIzaSyDu0tafuRLYW1BW7OgMe7CuFIDAwCXS4A0',
+                        'zoom' => 16,
+                        'center'=> 'Governador Valadares, MG '.$model->address,
+                        'width' => 900,
+                        'height' => 400,
+                        'mapType' => Map::MAP_TYPE_ROADMAP,
+                        'markers' => [
+                            ['position' => 'Governador Valadares, MG '.$model->address,],
+                            ['position' => 'Governador Valadares, rua belo horizonte, 761 '],
+                        ]
+                    ]);
+                }else{
+                    echo "<span class=\"not-set\">(endereço não informado)</span>";
+                }
+                
+                ?>
+          </div>
+        </div>
+    </div>    
     </div>
     </div>
 

@@ -234,7 +234,8 @@ class Sipag extends \yii\db\ActiveRecord
             'flag_rede' => 'REDE',
             'flag_rede_locked' => 'REDE Travado',
             'flag_cielo' => 'CIELO',
-            'flag_cielo_locked' => 'CIELO Travado',            
+            'flag_cielo_locked' => 'CIELO Travado',
+            'situation' => 'Situação',
         ];
     }
 

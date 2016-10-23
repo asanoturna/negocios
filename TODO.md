@@ -20,6 +20,7 @@ site/user.php
 ---> TESTAR http://www.yiiframework.com/extension/yii2-matchheight-view/
 ---> TESTAR http://www.yiiframework.com/extension/yii2-masonry-view/
 
+- Criar Dashboard na área administrativa (espço ocupado por assets, acessos, etc)
 - Criar Área de Alertas (local mais visivel no top da intranet)
 - Criar Área de Notícias (comentarios? likes?)
 - Criar Gestão de arquivos (incluir a area Planilha Base e categorias da intranet antiga)
