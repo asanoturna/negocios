@@ -187,8 +187,8 @@ class Sipag extends \yii\db\ActiveRecord
 
     // situation
     public static $Static_situation = [
-        'PENDENTE', 
-        'APROVADO', 
+        'NÃO', 
+        'SIM', 
         ];   
     public function getSituation()
     {
@@ -235,7 +235,7 @@ class Sipag extends \yii\db\ActiveRecord
             'flag_rede_locked' => 'REDE Travado',
             'flag_cielo' => 'CIELO',
             'flag_cielo_locked' => 'CIELO Travado',
-            'situation' => 'Situação',
+            'situation' => 'Aprovado?',
         ];
     }
 

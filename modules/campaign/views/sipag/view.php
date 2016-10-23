@@ -53,7 +53,7 @@ $this->title = 'Ação Foco SIPAG';
             [ 
                 'attribute' => 'situation',
                 'format' => 'raw',
-                'value' => $model->situation == 0 ? '<span class="label label-warning">PENDENTE</span>' : '<span class="label label-success">APROVADO</span>',
+                'value' => $model->situation == 0 ? '<span class="label label-danger">NÃO</span>' : '<span class="label label-success">SIM</span>',
             ],
             'checkedby_id',
             [ 

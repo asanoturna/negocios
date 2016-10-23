@@ -361,7 +361,7 @@ $this->title = 'Ação Foco SIPAG';
                 'enableSorting' => true,
                 'format' => 'raw',
                 'value' => function ($data) {                      
-                        return $data->getSituation() == 'APROVADO' ? '<span class="label label-success">APROVADO</span>' : '<span class="label label-warning">PENDENTE</span>';
+                        return $data->getSituation() == 'SIM' ? '<span class="label label-success">SIM</span>' : '<span class="label label-danger">NÃO</span>';
                         },  
                 'filter' => Sipag::$Static_situation,
                 'contentOptions'=>['style'=>'width: 5%;text-align:center'],
