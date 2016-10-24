@@ -214,7 +214,7 @@ class Recovery extends \yii\db\ActiveRecord
 
         switch ($this->typeofdebt) {
             case 0:
-                $proposal = $proposal;
+                $proposal = $proposal+($proposal*1);
                 break;
             case 1:
                 $proposal = $proposal + ($proposal*0.2);
@@ -240,7 +240,7 @@ class Recovery extends \yii\db\ActiveRecord
 
         switch ($this->typeofdebt) {
             case 0:
-                $proposal = $proposal;
+                $proposal = $proposal+($proposal*1);
                 break;
             case 1:
                 $proposal = $proposal + ($proposal*0.2);
@@ -261,11 +261,11 @@ class Recovery extends \yii\db\ActiveRecord
         $diff = strtotime(date('Y-m-d')) - strtotime($this->expirationdate);
         $days = intval($diff / 60 / 60 / 24);
 
-        $proposal = $this->referencevalue*(pow((1+0.014),($days/30)));
+        $proposal = $this->referencevalue*(pow((1+0.015),($days/30)));
 
         switch ($this->typeofdebt) {
             case 0:
-                $proposal = $proposal;
+                $proposal = $proposal+($proposal*1);
                 break;
             case 1:
                 $proposal = $proposal + ($proposal*0.2);
