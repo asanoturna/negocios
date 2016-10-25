@@ -214,16 +214,16 @@ class Recovery extends \yii\db\ActiveRecord
 
         switch ($this->typeofdebt) {
             case 0:
-                $proposal = $proposal+($proposal*1);
+                $proposal = ($proposal*1);
                 break;
             case 1:
-                $proposal = $proposal + ($proposal*0.2);
+                $proposal = ($proposal*0.2);
                 break;
             case 2:
-                $proposal = $proposal + ($proposal*0.1);
+                $proposal = ($proposal*0.1);
                 break;
             case 3:
-                $proposal = $proposal + ($proposal*0.1);
+                $proposal = ($proposal*0.1);
                 break;
         }
 
@@ -240,16 +240,16 @@ class Recovery extends \yii\db\ActiveRecord
 
         switch ($this->typeofdebt) {
             case 0:
-                $proposal = $proposal+($proposal*1);
+                $proposal = ($proposal*1);
                 break;
             case 1:
-                $proposal = $proposal + ($proposal*0.2);
+                $proposal = ($proposal*0.2);
                 break;
             case 2:
-                $proposal = $proposal + ($proposal*0.1);
+                $proposal = ($proposal*0.1);
                 break;
             case 3:
-                $proposal = $proposal + ($proposal*0.1);
+                $proposal = ($proposal*0.1);
                 break;
         }
 
@@ -265,16 +265,16 @@ class Recovery extends \yii\db\ActiveRecord
 
         switch ($this->typeofdebt) {
             case 0:
-                $proposal = $proposal+($proposal*1);
+                $proposal = ($proposal*1);
                 break;
             case 1:
-                $proposal = $proposal + ($proposal*0.2);
+                $proposal = ($proposal*0.2);
                 break;
             case 2:
-                $proposal = $proposal + ($proposal*0.1);
+                $proposal = ($proposal*0.1);
                 break;
             case 3:
-                $proposal = $proposal + ($proposal*0.1);
+                $proposal = ($proposal*0.1);
                 break;
         }
 

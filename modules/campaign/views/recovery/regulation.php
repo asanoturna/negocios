@@ -20,13 +20,23 @@ $this->title = 'Regulamento da Campanha Recupere e Ganhe';
     <div class="panel panel-default">
     <div class="panel-body">
 
-<h3>Objetivo</h3>	Impactar positivamente o resultado dos recebimentos da carteira de inadimplência da cooperativa de tal forma a possibilitar o alcance das metas de 2016 e premiar os funcionários e agências envolvidos		
+<div class="media">
+  <div class="media-left media-middle">
+    <a href="#">
+      <img src="<?php echo Yii::$app->request->baseUrl;?>/images/logo-recovery.png" class="media-object">
+    </a>
+  </div>
+  <div class="media-body">
+<h3>Objetivo</h3> Impactar positivamente o resultado dos recebimentos da carteira de inadimplência da cooperativa de tal forma a possibilitar o alcance das metas de 2016 e premiar os funcionários e agências envolvidos   
 
-<h3>Vigência</h3>	
-01/09/2016	31/12/2016
+<h3>Vigência</h3> 
+01/09/2016  31/12/2016
 
-<h3>Associados Envolvidos</h3>	
-Participarão da campaha a base de associados direcionada pelo setor de recuperação e disponibilizada na intranet.																								
+<h3>Associados Envolvidos</h3>  
+Participarão da campaha a base de associados direcionada pelo setor de recuperação e disponibilizada na intranet. 
+  </div>
+</div>
+
 <h3>Participação</h3>	
 Todos os funcionários que atuarem ativa e efetivamente na negociação da dívida.													
 O Setor de recuperação de crédito.													
