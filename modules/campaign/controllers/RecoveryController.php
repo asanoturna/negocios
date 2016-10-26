@@ -122,13 +122,13 @@ class RecoveryController extends Controller
 
         $dataRankingUser = new SqlDataProvider([
             'sql' => "SELECT user.id, avatar, fullname, 
-                SUM(if(campaign_recovery.status = 0, campaign_recovery.value_traded, NULL)) as  value_traded,
+                SUM(if(campaign_recovery.status = 1, campaign_recovery.value_traded, NULL)) as  value_traded,
                 SUM(if(campaign_recovery.status = 1, campaign_recovery.value_input, NULL)) as  value_input
                 FROM campaign_recovery
                 INNER JOIN `user` 
                 ON campaign_recovery.negotiator_id = `user`.id
                 GROUP BY `user`.id
-                ORDER BY value_traded DESC",
+                ORDER BY value_input DESC",
             'totalCount' => 100,
             'sort' =>false,
             'key'  => 'fullname',
@@ -139,13 +139,13 @@ class RecoveryController extends Controller
 
         $dataRankingLocation = new SqlDataProvider([
             'sql' => "SELECT location.id, shortname, fullname, 
-                SUM(if(campaign_recovery.status = 0, campaign_recovery.value_traded, NULL)) as  value_traded,
+                SUM(if(campaign_recovery.status = 1, campaign_recovery.value_traded, NULL)) as  value_traded,
                 SUM(if(campaign_recovery.status = 1, campaign_recovery.value_input, NULL)) as  value_input
                 FROM campaign_recovery
                 INNER JOIN `location` 
                 ON campaign_recovery.location_id = location.id
                 GROUP BY `location`.id
-                ORDER BY value_traded DESC",
+                ORDER BY value_input DESC",
             'totalCount' => 100,
             'sort' =>false,
             'key'  => 'fullname',

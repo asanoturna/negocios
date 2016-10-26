@@ -1,11 +1,5 @@
-INTRANET
+TODO
 --------------------
-Test base
-ALTER TABLE `campaign_sipag` ADD `situation` INT NOT NULL DEFAULT '0' ;
-UPDATE campaign_sipag SET situation = 1 WHERE campaign_sipag.checkedby_id <> '';
-
---------------------
-
 Bloquear uso do IE versão 8 pra baixo
 Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc)
 Verificar permissoes nos controllers (permissão apenas para admin)

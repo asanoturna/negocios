@@ -104,11 +104,11 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
         if ($model->typeofdebt == 0) {
             $factor = 1;
         } elseif ($model->typeofdebt == 1) {
-            $factor = 0.2;
+            $factor = 1.2;
         } elseif ($model->typeofdebt == 2) {
-            $factor = 0.1;
+            $factor = 1.1;
         } elseif ($model->typeofdebt == 3) {
-            $factor = 0.1;
+            $factor = 1.1;
         }
 
         // FORMULAS
