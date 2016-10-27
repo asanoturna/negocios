@@ -53,13 +53,13 @@ class Sipag extends \yii\db\ActiveRecord
 
     // accredited
     public static $Static_accredited = [
-        'SIM',
-        'NÃO',
-        'SIPAG', 
-        'CIELO', 
-        'REDE',
-        'OUTROS',
-        'PENDENTE',
+        'SIM', //0
+        'NÃO', //1
+        // 'SIPAG', 
+        // 'CIELO', 
+        // 'REDE',
+        'OUTROS', //2
+        'PENDENTE', //3
         ];
     public function getAccredited()
     {

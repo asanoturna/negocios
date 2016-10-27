@@ -26,7 +26,7 @@ use app\modules\campaign\models\Sipag;
     <?= $form->field($model, 'expedient')->textInput(['maxlength' => true]) ?>
 
     <fieldset >
-    <legend>Dominílios já existentes na Cooperativa</legend>
+    <legend>Dominílios já existentes</legend>
     <div class="row">
       <div class="col-md-6"><?= $form->field($model, 'flag_sipag')->checkbox() ?></div>
       <div class="col-md-6"><?= $form->field($model, 'flag_sipag_locked')->checkbox() ?></div>
