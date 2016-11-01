@@ -29,6 +29,9 @@ class Sipag extends \yii\db\ActiveRecord
         'MEDICOS', // 9
         'LABORATORIOS', // 10
         'HOSPITAIS', // 11
+        'ASSOCIADO PJ SEM SIPAG', //12
+        'SIPAG CANCELADO', //13
+        'SIPAG SUSPENSO', //14
         ];
     public function getEstablishmenttype()
     {
