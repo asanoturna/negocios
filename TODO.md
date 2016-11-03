@@ -1,5 +1,31 @@
 TODO
 --------------------
+
+REATIVAÇÃO ASSOCIADOS
+id
+location_id
+client_name
+client_risk
+client_doc
+client_inactive_since
+client_last_renovated_register
+client_income
+restrictions_serasa
+restrictions_ccf
+restrictions_scr
+user_id
+agent_visit_number
+agent_registration_renewal
+agent_overdraft_value
+agent_card_value
+supervisor_package_rate
+manager_inactive_meeting
+manager_approval
+manager_final_opinion
+
+*********************
+
+Testar Theme usado em https://github.com/rokorolov/parus
 Bloquear uso do IE versão 8 pra baixo
 Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc)
 Verificar permissoes nos controllers (permissão apenas para admin)
