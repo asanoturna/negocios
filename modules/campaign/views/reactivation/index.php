@@ -43,15 +43,23 @@ $this->title = 'Reativação de Associados';
             ],             
             [
             'attribute' => 'client_risk',
-            'contentOptions'=>['style'=>'width: 8%;text-align:center'],
-            ],            
+            'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+            ],   
             [
-            'attribute' => 'accomplished',
-            'contentOptions'=>['style'=>'width: 8%;text-align:center'],
-            ], 
+            'attribute' => 'client_doc',
+            'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+            ],
+            [
+            'attribute' => 'client_last_renovated_register',
+            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],  
+            [
+            'attribute' => 'client_income',
+            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],  
             [
             'class' => 'yii\grid\ActionColumn',
-            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            'contentOptions'=>['style'=>'width: 10%;text-align:center'],
             ],
         ],
     ]); ?>

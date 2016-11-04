@@ -14,7 +14,7 @@ class ReactivationSearch extends Reactivation
         return [
             [['location_id', 'user_id'], 'required'],
             [['agent_visit_number'], 'number'],
-            [['agent_registration_renewal', 'agent_overdraft_value', 'agent_card_value', 'supervisor_package_rate',
+            [['id','client_name','client_risk','agent_registration_renewal', 'agent_overdraft_value', 'agent_card_value', 'supervisor_package_rate',
             'manager_inactive_meeting','manager_approval','manager_final_opinion'], 'safe'],
             [['location_id', 'user_id'], 'integer'],
 
@@ -48,9 +48,8 @@ class ReactivationSearch extends Reactivation
         'location_id' => $this->location_id,
         'client_risk' => $this->client_risk,
         'client_doc' => $this->client_doc,
-        'client_inactive_since' => $this->client_inactive_since,
         'client_last_renovated_register' => $this->client_last_renovated_register,
-        'client_income' => $this->client_income,
+        
         'restrictions_serasa' => $this->restrictions_serasa,
         'restrictions_ccf' => $this->restrictions_ccf,
         'restrictions_scr' => $this->restrictions_scr,

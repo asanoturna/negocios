@@ -33,7 +33,6 @@ class Reactivation extends \yii\db\ActiveRecord
         'client_name' => 'Nome',
         'client_risk' => 'Risco',
         'client_doc' => 'CPF/CNPJ',
-        'client_inactive_since' => 'Inativo Desde',
         'client_last_renovated_register' => 'Ultima Renovação Cadastral',
         'client_income' => 'Renda',
         'restrictions_serasa' => 'Restrição Serasa',
