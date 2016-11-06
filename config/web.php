@@ -61,7 +61,8 @@ $config = [
         'campaign'          => 'app\modules\campaign\Module',
         'resourcerequest'   => 'app\modules\resourcerequest\Module',
         'productivity'      => 'app\modules\productivity\Module',
-        'visits'            => 'app\modules\visits\Module',                                    
+        'visits'            => 'app\modules\visits\Module',                    
+        'ideas'             => 'app\modules\ideas\Module',
     ],    
     'params' => $params,
 ];
