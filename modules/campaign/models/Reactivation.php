@@ -15,8 +15,8 @@ class Reactivation extends \yii\db\ActiveRecord
 
     // restrictions_serasa
     public static $Static_serasa = [
-        'NÃO',
-        'SIM',
+        'Regular',
+        'Restrição',
         ];   
     public function getSerasa()
     {
@@ -28,8 +28,8 @@ class Reactivation extends \yii\db\ActiveRecord
 
     // restrictions_ccf
     public static $Static_ccf = [
-        'NÃO',
-        'SIM',
+        'Regular',
+        'Restrição',
         ];   
     public function getCcf()
     {
@@ -41,8 +41,8 @@ class Reactivation extends \yii\db\ActiveRecord
 
     // restrictions_scr
     public static $Static_scr = [
-        'NÃO',
-        'SIM',
+        'Regular',
+        'Restrição',
         ];   
     public function getScr()
     {
@@ -50,6 +50,32 @@ class Reactivation extends \yii\db\ActiveRecord
             return null;
         }
         return self::$Static_scr[$this->restrictions_scr];
+    }
+
+    // manager_approval
+    public static $Static_managerapproval = [
+        'Aprovado',
+        'Pendente',
+        ];   
+    public function getManagerapproval()
+    {
+        if ($this->manager_approval === null) {
+            return null;
+        }
+        return self::$Static_managerapproval[$this->manager_approval];
+    }
+
+    // manager_final_opinion
+    public static $Static_managerfinalopinion = [
+        'Manter',
+        'Desligar',
+        ];   
+    public function getManagerfinalopinion()
+    {
+        if ($this->manager_final_opinion === null) {
+            return null;
+        }
+        return self::$Static_managerfinalopinion[$this->manager_final_opinion];
     }
 
     public function rules()

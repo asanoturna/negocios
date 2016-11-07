@@ -171,6 +171,21 @@ $this->title = 'Reativação de Associados';
             'attribute' => 'manager_approval',
             'encodeLabel' => false,
             'label' => 'Aprovação<br/>Trabalho junto<br/>ao associado',
+            'value' => function($data) {
+              return $data->getManagerapproval();
+            },
+            'filter' => Reactivation::$Static_managerapproval,
+            'contentOptions'=>['class'=>'success','style'=>'width: 5%;text-align:center'],
+            'headerOptions'=>['class'=>'success','style'=>'text-align:center;vertical-align: middle;'],
+            ],
+            [
+            'attribute' => 'manager_final_opinion',
+            'encodeLabel' => false,
+            'label' => 'Parecer<br/>Final',
+            'value' => function($data) {
+              return $data->getManagerfinalopinion();
+            },
+            'filter' => Reactivation::$Static_managerfinalopinion,
             'contentOptions'=>['class'=>'success','style'=>'width: 5%;text-align:center'],
             'headerOptions'=>['class'=>'success','style'=>'text-align:center;vertical-align: middle;'],
             ],
