@@ -13,8 +13,22 @@ class ReactivationSearch extends Reactivation
     {
         return [
             [['agent_visit_number'], 'number'],
-            [['id','client_name','client_doc','client_risk','client_last_renovated_register', 'client_income', 'agent_card_value', 'supervisor_package_rate',
-            'manager_inactive_meeting','manager_approval','manager_final_opinion'], 'safe'],
+            [[
+            'id','client_name',
+            'client_doc',
+            'client_risk',
+            'client_last_renovated_register',
+            'client_income',
+            'agent_card_value',
+            'restrictions_serasa',
+            'restrictions_ccf',
+            'restrictions_scr',
+            'agent_registration_renewal',
+            'agent_overdraft_value',
+            'supervisor_package_rate',
+            'manager_inactive_meeting',
+            'manager_approval',
+            'manager_final_opinion'], 'safe'],
             [['location_id', 'user_id'], 'integer'],
 
         ];

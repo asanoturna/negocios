@@ -94,7 +94,7 @@ class ReactivationController extends Controller
 
     protected function findModel($id)
     {
-        if (($model = Capitalaction::findOne($id)) !== null) {
+        if (($model = Reactivation::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

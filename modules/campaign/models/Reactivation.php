@@ -13,6 +13,45 @@ class Reactivation extends \yii\db\ActiveRecord
         return 'campaign_reactivation';
     }
 
+    // restrictions_serasa
+    public static $Static_serasa = [
+        'NÃO',
+        'SIM',
+        ];   
+    public function getSerasa()
+    {
+        if ($this->restrictions_serasa === null) {
+            return null;
+        }
+        return self::$Static_serasa[$this->restrictions_serasa];
+    }
+
+    // restrictions_ccf
+    public static $Static_ccf = [
+        'NÃO',
+        'SIM',
+        ];   
+    public function getCcf()
+    {
+        if ($this->restrictions_ccf === null) {
+            return null;
+        }
+        return self::$Static_ccf[$this->restrictions_ccf];
+    }
+
+    // restrictions_scr
+    public static $Static_scr = [
+        'NÃO',
+        'SIM',
+        ];   
+    public function getScr()
+    {
+        if ($this->restrictions_scr === null) {
+            return null;
+        }
+        return self::$Static_scr[$this->restrictions_scr];
+    }
+
     public function rules()
     {
         return [
@@ -29,7 +68,7 @@ class Reactivation extends \yii\db\ActiveRecord
     {
         return [
         'id' => 'ID',
-        'location_id' => 'Local',
+        'location_id' => 'PA',
         'client_name' => 'Nome',
         'client_risk' => 'Risco',
         'client_doc' => 'CPF/CNPJ',
