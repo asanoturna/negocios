@@ -17,6 +17,8 @@ $this->title = 'Reativação de Associados';
     <hr/>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+    <div class="panel panel-default">
+    <div class="panel-body">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -26,6 +28,7 @@ $this->title = 'Reativação de Associados';
             [
             'attribute' => 'id',
             'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            'headerOptions' => ['class' => 'text-center'],
             ],
             [
             'attribute' => 'location_id',
@@ -36,32 +39,40 @@ $this->title = 'Reativação de Associados';
                     },  
             'filter' => ArrayHelper::map(Location::find()->orderBy('shortname')->asArray()->all(), 'id', 'shortname'),
             'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            'headerOptions' => ['class' => 'text-center'],
             ],
             [
             'attribute' => 'client_name',
-            'contentOptions'=>['style'=>'width: 30%;text-align:center'],
-            ],             
-            [
-            'attribute' => 'client_risk',
-            'contentOptions'=>['style'=>'width: 10%;text-align:center'],
-            ],   
+            'contentOptions'=>['style'=>'width: 20%;text-align:left'],
+            'headerOptions' => ['class' => 'text-center'],
+            ],
             [
             'attribute' => 'client_doc',
             'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+            'headerOptions' => ['class' => 'text-center'],
+            ],
+            [
+            'attribute' => 'client_risk',
+            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            'headerOptions' => ['class' => 'text-center'],
             ],
             [
             'attribute' => 'client_last_renovated_register',
+            'enableSorting' => true,
             'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-            ],  
+            'headerOptions' => ['class' => 'text-center'],
+            'format' => ['date', 'php:d/m/Y'],
+            ],
             [
             'attribute' => 'client_income',
             'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-            ],  
+            ],
             [
             'class' => 'yii\grid\ActionColumn',
             'contentOptions'=>['style'=>'width: 10%;text-align:center'],
             ],
         ],
     ]); ?>
+    </div></div>
 
 </div>

@@ -12,9 +12,8 @@ class ReactivationSearch extends Reactivation
     public function rules()
     {
         return [
-            [['location_id', 'user_id'], 'required'],
             [['agent_visit_number'], 'number'],
-            [['id','client_name','client_risk','agent_registration_renewal', 'agent_overdraft_value', 'agent_card_value', 'supervisor_package_rate',
+            [['id','client_name','client_doc','client_risk','client_last_renovated_register', 'client_income', 'agent_card_value', 'supervisor_package_rate',
             'manager_inactive_meeting','manager_approval','manager_final_opinion'], 'safe'],
             [['location_id', 'user_id'], 'integer'],
 
@@ -47,9 +46,7 @@ class ReactivationSearch extends Reactivation
         'id' => $this->id,
         'location_id' => $this->location_id,
         'client_risk' => $this->client_risk,
-        'client_doc' => $this->client_doc,
         'client_last_renovated_register' => $this->client_last_renovated_register,
-        
         'restrictions_serasa' => $this->restrictions_serasa,
         'restrictions_ccf' => $this->restrictions_ccf,
         'restrictions_scr' => $this->restrictions_scr,
@@ -64,6 +61,7 @@ class ReactivationSearch extends Reactivation
         ]);
 
         $query->andFilterWhere(['like', 'client_name', $this->client_name])
+            ->andFilterWhere(['like', 'client_doc', $this->client_doc])
             ->andFilterWhere(['like', 'agent_visit_number', $this->agent_visit_number]);
 
         return $dataProvider;
