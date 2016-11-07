@@ -23,22 +23,7 @@ use app\models\Location;
 <div class="row">
   <div class="col-md-6">
 
-    <?= $form->field($model, 'location_id')->dropDownList(ArrayHelper::map(Location::find()->where(['is_active' => 1])->orderBy("shortname ASC")->all(), 'id', 'shortname'),['prompt'=>'--'])  ?>    
-
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'proposed')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'accomplished')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'date1')->textInput() ?>
-
-    <?= $form->field($model, 'date2')->textInput() ?>
-
-  </div>
-  <div class="col-md-6">
-
-    <?= $form->field($model, 'progress')->textarea(['rows' => 9]) ?>
+    <?= $form->field($model, 'restrictions_serasa')->textInput(['maxlength' => true]) ?>
 
   </div>
 </div>            

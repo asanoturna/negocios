@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Alterar Ação Capital';
+$this->title = 'Reativação de Associados';
 ?>
 <div class="capitalaction-update">
 

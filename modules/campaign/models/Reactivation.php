@@ -74,15 +74,18 @@ class Reactivation extends \yii\db\ActiveRecord
         'client_doc' => 'CPF/CNPJ',
         'client_last_renovated_register' => 'Ultima Renovação Cadastral',
         'client_income' => 'Renda',
+        // gerentes
         'restrictions_serasa' => 'Restrição Serasa',
         'restrictions_ccf' => 'Restrição CCF',
         'restrictions_scr' => 'Restrição SCR',
-        'user_id' => 'Gerente',
         'agent_visit_number' => 'Número Relatório de Visita',
         'agent_registration_renewal' => 'Feita a renovação do cadastro em',
         'agent_overdraft_value' => 'Implantado cheque especial de',
         'agent_card_value' => 'Implantado Cartão de Crédito de R$',
+        // fabricia
         'supervisor_package_rate' => 'Implantado o Pacote Tarifário de Reativação',
+        // claudio
+        'user_id' => 'Gerente',
         'manager_inactive_meeting' => 'Participou da Reunião Mensal com Inativos',
         'manager_approval' => 'Aprovação do Trabalho junto ao associado',
         'manager_final_opinion' => 'Parecer Final',

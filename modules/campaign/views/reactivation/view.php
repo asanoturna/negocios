@@ -47,7 +47,7 @@ $this->title = 'Reativação de Associados';
     </div>
     </div>
 
-    <div class="panel panel-default">
+    <div class="panel panel-info">
     <div class="panel-heading clearfix">
     <h3 class="panel-title pull-left" style="padding-top: 7.5px;">Informações Gerenciadas pelos Gerentes</h3>
 
@@ -76,18 +76,18 @@ $this->title = 'Reativação de Associados';
     </div>
     </div>
 
-    <div class="panel panel-default">
+    <div class="panel panel-warning">
     <div class="panel-heading clearfix">
     <h3 class="panel-title pull-left" style="padding-top: 7.5px;">Informações Gerenciadas pela Fabrícia</h3>
 
     <?php
     if (Yii::$app->user->id === 51){ ?>
         <div class="btn-group pull-right">
-            <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Alterar', ['supervisor', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
             </p></div>
     <?php }else{ ;?>
         <div class="btn-group pull-right">
-            <?= Html::a('<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-default','disabled' => 'disabled']) ?>
+            <?= Html::a('<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Alterar', ['#', 'id' => $model->id], ['class' => 'btn btn-default','disabled' => 'disabled']) ?>
             </p></div>
     <?php };?>
     </div>
@@ -102,18 +102,18 @@ $this->title = 'Reativação de Associados';
     </div>
     </div>
 
-    <div class="panel panel-default">
+    <div class="panel panel-success">
     <div class="panel-heading clearfix">
     <h3 class="panel-title pull-left" style="padding-top: 7.5px;">Informações Supervisionadas pelo Claúdio</h3>
 
 <?php
     if (Yii::$app->user->id === 17){ ?>
         <div class="btn-group pull-right">
-            <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Alterar', ['manager', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
             </p></div>
     <?php }else{ ;?>
         <div class="btn-group pull-right">
-            <?= Html::a('<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-default','disabled' => 'disabled']) ?>
+            <?= Html::a('<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Alterar', ['#', 'id' => $model->id], ['class' => 'btn btn-default','disabled' => 'disabled']) ?>
             </p></div>
     <?php };?>
 
