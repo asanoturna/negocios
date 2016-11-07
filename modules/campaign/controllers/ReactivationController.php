@@ -74,12 +74,42 @@ class ReactivationController extends Controller
     {
         $model = $this->findModel($id);
 
-        $model->updated = date('Y-m-d');         
+        //$model->updated = date('Y-m-d');         
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionSupervisor($id)
+    {
+        $model = $this->findModel($id);
+
+        //$model->updated = date('Y-m-d');         
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('supervisor', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionManager($id)
+    {
+        $model = $this->findModel($id);
+
+        //$model->updated = date('Y-m-d');         
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('Manager', [
                 'model' => $model,
             ]);
         }
