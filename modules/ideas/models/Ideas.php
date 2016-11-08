@@ -1,7 +1,7 @@
 <?php
 
 namespace app\modules\ideas\models;
-
+use app\models\User;
 use Yii;
 
 
@@ -77,4 +77,9 @@ class Ideas extends \yii\db\ActiveRecord
             'committee_id' => 'Membro Comitê',
         ];
     }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }    
 }

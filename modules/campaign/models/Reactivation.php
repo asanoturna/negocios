@@ -110,11 +110,13 @@ class Reactivation extends \yii\db\ActiveRecord
         'agent_card_value' => 'Implantado Cartão de Crédito de R$',
         // fabricia
         'supervisor_package_rate' => 'Implantado o Pacote Tarifário de Reativação',
+        'supervisor_observation' => 'Observação P. Tarifário',
         // claudio
         'user_id' => 'Gerente',
         'manager_inactive_meeting' => 'Participou da Reunião Mensal com Inativos',
         'manager_approval' => 'Aprovação do Trabalho junto ao associado',
         'manager_final_opinion' => 'Parecer Final',
+        'manager_observation' => 'Observação Parecer Final',
         ];
     }
 

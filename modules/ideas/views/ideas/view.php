@@ -3,9 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-$this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Ideas', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Portal de Idéias';
 ?>
 <div class="ideas-view">
 
@@ -16,14 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <hr/>
 
     <p>
-        <?= Html::a('Gerenciar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Excluir', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Confirma exclusão desse registro?',
-                'method' => 'post',
-            ],
-        ]) ?>
+        <?= Html::a('Acesso Comitê', ['#'], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <div class="panel panel-default">
@@ -31,18 +22,40 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'user_id',
-            'type',
+            [ 
+            'attribute' => 'id',
+            'format' => 'raw',
+            'value' => "# ".$model->id,
+            ],
+            [ 
+            'label' => 'Idéia enviada por',
+            'format' => 'raw',
+            'value' => $model->user->fullname,
+            ],
+            [ 
+            'attribute' => 'created',
+            'format' => 'raw',
+            'value' => date("d/m/Y",  strtotime($model->created))
+            ],
+            [ 
+            'attribute' => 'type',  
+            'format' => 'raw',
+            'value' => $model->Type,
+            ],
             'title',
             'description:ntext',
             'objective:ntext',
             'viability',
-            'status',
-            'created',
-            'updated',
-            'answer',
-            'committee_id',
+            [ 
+            'attribute' => 'status',  
+            'format' => 'raw',
+            'value' => $model->Status,
+            ],
+            // 'status',
+            // 'created',
+            // 'updated',
+            // 'answer',
+            // 'committee_id',
         ],
     ]) ?>
     </div></div>

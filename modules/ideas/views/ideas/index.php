@@ -59,6 +59,15 @@ Texto TextoTexto TextoTexto TextoTexto TextoTexto TextoTexto TextoTexto TextoTex
         //'filterModel' => $searchModel,
         'tableOptions' => ['class'=>'table table-hover'],
         'emptyText'    => '</br><p class="text-info">Nenhuma idéia encontrada.. :(</p>',
+        'rowOptions'   => function ($model, $index, $widget, $grid) {
+            return [
+                'id' => $model['id'], 
+                'onclick' => 'location.href="'
+                    . Yii::$app->urlManager->createUrl('ideas/ideas/view') 
+                    . '&id="+(this.id);',
+                'style' => "cursor: pointer",
+            ];
+        }, 
         'columns' => [
             // [
             //     'attribute' => 'id',

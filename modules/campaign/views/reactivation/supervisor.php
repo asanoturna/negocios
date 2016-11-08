@@ -37,6 +37,8 @@ $this->title = 'Reativação de Associados - #'  . $model->id;
           ]
           ) ?> 
 
+          <?= $form->field($model, 'supervisor_observation')->textarea(['rows' => 8]) ?> 
+
           </div>
         </div>
       </div>

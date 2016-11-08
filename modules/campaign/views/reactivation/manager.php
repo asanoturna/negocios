@@ -37,6 +37,12 @@ $this->title = 'Reativação de Associados - #'  . $model->id;
           ]
           ) ?>
 
+          <?= $form->field($model, 'manager_approval')->dropDownList(Reactivation::$Static_managerapproval,['prompt'=>'--']) ?>
+
+          <?= $form->field($model, 'manager_final_opinion')->dropDownList(Reactivation::$Static_managerfinalopinion,['prompt'=>'--']) ?>
+
+          <?= $form->field($model, 'manager_observation')->textarea(['rows' => 8]) ?> 
+
           </div>
         </div>
       </div>
