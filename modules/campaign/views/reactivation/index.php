@@ -83,6 +83,9 @@ $this->title = 'Reativação de Associados';
             'encodeLabel' => false,
             'label' => 'Ultima<br/>Renovação<br/>Cadastral',
             'enableSorting' => true,
+            'value' => function ($model) {                      
+                  return $model->client_last_renovated_register == '9999-12-31' ? null : $model->client_last_renovated_register;
+            },
             'contentOptions'=>['class'=>'active','style'=>'width: 5%;text-align:center'],
             'headerOptions'=>['class'=>'active','style'=>'text-align:center;vertical-align: middle;'],
             'format' => ['date', 'php:d/m/Y'],

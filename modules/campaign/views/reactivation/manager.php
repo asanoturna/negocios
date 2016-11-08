@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\modules\campaign\models\Reactivation;
+use app\models\User;
 
 $this->title = 'Reativação de Associados - #'  . $model->id;
 ?>
@@ -22,6 +23,10 @@ $this->title = 'Reativação de Associados - #'  . $model->id;
       <div class="panel-body">
         <div class="row">
           <div class="col-md-3">
+
+          <?= $form->field($model, 'user_id')->dropDownList(ArrayHelper::map(User::find()->where(['status' => 1])->orderBy("username ASC")->all(), 'id', 'username'))?>
+
+          <hr/>
 
           <?= $form->field($model, 'manager_inactive_meeting')->widget('trntv\yii\datetime\DateTimeWidget',
           [

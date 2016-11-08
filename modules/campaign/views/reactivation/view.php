@@ -107,7 +107,7 @@ $this->title = 'Reativação de Associados';
     <h3 class="panel-title pull-left" style="padding-top: 7.5px;">Informações Supervisionadas pelo Claúdio</h3>
 
 <?php
-    if (Yii::$app->user->id === 17){ ?>
+    if (Yii::$app->user->id === 144){ ?>
         <div class="btn-group pull-right">
             <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Alterar', ['manager', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
             </p></div>
