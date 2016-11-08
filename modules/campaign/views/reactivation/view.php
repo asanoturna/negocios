@@ -64,11 +64,27 @@ $this->title = 'Reativação de Associados';
         'model' => $model,
         'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '<span class="not-set">(não informado)</span>'],
         'attributes' => [
-            'restrictions_serasa',
-            'restrictions_ccf',
-            'restrictions_scr',
+            [ 
+            'attribute' => 'restrictions_serasa',  
+            'format' => 'raw',
+            'value' => $model->Serasa,
+            ], 
+            [ 
+            'attribute' => 'restrictions_ccf',  
+            'format' => 'raw',
+            'value' => $model->Ccf,
+            ],
+            [ 
+            'attribute' => 'restrictions_scr',  
+            'format' => 'raw',
+            'value' => $model->Scr,
+            ],
             'agent_visit_number',
-            'agent_registration_renewal',
+            [ 
+            'attribute' => 'agent_registration_renewal',
+            'format' => 'raw',
+            'value' => $model->agent_registration_renewal == NULL ? null : date("d/m/Y",  strtotime($model->agent_registration_renewal)),
+            ], 
             'agent_overdraft_value',
             'agent_card_value',
         ],
@@ -96,7 +112,12 @@ $this->title = 'Reativação de Associados';
         'model' => $model,
         'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '<span class="not-set">(não informado)</span>'],
         'attributes' => [
-            'supervisor_package_rate', 
+            [ 
+            'attribute' => 'supervisor_package_rate',
+            'format' => 'raw',
+            'value' => $model->supervisor_package_rate == NULL ? null : date("d/m/Y",  strtotime($model->supervisor_package_rate)),
+            ],
+            'supervisor_observation:text',
         ],
     ]) ?>
     </div>
@@ -106,8 +127,8 @@ $this->title = 'Reativação de Associados';
     <div class="panel-heading clearfix">
     <h3 class="panel-title pull-left" style="padding-top: 7.5px;">Informações Supervisionadas pelo Claúdio</h3>
 
-<?php
-    if (Yii::$app->user->id === 144){ ?>
+    <?php
+    if (Yii::$app->user->id === 17){ ?>
         <div class="btn-group pull-right">
             <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Alterar', ['manager', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
             </p></div>
@@ -123,8 +144,22 @@ $this->title = 'Reativação de Associados';
         'model' => $model,
         'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '<span class="not-set">(não informado)</span>'],
         'attributes' => [
-            'manager_inactive_meeting',
-            'manager_approval', 
+            [ 
+            'attribute' => 'manager_inactive_meeting',
+            'format' => 'raw',
+            'value' => $model->manager_inactive_meeting == NULL ? null : date("d/m/Y",  strtotime($model->manager_inactive_meeting)),
+            ], 
+            [ 
+            'attribute' => 'manager_approval',  
+            'format' => 'raw',
+            'value' => $model->Managerapproval,
+            ],
+            [ 
+            'attribute' => 'manager_final_opinion',  
+            'format' => 'raw',
+            'value' => $model->Managerfinalopinion,
+            ],
+            'manager_observation:text',
         ],
     ]) ?>
     </div>

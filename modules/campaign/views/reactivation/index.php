@@ -139,8 +139,12 @@ $this->title = 'Reativação de Associados';
             'attribute' => 'agent_registration_renewal',
             'encodeLabel' => false,
             'label' => 'Feita<br/>renovação<br/>cadastro',
+            'value' => function ($model) {                      
+                  return $model->agent_registration_renewal == '9999-12-31' ? null : $model->agent_registration_renewal;
+            },
             'contentOptions'=>['class'=>'info','style'=>'width: 5%;text-align:center'],
             'headerOptions'=>['class'=>'info','style'=>'text-align:center;vertical-align: middle;'],
+            'format' => ['date', 'php:d/m/Y'],
             ],
             [
             'attribute' => 'agent_overdraft_value',
@@ -162,6 +166,7 @@ $this->title = 'Reativação de Associados';
             'label' => 'Implantado<br/>P. Tarifário<br/>Reativação',
             'contentOptions'=>['class'=>'warning','style'=>'width: 5%;text-align:center'],
             'headerOptions'=>['class'=>'warning','style'=>'text-align:center;vertical-align: middle;'],
+            'format' => ['date', 'php:d/m/Y'],
             ],
             [
             'attribute' => 'manager_inactive_meeting',
@@ -169,6 +174,7 @@ $this->title = 'Reativação de Associados';
             'label' => 'Participou<br/>Reunião Mensal<br/>com Inativos',
             'contentOptions'=>['class'=>'success','style'=>'width: 5%;text-align:center'],
             'headerOptions'=>['class'=>'success','style'=>'text-align:center;vertical-align: middle;'],
+            'format' => ['date', 'php:d/m/Y'],
             ],
             [
             'attribute' => 'manager_approval',

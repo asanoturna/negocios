@@ -83,7 +83,7 @@ class Reactivation extends \yii\db\ActiveRecord
         return [
             [['location_id', 'user_id'], 'required'],
             [['agent_visit_number'], 'number'],
-            [['agent_registration_renewal', 'agent_overdraft_value', 'agent_card_value', 'supervisor_package_rate',
+            [['restrictions_serasa', 'restrictions_ccf', 'restrictions_scr', 'agent_registration_renewal', 'agent_overdraft_value', 'agent_card_value', 'supervisor_package_rate',
             'manager_inactive_meeting','manager_approval','manager_final_opinion'], 'safe'],
             [['location_id', 'user_id'], 'integer'],
 
@@ -110,7 +110,7 @@ class Reactivation extends \yii\db\ActiveRecord
         'agent_card_value' => 'Implantado Cartão de Crédito de R$',
         // fabricia
         'supervisor_package_rate' => 'Implantado o Pacote Tarifário de Reativação',
-        'supervisor_observation' => 'Observação P. Tarifário',
+        'supervisor_observation' => 'Observação',
         // claudio
         'user_id' => 'Gerente',
         'manager_inactive_meeting' => 'Participou da Reunião Mensal com Inativos',
