@@ -23,11 +23,11 @@ class Recovery extends \yii\db\ActiveRecord
         if ($this->typeofdebt == 0) {
             $factor = 1;
         } elseif ($this->typeofdebt == 1) {
-            $factor = 0.2;
+            $factor = 1.2;
         } elseif ($this->typeofdebt == 2) {
-            $factor = 0.1;
+            $factor = 1.1;
         } elseif ($this->typeofdebt == 3) {
-            $factor = 0.1;
+            $factor = 1.1;
         }
 
         // FORMULAS
@@ -38,22 +38,22 @@ class Recovery extends \yii\db\ActiveRecord
 
         // PROPOSTA A
         $proposal_A = $proposal;
-        $proposal_A = floatval(round(($proposal_A+($proposal_A*$factor)), 2));
+        $proposal_A = floatval(round((($proposal_A*$factor)), 2));
         // PROPOSTA B
         $proposal_B = $formula1;
-        $proposal_B = floatval(round(($proposal_B+($proposal_B*$factor)), 2));
+        $proposal_B = floatval(round((($proposal_B*$factor)), 2));
         // PROPOSTA C
         $proposal_C = ($this->referencevalue*(pow((1+0.015),($days/30))));
-        $proposal_C = floatval(round(($proposal_C+($proposal_C*$factor)), 2));
+        $proposal_C = floatval(round((($proposal_C*$factor)), 2));
         // PROPOSTA D
         $proposal_D = ($this->referencevalue*(pow((1+0.013),($days/30))));
-        $proposal_D = floatval(round(($proposal_D+($proposal_D*$factor)), 2));
+        $proposal_D = floatval(round((($proposal_D*$factor)), 2));
         // PROPOSTA E
         $proposal_E = ($this->referencevalue*(pow((1+0.011),($days/30))));
-        $proposal_E = floatval(round(($proposal_E+($proposal_E*$factor)), 2));
+        $proposal_E = floatval(round((($proposal_E*$factor)), 2));
         // PROPOSTA F
         $proposal_F = ($this->referencevalue*(pow((1+0.0067),($days/30))));
-        $proposal_F = floatval(round(($proposal_F+($proposal_F*$factor)), 2));
+        $proposal_F = floatval(round((($proposal_F*$factor)), 2));
 
         // CALCULA E DEFINE O TIPO DE PROPOSTA BASEADO NO VALOR NEGOCIADO
 
@@ -75,22 +75,22 @@ class Recovery extends \yii\db\ActiveRecord
         if($this->value_traded < $proposal_C && $this->value_traded >= $proposal_D){
             $this->typeproposed = 3;
             $this->commission = $this->value_input*0.01;
-            $this->status = 0;
+            //$this->status = 0;
         }
         if($this->value_traded < $proposal_D && $this->value_traded >= $proposal_E){
             $this->typeproposed = 4;
             $this->commission = $this->value_input*0.005;
-            $this->status = 0;
+            //$this->status = 0;
         }
         if($this->value_traded < $proposal_E && $this->value_traded >= $proposal_F){
             $this->typeproposed = 5;
             $this->commission = $this->value_input*0.003;
-            $this->status = 0;
+            //$this->status = 0;
         }
         if($this->value_traded < $proposal_F){
             $this->typeproposed = 5;
             $this->commission = $this->value_input*0.003;
-            $this->status = 0;
+            //$this->status = 0;
         }
         return parent::beforeSave($insert);
     }
