@@ -75,22 +75,22 @@ class Recovery extends \yii\db\ActiveRecord
         if($this->value_traded < $proposal_C && $this->value_traded >= $proposal_D){
             $this->typeproposed = 3;
             $this->commission = $this->value_input*0.01;
-            //$this->status = 0;
+            $this->status = 0;
         }
         if($this->value_traded < $proposal_D && $this->value_traded >= $proposal_E){
             $this->typeproposed = 4;
             $this->commission = $this->value_input*0.005;
-            //$this->status = 0;
+            $this->status = 0;
         }
         if($this->value_traded < $proposal_E && $this->value_traded >= $proposal_F){
             $this->typeproposed = 5;
             $this->commission = $this->value_input*0.003;
-            //$this->status = 0;
+            $this->status = 0;
         }
         if($this->value_traded < $proposal_F){
             $this->typeproposed = 5;
             $this->commission = $this->value_input*0.003;
-            //$this->status = 0;
+            $this->status = 0;
         }
         return parent::beforeSave($insert);
     }

@@ -2,31 +2,10 @@ TODO
 --------------------
 http://www.flaticon.com/free-icons/idea_24498
 
-==Reactivation==
-id
-location_id
-client_name
-client_risk
-client_doc
-client_inactive_since
-client_last_renovated_register
-client_income
-restrictions_serasa
-restrictions_ccf
-restrictions_scr
-user_id
-agent_visit_number
-agent_registration_renewal
-agent_overdraft_value
-agent_card_value
-supervisor_package_rate
-manager_inactive_meeting
-manager_approval
-manager_final_opinion
-
-*********************
-
 Testar Theme usado em https://github.com/rokorolov/parus
+
+CORRIGIR AREA DE GESTAO DO USUARIO (alterar senha, avatar, etc)
+
 Bloquear uso do IE versão 8 pra baixo
 Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc)
 Verificar permissoes nos controllers (permissão apenas para admin)
@@ -55,6 +34,7 @@ MÓDULOS
 --------------------
 - Migração da ferramenta de Apoio Cadastro
 
+- Criar de módulo RH (area p/ contra cheque)
 - Criar de módulo Helpdesk
 - Criar de módulo Enquetes e Questionarios
 - Criar de módulo Plano de Ação (igual do GMI) 

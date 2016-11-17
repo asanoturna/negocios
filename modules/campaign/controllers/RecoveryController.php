@@ -4,6 +4,7 @@ namespace app\modules\campaign\controllers;
 
 use Yii;
 use app\modules\campaign\models\Recovery;
+use app\modules\campaign\models\Recoveryadmin;
 use app\modules\campaign\models\RecoverySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -94,7 +95,7 @@ class RecoveryController extends Controller
 
     public function actionManager($id)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModeladmin($id);
 
         $model->approvedby = Yii::$app->user->id;
         $model->approvedin = date('Y-m-d');
@@ -208,6 +209,15 @@ class RecoveryController extends Controller
     protected function findModel($id)
     {
         if (($model = Recovery::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    protected function findModeladmin($id)
+    {
+        if (($model = Recoveryadmin::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
