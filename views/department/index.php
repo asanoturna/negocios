@@ -49,10 +49,15 @@ $this->title = 'Departamentos';
                 'contentOptions'=>['style'=>'width: 20%;text-align:center'],
                 ],
                 [
+                'attribute' => 'email',
+                'enableSorting' => true,
+                'contentOptions'=>['style'=>'width: 20%;text-align:center'],
+                ],
+                [
                 'attribute' => 'description',
                 'format'=>'html',
                 'enableSorting' => true,
-                'contentOptions'=>['style'=>'width: 50%;text-align:left'],
+                'contentOptions'=>['style'=>'width: 30%;text-align:left'],
                 ],
                 [ 
                 'attribute' => 'is_active',

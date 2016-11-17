@@ -16,6 +16,7 @@ class Department extends \yii\db\ActiveRecord
         return [
             [['name', 'description', 'is_active'], 'required'],
             [['description'], 'string'],
+            ['email', 'email'],
             [['is_active'], 'integer'],
             [['name'], 'string', 'max' => 100],
         ];
@@ -27,6 +28,7 @@ class Department extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Departamento',
             'description' => 'Descrição',
+            'email' => 'E-mail',
             'is_active' => 'Situação',
         ];
     }

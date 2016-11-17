@@ -11,8 +11,6 @@ Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc)
 Verificar permissoes nos controllers (permissão apenas para admin)
 Corrigir telas responsivas (gridview, etc)
 
-Departamento > Campo email (null)
-
 *********************
 site/user.php
 ---> TESTAR listview http://www.codevoila.com/post/4/yii2-listview-example
@@ -23,7 +21,7 @@ site/user.php
 - Criar Dashboard na área administrativa (espço ocupado por assets, acessos, etc)
 - Criar Área de Alertas (local mais visivel no top da intranet)
 - Criar Área de Notícias (comentarios? likes?)
-- Criar Gestão de arquivos (incluir a area Planilha Base e categorias da intranet antiga)
+- Criar Gestão de arquivos (estrutra de categorias semelhante da central, incluir a area Planilha Base e categorias da intranet antiga)
 - Criar Agenda / Calendario (global e para cada usuario) (sinc google agenda ?)
 ---> https://github.com/thiagotalma/yii2-talma-fullcalendar-widget
 - Criar Galeria de fotos
@@ -34,6 +32,8 @@ MÓDULOS
 --------------------
 - Migração da ferramenta de Apoio Cadastro
 
+- Criar de módulo Vídeos
+- Projeto Calendário -  Ferramenta/Intranet
 - Criar de módulo RH (area p/ contra cheque)
 - Criar de módulo Helpdesk
 - Criar de módulo Enquetes e Questionarios
