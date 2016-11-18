@@ -28,7 +28,7 @@ $this->title = 'Campanha Recupere e Ganhe';
     <?php
     use kartik\export\ExportMenu;
               $gridColumns = [
-                  ['attribute'=>'id', 'hAlign'=>'right', 'width'=>'20px'], 
+                  ['attribute'=>'id', 'hAlign'=>'right', 'width'=>'20px'],
                   ['attribute'=>'clientname', 'hAlign'=>'right', 'width'=>'100px'], 
                   ['attribute'=>'clientdoc', 'hAlign'=>'right', 'width'=>'100px'],
                   [
@@ -41,6 +41,17 @@ $this->title = 'Campanha Recupere e Ganhe';
                     },
                     'format'=>'raw'
                   ],
+                  [
+                  'attribute'=>'typeofdebt',
+                  'label'=> 'Tipo Dívida',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value' => function($data) {
+                      return $data->getTypeofdebt();
+                  },
+                  'format'=>'raw'
+                  ],
+                  ['attribute'=>'referencevalue','format'=>['decimal',2], 'hAlign'=>'right', 'width'=>'110px'],
                   // [
                   //   'attribute'=>'negotiator_id',
                   //   'label'=> 'Negociador',
