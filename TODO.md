@@ -1,7 +1,6 @@
 TODO
 --------------------
 http://www.flaticon.com/free-icons/idea_24498
-
 Testar Theme usado em https://github.com/rokorolov/parus
 
 CORRIGIR AREA DE GESTAO DO USUARIO (alterar senha, avatar, etc)
