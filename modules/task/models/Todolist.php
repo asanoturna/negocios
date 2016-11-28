@@ -4,39 +4,13 @@ namespace app\modules\task\models;
 
 use Yii;
 
-/**
- * This is the model class for table "mod_task_list".
- *
- * @property integer $id
- * @property string $name
- * @property string $description
- * @property integer $department_id
- * @property integer $category_id
- * @property integer $status_id
- * @property string $deadline
- * @property integer $priority
- * @property integer $owner_id
- * @property integer $responsible_id
- * @property integer $is_done
- * @property string $created
- * @property string $updated
- *
- * @property ModTaskStatus $status
- * @property ModTaskCategory $category
- */
 class Todolist extends \yii\db\ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
     public static function tableName()
     {
         return 'mod_task_list';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
@@ -50,41 +24,32 @@ class Todolist extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'description' => 'Description',
-            'department_id' => 'Department ID',
-            'category_id' => 'Category ID',
-            'status_id' => 'Status ID',
-            'deadline' => 'Deadline',
-            'priority' => 'Priority',
-            'owner_id' => 'Owner ID',
-            'responsible_id' => 'Responsible ID',
-            'is_done' => 'Is Done',
-            'created' => 'Created',
-            'updated' => 'Updated',
+            'name' => 'Nome',
+            'description' => 'Descrição',
+            'department_id' => 'Departamento',
+            'category_id' => 'Categoria',
+            'status_id' => 'Situação',
+            'deadline' => 'Prazo',
+            'priority' => 'Prioridade',
+            'owner_id' => 'Criado por',
+            'responsible_id' => 'Responsável',
+            'is_done' => 'Feito?',
+            'created' => 'Criado em',
+            'updated' => 'Alterado em',
         ];
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
     public function getStatus()
     {
-        return $this->hasOne(ModTaskStatus::className(), ['id' => 'status_id']);
+        return $this->hasOne(Status::className(), ['id' => 'status_id']);
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
     public function getCategory()
     {
-        return $this->hasOne(ModTaskCategory::className(), ['id' => 'category_id']);
+        return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
 }
