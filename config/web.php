@@ -63,6 +63,7 @@ $config = [
         'productivity'      => 'app\modules\productivity\Module',
         'visits'            => 'app\modules\visits\Module',                    
         'ideas'             => 'app\modules\ideas\Module',
+        'task'              => 'app\modules\task\Module', 
     ],    
     'params' => $params,
 ];
