@@ -1,5 +1,36 @@
 TODO
 --------------------
+
+task_list
+----
+id
+name
+description text
+department_id
+category_id
+status_id
+deadline
+priority (normal, importante, urgente, crítico)
+owner_id
+responsible_id
+is_done
+created
+updated
+
+task_category
+----
+id
+name
+
+task_status
+----
+id
+name
+
+
+------------
+https://github.com/noam148/yii2-image-manager
+
 http://www.flaticon.com/free-icons/idea_24498
 Testar Theme usado em https://github.com/rokorolov/parus
 
