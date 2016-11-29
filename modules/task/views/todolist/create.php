@@ -3,19 +3,22 @@
 use yii\helpers\Html;
 
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\task\models\Todolist */
-
-$this->title = 'Create Todolist';
-$this->params['breadcrumbs'][] = ['label' => 'Todolists', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Nova Atividade';
 ?>
 <div class="todolist-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+      <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
+      <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;"><?php  echo $this->render('_menu'); ?></span></div>
+    </div>
+    <hr/>
 
+    <div class="panel panel-default">
+    <div class="panel-body"> 
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
+    </div>
+    </div>
 
 </div>

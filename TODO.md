@@ -1,31 +1,10 @@
 TODO
 --------------------
 
-task_list
-----
-id
-name
-description text
-department_id
-category_id
-status_id
-deadline
-priority (normal, importante, urgente, crítico)
-owner_id
-responsible_id
-is_done
-created
-updated
-
-task_category
-----
-id
-name
-
-task_status
-----
-id
-name
+TASK 
+> Proprio responsavel alterar o status para conlcuído
+> Incluir campo observação
+> Incluir campo arquivo
 
 
 ------------

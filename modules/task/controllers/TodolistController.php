@@ -9,14 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-/**
- * TodolistController implements the CRUD actions for Todolist model.
- */
 class TodolistController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
     public function behaviors()
     {
         return [
@@ -29,10 +23,6 @@ class TodolistController extends Controller
         ];
     }
 
-    /**
-     * Lists all Todolist models.
-     * @return mixed
-     */
     public function actionIndex()
     {
         $searchModel = new TodolistSearch();
@@ -44,11 +34,6 @@ class TodolistController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single Todolist model.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionView($id)
     {
         return $this->render('view', [
@@ -56,14 +41,14 @@ class TodolistController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new Todolist model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate()
     {
         $model = new Todolist();
+
+        $model->owner_id = Yii::$app->user->id;
+        $model->status_id = 1;
+        $model->created = date('Y-m-d');
+        $model->updated = date('Y-m-d'); 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -74,12 +59,6 @@ class TodolistController extends Controller
         }
     }
 
-    /**
-     * Updates an existing Todolist model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
@@ -93,12 +72,6 @@ class TodolistController extends Controller
         }
     }
 
-    /**
-     * Deletes an existing Todolist model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
@@ -106,13 +79,6 @@ class TodolistController extends Controller
         return $this->redirect(['index']);
     }
 
-    /**
-     * Finds the Todolist model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Todolist the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     protected function findModel($id)
     {
         if (($model = Todolist::findOne($id)) !== null) {

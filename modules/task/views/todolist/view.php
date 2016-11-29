@@ -3,45 +3,60 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\task\models\Todolist */
-
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Todolists', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="todolist-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+      <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
+      <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;"><?php  echo $this->render('_menu'); ?></span></div>
+    </div>
+    <hr/>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Excluir', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Confirma a exclusão do registro?',
                 'method' => 'post',
             ],
         ]) ?>
     </p>
 
+    <div class="panel panel-default">
+    <div class="panel-body"> 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
             'name',
-            'description:ntext',
+            [
+                'attribute' => 'description',
+                'format' => 'raw',
+            ],
             'department_id',
             'category_id',
             'status_id',
-            'deadline',
+            [
+                'attribute' => 'deadline',
+                'value' => date("d/m/Y",  strtotime($model->deadline))
+            ],
             'priority',
             'owner_id',
             'responsible_id',
             'is_done',
-            'created',
-            'updated',
+            [
+                'attribute' => 'created',
+                'value' => date("d/m/Y",  strtotime($model->created))
+            ],
+            [
+                'attribute' => 'updated',
+                'value' => date("d/m/Y",  strtotime($model->updated))
+            ],
         ],
     ]) ?>
+    </div>
+    </div>
 
 </div>

@@ -2,42 +2,81 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
-/* @var $this yii\web\View */
-/* @var $model app\modules\task\models\Todolist */
-/* @var $form yii\widgets\ActiveForm */
+use app\models\Department;
+use app\modules\task\models\Category;
+use app\modules\task\models\Todolist;
+use app\models\User;
+use yii\widgets\MaskedInput;
+use yii\helpers\ArrayHelper;
 ?>
 
 <div class="todolist-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'id' => 'visitsform',
+        'options' => [
+            'enctype'=>'multipart/form-data',
+            //'class' => 'form-horizontal',
+            ],
+        ]); ?>
+
+    <div class="row">
+      <div class="col-md-6">
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'description')->widget(\yii\redactor\widgets\Redactor::className(), [
+        'clientOptions' => [
+            'minHeight' => 230,
+            'lang' => 'pt_br',
+            'buttons'=> ['bold', 'italic', 'deleted','unorderedlist', 'orderedlist', 'link', 'alignment'],
+        ]
+    ])?> 
 
-    <?= $form->field($model, 'department_id')->textInput() ?>
+      </div>
+      <div class="col-md-6">
 
-    <?= $form->field($model, 'category_id')->textInput() ?>
+    <?= $form->field($model, 'department_id')->dropDownList(ArrayHelper::map(Department::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?>
 
-    <?= $form->field($model, 'status_id')->textInput() ?>
+    <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::find()->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?>
 
-    <?= $form->field($model, 'deadline')->textInput() ?>
+    <?= $form->field($model, 'priority')->dropDownList(Todolist::$Static_priority)?>
 
-    <?= $form->field($model, 'priority')->textInput() ?>
+    
+    <div class="row">
+      <div class="col-md-6"><?= $form->field($model, 'responsible_id')->dropDownList(ArrayHelper::map(User::find()->where(['status' => 1])->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])?></div>
+      <div class="col-md-6">
+      <?= $form->field($model, 'flag_report_responsible')->checkBox(['style'=>'margin: 30px 0 0 0;'])?>
+      </div>
+    </div>
 
-    <?= $form->field($model, 'owner_id')->textInput() ?>
 
-    <?= $form->field($model, 'responsible_id')->textInput() ?>
+    <div class="row">
+      <div class="col-md-6">
+      <?= $form->field($model, 'deadline')->widget('trntv\yii\datetime\DateTimeWidget',
+        [
+            'phpDatetimeFormat' => 'yyyy-MM-dd',
+            'clientOptions' => [
+                'minDate' => new \yii\web\JsExpression('new Date("2016-01-01")'),
+                'allowInputToggle' => true,
+                'widgetPositioning' => [
+                   'horizontal' => 'auto',
+                   'vertical' => 'auto'
+                ]
+            ]
+        ]
+    ) ?>
+    </div>
+      <div class="col-md-6"><?= $form->field($model, 'flag_remember_task')->checkBox(['style'=>'margin: 30px 0 0 0;']) ?></div>
+    </div>
 
-    <?= $form->field($model, 'is_done')->textInput() ?>
 
-    <?= $form->field($model, 'created')->textInput() ?>
-
-    <?= $form->field($model, 'updated')->textInput() ?>
+          
+      </div>
+    </div>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Gravar' : 'Gravar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

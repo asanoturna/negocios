@@ -2,20 +2,22 @@
 
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\task\models\Todolist */
-
-$this->title = 'Update Todolist: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Todolists', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Alterar Atividade: ' . $model->name;
 ?>
 <div class="todolist-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+      <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
+      <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;"><?php  echo $this->render('_menu'); ?></span></div>
+    </div>
+    <hr/>
 
+    <div class="panel panel-default">
+    <div class="panel-body"> 
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
+    </div>
+    </div>
 
 </div>
