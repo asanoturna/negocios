@@ -30,7 +30,8 @@
         "kartik-v/yii2-grid": "@dev",
         "cyneek/yii2-menu": "dev-master",
         "kartik-v/yii2-widget-sidenav": "@dev",
-        "bupy7/yii2-widget-cropbox": "*"
+        "bupy7/yii2-widget-cropbox": "*",
+        "philippfrenzel/yii2fullcalendar": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
