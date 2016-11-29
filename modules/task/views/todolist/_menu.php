@@ -8,7 +8,7 @@ use yii\bootstrap\Nav;
         'items' => [  
             [
                 'label'   => '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Calendário',
-                'url'     => ['index'],
+                'url'     => ['calendar'],
             ],  
             [
                 'label'   => '<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> Lista de Atividades',

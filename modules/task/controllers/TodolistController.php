@@ -34,6 +34,11 @@ class TodolistController extends Controller
         ]);
     }
 
+    public function actionCalendar()
+    {
+        return $this->render('calendar');
+    }
+
     public function actionView($id)
     {
         return $this->render('view', [
