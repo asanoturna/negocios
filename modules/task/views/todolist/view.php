@@ -35,9 +35,9 @@ $this->title = $model->name;
                 'attribute' => 'description',
                 'format' => 'raw',
             ],
-            'department_id',
-            'category_id',
-            'status_id',
+            'department.name',
+            'category.name',
+            'status.name',
             [
                 'attribute' => 'deadline',
                 'value' => date("d/m/Y",  strtotime($model->deadline))

@@ -12,6 +12,9 @@ class Todolist extends \yii\db\ActiveRecord
         return 'mod_task_list';
     }
 
+    public $file;
+    public $filename;
+
     // priority
     public static $Static_priority = [
         'Normal',
@@ -31,10 +34,10 @@ class Todolist extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'category_id', 'status_id', 'deadline', 'priority', 'owner_id', 'responsible_id', 'created', 'updated'], 'required'],
-            [['description'], 'string'],
+            [['description','responsible_note'], 'string'],
             [['department_id', 'category_id', 'status_id', 'priority', 'owner_id', 'responsible_id', 'is_done','flag_remember_task','flag_report_responsible'], 'integer'],
             [['deadline', 'created', 'updated'], 'safe'],
-            [['name'], 'string', 'max' => 200],
+            [['name','attachment'], 'string', 'max' => 200],
             // [['status_id'], 'exist', 'skipOnError' => true, 'targetClass' => ModTaskStatus::className(), 'targetAttribute' => ['status_id' => 'id']],
             // [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => ModTaskCategory::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
@@ -58,6 +61,9 @@ class Todolist extends \yii\db\ActiveRecord
             'updated' => 'Alterado em',
             'flag_remember_task' => 'Lembrar Responsável por e-mail',
             'flag_report_responsible' => 'Informar Responsável por e-mail',
+            'responsible_note' => 'Observação Responsável',
+            'attachment' => 'Anexo',
+            'file' => 'Anexo',
         ];
     }
 

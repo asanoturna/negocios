@@ -7,7 +7,7 @@ use app\modules\task\models\Category;
 use app\modules\task\models\Status;
 use app\models\Department;
 
-$this->title = 'Atividades';
+$this->title = 'Lista de Atividades';
 ?>
 <div class="todolist-index">
 
@@ -57,7 +57,8 @@ $this->title = 'Atividades';
             'contentOptions'=>['style'=>'width: 15%;text-align:center'],
             'headerOptions' => ['class' => 'text-center'],
             ],
-
+            'priority',
+            'deadline',
             [
             'attribute' => 'status_id',
             'format' => 'raw',
@@ -69,15 +70,7 @@ $this->title = 'Atividades';
             'contentOptions'=>['style'=>'width: 15%;text-align:center'],
             'headerOptions' => ['class' => 'text-center'],
             ],
-
-            'deadline',
-            'priority',
-            // 'owner_id',
             'responsible_id',
-            // 'is_done',
-            // 'created',
-            // 'updated',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

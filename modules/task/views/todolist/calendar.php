@@ -19,10 +19,6 @@ $this->title = "Calendário de Atividades";
         ));
     ?>
 
-    <?php
-    //var_dump($events);
-    ?>
-
     </div>
     </div>
 

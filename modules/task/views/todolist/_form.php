@@ -36,12 +36,12 @@ use yii\helpers\ArrayHelper;
       </div>
       <div class="col-md-6">
 
-    <?= $form->field($model, 'department_id')->dropDownList(ArrayHelper::map(Department::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?>
+    <?= $form->field($model, 'department_id')->dropDownList(ArrayHelper::map(Department::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'))  ?>
 
-    <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::find()->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?>
-
-    <?= $form->field($model, 'priority')->dropDownList(Todolist::$Static_priority)?>
-
+    <div class="row">
+      <div class="col-md-6"><?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::find()->orderBy("name ASC")->all(), 'id', 'name'))  ?></div>
+      <div class="col-md-6"><?= $form->field($model, 'priority')->dropDownList(Todolist::$Static_priority)?></div>
+    </div>
     
     <div class="row">
       <div class="col-md-6"><?= $form->field($model, 'responsible_id')->dropDownList(ArrayHelper::map(User::find()->where(['status' => 1])->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])?></div>
@@ -70,7 +70,7 @@ use yii\helpers\ArrayHelper;
       <div class="col-md-6"><?= $form->field($model, 'flag_remember_task')->checkBox(['style'=>'margin: 30px 0 0 0;']) ?></div>
     </div>
 
-
+    <?= $form->field($model, 'file')->fileInput() ?>
           
       </div>
     </div>
