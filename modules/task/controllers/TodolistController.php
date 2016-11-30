@@ -36,7 +36,25 @@ class TodolistController extends Controller
 
     public function actionCalendar()
     {
-        return $this->render('calendar');
+
+    $events = Todolist::find()->all();
+
+    $tasks = [];
+    foreach ($events as $todolist)
+    {
+    $event = new \yii2fullcalendar\models\Event();
+    $event->id = $todolist->id;
+    //$event->className = 'btn';
+    $event->backgroundColor = '#0d4549';
+    $event->borderColor = '#0d4549';
+    $event->title = $todolist->name;
+    $event->start = $todolist->deadline;
+    $tasks[] =  $event;
+    }
+    return $this->render('calendar',[
+        'events' => $tasks,
+    ]);
+
     }
 
     public function actionView($id)
