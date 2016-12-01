@@ -32,7 +32,7 @@ $this->title = 'Painel de Atividades';
             ],
             [
             'attribute' => 'name',
-            'contentOptions'=>['style'=>'width: 10%;text-align:left'],
+            'contentOptions'=>['style'=>'width: 15%;text-align:left'],
             'headerOptions' => ['class' => 'text-center'],
             ],
 
@@ -44,7 +44,7 @@ $this->title = 'Painel de Atividades';
                     return $model->department->name;
                     },
             'filter' => ArrayHelper::map(Department::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
-            'contentOptions'=>['style'=>'width: 15%;text-align:center'],
+            'contentOptions'=>['style'=>'width: 10%;text-align:center'],
             'headerOptions' => ['class' => 'text-center'],
             ],
             [
@@ -55,7 +55,7 @@ $this->title = 'Painel de Atividades';
                     return $model->category->name;
                     },
             'filter' => ArrayHelper::map(Category::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
-            'contentOptions'=>['style'=>'width: 15%;text-align:center'],
+            'contentOptions'=>['style'=>'width: 10%;text-align:center'],
             'headerOptions' => ['class' => 'text-center'],
             ],
             [
@@ -66,7 +66,7 @@ $this->title = 'Painel de Atividades';
                     return "<i class=\"fa fa-flag\" aria-hidden=\"true\" style=\"color:".$model->priority->hexcolor."\"></i> " . $model->priority->name;
                     },
             'filter' => ArrayHelper::map(Priority::find()->orderBy('id')->asArray()->all(), 'id', 'name'),
-            'contentOptions'=>['style'=>'width: 15%;text-align:center'],
+            'contentOptions'=>['style'=>'width: 10%;text-align:center'],
             'headerOptions' => ['class' => 'text-center'],
             ],
             [
@@ -87,7 +87,7 @@ $this->title = 'Painel de Atividades';
                     return "<span class=\"label label-default\">".$model->status->name."</span>";
                     },
             'filter' => ArrayHelper::map(Status::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
-            'contentOptions'=>['style'=>'width: 15%;text-align:center'],
+            'contentOptions'=>['style'=>'width: 10%;text-align:center'],
             'headerOptions' => ['class' => 'text-center'],
             ],
             [
@@ -99,10 +99,13 @@ $this->title = 'Painel de Atividades';
                      },            
             'filter' => ArrayHelper::map(User::find()->where(['status' => 1])->orderBy('username')->asArray()->all(), 'id', 'username'),
             'filterInputOptions' => ['class' => 'form-control', 'style'=>'text-transform: lowercase'],
-            'contentOptions'=>['style'=>'width: 8%;text-align:left;text-transform: lowercase'],
+            'contentOptions'=>['style'=>'width: 10%;text-align:left;text-transform: lowercase'],
             'headerOptions' => ['class' => 'text-center'],
             ],
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+            'class' => 'yii\grid\ActionColumn',
+            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            ],
         ],
     ]); ?>
     </div>

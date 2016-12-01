@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use yii\web\JsExpression;
 
 $this->title = "Calendário de Atividades";
 ?>
@@ -13,9 +14,21 @@ $this->title = "Calendário de Atividades";
 
     <div class="panel panel-default">
     <div class="panel-body"> 
+<?php
+$JSDropEvent = <<<EOF
+function(calEvent, jsEvent, view) {
+window.location = 'http://localhost/negocios/web/index.php?r=task/todolist';
+
+}
+EOF;
+?>
 
     <?= \yii2fullcalendar\yii2fullcalendar::widget(array(
           'events'=> $events,
+          'clientOptions' => [
+          'selectable' => true,
+          'eventClick' => new JsExpression($JSDropEvent),
+          ],
         ));
     ?>
 

@@ -42,12 +42,10 @@ MÓDULOS
 - Migração da ferramenta de Apoio Cadastro
 
 - Criar de módulo Vídeos
-- Projeto Calendário -  Ferramenta/Intranet
 - Criar de módulo RH (area p/ contra cheque)
 - Criar de módulo Helpdesk
 - Criar de módulo Enquetes e Questionarios
 - Criar de módulo Plano de Ação (igual do GMI) 
-- Criar de módulo Gerenciamento de Tarefas / Atividades
 
 - Visitas -> Verificar / Usar plugin de galeria de fotos
 - Prod Diaria -> Gravar Formula/Cálculo
