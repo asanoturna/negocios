@@ -2,7 +2,7 @@
 
 namespace app\modules\task\models;
 use app\models\Department;
-
+use app\models\User;
 use Yii;
 
 class Todolist extends \yii\db\ActiveRecord
@@ -15,27 +15,12 @@ class Todolist extends \yii\db\ActiveRecord
     public $file;
     public $filename;
 
-    // priority
-    public static $Static_priority = [
-        'Normal',
-        'Importante',
-        'Urgente',
-        'Crítico',
-        ];
-    public function getPriority()
-    {
-        if ($this->priority === null) {
-            return null;
-        }
-        return self::$Static_priority[$this->priority];
-    } 
-
     public function rules()
     {
         return [
-            [['name', 'category_id', 'status_id', 'deadline', 'priority', 'owner_id', 'responsible_id', 'created', 'updated'], 'required'],
+            [['name', 'category_id', 'status_id', 'deadline', 'priority_id', 'owner_id', 'responsible_id', 'created', 'updated'], 'required'],
             [['description','responsible_note'], 'string'],
-            [['department_id', 'category_id', 'status_id', 'priority', 'owner_id', 'responsible_id', 'is_done','flag_remember_task','flag_report_responsible'], 'integer'],
+            [['department_id', 'category_id', 'status_id', 'priority_id', 'owner_id', 'responsible_id', 'is_done','flag_remember_task','flag_report_responsible'], 'integer'],
             [['deadline', 'created', 'updated'], 'safe'],
             [['name','attachment'], 'string', 'max' => 200],
             // [['status_id'], 'exist', 'skipOnError' => true, 'targetClass' => ModTaskStatus::className(), 'targetAttribute' => ['status_id' => 'id']],
@@ -53,7 +38,7 @@ class Todolist extends \yii\db\ActiveRecord
             'category_id' => 'Categoria',
             'status_id' => 'Situação',
             'deadline' => 'Prazo para Atividade',
-            'priority' => 'Prioridade',
+            'priority_id' => 'Prioridade',
             'owner_id' => 'Criado por',
             'responsible_id' => 'Responsável pela Atividade',
             'is_done' => 'Feito?',
@@ -65,6 +50,11 @@ class Todolist extends \yii\db\ActiveRecord
             'attachment' => 'Anexo',
             'file' => 'Anexo',
         ];
+    }
+
+    public function getPriority()
+    {
+        return $this->hasOne(Priority::className(), ['id' => 'priority_id']);
     }
 
     public function getStatus()
@@ -80,5 +70,10 @@ class Todolist extends \yii\db\ActiveRecord
     public function getDepartment()
     {
         return $this->hasOne(Department::className(), ['id' => 'department_id']);
+    }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'responsible_id']);
     }
 }

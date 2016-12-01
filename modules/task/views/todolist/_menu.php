@@ -7,11 +7,15 @@ use yii\bootstrap\Nav;
         'encodeLabels' => false,
         'items' => [  
             [
+                'label'   => '<span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Desempenho',
+                'url'     => ['performance'],
+            ],  
+            [
                 'label'   => '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Calendário',
                 'url'     => ['calendar'],
             ],  
             [
-                'label'   => '<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> Lista de Atividades',
+                'label'   => '<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> Painel de Atividades',
                 'url'     => ['index'],
             ],  
             [

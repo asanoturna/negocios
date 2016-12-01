@@ -5,9 +5,11 @@ use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
 use app\modules\task\models\Category;
 use app\modules\task\models\Status;
+use app\modules\task\models\Priority;
 use app\models\Department;
+use app\models\User;
 
-$this->title = 'Lista de Atividades';
+$this->title = 'Painel de Atividades';
 ?>
 <div class="todolist-index">
 
@@ -45,7 +47,6 @@ $this->title = 'Lista de Atividades';
             'contentOptions'=>['style'=>'width: 15%;text-align:center'],
             'headerOptions' => ['class' => 'text-center'],
             ],
-
             [
             'attribute' => 'category_id',
             'format' => 'raw',
@@ -57,20 +58,50 @@ $this->title = 'Lista de Atividades';
             'contentOptions'=>['style'=>'width: 15%;text-align:center'],
             'headerOptions' => ['class' => 'text-center'],
             ],
-            'priority',
-            'deadline',
+            [
+            'attribute' => 'priority_id',
+            'format' => 'raw',
+            'enableSorting' => true,
+            'value' => function ($model) {                      
+                    return "<i class=\"fa fa-flag\" aria-hidden=\"true\" style=\"color:".$model->priority->hexcolor."\"></i> " . $model->priority->name;
+                    },
+            'filter' => ArrayHelper::map(Priority::find()->orderBy('id')->asArray()->all(), 'id', 'name'),
+            'contentOptions'=>['style'=>'width: 15%;text-align:center'],
+            'headerOptions' => ['class' => 'text-center'],
+            ],
+            [
+            'attribute' => 'deadline',
+            'enableSorting' => true,
+            'format' => ['date', 'php:d/m/Y'],
+            'value' => function ($model) {                      
+                    return $model->deadline;
+                    },
+            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+            'headerOptions' => ['class' => 'text-center'],
+            ],
             [
             'attribute' => 'status_id',
             'format' => 'raw',
             'enableSorting' => true,
             'value' => function ($model) {                      
-                    return $model->status->name;
+                    return "<span class=\"label label-default\">".$model->status->name."</span>";
                     },
             'filter' => ArrayHelper::map(Status::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
             'contentOptions'=>['style'=>'width: 15%;text-align:center'],
             'headerOptions' => ['class' => 'text-center'],
             ],
-            'responsible_id',
+            [
+            'attribute' => 'responsible_id',
+            'format' => 'raw',
+            'enableSorting' => true,
+            'value' => function ($model) {
+                         return $model->user->username;
+                     },            
+            'filter' => ArrayHelper::map(User::find()->where(['status' => 1])->orderBy('username')->asArray()->all(), 'id', 'username'),
+            'filterInputOptions' => ['class' => 'form-control', 'style'=>'text-transform: lowercase'],
+            'contentOptions'=>['style'=>'width: 8%;text-align:left;text-transform: lowercase'],
+            'headerOptions' => ['class' => 'text-center'],
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

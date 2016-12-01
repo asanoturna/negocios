@@ -3,13 +3,13 @@
 namespace app\modules\task\controllers;
 
 use Yii;
-use app\modules\task\models\Todolist;
-use app\modules\task\models\TodolistSearch;
+use app\modules\task\models\Priority;
+use app\modules\task\models\PrioritySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-class TodolistController extends Controller
+class PriorityController extends Controller
 {
     public function behaviors()
     {
@@ -23,45 +23,15 @@ class TodolistController extends Controller
         ];
     }
 
-    public function actionPerformance()
-    {
-        return $this->render('performance');
-    }
-
     public function actionIndex()
     {
-        $searchModel = new TodolistSearch();
+        $searchModel = new PrioritySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
-    }
-
-    public function actionCalendar()
-    {
-
-    $events = Todolist::find()->all();
-
-    $tasks = [];
-    foreach ($events as $todolist)
-    {
-    $event = new \yii2fullcalendar\models\Event();
-    $event->id = $todolist->id;
-    //$event->className = 'btn';
-    //$event->backgroundColor = '#0d4549';
-    //$event->borderColor = '#0d4549';
-    $event->backgroundColor = $todolist->priority->hexcolor;
-    $event->borderColor = $todolist->priority->hexcolor;
-    $event->title = $todolist->name;
-    $event->start = $todolist->deadline;
-    $tasks[] =  $event;
-    }
-    return $this->render('calendar',[
-        'events' => $tasks,
-    ]);
-
     }
 
     public function actionView($id)
@@ -73,12 +43,7 @@ class TodolistController extends Controller
 
     public function actionCreate()
     {
-        $model = new Todolist();
-
-        $model->owner_id = Yii::$app->user->id;
-        $model->status_id = 1;
-        $model->created = date('Y-m-d');
-        $model->updated = date('Y-m-d'); 
+        $model = new Priority();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -111,7 +76,7 @@ class TodolistController extends Controller
 
     protected function findModel($id)
     {
-        if (($model = Todolist::findOne($id)) !== null) {
+        if (($model = Priority::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

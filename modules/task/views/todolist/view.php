@@ -26,36 +26,69 @@ $this->title = $model->name;
 
     <div class="panel panel-default">
     <div class="panel-body"> 
+
+    <div class="row">
+      <div class="col-md-6">
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
             'name',
-            [
-                'attribute' => 'description',
-                'format' => 'raw',
-            ],
             'department.name',
             'category.name',
-            'status.name',
             [
                 'attribute' => 'deadline',
                 'value' => date("d/m/Y",  strtotime($model->deadline))
             ],
-            'priority',
-            'owner_id',
-            'responsible_id',
-            'is_done',
+            'priority.name',
+            [
+           'attribute'=>'attachment',
+           'format' => 'raw',
+           'value' => $model->attachment == null ? "<span class=\"not-set\">(sem anexo)</span>" : '<span class="glyphicon glyphicon-paperclip"></span> '.Html::a('Visualizar Anexo', Yii::$app->params['uploadPath'].$model->attachment, ['target' => '_blank']),
+            ], 
+            [ 
+            'attribute' => 'owner_id',
+            'format' => 'raw',
+            'value' => $model->user->fullname,
+            ], 
             [
                 'attribute' => 'created',
                 'value' => date("d/m/Y",  strtotime($model->created))
             ],
+            [ 
+            'attribute' => 'responsible_id',
+            'format' => 'raw',
+            'value' => $model->user->fullname,
+            ], 
             [
                 'attribute' => 'updated',
                 'value' => date("d/m/Y",  strtotime($model->updated))
             ],
+            'status.name',
         ],
     ]) ?>
+
+      </div>
+      <div class="col-md-6">
+
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Descrição da Atividade</b></div>
+      <div class="panel-body">
+        <?= $model->description == null ? "<span class=\"not-set\">(não informado)</span>" : $model->description ?>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Observação do Responsável</b></div>
+      <div class="panel-body">
+        <?= $model->responsible_note == null ? "<span class=\"not-set\">(não informado)</span>" : $model->responsible_note ?>
+      </div>
+    </div>
+
+      </div>
+    </div>
+
     </div>
     </div>
 
