@@ -95,7 +95,7 @@ $this->title = 'Painel de Atividades';
             'format' => 'raw',
             'enableSorting' => true,
             'value' => function ($model) {
-                         return $model->user->username;
+                         return $model->responsible->username;
                      },            
             'filter' => ArrayHelper::map(User::find()->where(['status' => 1])->orderBy('username')->asArray()->all(), 'id', 'username'),
             'filterInputOptions' => ['class' => 'form-control', 'style'=>'text-transform: lowercase'],

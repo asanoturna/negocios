@@ -72,7 +72,12 @@ class Todolist extends \yii\db\ActiveRecord
         return $this->hasOne(Department::className(), ['id' => 'department_id']);
     }
 
-    public function getUser()
+    public function getOwner()
+    {
+        return $this->hasOne(User::className(), ['id' => 'owner_id']);
+    }
+
+    public function getResponsible()
     {
         return $this->hasOne(User::className(), ['id' => 'responsible_id']);
     }

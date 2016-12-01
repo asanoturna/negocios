@@ -50,7 +50,7 @@ $this->title = $model->name;
             [ 
             'attribute' => 'owner_id',
             'format' => 'raw',
-            'value' => $model->user->fullname,
+            'value' => $model->owner->fullname,
             ], 
             [
                 'attribute' => 'created',
@@ -59,13 +59,17 @@ $this->title = $model->name;
             [ 
             'attribute' => 'responsible_id',
             'format' => 'raw',
-            'value' => $model->user->fullname,
+            'value' => $model->responsible->fullname,
             ], 
             [
                 'attribute' => 'updated',
                 'value' => date("d/m/Y",  strtotime($model->updated))
             ],
-            'status.name',
+            [ 
+            'label' => 'Situação',
+            'format' => 'raw',
+            'value' => "<span class=\"label label-default\">".$model->status->name."</span>",
+            ],
         ],
     ]) ?>
 
