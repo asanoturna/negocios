@@ -45,7 +45,7 @@ class Todolist extends \yii\db\ActiveRecord
             'created' => 'Criado em',
             'updated' => 'Alterado em',
             'flag_remember_task' => 'Lembrar Responsável por e-mail',
-            'flag_report_responsible' => 'Informar Responsável por e-mail',
+            'flag_report_responsible' => 'Notificar Responsável por e-mail',
             'responsible_note' => 'Observação Responsável',
             'attachment' => 'Anexo',
             'file' => 'Anexo',

@@ -14,6 +14,7 @@ $this->title = "Calendário de Atividades";
 
     <div class="panel panel-default">
     <div class="panel-body"> 
+
 <?php
 $JSDropEvent = <<<EOF
 function(calEvent, jsEvent, view) {
@@ -24,6 +25,9 @@ EOF;
 ?>
 
     <?= \yii2fullcalendar\yii2fullcalendar::widget(array(
+          'options' => [
+            'lang' => 'pt',
+          ],
           'events'=> $events,
           'clientOptions' => [
           'selectable' => true,
