@@ -35,7 +35,7 @@ class Todolist extends \yii\db\ActiveRecord
             'name' => 'Nome da Atividade',
             'description' => 'Descrição da Atividade',
             'department_id' => 'Departamento',
-            'category_id' => 'Categoria',
+            'category_id' => 'Periodicidade',
             'status_id' => 'Situação',
             'deadline' => 'Prazo para Atividade',
             'priority_id' => 'Prioridade',

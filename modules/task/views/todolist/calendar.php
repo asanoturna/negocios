@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\web\JsExpression;
+use yii\data\SqlDataProvider;
 
 $this->title = "Calendário de Atividades";
 ?>
@@ -14,6 +15,42 @@ $this->title = "Calendário de Atividades";
 
     <div class="panel panel-default">
     <div class="panel-body"> 
+
+<div class="row">
+  <div class="col-md-2">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Legenda</div>
+    <div class="panel-body">
+      <?php
+      $dataProvider = new SqlDataProvider([
+          'sql' => "SELECT d.name as name, d.hexcolor as color FROM department d WHERE d.is_active = 1",
+          'totalCount' => 100,
+          'sort' =>false,
+          'key'  => 'img',
+          'pagination' => [
+              'pageSize' => 100,
+          ],
+      ]);
+      ?>
+      <?php
+
+          $prov = $models = $dataProvider->getModels();
+          if(!empty($prov))
+              {
+                  foreach($prov as $row)
+                  {
+                      echo "<i class=\"fa fa-tag\" aria-hidden=\"true\" style=\"color:".$row["color"]."\"></i> ". $row["name"] ."<br/>";
+                  }   
+              } else {
+                  echo "<span class=\"not-set\">(nenhum departamento encontrado)</span>";
+              }                
+      ?>
+    </div>
+  </div>
+
+  </div>
+  <div class="col-md-10">
 
 <?php
 $JSDropEvent = <<<EOF
@@ -35,6 +72,9 @@ EOF;
           ],
         ));
     ?>
+
+  </div>
+</div>
 
     </div>
     </div>

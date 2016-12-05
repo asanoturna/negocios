@@ -41,7 +41,7 @@ $this->title = 'Painel de Atividades';
             'format' => 'raw',
             'enableSorting' => true,
             'value' => function ($model) {                      
-                    return $model->department->name;
+                    return "<i class=\"fa fa-tag\" aria-hidden=\"true\" style=\"color:".$model->department->hexcolor."\"></i> " . $model->department->name;
                     },
             'filter' => ArrayHelper::map(Department::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
             'contentOptions'=>['style'=>'width: 10%;text-align:center'],
@@ -58,17 +58,17 @@ $this->title = 'Painel de Atividades';
             'contentOptions'=>['style'=>'width: 10%;text-align:center'],
             'headerOptions' => ['class' => 'text-center'],
             ],
-            [
-            'attribute' => 'priority_id',
-            'format' => 'raw',
-            'enableSorting' => true,
-            'value' => function ($model) {                      
-                    return "<i class=\"fa fa-flag\" aria-hidden=\"true\" style=\"color:".$model->priority->hexcolor."\"></i> " . $model->priority->name;
-                    },
-            'filter' => ArrayHelper::map(Priority::find()->orderBy('id')->asArray()->all(), 'id', 'name'),
-            'contentOptions'=>['style'=>'width: 10%;text-align:center'],
-            'headerOptions' => ['class' => 'text-center'],
-            ],
+            // [
+            // 'attribute' => 'priority_id',
+            // 'format' => 'raw',
+            // 'enableSorting' => true,
+            // 'value' => function ($model) {                      
+            //         return "<i class=\"fa fa-flag\" aria-hidden=\"true\" style=\"color:".$model->priority->hexcolor."\"></i> " . $model->priority->name;
+            //         },
+            // 'filter' => ArrayHelper::map(Priority::find()->orderBy('id')->asArray()->all(), 'id', 'name'),
+            // 'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+            // 'headerOptions' => ['class' => 'text-center'],
+            // ],
             [
             'attribute' => 'deadline',
             'enableSorting' => true,

@@ -1,24 +1,14 @@
 TODO
 --------------------
+ALTER TABLE `department` ADD `hexcolor` VARCHAR(20) NOT NULL DEFAULT '#000000' AFTER `description`;
 
 TASK 
-> Proprio responsavel alterar o status para conlcuído
-> Incluir campo observação
-> Incluir campo arquivo
+Proprio responsavel alterar o status para conlcuído
+Incluir campo observação
+Incluir campo arquivo
 
-Departamento (incluir hexcolor)
-Exibir no calendario: nome da atividade + cor do departamento
-Exibir no calendario: legenda das cores
 Onclick no calendario para pagina de detalhes da atividade
 Desativar coluna prioridade (atribuir NORMAL para todos atividades)
-Categoria mudar nome para Periodicidade
-- Mensal
-- Bimestral
-- Trimestral
-- Quadrimestral
-- Semestral
-- Anual
-- Bienal
 ----------------------------------
 Responsavel pela Atividade
 Co-responsavel pela Atividade
@@ -28,7 +18,6 @@ Notificar E-mail: Responsável, Co-responsavel e Departamento
 Prazo para Atividadade - [x]
 Data para Lembrete - [x]  (em analise)
 - Enviar e-mail para todos 3 destinatarios com link para a pagina com detalhamento da atividade (definir dias)
-
 
 
 ------------

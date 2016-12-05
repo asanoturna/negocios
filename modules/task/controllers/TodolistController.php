@@ -5,6 +5,7 @@ namespace app\modules\task\controllers;
 use Yii;
 use app\modules\task\models\Todolist;
 use app\modules\task\models\TodolistSearch;
+use app\models\Department;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -64,8 +65,8 @@ class TodolistController extends Controller
     //$event->className = 'btn';
     //$event->backgroundColor = '#0d4549';
     //$event->borderColor = '#0d4549';
-    $event->backgroundColor = $todolist->priority->hexcolor;
-    $event->borderColor = $todolist->priority->hexcolor;
+    $event->backgroundColor = $todolist->department->hexcolor;
+    $event->borderColor = $todolist->department->hexcolor;
     $event->title = $todolist->name;
     $event->start = $todolist->deadline;
     $tasks[] =  $event;
