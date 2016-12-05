@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\color\ColorInput;
 
 ?>
 
@@ -11,7 +12,16 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+      <div class="col-md-6"><?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?></div>
+      <div class="col-md-6">
+      <?php
+        echo $form->field($model, 'hexcolor')->widget(ColorInput::classname(), [
+            'options' => ['placeholder' => 'Selecione'],
+        ]);
+        ?>
+    </div>
+    </div>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 

@@ -13,7 +13,7 @@ class DepartmentSearch extends Department
     {
         return [
             [['id', 'is_active'], 'integer'],
-            [['name', 'description', 'email'], 'safe'],
+            [['name', 'description', 'email', 'hexcolor'], 'safe'],
         ];
     }
 
@@ -53,6 +53,7 @@ class DepartmentSearch extends Department
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'hexcolor', $this->hexcolor])
             ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;

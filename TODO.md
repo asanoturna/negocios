@@ -6,6 +6,30 @@ TASK
 > Incluir campo observação
 > Incluir campo arquivo
 
+Departamento (incluir hexcolor)
+Exibir no calendario: nome da atividade + cor do departamento
+Exibir no calendario: legenda das cores
+Onclick no calendario para pagina de detalhes da atividade
+Desativar coluna prioridade (atribuir NORMAL para todos atividades)
+Categoria mudar nome para Periodicidade
+- Mensal
+- Bimestral
+- Trimestral
+- Quadrimestral
+- Semestral
+- Anual
+- Bienal
+----------------------------------
+Responsavel pela Atividade
+Co-responsavel pela Atividade
+Notificar E-mail: Responsável, Co-responsavel e Departamento
+- Enviar e-mail para todos 3 destinatarios com link para a pagina com detalhamento da atividade ao incluir nova atividade
+
+Prazo para Atividadade - [x]
+Data para Lembrete - [x]  (em analise)
+- Enviar e-mail para todos 3 destinatarios com link para a pagina com detalhamento da atividade (definir dias)
+
+
 
 ------------
 https://github.com/noam148/yii2-image-manager

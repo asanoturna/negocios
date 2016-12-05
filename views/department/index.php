@@ -54,6 +54,15 @@ $this->title = 'Departamentos';
                 'contentOptions'=>['style'=>'width: 20%;text-align:center'],
                 ],
                 [
+                'attribute' => 'hexcolor',
+                'enableSorting' => true,
+                'format' => 'raw',
+                'value' => function ($model) {
+                        return '<strong style="color:'.$model->hexcolor.'"><i class="fa fa-tag"></i></strong>';
+                        },
+                'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+                ],
+                [
                 'attribute' => 'description',
                 'format'=>'html',
                 'enableSorting' => true,
