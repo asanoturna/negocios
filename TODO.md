@@ -6,7 +6,7 @@ TASK
 Incluir campo arquivo
 
 Onclick no calendario para pagina de detalhes da atividade
-Desativar coluna prioridade (atribuir NORMAL para todos atividades)
+
 ----------------------------------
 Responsavel pela Atividade
 Co-responsavel pela Atividade

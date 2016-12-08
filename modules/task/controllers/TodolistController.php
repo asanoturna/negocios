@@ -87,6 +87,7 @@ class TodolistController extends Controller
         $model = new Todolist();
 
         $model->owner_id = Yii::$app->user->id;
+        $model->priority_id = 0;
         $model->status_id = 1;
         $model->created = date('Y-m-d');
         $model->updated = date('Y-m-d'); 

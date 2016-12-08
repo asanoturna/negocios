@@ -37,11 +37,9 @@ use yii\helpers\ArrayHelper;
       </div>
       <div class="col-md-6">
 
-    <?= $form->field($model, 'department_id')->dropDownList(ArrayHelper::map(Department::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'))  ?>
-
     <div class="row">
+      <div class="col-md-6"><?= $form->field($model, 'department_id')->dropDownList(ArrayHelper::map(Department::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'))  ?></div>
       <div class="col-md-6"><?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::find()->orderBy("name ASC")->all(), 'id', 'name'))  ?></div>
-      <div class="col-md-6"><?= $form->field($model, 'priority_id')->dropDownList(ArrayHelper::map(Priority::find()->orderBy("id ASC")->all(), 'id', 'name'))  ?></div>
     </div>
     
     <div class="row">

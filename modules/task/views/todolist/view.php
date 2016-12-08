@@ -14,7 +14,7 @@ $this->title = $model->name;
     <hr/>
 
     <p>
-        <?= Html::a('<i class="fa fa-toggle-on" aria-hidden="true"></i> Responsável', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<i class="fa fa-cog" aria-hidden="true"></i> Responsável', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
         <?= Html::a('<i class="fa fa-wrench" aria-hidden="true"></i> Gerenciar', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
         <?= Html::a('<i class="fa fa-trash-o" aria-hidden="true"></i> Excluir', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
@@ -42,7 +42,6 @@ $this->title = $model->name;
                 'attribute' => 'deadline',
                 'value' => date("d/m/Y",  strtotime($model->deadline))
             ],
-            'priority.name',
             [
            'attribute'=>'attachment',
            'format' => 'raw',
