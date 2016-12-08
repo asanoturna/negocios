@@ -19,7 +19,7 @@ class TodolistController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::classname(),
-                'only'  => ['index','create','view','calendar','performance','manager'],
+                'only'  => ['index','create','view','calendar','performance','responsible'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -63,8 +63,6 @@ class TodolistController extends Controller
     $event = new \yii2fullcalendar\models\Event();
     $event->id = $todolist->id;
     //$event->className = 'btn';
-    //$event->backgroundColor = '#0d4549';
-    //$event->borderColor = '#0d4549';
     $event->backgroundColor = $todolist->department->hexcolor;
     $event->borderColor = $todolist->department->hexcolor;
     $event->title = $todolist->name;
@@ -110,6 +108,19 @@ class TodolistController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionResponsible($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('responsible', [
                 'model' => $model,
             ]);
         }

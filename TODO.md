@@ -1,10 +1,8 @@
 TODO
 --------------------
-ALTER TABLE `department` ADD `hexcolor` VARCHAR(20) NOT NULL DEFAULT '#000000' AFTER `description`;
 
 TASK 
-Proprio responsavel alterar o status para conlcuído
-Incluir campo observação
+
 Incluir campo arquivo
 
 Onclick no calendario para pagina de detalhes da atividade

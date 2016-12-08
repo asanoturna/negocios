@@ -102,10 +102,50 @@ $this->title = 'Painel de Atividades';
             'contentOptions'=>['style'=>'width: 10%;text-align:left;text-transform: lowercase'],
             'headerOptions' => ['class' => 'text-center'],
             ],
-            [
+[
             'class' => 'yii\grid\ActionColumn',
-            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
-            ],
+            'header' => 'Ações',
+            'contentOptions'=>['style'=>'width: 10%;text-align:right'],
+            'headerOptions' => ['class' => 'text-center'],
+            'template' => '{view} {update} {delete} {responsible}',
+                'buttons' => [
+                    'view' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-eye-open" ></span>', ['view', 'id' => $model->id], [
+                                    'title' => 'Detalhes da Atividade',
+                                    'class' => 'btn btn-default btn-xs',
+                        ]);
+                    },
+                    'delete' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
+                                    'title' => 'Excluir',
+                                    'class' => 'btn btn-default btn-xs',
+                        ]);
+                    },
+                    'update' => function ($url, $model) {
+                        return $model->owner_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
+                                    'title' => 'Alterar Atividade',
+                                    'class' => 'btn btn-default btn-xs',
+                        ]): Html::a('<span class="glyphicon glyphicon-pencil" ></span>', "#", [
+                                    'title' => 'Registro pertence a outro usuário!',
+                                    'class' => 'btn btn-default btn-xs',
+                                    'disabled' => true,
+                        ]);
+                    },
+                    'responsible' => function ($url, $model) {
+                        return $model->responsible_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-cog" ></span>', $url, [
+                                    'title' => 'Alterar Situação da Atividade',
+                                    'class' => 'btn btn-default btn-xs',
+                        ]): Html::a('<span class="glyphicon glyphicon-cog" ></span>', "#", [
+                                    'title' => 'Acesso não permitido!',
+                                    'class' => 'btn btn-default btn-xs',
+                                    'disabled' => true,
+                        ]);
+                    },                      
+                ],
+
+            ],            
+
+
         ],
     ]); ?>
     </div>
