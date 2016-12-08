@@ -27,7 +27,7 @@ $this->title = "Calendário de Atividades";
           'sql' => "SELECT d.name as name, d.hexcolor as color FROM department d WHERE d.is_active = 1",
           'totalCount' => 100,
           'sort' =>false,
-          'key'  => 'img',
+          'key'  => 'name',
           'pagination' => [
               'pageSize' => 100,
           ],
