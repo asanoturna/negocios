@@ -68,20 +68,11 @@ function(start, end) {
     $('#w0').fullCalendar('unselect');
 }
 EOF;
-$JSDropEvent = <<<EOF
-function(date) {
-    alert("Dropped on " + date.format());
-    if ($('#drop-remove').is(':checked')) {
-        // if so, remove the element from the "Draggable Events" list
-        $(this).remove();
-    }
-}
-EOF;
 $JSEventClick = <<<EOF
 function(calEvent, jsEvent, view) {
-    alert('ID: ' + calEvent.id);
+    window.location = 'http://localhost/negocios/web/index.php?r=task%2Ftodolist%2Fview&id='+ calEvent.id;
+    // alert('ID: ' + calEvent.id);
     // alert('View: ' + view.name);
-    // change the border color just for fun
     $(this).css('cursor', 'hand');
 }
 EOF;
@@ -94,8 +85,7 @@ EOF;
           'events'=> $events,
           'clientOptions' => [
             'selectable' => true,
-            'drop' => new JsExpression($JSDropEvent),
-            'select' => new JsExpression($JSCode),
+            //'select' => new JsExpression($JSCode),
             'eventClick' => new JsExpression($JSEventClick),
           ],
         ));
