@@ -79,14 +79,12 @@ function(date) {
 EOF;
 $JSEventClick = <<<EOF
 function(calEvent, jsEvent, view) {
-    alert('Event: ' + calEvent.title);
-    alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-    alert('View: ' + view.name);
+    alert('ID: ' + calEvent.id);
+    // alert('View: ' + view.name);
     // change the border color just for fun
-    $(this).css('border-color', 'red');
+    $(this).css('cursor', 'hand');
 }
 EOF;
-    
     ?>
 
     <?= \yii2fullcalendar\yii2fullcalendar::widget(array(
@@ -96,9 +94,9 @@ EOF;
           'events'=> $events,
           'clientOptions' => [
             'selectable' => true,
-                                'drop' => new JsExpression($JSDropEvent),
-                    'select' => new JsExpression($JSCode),
-                    'eventClick' => new JsExpression($JSEventClick),
+            'drop' => new JsExpression($JSDropEvent),
+            'select' => new JsExpression($JSCode),
+            'eventClick' => new JsExpression($JSEventClick),
           ],
         ));
     ?>
