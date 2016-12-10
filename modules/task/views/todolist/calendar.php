@@ -81,6 +81,7 @@ EOF;
     <?= \yii2fullcalendar\yii2fullcalendar::widget(array(
           'options' => [
             'lang' => 'pt',
+            'loading' => 'Aguarde...',
           ],
           'events'=> $events,
           'clientOptions' => [

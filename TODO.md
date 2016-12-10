@@ -3,9 +3,8 @@ TODO
 
 TASK 
 
+Verificar permissões dos botoes "Gerenciar" e "Responsável" na view
 Incluir campo arquivo
-
-Onclick no calendario para pagina de detalhes da atividade
 
 ----------------------------------
 Responsavel pela Atividade
@@ -25,7 +24,8 @@ http://www.flaticon.com/free-icons/idea_24498
 Testar Theme usado em https://github.com/rokorolov/parus
 
 CORRIGIR AREA DE GESTAO DO USUARIO (alterar senha, avatar, etc)
-
+PARAMETROS dos módulos definidos apenas nos módulos
+Tentar definir permissoes apenas nos modulos ?!
 Bloquear uso do IE versão 8 pra baixo
 Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc)
 Verificar permissoes nos controllers (permissão apenas para admin)

@@ -61,12 +61,14 @@ class TodolistController extends Controller
     foreach ($events as $todolist)
     {
     $event = new \yii2fullcalendar\models\Event();
-    $event->id = $todolist->id;
-    //$event->className = 'btn';
+    
+    $event->className = 'btn btn-xs';
     $event->backgroundColor = $todolist->department->hexcolor;
     $event->borderColor = $todolist->department->hexcolor;
+    $event->id = $todolist->id;
     $event->title = $todolist->name;
     $event->start = $todolist->deadline;
+
     $tasks[] =  $event;
     }
     return $this->render('calendar',[
