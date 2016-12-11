@@ -4,7 +4,6 @@ TODO
 TASK 
 
 Verificar permissões dos botoes "Gerenciar" e "Responsável" na view
-Revisar os parametros redundantes do arquivo params.php
 ----------------------------------
 Responsavel pela Atividade
 Co-responsavel pela Atividade
@@ -15,7 +14,6 @@ Prazo para Atividadade - [x]
 Data para Lembrete - [x]  (em analise)
 - Enviar e-mail para todos 3 destinatarios com link para a pagina com detalhamento da atividade (definir dias)
 
-
 ------------
 https://github.com/noam148/yii2-image-manager
 
@@ -23,7 +21,7 @@ http://www.flaticon.com/free-icons/idea_24498
 Testar Theme usado em https://github.com/rokorolov/parus
 
 CORRIGIR AREA DE GESTAO DO USUARIO (alterar senha, avatar, etc)
-PARAMETROS dos módulos definidos apenas nos módulos
+PARAMETROS dos módulos definidos apenas nos módulos e Revisar os parametros redundantes
 Tentar definir permissoes apenas nos modulos ?!
 Bloquear uso do IE versão 8 pra baixo
 Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc)

@@ -32,12 +32,12 @@ class Todolist extends \yii\db\ActiveRecord
 
     public function getImageFile()
     {
-        return isset($this->attachment) ? Yii::$app->params['taskAttachment'] . $this->attachment : null;
+        return isset($this->attachment) ? \Yii::$app->getModule('task')->params['taskAttachment'] . $this->attachment : null;
     }
     public function getImageUrl()
     {
         $attachment = isset($this->attachment) ? $this->attachment : 'default-attachment.png';
-        return Yii::$app->params['taskAttachment'] . $attachment;
+        return \Yii::$app->getModule('task')->params['taskAttachment'] . $attachment;
     }
     public function uploadImage()
     {

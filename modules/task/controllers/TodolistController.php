@@ -105,8 +105,8 @@ class TodolistController extends Controller
 
                     $idfolder = Yii::$app->user->identity->id;
 
-                    if(!is_dir(Yii::$app->params['taskAttachment'])){
-                    mkdir(Yii::$app->params['taskAttachment'], 0777, true);
+                    if(!is_dir(\Yii::$app->getModule('task')->params['taskAttachment'])){
+                    mkdir(\Yii::$app->getModule('task')->params['taskAttachment'], 0777, true);
                     }
                     $path = $model->getImageFile();
                     $file->saveAs($path);

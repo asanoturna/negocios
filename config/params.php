@@ -23,5 +23,5 @@ return [
     'usersAvatars'    => '../../assets_users_avatars/',
     // Quantidade limite de anexos
     'imglimit'          => 5,
-    'taskAttachment' => '../../taskAttachment/',
+//    'taskAttachment' => '../../taskAttachment/',
 ];
