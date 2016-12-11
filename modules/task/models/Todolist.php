@@ -3,6 +3,7 @@
 namespace app\modules\task\models;
 use app\models\Department;
 use app\models\User;
+use yii\web\UploadedFile;
 use Yii;
 
 class Todolist extends \yii\db\ActiveRecord
@@ -12,20 +13,63 @@ class Todolist extends \yii\db\ActiveRecord
         return 'mod_task_list';
     }
 
-    public $file;
-    public $filename;
-
     public function rules()
     {
         return [
             [['name', 'category_id', 'status_id', 'deadline', 'priority_id', 'owner_id', 'responsible_id', 'created', 'updated'], 'required'],
             [['description','responsible_note'], 'string'],
             [['department_id', 'category_id', 'status_id', 'priority_id', 'owner_id', 'responsible_id', 'is_done','flag_remember_task','flag_report_responsible'], 'integer'],
-            [['deadline', 'created', 'updated'], 'safe'],
+            [['attachment', 'file', 'filename', 'deadline', 'created', 'updated'], 'safe'],
+            [['file'], 'file', 'extensions'=>'jpg, png, pdf', 'maxSize' => 1024 * 1024 * 2],
             [['name','attachment'], 'string', 'max' => 200],
             // [['status_id'], 'exist', 'skipOnError' => true, 'targetClass' => ModTaskStatus::className(), 'targetAttribute' => ['status_id' => 'id']],
             // [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => ModTaskCategory::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
+    }
+
+    public $file;
+    public $filename;
+
+    public function getImageFile()
+    {
+        return isset($this->attachment) ? Yii::$app->params['taskAttachment'] . $this->attachment : null;
+    }
+    public function getImageUrl()
+    {
+        $attachment = isset($this->attachment) ? $this->attachment : 'default-attachment.png';
+        return Yii::$app->params['taskAttachment'] . $attachment;
+    }
+    public function uploadImage()
+    {
+        $file = UploadedFile::getInstance($this, 'file');
+ 
+        if (empty($file)) {
+            return false;
+        }
+ 
+        $this->filename = $file->name;
+        $ext = end((explode(".", $file->name)));
+ 
+        $this->attachment = Yii::$app->security->generateRandomString().".{$ext}";
+ 
+        return $file;
+    }
+    public function deleteImage()
+    {
+        $file = $this->getImageFile();
+ 
+        if (empty($file) || !file_exists($file)) {
+            return false;
+        }
+ 
+        if (!unlink($file)) {
+            return false;
+        }
+ 
+        $this->attachment = null;
+        $this->filename = null;
+ 
+        return true;
     }
 
     public function attributeLabels()

@@ -11,6 +11,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\base\Security;
+use yii\web\UploadedFile;
 
 class TodolistController extends Controller
 {
@@ -94,13 +95,31 @@ class TodolistController extends Controller
         $model->created = date('Y-m-d');
         $model->updated = date('Y-m-d'); 
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        if ($model->load(Yii::$app->request->post())) {
+
+            $file = $model->uploadImage();
+ 
+            if ($model->save()) {
+
+                if ($file !== false) {
+
+                    $idfolder = Yii::$app->user->identity->id;
+
+                    if(!is_dir(Yii::$app->params['taskAttachment'])){
+                    mkdir(Yii::$app->params['taskAttachment'], 0777, true);
+                    }
+                    $path = $model->getImageFile();
+                    $file->saveAs($path);
+                }
+                Yii::$app->session->setFlash("task-success", "Atividade incluída com sucesso!");
+                return $this->redirect(['index']);
+            } else {
+                // error in saving model
+            }
         }
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     public function actionUpdate($id)

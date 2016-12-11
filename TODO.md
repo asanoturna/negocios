@@ -4,8 +4,7 @@ TODO
 TASK 
 
 Verificar permissões dos botoes "Gerenciar" e "Responsável" na view
-Incluir campo arquivo
-
+Revisar os parametros redundantes do arquivo params.php
 ----------------------------------
 Responsavel pela Atividade
 Co-responsavel pela Atividade

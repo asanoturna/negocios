@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-$this->title = $model->name;
+$this->title = 'Atividade #' . $model->id;
 ?>
 <div class="todolist-view">
 
@@ -45,7 +45,7 @@ $this->title = $model->name;
             [
            'attribute'=>'attachment',
            'format' => 'raw',
-           'value' => $model->attachment == null ? "<span class=\"not-set\">(sem anexo)</span>" : '<span class="glyphicon glyphicon-paperclip"></span> '.Html::a('Visualizar Anexo', Yii::$app->params['uploadPath'].$model->attachment, ['target' => '_blank']),
+           'value' => $model->attachment == null ? "<span class=\"not-set\">(sem anexo)</span>" : '<span class="glyphicon glyphicon-paperclip"></span> '.Html::a('Visualizar Anexo', Yii::$app->params['taskAttachment'].$model->attachment, ['target' => '_blank']),
             ], 
             [ 
             'attribute' => 'owner_id',
