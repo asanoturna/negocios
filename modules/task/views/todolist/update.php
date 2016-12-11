@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Alterar Atividade: ' . $model->name;
+$this->title = 'Alterar Atividade #' . $model->id;
 ?>
 <div class="todolist-update">
 

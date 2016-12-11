@@ -14,7 +14,7 @@ $this->title = 'Atividade #' . $model->id;
     <hr/>
 
     <p>
-        <?= Html::a('<i class="fa fa-cog" aria-hidden="true"></i> Responsável', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<i class="fa fa-cog" aria-hidden="true"></i> Responsável', ['responsible', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
         <?= Html::a('<i class="fa fa-wrench" aria-hidden="true"></i> Gerenciar', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
         <?= Html::a('<i class="fa fa-trash-o" aria-hidden="true"></i> Excluir', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',

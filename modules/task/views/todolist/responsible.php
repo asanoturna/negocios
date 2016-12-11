@@ -11,7 +11,7 @@ use app\models\User;
 use yii\widgets\MaskedInput;
 use yii\helpers\ArrayHelper;
 
-$this->title = 'Alterar Situação: ' . $model->name;
+$this->title = 'Alterar Situação da Atividade #' . $model->id;
 ?>
 <div class="todolist-responsible">
 

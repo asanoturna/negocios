@@ -8,6 +8,7 @@ use app\modules\task\models\TodolistSearch;
 use app\models\Department;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\base\ErrorException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\base\Security;
@@ -159,6 +160,10 @@ class TodolistController extends Controller
     public function actionResponsible($id)
     {
         $model = $this->findModel($id);
+
+        if ($model->responsible_id != Yii::$app->user->id){
+            throw new NotFoundHttpException("Você não é responsável por essa atividade!");
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
