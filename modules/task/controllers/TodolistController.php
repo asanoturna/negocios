@@ -126,13 +126,34 @@ class TodolistController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+       $oldFile = $model->getImageFile();
+        $oldattachment = $model->attachment;
+        $oldFileName = $model->filename;
+ 
+        if ($model->load(Yii::$app->request->post())) {
+
+            $file = $model->uploadImage();
+ 
+            if ($file === false) {
+                $model->attachment = $oldattachment;
+                $model->filename = $oldFileName;
+            }
+ 
+            if ($model->save()) {
+
+                if ($file !== false && unlink($oldFile)) {
+                    $path = $model->getImageFile();
+                    $file->saveAs($path);
+                }
+                Yii::$app->session->setFlash("task-success", "Atividade Alterada com sucesso!");
+                return $this->redirect(['index']);
+            } else {
+                // error in saving model
+            }
         }
+        return $this->render('update', [
+            'model'=>$model,
+        ]);
     }
 
     public function actionResponsible($id)
