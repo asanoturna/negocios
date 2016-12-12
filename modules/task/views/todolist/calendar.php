@@ -32,19 +32,16 @@ $this->title = "Calendário de Atividades";
               'pageSize' => 100,
           ],
       ]);
-      ?>
-      <?php
-
-          $prov = $models = $dataProvider->getModels();
-          if(!empty($prov))
+      $prov = $models = $dataProvider->getModels();
+      if(!empty($prov))
+          {
+              foreach($prov as $row)
               {
-                  foreach($prov as $row)
-                  {
-                      echo "<i class=\"fa fa-tag\" aria-hidden=\"true\" style=\"color:".$row["color"]."\"></i> ". $row["name"] ."<br/>";
-                  }   
-              } else {
-                  echo "<span class=\"not-set\">(nenhum departamento encontrado)</span>";
-              }                
+                  echo "<i class=\"fa fa-tag\" aria-hidden=\"true\" style=\"color:".$row["color"]."\"></i> ". $row["name"] ."<br/>";
+              }   
+          } else {
+              echo "<span class=\"not-set\">(nenhum departamento encontrado)</span>";
+          }                
       ?>
     </div>
   </div>

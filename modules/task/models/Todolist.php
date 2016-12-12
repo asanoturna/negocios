@@ -20,7 +20,7 @@ class Todolist extends \yii\db\ActiveRecord
             [['description','responsible_note'], 'string'],
             [['department_id', 'category_id', 'status_id', 'priority_id', 'owner_id', 'responsible_id', 'is_done','flag_remember_task','flag_report_responsible'], 'integer'],
             [['attachment', 'file', 'filename', 'deadline', 'created', 'updated'], 'safe'],
-            [['file'], 'file', 'extensions'=>'jpg, png, pdf', 'maxSize' => 1024 * 1024 * 2],
+            [['file'], 'file', 'extensions'=>'jpg, png, pdf, doc, docx, xls, xlsx', 'maxSize' => 1024 * 1024 * 4],
             [['name','attachment'], 'string', 'max' => 200],
             // [['status_id'], 'exist', 'skipOnError' => true, 'targetClass' => ModTaskStatus::className(), 'targetAttribute' => ['status_id' => 'id']],
             // [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => ModTaskCategory::className(), 'targetAttribute' => ['category_id' => 'id']],

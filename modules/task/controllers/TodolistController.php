@@ -113,6 +113,13 @@ class TodolistController extends Controller
                     $file->saveAs($path);
                 }
                 Yii::$app->session->setFlash("task-success", "Atividade incluída com sucesso!");
+                \Yii::$app->mailer->compose('@app/mail/new')
+                ->setFrom('gustavo.andrade@sicoobcrediriodoce.com.br')
+                ->setTo('gustavo.andrade@sicoobcrediriodoce.com.br')
+                ->setSubject(Yii::$app->params['appName'].' - Nova Tarefa : #'. $model->id)
+                ->setTextBody('Nova Ocorrencia registrada')
+                    // ->setHtmlBody('<b>Nova Ocorrencia registrada</b>')
+                ->send();
                 return $this->redirect(['index']);
             } else {
                 // error in saving model

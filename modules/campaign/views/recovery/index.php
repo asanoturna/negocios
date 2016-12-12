@@ -37,7 +37,7 @@ $this->title = 'Campanha Recupere e Ganhe';
                     'vAlign'=>'middle',
                     'width'=>'100px',
                     'value'=>function ($model, $key, $index, $widget) { 
-                        return Html::a($model->location->shortname, '#', []);
+                        return $model->location->shortname;
                     },
                     'format'=>'raw'
                   ],

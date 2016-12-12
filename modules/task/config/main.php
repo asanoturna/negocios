@@ -2,8 +2,8 @@
 
 return [
 	'params' => [
-		'taskAttachment' => '../../taskAttachment/',
-		'taskMailSubject' => '',
-		'taskMailText' => '',
+		'taskAttachment' => Yii::$app->params['assets'].'taskAttachment/',
+		'taskMailSubject' => 'Assunto Teste',
+		'taskMailText' => 'Mensagem Teste',
 	]
 ];

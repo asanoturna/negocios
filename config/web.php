@@ -36,12 +36,21 @@ $config = [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            'useFileTransport' => true,
-            'messageConfig' => [
-                'from' => ['admin@website.com' => 'Admin'],
-                'charset' => 'UTF-8',
-            ]
-        ],
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'hostname',
+                'username' => 'username@providername.com.br',
+                'password' => 'superpassword',
+                'port' => '587',
+                'encryption' => 'tls',
+                'streamOptions' => [
+                        'ssl' => [
+                            'verify_peer' => false,
+                            'verify_peer_name' => false,
+                        ],
+                    ],
+            ],
+        ],  
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

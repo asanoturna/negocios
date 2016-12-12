@@ -4,6 +4,8 @@ TODO
 TASK 
 
 Verificar permissões dos botoes "Gerenciar" e "Responsável" na view
+
+https://mytechystuffs.wordpress.com/2014/09/16/send-emails-as-queue-from-your-yii2-application/
 ----------------------------------
 Responsavel pela Atividade
 Co-responsavel pela Atividade

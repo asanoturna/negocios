@@ -1,18 +1,13 @@
 <?php
-/*
-to use: Yii::$app->params['imgUrl']
-*/
+// Yii::$app->params['imgUrl']
 return [
-    //
+    // GENERAL PARAMS
     'adminEmail'        => 'admin@example.com',
-    //
     'appname'           => 'Intranet Crediriodoce',
-    //
     'company'           => 'Sicoob Crediriodoce',
-    //
     'supportEmail'      => 'gustavo.andrade@sicoobcrediriodoce.com.br',
-    //
     'supportDep'        => 'Tecnologia da Informação',
+    'assets'            => '../../assets_intranet/',
     // Caminhos dos anexos
     'uploadPath'        => '../../Anexos_visitas_anexos/',
     'uploadUrl'         => '../../Anexos_visitas_anexos/',    
@@ -23,5 +18,4 @@ return [
     'usersAvatars'    => '../../assets_users_avatars/',
     // Quantidade limite de anexos
     'imglimit'          => 5,
-//    'taskAttachment' => '../../taskAttachment/',
 ];
