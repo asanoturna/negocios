@@ -5,6 +5,7 @@ namespace app\modules\task\controllers;
 use Yii;
 use app\modules\task\models\Todolist;
 use app\modules\task\models\TodolistSearch;
+use app\models\User;
 use app\models\Department;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -113,13 +114,15 @@ class TodolistController extends Controller
                     $file->saveAs($path);
                 }
                 Yii::$app->session->setFlash("task-success", "Atividade incluída com sucesso!");
+
                 \Yii::$app->mailer->compose('@app/mail/task')
-                ->setFrom('gustavo.andrade@sicoobcrediriodoce.com.br')
-                ->setTo('gustavo.andrade@sicoobcrediriodoce.com.br')
-                ->setSubject(Yii::$app->params['appName'].' - Nova Tarefa : #'. $model->id)
-                ->setTextBody('Nova Ocorrencia registrada')
-                    // ->setHtmlBody('<b>Nova Ocorrencia registrada</b>')
+                ->setFrom('intranet@sicoobcrediriodoce.com.br')
+                ->setTo($model->responsible->email)
+                ->setSubject(Yii::$app->params['appname'].' - '.\Yii::$app->getModule('task')->params['taskModuleName']. ' - Nova Tarefa : #'. $model->id)
+                //->setTextBody('Nova Ocorrencia registrada')
+                //->setHtmlBody('<b>Nova Ocorrencia registrada</b>')
                 ->send();
+
                 return $this->redirect(['index']);
             } else {
                 // error in saving model

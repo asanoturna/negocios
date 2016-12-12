@@ -13,7 +13,7 @@ use yii\helpers\Html;
 </head>
 <body>
     <?php $this->beginBody() ?>
-    Nova Tarefa registrada em <?= Yii::$app->params['appName'] ?>
+    Nova Tarefa registrada em <?= Yii::$app->params['appname'].' - '.\Yii::$app->getModule('task')->params['taskModuleName'] ?>
     <br/>
     <?= Html::a('Clique para acessar', Yii::getAlias('@web')) ?>
     <?php $this->endBody() ?>
