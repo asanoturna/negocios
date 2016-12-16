@@ -159,6 +159,12 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
         // PROPOSTA F
         $proposal_F = ($model->referencevalue*(pow((1+0.0067),($days/30))));
         $proposal_F = "R$ " . round((($proposal_F*$factor)), 2);
+        // PROPOSTA G
+        $proposal_G = $model->referencevalue*(pow((1+0.01),($days/30)));
+        $proposal_G = "R$ " . round((($proposal_G*0.7)), 2);
+        // PROPOSTA H
+        $proposal_H = $model->referencevalue*(pow((1+0.01),($days/30)));
+        $proposal_H = "R$ " . round((($proposal_H*0.5)), 2);
 
         // DISTRIBUIÇÃO COMISSÃO
         $comission_f = "R$ " . round(($model->commission*0.60), 2);
@@ -172,43 +178,56 @@ $this->title = 'Campanha Recupere e Ganhe - #' . $model->id;
                 <td>COMISSÃO</td>
             </tr>
             <tr>
-                <td><span class="label label-default">A</span> <small>Valor do débito corrigido a Juros Contratuais</small></td>
+                <td><span class="label label-default">A</span> <small>atualização a juros de 1,8 % a.m com multa e mora</small></td>
                 <td>Agência</td>
                 <td><?=$proposal_A;?></td>
                 <td><span class="label label-primary">5%</span></td>
             </tr>
             <tr>
-                <td><span class="label label-default">B</span> <small>Valor do débito corrigido a Juros Contratuais Sem Multa e Mora</small></td>
+                <td><span class="label label-default">B</span> <small>atualização a juros de 1,8 % a.m sem multa e sem mora</small></td>
                 <td>Agência</td>
                 <td><?=$proposal_B;?></td>
                 <td><span class="label label-primary">3%</span></td>
             </tr>
             <tr>
-                <td><span class="label label-default">C</span> <small>Valor do débito corrigido a Juros Judiciais</small></td>
+                <td><span class="label label-default">C</span> <small>atualização a juros de 1,5 % a.m sem multa e sem mora</small></td>
                 <td>Agência</td>
                 <td><?=$proposal_C;?></td>
                 <td><span class="label label-primary">2%</span></td>
             </tr>   
             <tr>
-                <td><span class="label label-default">D</span> <small>Valor do débito corrigido a Juros de Poupança</small></td>
+                <td><span class="label label-default">D</span> <small>atualização a juros de 1,3 % a.m sem multa e sem mora</small></td>
                 <td>Supervisor</td>
                 <td><?=$proposal_D;?></td>
                 <td><span class="label label-success">1%</span></td>
             </tr>
             <tr>
-                <td><span class="label label-default">E</span> <small>Correção por índice judicial</small></td>
+                <td><span class="label label-default">E</span> <small>atualização a juros de 1,1 % a.m sem multa e sem mora</small></td>
                 <td>Diretor</td>
                 <td><?=$proposal_E;?></td>
                 <td><span class="label label-success">0,50%</span></td>
             </tr>
             <tr>
-                <td><span class="label label-default">F</span> <small>Valor do débito sem correção</small></td>
+                <td><span class="label label-default">F</span> <small>atualização a juros de 0,6677 % a.m sem multa e sem mora</small></td>
                 <td>Diretor</td>
                 <td><?=$proposal_F;?></td>
                 <td><span class="label label-success">0,30%</span></td>
-            </tr>                                     
+            </tr>
+            <tr>
+                <td><span class="label label-default">G</span> <small>atualização a juros de 1 % a.m (s/mora e s/multa) e desconto de <b>30%</b></small></td>
+                <td>Diretor</td>
+                <td><?=$proposal_G;?></td>
+                <td><span class="label label-default">0%</span></td>
+            </tr>
+            <tr>
+                <td><span class="label label-default">H</span> <small>atualização a juros de 1 % a.m (s/mora e s/multa) e desconto de <b>50%</b></small></td>
+                <td>Diretor</td>
+                <td><?=$proposal_H;?></td>
+                <td><span class="label label-default">0%</span></td>
+            </tr>
         </table>
         <p class="text-warning"><i class="fa fa-info-circle" aria-hidden="true"></i> Propostas A, B e C são aprovadas automaticamente!</p> 
+        <p class="text-warning"><i class="fa fa-info-circle" aria-hidden="true"></i> Propostas G e H são para pagamento à vista</p>
         </div></div>
 
       </div>

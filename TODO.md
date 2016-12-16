@@ -18,7 +18,6 @@ Data para Lembrete - [x]  (em analise)
 
 ------------
 https://github.com/noam148/yii2-image-manager
-
 http://www.flaticon.com/free-icons/idea_24498
 Testar Theme usado em https://github.com/rokorolov/parus
 

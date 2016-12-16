@@ -162,12 +162,12 @@ $this->title = 'Campanha Recupere e Ganhe';
                 'headerOptions'=>['class'=>'active', 'style'=>'text-align:center;vertical-align: middle;'],
                 'contentOptions'=>['style'=>'width: 8%;text-align:center'],
             ],  
-            [
-            'attribute' => 'clientdoc',
-            'encodeLabel' => false,
-            'headerOptions'=>['class'=>'active', 'style'=>'text-align:center;vertical-align: middle;'],
-            'contentOptions'=>['style'=>'width: 8%;text-align:center'],
-            ],
+            // [
+            // 'attribute' => 'clientdoc',
+            // 'encodeLabel' => false,
+            // 'headerOptions'=>['class'=>'active', 'style'=>'text-align:center;vertical-align: middle;'],
+            // 'contentOptions'=>['style'=>'width: 8%;text-align:center'],
+            // ],
             [
             'attribute' => 'clientname',
             'headerOptions'=>['class'=>'active', 'style'=>'text-align:center;vertical-align: middle;'],

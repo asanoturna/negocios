@@ -54,6 +54,12 @@ class Recovery extends \yii\db\ActiveRecord
         // PROPOSTA F
         $proposal_F = ($this->referencevalue*(pow((1+0.0067),($days/30))));
         $proposal_F = floatval(round((($proposal_F*$factor)), 2));
+        // PROPOSTA G
+        $proposal_G = $this->referencevalue*(pow((1+0.01),($days/30)));
+        $proposal_G = floatval(round((($proposal_G*0.7)), 2));
+        // PROPOSTA H
+        $proposal_H = $this->referencevalue*(pow((1+0.01),($days/30)));
+        $proposal_H = floatval(round((($proposal_H*0.5)), 2));
 
         // CALCULA E DEFINE O TIPO DE PROPOSTA BASEADO NO VALOR NEGOCIADO
 
@@ -87,9 +93,14 @@ class Recovery extends \yii\db\ActiveRecord
             $this->commission = $this->value_input*0.003;
             $this->status = 0;
         }
-        if($this->value_traded < $proposal_F){
-            $this->typeproposed = 5;
-            $this->commission = $this->value_input*0.003;
+        if($this->value_traded < $proposal_F && $this->value_traded >= $proposal_G){
+            $this->typeproposed = 6;
+            $this->commission = 0;
+            $this->status = 0;
+        }
+        if($this->value_traded < $proposal_G && $this->value_traded >= $proposal_H){
+            $this->typeproposed = 7;
+            $this->commission = 0;
             $this->status = 0;
         }
         return parent::beforeSave($insert);
@@ -112,12 +123,14 @@ class Recovery extends \yii\db\ActiveRecord
 
     // typeproposed
     public static $Static_typeproposed = [
-        'A', 
+        'A',
         'B', 
         'C', 
         'D',
         'E', 
-        'F',        
+        'F',
+        'G',
+        'H',
         ];   
     public function getTypeproposed()
     {
