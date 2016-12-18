@@ -41,7 +41,6 @@ site/user.php
 - Criar Área de Notícias (comentarios? likes?)
 - Criar Gestão de arquivos (estrutra de categorias semelhante da central, incluir a area Planilha Base e categorias da intranet antiga)
 - Criar Agenda / Calendario (global e para cada usuario) (sinc google agenda ?)
----> https://github.com/thiagotalma/yii2-talma-fullcalendar-widget
 - Criar Galeria de fotos
 - Criar Área de Links Pessoais
 - Criar Links Externos/Ferramentas ??? (calculadora HP 12c, etc..)
@@ -53,7 +52,6 @@ MÓDULOS
 - Criar de módulo Vídeos
 - Criar de módulo RH (area p/ contra cheque)
 - Criar de módulo Helpdesk
-- Criar de módulo Enquetes e Questionarios
 - Criar de módulo Plano de Ação (igual do GMI) 
 
 - Visitas -> Verificar / Usar plugin de galeria de fotos
