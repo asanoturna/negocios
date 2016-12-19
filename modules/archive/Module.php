@@ -1,10 +1,10 @@
 <?php
 
-namespace app\modules\campaign;
+namespace app\modules\archive;
 
 class Module extends \yii\base\Module
 {
-    public $controllerNamespace = 'app\modules\campaign\controllers';
+    public $controllerNamespace = 'app\modules\archive\controllers';
 
     //public $layout = 'main';
 
