@@ -21,7 +21,7 @@ https://github.com/noam148/yii2-image-manager
 http://www.flaticon.com/free-icons/idea_24498
 Testar Theme usado em https://github.com/rokorolov/parus
 
-CORRIGIR AREA DE GESTAO DO USUARIO (alterar senha, avatar, etc)
+CORRIGIR AREA DE GESTAO DO USUARIO (transformar em modulo, add alterar senha, avatar, etc)
 Revisar os parametros redundantes
 Tentar definir permissoes apenas nos modulos ?!
 Bloquear uso do IE versão 8 pra baixo
