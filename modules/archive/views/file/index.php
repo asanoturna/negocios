@@ -3,27 +3,23 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
-/* @var $this yii\web\View */
-/* @var $searchModel app\modules\archive\models\FileSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
-
-$this->title = 'Files';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Arquivos';
 ?>
 <div class="file-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+      <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
+      <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;"><?php  echo $this->render('/_menu'); ?></span></div>
+    </div>
+    <hr/>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Create File', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <div class="panel panel-default">
+    <div class="panel-body"> 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
             'id',
             'archive_category_id',
             'name',
@@ -36,8 +32,9 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'is_active',
             // 'user_id',
             // 'filetype',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+    </div>
+    </div>
 </div>
