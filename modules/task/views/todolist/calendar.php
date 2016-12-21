@@ -67,7 +67,7 @@ function(start, end) {
 EOF;
 $JSEventClick = <<<EOF
 function(calEvent, jsEvent, view) {
-    window.location = 'http://localhost/negocios/web/index.php?r=task%2Ftodolist%2Fview&id='+ calEvent.id;
+    window.location = 'http://172.19.37.4/negocios/web/index.php?r=task%2Ftodolist%2Fview&id='+ calEvent.id;
     // alert('ID: ' + calEvent.id);
     // alert('View: ' + view.name);
     $(this).css('cursor', 'hand');

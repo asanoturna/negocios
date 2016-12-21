@@ -113,17 +113,28 @@ class TodolistController extends Controller
                     $path = $model->getImageFile();
                     $file->saveAs($path);
                 }
-                Yii::$app->session->setFlash("task-success", "Atividade incluída com sucesso!");
+                //Yii::$app->session->setFlash("task-success", "Atividade incluída com sucesso!");
 
+                try{
+
+                Yii::$app->session->setFlash("task-success", "Atividade incluída com sucesso!");
                 \Yii::$app->mailer->compose('@app/mail/task')
                 ->setFrom('intranet@sicoobcrediriodoce.com.br')
                 ->setTo($model->responsible->email)
+                ->setCc($model->coresponsible->email)
                 ->setSubject(Yii::$app->params['appname'].' - '.\Yii::$app->getModule('task')->params['taskModuleName']. ' - Nova Tarefa : #'. $model->id)
                 //->setTextBody('Nova Ocorrencia registrada')
                 //->setHtmlBody('<b>Nova Ocorrencia registrada</b>')
                 ->send();
-
                 return $this->redirect(['index']);
+
+                }
+                catch(Exception $e)
+                {
+                Yii::$app->session->setFlash("task-success", "Atividade incluída com sucesso (erro ao enviar e-mail)");
+                return $this->redirect(['index']);
+                }
+
             } else {
                 // error in saving model
             }

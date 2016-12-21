@@ -44,11 +44,7 @@ use yii\helpers\ArrayHelper;
     
     <div class="row">
       <div class="col-md-6"><?= $form->field($model, 'responsible_id')->dropDownList(ArrayHelper::map(User::find()->where(['status' => 1])->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])?></div>
-      <div class="col-md-6">
-      <?php
-      $model->flag_report_responsible = true;
-      echo $form->field($model, 'flag_report_responsible')->checkBox(['style'=>'margin: 30px 0 0 0;'])?>
-      </div>
+      <div class="col-md-6"><?= $form->field($model, 'co_responsible_id')->dropDownList(ArrayHelper::map(User::find()->where(['status' => 1])->orderBy("username ASC")->all(), 'id', 'username'),['prompt'=>'-- Selecione --'])?></div>
     </div>
 
 
@@ -69,9 +65,6 @@ use yii\helpers\ArrayHelper;
     ) ?>
     </div>
       <div class="col-md-6">
-      <?php
-      $model->flag_remember_task = true;
-      echo $form->field($model, 'flag_remember_task')->checkBox(['style'=>'margin: 30px 0 0 0;']) ?>
       </div>
     </div>
 

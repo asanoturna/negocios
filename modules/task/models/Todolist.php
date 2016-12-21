@@ -18,7 +18,7 @@ class Todolist extends \yii\db\ActiveRecord
         return [
             [['name', 'category_id', 'status_id', 'deadline', 'priority_id', 'owner_id', 'responsible_id', 'created', 'updated'], 'required'],
             [['description','responsible_note'], 'string'],
-            [['department_id', 'category_id', 'status_id', 'priority_id', 'owner_id', 'responsible_id', 'is_done','flag_remember_task','flag_report_responsible'], 'integer'],
+            [['department_id', 'category_id', 'status_id', 'priority_id', 'owner_id', 'responsible_id', 'co_responsible_id', 'is_done'], 'integer'],
             [['attachment', 'file', 'filename', 'deadline', 'created', 'updated'], 'safe'],
             [['file'], 'file', 'extensions'=>'jpg, png, pdf, doc, docx, xls, xlsx', 'maxSize' => 1024 * 1024 * 4],
             [['name','attachment'], 'string', 'max' => 200],
@@ -85,13 +85,14 @@ class Todolist extends \yii\db\ActiveRecord
             'priority_id' => 'Prioridade',
             'owner_id' => 'Criado por',
             'responsible_id' => 'Responsável pela Atividade',
+            'co_responsible_id' => 'Co-responsável pela Atividade',
             'is_done' => 'Feito?',
             'created' => 'Criado em',
             'updated' => 'Alterado em',
             'flag_remember_task' => 'Lembrar Responsável por e-mail',
             'flag_report_responsible' => 'Notificar Responsável por e-mail',
             'responsible_note' => 'Observação Responsável',
-            'attachment' => 'Anexo',
+            'attachment' => 'Passo a passo',
             'file' => 'Anexo',
         ];
     }
@@ -124,5 +125,10 @@ class Todolist extends \yii\db\ActiveRecord
     public function getResponsible()
     {
         return $this->hasOne(User::className(), ['id' => 'responsible_id']);
+    }
+
+    public function getCoresponsible()
+    {
+        return $this->hasOne(User::className(), ['id' => 'co_responsible_id']);
     }
 }
