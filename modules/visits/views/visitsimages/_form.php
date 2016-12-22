@@ -37,7 +37,7 @@ use yii\helpers\Url;
 		  <div class="panel-heading"><strong>Enviar Imagem para Visita</strong></div>
 		  <div class="panel-body">
 		    <?php 
-		    if ($dataProvider->count < Yii::$app->params['imglimit']) {
+		    if ($dataProvider->count < \Yii::$app->getModule('visits')->params['maxImageGallery']) {
 		    
 		    $form = ActiveForm::begin([
 		        'id' => 'visitsimagesform',
@@ -61,7 +61,7 @@ use yii\helpers\Url;
 		    <hr/>
 		    </p>
 			<ul>
-			  <li>Você pode adicionar até <strong><?php echo Yii::$app->params['imglimit'];?></strong> imagens em cada visita (Você ja adicionou <?php echo $dataProvider->count;?>)</li>
+			  <li>Você pode adicionar até <strong><?php echo \Yii::$app->getModule('visits')->params['maxImageGallery'];?></strong> imagens em cada visita (Você ja adicionou <?php echo $dataProvider->count;?>)</li>
 			  <li>As imagens enviadas serão otimizadas e redimencionadas para o sistema</li>
 			  <li>Se necessário use os botões ao lado para cortar e personalizar as imagens</li>
 			</ul>
@@ -83,7 +83,7 @@ use yii\helpers\Url;
                     'attribute'=>'img',
                     'format' => 'html',
                     'value'=>function ($data) {
-                        return Html::a(Html::img(Yii::$app->params['imgPath'].$data["business_visits_id"].'/'.$data["img"],
+                        return Html::a(Html::img(\Yii::$app->getModule('visits')->params['visitImages'].$data["business_visits_id"].'/'.$data["img"],
                              ['width' => '50px', 'class' => 'img-rounded img-responsive']), Yii::$app->params['imgPath'].$data["business_visits_id"].'/'.$data["img"], ['target' => '_blank']);
                     },                                     
                     'contentOptions'=>['style'=>'width: 70%;text-align:left'],

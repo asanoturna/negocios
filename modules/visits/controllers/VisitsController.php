@@ -189,8 +189,8 @@ class VisitsController extends Controller
             if ($model->save()) {
 
                 if ($file !== false) {
-                    if(!is_dir(Yii::$app->params['uploadUrl'])){
-                    mkdir(Yii::$app->params['uploadUrl'], 0777, true);
+                    if(!is_dir(\Yii::$app->getModule('visits')->params['visitAttachment'])){
+                    mkdir(\Yii::$app->getModule('visits')->params['visitAttachment'], 0777, true);
                     }
                     $path = $model->getImageFile();
                     $file->saveAs($path);
@@ -224,8 +224,8 @@ class VisitsController extends Controller
             if ($model->save()) {
 
                 if ($file !== false) {
-                    if(!is_dir(Yii::$app->params['uploadUrl'])){
-                    mkdir(Yii::$app->params['uploadUrl'], 0777, true);
+                    if(!is_dir(\Yii::$app->getModule('visits')->params['visitAttachment'])){
+                    mkdir(\Yii::$app->getModule('visits')->params['visitAttachment'], 0777, true);
                     }
                     $path = $model->getImageFile();
                     $file->saveAs($path);

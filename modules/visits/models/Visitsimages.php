@@ -43,14 +43,14 @@ class Visitsimages extends \yii\db\ActiveRecord
 
     public function getImageFile()
     {
-        return isset($this->name) ? Yii::$app->params['imgPath'] . $this->business_visits_id.'/'. $this->name : null;
+        return isset($this->name) ? \Yii::$app->getModule('visits')->params['visitImages'] . $this->business_visits_id.'/'. $this->name : null;
     }
 
     public function getImageUrl()
     {
         // return a default image placeholder if your source name is not found
         $name = isset($this->name) ? $this->name : 'default-img.png';
-        return Yii::$app->params['imgUrl'] . $this->business_visits_id.'/'. $name;
+        return \Yii::$app->getModule('visits')->params['visitImages'] . $this->business_visits_id.'/'. $name;
     }
 
     public function uploadImage() {

@@ -1,14 +1,12 @@
 TODO
 --------------------
 
-TASK 
-
-Verificar permissões dos botoes "Gerenciar" e "Responsável" na view
+Calendário de Atividades -> Verificar permissões dos botoes "Gerenciar" e "Responsável" na view
+Calendário de Atividades -> Verificar permissões dos botoes "Gerenciar" e "Responsável" na view
 
 https://mytechystuffs.wordpress.com/2014/09/16/send-emails-as-queue-from-your-yii2-application/
 ----------------------------------
-Responsavel pela Atividade
-Co-responsavel pela Atividade
+
 Notificar E-mail: Responsável, Co-responsavel e Departamento
 - Enviar e-mail para todos 3 destinatarios com link para a pagina com detalhamento da atividade ao incluir nova atividade
 
@@ -22,13 +20,13 @@ http://www.flaticon.com/free-icons/idea_24498
 Testar Theme usado em https://github.com/rokorolov/parus
 
 Criação de menus
-CORRIGIR AREA DE GESTAO DO USUARIO (transformar em modulo, add alterar senha, avatar, etc)
+CORRIGIR AREA DE GESTAO DO USUARIO (transformar em modulo, add alterar senha, avatar, etc).
 Revisar os parametros redundantes
-Tentar definir permissoes apenas nos modulos ?!
+Tentar definir permissoes apenas nos modulos !!!
 Bloquear uso do IE versão 8 pra baixo
-Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc)
-Verificar permissoes nos controllers (permissão apenas para admin)
-Corrigir telas responsivas (gridview, etc)
+Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc).
+Verificar permissoes nos controllers (permissão apenas para admin).
+Otimizar para dispositivos móveis (gridview, menus mal posicionados, etc).
 
 *********************
 site/user.php
@@ -56,7 +54,9 @@ MÓDULOS
 - Criar de módulo Plano de Ação (igual do GMI) 
 
 - Visitas -> Verificar / Usar plugin de galeria de fotos
+- Visitas -> Ilmitado numero de upload de fotos
 - Prod Diaria -> Gravar Formula/Cálculo
 - Prod Diaria -> Quadro Metas por agência (cadastrar metas por local para todos os produtos)
   ---> Exemplo.: tabela meta > valor, pa, data(m/y)
 - Prod Diaria -> Regras dinamicas
+- Prod Diaria -> Gerenciar Produtos (cadastrar, ativar, desativar, etc), Gerenciar Metas

@@ -3,7 +3,9 @@
 return [
 	'params' => [
 		'visitModuleName' => 'Visitas dos Gerentes',
-		'visitAttachment' => '../../Anexos_visitas_anexos/',
-		'visitImages'     => '../../Anexos_visitas_anexos/',
+		'visitAttachment' => Yii::$app->params['assets'].'visitAttachment/',
+		'visitImages'     => Yii::$app->params['assets'].'visitImages/',
+		'maxImageGallery' => 10,
+		'maxImageize'     => 2048,
 	]
 ];

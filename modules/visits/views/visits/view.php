@@ -94,7 +94,7 @@ $this->title = "Detalhes da visita #" . $model->id;
                     [
                    'attribute'=>'attachment',
                    'format' => 'raw',
-                   'value' => $model->attachment == null ? "<span class=\"not-set\">(sem anexo)</span>" : '<span class="glyphicon glyphicon-paperclip"></span> '.Html::a('Visualizar Anexo', Yii::$app->params['uploadPath'].$model->attachment, ['target' => '_blank']),
+                   'value' => $model->attachment == null ? "<span class=\"not-set\">(sem anexo)</span>" : '<span class="glyphicon glyphicon-paperclip"></span> '.Html::a('Visualizar Anexo', \Yii::$app->getModule('visits')->params['visitAttachment'].$model->attachment, ['target' => '_blank']),
                     ], 
                     [ 
                     'label' => 'Situação',
@@ -143,10 +143,8 @@ $this->title = "Detalhes da visita #" . $model->id;
                     {
                         foreach($prov as $row)
                         {
-                            // echo Html::img(Yii::$app->params['imgPath'].$row["img"],
-                            //                 ['width' => '50px', 'class' => 'img-thumbnail']);
-                            echo Html::a(Html::img(Yii::$app->params['imgPath'].$cod.'/'.$row["img"],
-                             ['width' => '50px']), Yii::$app->params['imgPath'].$cod.'/'.$row["img"], ['target' => '_blank', 'class' => 'img-thumbnail']);
+                            echo Html::a(Html::img(\Yii::$app->getModule('visits')->params['visitImages'].$cod.'/'.$row["img"],
+                             ['width' => '50px']), \Yii::$app->getModule('visits')->params['visitImages'].$cod.'/'.$row["img"], ['target' => '_blank', 'class' => 'img-thumbnail']);
                         }   
                     } else {
                         echo "<span class=\"not-set\">(não possui imagens)</span>";

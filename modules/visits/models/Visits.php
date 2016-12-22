@@ -78,13 +78,13 @@ class Visits extends \yii\db\ActiveRecord
 
     public function getImageFile()
     {
-        return isset($this->attachment) ? Yii::$app->params['uploadPath'] . $this->attachment : null;
+        return isset($this->attachment) ? \Yii::$app->getModule('visits')->params['visitAttachment'] . $this->attachment : null;
     }
     public function getImageUrl()
     {
         // return a default image placeholder if your source attachment is not found
         $attachment = isset($this->attachment) ? $this->attachment : 'default-attachment.png';
-        return Yii::$app->params['uploadUrl'] . $attachment;
+        return \Yii::$app->getModule('visits')->params['visitAttachment'] . $attachment;
     }
     public function uploadImage() {
         // get the uploaded file instance. for multiple file uploads
