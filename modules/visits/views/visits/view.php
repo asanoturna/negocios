@@ -136,22 +136,42 @@ $this->title = "Detalhes da visita #" . $model->id;
             ]);
             ?>
             <?php             
-            echo "<div class=\"thumbnail\">";
-            echo "<div class=\"img-wrapper\">";
+            // echo "<div class=\"thumbnail\">";
+            // echo "<div class=\"img-wrapper\">";
+            //     $prov = $models = $dataProvider->getModels();
+            //     if(!empty($prov))
+            //         {
+            //             foreach($prov as $row)
+            //             {
+            //                 echo Html::a(Html::img(\Yii::$app->getModule('visits')->params['visitImages'].$cod.'/'.$row["img"],
+            //                  ['width' => '50px']), \Yii::$app->getModule('visits')->params['visitImages'].$cod.'/'.$row["img"], ['target' => '_blank', 'class' => 'img-thumbnail']);
+            //             }   
+            //         } else {
+            //             echo "<span class=\"not-set\">(não possui imagens)</span>";
+            //         }
+            // echo "</div>";                
+            // echo "</div>";   
+            ?>
+            <?php         
+            $items = array();
                 $prov = $models = $dataProvider->getModels();
                 if(!empty($prov))
                     {
                         foreach($prov as $row)
                         {
-                            echo Html::a(Html::img(\Yii::$app->getModule('visits')->params['visitImages'].$cod.'/'.$row["img"],
-                             ['width' => '50px']), \Yii::$app->getModule('visits')->params['visitImages'].$cod.'/'.$row["img"], ['target' => '_blank', 'class' => 'img-thumbnail']);
+                            $items[] = [
+                                'url' => \Yii::$app->getModule('visits')->params['visitImages'].$cod.'/'.$row["img"],
+                                'options' => array('class' => 'img-thumbnail', ['width' => '50px']),
+                                'src' => \Yii::$app->getModule('visits')->params['visitImages'].$cod.'/'.$row["img"],
+                                ];
                         }   
                     } else {
                         echo "<span class=\"not-set\">(não possui imagens)</span>";
                     }
-            echo "</div>";                
-            echo "</div>";   
+
+                    //var_dump($items);
             ?>
+            <?= dosamigos\gallery\Gallery::widget(['items' => $items]);?>
           </div>
         </div>
     </div>
