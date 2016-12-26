@@ -16,7 +16,7 @@ class Todolist extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'category_id', 'status_id', 'deadline', 'priority_id', 'owner_id', 'responsible_id', 'created', 'updated'], 'required'],
+            [['name', 'department_id', 'category_id', 'status_id', 'deadline', 'reminder', 'priority_id', 'owner_id', 'responsible_id', 'co_responsible_id', 'created', 'updated'], 'required'],
             [['description','responsible_note'], 'string'],
             [['department_id', 'category_id', 'status_id', 'priority_id', 'owner_id', 'responsible_id', 'co_responsible_id', 'is_done'], 'integer'],
             [['attachment', 'file', 'filename', 'deadline', 'created', 'updated'], 'safe'],
@@ -82,6 +82,7 @@ class Todolist extends \yii\db\ActiveRecord
             'category_id' => 'Periodicidade',
             'status_id' => 'Situação',
             'deadline' => 'Prazo para Atividade',
+            'reminder' => 'Lembrar em',
             'priority_id' => 'Prioridade',
             'owner_id' => 'Criado por',
             'responsible_id' => 'Responsável pela Atividade',

@@ -38,8 +38,12 @@ use yii\helpers\ArrayHelper;
       <div class="col-md-6">
 
     <div class="row">
-      <div class="col-md-6"><?= $form->field($model, 'department_id')->dropDownList(ArrayHelper::map(Department::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'))  ?></div>
-      <div class="col-md-6"><?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::find()->orderBy("name ASC")->all(), 'id', 'name'))  ?></div>
+      <div class="col-md-6">
+      <?= $form->field($model, 'department_id')->dropDownList(ArrayHelper::map(Department::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'-- Selecione --'])  ?>
+      </div>
+      <div class="col-md-6">
+      <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::find()->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'-- Selecione --'])  ?>
+      </div>
     </div>
     
     <div class="row">
@@ -65,6 +69,19 @@ use yii\helpers\ArrayHelper;
     ) ?>
     </div>
       <div class="col-md-6">
+      <?= $form->field($model, 'reminder')->widget('trntv\yii\datetime\DateTimeWidget',
+        [
+            'phpDatetimeFormat' => 'yyyy-MM-dd',
+            'clientOptions' => [
+                'minDate' => new \yii\web\JsExpression('new Date("2016-01-01")'),
+                'allowInputToggle' => true,
+                'widgetPositioning' => [
+                   'horizontal' => 'auto',
+                   'vertical' => 'auto'
+                ]
+            ]
+        ]
+    ) ?>
       </div>
     </div>
 
