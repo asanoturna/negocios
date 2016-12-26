@@ -43,6 +43,10 @@ $this->title = 'Atividade #' . $model->id;
                 'value' => date("d/m/Y",  strtotime($model->deadline))
             ],
             [
+                'attribute' => 'reminder',
+                'value' => date("d/m/Y",  strtotime($model->reminder))
+            ],
+            [
            'attribute'=>'attachment',
            'format' => 'raw',
            'value' => $model->attachment == null ? "<span class=\"not-set\">(sem anexo)</span>" : '<span class="glyphicon glyphicon-paperclip"></span> '.Html::a('Visualizar Anexo', \Yii::$app->getModule('task')->params['taskAttachment'].$model->attachment, ['target' => '_blank']),
