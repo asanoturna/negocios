@@ -37,7 +37,7 @@ site/user.php
 
 - Criar Dashboard na área administrativa (espço ocupado por assets, acessos, etc)
 - Criar Área de Alertas (local mais visivel no top da intranet)
-- Criar Área de Notícias (comentarios? likes?)
+- Criar Área de Notícias (incluir curtidas e comentários)
 - Criar Gestão de arquivos (estrutra de categorias semelhante da central, incluir a area Planilha Base e categorias da intranet antiga)
 - Criar Agenda / Calendario (global e para cada usuario) (sinc google agenda ?)
 - Criar Galeria de fotos
