@@ -22,7 +22,11 @@ $config = [
         //             '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
         //             '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
         //     ),
-        // ],        
+        // ],
+        'session' => [
+            'name' => '_intranetSessionId', // unique for frontend
+            'savePath' => __DIR__ . '/../runtime', // a temporary folder on frontend
+        ],       
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],

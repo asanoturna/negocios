@@ -4,7 +4,6 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "02d57637d8b64503de85465f4ad16e6e",
     "content-hash": "5308a40b2d9ccd3d6c6cad35b2a83251",
     "packages": [
         {
@@ -111,16 +110,16 @@
         },
         {
             "name": "bower-asset/eonasdan-bootstrap-datetimepicker",
-            "version": "4.17.43",
+            "version": "4.17.44",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Eonasdan/bootstrap-datetimepicker.git",
-                "reference": "c3e46cc301d851cf347366e361c5a0ba50b1de4a"
+                "reference": "d27c4458ef9065258530064917cb47cec1233400"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Eonasdan/bootstrap-datetimepicker/zipball/c3e46cc301d851cf347366e361c5a0ba50b1de4a",
-                "reference": "c3e46cc301d851cf347366e361c5a0ba50b1de4a",
+                "url": "https://api.github.com/repos/Eonasdan/bootstrap-datetimepicker/zipball/d27c4458ef9065258530064917cb47cec1233400",
+                "reference": "d27c4458ef9065258530064917cb47cec1233400",
                 "shasum": ""
             },
             "require": {
@@ -353,12 +352,12 @@
             "version": "3.2.7",
             "source": {
                 "type": "git",
-                "url": "https://github.com/RobinHerbots/jquery.inputmask.git",
+                "url": "https://github.com/RobinHerbots/Inputmask.git",
                 "reference": "5a72c563b502b8e05958a524cdfffafe9987be38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RobinHerbots/jquery.inputmask/zipball/5a72c563b502b8e05958a524cdfffafe9987be38",
+                "url": "https://api.github.com/repos/RobinHerbots/Inputmask/zipball/5a72c563b502b8e05958a524cdfffafe9987be38",
                 "reference": "5a72c563b502b8e05958a524cdfffafe9987be38",
                 "shasum": ""
             },
@@ -542,7 +541,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-05-18 18:07:02"
+            "time": "2016-05-18T18:07:02+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -602,7 +601,7 @@
                 "markdown",
                 "markdown-extra"
             ],
-            "time": "2016-09-14 20:40:20"
+            "time": "2016-09-14T20:40:20+00:00"
         },
         {
             "name": "cyneek/yii2-menu",
@@ -688,7 +687,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2016-07-16 12:58:58"
+            "time": "2016-07-16T12:58:58+00:00"
         },
         {
             "name": "fxp/composer-asset-plugin",
@@ -804,7 +803,7 @@
                 "image manipulation",
                 "image processing"
             ],
-            "time": "2015-09-19 16:54:05"
+            "time": "2015-09-19T16:54:05+00:00"
         },
         {
             "name": "karpoff/yii2-crop-image-upload",
@@ -849,7 +848,7 @@
                 "upload",
                 "yii2"
             ],
-            "time": "2014-12-15 18:32:02"
+            "time": "2014-12-15T18:13:03+00:00"
         },
         {
             "name": "kartik-v/yii2-dialog",
@@ -901,7 +900,7 @@
                 "modal",
                 "yii2"
             ],
-            "time": "2016-09-13 18:15:26"
+            "time": "2016-09-13T18:15:26+00:00"
         },
         {
             "name": "kartik-v/yii2-export",
@@ -960,7 +959,7 @@
                 "xlsx",
                 "yii2"
             ],
-            "time": "2016-04-18 16:54:14"
+            "time": "2016-04-18T16:54:14+00:00"
         },
         {
             "name": "kartik-v/yii2-field-range",
@@ -1011,7 +1010,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-09-04 09:29:14"
+            "time": "2016-09-04T09:29:14+00:00"
         },
         {
             "name": "kartik-v/yii2-grid",
@@ -1019,12 +1018,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-grid.git",
-                "reference": "866290c6b55554e067d9adc7c7494855ad6d53f3"
+                "reference": "58deb2ca56172dd325a87b09644f5af62d47654f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/866290c6b55554e067d9adc7c7494855ad6d53f3",
-                "reference": "866290c6b55554e067d9adc7c7494855ad6d53f3",
+                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/58deb2ca56172dd325a87b09644f5af62d47654f",
+                "reference": "58deb2ca56172dd325a87b09644f5af62d47654f",
                 "shasum": ""
             },
             "require": {
@@ -1064,7 +1063,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-12-15 13:26:46"
+            "time": "2016-12-19 21:36:49"
         },
         {
             "name": "kartik-v/yii2-krajee-base",
@@ -1115,7 +1114,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-09-04 09:25:29"
+            "time": "2016-09-04T09:25:29+00:00"
         },
         {
             "name": "kartik-v/yii2-money",
@@ -1165,7 +1164,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2015-06-17 16:48:26"
+            "time": "2015-06-17T16:48:26+00:00"
         },
         {
             "name": "kartik-v/yii2-slider",
@@ -1212,7 +1211,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-01-10 17:24:24"
+            "time": "2016-01-10T17:24:24+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-colorinput",
@@ -1266,7 +1265,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-01-14 11:15:49"
+            "time": "2016-01-14T11:15:49+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-datepicker",
@@ -1471,7 +1470,7 @@
                 "upload",
                 "yii2"
             ],
-            "time": "2015-08-27 15:48:02"
+            "time": "2015-08-27T15:48:02+00:00"
         },
         {
             "name": "philippfrenzel/yii2fullcalendar",
@@ -1520,7 +1519,7 @@
                 "fullcalendar",
                 "yii2"
             ],
-            "time": "2016-09-23 10:20:14"
+            "time": "2016-09-23T10:20:14+00:00"
         },
         {
             "name": "phpoffice/phpexcel",
@@ -1577,27 +1576,28 @@
                 "xls",
                 "xlsx"
             ],
-            "time": "2015-05-01 07:00:55"
+            "time": "2015-05-01T07:00:55+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.4.4",
+            "version": "v5.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "545ce9136690cea74f98f86fbb9c92dd9ab1a756"
+                "reference": "cd142238a339459b10da3d8234220963f392540c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/545ce9136690cea74f98f86fbb9c92dd9ab1a756",
-                "reference": "545ce9136690cea74f98f86fbb9c92dd9ab1a756",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/cd142238a339459b10da3d8234220963f392540c",
+                "reference": "cd142238a339459b10da3d8234220963f392540c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "mockery/mockery": "~0.9.1"
+                "mockery/mockery": "~0.9.1",
+                "symfony/phpunit-bridge": "~3.2"
             },
             "type": "library",
             "extra": {
@@ -1630,7 +1630,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2016-11-24 01:01:23"
+            "time": "2016-12-29T10:02:40+00:00"
         },
         {
             "name": "trntv/yii2-datetime-widget",
@@ -1680,7 +1680,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-02-12 07:10:46"
+            "time": "2016-02-12T07:10:46+00:00"
         },
         {
             "name": "tugmaks/yii2-google-maps",
@@ -1764,7 +1764,7 @@
                 "wysiwyg",
                 "yii2"
             ],
-            "time": "2015-06-02 21:47:24"
+            "time": "2015-06-02T21:47:24+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -1858,7 +1858,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2016-10-20 12:02:50"
+            "time": "2016-10-20T12:02:50+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -1908,24 +1908,27 @@
                 "bootstrap",
                 "yii2"
             ],
-            "time": "2016-03-17 03:29:28"
+            "time": "2016-03-17T03:29:28+00:00"
         },
         {
             "name": "yiisoft/yii2-composer",
-            "version": "2.0.4",
+            "version": "2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-composer.git",
-                "reference": "7452fd908a5023b8bb5ea1b123a174ca080de464"
+                "reference": "3f4923c2bde6caf3f5b88cc22fdd5770f52f8df2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-composer/zipball/7452fd908a5023b8bb5ea1b123a174ca080de464",
-                "reference": "7452fd908a5023b8bb5ea1b123a174ca080de464",
+                "url": "https://api.github.com/repos/yiisoft/yii2-composer/zipball/3f4923c2bde6caf3f5b88cc22fdd5770f52f8df2",
+                "reference": "3f4923c2bde6caf3f5b88cc22fdd5770f52f8df2",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^1.0"
+            },
+            "require-dev": {
+                "composer/composer": "^1.0"
             },
             "type": "composer-plugin",
             "extra": {
@@ -1955,7 +1958,7 @@
                 "extension installer",
                 "yii2"
             ],
-            "time": "2016-02-06 00:49:24"
+            "time": "2016-12-20T13:26:02+00:00"
         },
         {
             "name": "yiisoft/yii2-imagine",
@@ -2003,7 +2006,7 @@
                 "imagine",
                 "yii2"
             ],
-            "time": "2016-11-03 19:28:39"
+            "time": "2016-11-03T19:28:39+00:00"
         },
         {
             "name": "yiisoft/yii2-jui",
@@ -2053,7 +2056,7 @@
                 "jQuery UI",
                 "yii2"
             ],
-            "time": "2016-07-22 22:26:59"
+            "time": "2016-07-22T22:26:59+00:00"
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
@@ -2103,7 +2106,7 @@
                 "swiftmailer",
                 "yii2"
             ],
-            "time": "2016-09-09 11:48:11"
+            "time": "2016-09-09T11:48:11+00:00"
         }
     ],
     "packages-dev": [
@@ -2180,7 +2183,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2016-04-29 12:21:54"
+            "time": "2016-04-29T12:21:54+00:00"
         },
         {
             "name": "phpspec/php-diff",
@@ -2218,7 +2221,7 @@
                 }
             ],
             "description": "A comprehensive library for generating differences between two hashable objects (strings or arrays).",
-            "time": "2016-04-07 12:29:16"
+            "time": "2016-04-07T12:29:16+00:00"
         },
         {
             "name": "yiisoft/yii2-debug",
@@ -2265,7 +2268,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2016-11-24 09:42:29"
+            "time": "2016-11-24T09:42:29+00:00"
         },
         {
             "name": "yiisoft/yii2-faker",
@@ -2312,7 +2315,7 @@
                 "faker",
                 "yii2"
             ],
-            "time": "2015-03-01 06:22:44"
+            "time": "2015-03-01T06:22:44+00:00"
         },
         {
             "name": "yiisoft/yii2-gii",
@@ -2365,7 +2368,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2016-03-18 14:09:46"
+            "time": "2016-03-18T14:09:46+00:00"
         }
     ],
     "aliases": [],
