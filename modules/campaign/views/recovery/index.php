@@ -307,9 +307,13 @@ $this->title = 'Campanha Recupere e Ganhe';
                       ]);
                   },
                   'update' => function ($url, $model) {
-                      return Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
+                      return Yii::$app->user->identity->can_managerproductivity == 1 ? Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
                                   'title' => 'Alterar',
                                   'class' => 'btn btn-default btn-xs',
+                      ]): Html::a('<span class="glyphicon glyphicon-pencil" ></span>', "#", [
+                                  'title' => 'Registro temporariamente bloqueado!',
+                                  'class' => 'btn btn-default btn-xs',
+                                  'disabled' => true,
                       ]);
                   },
                   'delete' => function ($url, $model) {
