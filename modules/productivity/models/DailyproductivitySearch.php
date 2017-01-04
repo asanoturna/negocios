@@ -74,4 +74,53 @@ class DailyproductivitySearch extends Dailyproductivity
 
         return $dataProvider;
     }
+
+    public function rankinguser($params)
+    {
+        $query = Dailyproductivity::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_DESC, 
+                ]
+            ],
+            'pagination' => [
+                'pageSize' => 50,
+            ],
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'product_id' => $this->product_id,
+            'location_id' => $this->location_id,
+            'value' => $this->value,
+            'quantity' => $this->quantity,
+            'commission_percent' => $this->commission_percent,
+            'companys_revenue' => $this->companys_revenue,
+            'daily_productivity_status_id' => $this->daily_productivity_status_id,
+            'seller_id' => $this->seller_id,
+            'user_id' => $this->user_id,
+            'operator_id' => $this->operator_id,
+            'date' => $this->date,
+            'created' => $this->created,
+            'updated' => $this->updated,
+        ]);
+
+        $query->andFilterWhere(['between', 'date', $this->start_date, $this->end_date]);        
+
+        $query->andFilterWhere(['like', 'buyer_document', $this->buyer_document])
+            ->andFilterWhere(['like', 'buyer_name', $this->buyer_name]);
+
+        return $dataProvider;
+    }
 }
