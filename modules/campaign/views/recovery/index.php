@@ -52,16 +52,16 @@ $this->title = 'Campanha Recupere e Ganhe';
                   'format'=>'raw'
                   ],
                   ['attribute'=>'referencevalue','format'=>['decimal',2], 'hAlign'=>'right', 'width'=>'110px'],
-                  // [
-                  //   'attribute'=>'negotiator_id',
-                  //   'label'=> 'Negociador',
-                  //   'vAlign'=>'middle',
-                  //   'width'=>'100px',
-                  //   'value'=>function ($model, $key, $index, $widget) { 
-                  //       return Html::a($model->user->username, '#', []);
-                  //   },
-                  //   'format'=>'raw'
-                  // ],
+                  [
+                    'attribute'=>'negotiator_id',
+                    'label'=> 'Negociador',
+                    'vAlign'=>'middle',
+                    'width'=>'100px',
+                    'value'=>function ($model, $key, $index, $widget) { 
+                        return $model->negotiator_id <> null ? "" : $model->user->fullname;
+                    },
+                    'format'=>'raw'
+                  ],
                   ['attribute'=>'value_traded','format'=>['decimal',2], 'hAlign'=>'right', 'width'=>'110px'],
                   ['attribute'=>'value_input','format'=>['decimal',2], 'hAlign'=>'right', 'width'=>'110px'],
                   [
