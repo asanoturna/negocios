@@ -84,7 +84,7 @@ use yii\helpers\Url;
                     'format' => 'html',
                     'value'=>function ($data) {
                         return Html::a(Html::img(\Yii::$app->getModule('visits')->params['visitImages'].$data["business_visits_id"].'/'.$data["img"],
-                             ['width' => '50px', 'class' => 'img-rounded img-responsive']), Yii::$app->params['imgPath'].$data["business_visits_id"].'/'.$data["img"], ['target' => '_blank']);
+                             ['width' => '50px', 'class' => 'img-rounded img-responsive']), \Yii::$app->getModule('visits')->params['visitImages'].$data["business_visits_id"].'/'.$data["img"], ['target' => '_blank']);
                     },                                     
                     'contentOptions'=>['style'=>'width: 70%;text-align:left'],
                     ],

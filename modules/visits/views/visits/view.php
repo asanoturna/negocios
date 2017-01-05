@@ -159,11 +159,13 @@ $this->title = "Detalhes da visita #" . $model->id;
                     {
                         foreach($prov as $row)
                         {
-                            $items[] = [
-                                'url' => \Yii::$app->getModule('visits')->params['visitImages'].$cod.'/'.$row["img"],
-                                'options' => array('class' => 'img-thumbnail', ['width' => '50px']),
-                                'src' => \Yii::$app->getModule('visits')->params['visitImages'].$cod.'/'.$row["img"],
-                                ];
+                            // $items[] = [
+                            //     'url' => \Yii::$app->getModule('visits')->params['visitImages'].$cod.'/'.$row["img"],
+                            //     'options' => array('class' => 'img-thumbnail', ['width' => '50px']),
+                            //     'src' => \Yii::$app->getModule('visits')->params['visitImages'].$cod.'/'.$row["img"],
+                            //     ];
+                            echo Html::a(Html::img(\Yii::$app->getModule('visits')->params['visitImages'].$cod.'/'.$row["img"],
+                             ['width' => '50px']), \Yii::$app->getModule('visits')->params['visitImages'].$cod.'/'.$row["img"], ['target' => '_blank', 'class' => 'img-thumbnail']);
                         }   
                     } else {
                         echo "<span class=\"not-set\">(não possui imagens)</span>";
@@ -171,7 +173,6 @@ $this->title = "Detalhes da visita #" . $model->id;
 
                     //var_dump($items);
             ?>
-            <?= dosamigos\gallery\Gallery::widget(['items' => $items]);?>
           </div>
         </div>
     </div>
