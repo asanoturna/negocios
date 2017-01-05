@@ -52,6 +52,9 @@ class DailyproductivityController extends Controller
     {
         $model = new Dailyproductivity();
 
+        $thisyear  = date('Y');
+        $thismonth = date('m'); 
+
         $url = Yii::$app->getRequest()->getQueryParam('product_id');
         $product = isset($url) ? $url : '"%"';
 
@@ -61,7 +64,7 @@ class DailyproductivityController extends Controller
                 SUM(IF(daily_productivity.daily_productivity_status_id=2, companys_revenue, 0)) as confirmed
                     FROM daily_productivity
                     INNER JOIN `user` ON daily_productivity.seller_id = `user`.id
-                    WHERE product_id LIKE $product
+                    WHERE product_id LIKE $product AND YEAR(date) = $thisyear
                     GROUP BY seller_id
                     ORDER BY confirmed DESC",
             'totalCount' => 300,
@@ -78,7 +81,7 @@ class DailyproductivityController extends Controller
                 SUM(IF(daily_productivity.daily_productivity_status_id=2, quantity, 0)) as confirmed
                     FROM daily_productivity
                     INNER JOIN `user` ON daily_productivity.seller_id = `user`.id
-                    WHERE product_id LIKE $product
+                    WHERE product_id LIKE $product AND YEAR(date) = $thisyear
                     GROUP BY seller_id
                     ORDER BY confirmed DESC",
             'totalCount' => 300,
@@ -100,6 +103,9 @@ class DailyproductivityController extends Controller
     {
         $model = new Dailyproductivity();
 
+        $thisyear  = date('Y');
+        $thismonth = date('m'); 
+
         $url = Yii::$app->getRequest()->getQueryParam('product_id');
         $product = isset($url) ? $url : '"%"';
 
@@ -109,7 +115,7 @@ class DailyproductivityController extends Controller
                 SUM(IF(daily_productivity.daily_productivity_status_id=2, companys_revenue, 0)) as confirmed
                     FROM daily_productivity
                     INNER JOIN location ON daily_productivity.location_id = location.id
-                    WHERE product_id LIKE $product
+                    WHERE product_id LIKE $product AND YEAR(date) = $thisyear
                     GROUP BY location_id
                     ORDER BY confirmed DESC",
             'totalCount' => 50,
@@ -126,7 +132,7 @@ class DailyproductivityController extends Controller
                 SUM(IF(daily_productivity.daily_productivity_status_id=2, quantity, 0)) as confirmed            
                     FROM daily_productivity
                     INNER JOIN location ON daily_productivity.location_id = location.id
-                    WHERE product_id LIKE $product
+                    WHERE product_id LIKE $product AND YEAR(date) = $thisyear
                     GROUP BY location_id
                     ORDER BY confirmed DESC",
             'totalCount' => 30,
