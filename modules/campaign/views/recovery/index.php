@@ -27,77 +27,77 @@ $this->title = 'Campanha Recupere e Ganhe';
 
     <?php
     use kartik\export\ExportMenu;
-              $gridColumns = [
-                  ['attribute'=>'id', 'hAlign'=>'right', 'width'=>'20px'],
-                  ['attribute'=>'clientname', 'hAlign'=>'right', 'width'=>'100px'], 
-                  ['attribute'=>'clientdoc', 'hAlign'=>'right', 'width'=>'100px'],
-                  [
-                    'attribute'=>'location_id',
-                    'label'=> 'PA',
-                    'vAlign'=>'middle',
-                    'width'=>'100px',
-                    'value'=>function ($model, $key, $index, $widget) { 
-                        return $model->location->shortname;
-                    },
-                    'format'=>'raw'
-                  ],
-                  [
-                  'attribute'=>'typeofdebt',
-                  'label'=> 'Tipo Dívida',
-                  'vAlign'=>'middle',
-                  'width'=>'100px',
-                  'value' => function($data) {
-                      return $data->getTypeofdebt();
-                  },
-                  'format'=>'raw'
-                  ],
-                  ['attribute'=>'referencevalue','format'=>['decimal',2], 'hAlign'=>'right', 'width'=>'110px'],
-                  [
-                    'attribute'=>'negotiator_id',
-                    'label'=> 'Negociador',
-                    'vAlign'=>'middle',
-                    'width'=>'100px',
-                    'value'=>function ($model, $key, $index, $widget) { 
-                        return $model->negotiator_id <> null ? "" : $model->user->fullname;
-                    },
-                    'format'=>'raw'
-                  ],
-                  ['attribute'=>'value_traded','format'=>['decimal',2], 'hAlign'=>'right', 'width'=>'110px'],
-                  ['attribute'=>'value_input','format'=>['decimal',2], 'hAlign'=>'right', 'width'=>'110px'],
-                  [
-                  'attribute'=>'typeproposed',
-                  'label'=> 'Proposta',
-                  'vAlign'=>'middle',
-                  'width'=>'100px',
-                  'value' => function($data) {
-                      return $data->getTypeproposed();
-                  },
-                  'format'=>'raw'
-                  ],
-                  ['attribute'=>'commission','format'=>['decimal',2], 'hAlign'=>'right', 'width'=>'110px'],
-                  [
-                  'attribute'=>'status',
-                  'label'=> 'Situação',
-                  'vAlign'=>'middle',
-                  'width'=>'100px',
-                  'value' => function($data) {
-                      return $data->getStatus();
-                  },
-                  'format'=>'raw'
-                  ],
+      $gridColumns = [
+          ['attribute'=>'id', 'hAlign'=>'right', 'width'=>'20px'],
+          ['attribute'=>'clientname', 'hAlign'=>'right', 'width'=>'100px'], 
+          ['attribute'=>'clientdoc', 'hAlign'=>'right', 'width'=>'100px'],
+          [
+            'attribute'=>'location_id',
+            'label'=> 'PA',
+            'vAlign'=>'middle',
+            'width'=>'100px',
+            'value'=>function ($model, $key, $index, $widget) { 
+                return $model->location->shortname;
+            },
+            'format'=>'raw'
+          ],
+          [
+          'attribute'=>'typeofdebt',
+          'label'=> 'Tipo Dívida',
+          'vAlign'=>'middle',
+          'width'=>'100px',
+          'value' => function($data) {
+              return $data->getTypeofdebt();
+          },
+          'format'=>'raw'
+          ],
+          ['attribute'=>'referencevalue','format'=>['decimal',2], 'hAlign'=>'right', 'width'=>'110px'],
+          [
+          'attribute'=>'negotiator_id',
+          'label'=> 'Negociador',
+          'vAlign'=>'middle',
+          'width'=>'100px',
+          'value' => function($model) {
+              return $model->user ? $model->user->fullname." (".$model->user->username.")" : null;
+          },
+          'format'=>'raw',
+          ],
+          ['attribute'=>'value_traded','format'=>['decimal',2], 'hAlign'=>'right', 'width'=>'110px'],
+          ['attribute'=>'value_input','format'=>['decimal',2], 'hAlign'=>'right', 'width'=>'110px'],
+          [
+          'attribute'=>'typeproposed',
+          'label'=> 'Proposta',
+          'vAlign'=>'middle',
+          'width'=>'100px',
+          'value' => function($data) {
+              return $data->getTypeproposed();
+          },
+          'format'=>'raw'
+          ],
+          ['attribute'=>'commission','format'=>['decimal',2], 'hAlign'=>'right', 'width'=>'110px'],
+          [
+          'attribute'=>'status',
+          'label'=> 'Situação',
+          'vAlign'=>'middle',
+          'width'=>'100px',
+          'value' => function($data) {
+              return $data->getStatus();
+          },
+          'format'=>'raw'
+          ],
 
-                  ['attribute'=>'date','format'=>['date'], 'hAlign'=>'right', 'width'=>'110px'],                 
-                  // [
-                  //   'attribute'=>'approvedby',
-                  //   'label'=> 'Aprovador Por',
-                  //   'vAlign'=>'middle',
-                  //   'width'=>'100px',
-                  //   'value'=>function ($model, $key, $index, $widget) { 
-                  //       return Html::a($model->checkedby->username, '#', []);
-                  //   },
-                  //   'format'=>'raw'
-                  // ],                                                                     
-              ];
+          ['attribute'=>'date','format'=>['date'], 'hAlign'=>'right', 'width'=>'110px'],                 
+          [
+          'attribute'=>'approvedby',
+          'label'=> 'Aprovador Por',
+          'vAlign'=>'middle',
+          'width'=>'100px',
+          'value'=>function ($model) { 
+              return $model->checkedby ? $model->checkedby->username : null;
+          },
+          'format'=>'raw'
+          ],                                                               
+      ];
               echo ExportMenu::widget([
               'dataProvider' => $dataProvider,
               'columns' => $gridColumns,
