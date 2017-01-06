@@ -28,13 +28,6 @@ Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc).
 Verificar permissoes nos controllers (permissão apenas para admin).
 Otimizar para dispositivos móveis (gridview, menus mal posicionados, etc).
 
-*********************
-site/user.php
----> TESTAR listview http://www.codevoila.com/post/4/yii2-listview-example
----> TESTAR http://www.yiiframework.com/extension/yii2-isotope-view/
----> TESTAR http://www.yiiframework.com/extension/yii2-matchheight-view/
----> TESTAR http://www.yiiframework.com/extension/yii2-masonry-view/
-
 - Criar Dashboard na área administrativa (espço ocupado por assets, acessos, etc)
 - Criar Área de Alertas (local mais visivel no top da intranet)
 - Criar Área de Notícias (incluir curtidas e comentários)
@@ -56,6 +49,7 @@ MÓDULOS
 - Visitas -> Verificar / Usar plugin de galeria de fotos
 - Visitas -> Ilmitado numero de upload de fotos
 - Prod Diaria -> Gravar Formula/Cálculo
+- Prod Diaria -> Filtro por período
 - Prod Diaria -> Quadro Metas por agência (cadastrar metas por local para todos os produtos)
   ---> Exemplo.: tabela meta > valor, pa, data(m/y)
 - Prod Diaria -> Regras dinamicas

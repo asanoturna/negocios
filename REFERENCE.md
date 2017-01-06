@@ -10,6 +10,13 @@ https://github.com/puikinsh/gentelella ***
 https://github.com/Mihai-P/yii2theme-brain
 https://github.com/yiister/yii2-adminlte
 
+VIEW STYLES
+--------------------
+site/user.php
+---> TESTAR listview http://www.codevoila.com/post/4/yii2-listview-example
+---> TESTAR http://www.yiiframework.com/extension/yii2-isotope-view/
+---> TESTAR http://www.yiiframework.com/extension/yii2-matchheight-view/
+---> TESTAR http://www.yiiframework.com/extension/yii2-masonry-view/
 
 CALENDAR
 --------------------
