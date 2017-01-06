@@ -12,15 +12,10 @@ class MailController extends Controller
 
     public function actionTask()
     {
-
-        \Yii::$app->mailer->compose('@app/mail/task');
-        ->setFrom('intranet@sicoobcrediriodoce.com.br')
-        ->setTo('gustavo.andrade@sicoobcrediriodoce.com.br')
-        ->setCc('suporte@sicoobcrediriodoce.com.br')
-        ->setSubject('999')
-        //->setTextBody('Nova Ocorrencia registrada')
-        //->setHtmlBody('<b>Nova Ocorrencia registrada</b>')
-        ->send();
+        $v1 = 50;
+        $v2 = 456;
+        $value = $v1 + $v2;
+     echo $value;
 
     }
 
