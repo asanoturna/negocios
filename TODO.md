@@ -1,6 +1,7 @@
 GERAL
 --------------------
 
+Corrigir ação de comandos Mail
 Criação de menus
 CORRIGIR AREA DE GESTAO DO USUARIO (transformar em modulo, add alterar senha, avatar, etc).
 Revisar os parametros redundantes
