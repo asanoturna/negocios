@@ -1,23 +1,5 @@
-TODO
+GERAL
 --------------------
-
-Calendário de Atividades -> Verificar permissões dos botoes "Gerenciar" e "Responsável" na view
-Calendário de Atividades -> Verificar permissões dos botoes "Gerenciar" e "Responsável" na view
-
-https://mytechystuffs.wordpress.com/2014/09/16/send-emails-as-queue-from-your-yii2-application/
-----------------------------------
-
-Notificar E-mail: Responsável, Co-responsavel e Departamento
-- Enviar e-mail para todos 3 destinatarios com link para a pagina com detalhamento da atividade ao incluir nova atividade
-
-Prazo para Atividadade - [x]
-Data para Lembrete - [x]  (em analise)
-- Enviar e-mail para todos 3 destinatarios com link para a pagina com detalhamento da atividade (definir dias)
-
-------------
-https://github.com/noam148/yii2-image-manager
-http://www.flaticon.com/free-icons/idea_24498
-Testar Theme usado em https://github.com/rokorolov/parus
 
 Criação de menus
 CORRIGIR AREA DE GESTAO DO USUARIO (transformar em modulo, add alterar senha, avatar, etc).
@@ -25,13 +7,12 @@ Revisar os parametros redundantes
 Tentar definir permissoes apenas nos modulos !!!
 Bloquear uso do IE versão 8 pra baixo
 Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc).
-Verificar permissoes nos controllers (permissão apenas para admin).
-Otimizar para dispositivos móveis (gridview, menus mal posicionados, etc).
+Verificar as permissoes nos controllers (permissão apenas para admin).
+Otimizar para dispositivos móveis (gridview, menus mal posicionados, etc) !!!
 
 - Criar Dashboard na área administrativa (espço ocupado por assets, acessos, etc)
 - Criar Área de Alertas (local mais visivel no top da intranet)
 - Criar Área de Notícias (incluir curtidas e comentários)
-- Criar Gestão de arquivos (estrutra de categorias semelhante da central, incluir a area Planilha Base e categorias da intranet antiga)
 - Criar Agenda / Calendario (global e para cada usuario) (sinc google agenda ?)
 - Criar Galeria de fotos
 - Criar Área de Links Pessoais
@@ -40,17 +21,27 @@ Otimizar para dispositivos móveis (gridview, menus mal posicionados, etc).
 MÓDULOS
 --------------------
 - Migração da ferramenta de Apoio Cadastro
-
+- Terminar módulo Gestão de arquivos (estrutra de categorias semelhante da central, incluir a area Planilha Base e categorias da intranet antiga)
 - Criar de módulo Vídeos
 - Criar de módulo RH (area p/ contra cheque)
 - Criar de módulo Helpdesk
 - Criar de módulo Plano de Ação (igual do GMI) 
 
-- Visitas -> Verificar / Usar plugin de galeria de fotos
-- Visitas -> Ilmitado numero de upload de fotos
-- Prod Diaria -> Gravar Formula/Cálculo
-- Prod Diaria -> Filtro por período
-- Prod Diaria -> Quadro Metas por agência (cadastrar metas por local para todos os produtos)
+Calendário de Atividades -> Verificar permissões dos botoes "Gerenciar" e "Responsável" na view
+Calendário de Atividades -> Notificar por E-mail: Responsável, Co-responsavel e Departamento
+Calendário de Atividades -> Notificar com texto padrão e link para a VIEW da atividade
+Calendário de Atividades -> Notificar ao incluir nova atividade ?
+Calendário de Atividades -> Notificar na data de lembrete da atividade ?
+Calendário de Atividades -> Notificar na data prazo final da atividade ?
+
+Recupere e Ganhe -> Gestores incluirem registro
+
+Visitas -> Verificar / Usar plugin de galeria de fotos
+Visitas -> Ilmitado numero de upload de fotos
+
+Produtividade -> Gravar Formula/Cálculo
+Produtividade -> Filtro por período no ranking
+Produtividade -> Quadro Metas por agência (cadastrar metas por local para todos os produtos)
   ---> Exemplo.: tabela meta > valor, pa, data(m/y)
-- Prod Diaria -> Regras dinamicas
-- Prod Diaria -> Gerenciar Produtos (cadastrar, ativar, desativar, etc), Gerenciar Metas
+Produtividade -> Regras dinamicas
+Produtividade -> Gerenciar Produtos (cadastrar, ativar, desativar, etc), Gerenciar Metas

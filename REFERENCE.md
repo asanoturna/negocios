@@ -5,10 +5,20 @@ http://www.sicoobsc.com.br
 
 THEME
 --------------------
+Testar Theme usado em https://github.com/rokorolov/parus (muito bom)
 https://github.com/yiister/yii2-gentelella ***
 https://github.com/puikinsh/gentelella ***
 https://github.com/Mihai-P/yii2theme-brain
 https://github.com/yiister/yii2-adminlte
+
+ASSETS
+--------------------
+http://www.flaticon.com/free-icons/idea_24498
+
+MAIL
+--------------------
+https://mytechystuffs.wordpress.com/2014/09/16/send-emails-as-queue-from-your-yii2-application/
+
 
 VIEW STYLES
 --------------------
@@ -30,6 +40,7 @@ https://github.com/bupy7/yii2-pages
 
 IMAGE MANIPULATION
 --------------------
+https://github.com/noam148/yii2-image-manager (gerenciar midias)
 http://www.yiiframework.com/extension/yii2-image-cropper/
 https://github.com/sadovojav/yii2-image-cutter
 https://github.com/sadovojav/yii2-image-thumbnail
