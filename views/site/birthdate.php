@@ -26,7 +26,7 @@ $this->title = 'Aniversariantes do Mês';
         FROM user   
         INNER JOIN location
         ON user.location_id = location.id
-        WHERE MONTH(birthdate) = MONTH(Now()) 
+        WHERE MONTH(birthdate) = MONTH(Now()) AND user.status = 1
         ORDER BY day(birthdate)",
         'totalCount' => 300,
         'key'  => 'fullname',
