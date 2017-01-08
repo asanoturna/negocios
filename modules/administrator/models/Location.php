@@ -27,7 +27,7 @@ class Location extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'shortname' => 'Nº do PA',
+            'shortname' => 'PA',
             'fullname' => 'Nome da Agência',
             'address' => 'Endereço',
             'zipcode' => 'CEP',

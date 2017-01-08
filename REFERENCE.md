@@ -47,6 +47,11 @@ https://github.com/sadovojav/yii2-image-cutter
 https://github.com/sadovojav/yii2-image-thumbnail
 https://github.com/raoul2000/yii2-jcrop-widget
 
+https://github.com/zxbodya/yii2-gallery-manager
+https://github.com/2amigos/yii2-gallery-widget
+http://www.yiiframework.com/extension/yii2-photo-gallery/
+https://github.com/CostaRico/yii2-images
+
 MAPS
 ---
 http://stackoverflow.com/questions/11236085/create-a-map-with-clickable-provinces-states-using-svg-html-css-imagemap

@@ -1,17 +1,26 @@
 GERAL
 --------------------
+Verificar as permissoes nos controllers (permissão apenas para admin).
+-> http://pt.stackoverflow.com/questions/120297/como-criar-restri%C3%A7%C3%A3o-de-acesso-para-uma-a%C3%A7%C3%A3o-no-yii2-0
+-> https://code.tutsplus.com/tutorials/how-to-program-with-yii2-user-access-controls--cms-23173
+-> https://thecodeninja.net/2014/12/simpler-role-based-authorization-in-yii-2-0/
+-> https://www.youtube.com/watch?v=xEcWqxzwD2U
 
-sobre querys
+Atualizar base
+Add campo role_id e definir permissões 
+
+Sobre querys
 http://stackoverflow.com/questions/26894987/get-count-in-relation-table-in-yii2-activerecord
 https://github.com/yiisoft/yii2/issues/2179
 
+Alterar nome das tabelas secundarias (módulos) com prefixo MOD
 Corrigir ação de comandos Mail
 Criação de menus
 Revisar os parametros redundantes
-Tentar definir permissoes apenas nos modulos !!!
+
 Bloquear uso do IE versão 8 pra baixo
 Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc).
-Verificar as permissoes nos controllers (permissão apenas para admin).
+
 Otimizar para dispositivos móveis (gridview, menus mal posicionados, etc) !!!
 
 - Criar Área de Alertas (local mais visivel no top da intranet)
@@ -24,7 +33,8 @@ Otimizar para dispositivos móveis (gridview, menus mal posicionados, etc) !!!
 MÓDULOS
 --------------------
 - Migração da ferramenta de Apoio Cadastro
-- Terminar módulo Gestão de arquivos (estrutra de categorias semelhante da central, incluir a area Planilha Base e categorias da intranet antiga)
+- Upload de foto para Useradmin
+- Terminar módulo Arquivos (estrutra semelhante a central, incluir Planilha Base e intranet antiga)
 - Criar de módulo Vídeos
 - Criar de módulo RH (area p/ contra cheque)
 - Criar de módulo Helpdesk
@@ -37,9 +47,9 @@ Calendário de Atividades -> Notificar ao incluir nova atividade ?
 Calendário de Atividades -> Notificar na data de lembrete da atividade ?
 Calendário de Atividades -> Notificar na data prazo final da atividade ?
 
-Recupere e Ganhe -> Gestores incluirem registro
-
 Visitas -> Verificar / Usar plugin de galeria de fotos
+Visitas -> Upload Multiplas imagens ao mesmo tempo
+https://www.youtube.com/watch?v=U0pnPESH3nU
 Visitas -> Ilmitado numero de upload de fotos
 
 Produtividade -> Gravar Formula/Cálculo
