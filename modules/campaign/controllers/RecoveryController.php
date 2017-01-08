@@ -59,23 +59,27 @@ class RecoveryController extends Controller
         ]);
     }
 
-    // public function actionCreate()
-    // {
-    //     $model = new Recovery();
+    public function actionCreate()
+    {
+        $model = new Recovery();
+        $model->scenario = 'create';
 
-    //     if ($model->load(Yii::$app->request->post()) && $model->save()) {
-    //         return $this->redirect(['view', 'id' => $model->id]);
-    //     } else {
-    //         return $this->render('create', [
-    //             'model' => $model,
-    //         ]);
-    //     }
-    // }
+        $model->status = 0;
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
+    }
 
     public function actionUpdate($id)
     {
-        // http://blog.neattutorials.com/examples/pjax/web/site/form-submission
+
         $model = $this->findModel($id);
+        $model->scenario = 'update';
 
         $model->updated = date('Y-m-d');
         //$model->status = 0;

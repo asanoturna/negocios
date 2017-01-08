@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 
-$this->title = 'Create Recovery';
+$this->title = 'Adicionar Registro na Campanha';
 ?>
 <div class="recovery-create">
 
@@ -13,8 +13,12 @@ $this->title = 'Create Recovery';
     </div>
     <hr/>
 
+    <div class="panel panel-default">
+    <div class="panel-body">
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
+    </div>
+    </div>
 
 </div>
