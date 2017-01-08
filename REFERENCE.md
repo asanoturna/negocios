@@ -5,14 +5,25 @@ http://www.sicoobsc.com.br
 
 THEME
 --------------------
+Testar Theme usado em https://github.com/rokorolov/parus (muito bom)
 https://github.com/yiister/yii2-gentelella ***
 https://github.com/puikinsh/gentelella ***
 https://github.com/Mihai-P/yii2theme-brain
 https://github.com/yiister/yii2-adminlte
 
+ASSETS
+--------------------
+http://www.flaticon.com/free-icons/idea_24498
+
+MAIL
+--------------------
+https://mytechystuffs.wordpress.com/2014/09/16/send-emails-as-queue-from-your-yii2-application/
+
+
 VIEW STYLES
 --------------------
 site/user.php
+---> TESTAR https://github.com/circulon/yii2-columnlistview
 ---> TESTAR listview http://www.codevoila.com/post/4/yii2-listview-example
 ---> TESTAR http://www.yiiframework.com/extension/yii2-isotope-view/
 ---> TESTAR http://www.yiiframework.com/extension/yii2-matchheight-view/
@@ -30,6 +41,7 @@ https://github.com/bupy7/yii2-pages
 
 IMAGE MANIPULATION
 --------------------
+https://github.com/noam148/yii2-image-manager (gerenciar midias)
 http://www.yiiframework.com/extension/yii2-image-cropper/
 https://github.com/sadovojav/yii2-image-cutter
 https://github.com/sadovojav/yii2-image-thumbnail
@@ -85,14 +97,13 @@ http://www.bsourcecode.com/yiiframework2/yii-2-user-login-from-database/
 https://www.youtube.com/watch?v=eFOIUeU-Y74&index=18&list=PLRd0zhQj3CBmusDbBzFgg3H20VxLx2mkF
 https://www.youtube.com/watch?v=iEmzyaY4rk8&index=7&list=PLpNYlUeSK_rn_3mWq_vPt_jKz6cp7a6sZ
 
-RBAC
+USER AND RBAC
 --------------------
 https://github.com/yii2mod/yii2-rbac
+
+http://www.yiiframework.com/forum/index.php/topic/60410-yii2-user-management-module/
+https://github.com/webvimark/user-management
 
 MARKTING ACTION
 --------------------
 http://www.easycoop.com.br/
-
-
-listview
-https://github.com/circulon/yii2-columnlistview

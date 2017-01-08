@@ -22,17 +22,18 @@
         "kartik-v/yii2-slider": "*",
         "kartik-v/yii2-widget-datepicker": "@dev",
         "kartik-v/yii2-field-range": "*",
+        "kartik-v/yii2-widget-colorinput": "*",
+        "kartik-v/yii2-widget-sidenav": "@dev",
+        "kartik-v/yii2-export": "@dev",
+        "kartik-v/yii2-grid": "@dev",
         "yiidoc/yii2-redactor": "*",
         "tugmaks/yii2-google-maps": "dev-master",
         "yiisoft/yii2-imagine": "^2.0",
         "karpoff/yii2-crop-image-upload": "*",
-        "kartik-v/yii2-export": "@dev",
-        "kartik-v/yii2-grid": "@dev",
         "cyneek/yii2-menu": "dev-master",
-        "kartik-v/yii2-widget-sidenav": "@dev",
         "bupy7/yii2-widget-cropbox": "*",
-        "philippfrenzel/yii2fullcalendar": "*",
-        "kartik-v/yii2-widget-colorinput": "*"
+        "philippfrenzel/yii2fullcalendar": "*"
+        
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*",

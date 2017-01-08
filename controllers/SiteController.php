@@ -91,7 +91,7 @@ class SiteController extends Controller
 
     public function actionLinks()
     {
-        $searchModel = new \app\models\LinksSearch();
+        $searchModel = new \app\modules\administrator\models\LinksSearch();
         $dataProvider = $searchModel->site(Yii::$app->request->queryParams);
 
         return $this->render('links', [
@@ -113,7 +113,7 @@ class SiteController extends Controller
 
     public function actionUsers()
     {
-        $searchModel = new \app\models\UseradminSearch();
+        $searchModel = new \app\modules\administrator\models\UseradminSearch();
         $dataProvider = $searchModel->searchbylocation(Yii::$app->request->queryParams);
 
         return $this->render('users', [

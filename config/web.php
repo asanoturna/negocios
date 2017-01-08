@@ -71,6 +71,7 @@ $config = [
             'class' => '\kartik\grid\Module',
         ],    
         'redactor'          => 'yii\redactor\RedactorModule',
+        'administrator'     => 'app\modules\administrator\Module',
         'campaign'          => 'app\modules\campaign\Module',
         'resourcerequest'   => 'app\modules\resourcerequest\Module',
         'productivity'      => 'app\modules\productivity\Module',
