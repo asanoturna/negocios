@@ -1,6 +1,10 @@
 GERAL
 --------------------
 
+sobre querys
+http://stackoverflow.com/questions/26894987/get-count-in-relation-table-in-yii2-activerecord
+https://github.com/yiisoft/yii2/issues/2179
+
 Corrigir ação de comandos Mail
 Criação de menus
 CORRIGIR AREA DE GESTAO DO USUARIO (transformar em modulo, add alterar senha, avatar, etc).
