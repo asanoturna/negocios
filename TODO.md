@@ -7,7 +7,6 @@ https://github.com/yiisoft/yii2/issues/2179
 
 Corrigir ação de comandos Mail
 Criação de menus
-CORRIGIR AREA DE GESTAO DO USUARIO (transformar em modulo, add alterar senha, avatar, etc).
 Revisar os parametros redundantes
 Tentar definir permissoes apenas nos modulos !!!
 Bloquear uso do IE versão 8 pra baixo
@@ -15,7 +14,6 @@ Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc).
 Verificar as permissoes nos controllers (permissão apenas para admin).
 Otimizar para dispositivos móveis (gridview, menus mal posicionados, etc) !!!
 
-- Criar Dashboard na área administrativa (espço ocupado por assets, acessos, etc)
 - Criar Área de Alertas (local mais visivel no top da intranet)
 - Criar Área de Notícias (incluir curtidas e comentários)
 - Criar Agenda / Calendario (global e para cada usuario) (sinc google agenda ?)
