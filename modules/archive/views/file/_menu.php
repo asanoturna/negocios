@@ -17,7 +17,7 @@ use yii\bootstrap\Nav;
             [
                 'label'   => '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Inserir',
                 'url'     => ['create'],
-                //'visible' => Yii::$app->user->identity->can_visits == 1,
+                //'visible' => Yii::$app->user->identity->role_id == 1,
             ],                                                                                         
         ],
     'options' => ['class' =>'nav-pills'],

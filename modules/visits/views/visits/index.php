@@ -304,7 +304,7 @@ $this->title = 'Visitas dos Gerentes';
                         ]);
                     },
                     'manager' => function ($url, $model) {
-                        return Yii::$app->user->identity->can_managervisits == 1 ? Html::a('<span class="glyphicon glyphicon-cog" ></span>', $url, [
+                        return Yii::$app->user->identity->role_id == 3 ? Html::a('<span class="glyphicon glyphicon-cog" ></span>', $url, [
                                     'title' => 'Aprovar Registro',
                                     'class' => 'btn btn-default btn-xs',
                         ]): Html::a('<span class="glyphicon glyphicon-cog" ></span>', "#", [

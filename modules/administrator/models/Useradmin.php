@@ -24,7 +24,7 @@ class Useradmin extends \yii\db\ActiveRecord
     {
         return [
             [['username', 'fullname', 'updated_at', 'created_at', 'email', 'birthdate', 'location_id', 'department_id', 'role_id', 'status'], 'required'],
-            [['updated_at', 'created_at', 'status', 'location_id', 'department_id', 'rola_id'], 'integer'],
+            [['updated_at', 'created_at', 'status', 'location_id', 'department_id', 'role_id'], 'integer'],
             [['birthdate'], 'safe'],
             [['username', 'email', 'fullname'], 'string', 'max' => 255],
             [['avatar', 'phone', 'celphone'], 'string', 'max' => 50],

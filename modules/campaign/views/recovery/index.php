@@ -307,7 +307,7 @@ $this->title = 'Campanha Recupere e Ganhe';
                       ]);
                   },
                   'update' => function ($url, $model) {
-                      return Yii::$app->user->identity->can_managerproductivity == 1 ? Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
+                      return Yii::$app->user->identity->role_id == 2 ? Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
                                   'title' => 'Alterar',
                                   'class' => 'btn btn-default btn-xs',
                       ]): Html::a('<span class="glyphicon glyphicon-pencil" ></span>', "#", [
@@ -317,7 +317,7 @@ $this->title = 'Campanha Recupere e Ganhe';
                       ]);
                   },
                   'delete' => function ($url, $model) {
-                      return Yii::$app->user->identity->can_managerproductivity == 1 ? Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
+                      return Yii::$app->user->identity->role_id == 2 ? Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
                                   'title' => 'Excluir',
                                   'class' => 'btn btn-default btn-xs',
                                   'data-confirm' => 'Tem certeza que deseja excluir?',
@@ -330,7 +330,7 @@ $this->title = 'Campanha Recupere e Ganhe';
                       ]);
                   },
                   'manager' => function ($url, $model) {
-                      return Yii::$app->user->identity->can_managerproductivity == 1 ? Html::a('<span class="glyphicon glyphicon-cog" ></span>', $url, [
+                      return Yii::$app->user->identity->role_id == 2 ? Html::a('<span class="glyphicon glyphicon-cog" ></span>', $url, [
                                   'title' => 'Aprovar Registro',
                                   'class' => 'btn btn-default btn-xs',
                       ]): Html::a('<span class="glyphicon glyphicon-cog" ></span>', "#", [

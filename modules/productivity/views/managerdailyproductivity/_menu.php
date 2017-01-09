@@ -36,7 +36,7 @@ use yii\bootstrap\Nav;
             [
                 'label'   => '<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Gerenciar',
                 'url'     => ['/productivity/managerdailyproductivity/index'],
-                'visible' => Yii::$app->user->identity->can_managerproductivity == 1,
+                'visible' => Yii::$app->user->identity->role_id == 2,
             ], 
         ],
     'options' => ['class' =>'nav-pills'],

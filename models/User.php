@@ -56,7 +56,7 @@ class User extends ActiveRecord implements IdentityInterface
             'can_productivity' => 'Produtividade',
             'can_requestresources' => 'Recursos',
             'can_managervisits' => 'Gerenciar Visitas',
-            'can_managerproductivity' => 'Gerenciar Produtividade',
+            'role_id == 2' => 'Gerenciar Produtividade',
             'can_managerrequestresources' => 'Gerenciar Recursos',
         ];
     }    

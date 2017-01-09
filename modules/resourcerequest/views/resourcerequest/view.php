@@ -14,7 +14,7 @@ $this->title = "Solicitação de Recurso #" . $model->id;
     <hr/>
 
     <p>
-        <?= Html::a('<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Gerenciar', ['manager', 'id' => $model->id], ['class' => 'btn btn-warning hidden-print', 'disabled' => !Yii::$app->user->identity->can_managerrequestresources == 1]) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Gerenciar', ['manager', 'id' => $model->id], ['class' => 'btn btn-warning hidden-print', 'disabled' => !Yii::$app->user->identity->role_id == 2]) ?>
         <?= Html::a('<span class="glyphicon glyphicon-print" aria-hidden="true"></span> Imprimir', '#', ['onclick'=>"myFunction()",'class' => 'btn btn-success hidden-print']) ?>
     </p>
 

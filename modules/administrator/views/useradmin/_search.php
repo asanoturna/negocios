@@ -57,7 +57,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'can_managervisits') ?>
 
-    <?php // echo $form->field($model, 'can_managerproductivity') ?>
+    <?php // echo $form->field($model, 'role_id == 2') ?>
 
     <?php // echo $form->field($model, 'can_managerrequestresources') ?>
 

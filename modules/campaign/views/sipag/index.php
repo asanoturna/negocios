@@ -399,7 +399,7 @@ $this->title = 'Ação Foco SIPAG';
                       ]);
                   }, 
                   'manager' => function ($url, $model) {
-                      return Yii::$app->user->identity->can_managerproductivity == 1 ? Html::a('<span class="glyphicon glyphicon-cog" ></span>', $url, [
+                      return Yii::$app->user->identity->role_id == 2 ? Html::a('<span class="glyphicon glyphicon-cog" ></span>', $url, [
                                   'title' => 'Conferir Registro',
                                   'class' => 'btn btn-default btn-xs',
                       ]): Html::a('<span class="glyphicon glyphicon-cog" ></span>', "#", [

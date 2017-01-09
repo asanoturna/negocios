@@ -320,7 +320,7 @@ $this->title = 'Recursos Solicitados';
                       ]);
                   }, 
                   'manager' => function ($url, $model) {
-                      return Yii::$app->user->identity->can_managerrequestresources == 1 ? Html::a('<span class="glyphicon glyphicon-cog" ></span>', $url, [
+                      return Yii::$app->user->identity->role_id == 2 ? Html::a('<span class="glyphicon glyphicon-cog" ></span>', $url, [
                                   'title' => 'Alterar Situação',
                                   'class' => 'btn btn-default btn-xs',
                       ]): Html::a('<span class="glyphicon glyphicon-cog" ></span>', "#", [
