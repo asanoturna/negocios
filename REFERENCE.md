@@ -11,6 +11,13 @@ https://github.com/puikinsh/gentelella ***
 https://github.com/Mihai-P/yii2theme-brain
 https://github.com/yiister/yii2-adminlte
 
+TIPS AccessControl
+--------------------
+http://pt.stackoverflow.com/questions/120297/como-criar-restri%C3%A7%C3%A3o-de-acesso-para-uma-a%C3%A7%C3%A3o-no-yii2-0
+https://code.tutsplus.com/tutorials/how-to-program-with-yii2-user-access-controls--cms-23173
+https://thecodeninja.net/2014/12/simpler-role-based-authorization-in-yii-2-0/
+https://www.youtube.com/watch?v=xEcWqxzwD2U
+
 ASSETS
 --------------------
 http://www.flaticon.com/free-icons/idea_24498

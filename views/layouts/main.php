@@ -56,7 +56,7 @@ SCRIPT;
             [
             'label' => '<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Administração', 
             'url' => ['/administrator/dashboard/index'], 
-            'visible' => @Yii::$app->user->identity->can_admin == 1,
+            'visible' => @Yii::$app->user->identity->role_id == 99,
             ],
             Yii::$app->user->isGuest ?
             [

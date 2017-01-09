@@ -12,7 +12,7 @@ class UseradminSearch extends Useradmin
     public function rules()
     {
         return [
-            [['id', 'updated_at', 'created_at', 'status', 'location_id', 'department_id', 'can_admin', 'can_visits', 'can_productivity', 'can_requestresources', 'can_managervisits', 'can_managerproductivity', 'can_managerrequestresources'], 'integer'],
+            [['id', 'updated_at', 'created_at', 'status', 'location_id', 'department_id', 'role_id'], 'integer'],
             [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'avatar', 'fullname', 'phone', 'celphone', 'birthdate'], 'safe'],
         ];
     }
@@ -58,13 +58,6 @@ class UseradminSearch extends Useradmin
             'birthdate' => $this->birthdate,
             'location_id' => $this->location_id,
             'department_id' => $this->department_id,
-            'can_admin' => $this->can_admin,
-            'can_visits' => $this->can_visits,
-            'can_productivity' => $this->can_productivity,
-            'can_requestresources' => $this->can_requestresources,
-            'can_managervisits' => $this->can_managervisits,
-            'can_managerproductivity' => $this->can_managerproductivity,
-            'can_managerrequestresources' => $this->can_managerrequestresources,
         ]);
 
         $query->andFilterWhere(['like', 'username', $this->username])

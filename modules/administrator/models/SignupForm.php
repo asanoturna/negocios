@@ -6,6 +6,7 @@ use app\models\User;
 
 class SignupForm extends Model
 {
+    public $role_id;
     public $username;
     public $email;
     public $password;
@@ -16,19 +17,12 @@ class SignupForm extends Model
     public $birthdate;
     public $location_id;
     public $department_id;
-    public $can_admin;
-    public $can_visits;
-    public $can_productivity;
-    public $can_requestresources;
-    public $can_managervisits;
-    public $can_managerproductivity;
-    public $can_managerrequestresources;
 
     public function rules()
     {
         return [
             ['username', 'filter', 'filter' => 'trim'],
-            [['username', 'fullname', 'status', 'phone', 'birthdate', 'location_id', 'department_id'], 'required'],
+            [['username', 'fullname', 'status', 'phone', 'birthdate', 'location_id', 'department_id','role_id'], 'required'],
             ['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Usuário já existe!'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
@@ -47,6 +41,7 @@ class SignupForm extends Model
     {
         return [
             'id' => 'ID',
+            'role_id' => 'Perfil de Acesso',
             'username' => 'Usuário',
             'auth_key' => 'Chave de Autenticação',
             'password' => 'Senha',
@@ -63,13 +58,6 @@ class SignupForm extends Model
             'birthdate' => 'Data de Nascimento',
             'location_id' => 'Unidade',
             'department_id' => 'Departamento',
-            'can_admin' => 'Administração do Sistema',
-            'can_visits' => 'Visitas',
-            'can_productivity' => 'Produtividade',
-            'can_requestresources' => 'Recursos',
-            'can_managervisits' => 'Gerenciar Visitas',
-            'can_managerproductivity' => 'Gerenciar Produtividade',
-            'can_managerrequestresources' => 'Gerenciar Recursos',
         ];
     }    
 
@@ -80,6 +68,7 @@ class SignupForm extends Model
         }
         
         $user = new User();
+        $user->role_id = $this->role_id;
         $user->username = $this->username;
         $user->email = $this->email;
         $user->fullname = $this->fullname;

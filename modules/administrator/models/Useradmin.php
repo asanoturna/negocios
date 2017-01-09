@@ -23,8 +23,8 @@ class Useradmin extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'fullname', 'updated_at', 'created_at', 'email', 'birthdate', 'location_id', 'department_id', 'status'], 'required'],
-            [['updated_at', 'created_at', 'status', 'location_id', 'department_id', 'can_admin', 'can_visits', 'can_productivity', 'can_requestresources', 'can_managervisits', 'can_managerproductivity', 'can_managerrequestresources'], 'integer'],
+            [['username', 'fullname', 'updated_at', 'created_at', 'email', 'birthdate', 'location_id', 'department_id', 'role_id', 'status'], 'required'],
+            [['updated_at', 'created_at', 'status', 'location_id', 'department_id', 'rola_id'], 'integer'],
             [['birthdate'], 'safe'],
             [['username', 'email', 'fullname'], 'string', 'max' => 255],
             [['avatar', 'phone', 'celphone'], 'string', 'max' => 50],
@@ -96,6 +96,7 @@ class Useradmin extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'role_id' => 'Perfil de Acesso',
             'username' => 'Usuário',
             'auth_key' => 'Chave de Autenticação',
             'password_hash' => 'Senha',
@@ -112,13 +113,6 @@ class Useradmin extends \yii\db\ActiveRecord
             'birthdate' => 'Data de Nascimento',
             'location_id' => 'Unidade',
             'department_id' => 'Departamento',
-            'can_admin' => 'Administração do Sistema',
-            'can_visits' => 'Visitas',
-            'can_productivity' => 'Produtividade',
-            'can_requestresources' => 'Recursos',
-            'can_managervisits' => 'Gerenciar Visitas',
-            'can_managerproductivity' => 'Gerenciar Produtividade',
-            'can_managerrequestresources' => 'Gerenciar Recursos',
         ];
     }
 
@@ -130,5 +124,10 @@ class Useradmin extends \yii\db\ActiveRecord
     public function getDepartment()
     {
         return $this->hasOne(Department::className(), ['id' => 'department_id']);
-    }         
+    }
+
+    public function getRole()
+    {
+        return $this->hasOne(Role::className(), ['id' => 'role_id']);
+    }  
 }

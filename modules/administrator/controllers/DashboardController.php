@@ -10,7 +10,6 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\base\Security;
 
-
 class DashboardController extends Controller
 {
     public function behaviors()
@@ -18,11 +17,18 @@ class DashboardController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::classname(),
-                'only'  => ['index', 'dash'],
+                'only'  => ['index','create','view','update'],
                 'rules' => [
                     [
+                        'actions' => ['index','create','view','update'],
                         'allow' => true,
-                        'roles' => ['@']
+                        'roles' => ['@'],
+                        'matchCallback' => function(){
+                            return (Yii::$app->user->identity->role_id == 99);
+                        },
+                        'denyCallback' => function(){
+                            return Yii::$app->response->redirect(['site/login']);
+                        }
                     ],
                 ]
             ],

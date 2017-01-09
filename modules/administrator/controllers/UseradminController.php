@@ -22,8 +22,15 @@ class UseradminController extends Controller
                 'only'  => ['index','create','view','update','signup','avatar'],
                 'rules' => [
                     [
+                        'actions' => ['index','create','view','update','signup','avatar'],
                         'allow' => true,
-                        'roles' => ['@']
+                        'roles' => ['@'],
+                        'matchCallback' => function(){
+                            return (Yii::$app->user->identity->role_id == 99);
+                        },
+                        'denyCallback' => function(){
+                            return Yii::$app->response->redirect(['site/login']);
+                        }
                     ],
                 ]
             ],

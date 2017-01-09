@@ -8,16 +8,35 @@ use app\modules\administrator\models\LinksSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use yii\base\Security;
 
 class LinksController extends Controller
 {
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::classname(),
+                'only'  => ['index','create','view','update','signup','avatar'],
+                'rules' => [
+                    [
+                        'actions' => ['index','create','view','update','signup','avatar'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function(){
+                            return (Yii::$app->user->identity->role_id == 99);
+                        },
+                        'denyCallback' => function(){
+                            return Yii::$app->response->redirect(['site/login']);
+                        }
+                    ],
+                ]
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['post'],
                 ],
             ],
         ];

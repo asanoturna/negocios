@@ -3,15 +3,17 @@
 namespace app\modules\administrator\controllers;
 
 use Yii;
-use app\modules\administrator\models\Department;
-use app\modules\administrator\models\DepartmentSearch;
+use app\modules\administrator\models\Role;
+use app\modules\administrator\models\RoleSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\base\Security;
+use yii\filters\AccessControl;
+use yii\base\Security;
 
-class DepartmentController extends Controller
+class RoleController extends Controller
 {
     public function behaviors()
     {
@@ -44,7 +46,7 @@ class DepartmentController extends Controller
 
     public function actionIndex()
     {
-        $searchModel = new DepartmentSearch();
+        $searchModel = new RoleSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -62,7 +64,7 @@ class DepartmentController extends Controller
 
     public function actionCreate()
     {
-        $model = new Department();
+        $model = new Role();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('department-success', 'Inclusão realizada com sucesso!');
@@ -98,7 +100,7 @@ class DepartmentController extends Controller
 
     protected function findModel($id)
     {
-        if (($model = Department::findOne($id)) !== null) {
+        if (($model = Role::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
