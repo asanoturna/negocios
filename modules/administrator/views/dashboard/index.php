@@ -80,10 +80,10 @@ $this->title = 'Administração';
             <?php
             $dataProviderRecentUsers = new SqlDataProvider([
                 'sql' => "SELECT
-                        username,
-                        created_at
+                        fullname,
+                        id
                         FROM `user`
-                        ORDER BY created_at desc",
+                        ORDER BY id desc",
                 'totalCount' => 5,
                 'pagination' => [
                     'pageSize' => 5,
@@ -102,18 +102,18 @@ $this->title = 'Administração';
                             'format' => 'raw',
                             'header' => 'Usuário',
                             'value' => function ($data) {                      
-                                return $data["username"];
+                                return $data["fullname"];
                             },
-                            'contentOptions'=>['style'=>'text-align:left;vertical-align: middle;text-transform: lowercase'],
+                            'contentOptions'=>['style'=>'text-align:left;vertical-align: middle;text-transform: uppercase'],
                         ],  
-                        [
-                            'format' => 'raw',
-                            'header' => 'Contato',
-                            'value' => function ($data) {                      
-                                return $data["created_at"];
-                            },
-                            'format' => ['date', 'php:d/m/Y'],
-                        ],                                                           
+                        // [
+                        //     'format' => 'raw',
+                        //     'header' => 'Contato',
+                        //     'value' => function ($data) {                      
+                        //         return $data["created_at"];
+                        //     },
+                        //     'format' => ['date', 'php:d/m/Y'],
+                        // ],                                                           
                     ],
             ]); ?>
           </div>

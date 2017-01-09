@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\administrator\models;
+namespace app\models;
 
 use Yii;
 
@@ -27,7 +27,7 @@ class Location extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'shortname' => 'PA',
+            'shortname' => 'Nº do PA',
             'fullname' => 'Nome da Agência',
             'address' => 'Endereço',
             'zipcode' => 'CEP',

@@ -23,7 +23,7 @@ $this->title = 'Ranking da Campanha Recupere e Ganhe';
     <div class="panel-body">
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-2">
     <div class="panel panel-default">
       <div class="panel-heading"><b>Desempenho</b></div>
       <div class="panel-body">
@@ -108,7 +108,7 @@ $this->title = 'Ranking da Campanha Recupere e Ganhe';
         ?></div></div>
 
     </div>
-    <div class="col-md-4">
+    <div class="col-md-5">
 
 <div class="panel panel-default">
 <div class="panel-heading"><b>Ranking por Negociador</b></div>
@@ -120,51 +120,51 @@ $this->title = 'Ranking da Campanha Recupere e Ganhe';
               'showHeader'   => true,        
               'tableOptions' => ['class'=>'table table-striped table-hover '],
               'columns' => [     
-                    [
-                        'attribute' => 'avatar',
-                        'label' => false,
-                        'format' => 'html',
-                        'value' => function ($data) {
-                            return Html::img(Yii::$app->params['usersAvatars'].$data["avatar"],
-                                ['width' => '50px', 'class' => 'img-rounded img-thumbnail']);
-                        },
-                        'contentOptions'=>['style'=>'width: 10%;text-align:middle'],                    
-                    ],                                 
-                    [
-                        'attribute' => 'fullname',
-                        'format' => 'raw',
-                        'label' => false,
-                        'value' => function ($data) { 
-                            return $data["fullname"];
-                        },
-                        'contentOptions'=>['style'=>'width: 50%;text-transform: uppercase;text-align:left;vertical-align: middle;'],
-                    ],  
-                    [
-                        'attribute' => 'value_traded',
-                        'header' => 'Total Negociado',
-                        'format' => 'raw',
-                        'value' => function ($data) {                      
-                            return "<b class=\"text-success\">".$data["value_traded"]."</b>";
-                        },
-                        'headerOptions' => ['class' => 'text-success','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
-                        'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
-                    ],    
-                    [
-                        'attribute' => 'value_input',
-                        'header' => 'Total Quit./Entrada',
-                        'format' => 'raw',
-                        'value' => function ($data) {                      
-                            return "<b class=\"text-info\">".$data["value_input"]."</b>";
-                        },
-                        'headerOptions' => ['class' => 'text-info','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
-                        'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
-                    ],
+                [
+                    'attribute' => 'avatar',
+                    'label' => false,
+                    'format' => 'html',
+                    'value' => function ($data) {
+                        return Html::img(Yii::$app->params['usersAvatars'].$data["avatar"],
+                            ['width' => '50px', 'class' => 'img-rounded img-thumbnail']);
+                    },
+                    'contentOptions'=>['style'=>'width: 10%;text-align:middle'],                    
+                ],
+                [
+                    'attribute' => 'fullname',
+                    'format' => 'raw',
+                    'label' => false,
+                    'value' => function ($data) { 
+                        return $data["fullname"];
+                    },
+                    'contentOptions'=>['style'=>'width: 50%;text-transform: uppercase;text-align:left;vertical-align: middle;'],
+                ],
+                [
+                    'attribute' => 'value_traded',
+                    'header' => 'Negociado',
+                    'format' => 'raw',
+                    'value' => function ($data) {                      
+                        return "<b class=\"text-success\">".$data["value_traded"]."</b>";
+                    },
+                    'headerOptions' => ['class' => 'text-success','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                    'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                ],
+                [
+                    'attribute' => 'value_input',
+                    'header' => 'Quit./Entrada',
+                    'format' => 'raw',
+                    'value' => function ($data) {                      
+                        return "<b class=\"text-info\">".$data["value_input"]."</b>";
+                    },
+                    'headerOptions' => ['class' => 'text-info','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                    'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                ],
                 ],
             ]); ?>
 </div></div>
 
   </div>
-  <div class="col-md-4">
+  <div class="col-md-5">
 
     <div class="panel panel-default">
       <div class="panel-heading"><b>Ranking por Agência</b></div>
@@ -185,27 +185,26 @@ $this->title = 'Ranking da Campanha Recupere e Ganhe';
                     },
                     'contentOptions'=>['style'=>'width: 50%;text-align:left'],                    
                 ],                                  
-                    [
-                        'attribute' => 'value_traded',
-                        'header' => 'Total Negociado',
-                        'format' => 'raw',
-                        'value' => function ($data) {                      
-                            return "<b class=\"text-success\">".$data["value_traded"]."</b>";
-                        },
-                        'headerOptions' => ['class' => 'text-success','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
-                        'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
-                    ],    
-                    [
-                        'attribute' => 'value_input',
-                        'header' => 'Total Quit./Entrada',
-                        'format' => 'raw',
-                        'value' => function ($data) {                      
-                            return "<b class=\"text-info\">".$data["value_input"]."</b>";
-                        },
-                        'headerOptions' => ['class' => 'text-info','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
-                        'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
-                    ],                                   
-
+                [
+                    'attribute' => 'value_traded',
+                    'header' => 'Negociado',
+                    'format' => 'raw',
+                    'value' => function ($data) {                      
+                        return "<b class=\"text-success\">".$data["value_traded"]."</b>";
+                    },
+                    'headerOptions' => ['class' => 'text-success','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                    'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                ],
+                [
+                    'attribute' => 'value_input',
+                    'header' => 'Quit./Entrada',
+                    'format' => 'raw',
+                    'value' => function ($data) {                      
+                        return "<b class=\"text-info\">".$data["value_input"]."</b>";
+                    },
+                    'headerOptions' => ['class' => 'text-info','style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                    'contentOptions'=>['style'=>'width: 20%;text-align:right;vertical-align: middle;'],
+                ],
             ],
         ]); ?>
       </div>

@@ -46,12 +46,12 @@ $this->title = 'Departamentos';
                 [
                 'attribute' => 'name',
                 'enableSorting' => true,
-                'contentOptions'=>['style'=>'width: 20%;text-align:center'],
+                'contentOptions'=>['style'=>'width: 20%;text-align:left'],
                 ],
                 [
                 'attribute' => 'email',
                 'enableSorting' => true,
-                'contentOptions'=>['style'=>'width: 20%;text-align:center'],
+                'contentOptions'=>['style'=>'width: 20%;text-align:left'],
                 ],
                 [
                 'attribute' => 'hexcolor',
@@ -60,14 +60,14 @@ $this->title = 'Departamentos';
                 'value' => function ($model) {
                         return '<strong style="color:'.$model->hexcolor.'"><i class="fa fa-tag"></i></strong>';
                         },
-                'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+                'contentOptions'=>['style'=>'width: 5%;text-align:center'],
                 ],
-                [
-                'attribute' => 'description',
-                'format'=>'html',
-                'enableSorting' => true,
-                'contentOptions'=>['style'=>'width: 30%;text-align:left'],
-                ],
+                // [
+                // 'attribute' => 'description',
+                // 'format'=>'html',
+                // 'enableSorting' => true,
+                // 'contentOptions'=>['style'=>'width: 30%;text-align:left'],
+                // ],
                 [ 
                 'attribute' => 'is_active',
                 'enableSorting' => true,

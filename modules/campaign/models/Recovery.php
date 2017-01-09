@@ -151,12 +151,21 @@ class Recovery extends \yii\db\ActiveRecord
             return null;
         }
         return self::$Static_status[$this->status];
-    }         
+    }
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios['create'] = ['expirationdate', 'location_id', 'clientname', 'clientdoc','referencevalue', 'typeofdebt'];
+        $scenarios['update'] = ['negotiator_id', 'location_id', 'clientname', 'clientdoc', 'status','date','value_traded','value_input'];
+        return $scenarios;
+    }
 
     public function rules()
     {
         return [
-            [['negotiator_id', 'location_id', 'clientname', 'clientdoc', 'status','date','value_traded','value_input'], 'required'],
+            [['expirationdate', 'location_id', 'clientname', 'clientdoc','referencevalue','typeofdebt'], 'required', 'on' => 'create'],
+            [['negotiator_id', 'location_id', 'clientname', 'clientdoc', 'status','date','value_traded','value_input'], 'required', 'on' => 'update'],
             [['negotiator_id', 'location_id', 'typeproposed', 'status', 'approvedby'], 'integer'],
             [['referencevalue', 'value_traded', 'value_input'], 'number'],
             [['expirationdate', 'date', 'approvedin'], 'safe'],

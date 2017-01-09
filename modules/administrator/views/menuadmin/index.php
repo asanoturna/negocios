@@ -44,11 +44,11 @@ $this->title = 'Menu';
             'enableSorting' => true,
             'contentOptions'=>['style'=>'width: 15%;text-align:center'],
             ],
-            [
-            'attribute' => 'icon',
-            'enableSorting' => true,
-            'contentOptions'=>['style'=>'width: 8%;text-align:center'],
-            ],
+            // [
+            // 'attribute' => 'icon',
+            // 'enableSorting' => true,
+            // 'contentOptions'=>['style'=>'width: 8%;text-align:center'],
+            // ],
             [
             'attribute' => 'url',
             'enableSorting' => true,
