@@ -22,7 +22,6 @@ $this->title = 'Novo Usuário';
     <hr/>
 
     <div class="panel panel-default">
-      <div class="panel-heading"><i class="fa fa-user" aria-hidden="true"></i> Informações do Usuário</div>
       <div class="panel-body">
 
     <?= $this->render('_signup', [

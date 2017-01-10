@@ -3,6 +3,8 @@ GERAL
 
 http://www.yiiframework.com/wiki/684/save-and-display-date-time-fields-in-different-formats-in-yii2/
 
+tentar juntar models/SignupForm e models/Useradmin
+
 Sobre querys
 http://stackoverflow.com/questions/26894987/get-count-in-relation-table-in-yii2-activerecord
 https://github.com/yiisoft/yii2/issues/2179
