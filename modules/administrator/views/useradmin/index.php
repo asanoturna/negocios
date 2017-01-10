@@ -58,7 +58,7 @@ $this->title = 'Usuários';
             'attribute' => 'email',
             'format' => 'email',
             'enableSorting' => true,
-            'contentOptions'=>['style'=>'width: 24%;text-align:left'],
+            'contentOptions'=>['style'=>'width: 24%;text-align:left;vertical-align: middle'],
             ],                      
             [ 
             'attribute' => 'status',
@@ -68,14 +68,14 @@ $this->title = 'Usuários';
                     return $model->status == 1 ? '<b style="color:#6CAF3F">Ativo</b>' : '<b style="color:#d43f3a">Inativo</b>';
                     },
             'filter'=>[0=>'Não', 1=>'Sim'],
-            'contentOptions'=>['style'=>'width: 6%;text-align:center'],
+            'contentOptions'=>['style'=>'width: 4%;text-align:left;vertical-align: middle'],
             ], 
             [
               'class' => 'yii\grid\ActionColumn',
               'header' => 'Ações',  
               'contentOptions'=>['style'=>'width: 12%;text-align:right'],
               'headerOptions' => ['class' => 'text-center'],                            
-              'template' => '{avatar} {password} {view} {update} {delete}',
+              'template' => '{view} {update} {delete}',
               'buttons' => [
                   'avatar' => function ($url, $model) {
                       return Html::a('<span class="glyphicon glyphicon-camera" ></span>', $url, [

@@ -4,35 +4,13 @@ namespace app\models;
 
 use Yii;
 
-/**
- * This is the model class for table "email_queue".
- *
- * @property string $id
- * @property string $from_name
- * @property string $from_email
- * @property string $to_email
- * @property string $subject
- * @property string $message
- * @property integer $max_attempts
- * @property integer $attempts
- * @property integer $success
- * @property string $date_published
- * @property string $last_attempt
- * @property string $date_sent
- */
 class MailQueue extends \yii\db\ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
     public static function tableName()
     {
         return 'email_queue';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
@@ -46,9 +24,6 @@ class MailQueue extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [

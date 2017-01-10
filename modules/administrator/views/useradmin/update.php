@@ -21,9 +21,13 @@ $this->title = 'Alteração do Usuário: #' . $model->id;
     </div>
     <hr/>
 
+    <div class="panel panel-default">
+    <div class="panel-body">
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
+    </div>
+    </div>
 
     </div>
     </div>

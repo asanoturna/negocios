@@ -270,7 +270,7 @@ $this->title = Yii::$app->params['appname'];
     ]);
 
     $dataProviderCampaign2 = new SqlDataProvider([
-        'sql' => "SELECT user.id, avatar, fullname, 
+        'sql' => "SELECT user.id, avatar, username as fullname, 
               COUNT(if(daily_productivity_status_id = 2 AND daily_productivity.product_id = 503, daily_productivity.id, NULL)) as  confirmed
               FROM daily_productivity
               INNER JOIN `user` ON daily_productivity.seller_id = `user`.id
