@@ -24,7 +24,8 @@ $this->title = 'Detalhes do Usuário #' . $model->id;
 
     <p>
         <?= Html::a('Permissões', ['role/index', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
-        <?= Html::a('Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Alterar Informações', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Alterar Foto', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
         <?= Html::a('Excluir', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -34,56 +35,56 @@ $this->title = 'Detalhes do Usuário #' . $model->id;
         ]) ?>
     </p>
 
-    <div class="row">
-
     <div class="panel panel-default">
     <div class="panel-body">
 
       <div class="col-md-6">
 
-            <?= DetailView::widget([
-                'model' => $model,
-                'attributes' => [  
-                    [
-                    'attribute'=>'avatar',
-                    'value' => Yii::$app->params['usersAvatars'].$model->avatar,
-                    'format' => ['image',['width'=>'100','height'=>'200', 'class'=>'img-thumbnail']],
-                    ],                                
-                    'username',
-                    'fullname', 
-                    'email:email',
-                    'role.name',
-                    
-                ],
-            ]) ?>
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [  
+            [
+            'attribute'=>'avatar',
+            'value' => Yii::$app->params['usersAvatars'].$model->avatar,
+            'format' => ['image',['width'=>'100','height'=>'200', 'class'=>'img-thumbnail']],
+            ],                                
+            'username',
+            'fullname', 
+            'email:email',
+            'role.name',
+            
+        ],
+    ]) ?>
 
       </div>
 
       <div class="col-md-6">
 
-            <?= DetailView::widget([
-                'model' => $model,
-                'attributes' => [
-                    'location.fullname',
-                    'department.name',
-                    'phone',
-                    'celphone',
-                    'birthdate',
-                    [ 
-                    'attribute' => 'status', 
-                    'format' => 'raw',
-                    'value' => $model->status == 1 ? '<b style="color:#6CAF3F">Ativo</b>' : '<b style="color:#d43f3a">Inativo</b>',
-                    ],                      
-                    'updated_at:datetime',                   
-                    'created_at:datetime',                                                                 
-                ],
-            ]) ?>
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            'location.fullname',
+            'department.name',
+            'phone',
+            'celphone',
+            [ 
+                'attribute' => 'birthdate',
+                'format' => 'raw',
+                'value' => $model->birthdate == NULL ? null : date("d/m/Y",  strtotime($model->birthdate)),
+            ], 
+            [ 
+            'attribute' => 'status', 
+            'format' => 'raw',
+            'value' => $model->status == 1 ? '<b style="color:#6CAF3F">Ativo</b>' : '<b style="color:#d43f3a">Inativo</b>',
+            ],                      
+            'updated_at:datetime',                   
+            'created_at:datetime',                                                                 
+        ],
+    ]) ?>
 
       </div>
 
     </div>
-    </div>
-
     </div>    
 
     </div>
