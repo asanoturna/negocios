@@ -22,21 +22,27 @@ use yii\widgets\MaskedInput;
 
             <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-            <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
-
-            <?= $form->field($model, 'password')->textInput(['maxlength' => true]) ?>
+            <div class="row">
+              <div class="col-md-6">
+              <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+              </div>
+              <div class="col-md-6">
+              <?= $form->field($model, 'password')->textInput(['maxlength' => true]) ?>
+              </div>
+            </div>  
 
             <div class="row">
               <div class="col-md-6">
               <?= $form->field($model, 'role_id')->dropDownList(ArrayHelper::map(Role::find()->orderBy("id ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?>
               </div>
               <div class="col-md-6">
-              <?= $form->field($model, 'status')->radioList([
-                '1' => 'Ativo', 
-                '0' => 'Inativo',
-                ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>
+              
+              <?= $form->field($model, 'status')->dropdownList(['0' => 'Inativo', '1' => 'Ativo']) ?>
+
               </div>
-            </div>            
+            </div>
+
+            <?= $form->field($model, 'file')->fileInput() ?>        
 
       </div>
 

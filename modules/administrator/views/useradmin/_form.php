@@ -31,10 +31,7 @@ use yii\widgets\MaskedInput;
         <?= $form->field($model, 'role_id')->dropDownList(ArrayHelper::map(Role::find()->orderBy("id ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?>
         </div>
         <div class="col-md-6">
-        <?= $form->field($model, 'status')->radioList([
-          '1' => 'Ativo', 
-          '0' => 'Inativo',
-          ], ['itemOptions' => ['labelOptions'=>array('style'=>'padding:5px;')]]) ?>
+        <?= $form->field($model, 'status')->dropdownList(['0' => 'Inativo', '1' => 'Ativo'], ['prompt' => 'Selecione']) ?>
         </div>
       </div> 
 

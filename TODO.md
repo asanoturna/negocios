@@ -40,6 +40,9 @@ Calendário de Atividades -> Notificar com texto padrão e link para a VIEW da a
 Calendário de Atividades -> Notificar ao incluir nova atividade ?
 Calendário de Atividades -> Notificar na data de lembrete da atividade ?
 Calendário de Atividades -> Notificar na data prazo final da atividade ?
+Integração 
+https://www.exchangecore.com/blog/sending-outlookemail-calendar-events-php/
+https://github.com/jasonjoh/php-tutorial
 
 Visitas -> Verificar / Usar plugin de galeria de fotos
 Visitas -> Upload Multiplas imagens ao mesmo tempo

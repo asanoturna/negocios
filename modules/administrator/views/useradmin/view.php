@@ -23,9 +23,7 @@ $this->title = 'Detalhes do Usuário #' . $model->id;
     <hr/>
 
     <p>
-        <?= Html::a('Permissões', ['role/index', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
-        <?= Html::a('Alterar Informações', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
-        <?= Html::a('Alterar Foto', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
         <?= Html::a('Excluir', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [

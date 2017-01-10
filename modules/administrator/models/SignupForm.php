@@ -17,6 +17,7 @@ class SignupForm extends Model
     public $birthdate;
     public $location_id;
     public $department_id;
+    public $file;
 
     public function rules()
     {
@@ -58,6 +59,7 @@ class SignupForm extends Model
             'birthdate' => 'Data de Nascimento',
             'location_id' => 'Unidade',
             'department_id' => 'Departamento',
+            'file' => 'Imagem',
         ];
     }    
 

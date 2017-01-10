@@ -10,8 +10,6 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\base\Security;
-use yii\filters\AccessControl;
-use yii\base\Security;
 
 class RoleController extends Controller
 {

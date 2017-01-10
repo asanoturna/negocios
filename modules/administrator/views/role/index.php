@@ -50,7 +50,7 @@ $this->title = 'Lista de Perfis de Acesso';
                 ],
                 [
                 'attribute' => 'description',
-                'format'=>'html',
+                'format'=>'raw',
                 'enableSorting' => true,
                 'contentOptions'=>['style'=>'width: 30%;text-align:left'],
                 ],
@@ -59,7 +59,7 @@ $this->title = 'Lista de Perfis de Acesso';
               'header' => 'Ações',  
               'contentOptions'=>['style'=>'width: 10%;text-align:right'],
               'headerOptions' => ['class' => 'text-center'],                            
-              'template' => '{view} {update} {delete}',
+              'template' => '{update} {delete}',
               'buttons' => [                               
                   'view' => function ($url, $model) {
                       return Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', $url, [
