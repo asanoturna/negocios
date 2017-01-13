@@ -17,6 +17,23 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => '186.248.91.51',
+                'username' => 'gustavo.andrade@sicoobcrediriodoce.com.br',
+                'password' => '3@Gustavo',
+                'port' => '587',
+                'encryption' => 'tls',
+                'streamOptions' => [
+                        'ssl' => [
+                            'verify_peer' => false,
+                            'verify_peer_name' => false,
+                        ],
+                    ],
+            ],
+        ],  
         'log' => [
             'targets' => [
                 [
