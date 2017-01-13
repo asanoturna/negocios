@@ -56,6 +56,7 @@ class UseradminSearch extends Useradmin
             'created_at' => $this->created_at,
             'status' => $this->status,
             'birthdate' => $this->birthdate,
+            'role_id' => $this->role_id,
             'location_id' => $this->location_id,
             'department_id' => $this->department_id,
         ]);
