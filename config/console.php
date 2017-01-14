@@ -21,9 +21,9 @@ return [
             'class' => 'yii\swiftmailer\Mailer',
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => '186.248.91.51',
-                'username' => 'gustavo.andrade@sicoobcrediriodoce.com.br',
-                'password' => '3@Gustavo',
+                'host' => 'smtps.uol.com.br',
+                'username' => '',
+                'password' => '',
                 'port' => '587',
                 'encryption' => 'tls',
                 'streamOptions' => [

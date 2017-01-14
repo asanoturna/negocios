@@ -14,6 +14,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\base\Security;
 use yii\web\UploadedFile;
+use app\models\MailQueue;
 
 class TodolistController extends Controller
 {
@@ -113,28 +114,20 @@ class TodolistController extends Controller
                     $path = $model->getImageFile();
                     $file->saveAs($path);
                 }
-                //Yii::$app->session->setFlash("task-success", "Atividade incluída com sucesso!");
-
-                try{
-
+                // save in MailQueue list
+                $queue = new MailQueue();
+                $queue->to_email = $model->responsible->email;
+                $queue->subject = 'Nova Atividade #'.$model->id;
+                $queue->from_email = 'gugoan@uol.com.br';
+                $queue->from_name =  'Intranet';
+                $queue->date_published = date("Y-m-d");
+                $queue->max_attempts = 3;  //No of try to send this mail
+                $queue->attempts = 0;
+                $queue->success = 1;  //will be set to 0 on send.
+                $queue->message = $model->name;
+                $queue->save();
                 Yii::$app->session->setFlash("task-success", "Atividade incluída com sucesso!");
-                \Yii::$app->mailer->compose('@app/mail/task')
-                ->setFrom('intranet@sicoobcrediriodoce.com.br')
-                ->setTo($model->responsible->email)
-                ->setCc($model->coresponsible->email)
-                ->setSubject(Yii::$app->params['appname'].' - '.\Yii::$app->getModule('task')->params['taskModuleName']. ' - Nova Tarefa : #'. $model->id)
-                //->setTextBody('Nova Ocorrencia registrada')
-                //->setHtmlBody('<b>Nova Ocorrencia registrada</b>')
-                ->send();
                 return $this->redirect(['index']);
-
-                }
-                catch(Exception $e)
-                {
-                Yii::$app->session->setFlash("task-success", "Atividade incluída com sucesso (erro ao enviar e-mail)");
-                return $this->redirect(['index']);
-                }
-
             } else {
                 // error in saving model
             }
