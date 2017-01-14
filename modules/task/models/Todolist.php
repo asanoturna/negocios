@@ -48,7 +48,7 @@ class Todolist extends \yii\db\ActiveRecord
         }
  
         $this->filename = $file->name;
-        $ext = end((explode(".", $file->name)));
+        $ext = @end((explode(".", $file->name)));
  
         $this->attachment = Yii::$app->security->generateRandomString().".{$ext}";
  
