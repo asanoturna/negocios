@@ -92,8 +92,8 @@ $this->title = 'Painel de Atividades';
             'format' => 'raw',
             'enableSorting' => true,
             'value' => function ($model) {                      
-                    return "<span class=\"label label-default\">".$model->status->name."</span>";
-                    },
+                return $model->status_id === 1 ? "<span class=\"label label-default\">".$model->status->name."</span>" : "<span class=\"label label-success\">".$model->status->name."</span>";
+                },
             'filter' => ArrayHelper::map(Status::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
             'contentOptions'=>['style'=>'width: 10%;text-align:center'],
             'headerOptions' => ['class' => 'text-center'],

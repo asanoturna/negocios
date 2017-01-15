@@ -55,6 +55,7 @@ $this->title = 'Atividade #' . $model->id;
             'attribute' => 'owner_id',
             'format' => 'raw',
             'value' => $model->owner->fullname,
+            'contentOptions' => ['style' => 'text-align:left;text-transform: uppercase'],
             ], 
             [
                 'attribute' => 'created',
@@ -64,6 +65,7 @@ $this->title = 'Atividade #' . $model->id;
             'attribute' => 'responsible_id',
             'format' => 'raw',
             'value' => $model->responsible->fullname,
+            'contentOptions' => ['style' => 'text-align:left;text-transform: uppercase'],
             ], 
             [
                 'attribute' => 'updated',
