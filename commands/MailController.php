@@ -6,6 +6,8 @@ use yii\console\Controller;
 
 use Yii;
 use app\models\MailQueue;
+use app\modules\task\models\Todolist;
+
 
 /*
  * usage:
@@ -28,6 +30,7 @@ by controller:
 
 class MailController extends Controller
 {
+	// Send mail on new task created
     public function actionNew()
     {
     $mails=MailQueue::find()->where('success=1')->all();
@@ -48,23 +51,22 @@ class MailController extends Controller
         }
     }
 
-    public function actionReminder()
+    // Send mail on deadline task date
+    public function actionDeadline()
     {
-    $mails=MailQueue::find()->where('success=1')->all();
+    $today = date('Y-m-d');
+    $mails=Todolist::find()
+    	->where('status_id=1')
+    	->andWhere(['=', 'deadline', $today])
+    	->all();
     foreach($mails as $mail)
         {
-        $message =\Yii::$app->mailer->compose('@app/mail/task');
-            $message->setFrom($mail->from_email)
-                    ->setTo($mail->to_email)
-                    ->setSubject($mail->subject);
-        if($message->send())
-            {
-             $mail->success=0;
-             $mail->date_sent=date("Y-m-d H:i:s");
-            }
-            $mail->attempts=$mail->attempts + 1;
-            $mail->last_attempt= date("Y-m-d H:i:s");
-            $mail->save();
+        $message =\Yii::$app->mailer->compose('@app/mail/task_deadline');
+            $message->setFrom('gugoan@uol.com.br')
+                    ->setTo($mail->responsible->email)
+                    ->setCc($mail->coresponsible->email)
+                    ->setSubject('Lembrete: '.$mail->name)
+                    ->send();
         }
     }
 

@@ -13,7 +13,7 @@ Alterar nome das tabelas secundarias (módulos) com prefixo MOD
 
 Criação de menus
 Revisar os parametros redundantes
-
+Parametros no banco de dados ()
 Bloquear uso do IE versão 8 pra baixo
 Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc).
 
@@ -40,7 +40,6 @@ Calendário de Atividades -> Verificar permissões dos botoes "Gerenciar" e "Res
 Calendário de Atividades -> Notificar por E-mail: Responsável, Co-responsavel e Departamento
 Calendário de Atividades -> Notificar com texto padrão e link para a VIEW da atividade
 Calendário de Atividades -> Notificar ao incluir nova atividade ?
-Calendário de Atividades -> Notificar na data de lembrete da atividade ?
 Calendário de Atividades -> Notificar na data prazo final da atividade ?
 Calendário de Atividades -> Integração 
 ** https://www.exchangecore.com/blog/sending-outlookemail-calendar-events-php/

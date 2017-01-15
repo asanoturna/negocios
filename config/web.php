@@ -3,7 +3,9 @@
 $params = require(__DIR__ . '/params.php');
 
 $config = [
-    'id' => 'negocios',
+    'id' => 'intranet',
+    'name' => 'Intranet',
+    'version' => '1.5',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     //'defaultRoute' => 'site/index',

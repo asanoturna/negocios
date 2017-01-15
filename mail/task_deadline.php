@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 ?>
 <?php $this->beginPage() ?>
@@ -12,9 +13,16 @@ use yii\helpers\Html;
 </head>
 <body>
     <?php $this->beginBody() ?>
-    Nova Tarefa 
+    <h3>Calendário de Atividades - Lembrete</h3> 
     <br/>
+    Essa mensagem é um lembrete de atividade registrada no sistema destinada a você. 
+    <p>Clique no link abaixo para acessar o registro da atividade e após concluída altere a situação para o tipo correspondente.
+    </p>
     
+    <br/>
+    <p>
+    Mensagem enviada automaticamente por <?= Yii::$app->name ?>
+    </p>
     <?php $this->endBody() ?>
 </body>
 </html>
