@@ -14,6 +14,7 @@ Alterar nome das tabelas secundarias (módulos) com prefixo MOD
 Criação de menus
 Revisar os parametros redundantes
 Parametros no banco de dados ()
+*** http://stackoverflow.com/questions/28219440/init-application-component-with-config-from-database
 Bloquear uso do IE versão 8 pra baixo
 Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc).
 
@@ -36,7 +37,7 @@ MÓDULOS
 - Criar módulo Helpdesk
 - Criar módulo Plano de Ação (igual do GMI) 
 
-Calendário de Atividades -> Verificar permissões dos botoes "Gerenciar" e "Responsável" na view
+
 Calendário de Atividades -> Notificar por E-mail: Responsável, Co-responsavel e Departamento
 Calendário de Atividades -> Notificar com texto padrão e link para a VIEW da atividade
 Calendário de Atividades -> Notificar ao incluir nova atividade ?

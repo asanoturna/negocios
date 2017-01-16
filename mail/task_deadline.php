@@ -18,7 +18,8 @@ use yii\helpers\Url;
     Essa mensagem é um lembrete de atividade registrada no sistema destinada a você. 
     <p>Clique no link abaixo para acessar o registro da atividade e após concluída altere a situação para o tipo correspondente.
     </p>
-    
+    <?=$myVar; ?>
+    <?php // Html::a('Clique aqui para acessar', ['/task/todolist/view', 'id' => $myVar]) ?>
     <br/>
     <p>
     Mensagem enviada automaticamente por <?= Yii::$app->name ?>

@@ -43,18 +43,6 @@ $this->title = 'Painel de Atividades';
             'contentOptions'=>['style'=>'width: 15%;text-align:left'],
             'headerOptions' => ['class' => 'text-center'],
             ],
-
-            [
-            'attribute' => 'department_id',
-            'format' => 'raw',
-            'enableSorting' => true,
-            'value' => function ($model) {                      
-                    return "<i class=\"fa fa-tag\" aria-hidden=\"true\" style=\"color:".$model->department->hexcolor."\"></i> " . $model->department->name;
-                    },
-            'filter' => ArrayHelper::map(Department::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
-            'contentOptions'=>['style'=>'width: 10%;text-align:center'],
-            'headerOptions' => ['class' => 'text-center'],
-            ],
             [
             'attribute' => 'category_id',
             'format' => 'raw',
@@ -88,17 +76,6 @@ $this->title = 'Painel de Atividades';
             'headerOptions' => ['class' => 'text-center'],
             ],
             [
-            'attribute' => 'status_id',
-            'format' => 'raw',
-            'enableSorting' => true,
-            'value' => function ($model) {                      
-                return $model->status_id === 1 ? "<span class=\"label label-default\">".$model->status->name."</span>" : "<span class=\"label label-success\">".$model->status->name."</span>";
-                },
-            'filter' => ArrayHelper::map(Status::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
-            'contentOptions'=>['style'=>'width: 10%;text-align:center'],
-            'headerOptions' => ['class' => 'text-center'],
-            ],
-            [
             'attribute' => 'responsible_id',
             'format' => 'raw',
             'enableSorting' => true,
@@ -110,7 +87,53 @@ $this->title = 'Painel de Atividades';
             'contentOptions'=>['style'=>'width: 10%;text-align:left;text-transform: lowercase'],
             'headerOptions' => ['class' => 'text-center'],
             ],
-[
+            [
+            'attribute' => 'co_responsible_id',
+            'format' => 'raw',
+            'enableSorting' => true,
+            'value' => function ($model) {
+                         return $model->coresponsible->username;
+                     },            
+            'filter' => ArrayHelper::map(User::find()->where(['status' => 1])->orderBy('username')->asArray()->all(), 'id', 'username'),
+            'filterInputOptions' => ['class' => 'form-control', 'style'=>'text-transform: lowercase'],
+            'contentOptions'=>['style'=>'width: 10%;text-align:left;text-transform: lowercase'],
+            'headerOptions' => ['class' => 'text-center'],
+            ],
+            [
+            'attribute' => 'department_id',
+            'format' => 'raw',
+            'enableSorting' => true,
+            'value' => function ($model) {                      
+                    return "<i class=\"fa fa-tag\" aria-hidden=\"true\" style=\"color:".$model->department->hexcolor."\"></i> " . $model->department->name;
+                    },
+            'filter' => ArrayHelper::map(Department::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+            'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+            'headerOptions' => ['class' => 'text-center'],
+            ],
+            [
+            'attribute' => 'notification_deadline',
+            'format' => 'raw',
+            'enableSorting' => true,
+            'value' => function ($model) {                      
+                return $model->notification_deadline === 1 ? "<i class=\"fa fa-bell\" aria-hidden=\"true\"></i>
+" : "<i class=\"fa fa-bell-slash\" aria-hidden=\"true\"></i>
+";
+                },
+            'contentOptions'=>['style'=>'width: 8%;text-align:center'],
+            'headerOptions' => ['class' => 'text-center'],
+            ],
+            [
+            'attribute' => 'status_id',
+            'format' => 'raw',
+            'enableSorting' => true,
+            'value' => function ($model) {                      
+                return $model->status_id === 1 ? "<span class=\"label label-default\">".$model->status->name."</span>" : "<span class=\"label label-success\">".$model->status->name."</span>";
+                },
+            'filter' => ArrayHelper::map(Status::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+            'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+            'headerOptions' => ['class' => 'text-center'],
+            ],
+            [
             'class' => 'yii\grid\ActionColumn',
             'header' => 'Ações',
             'contentOptions'=>['style'=>'width: 10%;text-align:right'],

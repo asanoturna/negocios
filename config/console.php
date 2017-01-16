@@ -22,9 +22,9 @@ return [
             'class' => 'yii\swiftmailer\Mailer',
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => 'smtps.uol.com.br',
-                'username' => '',
-                'password' => '',
+                'host' => 'xxxxx',
+                'username' => 'xxxx',
+                'password' => 'xxxx',
                 'port' => '587',
                 'encryption' => 'tls',
                 'streamOptions' => [
@@ -34,7 +34,7 @@ return [
                         ],
                     ],
             ],
-        ],  
+        ],   
         'log' => [
             'targets' => [
                 [

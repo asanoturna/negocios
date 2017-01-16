@@ -12,14 +12,13 @@ class TodolistSearch extends Todolist
     public function rules()
     {
         return [
-            [['id', 'department_id', 'category_id', 'status_id', 'priority_id', 'owner_id', 'responsible_id', 'co_responsible_id'], 'integer'],
+            [['id', 'department_id', 'category_id', 'status_id', 'priority_id', 'owner_id', 'responsible_id', 'co_responsible_id','notification_deadline'], 'integer'],
             [['name', 'description', 'deadline', 'created', 'updated'], 'safe'],
         ];
     }
 
     public function scenarios()
     {
-        // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
 
@@ -47,7 +46,6 @@ class TodolistSearch extends Todolist
             return $dataProvider;
         }
 
-        // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'department_id' => $this->department_id,
@@ -61,6 +59,7 @@ class TodolistSearch extends Todolist
             'is_done' => $this->is_done,
             'created' => $this->created,
             'updated' => $this->updated,
+            'notification_deadline' => $this->notification_deadline,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

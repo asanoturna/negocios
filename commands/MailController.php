@@ -58,15 +58,22 @@ class MailController extends Controller
     $mails=Todolist::find()
     	->where('status_id=1')
     	->andWhere(['=', 'deadline', $today])
+        ->andWhere('notification_deadline=0')
     	->all();
     foreach($mails as $mail)
         {
-        $message =\Yii::$app->mailer->compose('@app/mail/task_deadline');
-            $message->setFrom('gugoan@uol.com.br')
+        $message =\Yii::$app->mailer->compose('@app/mail/task_deadline', ['myVar' => $mail->id]);
+            $message->setFrom('intranet@sicoobcrediriodoce.com.br')
                     ->setTo($mail->responsible->email)
                     ->setCc($mail->coresponsible->email)
-                    ->setSubject('Lembrete: '.$mail->name)
-                    ->send();
+                    ->setSubject('Lembrete: '.$mail->name);
+            if($message->send())
+                {
+                 $mail->notification_deadline = 1;
+                 $mail->notification_deadline_date = date("Y-m-d H:i:s");
+                }
+            //$mail->notification_deadline = 1;
+            $mail->save();
         }
     }
 

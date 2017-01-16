@@ -44,9 +44,9 @@ $config = [
             'class' => 'yii\swiftmailer\Mailer',
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => 'hostname',
-                'username' => 'username@providername.com.br',
-                'password' => 'superpassword',
+                'host' => 'xxxx',
+                'username' => 'xxxx',
+                'password' => 'xxxx',
                 'port' => '587',
                 'encryption' => 'tls',
                 'streamOptions' => [
@@ -56,7 +56,7 @@ $config = [
                         ],
                     ],
             ],
-        ],  
+        ],   
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

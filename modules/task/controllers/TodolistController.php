@@ -23,7 +23,7 @@ class TodolistController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::classname(),
-                'only'  => ['index','create','view','calendar','performance','responsible'],
+                'only'  => ['index','create','view','calendar','performance','responsible','doc'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -38,6 +38,11 @@ class TodolistController extends Controller
                 ],
             ],
         ];
+    }
+
+    public function actionDocumentation()
+    {
+        return $this->render('documentation');
     }
 
     public function actionPerformance()
@@ -91,6 +96,10 @@ class TodolistController extends Controller
     public function actionCreate()
     {
         $model = new Todolist();
+        
+        // if ($model->responsible_id != Yii::$app->user->id){
+        //     throw new NotFoundHttpException("Você não é responsável por essa atividade!");
+        // }
 
         $model->owner_id = Yii::$app->user->id;
         $model->priority_id = 0;
@@ -141,7 +150,7 @@ class TodolistController extends Controller
     {
         $model = $this->findModel($id);
 
-       $oldFile = $model->getImageFile();
+        $oldFile = $model->getImageFile();
         $oldattachment = $model->attachment;
         $oldFileName = $model->filename;
  
