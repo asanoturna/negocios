@@ -39,42 +39,44 @@ $this->title = 'Atividade #' . $model->id;
             'department.name',
             'category.name',
             [
-                'attribute' => 'deadline',
-                'value' => date("d/m/Y",  strtotime($model->deadline))
+            'attribute' => 'deadline',
+            'value' => date("d/m/Y",  strtotime($model->deadline))
             ],
             [
-                'attribute' => 'reminder',
-                'value' => date("d/m/Y",  strtotime($model->reminder))
+            'attribute'=>'attachment',
+            'format' => 'raw',
+            'value' => $model->attachment == null ? "<span class=\"not-set\">(sem anexo)</span>" : '<span class="glyphicon glyphicon-paperclip"></span> '.Html::a('Visualizar Anexo', \Yii::$app->getModule('task')->params['taskAttachment'].$model->attachment, ['target' => '_blank']),
             ],
             [
-           'attribute'=>'attachment',
-           'format' => 'raw',
-           'value' => $model->attachment == null ? "<span class=\"not-set\">(sem anexo)</span>" : '<span class="glyphicon glyphicon-paperclip"></span> '.Html::a('Visualizar Anexo', \Yii::$app->getModule('task')->params['taskAttachment'].$model->attachment, ['target' => '_blank']),
-            ], 
-            [ 
             'attribute' => 'owner_id',
             'format' => 'raw',
             'value' => $model->owner->fullname,
             'contentOptions' => ['style' => 'text-align:left;text-transform: uppercase'],
-            ], 
-            [
-                'attribute' => 'created',
-                'value' => date("d/m/Y",  strtotime($model->created))
             ],
-            [ 
+            [
+            'attribute' => 'created',
+            'value' => date("d/m/Y",  strtotime($model->created))
+            ],
+            [
             'attribute' => 'responsible_id',
             'format' => 'raw',
             'value' => $model->responsible->fullname,
             'contentOptions' => ['style' => 'text-align:left;text-transform: uppercase'],
-            ], 
-            [
-                'attribute' => 'updated',
-                'value' => date("d/m/Y",  strtotime($model->updated))
             ],
-            [ 
-            'label' => 'Situação',
+            [
+            'attribute' => 'updated',
+            'value' => date("d/m/Y",  strtotime($model->updated))
+            ],
+            [
+            'attribute' => 'status_id',
             'format' => 'raw',
-            'value' => "<span class=\"label label-default\">".$model->status->name."</span>",
+            'value' => $model->status_id === 1 ? "<span class=\"label label-default\">".$model->status->name."</span>" : "<span class=\"label label-success\">".$model->status->name."</span>",
+            ],
+            [
+            'attribute' => 'notification_deadline',
+            'format' => 'raw',
+            'value' => $model->notification_deadline === 1 ? "<i class=\"fa fa-check\" aria-hidden=\"true\"></i> Mensagem enviada em ".date("d/m/Y",  strtotime($model->notification_deadline_date))."
+" : "<i class=\"fa fa-close\" aria-hidden=\"true\"></i> Mensagem não enviada",
             ],
         ],
     ]) ?>

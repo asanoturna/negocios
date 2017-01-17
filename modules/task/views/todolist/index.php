@@ -114,12 +114,14 @@ $this->title = 'Painel de Atividades';
             'attribute' => 'notification_deadline',
             'format' => 'raw',
             'enableSorting' => true,
+            'encodeLabel' => false,
+            'label' => '<i class="fa fa-envelope" aria-hidden="true" title="Notificação por E-mail"></i>',
             'value' => function ($model) {                      
-                return $model->notification_deadline === 1 ? "<i class=\"fa fa-bell\" aria-hidden=\"true\"></i>
-" : "<i class=\"fa fa-bell-slash\" aria-hidden=\"true\"></i>
+                return $model->notification_deadline === 1 ? "<i class=\"fa fa-check\" aria-hidden=\"true\" title=\"Mensagem enviada ".date("d/m/Y",  strtotime($model->notification_deadline_date))."\"></i>
+" : "<i class=\"fa fa-close\" aria-hidden=\"true\" title=\"Mensagem não enviada\"></i>
 ";
                 },
-            'contentOptions'=>['style'=>'width: 8%;text-align:center'],
+            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
             'headerOptions' => ['class' => 'text-center'],
             ],
             [
