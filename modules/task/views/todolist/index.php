@@ -76,6 +76,20 @@ $this->title = 'Painel de Atividades';
             'headerOptions' => ['class' => 'text-center'],
             ],
             [
+            'attribute' => 'notification_deadline',
+            'format' => 'raw',
+            'enableSorting' => true,
+            'encodeLabel' => false,
+            'label' => '<i class="fa fa-envelope" aria-hidden="true" title="Notificação por E-mail"></i>',
+            'value' => function ($model) {                      
+                return $model->notification_deadline === 1 ? "<i class=\"fa fa-check\" aria-hidden=\"true\" title=\"Mensagem enviada ".date("d/m/Y",  strtotime($model->notification_deadline_date))."\"></i>
+" : "<i class=\"fa fa-close\" aria-hidden=\"true\" title=\"Mensagem não enviada\"></i>
+";
+                },
+            'contentOptions'=>['style'=>'width: 3%;text-align:center'],
+            'headerOptions' => ['class' => 'text-center'],
+            ],
+            [
             'attribute' => 'responsible_id',
             'format' => 'raw',
             'enableSorting' => true,
@@ -108,20 +122,6 @@ $this->title = 'Painel de Atividades';
                     },
             'filter' => ArrayHelper::map(Department::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
             'contentOptions'=>['style'=>'width: 10%;text-align:center'],
-            'headerOptions' => ['class' => 'text-center'],
-            ],
-            [
-            'attribute' => 'notification_deadline',
-            'format' => 'raw',
-            'enableSorting' => true,
-            'encodeLabel' => false,
-            'label' => '<i class="fa fa-envelope" aria-hidden="true" title="Notificação por E-mail"></i>',
-            'value' => function ($model) {                      
-                return $model->notification_deadline === 1 ? "<i class=\"fa fa-check\" aria-hidden=\"true\" title=\"Mensagem enviada ".date("d/m/Y",  strtotime($model->notification_deadline_date))."\"></i>
-" : "<i class=\"fa fa-close\" aria-hidden=\"true\" title=\"Mensagem não enviada\"></i>
-";
-                },
-            'contentOptions'=>['style'=>'width: 5%;text-align:center'],
             'headerOptions' => ['class' => 'text-center'],
             ],
             [
