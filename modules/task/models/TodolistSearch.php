@@ -12,7 +12,7 @@ class TodolistSearch extends Todolist
     public function rules()
     {
         return [
-            [['id', 'department_id', 'category_id', 'status_id', 'priority_id', 'owner_id', 'responsible_id', 'co_responsible_id','notification_deadline'], 'integer'],
+            [['id', 'department_id', 'category_id', 'status_id', 'priority_id', 'owner_id', 'responsible_id', 'co_responsible_id','notification_deadline','notification_created'], 'integer'],
             [['name', 'description', 'deadline', 'created', 'updated'], 'safe'],
         ];
     }
@@ -59,6 +59,7 @@ class TodolistSearch extends Todolist
             'is_done' => $this->is_done,
             'created' => $this->created,
             'updated' => $this->updated,
+            'notification_created' => $this->notification_created,
             'notification_deadline' => $this->notification_deadline,
         ]);
 

@@ -94,7 +94,8 @@ class Todolist extends \yii\db\ActiveRecord
             'responsible_note' => 'Observação Responsável',
             'attachment' => 'Passo a passo',
             'file' => 'Anexo',
-            'notification_deadline' => 'Notificação'
+            'notification_created' => 'Notificação Nova Atividade',
+            'notification_deadline' => 'Notificação de Lembrete'
         ];
     }
 

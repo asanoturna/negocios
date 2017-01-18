@@ -33,20 +33,23 @@ class MailController extends Controller
 	// Send mail on new task created
     public function actionNew()
     {
-    $mails=MailQueue::find()->where('success=1')->all();
+    $today = date('Y-m-d');
+    $mails=Todolist::find()
+        ->where('status_id=1')
+        ->andWhere('notification_created=0')
+        ->all();
     foreach($mails as $mail)
         {
-        $message =\Yii::$app->mailer->compose('@app/mail/task');
-            $message->setFrom($mail->from_email)
-                    ->setTo($mail->to_email)
-                    ->setSubject($mail->subject);
-        if($message->send())
-            {
-             $mail->success=0;
-             $mail->date_sent=date("Y-m-d H:i:s");
-            }
-            $mail->attempts=$mail->attempts + 1;
-            $mail->last_attempt= date("Y-m-d H:i:s");
+        $message =\Yii::$app->mailer->compose('@app/mail/task_new', ['model' => $mail->id]);
+            $message->setFrom('intranet@sicoobcrediriodoce.com.br')
+                    ->setTo($mail->responsible->email)
+                    ->setCc($mail->coresponsible->email)
+                    ->setSubject('Lembrete: '.$mail->name);
+            if($message->send())
+                {
+                 $mail->notification_created = 1;
+                 $mail->notification_created_date = date("Y-m-d H:i:s");
+                }
             $mail->save();
         }
     }
