@@ -9,11 +9,14 @@ use app\modules\task\models\Todolist;
 
 class TodolistSearch extends Todolist
 {
+    public $start_date;
+    public $end_date;
+
     public function rules()
     {
         return [
             [['id', 'department_id', 'category_id', 'status_id', 'priority_id', 'owner_id', 'responsible_id', 'co_responsible_id','notification_deadline','notification_created'], 'integer'],
-            [['name', 'description', 'deadline', 'created', 'updated'], 'safe'],
+            [['start_date', 'end_date', 'name', 'description', 'deadline', 'created', 'updated'], 'safe'],
         ];
     }
 
@@ -62,6 +65,8 @@ class TodolistSearch extends Todolist
             'notification_created' => $this->notification_created,
             'notification_deadline' => $this->notification_deadline,
         ]);
+
+        $query->andFilterWhere(['between', 'deadline', $this->start_date, $this->end_date]); 
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'description', $this->description]);

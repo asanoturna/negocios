@@ -10,10 +10,10 @@ use yii\bootstrap\Nav;
                 'label'   => '<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Documentação',
                 'url'     => ['documentation'],
             ],  
-            [
-                'label'   => '<span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Desempenho',
-                'url'     => ['performance'],
-            ],  
+            // [
+            //     'label'   => '<span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Desempenho',
+            //     'url'     => ['performance'],
+            // ],  
             [
                 'label'   => '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Calendário',
                 'url'     => ['calendar'],

@@ -19,6 +19,51 @@ $this->title = 'Painel de Atividades';
     </div>
     <hr/>
 
+    <div class="row container-fluid">
+      <div class="panel panel-default">
+      <div class="panel-heading"><b>Opções</b></div>
+        <div class="panel-body">
+        <div class="col-md-6">
+              <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
+        </div>
+        <div class="col-md-6">
+        <?php
+          use kartik\export\ExportMenu;
+              $gridColumns = [
+                  ['attribute'=>'deadline','format'=>['date'], 'hAlign'=>'right', 'width'=>'110px'],                     
+                                                                         
+              ];
+              echo ExportMenu::widget([
+              'dataProvider' => $dataProvider,
+              'columns' => $gridColumns,
+              'fontAwesome' => true,
+              'emptyText' => 'Nenhum registro',
+              'showColumnSelector' => true,
+              'asDropdown' => true,
+              'target' => ExportMenu::TARGET_BLANK,
+              'showConfirmAlert' => false,
+              'exportConfig' => [
+                ExportMenu::FORMAT_HTML => false,
+                ExportMenu::FORMAT_CSV => false,
+                ExportMenu::FORMAT_TEXT => false,
+                ExportMenu::FORMAT_PDF => false
+            ],
+            'columnSelectorOptions' => [
+              'class' => 'btn btn-success',
+            ],
+            'dropdownOptions' => [
+              'icon' => false,
+              'label' => 'Exportar Registros',
+              'class' => 'btn btn-success',
+            ],
+            'filename' => 'relatorio-produtividade',
+            ]);
+          ?>
+        </div>
+      </div>
+      </div>
+    </div>
+
     <?php foreach (Yii::$app->session->getAllFlashes() as $key=>$message):?>
         <?php $alertClass = substr($key,strpos($key,'-')+1); ?>
         <div class="alert alert-dismissible alert-<?=$alertClass?>" role="alert">
@@ -32,6 +77,13 @@ $this->title = 'Painel de Atividades';
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'rowOptions' => function ($model, $index, $widget, $grid){
+            if($model->status_id === 1 && strtotime($model->deadline) < strtotime(date('Y-m-d'))){
+                return ['class' => 'danger'];
+            }else{
+                return [];
+            }
+        },
         'columns' => [
             [
             'attribute' => 'id',
@@ -76,11 +128,25 @@ $this->title = 'Painel de Atividades';
             'headerOptions' => ['class' => 'text-center'],
             ],
             [
+            'attribute' => 'notification_created',
+            'format' => 'raw',
+            'enableSorting' => true,
+            'encodeLabel' => false,
+            'label' => '<i class="fa fa-envelope" aria-hidden="true" title="Notificação de nova atividade"></i>',
+            'value' => function ($model) {                      
+                return $model->notification_created === 1 ? "<i class=\"fa fa-check\" aria-hidden=\"true\" title=\"Mensagem enviada ".date("d/m/Y",  strtotime($model->notification_deadline_date))."\"></i>
+" : "<i class=\"fa fa-close\" aria-hidden=\"true\" title=\"Mensagem não enviada\"></i>
+";
+                },
+            'contentOptions'=>['style'=>'width: 3%;text-align:center'],
+            'headerOptions' => ['class' => 'text-center'],
+            ],
+            [
             'attribute' => 'notification_deadline',
             'format' => 'raw',
             'enableSorting' => true,
             'encodeLabel' => false,
-            'label' => '<i class="fa fa-envelope" aria-hidden="true" title="Notificação por E-mail"></i>',
+            'label' => '<i class="fa fa-bell" aria-hidden="true" title="Lembrete do prazo da atividade"></i>',
             'value' => function ($model) {                      
                 return $model->notification_deadline === 1 ? "<i class=\"fa fa-check\" aria-hidden=\"true\" title=\"Mensagem enviada ".date("d/m/Y",  strtotime($model->notification_deadline_date))."\"></i>
 " : "<i class=\"fa fa-close\" aria-hidden=\"true\" title=\"Mensagem não enviada\"></i>
@@ -177,10 +243,9 @@ $this->title = 'Painel de Atividades';
                 ],
 
             ],            
-
-
         ],
     ]); ?>
     </div>
     </div>
+    <p align="right" class="text-danger"><i class="fa fa-square" aria-hidden="true"></i> As atividades marcadas de vermelho estão atrasadas!</p>
 </div>

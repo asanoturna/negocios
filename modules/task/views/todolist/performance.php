@@ -15,17 +15,17 @@ $this->title = "Desempenho das Atividades";
     <div class="panel-body"> 
 
 	<div class="row">
-	  <div class="col-md-8">
+	  <div class="col-md-6">
 		<div class="panel panel-default">
-		  <div class="panel-heading">Informações</div>
+		  <div class="panel-heading">Atividades Concluídas</div>
 		  <div class="panel-body">
 		    ---
 		  </div>
 		</div>
 	  </div>
-	  <div class="col-md-4">
+	  <div class="col-md-6">
 		<div class="panel panel-default">
-		  <div class="panel-heading">Notificações Enviadas</div>
+		  <div class="panel-heading">Atividades Atrasadas</div>
 		  <div class="panel-body">
 		    ---
 		  </div>
