@@ -21,23 +21,23 @@ $this->title = "Documentação do Módulo Calendário de Atividades";
         </a>
       </div>
       <div class="media-body">
-    <h3>Sobre</h3> 
-    O Calendário de Atividades é um módulo da Intranet Crediriodoce que tem como objetivo registrar e gerenciar as atividades da cooperativa, enviando notificações para os responsáveis.
+    <h3>O que é</h3> 
+    O Calendário de Atividades é um módulo da Intranet Crediriodoce que tem como objetivo registrar, acompanhar e gerenciar as atividades importantes da cooperativa, enviando notificações para todos os responsáveis.
       </div>
     </div>
 
     <h3>Como Funciona?</h3>
-    <p>?????????????????????????????????</p>
-    <p>?????????????????????????????????</p>
-    <p>?????????????????????????????????</p>
+    <p>Gestores da ferramenta irão inserir as atividades no sistema, definindo os responsáveis e o prazo limite para realização.</p>
+    <p>Os responsáveis deverão realizar a atividade descrita e atualizar o campo "Situação" para Concluído.</p>
+    
 
     <h3>Notificação por E-mail</h3>	
 
-    <p>Será enviada uma mensagem automática de notificação de nova atividade, para os destinatários: Responsável, Co-responsável e o Departamento.</p>
+    <p>Será enviada uma mensagem automática de notificação de nova atividade, para os destinatários: <code>Responsável, Co-responsável e o Departamento</code>.</p>
 
     <p>Será enviada uma mensagem automática de lembrete no dia definido no campo "Prazo para atividade", para os destinatários: Responsável, Co-responsável e o Departamento.</p>
     														
-    <p class="text-muted">Os responsáveis devem ficar atentos aos prazos, pois caso haja indisponibilidade de internet, as notificações por e-mail não poderão ser enviadas.</p>
+    <div class="alert alert-warning" role="alert"><i class="fa fa-info-circle" aria-hidden="true"></i> Os responsáveis devem ficar atentos aos prazos, pois caso haja indisponibilidade de internet, as notificações por e-mail não poderão ser enviadas.</div>
 
     </div>
     </div>
