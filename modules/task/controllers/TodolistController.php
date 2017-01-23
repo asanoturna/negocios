@@ -50,6 +50,13 @@ class TodolistController extends Controller
         return $this->render('performance');
     }
 
+    public function actionIcal($id)
+    {
+        return $this->render('ical', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
     public function actionIndex()
     {
         $searchModel = new TodolistSearch();

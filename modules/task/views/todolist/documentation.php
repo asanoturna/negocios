@@ -21,8 +21,8 @@ $this->title = "Documentação do Módulo Calendário de Atividades";
         </a>
       </div>
       <div class="media-body">
-    <h3>O que é</h3> 
-    O Calendário de Atividades é um módulo da Intranet Crediriodoce que tem como objetivo registrar, acompanhar e gerenciar as atividades importantes da cooperativa, enviando notificações para todos os responsáveis.
+      <h3>O que é</h3> 
+      O Calendário de Atividades é um módulo da Intranet Crediriodoce que tem como objetivo registrar, acompanhar e gerenciar as atividades importantes da cooperativa. Para cada atividade registrada é designado um ou mais responsáveis, que deverão atuar nas ações descritas no registro de atividade.
       </div>
     </div>
 
@@ -30,14 +30,15 @@ $this->title = "Documentação do Módulo Calendário de Atividades";
     <p>Gestores da ferramenta irão inserir as atividades no sistema, definindo os responsáveis e o prazo limite para realização.</p>
     <p>Os responsáveis deverão realizar a atividade descrita e atualizar o campo "Situação" para Concluído.</p>
     
-
-    <h3>Notificação por E-mail</h3>	
+    <h3>Notificações</h3>
 
     <p>Será enviada uma mensagem automática de notificação de nova atividade, para os destinatários: <code>Responsável, Co-responsável e o Departamento</code>.</p>
 
-    <p>Será enviada uma mensagem automática de lembrete no dia definido no campo "Prazo para atividade", para os destinatários: Responsável, Co-responsável e o Departamento.</p>
+    <p>Será enviada uma mensagem automática de lembrete no dia definido no campo "Prazo para atividade", para os destinatários: <code>Responsável, Co-responsável e o Departamento</code>.</p>
     														
     <div class="alert alert-warning" role="alert"><i class="fa fa-info-circle" aria-hidden="true"></i> Os responsáveis devem ficar atentos aos prazos, pois caso haja indisponibilidade de internet, as notificações por e-mail não poderão ser enviadas.</div>
+
+    O usuário responsável ainda pode clicar no botão "Adicionar ao Outlook" para baixar um arquivo <code>atividade.ics</code> e abrí-lo no seu programa de e-mail preferido para lembra-lo da atividade.
 
     </div>
     </div>

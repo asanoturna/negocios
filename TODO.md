@@ -36,11 +36,6 @@ MÓDULOS
 - Criar módulo Helpdesk
 - Criar módulo Plano de Ação (igual do GMI) 
 
-Calendário de Atividades -> Integração (PHP + ics file)
-** https://www.google.com.br/search?client=ubuntu&channel=fs&q=php+generate+.ics+for+outlook&ie=utf-8&oe=utf-8&gws_rd=cr&ei=RqKCWMLUH4OzwASX_KCoDw
-** https://www.exchangecore.com/blog/sending-outlookemail-calendar-events-php/
-** https://github.com/jasonjoh/php-tutorial
-
 Visitas -> Verificar / Usar plugin de galeria de fotos
 Visitas -> Ilimitado numero de upload de fotos
 

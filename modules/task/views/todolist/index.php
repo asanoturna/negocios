@@ -206,8 +206,14 @@ $this->title = 'Painel de Atividades';
             'header' => 'Ações',
             'contentOptions'=>['style'=>'width: 10%;text-align:right'],
             'headerOptions' => ['class' => 'text-center'],
-            'template' => '{view} {update} {delete} {responsible}',
+            'template' => '{ical} {view} {update} {delete} {responsible}',
                 'buttons' => [
+                    'ical' => function ($url, $model) {
+                        return Html::a('<span class="fa fa-calendar-plus-o" ></span>', ['ical', 'id' => $model->id], [
+                                    'title' => 'Adicionar ao Outlook',
+                                    'class' => 'btn btn-default btn-xs',
+                        ]);
+                    },
                     'view' => function ($url, $model) {
                         return Html::a('<span class="glyphicon glyphicon-eye-open" ></span>', ['view', 'id' => $model->id], [
                                     'title' => 'Detalhes da Atividade',

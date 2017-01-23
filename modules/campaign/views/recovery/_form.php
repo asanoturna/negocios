@@ -24,7 +24,7 @@ use yii\widgets\Pjax;
             [
                 'phpDatetimeFormat' => 'yyyy-MM-dd',
                 'clientOptions' => [
-                    'minDate' => new \yii\web\JsExpression('new Date("2016-01-01")'),
+                    //'minDate' => new \yii\web\JsExpression('new Date("2016-01-01")'),
                     'allowInputToggle' => true,
                     'widgetPositioning' => [
                        'horizontal' => 'auto',

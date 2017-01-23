@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\helpers\Url;
 
 $this->title = 'Atividade #' . $model->id;
 ?>
@@ -15,7 +16,8 @@ $this->title = 'Atividade #' . $model->id;
 
     <p>
         <?= Html::a('<i class="fa fa-cog" aria-hidden="true"></i> Responsável', ['responsible', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
-        <?= Html::a('<i class="fa fa-wrench" aria-hidden="true"></i> Gerenciar', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <?php // Html::a('<i class="fa fa-wrench" aria-hidden="true"></i> Gerenciar', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Adicionar ao Outook', ['ical', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
         <?= Html::a('<i class="fa fa-trash-o" aria-hidden="true"></i> Excluir', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -61,6 +63,12 @@ $this->title = 'Atividade #' . $model->id;
             'attribute' => 'responsible_id',
             'format' => 'raw',
             'value' => $model->responsible->fullname,
+            'contentOptions' => ['style' => 'text-align:left;text-transform: uppercase'],
+            ],
+            [
+            'attribute' => 'co_responsible_id',
+            'format' => 'raw',
+            'value' => $model->coresponsible->fullname,
             'contentOptions' => ['style' => 'text-align:left;text-transform: uppercase'],
             ],
             [
