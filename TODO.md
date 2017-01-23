@@ -3,8 +3,6 @@ GERAL
 
 http://www.yiiframework.com/wiki/684/save-and-display-date-time-fields-in-different-formats-in-yii2/
 
-tentar juntar models/SignupForm e models/Useradmin
-
 Sobre querys
 http://stackoverflow.com/questions/26894987/get-count-in-relation-table-in-yii2-activerecord
 https://github.com/yiisoft/yii2/issues/2179
@@ -13,7 +11,7 @@ Alterar nome das tabelas secundarias (módulos) com prefixo MOD
 
 Criação de menus
 Revisar os parametros redundantes
-Parametros no banco de dados ()
+Parametros no banco de dados (extensão)
 *** http://stackoverflow.com/questions/28219440/init-application-component-with-config-from-database
 Bloquear uso do IE versão 8 pra baixo
 Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc).
@@ -31,18 +29,15 @@ MÓDULOS
 --------------------
 - Migração da ferramenta de Apoio Cadastro
 - Upload de foto para Useradmin
+  tentar juntar models/SignupForm e models/Useradmin
 - Terminar módulo Arquivos (estrutra semelhante a central, incluir Planilha Base e intranet antiga)
 - Criar módulo Vídeos
 - Criar módulo RH (area p/ contra cheque)
 - Criar módulo Helpdesk
 - Criar módulo Plano de Ação (igual do GMI) 
 
-
-Calendário de Atividades -> Notificar por E-mail: Responsável, Co-responsavel e Departamento
-Calendário de Atividades -> Notificar com texto padrão e link para a VIEW da atividade
-Calendário de Atividades -> Notificar ao incluir nova atividade ?
-Calendário de Atividades -> Notificar na data prazo final da atividade ?
-Calendário de Atividades -> Integração 
+Calendário de Atividades -> Integração (PHP + ics file)
+** https://www.google.com.br/search?client=ubuntu&channel=fs&q=php+generate+.ics+for+outlook&ie=utf-8&oe=utf-8&gws_rd=cr&ei=RqKCWMLUH4OzwASX_KCoDw
 ** https://www.exchangecore.com/blog/sending-outlookemail-calendar-events-php/
 ** https://github.com/jasonjoh/php-tutorial
 
