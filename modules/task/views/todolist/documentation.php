@@ -38,7 +38,7 @@ $this->title = "Documentação do Módulo Calendário de Atividades";
     														
     <div class="alert alert-warning" role="alert"><i class="fa fa-info-circle" aria-hidden="true"></i> Os responsáveis devem ficar atentos aos prazos, pois caso haja indisponibilidade de internet, as notificações por e-mail não poderão ser enviadas.</div>
 
-    O usuário responsável ainda pode clicar no botão "Adicionar ao Outlook" para baixar um arquivo <code>atividade.ics</code> e abrí-lo no seu programa de e-mail preferido para lembra-lo da atividade.
+    O usuário responsável ainda pode clicar no botão "Baixar arquivo de Integração" para baixar um arquivo <code>atividade.ics</code> e abrí-lo no seu programa de e-mail ou programa de calendário preferido para lembra-lo da atividade.
 
     </div>
     </div>

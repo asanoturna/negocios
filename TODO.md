@@ -36,6 +36,11 @@ MÓDULOS
 - Criar módulo Helpdesk
 - Criar módulo Plano de Ação (igual do GMI) 
 
+Calendario de Atividades -> Corresponsável poder fazer alterações no status - ok
+Calendario de Atividades -> Resolver o problema do arquivo de excel -ok
+Calendario de Atividades -> Colocar o link referente a atividade no calendário no arquivo de integração - ok
+Calendario de Atividades -> Retirar o departamento na hora de enviar a notificação de cadastramento da atividade -ok
+
 Visitas -> Verificar / Usar plugin de galeria de fotos
 Visitas -> Ilimitado numero de upload de fotos
 

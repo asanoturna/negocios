@@ -191,7 +191,7 @@ class TodolistController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->responsible_id != Yii::$app->user->id){
+        if ($model->responsible_id != Yii::$app->user->id && $model->co_responsible_id != Yii::$app->user->id){
             throw new NotFoundHttpException("Você não é responsável por essa atividade!");
         }
 

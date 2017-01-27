@@ -30,8 +30,54 @@ $this->title = 'Painel de Atividades';
         <?php
           use kartik\export\ExportMenu;
               $gridColumns = [
-                  ['attribute'=>'deadline','format'=>['date'], 'hAlign'=>'right', 'width'=>'110px'],                     
-                                                                         
+                ['attribute'=>'id', 'hAlign'=>'right', 'width'=>'100px'],
+                ['attribute'=>'name', 'hAlign'=>'right', 'width'=>'140px'],
+                [
+                 'attribute'=>'category_id',
+                 'vAlign'=>'middle',
+                 'width'=>'120px',
+                 'value'=>function ($model, $key, $index, $widget) { 
+                     return $model->category->name;
+                 },
+                 'format'=>'raw'
+                ],
+                ['attribute'=>'deadline','format'=>['date'], 'hAlign'=>'right', 'width'=>'110px'],
+                [
+                 'attribute'=>'responsible_id',
+                 'vAlign'=>'middle',
+                 'width'=>'100px',
+                 'value'=>function ($model, $key, $index, $widget) { 
+                     return $model->responsible->username;
+                 },
+                 'format'=>'raw'
+                ],
+                [
+                 'attribute'=>'co_responsible_id',
+                 'vAlign'=>'middle',
+                 'width'=>'100px',
+                 'value'=>function ($model, $key, $index, $widget) { 
+                     return $model->coresponsible->username;
+                 },
+                 'format'=>'raw'
+                ],
+                [
+                 'attribute'=>'department_id',
+                 'vAlign'=>'middle',
+                 'width'=>'100px',
+                 'value'=>function ($model, $key, $index, $widget) { 
+                     return $model->department->name;
+                 },
+                 'format'=>'raw'
+                ],
+                [
+                 'attribute'=>'status_id',
+                 'vAlign'=>'middle',
+                 'width'=>'100px',
+                 'value'=>function ($model, $key, $index, $widget) { 
+                     return $model->status->name;
+                 },
+                 'format'=>'raw'
+                ],
               ];
               echo ExportMenu::widget([
               'dataProvider' => $dataProvider,
@@ -56,7 +102,7 @@ $this->title = 'Painel de Atividades';
               'label' => 'Exportar Registros',
               'class' => 'btn btn-success',
             ],
-            'filename' => 'relatorio-produtividade',
+            'filename' => 'relatorio-atividades',
             ]);
           ?>
         </div>
@@ -210,7 +256,7 @@ $this->title = 'Painel de Atividades';
                 'buttons' => [
                     'ical' => function ($url, $model) {
                         return Html::a('<span class="fa fa-calendar-plus-o" ></span>', ['ical', 'id' => $model->id], [
-                                    'title' => 'Adicionar ao Outlook',
+                                    'title' => 'Baixar arquivo de Integração',
                                     'class' => 'btn btn-default btn-xs',
                         ]);
                     },
@@ -237,7 +283,7 @@ $this->title = 'Painel de Atividades';
                         ]);
                     },
                     'responsible' => function ($url, $model) {
-                        return $model->responsible_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-cog" ></span>', $url, [
+                        return $model->responsible_id === Yii::$app->user->identity->id || $model->co_responsible_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-cog" ></span>', $url, [
                                     'title' => 'Alterar Situação da Atividade',
                                     'class' => 'btn btn-default btn-xs',
                         ]): Html::a('<span class="glyphicon glyphicon-cog" ></span>', "#", [

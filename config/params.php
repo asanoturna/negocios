@@ -9,6 +9,5 @@ return [
     'assets'            => '../../assets_intranet/',
 
     'reportbasePath'    => '../../Anexos_reportbase/',
-    //assets_users_avatars
-    'usersAvatars'    => '../../assets_users_avatars/',
+    'usersAvatars'      => '../../assets_intranet/userImages/',
 ];

@@ -43,8 +43,7 @@ class MailController extends Controller
         $message =\Yii::$app->mailer->compose('@app/mail/task_new', ['model' => $mail->id]);
             $message->setFrom('intranet@sicoobcrediriodoce.com.br')
                     ->setTo($mail->responsible->email)
-                    //->setCc($mail->coresponsible->email)
-                    ->setCc([$mail->coresponsible->email, $mail->department->email])
+                    ->setCc([$mail->coresponsible->email)
                     ->setSubject('Lembrete: '.$mail->name);
             if($message->send())
                 {

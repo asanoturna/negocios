@@ -17,7 +17,6 @@ $this->title = 'Atividade #' . $model->id;
     <p>
         <?= Html::a('<i class="fa fa-cog" aria-hidden="true"></i> Responsável', ['responsible', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
         <?php // Html::a('<i class="fa fa-wrench" aria-hidden="true"></i> Gerenciar', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
-        <?= Html::a('<i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Adicionar ao Outook', ['ical', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
         <?= Html::a('<i class="fa fa-trash-o" aria-hidden="true"></i> Excluir', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -91,6 +90,15 @@ $this->title = 'Atividade #' . $model->id;
 
       </div>
       <div class="col-md-6">
+
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Integração</b></div>
+      <div class="panel-body">
+        Baixe o arquivo <code>atividade.ics</code> para utilizar em qualquer outro programa de calendário, como por exemplo Microsoft Outlook&#174;, Mozilla Thunderbird&#174;, Google Agenda&#174;, e outros. Isso irá reduzir as chances de esquecer o prazo da atividade.
+        <br/>
+<?= Html::a('<i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Baixar arquivo de Integração', ['ical', 'id' => $model->id], ['class' => 'btn btn-success btn-sm']) ?>
+      </div>
+    </div>
 
     <div class="panel panel-default">
       <div class="panel-heading"><b>Descrição da Atividade</b></div>
