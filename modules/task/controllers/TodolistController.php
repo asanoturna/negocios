@@ -14,7 +14,6 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\base\Security;
 use yii\web\UploadedFile;
-use app\models\MailQueue;
 
 class TodolistController extends Controller
 {
@@ -122,26 +121,12 @@ class TodolistController extends Controller
 
                 if ($file !== false) {
 
-                    $idfolder = Yii::$app->user->identity->id;
-
                     if(!is_dir(\Yii::$app->getModule('task')->params['taskAttachment'])){
                     mkdir(\Yii::$app->getModule('task')->params['taskAttachment'], 0777, true);
                     }
                     $path = $model->getImageFile();
                     $file->saveAs($path);
                 }
-                // save in MailQueue list
-                $queue = new MailQueue();
-                $queue->to_email = $model->responsible->email;
-                $queue->subject = 'Nova Atividade #'.$model->id;
-                $queue->from_email = 'gugoan@uol.com.br';
-                $queue->from_name =  'Intranet';
-                $queue->date_published = date("Y-m-d");
-                $queue->max_attempts = 3;  //No of try to send this mail
-                $queue->attempts = 0;
-                $queue->success = 1;  //will be set to 0 on send.
-                $queue->message = $model->name;
-                $queue->save();
                 Yii::$app->session->setFlash("task-success", "Atividade incluída com sucesso!");
                 return $this->redirect(['index']);
             } else {

@@ -7,7 +7,6 @@ return [
     'supportEmail'      => 'gustavo.andrade@sicoobcrediriodoce.com.br',
     'supportDep'        => 'Tecnologia da Informação',
     'assets'            => '../../assets_intranet/',
-
     'reportbasePath'    => '../../Anexos_reportbase/',
     'usersAvatars'      => '../../assets_intranet/userImages/',
 ];

@@ -11,6 +11,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\base\Security;
+use yii\web\UploadedFile;
 
 class UseradminController extends Controller
 {
@@ -64,14 +65,36 @@ class UseradminController extends Controller
     public function actionCreate()
     {
         $model = new Useradmin();
+        $model->auth_key = Yii::$app->security->generateRandomString();
+        //$model->password_hash = Yii::$app->security->generatePasswordHash($model->password);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        $model->created_at = date('Y-m-d');
+        $model->updated_at = date('Y-m-d');
+        //$model->status = 1;
+
+        if ($model->load(Yii::$app->request->post())) {
+
+            $file = $model->uploadImage();
+ 
+            if ($model->save()) {
+
+                if ($file !== false) {
+
+                    if(!is_dir(Yii::$app->params['usersAvatars'])){
+                    mkdir(Yii::$app->params['usersAvatars'], 0777, true);
+                    }
+                    $path = $model->getImageFile();
+                    $file->saveAs($path);
+                }
+                Yii::$app->session->setFlash('useradmin-success', 'Inclusão realizada com sucesso!');
+                return $this->redirect(['index']);
+            } else {
+                // error in saving model
+            }
         }
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     public function actionSignup()

@@ -1,21 +1,18 @@
 GERAL
 --------------------
 
-http://www.yiiframework.com/wiki/684/save-and-display-date-time-fields-in-different-formats-in-yii2/
+REMOVER MailQueue table
 
 Sobre querys
 http://stackoverflow.com/questions/26894987/get-count-in-relation-table-in-yii2-activerecord
 https://github.com/yiisoft/yii2/issues/2179
 
 Alterar nome das tabelas secundarias (módulos) com prefixo MOD
-
 Criação de menus
-Revisar os parametros redundantes
 Parametros no banco de dados (extensão)
 *** http://stackoverflow.com/questions/28219440/init-application-component-with-config-from-database
 Bloquear uso do IE versão 8 pra baixo
 Melhor desempenho dos icones FONT AWESOME (otimizar assets, css, js, etc).
-
 Otimizar para dispositivos móveis (gridview, menus mal posicionados, etc) !!!
 
 Criar Área de Alertas (local mais visivel no top da intranet)
@@ -34,15 +31,11 @@ MÓDULOS
 - Criar módulo Vídeos
 - Criar módulo RH (area p/ contra cheque)
 - Criar módulo Helpdesk
-- Criar módulo Plano de Ação (igual do GMI) 
-
-Calendario de Atividades -> Corresponsável poder fazer alterações no status - ok
-Calendario de Atividades -> Resolver o problema do arquivo de excel -ok
-Calendario de Atividades -> Colocar o link referente a atividade no calendário no arquivo de integração - ok
-Calendario de Atividades -> Retirar o departamento na hora de enviar a notificação de cadastramento da atividade -ok
+- Criar módulo Plano de Ação (igual do GMI)
 
 Visitas -> Verificar / Usar plugin de galeria de fotos
 Visitas -> Ilimitado numero de upload de fotos
+Visitas -> Edição de Imagens (cortar, girar, etc).
 
 Produtividade -> Gravar Formula/Cálculo
 Produtividade -> Filtro por período no ranking
