@@ -22,7 +22,7 @@ use yii\bootstrap\Nav;
         'visible' => Yii::$app->user->identity->role_id == 99,
         ],
         [
-        'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Perfis de Acesso',
+        'label'   => '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> Perfis',
         'url'     => ['role/index'],
         'visible' => Yii::$app->user->identity->role_id == 99,
         ],

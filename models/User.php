@@ -51,13 +51,8 @@ class User extends ActiveRecord implements IdentityInterface
             'birthdate' => 'Data de Nascimento',
             'location_id' => 'Unidade',
             'department_id' => 'Departamento',
-            'can_admin' => 'Administração do Sistema',
-            'can_visits' => 'Visitas',
-            'can_productivity' => 'Produtividade',
-            'can_requestresources' => 'Recursos',
-            'can_managervisits' => 'Gerenciar Visitas',
-            'role_id == 2' => 'Gerenciar Produtividade',
-            'can_managerrequestresources' => 'Gerenciar Recursos',
+            'role_id' => 'Perfil de Acesso',
+
         ];
     }    
 
@@ -131,10 +126,15 @@ class User extends ActiveRecord implements IdentityInterface
     public function getLocation()
     {
         return $this->hasOne(Location::className(), ['id' => 'location_id']);
-    }      
+    }
 
     public function getDepartment()
     {
         return $this->hasOne(Department::className(), ['id' => 'department_id']);
-    }      
+    }
+
+    public function getRole()
+    {
+        return $this->hasOne(Role::className(), ['id' => 'role_id']);
+    }
 }

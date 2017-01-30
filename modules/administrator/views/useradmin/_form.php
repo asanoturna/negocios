@@ -15,39 +15,50 @@ use yii\widgets\MaskedInput;
     <?php $form = ActiveForm::begin(); ?>
 
     <div class="row">
-
+          
       <div class="col-md-6">
 
-      <?= $form->field($model, 'fullname')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'fullname')->textInput(['maxlength' => true]) ?>
 
-      <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-      <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+            <div class="row">
+              <div class="col-md-6">
+              <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+              </div>
+              <div class="col-md-6">
+              <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
+              </div>
+            </div>  
 
-      <?php // $form->field($model, 'password_hash')->textInput(['maxlength' => true]) ?>
+            <div class="row">
+              <div class="col-md-6">
+              <?= $form->field($model, 'role_id')->dropDownList(ArrayHelper::map(Role::find()->orderBy("id ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?>
+              </div>
+              <div class="col-md-6">
+              
+              <?= $form->field($model, 'status')->dropdownList(['0' => 'Inativo', '1' => 'Ativo']) ?>
 
-      <div class="row">
-        <div class="col-md-6">
-        <?= $form->field($model, 'role_id')->dropDownList(ArrayHelper::map(Role::find()->orderBy("id ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?>
-        </div>
-        <div class="col-md-6">
-        <?= $form->field($model, 'status')->dropdownList(['0' => 'Inativo', '1' => 'Ativo'], ['prompt' => 'Selecione']) ?>
-        </div>
-      </div> 
+              </div>
+            </div>
+
+            <?= $form->field($model, 'file')->fileInput() ?>        
 
       </div>
 
       <div class="col-md-6">
 
-      <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
 
-      <?= $form->field($model, 'celphone')->widget(\yii\widgets\MaskedInput::classname(), ['mask' => ['(99)99999-9999'],
-            ]) ?> 
+            <?= $form->field($model, 'celphone')->widget(\yii\widgets\MaskedInput::classname(), [
+                'mask' => ['(99)99999-9999'],
+            ]) ?>            
 
-      <?= $form->field($model, 'birthdate')->textInput() ?>
+            <?= $form->field($model, 'birthdate')->textInput() ?>
 
-      <?= $form->field($model, 'location_id')->dropDownList(ArrayHelper::map(Location::find()->where(['is_active' => 1])->orderBy("fullname ASC")->all(), 'id', 'fullname'),['prompt'=>'--'])  ?>           
-      <?= $form->field($model, 'department_id')->dropDownList(ArrayHelper::map(Department::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?>
+            <?= $form->field($model, 'location_id')->dropDownList(ArrayHelper::map(Location::find()->where(['is_active' => 1])->orderBy("fullname ASC")->all(), 'id', 'fullname'),['prompt'=>'--'])  ?> 
+
+            <?= $form->field($model, 'department_id')->dropDownList(ArrayHelper::map(Department::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?> 
 
       </div>
 
@@ -55,7 +66,7 @@ use yii\widgets\MaskedInput;
 
     <hr/>
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Gravar' : 'Gravar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-success']) ?>
+        <?= Html::submitButton('Gravar', ['class' => 'btn btn-success', 'name' => 'signup-button']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

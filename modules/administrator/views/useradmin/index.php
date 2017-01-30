@@ -19,7 +19,7 @@ $this->title = 'Usuários';
     <div class="row">
       <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
       <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;">
-        <?= Html::a('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar', ['signup'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar', ['create'], ['class' => 'btn btn-success']) ?>
       </span></div>
     </div>
     <hr/>
@@ -49,12 +49,12 @@ $this->title = 'Usuários';
             [
             'attribute' => 'username',
             'enableSorting' => true,
-            'contentOptions'=>['style'=>'width: 15%;text-align:lef;tvertical-align: middle;text-transform: lowercase'],
+            'contentOptions'=>['style'=>'width: 20%;text-align:lef;tvertical-align: middle;text-transform: lowercase'],
             ],             
             [
             'attribute' => 'fullname',
             'enableSorting' => true,
-            'contentOptions'=>['style'=>'width: 30%;text-align:left;vertical-align: middle;text-transform: uppercase'],
+            'contentOptions'=>['style'=>'width: 20%;text-align:left;vertical-align: middle;text-transform: uppercase'],
             ],       
             [
             'attribute' => 'email',
@@ -67,10 +67,10 @@ $this->title = 'Usuários';
             'enableSorting' => true,
             'format' => 'raw',
             'value' => function ($model) {                      
-                    return $model->role->name ;
+                    return $model->role->name;
                     },
             'filter' => ArrayHelper::map(Role::find()->orderBy('id')->asArray()->all(), 'id', 'name'),
-            'contentOptions'=>['style'=>'width: 5%;text-align:left;vertical-align: middle'],
+            'contentOptions'=>['style'=>'width: 8%;text-align:center;vertical-align: middle'],
             ], 
             [ 
             'attribute' => 'status',
@@ -80,12 +80,12 @@ $this->title = 'Usuários';
                     return $model->status == 1 ? '<b style="color:#6CAF3F">Ativo</b>' : '<b style="color:#d43f3a">Inativo</b>';
                     },
             'filter'=>[0=>'Não', 1=>'Sim'],
-            'contentOptions'=>['style'=>'width: 10%;text-align:left;vertical-align: middle'],
+            'contentOptions'=>['style'=>'width: 8%;text-align:center;vertical-align: middle'],
             ], 
             [
               'class' => 'yii\grid\ActionColumn',
               'header' => 'Ações',  
-              'contentOptions'=>['style'=>'width: 10%;text-align:right'],
+              'contentOptions'=>['style'=>'width: 15%;text-align:right;vertical-align: middle'],
               'headerOptions' => ['class' => 'text-center'],                            
               'template' => '{view} {update} {delete}',
               'buttons' => [
