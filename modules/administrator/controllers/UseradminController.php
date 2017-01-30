@@ -119,14 +119,34 @@ class UseradminController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                Yii::$app->session->setFlash('useradmin-success', 'Alteração realizada com sucesso!');
+        $oldFile = $model->getImageFile();
+        $oldattachment = $model->avatar;
+        $oldFileName = $model->filename;
+
+        if ($model->load(Yii::$app->request->post())) {
+
+            $file = $model->uploadImage();
+ 
+            if ($file === false) {
+                $model->avatar = $oldattachment;
+                $model->filename = $oldFileName;
+            }
+ 
+            if ($model->save()) {
+
+                if ($file !== false && unlink($oldFile)) {
+                    $path = $model->getImageFile();
+                    $file->saveAs($path);
+                }
+                Yii::$app->session->setFlash("useradmin-success", "Alteração realizada com sucesso!");
                 return $this->redirect(['index']);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+            } else {
+                Yii::$app->session->setFlash('error', 'Erro ao gravar');
+            }
         }
+        return $this->render('update', [
+            'model'=>$model,
+        ]);
     }
 
     public function actionDelete($id)

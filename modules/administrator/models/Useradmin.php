@@ -52,7 +52,7 @@ class Useradmin extends \yii\db\ActiveRecord
             ['password', 'required', 'skipOnEmpty' => TRUE, 'on' => 'update'],
             ['password', 'string', 'min' => 6],
 
-            [['file'], 'file', 'extensions'=>'jpg', 'maxSize' => 1024 * 1024 * 1],
+            [['file'], 'image', 'extensions'=>'jpg', 'minWidth' => 250, 'maxWidth' => 250,'minHeight' => 300, 'maxHeight' => 300, 'maxSize' => 512000, 'tooBig' => 'Tamanho máximo é 500KB'],
             [['avatar'], 'string', 'max' => 200],
         ];
     }
@@ -103,7 +103,7 @@ class Useradmin extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'role_id' => 'Perfil de Acesso',
+            'role_id' => 'Perfil',
             'username' => 'Usuário',
             'auth_key' => 'Chave de Autenticação',
             'password_hash' => 'Senha',

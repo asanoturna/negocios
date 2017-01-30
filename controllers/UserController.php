@@ -9,8 +9,8 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ResetPasswordForm;
-use app\models\Useradmin;
-use app\models\UseradminSearch;
+use app\modules\administrator\models\Useradmin;
+use app\modules\administrator\models\UseradminSearch;
 use app\models\SignupForm;
 
 

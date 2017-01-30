@@ -25,7 +25,7 @@ Criar Links Externos/Ferramentas ??? (calculadora HP 12c, etc..)
 MÓDULOS
 --------------------
 - Migração da ferramenta de Apoio Cadastro
-- Upload de foto para Useradmin
+
   tentar juntar models/SignupForm e models/Useradmin
 - Terminar módulo Arquivos (estrutra semelhante a central, incluir Planilha Base e intranet antiga)
 - Criar módulo Vídeos
