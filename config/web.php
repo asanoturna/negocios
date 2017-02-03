@@ -81,6 +81,7 @@ $config = [
         'ideas'             => 'app\modules\ideas\Module',
         'task'              => 'app\modules\task\Module',
         'archive'           => 'app\modules\archive\Module',
+        'client'            => 'app\modules\client\Module',
     ],    
     'params' => $params,
 ];

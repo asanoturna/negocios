@@ -18,7 +18,7 @@ Otimizar para dispositivos móveis (gridview, menus mal posicionados, etc) !!!
 Criar Área de Alertas (local mais visivel no top da intranet)
 Criar Área de Notícias (incluir curtidas e comentários)
 Criar Agenda / Calendario (global e para cada usuario) (sinc google agenda ?)
-Criar Galeria de fotos
+Criar Galeria de Fotos
 Criar Área de Links Pessoais
 Criar Links Externos/Ferramentas ??? (calculadora HP 12c, etc..)
 

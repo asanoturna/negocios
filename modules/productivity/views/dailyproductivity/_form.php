@@ -203,7 +203,6 @@ $('#{$productId}').on('change', function () {
         var max = 40;
         prazomin = 1;
         prazomax = 1;
-
     }else if (id == 101){ //Auto tabela B
         var min = 3.5;
         var max = 3.5;
@@ -254,7 +253,6 @@ $('#{$productId}').on('change', function () {
         var max = 5.5;
         prazomin = 1;
         prazomax = 1;
-   
     }else if (id == 201){ //Cielo
         var min = 10;
         var max = 10;
@@ -270,19 +268,16 @@ $('#{$productId}').on('change', function () {
         var max = 1;
         prazomin = 1;
         prazomax = 1;
-    
     }else if (id == 301){ //Cabal Vale
         var min = 1;
         var max = 1;
         prazomin = 1;
         prazomax = 1;
-
     }else if (id == 401){ //Travel Money
         var min = 1;
         var max = 1;
         prazomin = 1;
         prazomax = 1;
-
     }else if (id == 501){ //Seguro PPR
         var min = 1;
         var max = 1;
@@ -298,7 +293,6 @@ $('#{$productId}').on('change', function () {
         var max = 1;
         prazomin = 2;
         prazomax = 12;        
-        
     }else if (id == 601){ //Capital de Giro
         var min = 1;
         var max = 1;
@@ -309,46 +303,49 @@ $('#{$productId}').on('change', function () {
         var max = 1;
         prazomin = 1;
         prazomax = 1;       
-        
     }else if (id == 701){ //Sicoob Previ
         var min = 75;
         var max = 75;
         prazomin = 1;
         prazomax = 1;
-        
     }else if (id == 801){ //Consignado Seplag
         var min = 1;
         var max = 1;
         prazomin = 6;
         prazomax = 60;
-    
     }else if (id == 802){ //Consignado INSS 
         var min = 1;
         var max = 1;
         prazomin = 6;
         prazomax = 72;
-
     }else if (id == 803){ //CDL
         var min = 1;
         var max = 1;
         prazomin = 3;
         prazomax = 24;      
-
     }else if (id == 804){ //Presbiteriano
         var min = 1;
         var max = 1;
         prazomin = 3;
         prazomax = 24;  
-
     }else if (id == 805){ //Prefeitura
         var min = 1;
         var max = 1;
         prazomin = 6;
-        prazomax = 60;                  
-
+        prazomax = 60;           
     }else if (id == 901){ //Cedente
         var min = 1;
         var max = 1;
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 1001){ //TV CORPORATIVA SEDE
+        var min = 75;
+        var max = 75;
+        prazomin = 1;
+        prazomax = 1;
+    }else if (id == 1002){ //TV CORPORATIVA PA
+        var min = 50;
+        var max = 50;
         prazomin = 1;
         prazomax = 1;
     }

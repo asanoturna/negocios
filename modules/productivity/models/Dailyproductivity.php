@@ -387,6 +387,14 @@ class Dailyproductivity extends \yii\db\ActiveRecord
             }elseif($this->product_id == 901){
                 //MODULO CEDENTE
                 $this->value = 0;
+            }elseif($this->product_id == 1001){
+                //TV CORPORATIVA SEDE
+                $this->companys_revenue = 75.00;
+                $this->value = 0;
+            }elseif($this->product_id == 1002){
+                //TV CORPORATIVA PA
+                $this->companys_revenue = 50.00;
+                $this->value = 0;   
             }
             //$this->quantity = 1;
             return true;
