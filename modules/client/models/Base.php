@@ -11,6 +11,9 @@ class Base extends \yii\db\ActiveRecord
         return 'mod_client_base';
     }
 
+    public $value;
+    public $quota;
+
     // category_id
     public static $Static_category = [
         'DIAMANTE',
