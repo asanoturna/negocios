@@ -89,7 +89,7 @@ class BaseController extends Controller
 
     protected function findModel($id)
     {
-        if (($model = Priority::findOne($id)) !== null) {
+        if (($model = Base::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

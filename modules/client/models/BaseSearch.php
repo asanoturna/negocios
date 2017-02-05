@@ -12,8 +12,9 @@ class BaseSearch extends Base
     public function rules()
     {
         return [
+            [['account', 'value', 'quota', 'category_id'], 'required'],
             [['id'], 'integer'],
-            [['account','name','doc'], 'safe'],
+            [['account','value', 'quota', 'category_id', 'name','doc'], 'safe'],
         ];
     }
 
@@ -24,6 +25,12 @@ class BaseSearch extends Base
 
     public function search($params)
     {
+        if (!($this->load($params) && $this->validate())) {
+            $query = Base::find()->where('1 <> 1');
+            $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+        } else {
         $query = Base::find();
 
         $dataProvider = new ActiveDataProvider([
@@ -41,19 +48,17 @@ class BaseSearch extends Base
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
+            $query->where('0=1');
             return $dataProvider;
         }
 
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'account' => $this->account,
         ]);
 
-        $query->andFilterWhere(['like', 'account', $this->account]);
-        $query->andFilterWhere(['like', 'name', $this->name]);
-        $query->andFilterWhere(['like', 'doc', $this->doc]);
-
+        }
         return $dataProvider;
     }
 
@@ -76,18 +81,16 @@ class BaseSearch extends Base
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
+            $query->where('0=1');
             return $dataProvider;
         }
 
-        // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'account' => $this->account,
+            'value' => $this->value,
         ]);
 
-        $query->andFilterWhere(['like', 'account', $this->account]);
-        $query->andFilterWhere(['like', 'name', $this->name]);
-        $query->andFilterWhere(['like', 'doc', $this->doc]);
 
         return $dataProvider;
     }

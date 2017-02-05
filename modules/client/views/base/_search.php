@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use kartik\date\DatePicker;
 use app\modules\client\models\Category;
+use yii\jui\Spinner;
 
 ?>
 
@@ -21,7 +22,18 @@ use app\modules\client\models\Category;
 
     <?= $form->field($model, 'value')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'quota')->textInput(['maxlength' => true]) ?>
+<?=  Spinner::widget([
+    'model' => $model,
+    'attribute' => 'quota',
+    'clientOptions' => ['step' => 1],
+]);?>
+
+    <?= $form->field($model, 'quota')->dropdownList([
+        1 => '1', 
+        2 => '2'
+    ]);?>
+
+    <?= $form->field($model, 'date')->textInput(['maxlength' => true]) ?>
 
     <div class="row">
         <div class="col-sm-11">

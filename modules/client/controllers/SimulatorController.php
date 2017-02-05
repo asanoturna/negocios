@@ -44,18 +44,6 @@ class TodolistController extends Controller
         return $this->render('documentation');
     }
 
-    public function actionPerformance()
-    {
-        return $this->render('performance');
-    }
-
-    public function actionIcal($id)
-    {
-        return $this->render('ical', [
-            'model' => $this->findModel($id),
-        ]);
-    }
-
     public function actionIndex()
     {
         $searchModel = new TodolistSearch();
@@ -65,31 +53,6 @@ class TodolistController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
-    }
-
-    public function actionCalendar()
-    {
-
-    $events = Todolist::find()->all();
-
-    $tasks = [];
-    foreach ($events as $todolist)
-    {
-    $event = new \yii2fullcalendar\models\Event();
-    
-    $event->className = 'btn btn-xs';
-    $event->backgroundColor = $todolist->department->hexcolor;
-    $event->borderColor = $todolist->department->hexcolor;
-    $event->id = $todolist->id;
-    $event->title = $todolist->name;
-    $event->start = $todolist->deadline;
-
-    $tasks[] =  $event;
-    }
-    return $this->render('calendar',[
-        'events' => $tasks,
-    ]);
-
     }
 
     public function actionView($id)

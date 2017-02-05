@@ -13,6 +13,7 @@ class Base extends \yii\db\ActiveRecord
 
     public $value;
     public $quota;
+    public $date;
 
     // category_id
     public static $Static_category = [
@@ -46,6 +47,9 @@ class Base extends \yii\db\ActiveRecord
             'account' => 'Conta',
             'doc' => 'CPF/CNPJ',
             'category_id' => 'Categoria',
+            'value' => 'Valor',
+            'quota' => 'Parcelas',
+            'date' => 'Data',
         ];
     }
 
