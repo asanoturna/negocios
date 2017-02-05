@@ -32,7 +32,8 @@
         "karpoff/yii2-crop-image-upload": "*",
         "cyneek/yii2-menu": "dev-master",
         "bupy7/yii2-widget-cropbox": "*",
-        "philippfrenzel/yii2fullcalendar": "*"
+        "philippfrenzel/yii2fullcalendar": "*",
+        "kartik-v/yii2-widget-touchspin": "*"
         
     },
     "require-dev": {

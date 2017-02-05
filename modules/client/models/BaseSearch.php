@@ -12,10 +12,21 @@ class BaseSearch extends Base
     public function rules()
     {
         return [
-            [['account', 'value', 'quota', 'category_id'], 'required'],
+            //[['account', 'value', 'quota', 'category_id'], 'required'],
             [['id'], 'integer'],
+            ['account', 'is6NumbersOnly'],
+            [['date'], 'date', 'format' => 'php:Y-m-d'],
+            ['quota', 'number', 'min' => 1, 'max' => 60],
+            ['value', 'number', 'min' => 1],
             [['account','value', 'quota', 'category_id', 'name','doc'], 'safe'],
         ];
+    }
+
+    public function is6NumbersOnly($attribute)
+    {
+        if (!preg_match('/^[0-9]{6}$/', $this->$attribute)) {
+            $this->addError($attribute, 'Conta possui 6 digitos numéricos');
+        }
     }
 
     public function scenarios()

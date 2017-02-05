@@ -92,13 +92,38 @@ $this->params['breadcrumbs'][] = $this->title;
 
         ?>
 
+        <div class="row">
+          <div class="col-md-6">
+
         <ul class="list-group">
-          <li class="list-group-item">Taxa: <?= $taxa?></li>
-          <li class="list-group-item">Prestação Mensal: <?= $prestacao?></li>
-          <li class="list-group-item">Valor Final: <?= $valorfinal?></li>
-          <li class="list-group-item">Juros Pago na Operação:</li>
-          <li class="list-group-item">IOF:</li>
+          <li class="list-group-item"><strong>Taxa:</strong> <?= $taxa?></li>
+          <li class="list-group-item"><strong>Prestação Mensal:</strong> <?= $prestacao?></li>
         </ul>
+
+          </div>
+          <div class="col-md-6">
+
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Valor Final:</strong> <?= $valorfinal?></li>
+          <li class="list-group-item"><strong>Juros Pago na Operação:</strong></li>
+        </ul>
+
+          </div>
+        </div>
+
+        <table class="table table-bordered table-striped table-hover">
+        <?php
+        for($i=1;$i<=6;$i++)
+        {
+        echo "<tr>";
+        for ($j=1;$j<=5;$j++)
+          {
+          echo "<td>$quota</td>";
+          }
+          echo "</tr>";
+          }
+        ?>
+        </table>
 
         <?php
         }

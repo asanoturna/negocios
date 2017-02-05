@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use kartik\date\DatePicker;
 use app\modules\client\models\Category;
-use yii\jui\Spinner;
+use kartik\touchspin\TouchSpin;
 
 ?>
 
@@ -15,25 +15,48 @@ use yii\jui\Spinner;
         'action' => ['simulator'],
         'method' => 'get',
     ]); ?>
-       
-    <?= $form->field($model, 'account')->textInput(['maxlength' => true]) ?>
-    
-    <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::find()->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?> 
 
-    <?= $form->field($model, 'value')->textInput(['maxlength' => true]) ?>
+<div class="row">
+  <div class="col-md-6"><?= $form->field($model, 'account')->textInput(['maxlength' => 6]) ?></div>
+  <div class="col-md-6"><?= $form->field($model, 'date')->widget('trntv\yii\datetime\DateTimeWidget',
+        [
+            'phpDatetimeFormat' => 'yyyy-MM-dd',
+            'clientOptions' => [
+                'minDate' => new \yii\web\JsExpression('new Date("2016-01-01")'),
+                'allowInputToggle' => true,
+                'widgetPositioning' => [
+                   'horizontal' => 'auto',
+                   'vertical' => 'auto'
+                ]
+            ]
+        ]
+    ) ?></div>
+</div>
 
-<?=  Spinner::widget([
-    'model' => $model,
-    'attribute' => 'quota',
-    'clientOptions' => ['step' => 1],
-]);?>
+<div class="row">
+  <div class="col-md-12"><?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::find()->orderBy("name ASC")->all(), 'id', 'name'))  ?></div>
+</div>
 
-    <?= $form->field($model, 'quota')->dropdownList([
-        1 => '1', 
-        2 => '2'
+<div class="row">
+  <div class="col-md-6"><?= $form->field($model, 'value')->textInput(['maxlength' => true]) ?></div>
+  <div class="col-md-6">
+    <?= $form->field($model, 'quota')->widget(TouchSpin::classname(), [
+        //'options'=>['placeholder'=>'Enter rating 1 to 5...'],
+        'pluginOptions' => [
+            'verticalbuttons' => true,
+            'min' => 1,
+            'max' => 60,]
     ]);?>
+    </div>
+</div>
+    
+     
 
-    <?= $form->field($model, 'date')->textInput(['maxlength' => true]) ?>
+    
+
+    
+
+    
 
     <div class="row">
         <div class="col-sm-11">

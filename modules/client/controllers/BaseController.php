@@ -37,8 +37,16 @@ class BaseController extends Controller
     public function actionSimulator()
     {
         $searchModel = new BaseSearch();
+
+        $searchModel->account = '012345';
+        $searchModel->date    = date('Y-m-d');
+        $searchModel->value   = 1000; 
+        $searchModel->quota   = 1;
+        
         $dataProvider1 = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider2 = $searchModel->detail(Yii::$app->request->queryParams);
+
+        //$model->value = 1;
 
         return $this->render('simulator', [
             'searchModel' => $searchModel,

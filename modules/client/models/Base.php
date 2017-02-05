@@ -46,7 +46,7 @@ class Base extends \yii\db\ActiveRecord
             'name' => 'Nome',
             'account' => 'Conta',
             'doc' => 'CPF/CNPJ',
-            'category_id' => 'Categoria',
+            'category_id' => 'Linha de Crédito',
             'value' => 'Valor',
             'quota' => 'Parcelas',
             'date' => 'Data',
