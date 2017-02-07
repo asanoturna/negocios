@@ -42,7 +42,7 @@ class Visits extends \yii\db\ActiveRecord
             [['responsible', 'company_person', 'contact', 'email', 'phone'], 'string', 'max' => 45],
             [['ip'], 'string', 'max' => 20],
             [['localization_map'], 'string', 'max' => 100],
-            [['file'], 'file', 'extensions'=>'doc, docx, xls, xlsx', 'maxSize' => 1024 * 1024 * 4],
+            [['file'], 'file', 'extensions'=>'doc, docx, xls, xlsx, pdf', 'maxSize' => 1024 * 1024 * 4],
         ];
     }
 
