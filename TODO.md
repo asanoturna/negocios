@@ -1,6 +1,11 @@
 GERAL
 --------------------
 
+Criar coluna remember
+ALTER TABLE `mod_task_list` ADD `remember` DATE NOT NULL AFTER `deadline`;
+ALTER TABLE `mod_task_list` ADD `notification_remember` INT NOT NULL DEFAULT '0' AFTER `notification_deadline_date`, ADD `notification_remember_date` DATE NULL AFTER `notification_remember`;
+
+Add no cron nova acao
 REMOVER MailQueue table
 
 Sobre querys

@@ -16,7 +16,7 @@ class TodolistSearch extends Todolist
     {
         return [
             [['id', 'department_id', 'category_id', 'status_id', 'priority_id', 'owner_id', 'responsible_id', 'co_responsible_id','notification_deadline','notification_created'], 'integer'],
-            [['start_date', 'end_date', 'name', 'description', 'deadline', 'created', 'updated'], 'safe'],
+            [['start_date', 'end_date', 'name', 'description', 'deadline', 'remember', 'created', 'updated'], 'safe'],
         ];
     }
 
@@ -55,6 +55,7 @@ class TodolistSearch extends Todolist
             'category_id' => $this->category_id,
             'status_id' => $this->status_id,
             'deadline' => $this->deadline,
+            'remember' => $this->remember,
             'priority_id' => $this->priority_id,
             'owner_id' => $this->owner_id,
             'responsible_id' => $this->responsible_id,
@@ -64,6 +65,7 @@ class TodolistSearch extends Todolist
             'updated' => $this->updated,
             'notification_created' => $this->notification_created,
             'notification_deadline' => $this->notification_deadline,
+            'notification_remember' => $this->notification_remember,
         ]);
 
         $query->andFilterWhere(['between', 'deadline', $this->start_date, $this->end_date]); 

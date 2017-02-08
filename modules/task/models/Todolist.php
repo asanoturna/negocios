@@ -16,10 +16,10 @@ class Todolist extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'department_id', 'category_id', 'status_id', 'deadline', 'priority_id', 'owner_id', 'responsible_id', 'co_responsible_id', 'created', 'updated'], 'required'],
+            [['name', 'department_id', 'category_id', 'status_id', 'deadline', 'remember', 'priority_id', 'owner_id', 'responsible_id', 'co_responsible_id', 'created', 'updated'], 'required'],
             [['description','responsible_note'], 'string'],
             [['department_id', 'category_id', 'status_id', 'priority_id', 'owner_id', 'responsible_id', 'co_responsible_id', 'is_done'], 'integer'],
-            [['attachment', 'file', 'filename', 'deadline', 'created', 'updated'], 'safe'],
+            [['attachment', 'file', 'filename', 'deadline', 'remember', 'created', 'updated'], 'safe'],
             [['file'], 'file', 'extensions'=>'jpg, png, pdf, doc, docx, xls, xlsx', 'maxSize' => 1024 * 1024 * 4],
             [['name','attachment'], 'string', 'max' => 200],
             // [['status_id'], 'exist', 'skipOnError' => true, 'targetClass' => ModTaskStatus::className(), 'targetAttribute' => ['status_id' => 'id']],
@@ -82,6 +82,7 @@ class Todolist extends \yii\db\ActiveRecord
             'category_id' => 'Periodicidade',
             'status_id' => 'Situação',
             'deadline' => 'Prazo para Atividade',
+            'remember' => 'Lembrete',
             'priority_id' => 'Prioridade',
             'owner_id' => 'Criado por',
             'responsible_id' => 'Responsável',
@@ -95,7 +96,8 @@ class Todolist extends \yii\db\ActiveRecord
             'attachment' => 'Passo a passo',
             'file' => 'Anexo',
             'notification_created' => 'Notificação Nova Atividade',
-            'notification_deadline' => 'Notificação de Lembrete'
+            'notification_deadline' => 'Notificação de Lembrete',
+            'notification_remember' => 'Notificação de Lembrete',
         ];
     }
 

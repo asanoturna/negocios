@@ -54,6 +54,31 @@ class MailController extends Controller
         }
     }
 
+    // Send mail on remember task date
+    public function actionRemember()
+    {
+    $today = date('Y-m-d');
+    $mails=Todolist::find()
+        ->where('status_id=1')
+        ->andWhere(['=', 'remember', $today])
+        ->andWhere('notification_remember=0')
+        ->all();
+    foreach($mails as $mail)
+        {
+        $message =\Yii::$app->mailer->compose('@app/mail/task_remember', ['model' => $mail->id]);
+            $message->setFrom('intranet@sicoobcrediriodoce.com.br')
+                    ->setTo($mail->responsible->email)
+                    ->setCc([$mail->coresponsible->email, $mail->department->email])
+                    ->setSubject('Lembrete: '.$mail->name);
+            if($message->send())
+                {
+                 $mail->notification_remember = 1;
+                 $mail->notification_remember_date = date("Y-m-d H:i:s");
+                }
+            $mail->save();
+        }
+    }
+
     // Send mail on deadline task date
     public function actionDeadline()
     {
