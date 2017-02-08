@@ -203,6 +203,11 @@ $('#{$productId}').on('change', function () {
         var max = 40;
         prazomin = 1;
         prazomax = 1;
+    }else if (id == 20){ // MultRisco Rural 
+        var min = 10;
+        var max = 35;
+        prazomin = 1;
+        prazomax = 12;
     }else if (id == 101){ //Auto tabela B
         var min = 3.5;
         var max = 3.5;
