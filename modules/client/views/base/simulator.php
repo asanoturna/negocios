@@ -87,6 +87,7 @@ $this->params['breadcrumbs'][] = $this->title;
         $price = $quota/$juros;
         $prestacao = $quota/$juros;
         $valorfinal = $price*$quota;
+        $jurospago = $valorfinal - $value;
 
 
 
@@ -105,25 +106,48 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <ul class="list-group">
           <li class="list-group-item"><strong>Valor Final:</strong> <?= $valorfinal?></li>
-          <li class="list-group-item"><strong>Juros Pago na Operação:</strong></li>
+          <li class="list-group-item"><strong>Juros Pago na Operação:</strong> <?= $jurospago?></li>
         </ul>
 
           </div>
         </div>
 
-        <table class="table table-bordered table-striped table-hover">
-        <?php
-        for($i=1;$i<=6;$i++)
-        {
-        echo "<tr>";
-        for ($j=1;$j<=5;$j++)
-          {
-          echo "<td>$quota</td>";
-          }
-          echo "</tr>";
-          }
-        ?>
-        </table>
+<table class="table table-bordered table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Nº Parcela</th>
+                <th>Juros</th>
+                <th>Saldo Devdor</th>
+                <th>Price</th>
+                <th>Saldo</th>
+                <th>Valor princ</th>
+                <th>Data Vencimento</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            <?php 
+            $parc = 0;
+            for($j = 0; $j<$quota; $j++){
+            
+            $parc++
+
+            ?>
+            <tr>
+
+            <td><?= $parc?></td> 
+            <td>2222</td> 
+            <td>3333</td>
+            <td>4444</td>
+            <td>5555</td>
+            <td>6666</td>
+            <td>7777</td>
+
+            </tr>
+            <?php } ?>
+
+            </tbody>
+          </table>      
 
         <?php
         }
