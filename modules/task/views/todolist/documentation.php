@@ -32,9 +32,11 @@ $this->title = "Documentação do Módulo Calendário de Atividades";
     
     <h3>Notificações</h3>
 
-    <p>Será enviada uma mensagem automática de notificação de nova atividade, para os destinatários: <code>Responsável, Co-responsável e o Departamento</code>.</p>
+    <p>Será enviada uma mensagem automática de notificação de nova atividade, para os destinatários: <code>Responsável e Co-responsável</code>.</p>
 
-    <p>Será enviada uma mensagem automática de lembrete no dia definido no campo "Prazo para atividade", para os destinatários: <code>Responsável, Co-responsável e o Departamento</code>.</p>
+    <p>Será enviada uma mensagem automática de lembrete no dia definido no campo "Lembrete", para os destinatários: <code>Responsável, Co-responsável e o Departamento</code>.</p>
+
+    <p>Será enviada uma mensagem automática de lembrete final no dia definido no campo "Prazo para atividade", para os destinatários: <code>Responsável, Co-responsável e o Departamento</code>.</p>
     														
     <div class="alert alert-warning" role="alert"><i class="fa fa-info-circle" aria-hidden="true"></i> Os responsáveis devem ficar atentos aos prazos, pois caso haja indisponibilidade de internet, as notificações por e-mail não poderão ser enviadas.</div>
 

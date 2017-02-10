@@ -10,7 +10,7 @@ mail > task_new.php
 ADD CRONTAB
 -------------------------------
 
-contab -e
+crontab -e
 # Envia a cada 10 min sobre novas atividades
 */10 * * * * php /var/www/intranet/yii mail/new
 

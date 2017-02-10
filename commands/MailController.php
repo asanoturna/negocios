@@ -42,9 +42,9 @@ class MailController extends Controller
         {
         $message =\Yii::$app->mailer->compose('@app/mail/task_new', ['model' => $mail->id]);
             $message->setFrom('intranet@sicoobcrediriodoce.com.br')
-                    ->setTo($mail->responsible->email)
-                    ->setCc([$mail->coresponsible->email)
-                    ->setSubject('Lembrete: '.$mail->name);
+                    ->setTo([$mail->responsible->email,$mail->coresponsible->email])
+                    //->setCc([$mail->coresponsible->email)
+                    ->setSubject('Nova Atividade: '.$mail->name);
             if($message->send())
                 {
                  $mail->notification_created = 1;
@@ -94,7 +94,7 @@ class MailController extends Controller
             $message->setFrom('intranet@sicoobcrediriodoce.com.br')
                     ->setTo($mail->responsible->email)
                     ->setCc([$mail->coresponsible->email, $mail->department->email])
-                    ->setSubject('Lembrete: '.$mail->name);
+                    ->setSubject('Lembrete Final: '.$mail->name);
             if($message->send())
                 {
                  $mail->notification_deadline = 1;
