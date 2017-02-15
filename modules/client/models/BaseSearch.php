@@ -73,6 +73,39 @@ class BaseSearch extends Base
         return $dataProvider;
     }
 
+    public function index($params)
+    {
+        $query = Base::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_ASC, 
+                ]
+            ],
+            'pagination' => [
+                'pageSize' => 100,
+            ],
+        ]);
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            $query->where('0=1');
+            return $dataProvider;
+        }
+
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'account' => $this->account,
+            'value' => $this->value,
+        ]);
+
+
+        return $dataProvider;
+    }
+
     public function detail($params)
     {
         $query = Base::find();

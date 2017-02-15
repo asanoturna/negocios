@@ -11,14 +11,18 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="category-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+      <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
+      <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;"><?php  echo $this->render('_menu'); ?></span></div>
+    </div>
+    <hr/>
 
 <div class="row">
 
     <div class="col-xs-6 col-md-4">
 
     <div class="panel panel-default">
-        <div class="panel-body">    
+        <div class="panel-body"> 
         <?php echo $this->render('_search', ['model' => $searchModel]); ?>
         </div>
     </div>
@@ -89,8 +93,6 @@ $this->params['breadcrumbs'][] = $this->title;
         $valorfinal = $price*$quota;
         $jurospago = $valorfinal - $value;
 
-
-
         ?>
 
         <div class="row">
@@ -128,20 +130,24 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?php 
             $parc = 0;
-            for($j = 0; $j<$quota; $j++){
+            $start_date = strtotime($date);
+            $interval = 1;
+
+            for ($i = 0; $i <$quota; $i += $interval) {
             
-            $parc++
+            $parc++;
+            
 
             ?>
             <tr>
 
             <td><?= $parc?></td> 
-            <td>2222</td> 
-            <td>3333</td>
-            <td>4444</td>
-            <td>5555</td>
-            <td>6666</td>
-            <td>7777</td>
+            <td>--</td> 
+            <td>--</td>
+            <td>--</td>
+            <td>--</td>
+            <td>--</td>
+            <td><?= date("d/m/Y", strtotime("+" . $i . " month", $start_date)) ?></td>
 
             </tr>
             <?php } ?>

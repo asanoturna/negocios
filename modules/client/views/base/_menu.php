@@ -7,26 +7,22 @@ use yii\bootstrap\Nav;
         'encodeLabels' => false,
         'items' => [
             [
-                'label'   => '<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Documentação',
-                'url'     => ['documentation'],
-            ],  
-            // [
-            //     'label'   => '<span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Desempenho',
-            //     'url'     => ['performance'],
-            // ],  
+                'label'   => '<i class="fa fa-calculator" aria-hidden="true"></i> Cálculo de Empréstimo',
+                'url'     => ['simulator'],
+            ],
             [
-                'label'   => '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Calendário',
-                'url'     => ['calendar'],
+                'label'   => '<i class="fa fa-line-chart" aria-hidden="true"></i> Estatísticas',
+                'url'     => ['dashboard'],
             ],  
             [
-                'label'   => '<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> Painel de Atividades',
+                'label'   => '<i class="fa fa-database" aria-hidden="true"></i> Base de Associados',
                 'url'     => ['index'],
             ],  
-            [
-                'label'   => '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Inserir',
-                'url'     => ['create'],
-                'visible' => Yii::$app->user->identity->role_id == 5,
-            ],                                                                                         
+            // [
+            //     'label'   => '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Inserir',
+            //     'url'     => ['create'],
+            //     'visible' => Yii::$app->user->identity->role_id == 5,
+            // ],                                                                                         
         ],
     'options' => ['class' =>'nav-pills'],
     ]);

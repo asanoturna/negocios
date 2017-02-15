@@ -267,9 +267,16 @@ $this->title = 'Painel de Atividades';
                         ]);
                     },
                     'delete' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
-                                    'title' => 'Excluir',
+                        return $model->owner_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
+                                    'title' => 'Excluir Atividade',
                                     'class' => 'btn btn-default btn-xs',
+                                    'data-confirm' => 'Tem certeza que deseja excluir?',
+                                    'data-method' => 'post',
+                                    'data-pjax' => '0',
+                        ]): Html::a('<span class="glyphicon glyphicon-trash" ></span>', "#", [
+                                    'title' => 'Sem permissão para excluir!',
+                                    'class' => 'btn btn-default btn-xs',
+                                    'disabled' => true,
                         ]);
                     },
                     'update' => function ($url, $model) {

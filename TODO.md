@@ -36,6 +36,10 @@ MÓDULOS
 - Criar módulo Helpdesk
 - Criar módulo Plano de Ação (igual do GMI)
 
+- Usuarios -> Notas pessoais
+- Usuarios -> Links
+- Usuarios -> Agenda Pessoal (lembretes, notificacoes)
+
 Visitas -> Verificar / Usar plugin de galeria de fotos
 Visitas -> Ilimitado numero de upload de fotos
 Visitas -> Edição de Imagens (cortar, girar, etc).

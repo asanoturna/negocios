@@ -23,10 +23,15 @@ class BaseController extends Controller
         ];
     }
 
+    public function actionDashboard()
+    {
+        return $this->render('dashboard');
+    }
+
     public function actionIndex()
     {
         $searchModel = new BaseSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->index(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
