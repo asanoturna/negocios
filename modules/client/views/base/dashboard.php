@@ -2,8 +2,11 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
 use app\modules\client\models\Base;
 use app\modules\client\models\Category;
+use miloschuman\highcharts\Highcharts;
+use miloschuman\highcharts\SeriesDataHelper;
 
 $this->title = 'Estatísticas';
 ?>
@@ -17,27 +20,81 @@ $this->title = 'Estatísticas';
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-<div class="panel panel-default">
-          <div class="panel-heading">Estatísticas Gerais</div>
-          <div class="panel-body">
+    <div class="row">
+      <div class="col-md-6">
 
+<div class="panel panel-default">
+          <div class="panel-heading">Linha de Crédito</div>
+          <div class="panel-body">
+          <?php
+          $diamante     = Base::find()->where(['category_id'=>0])->count();
+          $esmeralda    = Base::find()->where(['category_id'=>1])->count();
+          $rubi         = Base::find()->where(['category_id'=>2])->count();
+          $safira       = Base::find()->where(['category_id'=>3])->count();
+          $topazio      = Base::find()->where(['category_id'=>4])->count();
+                echo Highcharts::widget([
+                'options' => [
+                    'credits' => ['enabled' => false],
+                    'chart'=> [
+                    'height'=> 300,
+                    ],
+                    'title' => [
+                        'text' => '',
+                        'align' => 'center',
+                        'verticalAlign' => 'middle',
+                          'style' => [
+                              'color' => '#0C3E45',
+                          ] 
+                        ],
+                    //'colors'=> ['#13AE9C','#BDD530'],
+                    'tooltip'=> ['pointFormat'=> 'Percentual: <b>{point.percentage:.1f}%</b>'],
+                    'plotOptions'=> [
+                        'pie'=> [
+                            'allowPointSelect'=> true,
+                            'cursor'=> 'pointer',
+                            'size'=> '100%',
+                            'innerSize'=> '60%',
+                            'dataLabels'=> [
+                                'enabled'=> true,
+                            ],
+                            'center'=> ['50%', '55%'],
+                        ]
+                    ],
+                    'series'=> [[
+                        'type'=> 'pie',
+                        'name'=> 'Valor',
+                        'data'=> [
+                            ['Diamante',  abs(round((int)$diamante))],
+                            ['Esmeralda', abs(round((int)$esmeralda))],
+                            ['Rubi', abs(round((int)$rubi))],
+                            ['Safira', abs(round((int)$safira))],
+                            ['Topazio', abs(round((int)$topazio))],
+                        ]
+                    ]]
+                ]
+                ]);
+            ?>
     <ul class="list-group">
         <li class="list-group-item">
-        <span class="badge"><?=Base::find()->where(['category_id'=>0])->count()?></span>DIAMANTE
+        <span class="badge"><?=$diamante?></span>DIAMANTE
         </li>
         <li class="list-group-item">
-        <span class="badge"><?=Base::find()->where(['category_id'=>1])->count()?></span>ESMERALDA
+        <span class="badge"><?=$esmeralda?></span>ESMERALDA
         </li>
         <li class="list-group-item">
-        <span class="badge"><?=Base::find()->where(['category_id'=>2])->count()?></span>RUBI
+        <span class="badge"><?=$rubi?></span>RUBI
         </li>
         <li class="list-group-item">
-        <span class="badge"><?=Base::find()->where(['category_id'=>3])->count()?></span>SAFIRA
+        <span class="badge"><?=$safira?></span>SAFIRA
         </li>
         <li class="list-group-item">
-        <span class="badge"><?=Base::find()->where(['category_id'=>4])->count()?></span>TOPÁZIO
+        <span class="badge"><?=$topazio?></span>TOPÁZIO
         </li> 
     </ul>         
     </div>
+    </div>
+
+      </div>
+      <div class="col-md-6">.col-md-6</div>
     </div>
 </div>

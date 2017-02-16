@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
+use app\modules\client\models\Base;
+use app\modules\client\models\Category;
 
 $this->title = 'Base de Clientes';
 ?>
@@ -25,7 +28,17 @@ $this->title = 'Base de Clientes';
               'account',
               'name',
               'doc',
-              'category_id',
+            [
+            'attribute' => 'category_id',
+            'format' => 'raw',
+            'enableSorting' => true,
+            'value' => function($data) {
+                  return $data->getCategory();
+                },
+                'filter' => Base::$Static_category,
+            'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+            'headerOptions' => ['class' => 'text-center'],
+            ],
             //['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
