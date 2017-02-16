@@ -61,6 +61,7 @@ use kartik\touchspin\TouchSpin;
     <div class="row">
         <div class="col-sm-11">
             <?= Html::submitButton('<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Processar', ['class' => 'btn btn-success']) ?>
+            <?= Html::a('<span class="glyphicon glyphicon-print" aria-hidden="true"></span> Imprimir', '#', ['onclick'=>"myFunction()",'class' => 'btn btn-success']) ?>
         </div>
     </div>
     <?php ActiveForm::end(); ?>

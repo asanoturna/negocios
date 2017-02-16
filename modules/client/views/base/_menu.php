@@ -10,10 +10,10 @@ use yii\bootstrap\Nav;
                 'label'   => '<i class="fa fa-calculator" aria-hidden="true"></i> Cálculo de Empréstimo',
                 'url'     => ['simulator'],
             ],
-            [
-                'label'   => '<i class="fa fa-line-chart" aria-hidden="true"></i> Estatísticas',
-                'url'     => ['dashboard'],
-            ],  
+            // [
+            //     'label'   => '<i class="fa fa-line-chart" aria-hidden="true"></i> Estatísticas',
+            //     'url'     => ['dashboard'],
+            // ],  
             [
                 'label'   => '<i class="fa fa-database" aria-hidden="true"></i> Base de Associados',
                 'url'     => ['index'],

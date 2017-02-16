@@ -87,7 +87,7 @@ $this->params['breadcrumbs'][] = $this->title;
         $resultclient_rate = $command_client_rate->queryScalar();
 
         $taxa = $resultclient_rate;
-        $juros = $value * $taxa;
+        $juros = ($value * $taxa)/100;
         $price = $quota/$juros;
         $prestacao = $quota/$juros;
         $valorfinal = $price*$quota;
@@ -119,10 +119,10 @@ $this->params['breadcrumbs'][] = $this->title;
               <tr>
                 <th>Nº Parcela</th>
                 <th>Juros</th>
-                <th>Saldo Devdor</th>
+                <th>Saldo Devedor</th>
                 <th>Price</th>
                 <th>Saldo</th>
-                <th>Valor princ</th>
+                <th>Valor principal</th>
                 <th>Data Vencimento</th>
               </tr>
             </thead>

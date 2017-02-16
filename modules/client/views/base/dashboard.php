@@ -32,6 +32,13 @@ $this->title = 'Estatísticas';
           $rubi         = Base::find()->where(['category_id'=>2])->count();
           $safira       = Base::find()->where(['category_id'=>3])->count();
           $topazio      = Base::find()->where(['category_id'=>4])->count();
+
+          $diamante_color   = '#7CB5EC';
+          $esmeralda_color  = '#2A9636';
+          $rubi_color       = '#FF2626';
+          $safira_color     = '#F7A35C';
+          $topazio_color    = '#8085E9';
+
                 echo Highcharts::widget([
                 'options' => [
                     'credits' => ['enabled' => false],
@@ -46,16 +53,17 @@ $this->title = 'Estatísticas';
                               'color' => '#0C3E45',
                           ] 
                         ],
-                    //'colors'=> ['#13AE9C','#BDD530'],
+                    'colors'=> [$diamante_color, $esmeralda_color, $rubi_color, $safira_color, $topazio_color],
                     'tooltip'=> ['pointFormat'=> 'Percentual: <b>{point.percentage:.1f}%</b>'],
                     'plotOptions'=> [
                         'pie'=> [
                             'allowPointSelect'=> true,
                             'cursor'=> 'pointer',
-                            'size'=> '100%',
-                            'innerSize'=> '60%',
+                            //'size'=> '100%',
+                            //'innerSize'=> '60%',
                             'dataLabels'=> [
                                 'enabled'=> true,
+                                'color' => '#003A41',
                             ],
                             'center'=> ['50%', '55%'],
                         ]
@@ -90,7 +98,7 @@ $this->title = 'Estatísticas';
         <li class="list-group-item">
         <span class="badge"><?=$topazio?></span>TOPÁZIO
         </li> 
-    </ul>         
+    </ul>    
     </div>
     </div>
 

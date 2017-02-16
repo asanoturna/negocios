@@ -15,6 +15,7 @@ class BaseSearch extends Base
             //[['account', 'value', 'quota', 'category_id'], 'required'],
             [['id'], 'integer'],
             ['account', 'is6NumbersOnly'],
+            ['value', 'isValueOnly'],
             [['date'], 'date', 'format' => 'php:Y-m-d'],
             ['quota', 'number', 'min' => 1, 'max' => 60],
             ['value', 'number', 'min' => 1],
@@ -26,6 +27,13 @@ class BaseSearch extends Base
     {
         if (!preg_match('/^[0-9]{6}$/', $this->$attribute)) {
             $this->addError($attribute, 'Conta possui 6 digitos numéricos');
+        }
+    }
+
+    public function isValueOnly($attribute)
+    {
+        if (!preg_match('/^[1-9][0-9]*$/', $this->$attribute)) {
+            $this->addError($attribute, '"Valor" precisa ser um número inteiro maior que zero!');
         }
     }
 
