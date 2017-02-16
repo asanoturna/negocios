@@ -100,6 +100,7 @@ class BaseSearch extends Base
             'id' => $this->id,
             'account' => $this->account,
             'value' => $this->value,
+            'category_id' => $this->category_id,
         ]);
 
 
