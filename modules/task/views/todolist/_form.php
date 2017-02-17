@@ -54,21 +54,6 @@ use yii\helpers\ArrayHelper;
 
     <div class="row">
       <div class="col-md-6">
-      <?= $form->field($model, 'deadline')->widget('trntv\yii\datetime\DateTimeWidget',
-        [
-            'phpDatetimeFormat' => 'yyyy-MM-dd',
-            'clientOptions' => [
-                'minDate' => new \yii\web\JsExpression('new Date("2016-01-01")'),
-                'allowInputToggle' => true,
-                'widgetPositioning' => [
-                   'horizontal' => 'auto',
-                   'vertical' => 'auto'
-                ]
-            ]
-        ]
-    ) ?>
-    </div>
-      <div class="col-md-6">
       <?= $form->field($model, 'remember')->widget('trntv\yii\datetime\DateTimeWidget',
         [
             'phpDatetimeFormat' => 'yyyy-MM-dd',
@@ -83,6 +68,22 @@ use yii\helpers\ArrayHelper;
         ]
     ) ?>      
       </div>
+
+      <div class="col-md-6">
+      <?= $form->field($model, 'deadline')->widget('trntv\yii\datetime\DateTimeWidget',
+        [
+            'phpDatetimeFormat' => 'yyyy-MM-dd',
+            'clientOptions' => [
+                'minDate' => new \yii\web\JsExpression('new Date("2016-01-01")'),
+                'allowInputToggle' => true,
+                'widgetPositioning' => [
+                   'horizontal' => 'auto',
+                   'vertical' => 'auto'
+                ]
+            ]
+        ]
+    ) ?>
+    </div>
     </div>
 
     <?= $form->field($model, 'file')->fileInput() ?>

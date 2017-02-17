@@ -81,7 +81,7 @@ class Todolist extends \yii\db\ActiveRecord
             'department_id' => 'Departamento',
             'category_id' => 'Periodicidade',
             'status_id' => 'Situação',
-            'deadline' => 'Prazo para Atividade',
+            'deadline' => 'Prazo Final',
             'remember' => 'Lembrete',
             'priority_id' => 'Prioridade',
             'owner_id' => 'Criado por',

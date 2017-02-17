@@ -8,6 +8,7 @@ use app\modules\productivity\models\Product;
 use app\models\Modality;
 use app\models\User;
 use app\modules\productivity\models\Dailyproductivitystatus;
+use yii\bootstrap\Tabs;
 
 $this->title = 'Gestão Produtividade Diária';
 ?>
@@ -19,6 +20,31 @@ $this->title = 'Gestão Produtividade Diária';
 </div>
 
 <hr/>
+<?php
+echo Tabs::widget([
+    'items' => [
+        [
+            'label' => 'Produtividade',
+            //'content' => 'Anim pariatur cliche...',
+            'active' => true
+        ],
+        [
+            'label' => 'Categorias',
+            'content' => 'Anim pariatur cliche...',
+            //'headerOptions' => [...],
+            'options' => ['id' => 'myveryownID'],
+        ],
+        [
+            'label' => 'Gestores',
+            'url' => 'http://www.example.com',
+        ],
+        [
+            'label' => 'Metas',
+            'url' => 'http://www.example.com',
+        ],
+    ],
+]);
+?>
     <div class="panel panel-default">
     <div class="panel-heading"><b>Pesquisar</b></div>
       <div class="panel-body">

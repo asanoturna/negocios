@@ -267,7 +267,7 @@ $this->title = 'Painel de Atividades';
                         ]);
                     },
                     'delete' => function ($url, $model) {
-                        return $model->owner_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
+                        return Yii::$app->user->identity->role_id == 5 ? Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
                                     'title' => 'Excluir Atividade',
                                     'class' => 'btn btn-default btn-xs',
                                     'data-confirm' => 'Tem certeza que deseja excluir?',
@@ -280,7 +280,7 @@ $this->title = 'Painel de Atividades';
                         ]);
                     },
                     'update' => function ($url, $model) {
-                        return $model->owner_id === Yii::$app->user->identity->id ? Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
+                        return Yii::$app->user->identity->role_id == 5 ? Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
                                     'title' => 'Alterar Atividade',
                                     'class' => 'btn btn-default btn-xs',
                         ]): Html::a('<span class="glyphicon glyphicon-pencil" ></span>', "#", [

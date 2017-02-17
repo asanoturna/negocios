@@ -27,6 +27,12 @@ $this->title = 'Resumo Diário das Visitas';
     <a href="#" class="close" data-dismiss="alert" aria-label="close">Fechar &times;</a>
     <h3>Planilha de Acompanhamento de Crédito Semanal</h3>
     <img src="<?php echo Yii::$app->request->baseUrl;?>/images/popup-visitas.png" class="img-responsive img-rounded" alt="Tabela">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">Fechar &times;</a>
+    <h3>Maiores Amortizações de Fevereiro</h3>
+    <img src="<?php echo Yii::$app->request->baseUrl;?>/images/popup-amortizacoes.png" class="img-responsive img-rounded" alt="Tabela">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">Fechar &times;</a>
+    <h3>Maiores Provisões de Janeiro</h3>
+    <img src="<?php echo Yii::$app->request->baseUrl;?>/images/popup-provisoes.png" class="img-responsive img-rounded" alt="Tabela">
   </div>     
 
     <div class="row">
