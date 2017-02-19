@@ -14,7 +14,7 @@ class ProductSearch extends Product
     {
         return [
             [['id', 'is_active'], 'integer'],
-            [['name', 'desc'], 'safe'],
+            [['name', 'description'], 'safe'],
         ];
     }
 
@@ -30,6 +30,14 @@ class ProductSearch extends Product
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_ASC, 
+                ]
+            ],
+            'pagination' => [
+                'pageSize' => 50,
+            ],
         ]);
 
         $this->load($params);
@@ -46,7 +54,7 @@ class ProductSearch extends Product
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'desc', $this->desc]);
+            ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }

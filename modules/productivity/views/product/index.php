@@ -2,36 +2,71 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
+use app\models\Location;
+use app\modules\productivity\models\Product;
+use app\models\Modality;
+use app\models\User;
+use app\modules\productivity\models\Dailyproductivitystatus;
+use yii\bootstrap\Tabs;
 
-/* @var $this yii\web\View */
-/* @var $searchModel app\models\ProductSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
+$this->title = 'Gestão dos Produtos';
 
-$this->title = 'Products';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="product-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+<div class="row">
+  <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
+  <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;"><?php  echo $this->render('/dailyproductivity/_menu'); ?></span></div>
+</div>
 
-    <p>
-        <?= Html::a('Create Product', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+<hr/>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+    <?php
+    echo Tabs::widget([
+        'items' => [
+            [
+                'label' => 'Produtividade',
+                'url' => ['managerdailyproductivity/index'],
+            ],
+            [
+                'label' => 'Categorias',
+                'url' => ['product/index'],
+                'active' => true
+            ],
+            [
+                'label' => 'Metas',
+                'url' => '#',
+                'headerOptions' => ['class' => 'disabled'],
+            ],
+        ],
+    ]);
+    ?>
+
+
+<div class="row">
+  <div class="col-md-6"><h1></div>
+  <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;"><?= Html::a('Novo Produto', ['create'], ['class' => 'btn btn-success']) ?></span></div>
+</div>
+
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
             'id',
+            'parent_id',
             'name',
-            'desc',
+            'min_value',
+            'max_value',
             'is_active',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+
+    </div>
+    </div>
 
 </div>

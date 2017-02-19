@@ -10,7 +10,7 @@ use app\models\User;
 use app\modules\productivity\models\Dailyproductivitystatus;
 use yii\bootstrap\Tabs;
 
-$this->title = 'Gestão Produtividade Diária';
+$this->title = 'Gestão das Vendas';
 ?>
 <div class="managerdailyproductivity-index">
 
@@ -20,31 +20,28 @@ $this->title = 'Gestão Produtividade Diária';
 </div>
 
 <hr/>
+    <div class="panel panel-default">
+    <div class="panel-body">
 <?php
 echo Tabs::widget([
     'items' => [
         [
             'label' => 'Produtividade',
-            //'content' => 'Anim pariatur cliche...',
             'active' => true
         ],
         [
             'label' => 'Categorias',
-            'content' => 'Anim pariatur cliche...',
-            //'headerOptions' => [...],
-            'options' => ['id' => 'myveryownID'],
-        ],
-        [
-            'label' => 'Gestores',
-            'url' => 'http://www.example.com',
+            'url' => ['product/index'],
         ],
         [
             'label' => 'Metas',
-            'url' => 'http://www.example.com',
+            'url' => '#',
+            'headerOptions' => ['class' => 'disabled'],
         ],
     ],
 ]);
 ?>
+<br>
     <div class="panel panel-default">
     <div class="panel-heading"><b>Pesquisar</b></div>
       <div class="panel-body">
@@ -52,8 +49,7 @@ echo Tabs::widget([
     </div>
     </div>
     
-    <div class="panel panel-default">
-    <div class="panel-body">      
+      
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
