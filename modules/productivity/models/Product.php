@@ -29,7 +29,7 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'parent_id' => 'Sub-Produto',
+            'parent_id' => 'Produto',
             'label' => 'Título da Categoria',
             'name' => 'Produto',
             'description' => 'Descrição',
@@ -49,6 +49,11 @@ class Product extends \yii\db\ActiveRecord
             $options[$p->name] = $child_options;
         }
         return $options;
-    }    
+    }
+
+    public function getParent()
+    {
+        return $this->hasOne(Product::className(), ['id' => 'parent_id']);
+    }   
          
 }

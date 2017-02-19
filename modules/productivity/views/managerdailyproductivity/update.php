@@ -14,8 +14,12 @@ $this->title = 'Gestão Produtividade Diária';
 
 <hr/>
 
+	<div class="panel panel-default">
+  	<v class="panel-body">
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
+    </div>
+    </div>
 
 </div>

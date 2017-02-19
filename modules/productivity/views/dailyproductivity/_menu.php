@@ -9,29 +9,29 @@ use yii\bootstrap\Nav;
                 'items' => [
                     [
                         'label' => 'Ranking por Usuário', 
-                        'url' => ['ranking_user'],
+                        'url' => ['/productivity/dailyproductivity/ranking_user'],
                     ],
                     [
                         'label' => 'Ranking por Agência',
-                        'url' => ['ranking_location'],
+                        'url' => ['/productivity/dailyproductivity/ranking_location'],
                     ],
                     [
                         'label' => 'Desempenho por Usuário',
-                        'url' => ['performance_user'],
+                        'url' => ['/productivity/dailyproductivity/performance_user'],
                     ],                            
                     [
                         'label' => 'Visão Geral dos Produtos',
-                        'url' => ['performance_overview'],
+                        'url' => ['/productivity/dailyproductivity/performance_overview'],
                     ],                            
                 ],
             ],   
             [
                 'label'   => '<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> Listar',
-                'url'     => ['index'],
+                'url'     => ['/productivity/dailyproductivity/index'],
             ],  
             [
                 'label'   => '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Inserir',
-                'url'     => ['create'],
+                'url'     => ['/productivity/dailyproductivity/create'],
             ],                                                                                                 
             [
                 'label'   => '<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Gerenciar',
