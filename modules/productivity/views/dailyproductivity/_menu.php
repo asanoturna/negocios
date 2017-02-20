@@ -34,7 +34,7 @@ use yii\bootstrap\Nav;
                 'url'     => ['/productivity/dailyproductivity/create'],
             ],                                                                                                 
             [
-                'label'   => '<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Gerenciar',
+                'label'   => '<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Gerenciar',
                 'url'     => ['/productivity/managerdailyproductivity/index'],
                 'visible' => Yii::$app->user->identity->role_id == 2,
             ], 

@@ -37,9 +37,7 @@ Visitas -> Verificar / Usar plugin de galeria de fotos
 Visitas -> Ilimitado numero de upload de fotos
 Visitas -> Edição de Imagens (cortar, girar, etc).
 
-Produtividade -> Gravar Formula/Cálculo
 Produtividade -> Filtro por período no ranking
 Produtividade -> Quadro Metas por agência (cadastrar metas por local para todos os produtos)
-  ---> Exemplo.: tabela meta > valor, pa, data(m/y)
-Produtividade -> Regras dinamicas
-Produtividade -> Gerenciar Produtos (cadastrar, ativar, desativar, etc), Gerenciar Metas
+Produtividade -> Regras dinamicas e Gravar Formula/Cálculo
+Produtividade -> Corrigir permissoes no controller

@@ -1,21 +1,47 @@
 <?php
 
 use yii\helpers\Html;
+use yii\bootstrap\Tabs;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Product */
-
-$this->title = 'Update Product: ' . ' ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Alterar Produto: ' . ' ' . $model->name;
 ?>
 <div class="product-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="row">
+  <div class="col-md-6"><h1><?= Html::encode($this->title) ?></h1></div>
+  <div class="col-md-6"><span class="pull-right" style="top: 15px;position: relative;"><?php  echo $this->render('/dailyproductivity/_menu'); ?></span></div>
+</div>
 
+<hr/>
+
+	<div class="panel panel-default">
+  	<div class="panel-body">
+
+	<?php
+    echo Tabs::widget([
+        'items' => [
+            [
+                'label' => 'Produtividade',
+                'url' => ['managerdailyproductivity/index'],
+            ],
+            [
+                'label' => 'Categorias',
+                'url' => ['product/index'],
+                'active' => true
+            ],
+            [
+                'label' => 'Metas',
+                'url' => '#',
+                'headerOptions' => ['class' => 'disabled'],
+            ],
+        ],
+    ]);
+    ?>
+    <br/>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
+    </div>
+    </div>
 
 </div>

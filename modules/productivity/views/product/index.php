@@ -79,7 +79,34 @@ $this->title = 'Gestão dos Produtos';
                 'filter'=>[0=>'Não', 1=>'Sim'],
                 'contentOptions'=>['style'=>'width: 5%;text-align:center'],
             ],    
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{update} {delete}',
+                'buttons' => [
+                    'view' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-list-alt" ></span>', $url, [
+                                    'title' => 'Detalhes',
+                                    'class' => 'btn btn-default btn-xs',
+                        ]);
+                    },                
+                    'update' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-pencil" ></span>', $url, [
+                                    'title' => 'Alterar',
+                                    'class' => 'btn btn-default btn-xs',
+                        ]);
+                    },
+                    'delete' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-trash" ></span>', $url, [
+                                    'title' => 'Excluir',
+                                    'class' => 'btn btn-default btn-xs',
+                                    'data-confirm' => 'Tem certeza que deseja excluir?',
+                                    'data-method' => 'post',
+                                    'data-pjax' => '0',
+                        ]);
+                    },                
+                ],
+                'contentOptions'=>['style'=>'width: 10%;text-align:right'],
+            ],
         ],
     ]); ?>
 
