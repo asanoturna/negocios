@@ -14,6 +14,19 @@ class Product extends \yii\db\ActiveRecord
         return 'product';
     }
 
+    // calculation
+    public static $Static_calculation = [
+        'Por Comissão',
+        'Por Prazo',
+        ];   
+    public function getCalculation()
+    {
+        if ($this->calculation_type === null) {
+            return null;
+        }
+        return self::$Static_calculation[$this->calculation_type];
+    }
+
     public function rules()
     {
         return [
@@ -34,6 +47,11 @@ class Product extends \yii\db\ActiveRecord
             'name' => 'Produto',
             'description' => 'Descrição',
             'is_active' => 'Ativo',
+            'calculation_type' => 'Tipo de Calculo',
+            'min_value' => 'Comissão Mínima',
+            'max_value' => 'Comissão Máxima',
+            'min_time' => 'Prazo Mínimo',
+            'max_time' => 'Prazo Máximo',
         ];
     }
     public static function getHierarchy() {

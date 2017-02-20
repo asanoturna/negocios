@@ -25,14 +25,42 @@ $this->title = 'Resumo Diário das Visitas';
 
   <div class="alert alert-warning fade in" align="center">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">Fechar &times;</a>
+<br/>
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
     <h3>Planilha de Acompanhamento de Crédito Semanal</h3>
-    <img src="<?php echo Yii::$app->request->baseUrl;?>/images/popup-visitas.png" class="img-responsive img-rounded" alt="Tabela">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">Fechar &times;</a>
+      <img src="<?php echo Yii::$app->request->baseUrl;?>/images/popup-visitas.png" alt="Planilha de Acompanhamento de Crédito Semanal">
+    </div>
+    <div class="item">
     <h3>Maiores Amortizações de Fevereiro</h3>
-    <img src="<?php echo Yii::$app->request->baseUrl;?>/images/popup-amortizacoes.png" class="img-responsive img-rounded" alt="Tabela">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">Fechar &times;</a>
+      <img src="<?php echo Yii::$app->request->baseUrl;?>/images/popup-amortizacoes.png" alt="Maiores Amortizações de Fevereiro">
+    </div>
+    <div class="item">
     <h3>Maiores Provisões de Janeiro</h3>
-    <img src="<?php echo Yii::$app->request->baseUrl;?>/images/popup-provisoes.png" class="img-responsive img-rounded" alt="Tabela">
+      <img src="<?php echo Yii::$app->request->baseUrl;?>/images/popup-provisoes.png" alt="Maiores Provisões de Janeiro">
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Anterior</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Proximo</span>
+  </a>
+</div>
+
   </div>     
 
     <div class="row">

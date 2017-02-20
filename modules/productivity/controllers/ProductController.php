@@ -45,6 +45,11 @@ class ProductController extends Controller
     {
         $model = new Product();
 
+        if (Yii::$app->user->identity->role_id != 99){
+            throw new NotFoundHttpException("Você não tem permissão para acessar essa área!");
+        }
+
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -58,6 +63,10 @@ class ProductController extends Controller
     {
         $model = $this->findModel($id);
 
+        if (Yii::$app->user->identity->role_id != 99){
+            throw new NotFoundHttpException("Você não tem permissão para acessar essa área!");
+        }
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -69,6 +78,10 @@ class ProductController extends Controller
 
     public function actionDelete($id)
     {
+        if (Yii::$app->user->identity->role_id != 99){
+            throw new NotFoundHttpException("Você não tem permissão para acessar essa área!");
+        }
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

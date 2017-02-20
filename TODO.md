@@ -1,5 +1,10 @@
 GERAL
 --------------------
+ALTER TABLE `product` ADD `min_time` INT NOT NULL DEFAULT '0' AFTER `max_value`, ADD `max_time` INT NOT NULL DEFAULT '0' AFTER `min_time`;
+
+ALTER TABLE `product` ADD `calculation_type` INT NOT NULL DEFAULT '0' AFTER `description`;
+
+
 
 Sobre querys
 http://stackoverflow.com/questions/26894987/get-count-in-relation-table-in-yii2-activerecord

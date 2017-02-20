@@ -54,7 +54,7 @@ $this->title = 'Gestão dos Produtos';
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
             'id',
             [
@@ -65,11 +65,19 @@ $this->title = 'Gestão dos Produtos';
             'value' => function ($model) {                      
                 return $model->parent ? $model->parent->name." <span class=\"glyphicon glyphicon-triangle-right\" aria-hidden=\"true\"></span> ".$model->name : "<span class=\"text-danger\"><em>".$model->name."</em></span>";
             },
-            //'contentOptions'=>['style'=>'width: 75%;text-align:left'],
-            ], 
-            //'name',
+            'filter' => Product::getHierarchy(),
+            //'contentOptions'=>['style'=>'width: 50%;text-align:left'],
+            ],
+            [
+            'attribute' => 'calculation_type',
+            'value' => function($data) {
+              return $data->getCalculation();
+            },
+            ],
             'min_value',
             'max_value',
+            'min_time',
+            'max_time',
             [ 
                 'attribute' => 'is_active',
                 'format' => 'raw',
