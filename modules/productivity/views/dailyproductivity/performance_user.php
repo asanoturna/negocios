@@ -79,7 +79,11 @@ echo Tabs::widget([
 	  <div class="panel-heading"><b>Mais Vendidos</b></div>
 	  <div class="panel-body">
 		<?php
-		echo Highcharts::widget([
+
+        if (empty($q)){ 
+         echo '<div class="alert alert-warning" role="alert">Nenhuma informação encontrada!</div>';
+        }else{
+        echo Highcharts::widget([
             'options' => [
                 'credits' => ['enabled' => false],
                 'title' => [
@@ -104,6 +108,8 @@ echo Tabs::widget([
                 ],
             ]
         ]);
+        }
+
 		?>
 	  </div>
 	</div>
@@ -114,7 +120,11 @@ echo Tabs::widget([
 	  <div class="panel-heading"><b>Evolução</b></div>
 	  <div class="panel-body">
 		<?php
-        echo Highcharts::widget([
+
+        if (empty($pending)){ 
+         echo '<div class="alert alert-warning" role="alert">Nenhuma informação encontrada!</div>';
+        }else{
+                echo Highcharts::widget([
             'options' => [
                 'credits' => ['enabled' => false],
                 'title' => [
@@ -141,6 +151,9 @@ echo Tabs::widget([
                 ],
             ]
         ]);
+        }
+
+
 		?>
 	  </div>
 	</div>
