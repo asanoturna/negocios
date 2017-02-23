@@ -75,6 +75,9 @@ echo Tabs::widget([
             ?>
     </p>
   </div>
+      <div class="col-md-1 pull-right"> 
+    <input class="form-control" type="text" placeholder=<?php echo date("Y");?> readonly>
+    </div> 
 </div>
 <div class="row">
   <div class="col-md-6">

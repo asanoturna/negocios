@@ -5,11 +5,11 @@ use yii\bootstrap\Nav;
         'encodeLabels' => false,
         'items' => [
             [
-                'label' => '<span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> Painel de Desempenho',
-                'url' => ['/productivity/dailyproductivity/performance_overview'],
+                'label'   => '<i class="fa fa-line-chart" aria-hidden="true"></i> Painel de Desempenho',
+                'url'     => ['/productivity/dailyproductivity/performance_overview'],
             ],   
             [
-                'label'   => '<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> Listar',
+                'label'   => '<i class="fa fa-list-alt" aria-hidden="true"></i> Listar',
                 'url'     => ['/productivity/dailyproductivity/index'],
             ],  
             [

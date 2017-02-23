@@ -234,7 +234,7 @@ class DailyproductivityController extends Controller
         FROM
             daily_productivity AS t1
         LEFT JOIN product AS t2 ON t1.product_id = t2.id
-        WHERE MONTH(date) = $mounth AND daily_productivity_status_id = 2
+        WHERE MONTH(date) = $mounth AND daily_productivity_status_id = 2 AND YEAR(date) = $thisyear
         GROUP BY
             p");
         $overview = $command->queryAll();
