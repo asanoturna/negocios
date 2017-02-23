@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="col-xs-6 col-md-4">
 
-    <div class="panel panel-default">
+    <div class="panel panel-default .hidden-print">
         <div class="panel-body"> 
         <?php echo $this->render('_search', ['model' => $searchModel]); ?>
         </div>
@@ -86,29 +86,68 @@ $this->params['breadcrumbs'][] = $this->title;
 
         $resultclient_rate = $command_client_rate->queryScalar();
 
+
+
+
         $taxa = $resultclient_rate;
         $juros = ($value * $taxa)/100;
-        $price = $quota/$juros;
-        $prestacao = $quota/$juros;
-        $valorfinal = $price*$quota;
-        $jurospago = $valorfinal - $value;
 
-        ?>
+        /* INICIO PRICE */
+        function calcPrice($Valor, $Parcelas, $Juros) {
+            $Juros = bcdiv($Juros,100,15);
+            $E=1.0;
+            $cont=1.0;
+
+            for($k=1;$k<=$Parcelas;$k++) {
+                $cont= bcmul($cont,bcadd($Juros,1,15),15);
+                $E=bcadd($E,$cont,15);
+            }
+            $E=bcsub($E,$cont,15);
+
+            $Valor = bcmul($Valor,$cont,15);
+
+            return bcdiv($Valor,$E,15);
+        }
+        $price = calcPrice($value, $quota, $juros);
+        /* FIM PRICE  */
+
+        /* INICIO PRESTACAOMENSAL */
+
+        //$valor1 = $taxa * pow((1 + $taxa), $quantParcelas);
+        //$valor2 = pow((1 + $taxa), $quantParcelas) – 1;
+        //$prestacaomensal = $valor * ($valor1 / $valor2);
+        
+        function calcPrestacao($valor, $taxa, $parcelas) {
+                $taxa = $taxa / 100;
+         
+                $valParcela = $valor * pow((1 + $taxa), $parcelas);
+                $valParcela = number_format($valParcela / $parcelas, 2, ",", ".");
+         
+                return $valParcela;
+        }
+        //$prestacaomensal = $valorParcelaComposto = calcPrestacao($value, $taxa, $quota);
+        $prestacaomensal = 456.24;
+        /* FIM PRESTACAOMENSAL  */
+
+        $valorfinal = $prestacaomensal*$quota;
+        $jurospago  = $valorfinal-$value;
+
+        ?> 
 
         <div class="row">
           <div class="col-md-6">
 
         <ul class="list-group">
           <li class="list-group-item"><strong>Taxa:</strong> <?= $taxa?></li>
-          <li class="list-group-item"><strong>Prestação Mensal:</strong> <?= $prestacao?></li>
+          <li class="list-group-item"><strong>Prestação Mensal:</strong> <?= $prestacaomensal?></li>
         </ul>
 
           </div>
           <div class="col-md-6">
 
         <ul class="list-group">
-          <li class="list-group-item"><strong>Valor Final:</strong> <?= $valorfinal?></li>
-          <li class="list-group-item"><strong>Juros Pago na Operação:</strong> <?= $jurospago?></li>
+          <li class="list-group-item"><strong>Valor Final:</strong> <?= number_format($valorfinal, 2, ",", ".")?></li>
+          <li class="list-group-item"><strong>Juros Pago na Operação:</strong> <?= number_format($jurospago, 2, ",", ".")?></li>
         </ul>
 
           </div>
@@ -130,23 +169,30 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?php 
             $parc = 0;
+            $s = $value;
             $start_date = strtotime($date);
             $interval = 1;
 
             for ($i = 0; $i <$quota; $i += $interval) {
             
             $parc++;
+            $j = $s*$taxa/100;
+            $sd = $value+$j;
+            $saldo = $sd-$prestacaomensal;
+            $vp = $prestacaomensal-$j;
+            $s = $saldo;
+
             
 
             ?>
             <tr>
 
             <td><?= $parc?></td> 
-            <td>--</td> 
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
-            <td>--</td>
+            <td><?= number_format($j, 2, ",", ".")?></td> 
+            <td><?= number_format($sd, 2, ",", ".")?></td>
+            <td><?= number_format($prestacaomensal, 2, ",", ".")?></td>
+            <td><?= number_format($saldo, 2, ",", ".")?></td>
+            <td><?= number_format($vp, 2, ",", ".")?></td>
             <td><?= date("d/m/Y", strtotime("+" . $i . " month", $start_date)) ?></td>
 
             </tr>
@@ -165,5 +211,16 @@ $this->params['breadcrumbs'][] = $this->title;
       </div>
     </div>
 </div>
-
+<script>
+function myFunction() {
+    window.print();
+}
+</script>
 </div>
+<?php
+/* REF
+http://www.cesar.inf.br/blog/?p=231
+http://codigofonte.uol.com.br/codigos/aprenda-a-calcular-juros-com-parcelas-em-php
+https://forum.imasters.com.br/topic/429372-calculo-de-juros-e-parcelas/
+*/
+?>

@@ -5,25 +5,8 @@ use yii\bootstrap\Nav;
         'encodeLabels' => false,
         'items' => [
             [
-                'label' => '<span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Desempenho',
-                'items' => [
-                    [
-                        'label' => 'Ranking por Usuário', 
-                        'url' => ['/productivity/dailyproductivity/ranking_user'],
-                    ],
-                    [
-                        'label' => 'Ranking por Agência',
-                        'url' => ['/productivity/dailyproductivity/ranking_location'],
-                    ],
-                    [
-                        'label' => 'Desempenho por Usuário',
-                        'url' => ['/productivity/dailyproductivity/performance_user'],
-                    ],                            
-                    [
-                        'label' => 'Visão Geral dos Produtos',
-                        'url' => ['/productivity/dailyproductivity/performance_overview'],
-                    ],                            
-                ],
+                'label' => '<span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> Painel de Desempenho',
+                'url' => ['/productivity/dailyproductivity/performance_overview'],
             ],   
             [
                 'label'   => '<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> Listar',

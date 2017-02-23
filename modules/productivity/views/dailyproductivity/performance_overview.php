@@ -23,7 +23,33 @@ $this->title = 'Produtividade Diária';
 </div>
 
 <hr/>
-
+<div class="panel panel-default">
+<div class="panel-body">
+<?php
+use yii\bootstrap\Tabs;
+echo Tabs::widget([
+    'items' => [
+        [
+            'label' => 'Visão Geral',
+            'url' => ['/productivity/dailyproductivity/performance_overview'],
+            'active' => true
+        ],
+        [
+            'label' => 'Ranking por Usuário', 
+            'url' => ['/productivity/dailyproductivity/ranking_user'],
+        ],
+        [
+            'label' => 'Ranking por Agência',
+            'url' => ['/productivity/dailyproductivity/ranking_location'],
+        ],
+        [
+            'label' => 'Desempenho por Usuário',
+            'url' => ['/productivity/dailyproductivity/performance_user'],
+        ],  
+    ],
+]);
+?>
+<br>
 <div class="row">	
   <div class="col-xs-2 pull-right">	
 			<?php
@@ -72,7 +98,7 @@ $this->title = 'Produtividade Diária';
                     ],                        
                     'series' => [
                         [
-                            'type' => 'column',
+                            'type' => 'bar',
                             'name' => 'Produtos',
                             'data' => $t,
                         ],                          
@@ -105,7 +131,7 @@ $this->title = 'Produtividade Diária';
                 ],                        
                 'series' => [
                     [
-                        'type' => 'column',
+                        'type' => 'bar',
                         'name' => 'Volume',
                         'data' => $q,
                     ],                           
@@ -117,4 +143,6 @@ $this->title = 'Produtividade Diária';
 	</div>
   </div>
 </div>
+
+</div></div>
 </div>

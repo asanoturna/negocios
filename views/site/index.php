@@ -189,7 +189,7 @@ $this->title = Yii::$app->params['appname'];
                     avatar, user.fullname as fullname, day(birthdate) as dia,
                     day(birthdate) as dia
                     FROM `user`
-                    WHERE WEEKOFYEAR( CONCAT( YEAR(NOW()),'-',MONTH(birthdate),'-',DAY(birthdate) ) ) = WEEKOFYEAR( NOW() )
+                    WHERE WEEKOFYEAR( CONCAT( YEAR(NOW()),'-',MONTH(birthdate),'-',DAY(birthdate) ) ) = WEEKOFYEAR( NOW() ) AND user.status = 1
                     ORDER BY day(birthdate)",
             'totalCount' => 300,
             'key'  => 'fullname',
