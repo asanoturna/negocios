@@ -7,7 +7,7 @@ use yii\bootstrap\Nav;
         'items' => [  
             [
                 'label'   => '<span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Categorias',
-                'url'     => ['/archive/category/index'],
+                'url'     => ['/archive/category/list'],
             ],  
             [
                 'label'   => '<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> Lista de Arquivos',

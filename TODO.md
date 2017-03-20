@@ -1,12 +1,12 @@
 GERAL
 --------------------
-ALTER TABLE `product` ADD `min_time` INT NOT NULL DEFAULT '0' AFTER `max_value`, ADD `max_time` INT NOT NULL DEFAULT '0' AFTER `min_time`;
 
-ALTER TABLE `product` ADD `calculation_type` INT NOT NULL DEFAULT '0' AFTER `description`;
+verificar
 
+https://c9.io/douglasmk/yii2-filemanager
+https://code.tutsplus.com/tutorials/how-to-program-with-yii2-uploading-files--cms-23511
+http://stackoverflow.com/questions/25237661/skip-on-empty-not-working-in-yii2-file-upload
 
-Archive  - valor inicial do campo download como 0 zero
-Campos CREATED, UPDATED, FILESIZE, FILETYPE - setar como null sim
 
 Sobre querys
 http://stackoverflow.com/questions/26894987/get-count-in-relation-table-in-yii2-activerecord
@@ -30,7 +30,6 @@ Criar Links Externos/Ferramentas ??? (calculadora HP 12c, etc..)
 MÓDULOS
 --------------------
 - Migração da ferramenta de Apoio Cadastro
-- Terminar módulo Arquivos (estrutra semelhante a central, incluir Planilha Base e intranet antiga)
 - Criar módulo Vídeos
 - Criar módulo RH (area p/ contra cheque)
 - Criar módulo Helpdesk
