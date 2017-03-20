@@ -2,8 +2,9 @@
 
 return [
 	'params' => [
-		'visitModuleName' => 'Arquivos',
-		'visitAttachment' => '../../Anexos_visitas_anexos/',
-		'visitImages'     => '../../Anexos_visitas_anexos/',
+		'archiveModuleName' => 'Arquivos',
+		'archiveAttachment' => Yii::$app->params['assets'].'archiveAttachment/',
+		'archiveMailSubject' => 'Assunto Teste',
+		'archiveRule' => 'Mensagem Teste',
 	]
 ];

@@ -45,26 +45,67 @@ class FileController extends Controller
     {
         $model = new File();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        $model->user_id = Yii::$app->user->id;
+        $model->created = date('Y-m-d');
+
+        if ($model->load(Yii::$app->request->post())) {
+
+            $file = $model->uploadImage();
+ 
+            if ($model->save()) {
+
+                if ($file !== false) {
+
+                    if(!is_dir(\Yii::$app->getModule('archive')->params['archiveAttachment'])){
+                    mkdir(\Yii::$app->getModule('archive')->params['archiveAttachment'], 0777, true);
+                    }
+                    $path = $model->getImageFile();
+                    $file->saveAs($path);
+                }
+                Yii::$app->session->setFlash("archive-success", "Arquivo incluído com sucesso!");
+                return $this->redirect(['index']);
+            } else {
+                // error in saving model
+            }
         }
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+        $model->updated = date('Y-m-d');
+        $oldFile = $model->getImageFile();
+        $oldattachment = $model->attachment;
+        $oldFileName = $model->filename;
+ 
+        if ($model->load(Yii::$app->request->post())) {
+
+            $file = $model->uploadImage();
+ 
+            if ($file === false) {
+                $model->attachment = $oldattachment;
+                $model->filename = $oldFileName;
+            }
+ 
+            if ($model->save()) {
+
+                if ($file !== false && unlink($oldFile)) {
+                    $path = $model->getImageFile();
+                    $file->saveAs($path);
+                }
+                Yii::$app->session->setFlash("archive-success", "Arquivo alterado com sucesso!");
+                return $this->redirect(['index']);
+            } else {
+                // error in saving model
+            }
         }
+        return $this->render('update', [
+            'model'=>$model,
+        ]);
     }
 
     public function actionDelete($id)

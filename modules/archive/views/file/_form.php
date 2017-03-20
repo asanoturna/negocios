@@ -2,42 +2,43 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use app\modules\archive\models\Category;
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\archive\models\File */
-/* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="file-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+<div class="row">
+  <div class="col-md-6">
 
-    <?= $form->field($model, 'archive_category_id')->textInput() ?>
+    <?php $form = ActiveForm::begin([
+                'options' => ['enctype'=>'multipart/form-data']
+        ]); ?>
+
+    <?= $form->field($model, 'archive_category_id')->dropDownList(ArrayHelper::map(Category::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'attachment')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'file')->fileInput() ?>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'description')->textarea(['rows' => 9]) ?>
 
-    <?= $form->field($model, 'downloads')->textInput() ?>
-
-    <?= $form->field($model, 'filesize')->textInput() ?>
-
-    <?= $form->field($model, 'created')->textInput() ?>
-
-    <?= $form->field($model, 'updated')->textInput() ?>
-
-    <?= $form->field($model, 'is_active')->textInput() ?>
-
-    <?= $form->field($model, 'user_id')->textInput() ?>
-
-    <?= $form->field($model, 'filetype')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'is_active')->dropDownList([
+        '1' => 'Sim', 
+        '0' => 'Não',
+        ]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Gravar' : 'Gravar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
+
+  </div>
+  <div class="col-md-6">.col-md-6</div>
+</div>
+
+
 
 </div>
