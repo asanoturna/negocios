@@ -2,48 +2,39 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use app\modules\archive\models\Category;
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\archive\models\FileSearch */
-/* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="file-search">
 
     <?php $form = ActiveForm::begin([
+        'options' => [
+                    'class' => 'form-inline',
+                    ],
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <div class="row">
+        <div class="col-md-3">
 
-    <?= $form->field($model, 'archive_category_id') ?>
+    <?= $form->field($model, 'archive_category_id')->dropDownList(ArrayHelper::map(Category::find()->where(['is_active' => 1])->orderBy("name ASC")->all(), 'id', 'name'),['prompt'=>'--'])  ?>
+
+        </div>
+        <div class="col-md-4">
 
     <?= $form->field($model, 'name') ?>
 
-    <?= $form->field($model, 'attachment') ?>
-
-    <?= $form->field($model, 'description') ?>
-
-    <?php // echo $form->field($model, 'downloads') ?>
-
-    <?php // echo $form->field($model, 'filesize') ?>
-
-    <?php // echo $form->field($model, 'created') ?>
-
-    <?php // echo $form->field($model, 'updated') ?>
-
-    <?php // echo $form->field($model, 'is_active') ?>
-
-    <?php // echo $form->field($model, 'user_id') ?>
-
-    <?php // echo $form->field($model, 'filetype') ?>
+        </div>
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton('Pesquisar', ['class' => 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
+
+    </div>
 
 </div>

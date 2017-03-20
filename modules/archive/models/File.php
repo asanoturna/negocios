@@ -20,7 +20,11 @@ class File extends \yii\db\ActiveRecord
             [['archive_category_id', 'is_active', 'user_id'], 'integer'],
             [['description'], 'string', 'max' => 200],
             [['attachment', 'file', 'filename', 'filesize', 'filetype', 'downloads', 'created', 'updated'], 'safe'],
-            [['file'], 'file', 'extensions'=>'jpg, png, pdf, doc, docx, xls, xlsx', 'maxSize' => 1024 * 1024 * 4, 'skipOnEmpty' => true],
+            [['file'], 'file', 
+                'extensions'=>'zip, jpg, jpeg, png, pdf, doc, docx, xls, xlsx, ppt, pps, pptx', 
+                'maxSize' => 1024 * 1024 * 10, 
+                'skipOnEmpty' => true
+                ],
             [['name','attachment'], 'string', 'max' => 200],
         ];
     }
@@ -38,7 +42,7 @@ class File extends \yii\db\ActiveRecord
             'created' => 'Publicação',
             'updated' => 'Alteração',
             'is_active' => 'Ativo',
-            'user_id' => 'Usuário',
+            'user_id' => 'Responsável',
             'filetype' => 'Formato',
             'file' => 'Arquivo',
         ];
@@ -100,4 +104,39 @@ class File extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
+
+    public function getType()
+    {
+    switch ($this->filetype) {
+        case 'jpg':
+        case 'jpeg':
+        case 'png':
+            $type = '<i class="fa fa-file-image-o" aria-hidden="true"></i>';
+            break;
+        case 'zip':
+            $type = '<i class="fa fa-file-zip-o" aria-hidden="true"></i>';
+            break;
+        case 'pdf':
+            $type = '<i class="fa fa-file-pdf-o" aria-hidden="true"></i>';
+            break;
+        case 'doc':
+        case 'docx':
+            $type = '<i class="fa fa-file-word-o" aria-hidden="true"></i>';
+            break;
+        case 'xls':
+        case 'xlsx':
+            $type = '<i class="fa fa-file-excel-o" aria-hidden="true"></i>';
+            break;
+        case 'ppt':
+        case 'pptx':
+        case 'pps':
+            $type = '<i class="fa fa-file-powerpoint-o" aria-hidden="true"></i>';
+            break;
+        default:
+            $type = '<i class="fa fa-file-o" aria-hidden="true"></i>';
+            break;
+    }
+
+    return $type;
+}
 }

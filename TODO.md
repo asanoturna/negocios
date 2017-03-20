@@ -5,6 +5,8 @@ ALTER TABLE `product` ADD `min_time` INT NOT NULL DEFAULT '0' AFTER `max_value`,
 ALTER TABLE `product` ADD `calculation_type` INT NOT NULL DEFAULT '0' AFTER `description`;
 
 
+Archive  - valor inicial do campo download como 0 zero
+Campos CREATED, UPDATED, FILESIZE, FILETYPE - setar como null sim
 
 Sobre querys
 http://stackoverflow.com/questions/26894987/get-count-in-relation-table-in-yii2-activerecord
